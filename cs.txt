@@ -1,5 +1,4 @@
 php app/console
-
 php app/console generate:bundle
 
 php app/console cache:clear
@@ -17,29 +16,18 @@ php ../composer.phar dump-autoload
 //entity - database - orm
 php app/console generate:doctrine:entity
 
-$ php app/console doctrine:generate:entity \
-  --entity="AcmeStoreBundle:Product" \
-  --fields="name:string(255) price:float description:text"
-
 php app/console doctrine:database:create
 php app/console doctrine:schema:update --dump-sql
 php app/console doctrine:schema:update --force
 
 //assetic
 *******************
-
 php app/console assetic:dump
-s/d6beef6.js">
-*******************
-php app/console doctrine:generate:form CFProjectBundle:Document
-
 php app/console assetic:dump --env=prod
+*******************
+
 
 php app/console doctrine:generate:entities MyBundle:MyEntity
-
-php app/console doctrine:generate:entities CFProjectBundle:Document
-
-php app/console doctrine:generate:entities CFContributionBundle:Counterparty
 
 php app/console doctrine:generate:entities COMUserBundle:User
 
@@ -53,8 +41,6 @@ php app/console doctrine:generate:entities COMForumBundle:Topic
 
 php app/console doctrine:generate:entities COMPlatformBundle:PostSchool
 
-php app/console doctrine:generate:entities CFBlogBundle:Article
-
 
 php app/console doctrine:generate:entities COMBlogBundle:Post
 
@@ -64,9 +50,4 @@ php app/console doctrine:generate:entities COMUserBundle:User
 php app/console doctrine:generate:entities COMEnterpriseBundle:Enterprise
 php app/console doctrine:generate:entities COMProductBundle:Category
 
-php app/console doctrine:fixtures:load
 php app/console fos:user:create
-
-php ../../composer.phar update avalanche12
-
-338397
