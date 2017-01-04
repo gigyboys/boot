@@ -1,0 +1,6 @@
+com_school_home:
+    path:     /school
+    defaults: { _controller: COMSchoolBundle:School:index }
+com_school_view:
+    path:     /{slug}
+    defaults: { _controller: COMSchoolBundle:School:view }

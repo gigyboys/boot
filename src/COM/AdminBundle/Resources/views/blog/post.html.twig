@@ -1,0 +1,55 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Liste des articles
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Listes des articles...
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				left
+			</div>
+			<div class="a_datatable_head_right">
+				right
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id">id</th>
+					<th>title</th>
+					<th>author</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for post in posts %}
+				<tr class="a_table_line">
+					<td class="a_table_cell_id">{{ post.id }}</td>
+					<td><a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}">{{ post.defaultTitle }}</a></td>
+					<td>{{ post.user.firstname }}</td>
+					<td class="a_table_cell_action">action</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				left
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+				<span>1</span> 
+				<span>2</span> 
+				<span>3</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,65 @@
+com_platform_index:
+    path:     /
+    defaults: { _controller: COMPlatformBundle:Home:index }
+
+com_platform_init:
+    path:     /init
+    defaults: { _controller: COMPlatformBundle:Init:init }
+
+com_advert:
+    resource: "@COMAdvertBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_forum:
+    resource: "@COMForumBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_event:
+    resource: "@COMEventBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_admin:
+    resource: "@COMAdminBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/admin
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_blog:
+    resource: "@COMBlogBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_user:
+    resource: "@COMUserBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+com_platform:
+    resource: "@COMPlatformBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+
+#lipp route
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+com_school:
+    resource: "@COMSchoolBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|mg|it|es|de

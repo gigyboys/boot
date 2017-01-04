@@ -1,0 +1,39 @@
+{% extends "COMUserBundle::user.html.twig" %}
+
+{% block title %}
+	Connexion
+{% endblock %}
+
+
+{% block user_body %}
+	<div class="cr">
+		<div class="ct">
+			{{ error | raw }}
+			<div>
+				Connexion.
+			</div>
+			<div>
+				Remplissez avec vos coordonnées.
+			</div>
+			<div style="margin:10px 0">
+				<form name="" method="post" action="{{ path('login_check') }}" id="form-inscription">
+					<div>
+						<div>                
+							<div><label for="username" class="required">{{ 'username' | trans }} :</label></div>
+							<div><input type="text" id="username" name="_username" required="required" value="{{ last_username }}" class="default_input" /></div>
+						</div>
+						
+						<div>                
+							<div><label for="password" class="required">{{ 'password' | trans }} :</label></div>
+							<div><input type="text" id="password" name="_password" required="required" class="default_input" /></div>
+						</div>
+						
+						<div style="margin-top : 10px">
+							<button type="submit" id="Inscription" name="Inscription" class="standar_button">{{ 'connexion' | trans }}</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

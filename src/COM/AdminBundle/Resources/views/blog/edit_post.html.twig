@@ -1,0 +1,187 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Edition de l'article {{ post.id }}
+{% endblock %}
+
+{% block content_body %}
+	<div id="a_content_body_left">
+		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+			Edition de l'article {{ post.id }}
+			- 
+			<span class="menu_deroulant" style="display:inline-block;">
+					<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+						info
+					</span>
+					<span class="menu_deroulant_liste" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						<span>Auteur : {{ post.user.firstname }} {{ post.user.name }}</span><br />
+						<span>Date d'ajout : {{ post.date | date('Y-m-d H:i:s') }}</span><br />
+						<span>Nombre de vues : {{ post.viewNumber }}</span><br />
+					</span>
+				</span>
+		</div>
+		
+		<div style="padding:5px">
+			<table>
+				<tr>
+					<td>Titre</td>
+					<td>:</td>
+					<td style="padding:5px"><input type="text" class="default_input" value="{{ post.defaultTitle }}" /></td>
+				</tr>
+				<tr>
+					<td>Url</td>
+					<td>:</td>
+					<td style="padding:5px"><input type="text" class="default_input" value="{{ post.slug }}" /></td>
+				</tr>
+				<!--
+				<tr>
+					<td>Auteur</td>
+					<td>:</td>
+					<td style="padding:5px">{{ post.user.firstname }} {{ post.user.name }}</td>
+				</tr>
+				<tr>
+					<td>Date d'ajout</td>
+					<td>:</td>
+					<td style="padding:5px">{{ post.date | date('Y-m-d H:i:s') }}</td>
+				</tr>
+				<tr>
+					<td>Nombre de vues</td>
+					<td>:</td>
+					<td style="padding:5px">{{ post.viewNumber }}</td>
+				</tr>
+				-->
+			</table>
+		</div>
+		
+		<div id="a_content_tab">
+			<div class="a_content_tab_header">
+				<div class="a_content_tab_header_content">
+					<div class="a_content_tab_header_item selected" id="tab_fr">
+						<div class="a_content_tab_header_item_text">
+							français
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_en">
+						<div class="a_content_tab_header_item_text">
+							anglais
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_mg">
+						<div class="a_content_tab_header_item_text">
+							malagasy
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_it">
+						<div class="a_content_tab_header_item_text">
+							italien
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_es">
+						<div class="a_content_tab_header_item_text">
+							espagnol
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_de">
+						<div class="a_content_tab_header_item_text">
+							allemand
+						</div>
+					</div>
+				</div>
+				<div class="a_content_tab_header_sep">
+					<div class="a_content_tab_header_sep_slide">
+					</div>
+				</div>
+			</div>
+			<div class="a_content_tab_content">
+				<div class="a_content_tab_content_item selected" id="content_tab_fr">
+					<div>
+						<div style="margin: 5px 0;">
+							titre 
+						</div>
+						<div>
+							<input type="text" class="default_input" value="{{ postFR.title }}" />
+						</div>
+							
+					</div>
+					<div style="">
+						<div style="margin: 5px 0;">
+							Contenu 
+						</div>
+						<div>
+							<textarea class="default_textarea">{{ postFR.content | raw }}</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_en">
+					<div>
+						titre : 
+							{{ postEN.title }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ postEN.content | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_mg">
+					<div>
+						titre : 
+							{{ postMG.title }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ postMG.content | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_it">
+					<div>
+						titre : 
+							{{ postIT.title }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ postIT.content | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_es">
+					<div>
+						titre : 
+							{{ postES.title }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ postES.content | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_de">
+					<div>
+						titre : 
+							{{ postDE.title }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ postDE.content | raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="a_content_body_right">
+		<div style="background:#ddd; padding: 5px; margin:5px 5px 5px 0; border:1px solid #bbb">
+			Liasons aux autres entités
+		</div>
+		<div style="padding:5px; border-bottom: 1px solid #aaa">
+			Ecoles 	
+		</div>
+		
+		<div style="padding:5px">
+			{% for postSchool in postSchools %}
+			<div>
+				{{ postSchool.school.shortName }}
+			</div>
+			{% endfor %}
+		</div>
+		
+		<div style="padding:5px; border-bottom: 1px solid #aaa">
+			annonces	
+		</div>
+		<div style="padding:5px; border-bottom: 1px solid #aaa">
+			Evenements		
+		</div>
+	</div>
+{% endblock %}
+

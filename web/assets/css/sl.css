@@ -1,0 +1,26 @@
+#sl_gl{
+	background:#ddd;
+	padding-top:6px;
+}
+#sl_dl{
+	
+}
+#sl_onglet_head{
+	/*border-bottom: 2px solid #ccc; */
+	margin: 0px 0 0 0; 
+	padding-top:10px;
+	background:#ddd;
+}
+#sl_onglet_head .tab_sl_item{
+	cursor:pointer;
+	display:inline-block;
+	padding: 6px 10px;
+	color:#444;
+	background:#bbb;
+	border-radius: 4px 4px 0 0;
+}
+
+#sl_onglet_head .tab_sl_item.selected{
+	color:#000;
+	background:#fff;
+}

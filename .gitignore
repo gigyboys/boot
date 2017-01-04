@@ -1,0 +1,11 @@
+composer.phar
+vendor/
+.settings/
+app/cache/
+app/logs/
+web/bundles/
+web/css/
+web/js/
+web/media/
+web/uploads/
+bin/

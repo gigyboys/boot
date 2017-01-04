@@ -1,0 +1,28 @@
+
+com_platform_home:
+    path:     /
+    defaults: { _controller: COMPlatformBundle:Home:index }
+
+cf_platform_about:
+    path:     /about
+    defaults: { _controller: COMPlatformBundle:About:index}
+
+cf_platform_about_team:
+    path:     /team
+    defaults: { _controller: COMPlatformBundle:About:team}
+
+cf_platform_about_notice:
+    path:     /legal-notice
+    defaults: { _controller: COMPlatformBundle:About:notice}
+
+cf_platform_contact:
+    path:     /contact
+    defaults: { _controller: COMPlatformBundle:Contact:index}
+
+cf_platform_newsletter:
+    path:     /newsletter
+    defaults: { _controller: COMPlatformBundle:Newsletter:index}
+
+cf_platform_search:
+    path:     /search
+    defaults: { _controller: COMPlatformBundle:Search:index}

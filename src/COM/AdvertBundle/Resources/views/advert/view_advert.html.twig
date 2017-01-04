@@ -1,0 +1,25 @@
+{% extends "COMAdvertBundle::advert.html.twig" %}
+
+{% block title %}
+  annonce : {{ advert.defaultTitle }}
+{% endblock %}
+
+
+{% block advert_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>
+				Locale : {{ locale.locale }}
+			</div>
+			<div>
+				{{ advert.slug }}
+			</div>
+			<div>
+				{{ advertTranslate.title }}
+			</div>
+			<div>
+				{{ advertTranslate.content | raw }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

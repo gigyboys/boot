@@ -1,0 +1,26 @@
+#ur_gl{
+	background:#ddd;
+	padding-top:6px;
+}
+#ur_dl{
+	
+}
+#ur_onglet_head{
+	/*border-bottom: 2px solid #ccc; */
+	margin: 0px 0 0 0; 
+	padding-top:10px;
+	background:#ddd;
+}
+#ur_onglet_head .tab_ur_item{
+	cursor:pointer;
+	display:inline-block;
+	padding: 6px 10px;
+	color:#444;
+	background:#bbb;
+	border-radius: 4px 4px 0 0;
+}
+
+#ur_onglet_head .tab_ur_item.selected{
+	color:#000;
+	background:#fff;
+}

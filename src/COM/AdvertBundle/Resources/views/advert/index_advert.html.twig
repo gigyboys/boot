@@ -1,0 +1,23 @@
+{% extends "COMAdvertBundle::advert.html.twig" %}
+
+{% block title %}
+  Advert
+{% endblock %}
+
+
+{% block advert_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>
+				liste des annonces.
+			</div>
+			<div>
+				{% for advert in adverts %}
+				<div>
+					<a href="{{ path('com_advert_view', {'slug': advert.slug}) }}">{{ advert.defaultTitle }}</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

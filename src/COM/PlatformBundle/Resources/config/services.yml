@@ -1,0 +1,15 @@
+services:
+    com_platform.platform_service:
+        class: COM\PlatformBundle\Service\PlatformService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_platform.mail_service:
+        class: COM\PlatformBundle\Service\MailService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_platform.newsletter_service:
+        class: COM\PlatformBundle\Service\NewsletterService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_platform.platform_extension:
+        class: COM\PlatformBundle\Twig\PlatformExtension
+        arguments: ["@com_platform.platform_service"]
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+        <title>{% block title %}Welcome!{% endblock %}</title>
+		
+		{% block icon %}
+            <link rel="icon" type="image/png" href="{{ asset('assets/image/icon.png') }}" />
+		{% endblock %}
+		
+		{% block stylesheets %}
+			{% stylesheets
+				'assets/css/header.css'
+				'assets/css/style.css'
+				'assets/css/container.css'
+				'assets/css/sl.css'
+				'assets/css/ur.css'
+				'assets/css/footer.css'
+				'assets/css/button.css'
+				'assets/css/popup.css'
+			%}
+          <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+    {% endblock %}
+    </head>
+    <body>
+		<header>
+			{#{{ include("::include/front/header/banner.html.twig") }}#}
+			{{ include("::include/front/header/navigation.html.twig") }} 
+			{{ include("::include/front/header/search.html.twig") }} 
+		</header>
+		
+		<div id="container">
+        {% block body %}
+			<div>
+				"Ny fianarana no lova tsara indrindra."
+			</div>
+		{% endblock %}
+		</div>
+		<footer>
+			{{ include("::include/front/footer/navigation.html.twig") }}
+			{#{{ include("::include/front/footer/newsletter.html.twig") }} #}
+			{{ include("::include/front/footer/copyright.html.twig") }} 
+		</footer>
+		{% block javascripts %}
+			{% javascripts 
+				'assets/js/jquery.js'
+				'assets/js/script.js'
+				'assets/js/header.js'
+				'assets/js/button.js'
+				'assets/js/popup.js'
+				'assets/js/sl.js'
+				'assets/js/ur.js'
+			%}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+    </body>
+</html>

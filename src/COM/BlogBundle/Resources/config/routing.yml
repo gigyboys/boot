@@ -1,0 +1,6 @@
+com_blog_home:
+    path:     /blog
+    defaults: { _controller: COMBlogBundle:Blog:index }
+com_blog_view:
+    path:     /blog/{slug}
+    defaults: { _controller: COMBlogBundle:Blog:view }

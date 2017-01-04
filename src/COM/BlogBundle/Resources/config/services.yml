@@ -1,0 +1,4 @@
+services:
+    com_blog.blog_service:
+        class: COM\BlogBundle\Service\BlogService
+        arguments: ["@doctrine.orm.entity_manager"]

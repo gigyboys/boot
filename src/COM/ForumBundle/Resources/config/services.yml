@@ -1,0 +1,4 @@
+services:
+#    com_forum.example:
+#        class: COM\ForumBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

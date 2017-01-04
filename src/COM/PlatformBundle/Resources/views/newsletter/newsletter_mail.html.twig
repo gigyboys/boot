@@ -1,0 +1,20 @@
+{% extends "COMPlatformBundle::platform.html.twig" %}
+
+{% block title %}
+	Newsletter
+{% endblock %}
+
+
+{% block platform_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>{{ msg | raw }}</div>
+			<div>
+				Newsletter.
+			</div>
+			<div style="margin: 20px 0">
+				{{ form(formNewsletterMail) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

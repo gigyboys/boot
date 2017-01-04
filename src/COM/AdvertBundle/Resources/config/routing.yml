@@ -1,0 +1,6 @@
+com_advert_home:
+    path:     /advert
+    defaults: { _controller: COMAdvertBundle:Advert:index }
+com_advert_view:
+    path:     /advert/{slug}
+    defaults: { _controller: COMAdvertBundle:Advert:view }

@@ -1,0 +1,81 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Listes des Ecoles
+{% endblock %}
+
+{% block body_header %}
+	<div style="padding:8px;float:left">
+		<span>School </span> 
+		<span class="menu_deroulant" style="display:inline-block;">
+			<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="menu_deroulant_liste" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Listes des ecoles </span>
+	</div>
+	<div style="padding:8px;float:right">
+		<span><a href="{{ path('com_admin_school_add') }}">Ajout</a></td></span> 
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Listes des Ecoles
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				left
+			</div>
+			<div class="a_datatable_head_right">
+				right
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id">id</th>
+					<th>Name</th>
+					<th>Short name</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for school in schools %}
+				<tr class="a_table_line">
+					<td class="a_table_cell_id">{{ school.id }}</td>
+					<td><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></td>
+					<td>{{ school.shortName }}</td>
+					<td class="a_table_cell_action">action</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				left
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+				<span>1</span> 
+				<span>2</span> 
+				<span>3</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

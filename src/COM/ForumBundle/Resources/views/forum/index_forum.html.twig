@@ -1,0 +1,23 @@
+{% extends "COMForumBundle::forum.html.twig" %}
+
+{% block title %}
+  Topics forum
+{% endblock %}
+
+
+{% block forum_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>
+				liste des topics forum.
+			</div>
+			<div>
+				{% for topic in topics %}
+				<div>
+					{{ topic.defaultName }}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

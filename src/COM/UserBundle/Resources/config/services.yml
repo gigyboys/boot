@@ -1,0 +1,9 @@
+services:
+    com_user.user_service:
+        class: COM\UserBundle\Service\UserService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_user.user_extension:
+        class: COM\UserBundle\Twig\UserExtension
+        arguments: ["@com_user.user_service"]
+        tags:
+            - { name: twig.extension }

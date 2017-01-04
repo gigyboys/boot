@@ -1,0 +1,25 @@
+{% extends "COMBlogBundle::blog.html.twig" %}
+
+{% block title %}
+  Blog
+{% endblock %}
+
+
+{% block blog_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>
+				Locale : {{ locale.locale }}
+			</div>
+			<div>
+				{{ post.slug }}
+			</div>
+			<div>
+				{{ post.title }}
+			</div>
+			<div>
+				{{ post.content | raw }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

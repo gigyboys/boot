@@ -1,0 +1,20 @@
+{% extends "::front.html.twig" %}
+
+{% block title %}
+  Forum platform
+{% endblock %}
+
+{% block body %}
+	<div id="content">
+		<div class="cr">
+			<div class="ct">
+				<div>
+					Zone Forum
+				</div>
+			</div>
+		</div>
+		{% block forum_body %}
+				
+		{% endblock %}
+	</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "::back.html.twig" %}
+
+{% block title %}
+  Admin
+{% endblock %}
+
+{% block body %}
+	<div id="a_content_header" >
+		{% block body_header %}
+			<div style="padding:8px">
+				<span>Blog </span> 
+				<span class="menu_deroulant" style="display:inline-block;">
+					<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+						<span style="
+							display:inline-block; 
+							border-left: 8px solid #444;
+							border-top: 5px solid transparent;
+							border-bottom: 5px solid transparent;
+							border-right: 0px solid transparent;
+							">
+						</span>
+					</span>
+					<div class="menu_deroulant_liste" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						<a class="link" href="test.html">menu 1</a><br />
+						<a class="link" href="test.html">menu 2 </a>
+					</div>
+				</span> 
+				<span>Catégorie </span> 
+				<span class="menu_deroulant" style="display:inline-block;">
+					<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+						<span style="
+							display:inline-block; 
+							border-left: 8px solid #444;
+							border-top: 5px solid transparent;
+							border-bottom: 5px solid transparent;
+							border-right: 0px solid transparent;
+							">
+						</span>
+					</span>
+					<div class="menu_deroulant_liste" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						<a class="link" href="test.html">menu 1</a><br />
+						<a class="link" href="test.html">menu 2 </a>
+					</div>
+				</span> 
+				<span>Ajout d'une catégorie </span> 
+			</div>
+		{% endblock %}
+	</div>
+	
+	<div id="a_content_body">
+		{% block content_body %}
+			test
+		{% endblock %}
+	</div>
+	
+	<div id="a_content_footer" style="padding-left:5px">
+		5 catégories enregistrées...
+	</div>
+{% endblock %}

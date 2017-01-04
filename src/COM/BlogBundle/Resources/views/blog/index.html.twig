@@ -1,0 +1,23 @@
+{% extends "COMBlogBundle::blog.html.twig" %}
+
+{% block title %}
+  Blog
+{% endblock %}
+
+
+{% block blog_body %}
+	<div class="cr">
+		<div class="ct">
+			<div>
+				liste des articles.
+			</div>
+			<div>
+				{% for post in posts %}
+				<div>
+					<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

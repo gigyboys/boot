@@ -1,0 +1,97 @@
+{% extends "COMSchoolBundle::school.html.twig" %}
+
+{% block title %}
+  {{ school.name }}
+{% endblock %}
+
+
+{% block school_body %}
+	<div id="sl_gl" class="cr">
+		<div class="ct">
+			<div style="float:left">
+				 {% set img='uploads/images/school/default.png' %}
+				<img style="width: 60px; height: 60px" src="{{ img | imagine_filter('60x60') }}" alt="img sl" />
+			</div>
+			<div style="margin-left: 70px; min-height:70px">
+				<div id="" style="color:#333; font-size:18px">
+					{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+				</div>
+				<div id="">
+					{{ schoolTranslate.shortDescription }}
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	<div id="sl_dl">
+		<div id="sl_onglet_head" style="">
+			<div class="cr">
+				<div class="ct">
+					<span class="tab_sl_item selected" id="tab_sl_about" style="">A propos</span>  
+					<span class="tab_sl_item" id="tab_sl_new" style="">Actualités</span>  
+					<span class="tab_sl_item" id="tab_sl_advert" style="">Annonces</span>  
+					<span class="tab_sl_item" id="tab_sl_evaluation" style="">Evaluations</span>
+				</div>
+			</div>
+		</div>
+		<div class="content_tab_sl_item" id="content_tab_sl_about" style = "">
+			<div class="cr">
+				<div class="ct">
+					<div style="padding:5px; min-height:100px">
+					{{ schoolTranslate.description | raw}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content_tab_sl_item" id="content_tab_sl_new" style = "display:none">
+			<div class="cr">
+				<div class="ct">
+					<!--<div style="border-bottom: 1px solid #999; padding:5px">
+						Actualités
+					</div>-->
+					<div style="padding:5px; min-height:100px">
+						{% if postSchools|length == 0 %}
+							Aucune actualité à afficher
+						{% endif %}
+						{% for postSchool in postSchools %}
+							<div>
+								<a href="{{ path('com_blog_view', {'slug': postSchool.post.slug}) }}">{{ postSchool.post.title }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content_tab_sl_item" id="content_tab_sl_advert" style = "display:none">
+			<div class="cr">
+				<div class="ct">
+					<!--<div style="border-bottom: 1px solid #999; padding:5px">
+						Annonces
+					</div>-->
+					<div style="padding:5px; min-height:100px">
+						{% if advertSchools|length == 0 %}
+							Aucune annonce à afficher
+						{% endif %}
+						{% for advertSchool in advertSchools %}
+							<div>
+								<a href="{{ path('com_advert_view', {'slug': advertSchool.advert.slug}) }}">{{ advertSchool.advert.defaultTitle }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "display:none">
+			<div class="cr">
+				<div class="ct">
+					<!--<div style="border-bottom: 1px solid #999; padding:5px">
+						Evaluations
+					</div>-->
+					<div style="padding:5px; min-height:100px">
+						Evaluations
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

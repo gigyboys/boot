@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Admin!{% endblock %}</title>
+		
+		{% block icon %}
+            <link rel="icon" type="image/png" href="{{ asset('assets/image/icon.png') }}" />
+		{% endblock %}
+		
+		{% block stylesheets %}
+			{% stylesheets
+				'assets/css/style.css'
+				'assets/css/a_style.css'
+				'assets/css/a_tab.css'
+				'assets/css/a_table.css'
+				'assets/css/button.css'
+				'assets/css/popup.css'
+				'assets/css/mcs.css'
+			%}
+          <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+    {% endblock %}
+    </head>
+    <body>
+		<header id="a_header" style="position:relative;z-index:5">
+			{{ include("::include/back/header/header.html.twig") }}
+		</header>
+		
+		<nav id="a_nav">
+			{{ include("::include/back/navigation/navigation.html.twig") }}
+		</nav>
+		
+		<div id="a_content">
+			{% block body %}
+				<div>
+					"Admin Ny fianarana no lova tsara indrindra."
+				</div>
+			{% endblock %}
+		</div>
+		
+		{% block javascripts %}
+			{% javascripts 
+				'assets/js/jquery.js'
+				'assets/js/a_script.js'
+				'assets/js/a_tab.js'
+				'assets/js/button.js'
+				'assets/js/popup.js'
+				'assets/js/mcs.js'
+			%}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+		{{ tinymce_init() }}
+    </body>
+</html>

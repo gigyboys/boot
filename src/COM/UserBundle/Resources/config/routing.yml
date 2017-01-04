@@ -1,0 +1,15 @@
+com_user_home:
+    path:     /user
+    defaults: { _controller: COMUserBundle:User:index }
+com_user_register:
+    path:     /register
+    defaults: { _controller: COMUserBundle:User:register }
+com_user_login:
+    path:     /login
+    defaults: { _controller: COMUserBundle:User:login }
+com_user_modify_avatar:
+    path:     /user/modify-avatar
+    defaults: { _controller: COMUserBundle:User:modifyAvatar }
+com_user_profile:
+    path:     /user/{username}
+    defaults: { _controller: COMUserBundle:User:profile }

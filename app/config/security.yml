@@ -1,0 +1,49 @@
+# you can read more about security in the related section of the documentation
+# http://symfony.com/doc/current/book/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        COM\UserBundle\Entity\User: sha512
+
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:        { password: user, roles: [ 'ROLE_USER' ] }
+                    admin:       { password: admin, roles: [ 'ROLE_ADMIN' ] }
+                    superadmin:  { password: superadmin, roles: [ 'ROLE_SUPER_ADMIN' ] }
+        main:
+            entity: { class: COM\UserBundle\Entity\User, property: username }
+            #id: fos_user.user_provider.username
+
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js|assets)/
+            security: false
+        main:
+            pattern:   ^/
+            anonymous: true
+            provider:  main
+            form_login:
+                login_path: com_user_login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: com_platform_home
+
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
+    access_control:
+        #- { path: ^/administration/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(fr|en|mg|it|es|de)/admin, roles: ROLE_ADMIN }

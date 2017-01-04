@@ -1,0 +1,4 @@
+services:
+#    com_event.example:
+#        class: COM\EventBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

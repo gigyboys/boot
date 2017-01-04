@@ -1,0 +1,61 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Liste des emails
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		  Liste des emails
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				left
+			</div>
+			<div class="a_datatable_head_right">
+				right
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id">id</th>
+					<th>mail</th>
+					<th>inscription</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for newsletterMail in newsletterMails %}
+				<tr class="a_table_line">
+					<td class="a_table_cell_id">{{ newsletterMail.id }}</td>
+					<td>{{ newsletterMail.email }}</td>
+					<td>
+					{% if newsletterMail.isActive %}
+						oui
+					{% else %}
+						non
+					{% endif %}
+					</td>
+					<td class="a_table_cell_action">action</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				left
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+				<span>1</span> 
+				<span>2</span> 
+				<span>3</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

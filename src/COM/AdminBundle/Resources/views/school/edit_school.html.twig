@@ -1,0 +1,211 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Edit school {{ school.id }}
+{% endblock %}
+
+{% block content_body %}
+	{#
+	<div id="a_content_body_left">
+	#}
+		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+			Edit school  {{ school.id }}
+			- 
+			<span class="menu_deroulant" style="display:inline-block;">
+					<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+						info
+					</span>
+					<span class="menu_deroulant_liste" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						info
+					</span>
+				</span>
+		</div>
+		
+		<div style="">
+			<div style="float:left; height: 122px;margin:5px">
+				 {% set img='uploads/images/school/default.png' %}
+				<img style="width: 116px; height: 116px" src="{{ img | imagine_filter('116x116') }}" alt="img sl" />
+			</div>
+			<div style="margin-left: 136px;">
+				<div style="">
+					<table>
+						<tr>
+							<td>Name</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.name }}" /></td>
+						</tr>
+						<tr>
+							<td>ShortName</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.shortName }}" /></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.slug }}" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="separator"></div>
+				<div style="margin:5px">
+					<span class="standar_button">Modifier</span>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		
+		<div id="a_content_tab">
+			<div class="a_content_tab_header">
+				<div class="a_content_tab_header_content">
+					<div class="a_content_tab_header_item selected" id="tab_fr">
+						<div class="a_content_tab_header_item_text">
+							français
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_en">
+						<div class="a_content_tab_header_item_text">
+							anglais
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_mg">
+						<div class="a_content_tab_header_item_text">
+							malagasy
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_it">
+						<div class="a_content_tab_header_item_text">
+							italien
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_es">
+						<div class="a_content_tab_header_item_text">
+							espagnol
+						</div>
+					</div>
+					<div class="a_content_tab_header_item not_selected" id="tab_de">
+						<div class="a_content_tab_header_item_text">
+							allemand
+						</div>
+					</div>
+				</div>
+				<div class="a_content_tab_header_sep">
+					<div class="a_content_tab_header_sep_slide">
+					</div>
+				</div>
+			</div>
+			<div class="a_content_tab_content">
+				<div class="a_content_tab_content_item selected" id="content_tab_fr">
+					<div>
+						<div style="margin: 5px 0;">
+							name :
+						</div>
+						<div>
+							<input type="text" class="default_input" value="{{ schoolFR.name }}" />
+						</div>
+							
+					</div>
+					<div style="">
+						<div style="margin: 5px 0;">
+							Short description :
+						</div>
+						<div>
+							<textarea class="default_textarea">{{ schoolFR.shortDescription }}</textarea>
+						</div>
+					</div>
+					<div style="">
+						<div style="margin: 5px 0;">
+							Description :
+						</div>
+						<div>
+							<textarea class="default_textarea tinymce">{{ schoolFR.description | raw }}</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_en">
+					{#
+					<div style="margin:5px">
+						<span class="standar_button">Modifier</span>
+					</div>
+					<div class="separator"></div>
+					#}
+					<div>
+						<div>
+							<div style="margin: 5px 0;">
+								name :
+							</div>
+							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+								{{ schoolEN.name }}
+							</div>
+								
+						</div>
+						
+						<div style="">
+							<div style="margin: 5px 0;">
+								Short description :
+							</div>
+							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+								{{ schoolEN.shortDescription }}
+							</div>
+						</div>
+						
+						<div style="">
+							<div style="margin: 5px 0;">
+								Description :
+							</div>
+							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+								{{ schoolEN.description | raw }}
+							</div>
+						</div>
+					</div>
+					<div class="separator"></div>
+					<div style="margin:5px">
+						<span class="standar_button">Modifier</span>
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_mg">
+					<div>
+						name : 
+							{{ schoolMG.name }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ schoolMG.description | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_it">
+					<div>
+						name : 
+							{{ schoolIT.name }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ schoolIT.description | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_es">
+					<div>
+						name : 
+							{{ schoolES.name }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ schoolES.description | raw }}
+					</div>
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_de">
+					<div>
+						name : 
+							{{ schoolDE.name }}
+					</div>
+					<div style="margin:5px; background:#ddd">
+						{{ schoolDE.description | raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	{#
+	</div>
+	<div id="a_content_body_right">
+		
+	</div>
+	#}
+{% endblock %}
+

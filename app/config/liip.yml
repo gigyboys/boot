@@ -1,0 +1,103 @@
+#liip
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: %kernel.root_dir%/../web
+                cache_prefix: media
+#    cache_mkdir_mode: 0777
+
+    loaders:
+        default:
+            filesystem:
+                data_root: %kernel.root_dir%/../web
+
+    driver:               gd
+    cache:                default
+    data_loader:          default
+    default_image:        null
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+
+    filter_sets:
+        228x152:
+            quality: 100
+            filters:
+                thumbnail: { size: [228, 152], mode: outbound }
+        170x170:
+            quality: 100
+            filters:
+                thumbnail: { size: [170, 170], mode: outbound }
+        263x175:
+            quality: 100
+            filters:
+                thumbnail: { size: [263, 175], mode: outbound }
+        248x165:
+            quality: 100
+            filters:
+                thumbnail: { size: [248, 165], mode: outbound }
+        258x172:
+            quality: 100
+            filters:
+                thumbnail: { size: [258, 172], mode: outbound }
+        116x116:
+            quality: 100
+            filters:
+                thumbnail: { size: [116, 116], mode: outbound }
+        32x32:
+            quality: 100
+            filters:
+                thumbnail: { size: [32, 32], mode: outbound }
+        187x123:
+            quality: 100
+            filters:
+                thumbnail: { size: [187, 123], mode: outbound }
+        765x510:
+            quality: 100
+            filters:
+                thumbnail: { size: [765, 510], mode: outbound }
+        60x60:
+            quality: 100
+            filters:
+                thumbnail: { size: [60, 60], mode: outbound }
+        80x80:
+            quality: 100
+            filters:
+                thumbnail: { size: [80, 80], mode: outbound }
+        32x32:
+            quality: 100
+            filters:
+                thumbnail: { size: [32, 32], mode: outbound }
+        22x22:
+            quality: 100
+            filters:
+                thumbnail: { size: [22, 22], mode: outbound }
+        40x40:
+            quality: 100
+            filters:
+                thumbnail: { size: [40, 40], mode: outbound }
+        800x260:
+            quality: 100
+            filters:
+                thumbnail: { size: [800, 260], mode: outbound }
+        # Prototype
+        name:
+            quality:              100
+            jpeg_quality:         ~
+            png_compression_level:  ~
+            png_compression_filter: ~
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+
+                # Prototype
+                name:                 []
+
+            post_processors:
+
+                # Prototype
+                name:                 []

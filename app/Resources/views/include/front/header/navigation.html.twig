@@ -1,0 +1,134 @@
+<div id="navigation" class="cr">
+	<div id="navigation_content" class="ct">
+		<div id="nav_left">
+			<ul>
+				<li>
+					<a href="{{ path('com_platform_home') }}" class="">
+						<span>{{ 'home' | trans }}</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('com_school_home') }}" class="">
+						<span>{{ 'school' | trans }}</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('com_blog_home') }}" class="">
+						<span>{{ 'news' | trans }}</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('com_advert_home') }}" class="">
+						<span>{{ 'advert' | trans }}</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('com_forum_home') }}" class="">
+						<span>{{ 'forum' | trans }}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div id="nav_right">
+			<div id="locale" style="display: block; margin-top: 3px; float:left">
+				<div class="menu_deroulant" style="display:inline-block;">
+					<a href="#" class="menu_deroulant_button standar_button" style="">
+						<span style="display:inline-block; height: 20px;">Locale</span>
+					</a>
+					<div class="menu_deroulant_liste" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						{# 
+						appel du fonction (twig.extension) getLocales pour avoir la liste des locales
+						#}
+						{% set locales = getLocales() %}
+						<table>
+							{% for locale in locales %}
+								{% set route = app.request.attributes.get('_route') %}
+								{% set params = app.request.attributes.get('_route_params')|merge({'_locale': locale.locale}) %}
+								<tr>
+										<td><span class="local_icon" style="display:block;height:20px; width:25px; background:#ccc"></span></td>
+										<td><span class="local_label"><a class="link" href="{{ path(route, params) }}">{{ locale.label | trans }}</a></span></td>
+										<td>
+											
+											{% if app.request.getLocale() == locale.locale %}
+												<span class="local_state" style="display:block; background:#4d4; width:12px; height:12px; border-radius:50%">
+												</span>
+											{% endif %}
+										</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div id="user" style="display: block; margin-top: 3px; float:left">
+				<div class="menu_deroulant" style="display:block; margin:0px;">
+					
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					
+						{# 
+						appel du fonction (twig.extension) userAvatar pour avoir le path de l'avatar 
+						#}
+						{% set avatar=userAvatar(app.user) %}
+						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						
+						<div class="menu_deroulant_button" style="cursor:pointer">
+							<span style="display:block; border-radius:3px;border:1px solid #aaa;overflow:hidden">
+								<table style="border-collapse: collapse;border:0px solid #999; padding:0px; margin:0px">
+									<tr>
+										<td style="padding:0px">
+											<span class="" style="display:block; background:#ccc; height:30px">
+												<img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ app.user.username }}" />
+											</span>
+										</td>
+										<td style=" padding:0px">
+											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px">
+												<span>{{ app.user.name }}</span>
+											</span>
+										</td>
+									</tr>
+								</table>
+							</span>
+						</div>
+					{% else %}
+					<div class="menu_deroulant_button" style="cursor:pointer">
+						<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px;border-radius:3px;border:1px solid #aaa;overflow:hidden">
+							Mon compte
+						</span>
+					</div>
+					{% endif %}
+					
+					<div class="menu_deroulant_liste" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						<ul>
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+								<li>
+									<a class="link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+										<span>{{ 'profile' | trans }}</span>
+									</a>
+								</li>
+								<li>
+									<a class="link" href="{{ path('logout') }}">
+										<span>{{ 'deconnexion' | trans }}</span>
+									</a>
+								</li>
+							{% else %}
+								<li>
+									<a class="link" href="{{ path('com_user_login') }}">
+										<span>{{ 'Connexion' | trans }}</span>
+									</a>
+								</li>
+								<li>
+									<a class="link" href="{{ path('com_user_register') }}">
+										<span>{{ 'Inscription' | trans }}</span>
+									</a>
+								</li>
+
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</div>

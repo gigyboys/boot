@@ -1,0 +1,3 @@
+com_forum_home:
+    path:     /forum
+    defaults: { _controller: COMForumBundle:Forum:index }
