@@ -23,6 +23,16 @@ class UserService {
 		return $user;
     }
     
+    public function getUserByUsername($username) {
+        $userRepository = $this->em->getRepository('COMUserBundle:User');
+
+        $user = $userRepository->findOneBy(array(
+            'username' => $username,
+        ));
+        
+		return $user;
+    }
+    
     public function getAvatar(User $user) {
         $avatarRepository = $this->em->getRepository('COMUserBundle:Avatar');
 
