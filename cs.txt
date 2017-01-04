@@ -46,8 +46,3 @@ php app/console doctrine:generate:entities COMBlogBundle:Post
 
 php app/console doctrine:generate:entities COMUserBundle:User
 ------------
-
-php app/console doctrine:generate:entities COMEnterpriseBundle:Enterprise
-php app/console doctrine:generate:entities COMProductBundle:Category
-
-php app/console fos:user:create
