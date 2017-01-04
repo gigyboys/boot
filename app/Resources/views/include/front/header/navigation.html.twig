@@ -68,9 +68,16 @@
 					
 						{# 
 						appel du fonction (twig.extension) userAvatar pour avoir le path de l'avatar 
-						#}
+						
 						{% set avatar=userAvatar(app.user) %}
 						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						#}
+						{% set avatar=userAvatar(app.user) %}
+						{% if avatar != "default.jpeg" %}
+							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						{% else %}
+							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+						{% endif %}
 						
 						<div class="menu_deroulant_button" style="cursor:pointer">
 							<span style="display:block; border-radius:3px;border:1px solid #aaa;overflow:hidden">

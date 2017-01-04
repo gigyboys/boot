@@ -45,7 +45,7 @@ class UserService {
             return $avatar->getPath();
         }
         else{
-            return 'default.png';
+            return 'default.jpeg';
         }
     }
 }
