@@ -16,12 +16,22 @@ class UserExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'getUserById' => new \Twig_Function_Method($this, 'getUserByIdFunction'),
+            'getUserByUsername' => new \Twig_Function_Method($this, 'getUserByUsernameFunction'),
+            'getUserByEmail' => new \Twig_Function_Method($this, 'getUserByEmailFunction'),
             'userAvatar' => new \Twig_Function_Method($this, 'userAvatarFunction'),
         );
     }
 
     public function getUserByIdFunction($id) {
         return $this->userService->getUserById($id);
+    }
+
+    public function getUserByUsernameFunction($username) {
+        return $this->userService->getUserByUsername($username);
+    }
+
+    public function getUserByEmailFunction($email) {
+        return $this->userService->getUserByEmail($email);
     }
 
     public function userAvatarFunction(User $user) {
