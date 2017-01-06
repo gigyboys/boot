@@ -35,8 +35,14 @@ $(function() {
         var bloc_editable = $this.closest(".bloc_editable");
         var bloc_view = bloc_editable.find(".bloc_view");
         var bloc_edit = bloc_editable.find(".bloc_edit");
+        var button_edit = bloc_editable.find(".button_edit");
+        var button_save = bloc_editable.find(".button_save");
+        var button_reset = bloc_editable.find(".button_reset");
 		bloc_view.hide();
 		bloc_edit.show();
+		button_edit.hide();
+		button_save.show();
+		button_reset.show();
 		
     });
     
@@ -46,8 +52,14 @@ $(function() {
         var bloc_editable = $this.closest(".bloc_editable");
         var bloc_view = bloc_editable.find(".bloc_view");
         var bloc_edit = bloc_editable.find(".bloc_edit");
+        var button_edit = bloc_editable.find(".button_edit");
+        var button_save = bloc_editable.find(".button_save");
+        var button_reset = bloc_editable.find(".button_reset");
 		bloc_view.show();
 		bloc_edit.hide();
+		button_edit.show();
+		button_save.show();
+		button_reset.show();
 		
     });
 	
