@@ -41,8 +41,6 @@ class UserController extends Controller
 			$pass = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 			$user->setPassword($pass);
 			$user->setLocale($locale);
-			$roles = array("ROLE_ADMIN");
-			$user->setRoles($roles);
 			$em->persist($user);
 			$em->flush();
 						

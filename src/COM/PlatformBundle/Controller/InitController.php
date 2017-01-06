@@ -72,6 +72,8 @@ class InitController extends Controller
 		$encoder = $factory->getEncoder($user);
 		$salt = md5(time());
 		
+		$roles = array("ROLE_ADMIN");
+		
 		$user1 = new User();
 		$user1->setUsername('user1');
 		$user1->setLocale($localeFR);
@@ -79,6 +81,7 @@ class InitController extends Controller
 		$user1->setPassword($encoder->encodePassword('user1', $salt));
 		$user1->setSalt($salt);
 		$user1->setName('Randrianilaina Modar');
+		$user1->setRoles($roles);
 		$em->persist($user1);
 		
 		$user2 = new User();
@@ -88,6 +91,7 @@ class InitController extends Controller
 		$user2->setPassword($encoder->encodePassword('user2', $salt));
 		$user2->setSalt($salt);
 		$user2->setName('Andriamiarantsoa Fortunat');
+		$user2->setRoles($roles);
 		$em->persist($user2);
 		
 		$user3 = new User();
@@ -97,6 +101,7 @@ class InitController extends Controller
 		$user3->setPassword($encoder->encodePassword('user3', $salt));
 		$user3->setSalt($salt);
 		$user3->setName('Rapariarison Haja');
+		$user3->setRoles($roles);
 		$em->persist($user3);
 		
 		$user4 = new User();
@@ -106,6 +111,7 @@ class InitController extends Controller
 		$user4->setPassword($encoder->encodePassword('user4', $salt));
 		$user4->setSalt($salt);
 		$user4->setName('Misandratra Rakotondrabe Séverin');
+		$user4->setRoles($roles);
 		$em->persist($user4);
 		/** fin traitement users **/
 		
