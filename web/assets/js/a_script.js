@@ -25,6 +25,32 @@ $(function() {
 	
 	var ww = $(window);
 	
+	
+	var button_edit = $('.button_edit');
+	var button_reset = $('.button_reset');
+    
+    button_edit.click (function (event){
+		console.log("edit bloc editable");
+        var $this = $(this);
+        var bloc_editable = $this.closest(".bloc_editable");
+        var bloc_view = bloc_editable.find(".bloc_view");
+        var bloc_edit = bloc_editable.find(".bloc_edit");
+		bloc_view.hide();
+		bloc_edit.show();
+		
+    });
+    
+    button_reset.click (function (event){
+		console.log("reset edit bloc editable");
+        var $this = $(this);
+        var bloc_editable = $this.closest(".bloc_editable");
+        var bloc_view = bloc_editable.find(".bloc_view");
+        var bloc_edit = bloc_editable.find(".bloc_edit");
+		bloc_view.show();
+		bloc_edit.hide();
+		
+    });
+	
 	function init(){
 		
 		console.log("window : "+ww.width()+"/"+ww.height());
@@ -79,7 +105,5 @@ $(function() {
         $('.a_nav_sub_content').css('display','none');
 		$(this).find('.a_nav_sub_content').css('display','block');
     });
-	
-	
 	
 });
