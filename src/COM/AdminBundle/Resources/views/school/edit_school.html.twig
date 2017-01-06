@@ -28,27 +28,50 @@
 			</div>
 			<div style="margin-left: 136px;">
 				<div style="">
-					<table>
-						<tr>
-							<td>Name</td>
-							<td>:</td>
-							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.name }}" /></td>
-						</tr>
-						<tr>
-							<td>ShortName</td>
-							<td>:</td>
-							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.shortName }}" /></td>
-						</tr>
-						<tr>
-							<td>Slug</td>
-							<td>:</td>
-							<td style="padding:5px"><input type="text" class="default_input" value="{{ school.slug }}" /></td>
-						</tr>
-					</table>
-				</div>
-				<div class="separator"></div>
-				<div style="margin:5px">
-					<span class="standar_button">Modifier</span>
+					<div style="">
+						<table>
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td style="padding:5px"><span>{{ school.name }}</span></td>
+							</tr>
+							<tr>
+								<td>ShortName</td>
+								<td>:</td>
+								<td style="padding:5px"><span>{{ school.shortName }}</span></td>
+							</tr>
+							<tr>
+								<td>Slug</td>
+								<td>:</td>
+								<td style="padding:5px"><span>{{ school.slug }}</span></td>
+							</tr>
+						</table>
+					</div>
+					<div style="">
+						<table>
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td style="padding:5px"><input type="text" class="default_input" value="{{ school.name }}" /></td>
+							</tr>
+							<tr>
+								<td>ShortName</td>
+								<td>:</td>
+								<td style="padding:5px"><input type="text" class="default_input" value="{{ school.shortName }}" /></td>
+							</tr>
+							<tr>
+								<td>Slug</td>
+								<td>:</td>
+								<td style="padding:5px"><input type="text" class="default_input" value="{{ school.slug }}" /></td>
+							</tr>
+						</table>
+					</div>
+					<div class="separator"></div>
+					<div style="margin:5px">
+						<span class="standar_button">Modifier</span> 
+						<span class="standar_button">Enregistrer</span> 
+						<span class="standar_button">Annuler</span> 
+					</div>
 				</div>
 			</div>
 			<div style="clear:both"></div>
@@ -59,7 +82,7 @@
 				<div class="a_content_tab_header_content">
 					<div class="a_content_tab_header_item selected" id="tab_fr">
 						<div class="a_content_tab_header_item_text">
-							français
+							fran&ccedil;ais
 						</div>
 					</div>
 					<div class="a_content_tab_header_item not_selected" id="tab_en">
@@ -208,4 +231,3 @@
 	</div>
 	#}
 {% endblock %}
-
