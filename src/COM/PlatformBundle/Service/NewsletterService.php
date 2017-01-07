@@ -13,7 +13,7 @@ class NewsletterService {
         $this->em = $em;
     }
     
-    public function addEmail($email) {
+    public function addEmail($email, $forceActive = false) {
 		
 		$newsletterMailRepository = $this->em->getRepository('COMPlatformBundle:NewsletterMail');
 		
@@ -26,10 +26,20 @@ class NewsletterService {
 			
 			$newsletterMail->setEmail($email);
 			$newsletterMail->setDate(new \DateTime());
-			$newsletterMail->setIsActive(false);
+			if($forceActive){
+				$newsletterMail->setIsActive(true);
+			}else{
+				$newsletterMail->setIsActive(false);
+			}
 			
 			$this->em->persist($newsletterMail);
 			$this->em->flush();
+		}else{
+			if($forceActive){
+				$newsletterMail->setIsActive(true);
+				$this->em->persist($newsletterMail);
+				$this->em->flush();
+			}
 		}
 		
 		return $newsletterMail;
