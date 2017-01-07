@@ -26,40 +26,40 @@ $(function() {
 	var ww = $(window);
 	
 	
-	var button_edit = $('.button_edit');
-	var button_reset = $('.button_reset');
+	var btn_edit = $('.btn_edit');
+	var btn_reset = $('.btn_reset');
     
-    button_edit.click (function (event){
-		console.log("edit bloc editable");
+    btn_edit.click (function (event){
+	//console.log("edit bloc editable");
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
         var bloc_view = bloc_editable.find(".bloc_view");
         var bloc_edit = bloc_editable.find(".bloc_edit");
-        var button_edit = bloc_editable.find(".button_edit");
-        var button_save = bloc_editable.find(".button_save");
-        var button_reset = bloc_editable.find(".button_reset");
+        var btn_edit = bloc_editable.find(".btn_edit");
+        var btn_save = bloc_editable.find(".btn_save");
+        var btn_reset = bloc_editable.find(".btn_reset");
 		bloc_view.hide();
 		bloc_edit.show();
-		button_edit.hide();
-		button_save.show();
-		button_reset.show();
+		btn_edit.hide();
+		btn_save.show();
+		btn_save.show();
 		
     });
     
-    button_reset.click (function (event){
-		console.log("reset edit bloc editable");
+    btn_reset.click (function (event){
+	//console.log("reset edit bloc editable");
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
         var bloc_view = bloc_editable.find(".bloc_view");
         var bloc_edit = bloc_editable.find(".bloc_edit");
-        var button_edit = bloc_editable.find(".button_edit");
-        var button_save = bloc_editable.find(".button_save");
-        var button_reset = bloc_editable.find(".button_reset");
+        var btn_edit = bloc_editable.find(".btn_edit");
+        var btn_save = bloc_editable.find(".btn_save");
+        var btn_reset = bloc_editable.find(".btn_reset");
 		bloc_view.show();
 		bloc_edit.hide();
-		button_edit.show();
-		button_save.show();
-		button_reset.show();
+		btn_edit.show();
+		btn_save.show();
+		btn_save.show();
 		
     });
 	
