@@ -66,6 +66,9 @@ class SchoolController extends Controller
 		));
     }
 	
+	/*
+	 * School Edition
+	 */
     public function editSchoolAction($id)
     {
 		$em = $this->getDoctrine()->getManager();
