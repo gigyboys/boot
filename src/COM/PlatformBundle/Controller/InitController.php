@@ -72,6 +72,8 @@ class InitController extends Controller
 		$encoder = $factory->getEncoder($user);
 		$salt = md5(time());
 		
+		$newsletterService = $this->container->get('com_platform.newsletter_service');
+		
 		$roles = array("ROLE_ADMIN");
 		
 		$user1 = new User();
@@ -82,6 +84,7 @@ class InitController extends Controller
 		$user1->setSalt($salt);
 		$user1->setName('Randrianilaina Modar');
 		$user1->setRoles($roles);
+		$newsletterService->addEmail($user1->getEmail(), true);
 		$em->persist($user1);
 		
 		$user2 = new User();
@@ -92,6 +95,7 @@ class InitController extends Controller
 		$user2->setSalt($salt);
 		$user2->setName('Andriamiarantsoa Fortunat');
 		$user2->setRoles($roles);
+		$newsletterService->addEmail($user2->getEmail(), true);
 		$em->persist($user2);
 		
 		$user3 = new User();
@@ -102,6 +106,7 @@ class InitController extends Controller
 		$user3->setSalt($salt);
 		$user3->setName('Rapariarison Haja');
 		$user3->setRoles($roles);
+		$newsletterService->addEmail($user3->getEmail(), true);
 		$em->persist($user3);
 		
 		$user4 = new User();
@@ -112,6 +117,7 @@ class InitController extends Controller
 		$user4->setSalt($salt);
 		$user4->setName('Misandratra Rakotondrabe Séverin');
 		$user4->setRoles($roles);
+		$newsletterService->addEmail($user4->getEmail(), true);
 		$em->persist($user4);
 		/** fin traitement users **/
 		
