@@ -32,11 +32,11 @@
 		
 		<div id="nav_right">
 			<div id="locale" style="display: block; margin-top: 3px; float:left">
-				<div class="menu_deroulant" style="display:inline-block;">
-					<a href="#" class="menu_deroulant_button standar_button" style="">
+				<div class="dd" style="display:inline-block;">
+					<a href="#" class="dd_src standar_button" style="">
 						<span style="display:inline-block; height: 20px;">Locale</span>
 					</a>
-					<div class="menu_deroulant_liste" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
 						{# 
 						appel du fonction (twig.extension) getLocales pour avoir la liste des locales
 						#}
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 			<div id="user" style="display: block; margin-top: 3px; float:left">
-				<div class="menu_deroulant" style="display:block; margin:0px;">
+				<div class="dd" style="display:block; margin:0px;">
 					
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 					
@@ -79,7 +79,7 @@
 							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
 						{% endif %}
 						
-						<div class="menu_deroulant_button" style="cursor:pointer">
+						<div class="dd_src" style="cursor:pointer">
 							<span style="display:block; border-radius:3px;border:1px solid #aaa;overflow:hidden">
 								<table style="border-collapse: collapse;border:0px solid #999; padding:0px; margin:0px">
 									<tr>
@@ -98,14 +98,14 @@
 							</span>
 						</div>
 					{% else %}
-					<div class="menu_deroulant_button" style="cursor:pointer">
+					<div class="dd_src" style="cursor:pointer">
 						<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px;border-radius:3px;border:1px solid #aaa;overflow:hidden">
 							Mon compte
 						</span>
 					</div>
 					{% endif %}
 					
-					<div class="menu_deroulant_liste" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
 						<ul>
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 								<li>

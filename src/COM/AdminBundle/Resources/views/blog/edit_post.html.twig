@@ -9,11 +9,11 @@
 		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
 			Edition de l'article {{ post.id }}
 			- 
-			<span class="menu_deroulant" style="display:inline-block;">
-					<span href="#" class="menu_deroulant_button" style="cursor:pointer">
+			<span class="dd" style="display:inline-block;">
+					<span href="#" class="dd_src" style="cursor:pointer">
 						info
 					</span>
-					<span class="menu_deroulant_liste" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
 						<span>Auteur : {{ post.user.firstname }} {{ post.user.name }}</span><br />
 						<span>Date d'ajout : {{ post.date | date('Y-m-d H:i:s') }}</span><br />
 						<span>Nombre de vues : {{ post.viewNumber }}</span><br />
