@@ -77,14 +77,12 @@
 			<div style="clear:both"></div>
 		</div>
 		
+		{# twig extension #}
+		{% set locales = getLocales() %}
+		
 		<div id="a_content_tab">
 			<div class="a_content_tab_header">
 				<div class="a_content_tab_header_content">
-					{# 
-					appel du fonction (twig.extension) getLocales pour avoir la liste des locales
-					#}
-					{% set locales = getLocales() %}
-					
 					{% for locale in locales %}
 						<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
 							<div class="a_content_tab_header_item_text">
@@ -92,38 +90,6 @@
 							</div>
 						</div>
 					{% endfor %}
-					<!--
-					<div class="a_content_tab_header_item selected" id="tab_fr">
-						<div class="a_content_tab_header_item_text">
-							fran&ccedil;ais
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_en">
-						<div class="a_content_tab_header_item_text">
-							anglais
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_mg">
-						<div class="a_content_tab_header_item_text">
-							malagasy
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_it">
-						<div class="a_content_tab_header_item_text">
-							italien
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_es">
-						<div class="a_content_tab_header_item_text">
-							espagnol
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_de">
-						<div class="a_content_tab_header_item_text">
-							allemand
-						</div>
-					</div>
-					-->
 				</div>
 				<div class="a_content_tab_header_sep">
 					<div class="a_content_tab_header_sep_slide">
@@ -131,157 +97,79 @@
 				</div>
 			</div>
 			<div class="a_content_tab_content">
-				<div class="a_content_tab_content_item selected" id="content_tab_fr">
-				
-					<div class="bloc_editable">
-						<div class="bloc_view">
-							<div>
-								<div style="margin: 5px 0;">
-									name :
-								</div>
-								<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-									{{ schoolFR.name }}
-								</div>
-									
-							</div>
-							
-							<div style="">
-								<div style="margin: 5px 0;">
-									Short description :
-								</div>
-								<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-									{{ schoolFR.shortDescription }}
-								</div>
-							</div>
-							
-							<div style="">
-								<div style="margin: 5px 0;">
-									Description :
-								</div>
-								<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-									{{ schoolFR.description | raw }}
-								</div>
-							</div>
-						</div>
-						<div class="bloc_edit" style="display:none">
-							<div>
-								<div style="margin: 5px 0;">
-									name :
-								</div>
+				{% for locale in locales %}
+					{# twig extension #}
+					{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+					<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+						<div class="bloc_editable">
+							<div class="bloc_view">
 								<div>
-									<input type="text" class="default_input" value="{{ schoolFR.name }}" />
+									<div style="margin: 5px 0;">
+										name {{ locale.locale }}:
+									</div>
+									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+										{{ schoolTranslate.name }}
+									</div>
 								</div>
-									
-							</div>
-							<div style="">
-								<div style="margin: 5px 0;">
-									Short description :
-								</div>
-								<div>
-									<textarea class="default_textarea">{{ schoolFR.shortDescription }}</textarea>
-								</div>
-							</div>
-							<div style="">
-								<div style="margin: 5px 0;">
-									Description :
-								</div>
-								<div>
-									<textarea class="default_textarea tinymce">{{ schoolFR.description | raw }}</textarea>
-								</div>
-							</div>
-						</div>
-						<div class="separator"></div>
-						<div class="bloc_action" style="margin:5px">
-							<span class="btn_edit standar_button">Modifier</span> 
-							<span class="btn_save standar_button">Enregistrer</span>
-							<span class="btn_reset standar_button">Annuler</span> 
-						</div>
-					</div>
-				</div>
-				<div class="a_content_tab_content_item not_selected" id="content_tab_en">
-					{#
-					<div style="margin:5px">
-						<span class="standar_button">Modifier</span>
-					</div>
-					<div class="separator"></div>
-					#}
-					<div>
-						<div>
-							<div style="margin: 5px 0;">
-								name :
-							</div>
-							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-								{{ schoolEN.name }}
-							</div>
 								
+								<div style="">
+									<div style="margin: 5px 0;">
+										Short description :
+									</div>
+									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+										{{ schoolTranslate.shortDescription }}
+									</div>
+								</div>
+								
+								<div style="">
+									<div style="margin: 5px 0;">
+										Description :
+									</div>
+									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+										{{ schoolTranslate.description | raw }}
+									</div>
+								</div>
+							</div>
+							<div class="bloc_edit" style="display:none">
+								<div>
+									<div style="margin: 5px 0;">
+										name :
+									</div>
+									<div>
+										<input type="text" class="default_input" value="{{ schoolTranslate.name }}" />
+									</div>
+								</div>
+								<div style="">
+									<div style="margin: 5px 0;">
+										Short description :
+									</div>
+									<div>
+										<textarea class="default_textarea">{{ schoolTranslate.shortDescription }}</textarea>
+									</div>
+								</div>
+								<div style="">
+									<div style="margin: 5px 0;">
+										Description :
+									</div>
+									<div>
+										<textarea class="default_textarea tinymce">{{ schoolTranslate.description | raw }}</textarea>
+									</div>
+								</div>
+							</div>
+							<div class="separator"></div>
+							<div class="bloc_action" style="margin:5px">
+								<span class="btn_edit standar_button">Modifier</span> 
+								<span class="btn_save standar_button">Enregistrer</span>
+								<span class="btn_reset standar_button">Annuler</span> 
+							</div>
 						</div>
-						
-						<div style="">
-							<div style="margin: 5px 0;">
-								Short description :
-							</div>
-							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-								{{ schoolEN.shortDescription }}
-							</div>
-						</div>
-						
-						<div style="">
-							<div style="margin: 5px 0;">
-								Description :
-							</div>
-							<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
-								{{ schoolEN.description | raw }}
-							</div>
-						</div>
 					</div>
-					<div class="separator"></div>
-					<div style="margin:5px">
-						<span class="standar_button">Modifier</span>
-					</div>
-				</div>
-				<div class="a_content_tab_content_item not_selected" id="content_tab_mg">
-					<div>
-						name : 
-							{{ schoolMG.name }}
-					</div>
-					<div style="margin:5px; background:#ddd">
-						{{ schoolMG.description | raw }}
-					</div>
-				</div>
-				<div class="a_content_tab_content_item not_selected" id="content_tab_it">
-					<div>
-						name : 
-							{{ schoolIT.name }}
-					</div>
-					<div style="margin:5px; background:#ddd">
-						{{ schoolIT.description | raw }}
-					</div>
-				</div>
-				<div class="a_content_tab_content_item not_selected" id="content_tab_es">
-					<div>
-						name : 
-							{{ schoolES.name }}
-					</div>
-					<div style="margin:5px; background:#ddd">
-						{{ schoolES.description | raw }}
-					</div>
-				</div>
-				<div class="a_content_tab_content_item not_selected" id="content_tab_de">
-					<div>
-						name : 
-							{{ schoolDE.name }}
-					</div>
-					<div style="margin:5px; background:#ddd">
-						{{ schoolDE.description | raw }}
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	
 	{#
 	</div>
-	<div id="a_content_body_right">
-		
-	</div>
+	<div id="a_content_body_right"></div>
 	#}
 {% endblock %}

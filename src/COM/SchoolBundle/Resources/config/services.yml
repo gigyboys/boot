@@ -1,4 +1,9 @@
 services:
-#    com_school.example:
-#        class: COM\SchoolBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    com_school.school_service:
+        class: COM\SchoolBundle\Service\SchoolService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_school.school_extension:
+        class: COM\SchoolBundle\Twig\SchoolExtension
+        arguments: ["@com_school.school_service"]
+        tags:
+            - { name: twig.extension }
