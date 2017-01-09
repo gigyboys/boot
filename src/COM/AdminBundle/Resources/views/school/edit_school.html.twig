@@ -80,6 +80,19 @@
 		<div id="a_content_tab">
 			<div class="a_content_tab_header">
 				<div class="a_content_tab_header_content">
+					{# 
+					appel du fonction (twig.extension) getLocales pour avoir la liste des locales
+					#}
+					{% set locales = getLocales() %}
+					
+					{% for locale in locales %}
+						<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+							<div class="a_content_tab_header_item_text">
+								{{ locale.label | trans }}
+							</div>
+						</div>
+					{% endfor %}
+					<!--
 					<div class="a_content_tab_header_item selected" id="tab_fr">
 						<div class="a_content_tab_header_item_text">
 							fran&ccedil;ais
@@ -110,6 +123,7 @@
 							allemand
 						</div>
 					</div>
+					-->
 				</div>
 				<div class="a_content_tab_header_sep">
 					<div class="a_content_tab_header_sep_slide">
