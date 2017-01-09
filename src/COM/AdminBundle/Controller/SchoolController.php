@@ -70,37 +70,13 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
-		$schoolTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolTranslate');
-		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		//$schoolTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolTranslate');
+		//$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 
 		$school = $schoolRepository->find($id);
 		
-		$localeFR =  $localeRepository->findOneBy(array('locale' => 'fr'));
-		$schoolFR = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeFR));
-		
-		$localeEN =  $localeRepository->findOneBy(array('locale' => 'en'));
-		$schoolEN = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeEN));
-		
-		$localeMG =  $localeRepository->findOneBy(array('locale' => 'mg'));
-		$schoolMG = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeMG));
-		
-		$localeIT =  $localeRepository->findOneBy(array('locale' => 'it'));
-		$schoolIT = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeIT));
-		
-		$localeES =  $localeRepository->findOneBy(array('locale' => 'es'));
-		$schoolES = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeES));
-		
-		$localeES =  $localeRepository->findOneBy(array('locale' => 'de'));
-		$schoolDE = $schoolTranslateRepository->findOneBy(array('school' => $school, 'locale' => $localeES));
-		
         return $this->render('COMAdminBundle:school:edit_school.html.twig', array(
 			'school' => $school,
-			'schoolFR' => $schoolFR,
-			'schoolEN' => $schoolEN,
-			'schoolMG' => $schoolMG,
-			'schoolIT' => $schoolIT,
-			'schoolES' => $schoolES,
-			'schoolDE' => $schoolDE,
 		));
     }
 }
