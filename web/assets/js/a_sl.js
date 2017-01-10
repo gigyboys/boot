@@ -5,18 +5,17 @@ $(function() {
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
         var target = $this.data('target');
-        var data = new FormData();
 		console.log(target);
-        data.append('name', bloc_editable.find("#sl_input_name").val());
-        data.append('shortName', bloc_editable.find("#sl_input_shortname").val());
-        data.append('slug', bloc_editable.find("#sl_input_slug").val());
+		var data = {
+			name : bloc_editable.find("#sl_input_name").val(), 
+			shortName : bloc_editable.find("#sl_input_shortname").val(), 
+			slug : bloc_editable.find("#sl_input_slug").val()
+		};
 		
         $.ajax({
             type: 'POST',
             url: target,
             data: data,
-            contentType: false,
-            processData: false,
             dataType : 'json',
             success: function(data){
                 console.log(data.state);
@@ -44,18 +43,17 @@ $(function() {
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
         var target = $this.data('target');
-        var data = new FormData();
 		console.log(target);
-        data.append('name', bloc_editable.find(".slt_input_name").val());
-        data.append('shortDescription', bloc_editable.find(".slt_input_shortdescription").val());
-        data.append('description', bloc_editable.find(".slt_input_description").val());
+		var data = {
+			name : bloc_editable.find(".slt_input_name").val(), 
+			shortDescription : bloc_editable.find(".slt_input_shortdescription").val(), 
+			description : bloc_editable.find(".slt_input_description").val()
+		};
 		
         $.ajax({
             type: 'POST',
             url: target,
             data: data,
-            contentType: false,
-            processData: false,
             dataType : 'json',
             success: function(data){
                 console.log(data.state);
