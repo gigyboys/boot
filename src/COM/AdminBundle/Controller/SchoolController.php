@@ -12,6 +12,7 @@ use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Form\Type\SchoolInitType;
+use COM\SchoolBundle\Form\Type\SchoolGeneralType;
 
 class SchoolController extends Controller
 {
@@ -67,7 +68,7 @@ class SchoolController extends Controller
     }
 	
 	/*
-	 * School Edition
+	 * School Edition for view
 	 */
     public function editSchoolAction($id)
     {
@@ -81,5 +82,40 @@ class SchoolController extends Controller
         return $this->render('COMAdminBundle:school:edit_school.html.twig', array(
 			'school' => $school,
 		));
+    }
+	
+    public function editSchoolGeneralAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        
+        $school = $schoolRepository->find($id);
+        
+		$schoolTemp = new School();
+		$formSchoolGeneral = $this->get('form.factory')->create(new SchoolGeneralType(), $schoolTemp);
+		
+        $response = new Response();
+		
+		if ($formSchoolGeneral->handleRequest($request)->isValid()) {
+			$school->setName($schoolTemp->getName());
+			$school->setShortName($schoolTemp->getShortName());
+			$school->setSlug($schoolTemp->getSlug());
+            
+			$em->persist($school);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $school->getName(),
+                'shortName' => $school->getShortName(),
+                'slug' => $school->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 }

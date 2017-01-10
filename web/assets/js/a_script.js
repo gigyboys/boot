@@ -1,3 +1,28 @@
+function resetBlocEdit(bloc_editable){
+	var bloc_view = bloc_editable.find(".bloc_view");
+	var bloc_edit = bloc_editable.find(".bloc_edit");
+	var btn_edit = bloc_editable.find(".btn_edit");
+	var btn_save = bloc_editable.find(".btn_save");
+	var btn_reset = bloc_editable.find(".btn_reset");
+	bloc_view.show();
+	bloc_edit.hide();
+	btn_edit.show();
+	btn_save.hide();
+	btn_reset.hide();
+}
+
+function editBlocEdit(bloc_editable){
+	var bloc_view = bloc_editable.find(".bloc_view");
+	var bloc_edit = bloc_editable.find(".bloc_edit");
+	var btn_edit = bloc_editable.find(".btn_edit");
+	var btn_save = bloc_editable.find(".btn_save");
+	var btn_reset = bloc_editable.find(".btn_reset");
+	bloc_view.hide();
+	bloc_edit.show();
+	btn_edit.hide();
+	btn_save.show();
+	btn_reset.show();
+}
 
 $(function() {
 	console.log("init");
@@ -30,37 +55,17 @@ $(function() {
 	var btn_reset = $('.btn_reset');
     
     btn_edit.click (function (event){
-	//console.log("edit bloc editable");
+		//console.log("edit bloc editable");
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
-        var bloc_view = bloc_editable.find(".bloc_view");
-        var bloc_edit = bloc_editable.find(".bloc_edit");
-        var btn_edit = bloc_editable.find(".btn_edit");
-        var btn_save = bloc_editable.find(".btn_save");
-        var btn_reset = bloc_editable.find(".btn_reset");
-		bloc_view.hide();
-		bloc_edit.show();
-		btn_edit.hide();
-		btn_save.show();
-		btn_save.show();
-		
+		editBlocEdit(bloc_editable);
     });
     
     btn_reset.click (function (event){
-	//console.log("reset edit bloc editable");
+		//console.log("reset edit bloc editable");
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
-        var bloc_view = bloc_editable.find(".bloc_view");
-        var bloc_edit = bloc_editable.find(".bloc_edit");
-        var btn_edit = bloc_editable.find(".btn_edit");
-        var btn_save = bloc_editable.find(".btn_save");
-        var btn_reset = bloc_editable.find(".btn_reset");
-		bloc_view.show();
-		bloc_edit.hide();
-		btn_edit.show();
-		btn_save.show();
-		btn_save.show();
-		
+		resetBlocEdit(bloc_editable);
     });
 	
 	function init(){
