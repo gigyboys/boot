@@ -15,6 +15,9 @@ com_admin_school_edit:
 com_admin_school_edit_common:
     path:     /school/edit-common/{id}
     defaults: { _controller: COMAdminBundle:School:editSchoolGeneral }
+com_admin_school_edit_translate:
+    path:     /school/edit-translate/{id}/{locale}
+    defaults: { _controller: COMAdminBundle:School:editSchoolTranslate }
 
 #blog
 com_admin_blog:

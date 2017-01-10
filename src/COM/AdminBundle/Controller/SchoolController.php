@@ -13,6 +13,7 @@ use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Form\Type\SchoolInitType;
 use COM\SchoolBundle\Form\Type\SchoolGeneralType;
+use COM\SchoolBundle\Form\Type\SchoolTranslateType;
 
 class SchoolController extends Controller
 {
@@ -52,14 +53,10 @@ class SchoolController extends Controller
 			}
 			
 			$em->persist($school);
-			
 			$em->flush();
 			
-			$school = new School();
-			$formInitSchool = $this->get('form.factory')->create(new SchoolInitType(), $school);
-			return $this->render('COMAdminBundle:school:add_school.html.twig', array(
-				'formInitSchool' => $formInitSchool->createView(),
-			));
+			$url = $this->get('router')->generate('com_admin_school_edit', array('id' => $school->getId()));
+			return new RedirectResponse($url);
 		}
 		
         return $this->render('COMAdminBundle:school:add_school.html.twig', array(
@@ -74,9 +71,6 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
-		//$schoolTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolTranslate');
-		//$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
-
 		$school = $schoolRepository->find($id);
 		
         return $this->render('COMAdminBundle:school:edit_school.html.twig', array(
@@ -109,6 +103,55 @@ class SchoolController extends Controller
                 'name' => $school->getName(),
                 'shortName' => $school->getShortName(),
                 'slug' => $school->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editSchoolTranslateAction($id, $locale, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolTranslate');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        
+        $school = $schoolRepository->find($id);
+        $localeObj = $localeRepository->findOneBy(array(
+			'locale' => $locale,
+		));
+        
+		$schoolTranslateTemp = new SchoolTranslate();
+		$formSchoolTranslate = $this->get('form.factory')->create(new SchoolTranslateType(), $schoolTranslateTemp);
+		
+        $response = new Response();
+		
+		if ($formSchoolTranslate->handleRequest($request)->isValid()) {
+			$schoolTranslate = $schoolTranslateRepository->findOneBy(array(
+				'school' => $school,
+				'locale' => $localeObj,
+			));
+			if(!$schoolTranslate){
+				$schoolTranslate = new SchoolTranslate();
+				$schoolTranslate->setLocale($localeObj);
+				$schoolTranslate->setSchool($school);
+			}
+			$schoolTranslate->setName($schoolTranslateTemp->getName());
+			$schoolTranslate->setShortDescription($schoolTranslateTemp->getShortDescription());
+			$schoolTranslate->setDescription($schoolTranslateTemp->getDescription());
+            
+			$em->persist($schoolTranslate);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $schoolTranslate->getName(),
+                'shortDescription' => $schoolTranslate->getShortDescription(),
+                'description' => $schoolTranslate->getDescription(),
             )));
 		}else{
             $response->setContent(json_encode(array(

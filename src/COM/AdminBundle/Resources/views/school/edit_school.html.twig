@@ -69,7 +69,7 @@
 					<div class="separator"></div>
 					<div class="bloc_action" style="margin:5px">
 						<span class="btn_edit standar_button">Modifier</span> 
-						<span class="btn_save standar_button" id="btn_save_common" data-target="{{ path('com_admin_school_edit_common', {'id': school.id}) }}" style="display:none">Enregistrer</span>
+						<span class="btn_save standar_button" id="btn_save_sl_common" data-target="{{ path('com_admin_school_edit_common', {'id': school.id}) }}" style="display:none">Enregistrer</span>
 						<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 									<div style="margin: 5px 0;">
 										name {{ locale.locale }}:
 									</div>
-									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+									<div id="" class="slt_view_name" style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
 										{{ schoolTranslate.name }}
 									</div>
 								</div>
@@ -116,7 +116,7 @@
 									<div style="margin: 5px 0;">
 										Short description :
 									</div>
-									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+									<div id="" class="slt_view_shortdescription" style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
 										{{ schoolTranslate.shortDescription }}
 									</div>
 								</div>
@@ -125,7 +125,7 @@
 									<div style="margin: 5px 0;">
 										Description :
 									</div>
-									<div style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
+									<div id="" class="slt_view_description" style="padding:5px;background:#f2f2f2; border-radius:4px;border:1px solid #ddd">
 										{{ schoolTranslate.description | raw }}
 									</div>
 								</div>
@@ -136,7 +136,7 @@
 										name :
 									</div>
 									<div>
-										<input type="text" class="default_input" value="{{ schoolTranslate.name }}" />
+										<input type="text" id="" class="slt_input_name default_input" value="{{ schoolTranslate.name }}" />
 									</div>
 								</div>
 								<div style="">
@@ -144,7 +144,7 @@
 										Short description :
 									</div>
 									<div>
-										<textarea class="default_textarea">{{ schoolTranslate.shortDescription }}</textarea>
+										<textarea id="" class="slt_input_shortdescription default_textarea">{{ schoolTranslate.shortDescription }}</textarea>
 									</div>
 								</div>
 								<div style="">
@@ -152,14 +152,14 @@
 										Description :
 									</div>
 									<div>
-										<textarea class="default_textarea tinymce">{{ schoolTranslate.description | raw }}</textarea>
+										<textarea id="" class="slt_input_description default_textarea tinymce">{{ schoolTranslate.description | raw }}</textarea>
 									</div>
 								</div>
 							</div>
 							<div class="separator"></div>
 							<div class="bloc_action" style="margin:5px">
 								<span class="btn_edit standar_button">Modifier</span> 
-								<span class="btn_save standar_button">Enregistrer</span>
+								<span class="btn_save_sl_trans btn_save standar_button" id="" data-target="{{ path('com_admin_school_edit_translate', {'id': school.id, 'locale':locale.locale}) }}">Enregistrer</span>
 								<span class="btn_reset standar_button">Annuler</span> 
 							</div>
 						</div>
