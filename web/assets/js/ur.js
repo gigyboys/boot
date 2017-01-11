@@ -15,13 +15,48 @@ $(function() {
 		
     });
 	
-	//var content_user_image = $('#content_user_image');
+	$('#btn_save_ur_common').on('click', function(){
+        var $this = $(this);
+		var bloc_editable = $this.closest(".bloc_editable");
+        var target = $this.data('target');
+		console.log(target);
+		var data = {
+			name : bloc_editable.find("#ur_input_name").val(), 
+			username : bloc_editable.find("#ur_input_username").val(), 
+			email : bloc_editable.find("#ur_input_email").val()
+		};
+		
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					bloc_editable.find("#ur_view_name").text(data.name);
+					bloc_editable.find("#ur_view_username").text(data.username);
+					bloc_editable.find("#ur_view_email").text(data.email);
+					resetBlocEdit(bloc_editable);
+					document.title = data.title;
+					history.pushState('', 'Profile '+data.username, data.url);
+				}
+				else{
+					alert(data.message);
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
 	
     /*
     *upload avatar for user
     */
     $('#avatarfile').on('change', function(){
-      
 		/*console.log("change avatar");*/
         var $this = $(this);
         var file = $this[0].files[0];
@@ -50,8 +85,6 @@ $(function() {
 				console.log(errorThrown);
 			}
         });
-		
-		
     });
 	
 });

@@ -10,6 +10,9 @@ com_user_login:
 com_user_modify_avatar:
     path:     /user/modify-avatar
     defaults: { _controller: COMUserBundle:User:modifyAvatar }
+com_user_modify_common:
+    path:     /user/modify-common/{user_id}
+    defaults: { _controller: COMUserBundle:User:editUserCommon }
 com_user_profile:
     path:     /user/{username}
     defaults: { _controller: COMUserBundle:User:profile }

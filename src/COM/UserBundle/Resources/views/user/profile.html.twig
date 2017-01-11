@@ -10,9 +10,7 @@
 	<div id="ur_gl" class="cr">
 		<div class="ct">
 			<div style="float:left">
-				{# 
-				appel du fonction (twig.extension) userAvatar pour avoir le path de l'avatar 
-				#}
+				{# twig extension #}
 				{% set avatar=userAvatar(user) %}
 				{% if avatar != "default.jpeg" %}
 					{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
@@ -20,37 +18,65 @@
 					{% set pathtoavatar='default/images/user/avatar/'~avatar %}
 				{% endif %}
 				
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-					{% if app.user.id == user.id %}
-						<label for="avatarfile">
-						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
-						</div>
-						</labe>
-						<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
-					{% else %}
-						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
-						</div>
-					{% endif %}
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+					<label for="avatarfile">
+					<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
+						<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
+					</div>
+					</labe>
+					<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
 				{% else %}
 					<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
 						<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
 					</div>
 				{% endif %}
-				
-				
 			</div>
-			<div style="margin-left: 100px; min-height:70px; margin-top: 4px">
-				<div>
-					{{ user.name }}
-				</div>
-				<div>
-					{{ user.username }} {{ user.location }}
-				</div>
-				<div>
-					{{ user.email }}
-				</div>
+			<div style="margin-left: 100px; min-height:70px; margin-top: 4px; padding:1px 0">
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+					<div class="bloc_editable" style="margin-bottom:1px">
+						<div class="bloc_view">
+							<div>
+								<span id="ur_view_name">{{ user.name }}</span>
+							</div>
+							<div>
+								{#<span id="ur_view_username">{{ user.username }} {{ user.location }}</span>#}
+								<span id="ur_view_username">{{ user.username }}</span>
+							</div>
+							<div>
+								<span id="ur_view_email">{{ user.email }}</span>
+							</div>
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<div style="margin-bottom:5px">
+								<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
+							</div>
+							<div style="margin-bottom:5px">
+								{#<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }} {{ user.location }}" />#}
+								<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
+							</div>
+							<div style="margin-bottom:5px">
+								<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
+							</div>
+						</div>
+						<div class="bloc_action" style="margin:5px; border:1px solid transparent">
+							<span class="btn_edit standar_button">Modifier</span> 
+							<span class="btn_save standar_button" id="btn_save_ur_common" data-target="{{ path('com_user_modify_common', {'user_id': user.id}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+						</div>
+					</div>
+				{% else %}
+					<div>
+						<div>
+							<span id="ur_view_name">{{ user.name }}</span>
+						</div>
+						<div>
+							<span id="ur_view_username">{{ user.username }} {{ user.location }}</span>
+						</div>
+						<div>
+							<span id="ur_view_email">{{ user.email }}</span>
+						</div>
+					</div>
+				{% endif %}
 			</div>
 			<div style="clear:both"></div>
 		</div>

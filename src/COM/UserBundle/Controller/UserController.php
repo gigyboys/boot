@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 use COM\UserBundle\Entity\User;
 use COM\UserBundle\Form\Type\UserType;
+use COM\UserBundle\Form\Type\UserCommonType;
 use COM\UserBundle\Entity\Avatar;
 use COM\UserBundle\Form\Type\AvatarType;
 
@@ -162,6 +163,54 @@ class UserController extends Controller
 		)));
 		$response->headers->set('Content-Type', 'application/json');
 		
+		return $response;
+    }
+	
+    public function editUserCommonAction($user_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$userRepository = $em->getRepository('COMUserBundle:User');
+        
+        $user = $userRepository->find($user_id);
+        
+		$userTemp = new User();
+		$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
+		
+        $response = new Response();
+		
+		if ($formUserCommon->handleRequest($request)->isValid()) {
+			//name
+			$user->setName($userTemp->getName());
+			//username
+			$platformService = $this->container->get('com_platform.platform_service');
+			$username = $platformService->sluggify($userTemp->getUsername());
+			
+			/*vérification username à ajouter*/
+			
+			$user->setUsername($username);
+			
+			$user->setEmail($userTemp->getEmail());
+            
+			$em->persist($user);
+            $em->flush();
+			
+			$title = 'Profile '.$user->getUsername();
+			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $user->getName(),
+                'username' => $user->getUsername(),
+                'email' => $user->getEmail(),
+                'title' => $title,
+                'url' => $url,
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+                'message' => 'serveur message : une erreur est survenue',
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
 }
