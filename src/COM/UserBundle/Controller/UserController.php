@@ -199,7 +199,7 @@ class UserController extends Controller
 				$user,
 				null,
 				$oldToken->getProviderKey(),
-				$oldToken->getRoles()
+				$user->getRoles()
 			);
 			$this->container->get('security.context')->setToken($token);
 			
