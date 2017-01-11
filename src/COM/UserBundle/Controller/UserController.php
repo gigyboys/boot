@@ -194,6 +194,15 @@ class UserController extends Controller
 			$em->persist($user);
             $em->flush();
 			
+			$oldToken = $this->container->get('security.context')->getToken();
+			$token = new UsernamePasswordToken(
+				$user,
+				null,
+				$oldToken->getProviderKey(),
+				$oldToken->getRoles()
+			);
+			$this->container->get('security.context')->setToken($token);
+			
 			$title = 'Profile '.$user->getUsername();
 			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
             $response->setContent(json_encode(array(
