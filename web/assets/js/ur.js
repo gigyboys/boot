@@ -26,9 +26,7 @@ $(function() {
 			location : bloc_editable.find("#ur_input_location").val(), 
 			email : bloc_editable.find("#ur_input_email").val()
 		};
-		bloc_editable.find(".btn_save").hide();
-		bloc_editable.find(".btn_reset").hide();
-		bloc_editable.find(".btn_loading").css("display","inline-block");
+		loadBlocEdit(bloc_editable);
         $.ajax({
             type: 'POST',
             url: target,
