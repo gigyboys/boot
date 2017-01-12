@@ -26,7 +26,9 @@ $(function() {
 			location : bloc_editable.find("#ur_input_location").val(), 
 			email : bloc_editable.find("#ur_input_email").val()
 		};
-		
+		bloc_editable.find(".btn_save").hide();
+		bloc_editable.find(".btn_reset").hide();
+		bloc_editable.find(".btn_loading").css("display","inline-block");
         $.ajax({
             type: 'POST',
             url: target,
@@ -46,11 +48,13 @@ $(function() {
 				else{
 					alert(data.message);
 				}
+				bloc_editable.find(".btn_loading").hide();
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);
 				console.log(textStatus);
 				console.log(errorThrown);
+				bloc_editable.find(".btn_loading").hide();
 			}
         });
     });

@@ -4,11 +4,13 @@ function resetBlocEdit(bloc_editable){
 	var btn_edit = bloc_editable.find(".btn_edit");
 	var btn_save = bloc_editable.find(".btn_save");
 	var btn_reset = bloc_editable.find(".btn_reset");
+	var btn_loading = bloc_editable.find(".btn_loading");
 	bloc_view.show();
 	bloc_edit.hide();
 	btn_edit.show();
 	btn_save.hide();
 	btn_reset.hide();
+	btn_loading.hide();
 }
 
 function editBlocEdit(bloc_editable){
@@ -17,11 +19,13 @@ function editBlocEdit(bloc_editable){
 	var btn_edit = bloc_editable.find(".btn_edit");
 	var btn_save = bloc_editable.find(".btn_save");
 	var btn_reset = bloc_editable.find(".btn_reset");
+	var btn_loading = bloc_editable.find(".btn_loading");
 	bloc_view.hide();
 	bloc_edit.show();
 	btn_edit.hide();
 	btn_save.show();
 	btn_reset.show();
+	btn_loading.hide();
 }
 
 $(function() {
