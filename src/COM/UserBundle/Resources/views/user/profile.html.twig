@@ -40,7 +40,8 @@
 							</div>
 							<div>
 								{#<span id="ur_view_username">{{ user.username }} {{ user.location }}</span>#}
-								<span id="ur_view_username">{{ user.username }}</span>
+								<span id="ur_view_username">{{ user.username }}</span>&nbsp;
+								<span id="ur_view_location">{{ user.location }}</span> 
 							</div>
 							<div>
 								<span id="ur_view_email">{{ user.email }}</span>
@@ -51,8 +52,10 @@
 								<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
 							</div>
 							<div style="margin-bottom:5px">
-								{#<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }} {{ user.location }}" />#}
 								<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
+							</div>
+							<div style="margin-bottom:5px">
+								<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
 							</div>
 							<div style="margin-bottom:5px">
 								<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />

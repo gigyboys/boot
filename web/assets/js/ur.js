@@ -23,6 +23,7 @@ $(function() {
 		var data = {
 			name : bloc_editable.find("#ur_input_name").val(), 
 			username : bloc_editable.find("#ur_input_username").val(), 
+			location : bloc_editable.find("#ur_input_location").val(), 
 			email : bloc_editable.find("#ur_input_email").val()
 		};
 		
@@ -36,6 +37,7 @@ $(function() {
 				if(data.state){
 					bloc_editable.find("#ur_view_name").text(data.name);
 					bloc_editable.find("#ur_view_username").text(data.username);
+					bloc_editable.find("#ur_view_location").text(data.location);
 					bloc_editable.find("#ur_view_email").text(data.email);
 					resetBlocEdit(bloc_editable);
 					document.title = data.title;

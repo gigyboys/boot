@@ -188,7 +188,7 @@ class UserController extends Controller
 			/*vérification username à ajouter*/
 			
 			$user->setUsername($username);
-			
+			$user->setLocation($userTemp->getLocation());
 			$user->setEmail($userTemp->getEmail());
             
 			$em->persist($user);
@@ -203,12 +203,17 @@ class UserController extends Controller
 			);
 			$this->container->get('security.context')->setToken($token);
 			
+			$location = $user->getLocation();
+			if($location == null || $location == ""){
+				$location = "";
+			}
 			$title = 'Profile '.$user->getUsername();
 			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'name' => $user->getName(),
                 'username' => $user->getUsername(),
+                'location' => $location,
                 'email' => $user->getEmail(),
                 'title' => $title,
                 'url' => $url,

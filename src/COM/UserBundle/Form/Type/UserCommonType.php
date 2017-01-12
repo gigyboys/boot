@@ -12,6 +12,7 @@ class UserCommonType extends AbstractType
     {
         $builder->add('name', 'text')
                 ->add('username', 'text')
+                ->add('location', 'text')
                 ->add('email', 'email')
         ;
     }
