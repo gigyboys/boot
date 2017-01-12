@@ -12,6 +12,9 @@ com_admin_school_add:
 com_admin_school_edit:
     path:     /school/edit-school/{id}
     defaults: { _controller: COMAdminBundle:School:editSchool }
+com_admin_school_change_logo:
+    path:     /school/change-logo/{school_id}
+    defaults: { _controller: COMAdminBundle:School:changeLogo }
 com_admin_school_edit_common:
     path:     /school/edit-common/{id}
     defaults: { _controller: COMAdminBundle:School:editSchoolGeneral }

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Logo;
+use COM\SchoolBundle\Form\Type\LogoType;
 use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Form\Type\SchoolInitType;
 use COM\SchoolBundle\Form\Type\SchoolGeneralType;
@@ -76,6 +78,57 @@ class SchoolController extends Controller
         return $this->render('COMAdminBundle:school:edit_school.html.twig', array(
 			'school' => $school,
 		));
+    }
+
+	public function changeLogoAction($school_id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $logoRepository = $em->getRepository('COMSchoolBundle:Logo');
+        
+        $logo = new Logo();
+        $school = $schoolRepository->find($school_id);
+        
+        $formLogo = $this->get('form.factory')->create(new LogoType, $logo);
+        $formLogo->handleRequest($this->getRequest());
+
+        if ($formLogo->isValid()) {
+            $logos = $logoRepository->findBy(array('school' => $school));
+            
+            foreach ($logos as $schoolLogo) {
+                $schoolLogo->setCurrentLogo(false);
+            }
+			
+            $logo->setCurrentLogo(true);
+			
+            $logo->setSchool($school);
+            $logo->setCurrentLogo(true);
+			
+            $em->persist($logo);
+            $em->flush();
+			
+            $logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+			  'logoPath' => $logo->getWebPath()
+			));
+			
+			$response = new Response();
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'logo116x116' => $logo116x116,
+            )));
+            $response->headers->set('Content-Type', 'application/json');
+            
+            return $response;
+        }
+
+        $response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
     }
 	
     public function editSchoolGeneralAction($id, Request $request)

@@ -16,11 +16,16 @@ class SchoolExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'getSchoolTranslate' => new \Twig_Function_Method($this, 'getSchoolTranslateFunction'),
+            'schoolLogo' => new \Twig_Function_Method($this, 'schoolLogoFunction'),
         );
     }
 
     public function getSchoolTranslateFunction($school, $locale) {
         return $this->schoolService->getSchoolTranslate($school, $locale);
+    }
+
+    public function schoolLogoFunction(School $school) {
+        return $this->schoolService->getLogo($school);
     }
 
     public function getName() {

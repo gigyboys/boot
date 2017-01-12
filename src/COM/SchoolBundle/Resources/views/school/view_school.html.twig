@@ -9,8 +9,16 @@
 	<div id="sl_gl" class="cr">
 		<div class="ct">
 			<div style="float:left">
-				 {% set img='default/images/school/logo/default.jpg' %}
-				<img style="width: 60px; height: 60px" src="{{ img | imagine_filter('60x60') }}" alt="img sl" />
+				 
+				{# twig extension #}
+				{% set logo=schoolLogo(school) %}
+				{% if logo != "default.jpeg" %}
+					{% set pathtologo='uploads/images/school/logo/'~logo %}
+				{% else %}
+					{% set pathtologo='default/images/school/logo/'~logo %}
+				{% endif %}
+				
+				<img style="width: 60px; height: 60px" src="{{ pathtologo | imagine_filter('60x60') }}" alt="img sl" />
 			</div>
 			<div style="margin-left: 70px; min-height:70px">
 				<div id="" style="color:#333; font-size:18px">

@@ -23,4 +23,20 @@ class SchoolService {
         
 		return $schoolTranslate;
     }
+    
+    public function getLogo(School $school) {
+        $logoRepository = $this->em->getRepository('COMSchoolBundle:Logo');
+
+        $logo = $logoRepository->findOneBy(array(
+            'school' => $school,
+            'currentLogo' => true,
+        ));
+
+        if($logo){
+            return $logo->getPath();
+        }
+        else{
+            return 'default.jpeg';
+        }
+    }
 }
