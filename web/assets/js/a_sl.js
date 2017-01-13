@@ -44,7 +44,7 @@ $(function() {
 			shortName : bloc_editable.find("#sl_input_shortname").val(), 
 			slug : bloc_editable.find("#sl_input_slug").val()
 		};
-		
+		loadBlocEdit(bloc_editable);
         $.ajax({
             type: 'POST',
             url: target,
@@ -82,7 +82,7 @@ $(function() {
 			shortDescription : bloc_editable.find(".slt_input_shortdescription").val(), 
 			description : bloc_editable.find(".slt_input_description").val()
 		};
-		
+		loadBlocEdit(bloc_editable);
         $.ajax({
             type: 'POST',
             url: target,

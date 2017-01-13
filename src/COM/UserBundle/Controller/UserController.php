@@ -168,63 +168,67 @@ class UserController extends Controller
 	
     public function editUserCommonAction($user_id, Request $request)
     {
-		$em = $this->getDoctrine()->getManager();
-		$userRepository = $em->getRepository('COMUserBundle:User');
-        
-        $user = $userRepository->find($user_id);
-        
-		$userTemp = new User();
-		$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
-		
-        $response = new Response();
-		
-		if ($formUserCommon->handleRequest($request)->isValid()) {
-			//name
-			$user->setName($userTemp->getName());
-			//username
-			$platformService = $this->container->get('com_platform.platform_service');
-			$username = $platformService->sluggify($userTemp->getUsername());
+		if ($request->isXmlHttpRequest()){
+			$em = $this->getDoctrine()->getManager();
+			$userRepository = $em->getRepository('COMUserBundle:User');
 			
-			/*vérification username à ajouter*/
+			$user = $userRepository->find($user_id);
 			
-			$user->setUsername($username);
-			$user->setLocation($userTemp->getLocation());
-			$user->setEmail($userTemp->getEmail());
-            
-			$em->persist($user);
-            $em->flush();
+			$userTemp = new User();
+			$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
 			
-			$oldToken = $this->container->get('security.context')->getToken();
-			$token = new UsernamePasswordToken(
-				$user,
-				null,
-				$oldToken->getProviderKey(),
-				$user->getRoles()
-			);
-			$this->container->get('security.context')->setToken($token);
+			$response = new Response();
 			
-			$location = $user->getLocation();
-			if($location == null || $location == ""){
-				$location = "";
+			if ($formUserCommon->handleRequest($request)->isValid()) {
+				//name
+				$user->setName($userTemp->getName());
+				//username
+				$platformService = $this->container->get('com_platform.platform_service');
+				$username = $platformService->sluggify($userTemp->getUsername());
+				
+				/*vérification username à ajouter*/
+				
+				$user->setUsername($username);
+				$user->setLocation($userTemp->getLocation());
+				$user->setEmail($userTemp->getEmail());
+				
+				$em->persist($user);
+				$em->flush();
+				
+				$oldToken = $this->container->get('security.context')->getToken();
+				$token = new UsernamePasswordToken(
+					$user,
+					null,
+					$oldToken->getProviderKey(),
+					$user->getRoles()
+				);
+				$this->container->get('security.context')->setToken($token);
+				
+				$location = $user->getLocation();
+				if($location == null || $location == ""){
+					$location = "";
+				}
+				$title = 'Profile '.$user->getUsername();
+				$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'name' => $user->getName(),
+					'username' => $user->getUsername(),
+					'location' => $location,
+					'email' => $user->getEmail(),
+					'title' => $title,
+					'url' => $url,
+				)));
+			}else{
+				$response->setContent(json_encode(array(
+					'state' => 0,
+					'message' => 'serveur message : une erreur est survenue',
+				)));
 			}
-			$title = 'Profile '.$user->getUsername();
-			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
-            $response->setContent(json_encode(array(
-                'state' => 1,
-                'name' => $user->getName(),
-                'username' => $user->getUsername(),
-                'location' => $location,
-                'email' => $user->getEmail(),
-                'title' => $title,
-                'url' => $url,
-            )));
+			$response->headers->set('Content-Type', 'application/json');
+			return $response;
 		}else{
-            $response->setContent(json_encode(array(
-                'state' => 0,
-                'message' => 'serveur message : une erreur est survenue',
-            )));
-		}
-        $response->headers->set('Content-Type', 'application/json');
-		return $response;
+            throw new NotFoundHttpException('Page not found');
+        }
     }
 }
