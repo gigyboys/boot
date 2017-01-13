@@ -42,6 +42,7 @@ $(function() {
 					resetBlocEdit(bloc_editable);
 					document.title = data.title;
 					history.pushState('', 'Profile '+data.username, data.url);
+					$("#profil_link").attr("href", data.url);
 				}
 				else{
 					alert(data.message);

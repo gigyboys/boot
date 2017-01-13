@@ -109,7 +109,7 @@
 						<ul>
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 								<li>
-									<a class="link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+									<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
 										<span>{{ 'profile' | trans }}</span>
 									</a>
 								</li>
