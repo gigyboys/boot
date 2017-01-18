@@ -9,6 +9,7 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\SchoolTranslate;
+use COM\SchoolBundle\Entity\SchoolAdmin;
 use COM\BlogBundle\Entity\PostCategory;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
@@ -235,6 +236,16 @@ class InitController extends Controller
 		$schoolTranslate12->setDescription("<p>de. description .</p> <p>desc Ecole Supérieure de Technologie</p>");
 		$em->persist($schoolTranslate12);
 		/** fin traitement schooltranslate  **/
+		
+		
+		/** traitement school admin **/
+		$schoolAdmin1 = new SchoolAdmin();
+		$schoolAdmin1->setDate(new \DateTime());
+		$schoolAdmin1->setSchool($school1);
+		$schoolAdmin1->setUser($user1);
+		$em->persist($schoolAdmin1);
+		
+		/** fin traitement school admin  **/
 		
 		
 		/** traitement category post **/

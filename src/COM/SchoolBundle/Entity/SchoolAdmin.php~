@@ -1,0 +1,99 @@
+<?php
+
+namespace COM\SchoolBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SchoolAdmin
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="COM\SchoolBundle\Entity\SchoolAdminRepository")
+ */
+class SchoolAdmin
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\SchoolBundle\Entity\School")
+	 * @ORM\JoinColumn(name="school_id", nullable=false)
+	 */
+	private $school;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User")
+    * @ORM\JoinColumn(name="user_id", nullable=false)
+    */
+    private $user;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return SchoolAdmin
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set school
+     *
+     * @param \COM\SchoolBundle\Entity\School $school
+     * @return SchoolAdmin
+     */
+    public function setSchool(\COM\SchoolBundle\Entity\School $school)
+    {
+        $this->school = $school;
+
+        return $this;
+    }
+
+    /**
+     * Get school
+     *
+     * @return \COM\SchoolBundle\Entity\School 
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+}
