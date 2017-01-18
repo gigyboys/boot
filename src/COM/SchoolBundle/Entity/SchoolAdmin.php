@@ -39,6 +39,13 @@ class SchoolAdmin
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
 
 
     /**
@@ -118,5 +125,28 @@ class SchoolAdmin
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return SchoolAdmin
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }
