@@ -29,10 +29,17 @@ class SchoolAdminController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolAdminRepository = $em->getRepository('COMSchoolBundle:SchoolAdmin');
 		$school = $schoolRepository->find($school_id);
+		
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'school' => $school,
+            'active' => true,
+        ));
 		
         return $this->render('COMAdminBundle:school:school_admin.html.twig', array(
 			'school' => $school,
+			'schoolAdmins' => $schoolAdmins,
 		));
     }
 

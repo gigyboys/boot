@@ -4,6 +4,7 @@ namespace COM\SchoolBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
+use COM\UserBundle\Entity\User;
 
 class SchoolService {
 
@@ -38,5 +39,16 @@ class SchoolService {
         else{
             return 'default.jpeg';
         }
+    }
+    
+    public function getSchoolAdmins($school) {
+        $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
+
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'school' => $school,
+            'active' => true,
+        ));
+        
+		return $schoolAdmins;
     }
 }

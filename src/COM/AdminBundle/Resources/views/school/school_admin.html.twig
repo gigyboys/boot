@@ -24,6 +24,23 @@
 			</div>
 		</span> 
 		<span>Edit school </span> 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Administrateur</span> 
 	</div>
 	<div style="padding:8px; float:right">
 	
@@ -58,9 +75,25 @@
 				</span>
 		</div>
 		
-		<div style="">
-			Admin 
-			<div style="clear:both"></div>
+		<div style="padding:5px">
+			{% for schoolAdmin in schoolAdmins %}
+				{# twig extension #}
+				{% set avatar=userAvatar(schoolAdmin.user) %}
+				{% if avatar != "default.jpeg" %}
+					{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+				{% else %}
+					{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+				{% endif %}
+				<div style="float:left">
+					<img id="user_avatar" style="width: 32px; height: 32px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="img ur" />
+				</div>
+				<div style="margin-left:36px">
+					{{ schoolAdmin.user.name }}<br />
+					{{ schoolAdmin.user.email }} ({{ schoolAdmin.user.username }})
+				</div>
+				<div style="clear:both"></div>
+				<hr />
+			{% endfor %}
 		</div>
 		
 {% endblock %}
