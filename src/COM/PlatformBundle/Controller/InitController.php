@@ -243,7 +243,15 @@ class InitController extends Controller
 		$schoolAdmin1->setDate(new \DateTime());
 		$schoolAdmin1->setSchool($school1);
 		$schoolAdmin1->setUser($user1);
+		$schoolAdmin1->setActive(true);
 		$em->persist($schoolAdmin1);
+		
+		$schoolAdmin2 = new SchoolAdmin();
+		$schoolAdmin2->setDate(new \DateTime());
+		$schoolAdmin2->setSchool($school1);
+		$schoolAdmin2->setUser($user2);
+		$schoolAdmin2->setActive(true);
+		$em->persist($schoolAdmin2);
 		
 		/** fin traitement school admin  **/
 		
