@@ -7,6 +7,37 @@
 						<span>{{ 'home' | trans }}</span>
 					</a>
 				</li>
+			</ul>
+			<div class="dd nav_responsive" style="">
+				<a href="#" class="dd_src" style="display: block;height:40px;padding:8px;box-sizing:border-box;">
+					<span style="display:inline-block; height: 20px;">Menu</span>
+				</a>
+				<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					<ul>
+					<li>
+						<a href="{{ path('com_school_home') }}" class="link">
+							<span>{{ 'school' | trans }}</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('com_blog_home') }}" class="link">
+							<span>{{ 'news' | trans }}</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('com_advert_home') }}" class="link">
+							<span>{{ 'advert' | trans }}</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('com_forum_home') }}" class="link">
+							<span>{{ 'forum' | trans }}</span>
+						</a>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<ul class="nav_not_responsive">
 				<li>
 					<a href="{{ path('com_school_home') }}" class="">
 						<span>{{ 'school' | trans }}</span>
@@ -88,7 +119,7 @@
 												<img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ app.user.username }}" />
 											</span>
 										</td>
-										<td style=" padding:0px">
+										<td style=" padding:0px" class="user_name">
 											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px">
 												<span>{{ app.user.name }}</span>
 											</span>

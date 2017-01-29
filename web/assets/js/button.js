@@ -23,6 +23,15 @@ $(function() {
             if (decalage < 0){
                 dd_target_to.css('margin-left',decalage);
             }
+			
+			$(window).resize(function() {
+				var decalage = $(window).width() - dd_target_to.width() - $this.offset().left - 15; 
+				if (decalage < 0){
+					dd_target_to.css('margin-left',decalage);
+				}else{
+					dd_target_to.css('margin-left',0);
+				}
+			});
         }
         else{
             dd_target.hide();
@@ -37,6 +46,6 @@ $(function() {
     
     link.click(function(e) {
         window.location=$(this).attr("href");
-    });    
+    }); 
     
 });

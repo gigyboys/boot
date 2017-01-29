@@ -16,7 +16,7 @@ header{
 
 #navigation_content{
 	height: 40px;
-	
+	margin:0 10px
 }
 
 #nav_left{
@@ -25,7 +25,8 @@ header{
 
 #nav_left ul{
 	padding: 0px;
-	margin:0px
+	margin:0px;
+	float:left
 }
 
 
@@ -175,4 +176,25 @@ header{
 	padding: 8px 10px;
 	border-radius: 3px;
 	cursor: pointer;
+}
+.nav_responsive{
+	display:none;float:left
+}
+
+
+@media screen and (max-width: 700px)
+{
+	.nav_not_responsive{
+		display:none
+	}
+	.nav_responsive{
+		display:inline-block
+	}
+}
+
+@media screen and (max-width: 500px)
+{
+	.user_name{
+		display:none
+	}
 }
