@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\UserBundle\Entity\User;
 use COM\UserBundle\Form\Type\UserType;
@@ -129,12 +130,18 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
-		$type = 'setting';
-        return $this->render('COMUserBundle:user:profile.html.twig', array(
-			'user' => $user,
-			'locale' => $locale,
-			'type' => $type,
-		));
+		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') &&  $this->getUser()->getId() == $user->getId()) {
+			$type = 'setting';
+			return $this->render('COMUserBundle:user:profile.html.twig', array(
+				'user' => $user,
+				'locale' => $locale,
+				'type' => $type,
+			));
+        }else{
+			$url = $this->get('router')->generate('com_user_profile', array('username' => $username));
+			return new RedirectResponse($url);
+		}
+		
     }
 
 	public function modifyAvatarAction()
