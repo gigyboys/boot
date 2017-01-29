@@ -19,7 +19,22 @@ use COM\SchoolBundle\Form\Type\SchoolTranslateType;
 
 class SchoolAdminController extends Controller
 {
-	
+	public function indexAction($school_id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolAdminRepository = $em->getRepository('COMSchoolBundle:SchoolAdmin');
+
+		$school = $schoolRepository->find($school_id);
+		$schoolAdmins = $schoolAdminRepository->findBy(array(
+			'school' => $school
+		));
+		
+        return $this->render('COMAdminBundle:school:school_admin.html.twig', array(
+			'school' => $school,
+			'schoolAdmins' => $schoolAdmins
+		));
+    }
 	
     public function getUsersNotAdminSchoolAction($school_id, $query, Request $request)
     {

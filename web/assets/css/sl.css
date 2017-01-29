@@ -5,6 +5,33 @@
 #sl_dl{
 	
 }
+/**************liste school***************/
+.sl_item{
+	width:220px;
+	box-sizing:border-box;
+	margin:10px;
+	float:left;
+	background:#eee
+}
+.sl_logo{
+	width:220px;
+	height:140px;
+	background:#ccc;
+	text-align:center;
+}
+.sl_label{
+	width:220px;
+	height:60px;
+	background:#bbb;
+	text-align:center;
+}
+.sl_action{
+	width:220px;
+	height:40px;
+	background:#aaa;
+	text-align:center;
+}
+/**************end liste school************/
 #sl_onglet_head{
 	/*border-bottom: 2px solid #ccc; */
 	margin: 0px 0 0 0; 

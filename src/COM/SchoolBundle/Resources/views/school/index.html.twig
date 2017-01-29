@@ -8,29 +8,39 @@
 {% block school_body %}
 	<div class="cr">
 		<div class="ct">
-			<div>
-				School
-			</div>
-			<div>
-				Liste des instituts.
-			</div>
-			<div>
-				<div style="display:none">
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
-				<div class="item_test"><div>1</div></div>
+			<div style="">
+				<div style="float:left;width:960px">
+					{% for school in schools %}
+					 
+						{# twig extension #}
+						{% set logo=schoolLogo(school) %}
+						{% if logo != "default.jpeg" %}
+							{% set pathtologo='uploads/images/school/logo/'~logo %}
+						{% else %}
+							{% set pathtologo='default/images/school/logo/'~logo %}
+						{% endif %}
+						
+						<div class="sl_item" style="">
+							<div class="sl_logo">
+								<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />
+							</div>
+							<div class="sl_label">
+								<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
+									{{ school.shortName }}<br />
+									{{ school.name }}
+								</a>
+							</div>
+							<div class="sl_action">
+								Etat
+							</div>
+						</div>
+					{% endfor %}
+					<div style="clear:both"></div>
+				</div>
+				<div style="margin-left:960px;border-top:1px solid transparent">
+					<div style="min-height:500px; margin:10px; width:auto; background:#eee"></div>
+				</div>
 				<div style="clear:both"></div>
-				</div>
-				{% for school in schools %}
-				<div>
-					<a href="{{ path('com_school_view', {'slug': school.slug}) }}">{{ school.name }}</a>
-				</div>
-				{% endfor %}
 			</div>
 		</div>
 	</div>
