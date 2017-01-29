@@ -48,18 +48,20 @@
 								</div>
 							</div>
 							<div class="bloc_edit" style="display:none">
-								<div style="margin-bottom:5px">
-									<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
-								</div>
-								<div style="margin-bottom:5px">
-									<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
-								</div>
-								<div style="margin-bottom:5px">
-									<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
-								</div>
-								<div style="margin-bottom:5px">
-									<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
-								</div>
+								<form action="" name="form_ur_common" method="post" id="form_ur_common">
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
+									</div>
+								</form>
 							</div>
 							<div class="bloc_action" style="margin:5px; border:1px solid transparent">
 								<span class="btn_edit standar_button">Modifier</span> 

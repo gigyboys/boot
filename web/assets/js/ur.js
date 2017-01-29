@@ -19,6 +19,11 @@ $(function() {
     });
 	
 	//mise a jour de common information.
+	$('#form_ur_common').submit( function(e){
+		e.preventDefault(true);
+		alert("dsfsdf");
+	}
+	
 	$('#btn_save_ur_common').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
