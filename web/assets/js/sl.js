@@ -32,10 +32,10 @@ $(function() {
         if(largeur_window<row20){
             if(largeur_window>row16){
 				slr.css('display', 'block');
-                slr.css('width', row4);
                 widthBloc = sl_list.width()-row4;
                 sll_ct.css('width', row12);
                 sll.css('width', widthBloc);
+                slr.css('width', row4);
 				console.log(sll.css('width'));
                 sll.css('float', 'left');
                 slr.css('margin-left', widthBloc);
