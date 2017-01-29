@@ -130,7 +130,7 @@ header{
 }
 
 .search_entity_item.selected{
-	background: #eee;
+	background: #ddd;
 }
 
 .search_entity_item:hover{
@@ -169,7 +169,7 @@ header{
 }
 
 #search_submit_button_go{
-	background: #bbb;
+	background: #dddddd;
 	margin: px;
 	padding: 8px 10px;
 	border-radius: 3px;

@@ -49,6 +49,7 @@ $(function() {
 					$("#profil_link").attr("href", data.url);
 				}
 				else{
+					editBlocEdit(bloc_editable);
 					alert(data.message);
 				}
 				bloc_editable.find(".btn_loading").hide();

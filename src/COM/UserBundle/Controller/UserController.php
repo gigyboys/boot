@@ -213,14 +213,35 @@ class UserController extends Controller
 			$response = new Response();
 			
 			if ($formUserCommon->handleRequest($request)->isValid()) {
-				//name
-				$user->setName($userTemp->getName());
 				//username
 				$platformService = $this->container->get('com_platform.platform_service');
 				$username = $platformService->sluggify($userTemp->getUsername());
 				
+				$userService = $this->container->get('com_user.user_service');
 				/*vérification username à ajouter*/
+				$hasDoublon = $userService->checkHasDoublon($username, $user->getId());
+				if($hasDoublon){
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'Choisissez un autre username',
+					)));
+					return $response;
+				}
+				/*fin vérification username à ajouter*/
 				
+				/*vérification email à ajouter*/
+				$hasEmailDoublon = $userService->checkHasEmailDoublon($userTemp->getEmail(), $user->getId());
+				if($hasEmailDoublon){
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'Choisissez un autre adresse email',
+					)));
+					return $response;
+				}
+				/*fin vérification email à ajouter*/
+				
+				//name
+				$user->setName($userTemp->getName());
 				$user->setUsername($username);
 				$user->setLocation($userTemp->getLocation());
 				$user->setEmail($userTemp->getEmail());
