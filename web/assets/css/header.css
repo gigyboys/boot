@@ -16,7 +16,6 @@ header{
 
 #navigation_content{
 	height: 40px;
-	margin:0 10px
 }
 
 #nav_left{
@@ -75,9 +74,8 @@ header{
 }
 
 #search{
-	background:#ddd;
+	background:#eee;
 	height: 290px;
-	border-bottom:1px solid #aaa;
 }
 
 #search_content{

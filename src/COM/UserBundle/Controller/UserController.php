@@ -105,9 +105,35 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
+		$type = 'profile';
         return $this->render('COMUserBundle:user:profile.html.twig', array(
 			'user' => $user,
 			'locale' => $locale,
+			'type' => $type,
+		));
+    }
+	
+    public function settingAction($username)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$userRepository = $em->getRepository('COMUserBundle:User');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$user = $userRepository->findOneBy(array(
+			'username' => $username,
+		));
+		
+		$type = 'setting';
+        return $this->render('COMUserBundle:user:profile.html.twig', array(
+			'user' => $user,
+			'locale' => $locale,
+			'type' => $type,
 		));
     }
 

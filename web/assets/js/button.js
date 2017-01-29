@@ -19,13 +19,13 @@ $(function() {
         if(dd_target_to.css('display') == 'none'){
             dd_target.hide();
             dd_target_to.css('display','block').css('margin-left',0);
-            var decalage = $(window).width() - dd_target_to.width() - dd_target_to.offset().left - 15; 
+            var decalage = $(window).width() - dd_target_to.width() - dd_target_to.offset().left - 10; 
             if (decalage < 0){
                 dd_target_to.css('margin-left',decalage);
             }
 			
 			$(window).resize(function() {
-				var decalage = $(window).width() - dd_target_to.width() - $this.offset().left - 15; 
+				var decalage = $(window).width() - dd_target_to.width() - $this.offset().left - 10; 
 				if (decalage < 0){
 					dd_target_to.css('margin-left',decalage);
 				}else{
