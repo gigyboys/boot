@@ -160,7 +160,7 @@
 										<div style="clear:both"></div>
 									</div>
 									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+										<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
 											<span>{{ 'paramètres' | trans }}</span>
 										</a>
 									</div>
