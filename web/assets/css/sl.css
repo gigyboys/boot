@@ -6,29 +6,43 @@
 	
 }
 /**************liste school***************/
+.sll{
+	float:left;
+	width:960px
+}
+.sll_ct{
+	margin:auto
+}
+.slr{
+	margin-left:960px;
+	border-top:1px solid transparent;
+	width:240px
+}
 .sl_item{
 	width:220px;
 	box-sizing:border-box;
 	margin:10px;
 	float:left;
-	background:#eee
+	border:1px solid #ddd;
+	border-radius:3px;
+	overflow:hidden
 }
 .sl_logo{
-	width:220px;
+	width:auto;
 	height:140px;
-	background:#ccc;
+	background:#f8f8f8;
 	text-align:center;
 }
 .sl_label{
-	width:220px;
+	width:auto;
 	height:60px;
-	background:#bbb;
+	background:#eee;
 	text-align:center;
 }
 .sl_action{
-	width:220px;
+	width:auto;
 	height:40px;
-	background:#aaa;
+	background:#f8f8f8;
 	text-align:center;
 }
 /**************end liste school************/

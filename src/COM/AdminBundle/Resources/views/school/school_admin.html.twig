@@ -76,6 +76,24 @@
 		</div>
 		
 		<div style="padding:5px">
+		<form>
+			<input type="text" id="recherche" />
+		</form>
+		<script type="text/javascript">
+			console.log("autocomplete");
+			var liste = [
+				"Draggable",
+				"Droppable",
+				"Resizable",
+				"Selectable",
+				"Sortable"
+			];
+
+
+			$('#recherche').autocomplete({
+				source : liste
+			});
+		</script>
 			{% for schoolAdmin in schoolAdmins %}
 				{# twig extension #}
 				{% set avatar=userAvatar(schoolAdmin.user) %}
