@@ -86,12 +86,8 @@ class InitController extends Controller
 		$user1->setPassword($encoder->encodePassword('user1', $salt));
 		$user1->setSalt($salt);
 		$user1->setName('Randrianilaina Modar');
-<<<<<<< HEAD
 		$user1->setRoles($roles);
 		$newsletterService->addEmail($user1->getEmail(), true);
-=======
-	    	$newsletterService->addEmail($user1->getEmail(), true);
->>>>>>> 8498d95370b327bb1c195cbca01bc102e7eaf604
 		$em->persist($user1);
 		
 		$user2 = new User();
@@ -101,12 +97,8 @@ class InitController extends Controller
 		$user2->setPassword($encoder->encodePassword('user2', $salt));
 		$user2->setSalt($salt);
 		$user2->setName('Andriamiarantsoa Fortunat');
-<<<<<<< HEAD
 		$user2->setRoles($roles);
 		$newsletterService->addEmail($user2->getEmail(), true);
-=======
-	    	$newsletterService->addEmail($user2->getEmail(), true);
->>>>>>> 8498d95370b327bb1c195cbca01bc102e7eaf604
 		$em->persist($user2);
 		
 		$user3 = new User();
@@ -116,12 +108,8 @@ class InitController extends Controller
 		$user3->setPassword($encoder->encodePassword('user3', $salt));
 		$user3->setSalt($salt);
 		$user3->setName('Rapariarison Haja');
-<<<<<<< HEAD
 		$user3->setRoles($roles);
 		$newsletterService->addEmail($user3->getEmail(), true);
-=======
-	    	$newsletterService->addEmail($user3->getEmail(), true);
->>>>>>> 8498d95370b327bb1c195cbca01bc102e7eaf604
 		$em->persist($user3);
 		
 		$user4 = new User();
@@ -131,12 +119,8 @@ class InitController extends Controller
 		$user4->setPassword($encoder->encodePassword('user4', $salt));
 		$user4->setSalt($salt);
 		$user4->setName('Misandratra Rakotondrabe Séverin');
-<<<<<<< HEAD
 		$user4->setRoles($roles);
 		$newsletterService->addEmail($user4->getEmail(), true);
-=======
-	    	$newsletterService->addEmail($user4->getEmail(), true);
->>>>>>> 8498d95370b327bb1c195cbca01bc102e7eaf604
 		$em->persist($user4);
 		/** fin traitement users **/
 		
