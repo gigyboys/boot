@@ -43,6 +43,32 @@ class UserService {
 		return $user;
     }
     
+    public function checkHasDoublon($username, $userid) {
+        $userRepository = $this->em->getRepository('COMUserBundle:User');
+
+        $user = $userRepository->findOneBy(array(
+            'username' => $username,
+        ));
+		if($user && $user->getId() != $userid){
+			return true;
+        }else{
+			return false;
+		}
+    }
+    
+    public function checkHasEmailDoublon($email, $userid) {
+        $userRepository = $this->em->getRepository('COMUserBundle:User');
+
+        $user = $userRepository->findOneBy(array(
+            'email' => $email,
+        ));
+		if($user && $user->getId() != $userid){
+			return true;
+        }else{
+			return false;
+		}
+    }
+    
     public function getAvatar(User $user) {
         $avatarRepository = $this->em->getRepository('COMUserBundle:Avatar');
 

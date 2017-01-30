@@ -9,95 +9,101 @@
 	
 	<div id="ur_gl" class="cr">
 		<div class="ct">
-			<div style="float:left">
-				{# twig extension #}
-				{% set avatar=userAvatar(user) %}
-				{% if avatar != "default.jpeg" %}
-					{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
-				{% else %}
-					{% set pathtoavatar='default/images/user/avatar/'~avatar %}
-				{% endif %}
-				
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-					<label for="avatarfile">
-					<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-						<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
-					</div>
-					</labe>
-					<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
-				{% else %}
-					<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-						<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
-					</div>
-				{% endif %}
-			</div>
-			<div style="margin-left: 100px; min-height:70px; margin-top: 4px; padding:1px 0">
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-					<div class="bloc_editable" style="margin-bottom:1px">
-						<div class="bloc_view">
+			<div style="margin:0 10px">
+				<div style="float:left">
+					{# twig extension #}
+					{% set avatar=userAvatar(user) %}
+					{% if avatar != "default.jpeg" %}
+						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+					{% else %}
+						{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+					{% endif %}
+					
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+						<label for="avatarfile">
+						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
+							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
+						</div>
+						</labe>
+						<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
+					{% else %}
+						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
+							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
+						</div>
+					{% endif %}
+				</div>
+				<div style="margin-left: 100px; min-height:70px; margin-top: 4px; padding:1px 0">
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+						<div class="bloc_editable" style="margin-bottom:1px">
+							<div class="bloc_view">
+								<div>
+									<span id="ur_view_name">{{ user.name }}</span>
+								</div>
+								<div>
+									<span id="ur_view_username">{{ user.username }}</span>&nbsp;
+									<span id="ur_view_location">{{ user.location }}</span> 
+								</div>
+								<div>
+									<span id="ur_view_email">{{ user.email }}</span>
+								</div>
+							</div>
+							<div class="bloc_edit" style="display:none">
+								<form action="" name="form_ur_common" method="post" id="form_ur_common">
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
+									</div>
+									<div style="margin-bottom:5px">
+										<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
+									</div>
+								</form>
+							</div>
+							<div class="bloc_action" style="margin:5px; border:1px solid transparent">
+								<span class="btn_edit standar_button">Modifier</span> 
+								<span class="btn_save standar_button" id="btn_save_ur_common" data-target="{{ path('com_user_modify_common', {'user_id': user.id}) }}" style="display:none">Enregistrer</span>
+								<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+								<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
+							</div>
+						</div>
+					{% else %}
+						<div>
 							<div>
 								<span id="ur_view_name">{{ user.name }}</span>
 							</div>
 							<div>
-								<span id="ur_view_username">{{ user.username }}</span>&nbsp;
-								<span id="ur_view_location">{{ user.location }}</span> 
+								<span id="ur_view_username">{{ user.username }} {{ user.location }}</span>
 							</div>
 							<div>
 								<span id="ur_view_email">{{ user.email }}</span>
 							</div>
 						</div>
-						<div class="bloc_edit" style="display:none">
-							<div style="margin-bottom:5px">
-								<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
-							</div>
-							<div style="margin-bottom:5px">
-								<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
-							</div>
-							<div style="margin-bottom:5px">
-								<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
-							</div>
-							<div style="margin-bottom:5px">
-								<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
-							</div>
-						</div>
-						<div class="bloc_action" style="margin:5px; border:1px solid transparent">
-							<span class="btn_edit standar_button">Modifier</span> 
-							<span class="btn_save standar_button" id="btn_save_ur_common" data-target="{{ path('com_user_modify_common', {'user_id': user.id}) }}" style="display:none">Enregistrer</span>
-							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
-							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
-						</div>
-					</div>
-				{% else %}
-					<div>
-						<div>
-							<span id="ur_view_name">{{ user.name }}</span>
-						</div>
-						<div>
-							<span id="ur_view_username">{{ user.username }} {{ user.location }}</span>
-						</div>
-						<div>
-							<span id="ur_view_email">{{ user.email }}</span>
-						</div>
-					</div>
-				{% endif %}
+					{% endif %}
+				</div>
+				<div style="clear:both"></div>
 			</div>
-			<div style="clear:both"></div>
 		</div>
 	</div>
 	<div id="ur_dl">
 		<div id="ur_onglet_head" style="">
 			<div class="cr">
 				<div class="ct">
-					<span class="tab_ur_item selected" id="tab_ur_about" style="">About</span>  
-					<span class="tab_ur_item" id="tab_ur_school" style="">Schools</span>  
-					<span class="tab_ur_item" id="tab_ur_participation" style="">Participations</span>
-					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-						<span class="tab_ur_item" id="tab_ur_setting" style="">Setting</span>
-					{% endif %}
+					<div style="margin:0 10px">
+						<span class="tab_ur_item{% if type == 'profile' %} selected{% endif %}" id="tab_ur_about" data-title="user profile" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">About</span>  
+						<span class="tab_ur_item" id="tab_ur_school" data-title="schools" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">Schools</span>  
+						<span class="tab_ur_item" id="tab_ur_participation" data-title="participations" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">Participations</span>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+							<span class="tab_ur_item{% if type == 'setting' %} selected{% endif %}" id="tab_ur_setting" data-title="setting" data-link="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="">Setting</span>
+						{% endif %}
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_ur_item" id="content_tab_ur_about" style = "">
+		<div class="content_tab_ur_item" id="content_tab_ur_about" style = "{% if type != 'profile' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">
@@ -125,7 +131,7 @@
 			</div>
 		</div>
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-			<div class="content_tab_ur_item" id="content_tab_ur_setting" style = "display:none">
+			<div class="content_tab_ur_item" id="content_tab_ur_setting" style = "{% if type != 'setting' %}display:none{% endif %}">
 				<div class="cr">
 					<div class="ct">
 						<div style="padding:5px; min-height:100px">

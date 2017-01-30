@@ -5,6 +5,47 @@
 #sl_dl{
 	
 }
+/**************liste school***************/
+.sll{
+	float:left;
+	width:960px
+}
+.sll_ct{
+	margin:auto
+}
+.slr{
+	margin-left:960px;
+	border-top:1px solid transparent;
+	width:240px
+}
+.sl_item{
+	width:220px;
+	box-sizing:border-box;
+	margin:10px;
+	float:left;
+	border:1px solid #ddd;
+	border-radius:3px;
+	overflow:hidden
+}
+.sl_logo{
+	width:auto;
+	height:140px;
+	background:#f8f8f8;
+	text-align:center;
+}
+.sl_label{
+	width:auto;
+	height:60px;
+	background:#eee;
+	text-align:center;
+}
+.sl_action{
+	width:auto;
+	height:40px;
+	background:#f8f8f8;
+	text-align:center;
+}
+/**************end liste school************/
 #sl_onglet_head{
 	/*border-bottom: 2px solid #ccc; */
 	margin: 0px 0 0 0; 
