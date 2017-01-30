@@ -68,7 +68,7 @@ class InitController extends Controller
 		/** traitement locales **/
 		
 		/** traitement users **/
-	    	$newsletterService = $this->container->get('com_platform.newsletter_service');
+	    $newsletterService = $this->container->get('com_platform.newsletter_service');
 	    
 		$factory = $this->get('security.encoder_factory');
 		$user = new User();
