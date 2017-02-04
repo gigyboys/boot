@@ -27,11 +27,28 @@
 	border-radius:3px;
 	overflow:hidden
 }
-.sl_logo{
+.sl_header{
 	width:auto;
 	height:140px;
 	background:#f8f8f8;
 	text-align:center;
+}
+.sl_logo{
+	width:218px;
+	height:140px;
+	background:#f8f8f8;
+	text-align:center;
+	position:absolute;
+}
+.sl_short_description{
+	width:218px;
+	height:140px;
+	background:rgba(255,255,255,0.8);
+	display:none;
+	position:absolute;
+}
+.sl_item:hover .sl_short_description{
+	display:block;
 }
 .sl_label{
 	width:auto;
