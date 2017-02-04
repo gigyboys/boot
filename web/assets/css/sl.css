@@ -41,11 +41,14 @@
 	position:absolute;
 }
 .sl_short_description{
+	box-sizing: border-box;
+	padding:3px 3px;
 	width:218px;
 	height:140px;
 	background:rgba(255,255,255,0.8);
 	display:none;
 	position:absolute;
+	overflow:hidden
 }
 .sl_item:hover .sl_short_description{
 	display:block;
