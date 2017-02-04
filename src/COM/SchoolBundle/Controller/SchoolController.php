@@ -19,6 +19,7 @@ class SchoolController extends Controller
 		
         return $this->render('COMSchoolBundle:school:index.html.twig', array(
 			'schools' => $schools,
+			'entityView' => 'school',
 		));
     }
 	
@@ -71,6 +72,7 @@ class SchoolController extends Controller
 			'schoolTranslate' => $schoolTranslate,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'entityView' => 'school',
 		));
     }
 }

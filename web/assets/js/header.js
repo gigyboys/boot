@@ -34,7 +34,7 @@ $(function() {
 					critere = "entity=school";
 					break;
 				case "bg":
-					critere = "entity=new";
+					critere = "entity=post";
 					break;
 				case "at":
 					critere = "entity=advert";
