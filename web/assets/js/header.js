@@ -14,6 +14,11 @@ $(function() {
 		
     });
 	
+	$('#form_search').submit( function(e){
+		e.preventDefault();
+		$('#search_submit_button_go').trigger('click');
+	});
+	
 	$( "#search_submit_button_go" ).click(function() {
 		var target = $(this).data("target");
 		var critere = "";
