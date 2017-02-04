@@ -65,6 +65,16 @@
 	background:#f8f8f8;
 	text-align:center;
 }
+.sl_action_about, .sl_action_bg, .sl_action_at, .sl_action_evaluation{
+	display:inline-block;
+	width: 49px;
+	height:32px;
+	margin:4px 0px;
+	background: #eee
+}
+.sl_action_about, .sl_action_evaluation{
+	width: 50px;
+}
 /**************end liste school************/
 #sl_onglet_head{
 	/*border-bottom: 2px solid #ccc; */

@@ -27,7 +27,12 @@
 										<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />
 									</div>
 									<div class="sl_short_description">
-										{{ school.shortDescription }}
+										{% set stringlength =  school.shortDescription | length %}
+										{% if  stringlength > 180   %}
+											{{ school.shortDescription | striptags | raw | slice(0, 180) }} ...
+										{% else %}
+											{{ school.shortDescription | striptags | raw }}
+										{% endif %}
 									</div>
 								</div>
 								<div class="sl_label">
@@ -37,7 +42,18 @@
 									</a>
 								</div>
 								<div class="sl_action">
-									Etat
+									<div class="sl_action_about">
+										AB
+									</div>
+									<div class="sl_action_bg">
+										BG
+									</div>
+									<div class="sl_action_at">
+										AT
+									</div>
+									<div class="sl_action_evaluation">
+										EV
+									</div>
 								</div>
 							</div>
 						{% endfor %}
