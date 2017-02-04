@@ -20,9 +20,9 @@ $(function() {
 	
 	//mise a jour de common information.
 	$('#form_ur_common').submit( function(e){
-		e.preventDefault(true);
-		alert("dsfsdf");
-	}
+		e.preventDefault();
+		alert("sumit form_ur_common");
+	});
 	
 	$('#btn_save_ur_common').on('click', function(){
         var $this = $(this);
