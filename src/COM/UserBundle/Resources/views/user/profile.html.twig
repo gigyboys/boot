@@ -94,11 +94,11 @@
 			<div class="cr">
 				<div class="ct">
 					<div style="margin:0 10px">
-						<span class="tab_ur_item{% if type == 'profile' %} selected{% endif %}" id="tab_ur_about" data-title="user profile" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">About</span>  
-						<span class="tab_ur_item" id="tab_ur_school" data-title="schools" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">Schools</span>  
-						<span class="tab_ur_item" id="tab_ur_participation" data-title="participations" data-link="{{ path('com_user_profile', {'username': app.user.username}) }}" style="">Participations</span>
+						<span class="tab_ur_item{% if type == 'profile' %} selected{% endif %}" id="tab_ur_about" data-title="user profile" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">About</span>  
+						<span class="tab_ur_item" id="tab_ur_school" data-title="schools" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">Schools</span>  
+						<span class="tab_ur_item" id="tab_ur_participation" data-title="participations" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">Participations</span>
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-							<span class="tab_ur_item{% if type == 'setting' %} selected{% endif %}" id="tab_ur_setting" data-title="setting" data-link="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="">Setting</span>
+							<span class="tab_ur_item{% if type == 'setting' %} selected{% endif %}" id="tab_ur_setting" data-title="setting" data-link="{{ path('com_user_profile_setting', {'username': user.username}) }}" style="">Setting</span>
 						{% endif %}
 					</div>
 				</div>
