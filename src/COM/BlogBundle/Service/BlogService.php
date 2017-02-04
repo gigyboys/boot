@@ -14,7 +14,6 @@ class BlogService {
     public function __construct(EntityManager $em) {
         $this->em = $em;
     }
-
     
     public function hydratePostLang(Post $post, Locale $locale) {
 		$postTranslateRepository = $this->em->getRepository('COMBlogBundle:PostTranslate');

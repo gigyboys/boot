@@ -5,6 +5,7 @@ namespace COM\SchoolBundle\Service;
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
 use COM\UserBundle\Entity\User;
+use COM\PlatformBundle\Entity\Locale;
 
 class SchoolService {
 
@@ -12,6 +13,20 @@ class SchoolService {
 
     public function __construct(EntityManager $em) {
         $this->em = $em;
+    }
+    
+    public function hydrateSchoolLang(School $school, Locale $locale) {
+		$schoolTranslateRepository = $this->em->getRepository('COMSchoolBundle:SchoolTranslate');
+		
+		$schoolTranslate = $schoolTranslateRepository->findOneBy(array(
+			'school' => $school,
+			'locale' => $locale,
+		));
+		
+		$school->setDescription($schoolTranslate->getDescription());
+		$school->setShortDescription($schoolTranslate->getShortDescription());
+		
+		return $school;
     }
     
     public function getSchoolTranslate($school, $locale) {

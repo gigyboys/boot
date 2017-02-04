@@ -44,7 +44,9 @@ class SchoolController extends Controller
 		$school = $schoolRepository->findOneBy(array(
 			'slug' => $slug,
 		));
-		
+		$schoolService = $this->container->get('com_school.school_service');
+		$schoolService->hydrateSchoolLang($school, $locale);
+			
 		$schoolTranslate = $schoolTranslateRepository->findOneBy(array(
 			'locale' => $locale,
 			'school' => $school,
