@@ -118,13 +118,14 @@ header{
 }
 
 #search_entity{
+	padding-left:5px
 }
 
 .search_entity_item{
 	float:left;
 	background: #fff;
-	margin-left: 10px;
-	padding: 7px 12px;
+	margin-left: 5px;
+	padding: 7px 15px;
 	border-radius: 0 0 2px 2px;
 	cursor:pointer;
 }
@@ -174,6 +175,10 @@ header{
 	padding: 8px 10px;
 	border-radius: 3px;
 	cursor: pointer;
+}
+
+#search_submit_button_go:hover{
+	background: #ccc;
 }
 .nav_responsive{
 	display:none;float:left
