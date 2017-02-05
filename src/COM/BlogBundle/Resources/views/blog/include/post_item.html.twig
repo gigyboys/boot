@@ -1,3 +1,17 @@
-<div>
-	<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+<div class="post_item">
+	<div class="post_image">
+		image
+	</div>
+	<div class="post_ct">
+		<div class="post_ct_title">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+		</div>
+		<div class="post_ct_desc">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }} : description</a>
+		</div>
+		<div class="post_ct_info">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }} : information</a>
+		</div>
+	</div>
+	<div style="clear:both"></div>
 </div>

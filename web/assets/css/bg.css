@@ -11,3 +11,16 @@
 	border-top:1px solid transparent;
 	width:240px
 }
+.post_item{
+	margin-bottom:20px
+}
+.post_image{
+	width: 160px; 
+	height:160px; 
+	background:#ddd; 
+	float:left
+}
+.post_ct{
+	margin-left:170px; 
+	background:#eee
+}
