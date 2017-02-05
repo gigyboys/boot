@@ -32,7 +32,7 @@
 				<tr class="a_table_line">
 					<td class="a_table_cell_id">{{ post.id }}</td>
 					<td><a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}">{{ post.defaultTitle }}</a></td>
-					<td>{{ post.user.firstname }}</td>
+					<td>{{ post.user.name }}</td>
 					<td class="a_table_cell_action">action</td>
 				</tr>
 				{% endfor %}

@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content_body %}
+	{#
 	<div id="a_content_body_left">
+	#}
 		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
 			Edition de l'article {{ post.id }}
 			- 
@@ -14,7 +16,7 @@
 						info
 					</span>
 					<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-						<span>Auteur : {{ post.user.firstname }} {{ post.user.name }}</span><br />
+						<span>Auteur : {{ post.user.name }}</span><br />
 						<span>Date d'ajout : {{ post.date | date('Y-m-d H:i:s') }}</span><br />
 						<span>Nombre de vues : {{ post.viewNumber }}</span><br />
 					</span>
@@ -37,7 +39,7 @@
 				<tr>
 					<td>Auteur</td>
 					<td>:</td>
-					<td style="padding:5px">{{ post.user.firstname }} {{ post.user.name }}</td>
+					<td style="padding:5px">{{ post.user.name }}</td>
 				</tr>
 				<tr>
 					<td>Date d'ajout</td>
@@ -159,7 +161,9 @@
 				</div>
 			</div>
 		</div>
+	{#
 	</div>
+	
 	<div id="a_content_body_right">
 		<div style="background:#ddd; padding: 5px; margin:5px 5px 5px 0; border:1px solid #bbb">
 			Liasons aux autres entités
@@ -183,5 +187,6 @@
 			Evenements		
 		</div>
 	</div>
+	#}
 {% endblock %}
 
