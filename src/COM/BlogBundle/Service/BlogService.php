@@ -25,6 +25,7 @@ class BlogService {
 		
 		$post->setTitle($postTranslate->getTitle());
 		$post->setContent($postTranslate->getContent());
+		$post->setDescription($postTranslate->getDescription());
 		
 		return $post;
     }
