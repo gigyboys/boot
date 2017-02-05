@@ -1,0 +1,43 @@
+{# twig extension #}
+{% set logo=schoolLogo(school) %}
+{% if logo != "default.jpeg" %}
+	{% set pathtologo='uploads/images/school/logo/'~logo %}
+{% else %}
+	{% set pathtologo='default/images/school/logo/'~logo %}
+{% endif %}
+
+<div class="sl_item" style="">
+	<div class="sl_header">
+		<div class="sl_logo">
+			<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />
+		</div>
+		<div class="sl_short_description">
+			{% set stringlength =  school.shortDescription | length %}
+			{% if  stringlength > 180   %}
+				{{ school.shortDescription | striptags | raw | slice(0, 180) }} ...
+			{% else %}
+				{{ school.shortDescription | striptags | raw }}
+			{% endif %}
+		</div>
+	</div>
+	<div class="sl_label">
+		<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
+			{{ school.shortName }}<br />
+			{{ school.name }}
+		</a>
+	</div>
+	<div class="sl_action">
+		<div class="sl_action_about">
+			AU
+		</div>
+		<div class="sl_action_bg">
+			BG
+		</div>
+		<div class="sl_action_at">
+			AT
+		</div>
+		<div class="sl_action_evaluation">
+			EV
+		</div>
+	</div>
+</div>
