@@ -12,13 +12,15 @@ footer{
 
 #footer_navigation_content ul{
 	padding: 0px;
-	margin:0px
+	margin:0px;
+	text-align:center
 }
 
 
 #footer_navigation_content ul li{
 	list-style-type: none;
 	display: inline;
+	padding:0 10px
 }
 
 #newsletter{

@@ -14,11 +14,25 @@ class SchoolController extends Controller
     public function indexAction()
     {
 		$em = $postRepository = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
 		$schools = $schoolRepository->findAll();
+		
+		$schoolService = $this->container->get('com_school.school_service');
+		foreach($schools as $school){
+			$schoolService->hydrateSchoolLang($school, $locale);
+		}
 		
         return $this->render('COMSchoolBundle:school:index.html.twig', array(
 			'schools' => $schools,
+			'entityView' => 'school',
 		));
     }
 	
@@ -43,7 +57,9 @@ class SchoolController extends Controller
 		$school = $schoolRepository->findOneBy(array(
 			'slug' => $slug,
 		));
-		
+		$schoolService = $this->container->get('com_school.school_service');
+		$schoolService->hydrateSchoolLang($school, $locale);
+			
 		$schoolTranslate = $schoolTranslateRepository->findOneBy(array(
 			'locale' => $locale,
 			'school' => $school,
@@ -71,6 +87,7 @@ class SchoolController extends Controller
 			'schoolTranslate' => $schoolTranslate,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'entityView' => 'school',
 		));
     }
 }

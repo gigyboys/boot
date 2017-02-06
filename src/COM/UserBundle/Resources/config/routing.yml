@@ -16,3 +16,6 @@ com_user_modify_common:
 com_user_profile:
     path:     /user/{username}
     defaults: { _controller: COMUserBundle:User:profile }
+com_user_profile_setting:
+    path:     /user/{username}/setting
+    defaults: { _controller: COMUserBundle:User:setting }

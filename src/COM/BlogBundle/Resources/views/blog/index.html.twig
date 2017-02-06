@@ -8,15 +8,18 @@
 {% block blog_body %}
 	<div class="cr">
 		<div class="ct">
-			<div>
-				liste des articles.
-			</div>
-			<div>
-				{% for post in posts %}
-				<div>
-					<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+			<div id="bg_list" style="overflow:hidden">
+				<div class="bgl">
+					<div>
+						{% for post in posts %}
+							{{ include("COMBlogBundle:blog:include/post_item.html.twig") }}
+						{% endfor %}
+					</div>
 				</div>
-				{% endfor %}
+				<div class="bgr" style="">
+					<div style="min-height:400px; margin:10px; width:auto; background:#ccc"></div>
+				</div>
+				<div style="clear:both"></div>
 			</div>
 		</div>
 	</div>

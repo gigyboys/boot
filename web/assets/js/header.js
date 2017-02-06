@@ -14,32 +14,33 @@ $(function() {
 		
     });
 	
+	$('#form_search').submit( function(e){
+		e.preventDefault();
+		$('#search_submit_button_go').trigger('click');
+	});
+	
 	$( "#search_submit_button_go" ).click(function() {
 		var target = $(this).data("target");
 		var critere = "";
 		var entity = $(".search_entity_item.selected").data("entity");
 		var q = "";
-		switch (entity) {
-			case "sl":
-				critere = "entity=school";
-				q = $("#q_"+entity).val();
-				critere = critere+"&q="+q;
-				break;
-			case "bg":
-				critere = "entity=new";
-				q = $("#q_"+entity).val();
-				critere = critere+"&q="+q;
-				break;
-			case "at":
-				critere = "entity=advert";
-				q = $("#q_"+entity).val();
-				critere = critere+"&q="+q;
-				break;
-		}
-		console.log(critere);
+		q = $("#q_"+entity).val();
+		q = $.trim(q);
 		if(q == ""){
 			alert("Ne pas laisser le critère de recherche à vide.");
 		}else{
+			switch (entity) {
+				case "sl":
+					critere = "entity=school";
+					break;
+				case "bg":
+					critere = "entity=post";
+					break;
+				case "at":
+					critere = "entity=advert";
+					break;
+			}
+			critere = critere+"&q="+q;
 			window.location=target+"?"+critere;
 		}
 	});

@@ -1,0 +1,117 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Edit school {{ school.id }} - admin
+{% endblock %}
+
+{% block body_header %}
+	<div style="padding:8px; float:left">
+		<span>School </span> 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Edit school </span> 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Administrateur</span> 
+	</div>
+	<div style="padding:8px; float:right">
+	
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				Autres actions
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="{{ path('com_admin_school_administrator', {'school_id': school.id}) }}">Admin</a><br />
+				<a class="link" href="">relations</a>
+				<a class="link" href="">evaluationsjlk(100)</a>
+				<a class="link" href="">abonnements</a>
+			</div>
+		</span> 
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	{#
+	<div id="a_content_body_left">
+	#}
+		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+			Edit school  {{ school.id }} - Admin
+			- 
+			<span class="dd" style="display:inline-block;">
+					<span href="#" class="dd_src" style="cursor:pointer">
+						info
+					</span>
+					<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+						info
+					</span>
+				</span>
+		</div>
+		
+		<div style="padding:5px">
+		<form>
+			<input type="text" id="recherche" />
+		</form>
+		<script type="text/javascript">
+			console.log("autocomplete");
+			var liste = [
+				"Draggable",
+				"Droppable",
+				"Resizable",
+				"Selectable",
+				"Sortable"
+			];
+
+
+			$('#recherche').autocomplete({
+				source : liste
+			});
+		</script>
+			{% for schoolAdmin in schoolAdmins %}
+				{# twig extension #}
+				{% set avatar=userAvatar(schoolAdmin.user) %}
+				{% if avatar != "default.jpeg" %}
+					{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+				{% else %}
+					{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+				{% endif %}
+				<div style="float:left">
+					<img id="user_avatar" style="width: 32px; height: 32px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="img ur" />
+				</div>
+				<div style="margin-left:36px">
+					{{ schoolAdmin.user.name }}<br />
+					{{ schoolAdmin.user.email }} ({{ schoolAdmin.user.username }})
+				</div>
+				<div style="clear:both"></div>
+				<hr />
+			{% endfor %}
+		</div>
+		
+{% endblock %}

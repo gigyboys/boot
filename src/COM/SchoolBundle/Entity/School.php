@@ -61,6 +61,8 @@ class School
 
     private $description;
 
+    private $shortDescription;
+
 
     /**
      * Get id
@@ -245,5 +247,30 @@ class School
     public function getViews()
     {
         return $this->views;
+    }
+
+	public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+	
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
     }
 }

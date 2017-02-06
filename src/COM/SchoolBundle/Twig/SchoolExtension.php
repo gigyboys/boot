@@ -17,6 +17,7 @@ class SchoolExtension extends \Twig_Extension {
         return array(
             'getSchoolTranslate' => new \Twig_Function_Method($this, 'getSchoolTranslateFunction'),
             'schoolLogo' => new \Twig_Function_Method($this, 'schoolLogoFunction'),
+            'schoolAdmins' => new \Twig_Function_Method($this, 'schoolAdminsFunction'),
         );
     }
 
@@ -26,6 +27,10 @@ class SchoolExtension extends \Twig_Extension {
 
     public function schoolLogoFunction(School $school) {
         return $this->schoolService->getLogo($school);
+    }
+
+    public function schoolAdminsFunction(School $school) {
+        return $this->schoolService->getSchoolAdmins($school);
     }
 
     public function getName() {

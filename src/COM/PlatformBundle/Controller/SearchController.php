@@ -28,11 +28,10 @@ class SearchController extends Controller
 		$resultList = array();
 		switch ($entity){
 			case "school":
-				//$schools = $schoolRepository->findAll();
 				$schools = $schoolRepository->getSchoolSearch($q);
 				$resultList = $schools;
 			break ;
-			case "new":
+			case "post":
 				$posts = $postRepository->findAll();
 				$resultList = $posts;
 			break ;
@@ -46,6 +45,7 @@ class SearchController extends Controller
 			'entity' 		=> $entity,
 			'q' 			=> $q,
 			'resultList' 	=> $resultList,
+			'entityView'	=> $entity
 		));
     }
 }

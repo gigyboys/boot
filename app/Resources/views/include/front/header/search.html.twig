@@ -1,38 +1,50 @@
 <div id="search" class="cr">
 	<div id="search_content"  class="ct">
+		<div id="search_hidden">
+			
+		</div>
+		<div id="search_header">
+			
+		</div>
 		<div id="search_bloc">
-			<div id="search_entity">
-				<div class="search_entity_item selected" data-entity="sl">
-					School
+			<form action="" name="form_search" method="post" id="form_search">
+				<div id="search_entity">
+					<div class="search_entity_item selected" data-entity="sl">
+						School
+					</div>
+					<div class="search_entity_item" data-entity="bg">
+						Actualités
+					</div>
+					<div class="search_entity_item" data-entity="at">
+						Annonces
+					</div>
+					<div style="clear:both"></div>
 				</div>
-				<div class="search_entity_item" data-entity="bg">
-					Actualités
+				<div id="search_critere">
+					<div class="search_entity_content" id="search_critere_sl">
+						<input type="text" id="q_sl" placeholder="Tapez ce que vous voulez recherchez.school" />
+					</div>
+					<div class="search_entity_content" id="search_critere_bg" style="display:none">
+						<input type="text" id="q_bg" placeholder="Tapez ce que vous voulez recherchez.post" />
+					</div>
+					<div class="search_entity_content" id="search_critere_at" style="display:none">
+						<input type="text" id="q_at" placeholder="Tapez ce que vous voulez recherchez.advert" />
+					</div>
 				</div>
-				<div class="search_entity_item" data-entity="at">
-					Annonces
+				<div id="search_submit">
+					<div id="search_single_result">
+						Qu'est-ce que vous voulez recherchez?
+					</div>
+					<div id="search_submit_button">
+						<div id="search_submit_button_go" data-target="{{ path('cf_platform_search') }}">Rechercher</div>
+						<input type="submit" style="display:none" value="Rechercher" />
+					</div>
+					<div style="clear:both"></div>
 				</div>
-				<div style="clear:both"></div>
-			</div>
-			<div id="search_critere">
-				<div class="search_entity_content" id="search_critere_sl">
-					<input type="text" id="q_sl" placeholder="Tapez ce que vous voulez recherchez.school" />
-				</div>
-				<div class="search_entity_content" id="search_critere_bg" style="display:none">
-					<input type="text" id="q_bg" placeholder="Tapez ce que vous voulez recherchez.new" />
-				</div>
-				<div class="search_entity_content" id="search_critere_at" style="display:none">
-					<input type="text" id="q_at" placeholder="Tapez ce que vous voulez recherchez.advert" />
-				</div>
-			</div>
-			<div id="search_submit">
-				<div id="search_single_result">
-					Qu'est-ce que vous voulez recherchez?
-				</div>
-				<div id="search_submit_button">
-					<div id="search_submit_button_go" data-target="{{ path('cf_platform_search') }}">Rechercher</div>
-				</div>
-				<div style="clear:both"></div>
-			</div>
+			</form>
+		</div>
+		<div id="search_footer">
+			
 		</div>
 	</div>
 </div>

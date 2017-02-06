@@ -49,14 +49,25 @@
 		<div class="a_datatable_body">
 			<table class="a_table">
 				<tr class="a_table_head">
-					<th class="a_table_cell_id">id</th>
+					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
+					<th class="" style="width: 36px" >logo</th>
 					<th>Name</th>
 					<th>Short name</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for school in schools %}
 				<tr class="a_table_line">
-					<td class="a_table_cell_id">{{ school.id }}</td>
+					<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ school.id }}</td>
+					<td class="">
+						{# twig extension #}
+						{% set logo=schoolLogo(school) %}
+						{% if logo != "default.jpeg" %}
+							{% set pathtologo='uploads/images/school/logo/'~logo %}
+						{% else %}
+							{% set pathtologo='default/images/school/logo/'~logo %}
+						{% endif %}
+						<img id="" style="width: 32px; height: 32px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
+					</td>
 					<td><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></td>
 					<td>{{ school.shortName }}</td>
 					<td class="a_table_cell_action">action</td>

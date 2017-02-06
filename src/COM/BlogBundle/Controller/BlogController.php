@@ -34,6 +34,7 @@ class BlogController extends Controller
 		
         return $this->render('COMBlogBundle:blog:index.html.twig', array(
 			'posts' => $posts,
+			'entityView' => 'post',
 		));
     }
 	
@@ -62,6 +63,7 @@ class BlogController extends Controller
         return $this->render('COMBlogBundle:blog:view_post.html.twig', array(
 			'post' => $post,
 			'locale' => $locale,
+			'entityView' => 'post',
 		));
     }
 }

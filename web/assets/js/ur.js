@@ -12,8 +12,17 @@ $(function() {
 		content_tab_ur_item.removeClass('selected').css('display','none');
 		
 		content.addClass('selected').css('display','block');
+		console.log($(this).data("link"));
+		document.title = $(this).data("title");
+		history.pushState('', '', $(this).data("link"));
 		
     });
+	
+	//mise a jour de common information.
+	$('#form_ur_common').submit( function(e){
+		e.preventDefault();
+		$('#btn_save_ur_common').trigger('click');
+	});
 	
 	$('#btn_save_ur_common').on('click', function(){
         var $this = $(this);
@@ -45,6 +54,7 @@ $(function() {
 					$("#profil_link").attr("href", data.url);
 				}
 				else{
+					editBlocEdit(bloc_editable);
 					alert(data.message);
 				}
 				bloc_editable.find(".btn_loading").hide();

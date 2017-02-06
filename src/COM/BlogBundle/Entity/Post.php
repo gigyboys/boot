@@ -82,7 +82,10 @@ class Post extends Controller
 	
     private $title;
 	
+    private $description;
+	
     private $content;
+	
 
 
     /**
@@ -317,6 +320,22 @@ class Post extends Controller
     {
         return $this->title;
     }
+	
+
+    //description
+    
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+	
 	//content
     public function setContent($content)
     {

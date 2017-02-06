@@ -1,0 +1,26 @@
+/**************liste school***************/
+.bgl{
+	float:left;
+	width:960px;
+	margin-top:10px;
+	box-sizing:border-box;
+	padding:0 10px;
+}
+.bgr{
+	margin-left:960px;
+	border-top:1px solid transparent;
+	width:240px
+}
+.post_item{
+	margin-bottom:20px
+}
+.post_image{
+	width: 160px; 
+	height:160px; 
+	background:#ddd; 
+	float:left
+}
+.post_ct{
+	margin-left:170px; 
+	background:#eee
+}

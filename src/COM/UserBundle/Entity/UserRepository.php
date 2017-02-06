@@ -12,4 +12,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+	public function getUsersNotSchoolAdmin($school, $query) {
+		$schoolAdminRepository = $this->getEntityManager()->getRepository('COMSchoolBundle:SchoolAdmin');
+
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'school' => $school,
+            'active' => true,
+        ));
+		
+		$user_ids = array();
+            
+		foreach ($schoolAdmins as $schoolAdmin){
+			array_push($user_ids, $schoolAdmin->getUser()->getId());
+		}
+		
+		$qb = $this->createQueryBuilder('user');
+
+		$qb
+		->where('user.id NOT IN (:user_ids)')
+		->setParameter('user_ids', $user_ids)
+        ->andWhere('(user.username LIKE :query) OR (user.email LIKE :query) OR (user.name LIKE :query)')
+        ->setParameter('query', $query)
+		;
+		
+        $users = $qb->getQuery()->getResult();
+		return $users;
+    }
 }

@@ -1,12 +1,51 @@
 <div id="navigation" class="cr">
 	<div id="navigation_content" class="ct">
+	<div id="" style="margin:0 10px">
 		<div id="nav_left">
 			<ul>
 				<li>
 					<a href="{{ path('com_platform_home') }}" class="">
-						<span>{{ 'home' | trans }}</span>
+						<span>{{ 'home' | trans }}</span>{#{ entityView }#}
 					</a>
 				</li>
+			</ul>
+			<div class="dd nav_responsive" style="">
+				<a href="#" class="dd_src" style="display: block;height:40px;padding:12px 8px;box-sizing:border-box;">
+					<span style="display:block; height: 3px;width:20px; background:#777"></span>
+					<span style="display:block; height: 3px;width:20px; background:transparent"></span>
+					<span style="display:block; height: 3px;width:20px; background:#777"></span>
+					<span style="display:block; height: 3px;width:20px; background:transparent"></span>
+					<span style="display:block; height: 3px;width:20px; background:#777"></span>
+				</a>
+				<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 0px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
+					
+					<div style="width: 120px">
+						<div style="text-align:center;">
+							<a class="link" href="{{ path('com_school_home') }}" style="display:block;padding:5px 0">
+								<span>{{ 'school' | trans }}</span>
+							</a>
+						</div>
+						<div style="border-top:1px solid #ddd; text-align:center;">
+							<a class="link" href="{{ path('com_blog_home') }}" style="display:block;padding:5px 0">
+								<span>{{ 'news' | trans }}</span>
+							</a>
+						</div>
+						<div style="border-top:1px solid #ddd; text-align:center;">
+							<a class="link" href="{{ path('com_advert_home') }}" style="display:block;padding:5px 0">
+								<span>{{ 'advert' | trans }}</span>
+							</a>
+						</div>
+						<div style="border-top:1px solid #ddd; text-align:center;">
+							<a class="link" href="{{ path('com_forum_home') }}" style="display:block;padding:5px 0">
+								<span>{{ 'forum' | trans }}</span>
+							</a>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+			<ul class="nav_not_responsive">
 				<li>
 					<a href="{{ path('com_school_home') }}" class="">
 						<span>{{ 'school' | trans }}</span>
@@ -31,12 +70,12 @@
 		</div>
 		
 		<div id="nav_right">
-			<div id="locale" style="display: block; margin-top: 3px; float:left">
+			<div id="locale" style="display: block; margin-top: 4px; float:left">
 				<div class="dd" style="display:inline-block;">
 					<a href="#" class="dd_src standar_button" style="">
 						<span style="display:inline-block; height: 20px;">Locale</span>
 					</a>
-					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
 						{# 
 						appel du fonction (twig.extension) getLocales pour avoir la liste des locales
 						#}
@@ -61,7 +100,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="user" style="display: block; margin-top: 3px; float:left">
+			<div id="user" style="display: block; margin-top: 4px; float:left">
 				<div class="dd" style="display:block; margin:0px;">
 					
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -88,7 +127,7 @@
 												<img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ app.user.username }}" />
 											</span>
 										</td>
-										<td style=" padding:0px">
+										<td style=" padding:0px" class="user_name">
 											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px">
 												<span>{{ app.user.name }}</span>
 											</span>
@@ -103,39 +142,65 @@
 							Mon compte
 						</span>
 					</div>
-					{% endif %}
-					
-					<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-						<ul>
+					{% endif %}					
+						
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-								<li>
-									<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
-										<span>{{ 'profile' | trans }}</span>
-									</a>
-								</li>
-								<li>
-									<a class="link" href="{{ path('logout') }}">
-										<span>{{ 'deconnexion' | trans }}</span>
-									</a>
-								</li>
+								<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff">
+									<div>
+										<div style="float:left;width:70px;height:70px">
+											<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
+										</div>
+										<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0">
+											<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+												{{ app.user.username }}<br />
+												{{ app.user.name }}<br />
+												{{ app.user.email }}<br />
+											</a>
+										</div>
+										<div style="clear:both"></div>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
+											<span>{{ 'paramètres' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'participations' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'abonnements' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'deconnexion' | trans }}</span>
+										</a>
+									</div>
+								</div>
 							{% else %}
-								<li>
-									<a class="link" href="{{ path('com_user_login') }}">
-										<span>{{ 'Connexion' | trans }}</span>
-									</a>
-								</li>
-								<li>
-									<a class="link" href="{{ path('com_user_register') }}">
-										<span>{{ 'Inscription' | trans }}</span>
-									</a>
-								</li>
-
+								<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+									<ul>
+										<li>
+											<a class="link" href="{{ path('com_user_login') }}">
+												<span>{{ 'Connexion' | trans }}</span>
+											</a>
+										</li>
+										<li>
+											<a class="link" href="{{ path('com_user_register') }}">
+												<span>{{ 'Inscription' | trans }}</span>
+											</a>
+										</li>
+									</ul>
+								</div>
 							{% endif %}
-						</ul>
-					</div>
+						
 				</div>
 			</div>
 			<div style="clear:both"></div>
 		</div>
+	</div>
 	</div>
 </div>

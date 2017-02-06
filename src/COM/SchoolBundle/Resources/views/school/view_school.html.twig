@@ -8,37 +8,41 @@
 {% block school_body %}
 	<div id="sl_gl" class="cr">
 		<div class="ct">
-			<div style="float:left">
-				 
-				{# twig extension #}
-				{% set logo=schoolLogo(school) %}
-				{% if logo != "default.jpeg" %}
-					{% set pathtologo='uploads/images/school/logo/'~logo %}
-				{% else %}
-					{% set pathtologo='default/images/school/logo/'~logo %}
-				{% endif %}
-				
-				<img style="width: 60px; height: 60px" src="{{ pathtologo | imagine_filter('60x60') }}" alt="img sl" />
-			</div>
-			<div style="margin-left: 70px; min-height:70px">
-				<div id="" style="color:#333; font-size:18px">
-					{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+			<div style="margin:0 10px">
+				<div style="float:left">
+					 
+					{# twig extension #}
+					{% set logo=schoolLogo(school) %}
+					{% if logo != "default.jpeg" %}
+						{% set pathtologo='uploads/images/school/logo/'~logo %}
+					{% else %}
+						{% set pathtologo='default/images/school/logo/'~logo %}
+					{% endif %}
+					
+					<img style="width: 60px; height: 60px" src="{{ pathtologo | imagine_filter('60x60') }}" alt="img sl" />
 				</div>
-				<div id="">
-					{{ schoolTranslate.shortDescription }}
+				<div style="margin-left: 70px; min-height:70px">
+					<div id="" style="color:#333; font-size:18px">
+						{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+					</div>
+					<div id="">
+						{{ school.shortDescription }}
+					</div>
 				</div>
+				<div style="clear:both"></div>
 			</div>
-			<div style="clear:both"></div>
 		</div>
 	</div>
 	<div id="sl_dl">
 		<div id="sl_onglet_head" style="">
 			<div class="cr">
 				<div class="ct">
-					<span class="tab_sl_item selected" id="tab_sl_about" style="">A propos</span>  
-					<span class="tab_sl_item" id="tab_sl_new" style="">Actualités</span>  
-					<span class="tab_sl_item" id="tab_sl_advert" style="">Annonces</span>  
-					<span class="tab_sl_item" id="tab_sl_evaluation" style="">Evaluations</span>
+					<div style="margin:0 10px">
+						<span class="tab_sl_item selected" id="tab_sl_about" style="">A propos</span>  
+						<span class="tab_sl_item" id="tab_sl_new" style="">Actualités</span>  
+						<span class="tab_sl_item" id="tab_sl_advert" style="">Annonces</span>  
+						<span class="tab_sl_item" id="tab_sl_evaluation" style="">Evaluations</span>
+					</div>
 				</div>
 			</div>
 		</div>

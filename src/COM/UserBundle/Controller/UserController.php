@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\UserBundle\Entity\User;
 use COM\UserBundle\Form\Type\UserType;
@@ -105,10 +106,42 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
+		$type = 'profile';
         return $this->render('COMUserBundle:user:profile.html.twig', array(
 			'user' => $user,
 			'locale' => $locale,
+			'type' => $type,
 		));
+    }
+	
+    public function settingAction($username)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$userRepository = $em->getRepository('COMUserBundle:User');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$user = $userRepository->findOneBy(array(
+			'username' => $username,
+		));
+		
+		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') &&  $this->getUser()->getId() == $user->getId()) {
+			$type = 'setting';
+			return $this->render('COMUserBundle:user:profile.html.twig', array(
+				'user' => $user,
+				'locale' => $locale,
+				'type' => $type,
+			));
+        }else{
+			$url = $this->get('router')->generate('com_user_profile', array('username' => $username));
+			return new RedirectResponse($url);
+		}
+		
     }
 
 	public function modifyAvatarAction()
@@ -180,14 +213,35 @@ class UserController extends Controller
 			$response = new Response();
 			
 			if ($formUserCommon->handleRequest($request)->isValid()) {
-				//name
-				$user->setName($userTemp->getName());
 				//username
 				$platformService = $this->container->get('com_platform.platform_service');
 				$username = $platformService->sluggify($userTemp->getUsername());
 				
+				$userService = $this->container->get('com_user.user_service');
 				/*vérification username à ajouter*/
+				$hasDoublon = $userService->checkHasDoublon($username, $user->getId());
+				if($hasDoublon){
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'Choisissez un autre username',
+					)));
+					return $response;
+				}
+				/*fin vérification username à ajouter*/
 				
+				/*vérification email à ajouter*/
+				$hasEmailDoublon = $userService->checkHasEmailDoublon($userTemp->getEmail(), $user->getId());
+				if($hasEmailDoublon){
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'Choisissez un autre adresse email',
+					)));
+					return $response;
+				}
+				/*fin vérification email à ajouter*/
+				
+				//name
+				$user->setName($userTemp->getName());
 				$user->setUsername($username);
 				$user->setLocation($userTemp->getLocation());
 				$user->setEmail($userTemp->getEmail());
