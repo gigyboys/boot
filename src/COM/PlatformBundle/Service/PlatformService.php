@@ -50,6 +50,16 @@ class PlatformService {
 		
 		return $view;
     }
+	
+    public function substrSpace($string, $length) {
+		if(strlen($string)>$length){
+			$string = substr($string, 0, $length);
+			$posLastSpace = strrpos($string, " ");
+			$string = substr($string, 0, $posLastSpace);
+			$string = $string."...";
+		}
+		return $string;
+    }
 	   
 	function sluggify($str) {
 

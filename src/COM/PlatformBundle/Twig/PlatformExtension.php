@@ -17,6 +17,7 @@ class PlatformExtension extends \Twig_Extension {
         return array(
             'getLocales' => new \Twig_Function_Method($this, 'getLocalesFunction'),
             'getLocale' => new \Twig_Function_Method($this, 'getLocaleFunction'),
+            'substrSpace' => new \Twig_Function_Method($this, 'substrSpaceFunction'),
         );
     }
 
@@ -26,6 +27,10 @@ class PlatformExtension extends \Twig_Extension {
 
     public function getLocalesFunction() {
         return $this->platformService->getLocales();
+    }
+
+    public function substrSpaceFunction($string, $length) {
+        return $this->platformService->substrSpace($string, $length);
     }
 
     public function getName() {

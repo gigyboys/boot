@@ -12,12 +12,7 @@
 			<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />
 		</div>
 		<div class="sl_short_description">
-			{% set stringlength =  school.shortDescription | length %}
-			{% if  stringlength > 180   %}
-				{{ school.shortDescription | striptags | raw | slice(0, 180) }} ...
-			{% else %}
-				{{ school.shortDescription | striptags | raw }}
-			{% endif %}
+			{{ substrSpace(school.shortDescription, 180) }}
 		</div>
 	</div>
 	<div class="sl_label">

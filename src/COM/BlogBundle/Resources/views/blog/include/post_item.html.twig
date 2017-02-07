@@ -6,8 +6,8 @@
 		<div class="post_ct_title">
 			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
 		</div>
-		<div class="post_ct_desc">
-			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.description }}</a>
+		<div class="post_ct_desc" style="margin:10px 0">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ substrSpace(post.description, 500) }}</a>
 		</div>
 		<div class="post_ct_info">
 			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }} : information</a>
