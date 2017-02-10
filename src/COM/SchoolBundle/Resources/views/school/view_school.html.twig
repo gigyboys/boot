@@ -9,7 +9,7 @@
 	<div id="sl_gl" class="cr">
 		<div class="ct">
 			<div style="margin:0 10px">
-				<div style="float:left">
+				<div style="float:left;">
 					 
 					{# twig extension #}
 					{% set logo=schoolLogo(school) %}
@@ -19,9 +19,9 @@
 						{% set pathtologo='default/images/school/logo/'~logo %}
 					{% endif %}
 					
-					<img style="width: 60px; height: 60px" src="{{ pathtologo | imagine_filter('60x60') }}" alt="img sl" />
+					<img style="width: 100px; height: 100px; border:5px solid #ccc; border-radius:10px" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
 				</div>
-				<div style="margin-left: 70px; min-height:70px">
+				<div style="margin-left: 136px; min-height:136px">
 					<div id="" style="color:#333; font-size:18px">
 						{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
 					</div>
