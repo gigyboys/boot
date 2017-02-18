@@ -28,19 +28,6 @@
 			
 			</div>
 			<div style="margin-left: 136px;">
-				<!--table>
-					<tr>
-						<td>Titre</td>
-						<td>:</td>
-						<td style="padding:5px"><input type="text" class="default_input" value="{{ post.defaultTitle }}" /></td>
-					</tr>
-					<tr>
-						<td>Url</td>
-						<td>:</td>
-						<td style="padding:5px"><input type="text" class="default_input" value="{{ post.slug }}" /></td>
-					</tr>
-					
-				</table-->
 				<div class="bloc_editable">
 					<div class="bloc_view">
 						<table>
@@ -82,39 +69,20 @@
 			<div style="clear:both"></div>
 		</div>
 		
+		{# twig extension #}
+		{% set locales = getLocales() %}
+		
 		<div id="a_content_tab">
+		
 			<div class="a_content_tab_header">
 				<div class="a_content_tab_header_content">
-					<div class="a_content_tab_header_item selected" id="tab_fr">
-						<div class="a_content_tab_header_item_text">
-							français
+					{% for locale in locales %}
+						<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+							<div class="a_content_tab_header_item_text">
+								{{ locale.label | trans }}
+							</div>
 						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_en">
-						<div class="a_content_tab_header_item_text">
-							anglais
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_mg">
-						<div class="a_content_tab_header_item_text">
-							malagasy
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_it">
-						<div class="a_content_tab_header_item_text">
-							italien
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_es">
-						<div class="a_content_tab_header_item_text">
-							espagnol
-						</div>
-					</div>
-					<div class="a_content_tab_header_item not_selected" id="tab_de">
-						<div class="a_content_tab_header_item_text">
-							allemand
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 				<div class="a_content_tab_header_sep">
 					<div class="a_content_tab_header_sep_slide">
@@ -122,6 +90,78 @@
 				</div>
 			</div>
 			<div class="a_content_tab_content">
+				{% for locale in locales %}
+					{# twig extension #}
+					{% set postTranslate = getPostTranslate(post, locale) %}
+					<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+						<div class="bloc_editable">
+							<div class="bloc_view">
+								<div>
+									<div style="margin: 5px 0;">
+										title {{ locale.locale }}:
+									</div>
+									<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+										{{ postTranslate.title }}
+									</div>
+								</div>
+								
+								<div style="">
+									<div style="margin: 5px 0;">
+										Description :
+									</div>
+									<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+										{{ postTranslate.description }}
+									</div>
+								</div>
+								
+								<div style="">
+									<div style="margin: 5px 0;">
+										Content :
+									</div>
+									<div id="" class="bgt_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+										{{ postTranslate.content | raw }}
+									</div>
+								</div>
+							</div>
+							<div class="bloc_edit" style="display:none">
+								<div>
+									<div style="margin: 5px 0;">
+										Title {{ locale.locale }}:
+									</div>
+									<div>
+										<input type="text" id="" class="bgt_input_title default_input" value="{{ postTranslate.title }}" />
+									</div>
+								</div>
+								<div style="">
+									<div style="margin: 5px 0;">
+										Description :
+									</div>
+									<div>
+										<textarea id="" class="bgt_input_description default_textarea">{{ postTranslate.description }}</textarea>
+									</div>
+								</div>
+								<div style="">
+									<div style="margin: 5px 0;">
+										Content :
+									</div>
+									<div>
+										<textarea id="" class="bgt_input_content default_textarea tinymce">{{ postTranslate.content | raw }}</textarea>
+									</div>
+								</div>
+							</div>
+							<div class="separator"></div>
+							<div class="bloc_action" style="margin:5px">
+								<span class="btn_edit standar_button">Modifier</span> 
+								<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': post.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+								<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+								<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			
+			<!--div class="a_content_tab_content">
 				<div class="a_content_tab_content_item selected" id="content_tab_fr">
 					<div>
 						<div style="margin: 5px 0;">
@@ -186,7 +226,7 @@
 						{{ postDE.content | raw }}
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>
 	{#
 	</div>

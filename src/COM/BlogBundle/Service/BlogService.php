@@ -29,5 +29,16 @@ class BlogService {
 		
 		return $post;
     }
+    
+    public function getPostTranslate($post, $locale) {
+        $postTranslateRepository = $this->em->getRepository('COMBlogBundle:PostTranslate');
+
+        $postTranslate = $postTranslateRepository->findOneBy(array(
+            'post' => $post,
+            'locale' => $locale,
+        ));
+        
+		return $postTranslate;
+    }
 
 }

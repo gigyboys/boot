@@ -2,3 +2,8 @@ services:
     com_blog.blog_service:
         class: COM\BlogBundle\Service\BlogService
         arguments: ["@doctrine.orm.entity_manager"]
+    com_blog.blog_extension:
+        class: COM\BlogBundle\Twig\BlogExtension
+        arguments: ["@com_blog.blog_service"]
+        tags:
+            - { name: twig.extension }
