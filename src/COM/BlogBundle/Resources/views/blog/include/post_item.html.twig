@@ -1,6 +1,14 @@
 <div class="post_item">
 	<div class="post_image">
-		image
+		{# twig extension #}
+		{% set illustration=postIllustration(post) %}
+		{% if illustration != "default.jpeg" %}
+			{% set path='uploads/images/post/illustration/'~illustration %}
+		{% else %}
+			{% set path='default/images/post/illustration/'~illustration %}
+		{% endif %}
+		
+		<img style="width: 160px; height: 160px" src="{{ path | imagine_filter('160x160') }}" alt="{{ post.title }}" />
 	</div>
 	<div class="post_ct">
 		<div class="post_ct_title">
