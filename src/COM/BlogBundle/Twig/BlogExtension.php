@@ -16,11 +16,16 @@ class BlogExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'getPostTranslate' => new \Twig_Function_Method($this, 'getPostTranslateFunction'),
+            'postIllustration' => new \Twig_Function_Method($this, 'postIllustrationFunction'),
         );
     }
 
     public function getPostTranslateFunction($post, $locale) {
         return $this->blogService->getPostTranslate($post, $locale);
+    }
+
+    public function postIllustrationFunction(Post $post) {
+        return $this->blogService->getIllustration($post);
     }
 
     public function getName() {

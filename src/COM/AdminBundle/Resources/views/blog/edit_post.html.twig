@@ -25,7 +25,18 @@
 		
 		<div style="padding:5px">
 			<div style="float:left; height: 122px;margin:5px">
-			
+				{# twig extension #}
+				{% set illustration=postIllustration(post) %}
+				{% if illustration != "default.jpeg" %}
+					{% set path='uploads/images/post/illustration/'~illustration %}
+				{% else %}
+					{% set path='default/images/post/illustration/'~illustration %}
+				{% endif %}
+				
+				<label for="illustrationfile">
+					<img id="post_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img post" />
+				</labe>
+				<input style="display:none" id="illustrationfile" name="file" class="ajax_post_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_blog_post_change_illustration', {'id': post.id}) }}" /> 
 			</div>
 			<div style="margin-left: 136px;">
 				<div class="bloc_editable">

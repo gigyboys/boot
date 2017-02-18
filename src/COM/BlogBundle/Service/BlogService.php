@@ -40,5 +40,21 @@ class BlogService {
         
 		return $postTranslate;
     }
+    
+    public function getIllustration(Post $post) {
+        $postIllustrationRepository = $this->em->getRepository('COMBlogBundle:PostIllustration');
+
+        $postIllustration = $postIllustrationRepository->findOneBy(array(
+            'post' => $post,
+            'current' => true,
+        ));
+
+        if($postIllustration){
+            return $postIllustration->getPath();
+        }
+        else{
+            return 'default.jpeg';
+        }
+    }
 
 }
