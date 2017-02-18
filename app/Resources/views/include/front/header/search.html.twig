@@ -9,26 +9,73 @@
 		<div id="search_bloc">
 			<form action="" name="form_search" method="post" id="form_search">
 				<div id="search_entity">
-					<div class="search_entity_item selected" data-entity="sl">
+					
+					{% set selectedSchool = "selected" %}
+					{% set selectedBlog = "" %}
+					{% set selectedAdvert = "" %}
+					
+					{% set displaySchool = "block" %}
+					{% set displayBlog = "none" %}
+					{% set displayAdvert = "none" %}
+					
+					{% set querySchool = "" %}
+					{% set queryBlog = "" %}
+					{% set queryAdvert = "" %}
+					
+					{% if entityView is defined %}
+						{% if entityView == "school" %}
+							{% set selectedSchool = "selected" %}
+							{% set selectedBlog = "" %}
+							{% set selectedAdvert = "" %}
+							{% set displaySchool = "block" %}
+							{% set displayBlog = "none" %}
+							{% set displayAdvert = "none" %}
+							{% if q is defined %}
+								{% set querySchool = q %}
+							{% endif %}
+						{% elseif entityView == "blog" %} 
+							{% set selectedSchool = "" %}
+							{% set selectedBlog = "selected" %}
+							{% set selectedAdvert = "" %}
+							{% set displaySchool = "none" %}
+							{% set displayBlog = "block" %}
+							{% set displayAdvert = "none" %}
+							{% if q is defined %}
+								{% set queryBlog = q %}
+							{% endif %}
+						{% elseif entityView == "advert" %} 
+							{% set selectedSchool = "" %}
+							{% set selectedBlog = "" %}
+							{% set selectedAdvert = "selected" %}
+							{% set displaySchool = "none" %}
+							{% set displayBlog = "none" %}
+							{% set displayAdvert = "block" %}
+							{% if q is defined %}
+								{% set queryAdvert = q %}
+							{% endif %}
+						{% endif %}
+					{% endif %}
+					
+					<div class="search_entity_item {{ selectedSchool }}" data-entity="sl">
 						School
 					</div>
-					<div class="search_entity_item" data-entity="bg">
+					<div class="search_entity_item {{ selectedBlog }}" data-entity="bg">
 						Actualités
 					</div>
-					<div class="search_entity_item" data-entity="at">
+					<div class="search_entity_item {{ selectedAdvert }}" data-entity="at">
 						Annonces
 					</div>
 					<div style="clear:both"></div>
 				</div>
 				<div id="search_critere">
-					<div class="search_entity_content" id="search_critere_sl">
-						<input type="text" id="q_sl" placeholder="Tapez ce que vous voulez recherchez.school" />
+					<div class="search_entity_content" id="search_critere_sl" style="display:{{ displaySchool }}">
+						<input type="text" id="q_sl" placeholder="Tapez ce que vous voulez recherchez.school" value="{{ querySchool }}" />
 					</div>
-					<div class="search_entity_content" id="search_critere_bg" style="display:none">
-						<input type="text" id="q_bg" placeholder="Tapez ce que vous voulez recherchez.post" />
+					<div class="search_entity_content" id="search_critere_bg" style="display:{{ displayBlog }}">
+						<input type="text" id="q_bg" placeholder="Tapez ce que vous voulez recherchez.post"  value="{{ queryBlog }}" />
 					</div>
-					<div class="search_entity_content" id="search_critere_at" style="display:none">
-						<input type="text" id="q_at" placeholder="Tapez ce que vous voulez recherchez.advert" />
+					<div class="search_entity_content" id="search_critere_at" style="display:{{ displayAdvert }}">
+						<input type="text" id="q_at" placeholder="Tapez ce que vous voulez recherchez.advert"  value="{{ queryAdvert }}" />
 					</div>
 				</div>
 				<div id="search_submit">

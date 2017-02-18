@@ -21,6 +21,7 @@ class AdvertController extends Controller
 		
         return $this->render('COMAdvertBundle:advert:index_advert.html.twig', array(
 			'adverts' => $adverts,
+			'entityView' => 'advert',
 		));
     }
 	
@@ -53,6 +54,7 @@ class AdvertController extends Controller
 			'advert' => $advert,
 			'locale' => $locale,
 			'advertTranslate' => $advertTranslate,
+			'entityView' => 'advert',
 		));
     }
 }

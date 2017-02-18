@@ -26,18 +26,22 @@ class SearchController extends Controller
 		$q = $request->query->get('q');
 		
 		$resultList = array();
+		$entityView = "";
 		switch ($entity){
 			case "school":
 				$schools = $schoolRepository->getSchoolSearch($q);
 				$resultList = $schools;
+				$entityView = "school";
 			break ;
 			case "post":
 				$posts = $postRepository->findAll();
 				$resultList = $posts;
+				$entityView = "blog";
 			break ;
 			case "advert":
 				$adverts = $advertRepository->findAll();
 				$resultList =  $adverts;
+				$entityView = "advert";
 			break ;
 		}
 		
@@ -45,7 +49,7 @@ class SearchController extends Controller
 			'entity' 		=> $entity,
 			'q' 			=> $q,
 			'resultList' 	=> $resultList,
-			'entityView'	=> $entity
+			'entityView'	=> $entityView
 		));
     }
 }
