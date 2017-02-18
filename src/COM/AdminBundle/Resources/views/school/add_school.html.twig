@@ -35,8 +35,28 @@
 		Add school
 	</div>
 	
-	<div class="a_datatable">
-		{{ form(formInitSchool) }}
+	<div style="padding:5px">
+	<div style="margin: 10px 0">
+		Lorem ipsum dolor et sit amet. Lorem ipsum dolor et sit amet. Lorem ipsum dolor et sit amet. 
+	</div>
+	<div class="">
+		<form name="" method="post">
+
+			<div>                
+				<div><label for="name" class="required">Name * : </label></div>
+				<div><input type="text" id="name" name="name" required="required"  class="default_input" /></div>
+			</div>
+			
+			<div>
+				<div><label for="shortName" class="required">Short name : </label></div>
+				<div><input type="text" id="shortName" name="shortName" required="required" class="default_input"  /></div>
+			</div>
+			
+			<div style="padding:10px 0">
+				<button type="submit" id="ajouter" name="ajouter" class="standar_button">{{ 'Ajouter' | trans }}</button>
+			</div>
+		</form>
+	</div>
 	</div>
 {% endblock %}
 
