@@ -106,8 +106,6 @@ $(function() {
 				console.log(errorThrown);
 			}
         });
-		
-		
     });
 	
 });

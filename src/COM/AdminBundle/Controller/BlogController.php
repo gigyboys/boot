@@ -13,6 +13,7 @@ use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Form\Type\PostCommonType;
+use COM\BlogBundle\Form\Type\PostTranslateType;
 
 class BlogController extends Controller
 {
@@ -100,6 +101,55 @@ class BlogController extends Controller
                 'state' => 1,
                 'defaultTitle' => $post->getDefaultTitle(),
                 'slug' => $post->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editPostTranslateAction($id, $locale, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$postTranslateRepository = $em->getRepository('COMBlogBundle:PostTranslate');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        
+        $post = $postRepository->find($id);
+        $localeObj = $localeRepository->findOneBy(array(
+			'locale' => $locale,
+		));
+        
+		$postTranslateTemp = new PostTranslate();
+		$formPostTranslate = $this->get('form.factory')->create(new PostTranslateType(), $postTranslateTemp);
+		
+        $response = new Response();
+		
+		if ($formPostTranslate->handleRequest($request)->isValid()) {
+			$postTranslate = $postTranslateRepository->findOneBy(array(
+				'post' => $post,
+				'locale' => $localeObj,
+			));
+			if(!$postTranslate){
+				$postTranslate = new PostTranslate();
+				$postTranslate->setLocale($localeObj);
+				$postTranslate->setPost($post);
+			}
+			$postTranslate->setTitle($postTranslateTemp->getTitle());
+			$postTranslate->setDescription($postTranslateTemp->getDescription());
+			$postTranslate->setContent($postTranslateTemp->getContent());
+            
+			$em->persist($postTranslate);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'title' => $postTranslate->getTitle(),
+                'description' => $postTranslate->getDescription(),
+                'content' => $postTranslate->getContent(),
             )));
 		}else{
             $response->setContent(json_encode(array(

@@ -44,9 +44,9 @@ $(function() {
         var target = $this.data('target');
 		console.log(target);
 		var data = {
-			name : bloc_editable.find(".slt_input_name").val(), 
-			shortDescription : bloc_editable.find(".slt_input_shortdescription").val(), 
-			description : bloc_editable.find(".slt_input_description").val()
+			title : bloc_editable.find(".bgt_input_title").val(), 
+			description : bloc_editable.find(".bgt_input_description").val(), 
+			content : bloc_editable.find(".bgt_input_content").val()
 		};
 		loadBlocEdit(bloc_editable);
         $.ajax({
@@ -57,9 +57,9 @@ $(function() {
             success: function(data){
                 console.log(data.state);
 				if(data.state){
-					bloc_editable.find(".slt_view_name").html(data.name);
-					bloc_editable.find(".slt_view_shortdescription").html(data.shortDescription);
-					bloc_editable.find(".slt_view_description").html(data.description);
+					bloc_editable.find(".bgt_view_title").html(data.title);
+					bloc_editable.find(".bgt_view_description").html(data.description);
+					bloc_editable.find(".bgt_view_content").html(data.content);
 					resetBlocEdit(bloc_editable);
 				}
 				else{
@@ -72,8 +72,6 @@ $(function() {
 				console.log(errorThrown);
 			}
         });
-		
-		
     });
 	
 });
