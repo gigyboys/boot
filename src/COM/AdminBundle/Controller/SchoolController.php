@@ -101,9 +101,7 @@ class SchoolController extends Controller
             }
 			
             $logo->setCurrentLogo(true);
-			
             $logo->setSchool($school);
-            $logo->setCurrentLogo(true);
 			
             $em->persist($logo);
             $em->flush();

@@ -12,8 +12,10 @@ use COM\PlatformBundle\Entity\PostSchool;
 use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
+use COM\BlogBundle\Entity\PostIllustration;
 use COM\BlogBundle\Form\Type\PostCommonType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
+use COM\BlogBundle\Form\Type\PostIllustrationType;
 
 class BlogController extends Controller
 {
@@ -72,6 +74,55 @@ class BlogController extends Controller
 			'postES' => $postES,
 			'postDE' => $postDE,
 		));
+    }
+
+	public function changeIllustrationAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+        $postIllustrationRepository = $em->getRepository('COMBlogBundle:PostIllustration');
+        
+        $postIllustration = new PostIllustration();
+        $post = $postRepository->find($id);
+        
+        $formPostIllustration = $this->get('form.factory')->create(new PostIllustrationType, $postIllustration);
+        $formPostIllustration->handleRequest($this->getRequest());
+
+        if ($formPostIllustration->isValid()) {
+            $postIllustrations = $postIllustrationRepository->findBy(array('post' => $post));
+            
+            foreach ($postIllustrations as $postIllustrationTemp) {
+                $postIllustrationTemp->setCurrent(false);
+            }
+			
+            $postIllustration->setCurrent(true);
+            $postIllustration->setPost($post);
+			
+            $em->persist($postIllustration);
+            $em->flush();
+			
+            $illustration116x116 = $this->renderView('COMAdminBundle:blog:include/illustration116x116.html.twig', array(
+			  'path' => $postIllustration->getWebPath()
+			));
+			
+			$response = new Response();
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'illustration116x116' => $illustration116x116,
+            )));
+            $response->headers->set('Content-Type', 'application/json');
+            
+            return $response;
+        }
+
+        $response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
     }
 	
     public function editPostCommonAction($id, Request $request)
