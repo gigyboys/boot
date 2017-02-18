@@ -1,9 +1,9 @@
 <div id="a_header_left">
-	<div style=" background:#aaa; width:50px; height: 50px;float:left; text-align:center; font-size:36px">
+	<div style=" background:#aaa; width:40px; height: 40px;float:left; text-align:center; font-size:30px">
 		BS
 	</div>
-	<div style="margin-left:50px;height: 50px;; text-align:center">
-		<span style="padding-top:14px; display:inline-block;">
+	<div style="margin-left:40px; height:40px; text-align:center">
+		<span style="padding-top:10px; display:inline-block;">
 			<a href="{{ path('com_admin_home') }}">
 				<span>BootSchoDa 1.0</span>
 			</a>
@@ -15,27 +15,136 @@
 	<div style="float:left; background:#789">
 		
 	</div>
-	<div style="float:right; padding-top: 8px">
-		<div class="dd" style="display:inline-block;">
-			<a href="#" class="dd_src standar_button" style="">
-				<span style="display:inline-block; height: 20px;">Français</span>
-			</a>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				Anglais<br />
-				Malagasy<br />
-				Italien<br />
-				Espagnole<br />
-				Allemand<br />
+	<div style="float:right; padding-top: 4px">
+			<div id="locale" style="display: block; float:left">
+				<div class="dd" style="display:inline-block;">
+					<a href="#" class="dd_src standar_button" style="">
+						<span style="display:inline-block; height: 20px;">Locale</span>
+					</a>
+					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
+						{# 
+						appel du fonction (twig.extension) getLocales pour avoir la liste des locales
+						#}
+						{% set locales = getLocales() %}
+						<table>
+							{% for locale in locales %}
+								{% set route = app.request.attributes.get('_route') %}
+								{% set params = app.request.attributes.get('_route_params')|merge({'_locale': locale.locale}) %}
+								<tr>
+										<td><span class="local_icon" style="display:block;height:20px; width:25px; background:#ccc"></span></td>
+										<td><span class="local_label"><a class="link" href="{{ path(route, params) }}">{{ locale.label | trans }}</a></span></td>
+										<td>
+											
+											{% if app.request.getLocale() == locale.locale %}
+												<span class="local_state" style="display:block; background:#4d4; width:12px; height:12px; border-radius:50%">
+												</span>
+											{% endif %}
+										</td>
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
 			</div>
-		</div> 
-		<div class="dd" style="display:inline-block;">
-			<a href="#" class="dd_src standar_button" style="">
-				<span style="display:inline-block; height: 20px;">Fortunat Andriamiarantsoa</span>
-			</a>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				<a class="link" href="test.html">Profil</a><br />
-				<a class="link" href="test.html">Deconnexion </a>
+			<div id="user" style="display: block; margin-right: 10px; float:left">
+				<div class="dd" style="display:block; margin:0px;">
+					
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					
+						{# 
+						appel du fonction (twig.extension) userAvatar pour avoir le path de l'avatar 
+						
+						{% set avatar=userAvatar(app.user) %}
+						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						#}
+						{% set avatar=userAvatar(app.user) %}
+						{% if avatar != "default.jpeg" %}
+							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						{% else %}
+							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+						{% endif %}
+						
+						<div class="dd_src" style="cursor:pointer">
+							<span style="display:block; border-radius:3px;border:1px solid #aaa;overflow:hidden">
+								<table style="border-collapse: collapse;border:0px solid #999; padding:0px; margin:0px">
+									<tr>
+										<td style="padding:0px">
+											<span class="" style="display:block; background:#ccc; height:30px">
+												<img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ app.user.username }}" />
+											</span>
+										</td>
+										<td style=" padding:0px" class="user_name">
+											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px">
+												<span>{{ app.user.name }}</span>
+											</span>
+										</td>
+									</tr>
+								</table>
+							</span>
+						</div>
+					{% else %}
+					<div class="dd_src" style="cursor:pointer">
+						<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px;border-radius:3px;border:1px solid #aaa;overflow:hidden">
+							Mon compte
+						</span>
+					</div>
+					{% endif %}					
+						
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+								<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff">
+									<div>
+										<div style="float:left;width:70px;height:70px">
+											<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
+										</div>
+										<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0">
+											<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+												{{ app.user.username }}<br />
+												{{ app.user.name }}<br />
+												{{ app.user.email }}<br />
+											</a>
+										</div>
+										<div style="clear:both"></div>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
+											<span>{{ 'paramètres' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'participations' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'abonnements' | trans }}</span>
+										</a>
+									</div>
+									<div style="border-top:1px solid #ddd; text-align:center;">
+										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+											<span>{{ 'deconnexion' | trans }}</span>
+										</a>
+									</div>
+								</div>
+							{% else %}
+								<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+									<ul>
+										<li>
+											<a class="link" href="{{ path('com_user_login') }}">
+												<span>{{ 'Connexion' | trans }}</span>
+											</a>
+										</li>
+										<li>
+											<a class="link" href="{{ path('com_user_register') }}">
+												<span>{{ 'Inscription' | trans }}</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							{% endif %}
+						
+				</div>
 			</div>
-		</div> 
+			<div style="clear:both"></div>
 	</div> 
 </div>
