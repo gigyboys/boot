@@ -35,6 +35,9 @@ com_admin_blog_post:
 com_admin_blog_post_edit:
     path:     /blog/edit-post/{id}
     defaults: { _controller: COMAdminBundle:Blog:editPost }
+com_admin_blog_post_edit_common:
+    path:     /blog/edit-common/{id}
+    defaults: { _controller: COMAdminBundle:Blog:editPostCommon }
 
 #newsletter
 com_admin_newsletter:

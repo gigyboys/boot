@@ -4,12 +4,15 @@ namespace COM\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse; 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use COM\PlatformBundle\Entity\Locale;
 use COM\PlatformBundle\Entity\PostSchool;
 use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
+use COM\BlogBundle\Form\Type\PostCommonType;
 
 class BlogController extends Controller
 {
@@ -68,5 +71,42 @@ class BlogController extends Controller
 			'postES' => $postES,
 			'postDE' => $postDE,
 		));
+    }
+	
+    public function editPostCommonAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+        
+        $post = $postRepository->find($id);
+        
+		$postTemp = new Post();
+		$formPostCommon = $this->get('form.factory')->create(new PostCommonType(), $postTemp);
+		
+        $response = new Response();
+		
+		if ($formPostCommon->handleRequest($request)->isValid()) {
+			$post->setDefaultTitle($postTemp->getDefaultTitle());
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($postTemp->getSlug());
+			
+			$post->setSlug($slug);
+            
+			$em->persist($post);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'defaultTitle' => $post->getDefaultTitle(),
+                'slug' => $post->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 }

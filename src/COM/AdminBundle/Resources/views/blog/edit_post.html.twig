@@ -24,35 +24,62 @@
 		</div>
 		
 		<div style="padding:5px">
-			<table>
-				<tr>
-					<td>Titre</td>
-					<td>:</td>
-					<td style="padding:5px"><input type="text" class="default_input" value="{{ post.defaultTitle }}" /></td>
-				</tr>
-				<tr>
-					<td>Url</td>
-					<td>:</td>
-					<td style="padding:5px"><input type="text" class="default_input" value="{{ post.slug }}" /></td>
-				</tr>
-				<!--
-				<tr>
-					<td>Auteur</td>
-					<td>:</td>
-					<td style="padding:5px">{{ post.user.name }}</td>
-				</tr>
-				<tr>
-					<td>Date d'ajout</td>
-					<td>:</td>
-					<td style="padding:5px">{{ post.date | date('Y-m-d H:i:s') }}</td>
-				</tr>
-				<tr>
-					<td>Nombre de vues</td>
-					<td>:</td>
-					<td style="padding:5px">{{ post.viewNumber }}</td>
-				</tr>
-				-->
-			</table>
+			<div style="float:left; height: 122px;margin:5px">
+			
+			</div>
+			<div style="margin-left: 136px;">
+				<!--table>
+					<tr>
+						<td>Titre</td>
+						<td>:</td>
+						<td style="padding:5px"><input type="text" class="default_input" value="{{ post.defaultTitle }}" /></td>
+					</tr>
+					<tr>
+						<td>Url</td>
+						<td>:</td>
+						<td style="padding:5px"><input type="text" class="default_input" value="{{ post.slug }}" /></td>
+					</tr>
+					
+				</table-->
+				<div class="bloc_editable">
+					<div class="bloc_view">
+						<table>
+							<tr>
+								<td>Default Title</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_defaulttitle">{{ post.defaultTitle }}</span></td>
+							</tr>
+							<tr>
+								<td>Slug</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_slug">{{ post.slug }}</span></td>
+							</tr>
+						</table>
+					</div>
+					<div class="bloc_edit" style="display:none">
+						<table>
+							<tr>
+								<td>Default Title</td>
+								<td>:</td>
+								<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ post.defaultTitle }}" /></td>
+							</tr>
+							<tr>
+								<td>Slug</td>
+								<td>:</td>
+								<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ post.slug }}" /></td>
+							</tr>
+						</table>
+					</div>
+					<div class="separator"></div>
+					<div class="bloc_action" style="margin:5px">
+						<span class="btn_edit standar_button">Modifier</span> 
+						<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': post.id}) }}" style="display:none">Enregistrer</span>
+						<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+						<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+					</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
 		</div>
 		
 		<div id="a_content_tab">
