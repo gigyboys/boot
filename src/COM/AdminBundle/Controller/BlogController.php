@@ -46,33 +46,9 @@ class BlogController extends Controller
 		$post = $postRepository->find($id);
 		$postSchools = $postSchoolRepository->findBy(array('post' => $post));
 		
-		$localeFR =  $localeRepository->findOneBy(array('locale' => 'fr'));
-		$postFR = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeFR));
-		
-		$localeEN =  $localeRepository->findOneBy(array('locale' => 'en'));
-		$postEN = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeEN));
-		
-		$localeMG =  $localeRepository->findOneBy(array('locale' => 'mg'));
-		$postMG = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeMG));
-		
-		$localeIT =  $localeRepository->findOneBy(array('locale' => 'it'));
-		$postIT = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeIT));
-		
-		$localeES =  $localeRepository->findOneBy(array('locale' => 'es'));
-		$postES = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeES));
-		
-		$localeES =  $localeRepository->findOneBy(array('locale' => 'de'));
-		$postDE = $postTranslateRepository->findOneBy(array('post' => $post, 'locale' => $localeES));
-		
         return $this->render('COMAdminBundle:blog:edit_post.html.twig', array(
 			'post' => $post,
 			'postSchools' => $postSchools,
-			'postFR' => $postFR,
-			'postEN' => $postEN,
-			'postMG' => $postMG,
-			'postIT' => $postIT,
-			'postES' => $postES,
-			'postDE' => $postDE,
 		));
     }
 
