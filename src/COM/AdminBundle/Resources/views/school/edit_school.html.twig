@@ -26,18 +26,20 @@
 		<span>Edit school </span> 
 	</div>
 	<div style="padding:8px; float:right">
-	
-		<span class="dd" style="display:inline-block;">
-			<span href="#" class="dd_src" style="cursor:pointer">
-				Autres actions
-			</span>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				<a class="link" href="{{ path('com_admin_school_administrator', {'school_id': school.id}) }}">Admin</a><br />
-				<a class="link" href="">relations</a>
-				<a class="link" href="">evaluationsjlk(100)</a>
-				<a class="link" href="">abonnements</a>
-			</div>
-		</span> 
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" href="{{ path('com_admin_school_administrator', {'school_id': school.id}) }}">Admin</a><br />
+						<a class="link" href="">evaluations</a><br />
+						<a class="link" href="">abonnements</a>
+					</div>
+				</div>
+			</span> 
+		</div>
 	</div>
 {% endblock %}
 
