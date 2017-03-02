@@ -165,15 +165,22 @@
 										</a>
 									</div>
 									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+										<a class="link" href="" style="display:block;padding:5px 0">
 											<span>{{ 'participations' | trans }}</span>
 										</a>
 									</div>
 									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
+										<a class="link" href="" style="display:block;padding:5px 0">
 											<span>{{ 'abonnements' | trans }}</span>
 										</a>
 									</div>
+									{% if is_granted('ROLE_ADMIN') %}
+										<div style="border-top:1px solid #ddd; text-align:center;">
+											<a class="link" href="{{ path('com_admin_home') }}" style="display:block;padding:5px 0">
+												<span>{{ 'panneau d\'administration' | trans }}</span>
+											</a>
+										</div>
+									{% endif %}
 									<div style="border-top:1px solid #ddd; text-align:center;">
 										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
 											<span>{{ 'deconnexion' | trans }}</span>
