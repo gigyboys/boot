@@ -25,4 +25,17 @@ class AdvertController extends Controller
 		
         return $this->render('COMAdminBundle:advert:advert.html.twig', array('adverts' => $adverts));
     }
+	
+    public function editAdvertAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+
+		$advert = $advertRepository->find($id);
+		
+        return $this->render('COMAdminBundle:advert:edit_advert.html.twig', array(
+			'advert' => $advert,
+		));
+    }
 }

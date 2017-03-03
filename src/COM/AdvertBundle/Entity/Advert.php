@@ -75,6 +75,8 @@ class Advert
 	
 	private $title;
 	
+	private $content;
+	
     /**
      * Constructor
      */
@@ -296,5 +298,30 @@ class Advert
     public function getViews()
     {
         return $this->views;
+    }
+	
+	
+	//title
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+    public function getTitle()
+    {
+        return $this->title;
+    }
+	
+	//content
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+    public function getContent()
+    {
+        return $this->content;
     }
 }

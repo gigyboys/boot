@@ -1,4 +1,9 @@
 services:
-#    com_advert.example:
-#        class: COM\AdvertBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    com_advert.advert_service:
+        class: COM\AdvertBundle\Service\AdvertService
+        arguments: ["@doctrine.orm.entity_manager"]
+    com_advert.advert_extension:
+        class: COM\AdvertBundle\Twig\AdvertExtension
+        arguments: ["@com_advert.advert_service"]
+        tags:
+            - { name: twig.extension }
