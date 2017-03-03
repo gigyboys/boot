@@ -31,10 +31,10 @@
 				{% set path='default/images/advert/illustration/'~illustration %}
 			{% endif %}
 			
-			<label for="illustrationfile">
+			<label for="advertillustrationfile">
 				<img id="advert_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img advert" />
 			</labe>
-			<input style="display:none" id="illustrationfile" name="file" class="ajax_advert_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_blog_post_change_illustration', {'id': advert.id}) }}" /> 
+			<input style="display:none" id="advertillustrationfile" name="file" class="ajax_advert_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_advert_change_illustration', {'id': advert.id}) }}" /> 
 		</div>
 		<div style="margin-left: 136px;">
 			<div class="bloc_editable">
@@ -43,12 +43,12 @@
 						<tr>
 							<td>Default Title</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="bg_view_defaulttitle">{{ advert.defaultTitle }}</span></td>
+							<td style="padding:5px"><span id="at_view_defaulttitle">{{ advert.defaultTitle }}</span></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="bg_view_slug">{{ advert.slug }}</span></td>
+							<td style="padding:5px"><span id="at_view_slug">{{ advert.slug }}</span></td>
 						</tr>
 					</table>
 				</div>
@@ -57,19 +57,19 @@
 						<tr>
 							<td>Default Title</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ advert.defaultTitle }}" /></td>
+							<td style="padding:5px"><input type="text" id="at_input_defaulttitle" class="default_input" value="{{ advert.defaultTitle }}" /></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ advert.slug }}" /></td>
+							<td style="padding:5px"><input type="text" id="at_input_slug" class="default_input" value="{{ advert.slug }}" /></td>
 						</tr>
 					</table>
 				</div>
 				<div class="separator"></div>
 				<div class="bloc_action" style="margin:5px">
 					<span class="btn_edit standar_button">Modifier</span> 
-					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': advert.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_save standar_button" id="btn_save_at_common" data-target="{{ path('com_admin_advert_edit_common', {'id': advert.id}) }}" style="display:none">Enregistrer</span>
 					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 				</div>
@@ -109,7 +109,7 @@
 								<div style="margin: 5px 0;">
 									title {{ locale.locale }}:
 								</div>
-								<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+								<div id="" class="att_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
 									{{ advertTranslate.title }}
 								</div>
 							</div>
@@ -118,7 +118,7 @@
 								<div style="margin: 5px 0;">
 									Content :
 								</div>
-								<div id="" class="bgt_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+								<div id="" class="att_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
 									{{ advertTranslate.content | raw }}
 								</div>
 							</div>
@@ -129,7 +129,7 @@
 									Title {{ locale.locale }}:
 								</div>
 								<div>
-									<input type="text" id="" class="bgt_input_title default_input" value="{{ advertTranslate.title }}" />
+									<input type="text" id="" class="att_input_title default_input" value="{{ advertTranslate.title }}" />
 								</div>
 							</div>
 							<div style="">
@@ -137,14 +137,14 @@
 									Content :
 								</div>
 								<div>
-									<textarea id="" class="bgt_input_content default_textarea tinymce">{{ advertTranslate.content | raw }}</textarea>
+									<textarea id="" class="att_input_content default_textarea tinymce">{{ advertTranslate.content | raw }}</textarea>
 								</div>
 							</div>
 						</div>
 						<div class="separator"></div>
 						<div class="bloc_action" style="margin:5px">
 							<span class="btn_edit standar_button">Modifier</span> 
-							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': advert.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_save_at_trans btn_save standar_button" id="" data-target="{{ path('com_admin_advert_edit_translate', {'id': advert.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
 							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 						</div>

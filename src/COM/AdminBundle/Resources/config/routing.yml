@@ -52,6 +52,15 @@ com_admin_advert:
 com_admin_advert_edit:
     path:     /advert/edit-advert/{id}
     defaults: { _controller: COMAdminBundle:Advert:editAdvert }
+com_admin_advert_change_illustration:
+    path:     /advert/change-illustration/{id}
+    defaults: { _controller: COMAdminBundle:Advert:changeIllustration }
+com_admin_advert_edit_common:
+    path:     /advert/edit-common/{id}
+    defaults: { _controller: COMAdminBundle:Advert:editAdvertCommon }
+com_admin_advert_edit_translate:
+    path:     /advert/edit-translate/{id}/{locale}
+    defaults: { _controller: COMAdminBundle:Advert:editAdvertTranslate }
 
 #newsletter
 com_admin_newsletter:
