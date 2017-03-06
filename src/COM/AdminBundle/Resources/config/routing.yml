@@ -32,6 +32,9 @@ com_admin_blog:
 com_admin_blog_post:
     path:     /blog/post
     defaults: { _controller: COMAdminBundle:Blog:post }
+com_admin_blog_post_add:
+    path:     /blog/post/add
+    defaults: { _controller: COMAdminBundle:Blog:addPost }
 com_admin_blog_post_edit:
     path:     /blog/edit-post/{id}
     defaults: { _controller: COMAdminBundle:Blog:editPost }

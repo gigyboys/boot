@@ -1,7 +1,7 @@
 {% extends "COMAdminBundle::admin.html.twig" %}
 
 {% block title %}
-  Add school
+  Add post
 {% endblock %}
 
 {% block body_header %}
@@ -23,16 +23,16 @@
 				<a class="link" href="test.html">menu 2 </a>
 			</div>
 		</span> 
-		<span>Add school </span>
+		<span>Add post </span>
 	</div>
 	<div style="padding:8px;float:right">
-		<span><a href="{{ path('com_admin_school_add') }}">New school</a></td></span> 
+		<span><a href="{{ path('com_admin_blog_post_add') }}">New post</a></td></span> 
 	</div>
 {% endblock %}
 
 {% block content_body %}
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Add school
+		Add post
 	</div>
 	
 	<div style="padding:5px">
@@ -43,13 +43,8 @@
 		<form name="" method="post">
 
 			<div>                
-				<div><label for="name" class="required">Name * : </label></div>
-				<div><input type="text" id="name" name="name" required="required"  class="default_input" /></div>
-			</div>
-			
-			<div>
-				<div><label for="shortName" class="required">Short name : </label></div>
-				<div><input type="text" id="shortName" name="shortName" required="required" class="default_input"  /></div>
+				<div><label for="defaultTitle" class="required">defaultTitle * : </label></div>
+				<div><input type="text" id="defaultTitle" name="defaultTitle" required="required"  class="default_input" /></div>
 			</div>
 			
 			<div style="padding:10px 0">

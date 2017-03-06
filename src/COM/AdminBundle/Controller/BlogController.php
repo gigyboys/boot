@@ -14,6 +14,7 @@ use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\PostIllustration;
 use COM\BlogBundle\Form\Type\PostCommonType;
+use COM\BlogBundle\Form\Type\PostInitType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
 use COM\BlogBundle\Form\Type\PostIllustrationType;
 
@@ -33,6 +34,46 @@ class BlogController extends Controller
 		$posts = $postRepository->findAll();
 		
         return $this->render('COMAdminBundle:blog:post.html.twig', array('posts' => $posts));
+    }
+	
+    public function addPostAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$post = new Post();
+		$formInitPost = $this->get('form.factory')->create(new PostInitType(), $post);
+		
+		if ($formInitPost->handleRequest($request)->isValid()) {
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($post->getDefaultTitle());
+			$post->setSlug($slug);
+			$post->setDate(new \DateTime());
+			$post->setViewNumber(0);
+			$user = $this->getUser();
+			$post->setUser($user);
+			
+			$locales = $localeRepository->findAll();
+			foreach($locales as $locale){
+				$postTranslate = new PostTranslate();
+				$postTranslate->setPost($post);
+				$postTranslate->setLocale($locale);
+				$postTranslate->setTitle($locale->getLocale()." ".$post->getDefaultTitle());
+				$postTranslate->setDescription($locale->getLocale().". Description .".$post->getDefaultTitle());
+				$postTranslate->setContent($locale->getLocale().". Content .".$post->getDefaultTitle());
+				$em->persist($postTranslate);
+			}
+			
+			$em->persist($post);
+			$em->flush();
+			
+			$url = $this->get('router')->generate('com_admin_blog_post_edit', array('id' => $post->getId()));
+			return new RedirectResponse($url);
+		}
+		
+        return $this->render('COMAdminBundle:blog:add_post.html.twig', array(
+			'formInitPost' => $formInitPost->createView(),
+		));
     }
 	
     public function editPostAction($id)
