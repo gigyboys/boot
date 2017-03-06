@@ -15,6 +15,7 @@ use COM\AdvertBundle\Form\Type\AdvertCommonType;
 use COM\AdvertBundle\Entity\AdvertIllustration;
 use COM\AdvertBundle\Form\Type\AdvertIllustrationType;
 use COM\AdvertBundle\Form\Type\AdvertTranslateType;
+use COM\AdvertBundle\Form\Type\AdvertInitType;
 
 class AdvertController extends Controller
 {
@@ -27,6 +28,45 @@ class AdvertController extends Controller
 		$adverts = $advertRepository->findAll();
 		
         return $this->render('COMAdminBundle:advert:advert.html.twig', array('adverts' => $adverts));
+    }
+	
+    public function addAdvertAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$advert = new Advert();
+		$formAdvertPost = $this->get('form.factory')->create(new AdvertInitType(), $advert);
+		
+		if ($formAdvertPost->handleRequest($request)->isValid()) {
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($advert->getDefaultTitle());
+			$advert->setSlug($slug);
+			$advert->setDate(new \DateTime());
+			$advert->setViewNumber(0);
+			$user = $this->getUser();
+			$advert->setUser($user);
+			
+			$locales = $localeRepository->findAll();
+			foreach($locales as $locale){
+				$advertTranslate = new AdvertTranslate();
+				$advertTranslate->setAdvert($advert);
+				$advertTranslate->setLocale($locale);
+				$advertTranslate->setTitle($locale->getLocale()." ".$advert->getDefaultTitle());
+				$advertTranslate->setContent($locale->getLocale().". Content .".$advert->getDefaultTitle());
+				$em->persist($advertTranslate);
+			}
+			
+			$em->persist($advert);
+			$em->flush();
+			
+			$url = $this->get('router')->generate('com_admin_advert_edit', array('id' => $advert->getId()));
+			return new RedirectResponse($url);
+		}
+		
+        return $this->render('COMAdminBundle:advert:add_advert.html.twig', array(
+			'formAdvertPost' => $formAdvertPost->createView(),
+		));
     }
 	
     public function editAdvertAction($id)

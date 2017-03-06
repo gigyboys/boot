@@ -54,6 +54,7 @@ class BlogService {
         }
         else{
             return 'default.jpeg';
+            //return 'default.png';
         }
     }
 

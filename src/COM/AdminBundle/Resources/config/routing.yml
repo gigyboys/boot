@@ -52,6 +52,9 @@ com_admin_blog_post_edit_translate:
 com_admin_advert:
     path:     /advert
     defaults: { _controller: COMAdminBundle:Advert:index }
+com_admin_advert_add:
+    path:     /advert/add
+    defaults: { _controller: COMAdminBundle:Advert:addAdvert }
 com_admin_advert_edit:
     path:     /advert/edit-advert/{id}
     defaults: { _controller: COMAdminBundle:Advert:editAdvert }

@@ -1,0 +1,60 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Add advert
+{% endblock %}
+
+{% block body_header %}
+	<div style="padding:8px;float:left">
+		<span>Advert </span> 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Add advert </span>
+	</div>
+	<div style="padding:8px;float:right">
+		<span><a href="{{ path('com_admin_advert_add') }}">New advert</a></td></span> 
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Add advert
+	</div>
+	
+	<div style="padding:5px">
+	<div style="margin: 10px 0">
+		Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum. 
+	</div>
+	<div class="">
+		<form name="" method="post">
+
+			<div>                
+				<div><label for="defaultTitle" class="required">defaultTitle * : </label></div>
+				<div><input type="text" id="defaultTitle" name="defaultTitle" required="required"  class="default_input" /></div>
+			</div>
+			
+			<div style="padding:10px 0">
+				<button type="submit" id="ajouter" name="ajouter" class="standar_button">{{ 'Ajouter' | trans }}</button>
+			</div>
+		</form>
+	</div>
+	<div style="margin: 10px 0">
+		Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum. 
+	</div>
+	</div>
+{% endblock %}
+
