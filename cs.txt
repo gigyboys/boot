@@ -31,7 +31,7 @@ php app/console doctrine:generate:entities MyBundle:MyEntity
 
 php app/console doctrine:generate:entities COMUserBundle:User
 
-php app/console doctrine:generate:entities COMBlogBundle:Category
+php app/console doctrine:generate:entities COMBlogBundle:PostCategoryTranslate
 
 php app/console doctrine:generate:entities COMAdvertBundle:Advert
 

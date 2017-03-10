@@ -50,6 +50,12 @@ com_admin_blog_post_edit_translate:
 com_admin_blog_category:
     path:     /blog/category
     defaults: { _controller: COMAdminBundle:Blog:category }
+com_admin_blog_category_add:
+    path:     /blog/category/add
+    defaults: { _controller: COMAdminBundle:Blog:addCategory }
+com_admin_blog_category_edit:
+    path:     /blog/edit-category/{id}
+    defaults: { _controller: COMAdminBundle:Blog:editCategory }
 
 #advert
 com_admin_advert:

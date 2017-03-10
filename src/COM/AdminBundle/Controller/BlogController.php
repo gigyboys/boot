@@ -11,10 +11,13 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\PlatformBundle\Entity\PostSchool;
 use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
+use COM\BlogBundle\Entity\PostCategory;
 use COM\BlogBundle\Entity\PostTranslate;
+use COM\BlogBundle\Entity\PostCategoryTranslate;
 use COM\BlogBundle\Entity\PostIllustration;
 use COM\BlogBundle\Form\Type\PostCommonType;
 use COM\BlogBundle\Form\Type\PostInitType;
+use COM\BlogBundle\Form\Type\PostCategoryInitType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
 use COM\BlogBundle\Form\Type\PostIllustrationType;
 
@@ -236,5 +239,53 @@ class BlogController extends Controller
 		$postCategories = $postCategoryRepository->findAll();
 		
         return $this->render('COMAdminBundle:blog:category.html.twig', array('postCategories' => $postCategories));
+    }
+	
+    public function addCategoryAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$postCategory = new PostCategory();
+		$formInitPostCategory = $this->get('form.factory')->create(new PostCategoryInitType(), $postCategory);
+		
+		if ($formInitPostCategory->handleRequest($request)->isValid()) {
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($postCategory->getDefaultName());
+			$postCategory->setSlug($slug);
+			
+			$locales = $localeRepository->findAll();
+			foreach($locales as $locale){
+				$postCategoryTranslate = new PostCategoryTranslate();
+				$postCategoryTranslate->setPostCategory($postCategory);
+				$postCategoryTranslate->setLocale($locale);
+				$postCategoryTranslate->setName($locale->getLocale()." ".$postCategory->getDefaultName());
+				$postCategoryTranslate->setDescription($locale->getLocale().". Description .".$postCategory->getDefaultName());
+				$em->persist($postCategoryTranslate);
+			}
+			
+			$em->persist($postCategory);
+			$em->flush();
+			
+			$url = $this->get('router')->generate('com_admin_blog_category_edit', array('id' => $postCategory->getId()));
+			return new RedirectResponse($url);
+		}
+		
+        return $this->render('COMAdminBundle:blog:add_category.html.twig', array(
+			'formInitPostCategory' => $formInitPostCategory->createView(),
+		));
+    }
+	
+    public function editCategoryAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+
+		$postCategory = $postCategoryRepository->find($id);
+		
+        return $this->render('COMAdminBundle:blog:edit_category.html.twig', array(
+			'postCategory' => $postCategory,
+		));
     }
 }

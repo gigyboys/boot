@@ -127,27 +127,4 @@ class PostCategoryTranslate
     {
         return $this->postCategory;
     }
-
-    /**
-     * Set locale
-     *
-     * @param \COM\PlatformBundle\Entity\Locale $locale
-     * @return PostCategoryTranslate
-     */
-    public function setLocale(\COM\PlatformBundle\Entity\Locale $locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return \COM\PlatformBundle\Entity\Locale 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
-    }
 }

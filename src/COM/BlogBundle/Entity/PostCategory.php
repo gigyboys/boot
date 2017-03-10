@@ -22,6 +22,11 @@ class PostCategory
     private $id;
 
 	/**
+	 * @ORM\OneToMany(targetEntity="COM\BlogBundle\Entity\PostCategoryTranslate", mappedBy="postCategory")
+	 */
+	private $postCategoryTranslates;
+
+	/**
 	 * @ORM\OneToMany(targetEntity="COM\BlogBundle\Entity\Post", mappedBy="postCategory")
 	 */
 	private $posts;
@@ -141,5 +146,38 @@ class PostCategory
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * Add postCategoryTranslate
+     *
+     * @param \COM\BlogBundle\Entity\PostCategoryTranslate $postCategoryTranslate
+     * @return PostCategory
+     */
+    public function addPostCategoryTranslate(\COM\BlogBundle\Entity\PostCategoryTranslate $postCategoryTranslate)
+    {
+        $this->postCategoryTranslates[] = $postCategoryTranslate;
+
+        return $this;
+    }
+
+    /**
+     * Remove postCategoryTranslate
+     *
+     * @param \COM\BlogBundle\Entity\PostCategoryTranslate $postCategoryTranslate
+     */
+    public function removePostCategoryTranslate(\COM\BlogBundle\Entity\PostCategoryTranslate $postCategoryTranslate)
+    {
+        $this->postCategoryTranslates->removeElement($postCategoryTranslate);
+    }
+
+    /**
+     * Get postCategoryTranslates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPostCategoryTranslates()
+    {
+        return $this->postCategoryTranslates;
     }
 }
