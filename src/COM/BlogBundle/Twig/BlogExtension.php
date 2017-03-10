@@ -4,6 +4,7 @@ namespace COM\BlogBundle\Twig;
 
 use COM\BlogBundle\Service\BlogService;
 use COM\BlogBundle\Entity\Post;
+use COM\BlogBundle\Entity\PostCategory;
 
 class BlogExtension extends \Twig_Extension {
 
@@ -17,6 +18,7 @@ class BlogExtension extends \Twig_Extension {
         return array(
             'getPostTranslate' => new \Twig_Function_Method($this, 'getPostTranslateFunction'),
             'postIllustration' => new \Twig_Function_Method($this, 'postIllustrationFunction'),
+            'getPostCategoryTranslate' => new \Twig_Function_Method($this, 'getPostCategoryTranslateFunction'),
         );
     }
 
@@ -26,6 +28,10 @@ class BlogExtension extends \Twig_Extension {
 
     public function postIllustrationFunction(Post $post) {
         return $this->blogService->getIllustration($post);
+    }
+
+    public function getPostCategoryTranslateFunction(PostCategory $postCategory, $locale) {
+        return $this->blogService->getPostCategoryTranslate($postCategory, $locale);
     }
 
     public function getName() {

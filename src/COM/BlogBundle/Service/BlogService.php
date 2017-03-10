@@ -5,6 +5,8 @@ namespace COM\BlogBundle\Service;
 use Doctrine\ORM\EntityManager;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
+use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\PostCategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
 
 class BlogService {
@@ -30,7 +32,7 @@ class BlogService {
 		return $post;
     }
     
-    public function getPostTranslate($post, $locale) {
+    public function getPostTranslate(Post $post, $locale) {
         $postTranslateRepository = $this->em->getRepository('COMBlogBundle:PostTranslate');
 
         $postTranslate = $postTranslateRepository->findOneBy(array(
@@ -56,6 +58,17 @@ class BlogService {
             return 'default.jpeg';
             //return 'default.png';
         }
+    }
+    
+    public function getPostCategoryTranslate(PostCategory $postCategory, $locale) {
+        $postCategoryTranslateRepository = $this->em->getRepository('COMBlogBundle:PostCategoryTranslate');
+
+        $postCategoryTranslate = $postCategoryTranslateRepository->findOneBy(array(
+            'postCategory' => $postCategory,
+            'locale' => $locale,
+        ));
+        
+		return $postCategoryTranslate;
     }
 
 }

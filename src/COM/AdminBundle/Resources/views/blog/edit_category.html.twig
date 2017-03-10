@@ -1,0 +1,131 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Edit category {{ postCategory.id }}
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		 Edit category {{ postCategory.id }}
+	</div>
+	
+	<div style="padding:5px">
+		<div style="">
+			<div class="bloc_editable">
+				<div class="bloc_view">
+					<table>
+						<tr>
+							<td>Default Name</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="bg_view_defaulttitle">{{ postCategory.defaultName }}</span></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="bg_view_slug">{{ postCategory.slug }}</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="bloc_edit" style="display:none">
+					<table>
+						<tr>
+							<td>Default Name</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ postCategory.defaultName }}" /></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ postCategory.slug }}" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="separator"></div>
+				<div class="bloc_action" style="margin:5px">
+					<span class="btn_edit standar_button">Modifier</span> 
+					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': postCategory.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+				</div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	
+	{# twig extension #}
+	{% set locales = getLocales() %}
+	
+	<div id="a_content_tab">
+	
+		<div class="a_content_tab_header">
+			<div class="a_content_tab_header_content">
+				{% for locale in locales %}
+					<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+						<div class="a_content_tab_header_item_text">
+							{{ locale.label | trans }}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="a_content_tab_header_sep">
+				<div class="a_content_tab_header_sep_slide">
+				</div>
+			</div>
+		</div>
+		<div class="a_content_tab_content">
+			{% for locale in locales %}
+				{# twig extension #}
+				{% set postCategoryTranslate = getPostCategoryTranslate(postCategory, locale) %}
+				<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+					<div class="bloc_editable">
+						<div class="bloc_view">
+							<div>
+								<div style="margin: 5px 0;">
+									name {{ locale.locale }}:
+								</div>
+								<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ postCategoryTranslate.name }}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ postCategoryTranslate.description }}
+								</div>
+							</div>
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<div>
+								<div style="margin: 5px 0;">
+									name {{ locale.locale }}:
+								</div>
+								<div>
+									<input type="text" id="" class="bgt_input_title default_input" value="{{ postCategoryTranslate.name }}" />
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div>
+									<textarea id="" class="bgt_input_description default_textarea">{{ postCategoryTranslate.description }}</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="separator"></div>
+						<div class="bloc_action" style="margin:5px">
+							<span class="btn_edit standar_button">Modifier</span> 
+							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': postCategory.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+

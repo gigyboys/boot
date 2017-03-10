@@ -54,11 +54,11 @@
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for postCategory in postCategories %}
-				<tr class="a_table_line">
-					<td class="a_table_cell_id">{{ postCategory.id }}</td>
-					<td><a href="{{ path('com_admin_blog_post_edit', {'id': postCategory.id}) }}">{{ postCategory.defaultName }}</a></td>
-					<td class="a_table_cell_action">action</td>
-				</tr>
+					<tr class="a_table_line">
+						<td class="a_table_cell_id">{{ postCategory.id }}</td>
+						<td><a href="{{ path('com_admin_blog_category_edit', {'id': postCategory.id}) }}">{{ postCategory.defaultName }}</a></td>
+						<td class="a_table_cell_action">action</td>
+					</tr>
 				{% endfor %}
 			</table>
 		</div>
