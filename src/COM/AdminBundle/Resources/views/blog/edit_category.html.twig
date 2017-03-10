@@ -84,7 +84,11 @@
 									name {{ locale.locale }}:
 								</div>
 								<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-									{{ postCategoryTranslate.name }}
+									{% if postCategoryTranslate is not null %}
+										{{ postCategoryTranslate.name }}
+									{% else %}
+										NAN
+									{% endif %}
 								</div>
 							</div>
 							
@@ -93,7 +97,11 @@
 									Description :
 								</div>
 								<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-									{{ postCategoryTranslate.description }}
+									{% if postCategoryTranslate is not null %}
+										{{ postCategoryTranslate.description }}
+									{% else %}
+										NAN
+									{% endif %}
 								</div>
 							</div>
 						</div>
@@ -103,7 +111,7 @@
 									name {{ locale.locale }}:
 								</div>
 								<div>
-									<input type="text" id="" class="bgt_input_title default_input" value="{{ postCategoryTranslate.name }}" />
+									<input type="text" id="" class="bgt_input_title default_input" value="{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.name }}{% else %}{% endif %}" />
 								</div>
 							</div>
 							<div style="">
@@ -111,7 +119,7 @@
 									Description :
 								</div>
 								<div>
-									<textarea id="" class="bgt_input_description default_textarea">{{ postCategoryTranslate.description }}</textarea>
+									<textarea id="" class="bgt_input_description default_textarea">{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.description }}{% else %}{% endif %}</textarea>
 								</div>
 							</div>
 						</div>
