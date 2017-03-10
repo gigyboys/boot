@@ -227,4 +227,14 @@ class BlogController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+    public function categoryAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+
+		$postCategories = $postCategoryRepository->findAll();
+		
+        return $this->render('COMAdminBundle:blog:category.html.twig', array('postCategories' => $postCategories));
+    }
 }

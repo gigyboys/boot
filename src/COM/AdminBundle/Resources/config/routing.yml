@@ -47,6 +47,9 @@ com_admin_blog_post_edit_common:
 com_admin_blog_post_edit_translate:
     path:     /blog/post/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:Blog:editPostTranslate }
+com_admin_blog_category:
+    path:     /blog/category
+    defaults: { _controller: COMAdminBundle:Blog:category }
 
 #advert
 com_admin_advert:
