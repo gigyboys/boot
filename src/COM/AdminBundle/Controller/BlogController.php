@@ -20,6 +20,7 @@ use COM\BlogBundle\Form\Type\PostCategoryCommonType;
 use COM\BlogBundle\Form\Type\PostInitType;
 use COM\BlogBundle\Form\Type\PostCategoryInitType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
+use COM\BlogBundle\Form\Type\PostCategoryTranslateType;
 use COM\BlogBundle\Form\Type\PostIllustrationType;
 
 class BlogController extends Controller
@@ -317,6 +318,53 @@ class BlogController extends Controller
                 'state' => 1,
                 'defaultName' => $postCategory->getDefaultName(),
                 'slug' => $postCategory->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editCategoryTranslateAction($id, $locale, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$postCategoryTranslateRepository = $em->getRepository('COMBlogBundle:PostCategoryTranslate');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        
+        $postCategory = $postCategoryRepository->find($id);
+        $localeObj = $localeRepository->findOneBy(array(
+			'locale' => $locale,
+		));
+        
+		$postCategoryTranslateTemp = new PostCategoryTranslate();
+		$formPostCategoryTranslate = $this->get('form.factory')->create(new PostCategoryTranslateType(), $postCategoryTranslateTemp);
+		
+        $response = new Response();
+		
+		if ($formPostCategoryTranslate->handleRequest($request)->isValid()) {
+			$postCategoryTranslate = $postCategoryTranslateRepository->findOneBy(array(
+				'postCategory' => $postCategory,
+				'locale' => $localeObj,
+			));
+			if(!$postCategoryTranslate){
+				$postCategoryTranslate = new PostCategoryTranslate();
+				$postCategoryTranslate->setLocale($localeObj);
+				$postCategoryTranslate->setPostCategory($postCategory);
+			}
+			$postCategoryTranslate->setName($postCategoryTranslateTemp->getName());
+			$postCategoryTranslate->setDescription($postCategoryTranslateTemp->getDescription());
+            
+			$em->persist($postCategoryTranslate);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $postCategoryTranslate->getName(),
+                'description' => $postCategoryTranslate->getDescription()
             )));
 		}else{
             $response->setContent(json_encode(array(

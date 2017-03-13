@@ -83,7 +83,7 @@
 								<div style="margin: 5px 0;">
 									name {{ locale.locale }}:
 								</div>
-								<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+								<div id="" class="bgcatt_view_name" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
 									{% if postCategoryTranslate is not null %}
 										{{ postCategoryTranslate.name }}
 									{% else %}
@@ -96,7 +96,7 @@
 								<div style="margin: 5px 0;">
 									Description :
 								</div>
-								<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+								<div id="" class="bgcatt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
 									{% if postCategoryTranslate is not null %}
 										{{ postCategoryTranslate.description }}
 									{% else %}
@@ -111,7 +111,7 @@
 									name {{ locale.locale }}:
 								</div>
 								<div>
-									<input type="text" id="" class="bgt_input_title default_input" value="{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.name }}{% else %}{% endif %}" />
+									<input type="text" id="" class="bgcatt_input_name default_input" value="{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.name }}{% else %}{% endif %}" />
 								</div>
 							</div>
 							<div style="">
@@ -119,14 +119,14 @@
 									Description :
 								</div>
 								<div>
-									<textarea id="" class="bgt_input_description default_textarea">{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.description }}{% else %}{% endif %}</textarea>
+									<textarea id="" class="bgcatt_input_description default_textarea">{% if postCategoryTranslate is not null %}{{ postCategoryTranslate.description }}{% else %}{% endif %}</textarea>
 								</div>
 							</div>
 						</div>
 						<div class="separator"></div>
 						<div class="bloc_action" style="margin:5px">
 							<span class="btn_edit standar_button">Modifier</span> 
-							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': postCategory.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_save_bgcat_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_category_edit_translate', {'id': postCategory.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
 							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 						</div>
