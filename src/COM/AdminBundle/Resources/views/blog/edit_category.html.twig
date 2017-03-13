@@ -17,12 +17,12 @@
 						<tr>
 							<td>Default Name</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="bg_view_defaulttitle">{{ postCategory.defaultName }}</span></td>
+							<td style="padding:5px"><span id="bgcat_view_defaultname">{{ postCategory.defaultName }}</span></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="bg_view_slug">{{ postCategory.slug }}</span></td>
+							<td style="padding:5px"><span id="bgcat_view_slug">{{ postCategory.slug }}</span></td>
 						</tr>
 					</table>
 				</div>
@@ -31,19 +31,19 @@
 						<tr>
 							<td>Default Name</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ postCategory.defaultName }}" /></td>
+							<td style="padding:5px"><input type="text" id="bgcat_input_defaultname" class="default_input" value="{{ postCategory.defaultName }}" /></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ postCategory.slug }}" /></td>
+							<td style="padding:5px"><input type="text" id="bgcat_input_slug" class="default_input" value="{{ postCategory.slug }}" /></td>
 						</tr>
 					</table>
 				</div>
 				<div class="separator"></div>
 				<div class="bloc_action" style="margin:5px">
 					<span class="btn_edit standar_button">Modifier</span> 
-					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': postCategory.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_save standar_button" id="btn_save_bgcat_common" data-target="{{ path('com_admin_blog_category_edit_common', {'id': postCategory.id}) }}" style="display:none">Enregistrer</span>
 					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 				</div>

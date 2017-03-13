@@ -56,6 +56,9 @@ com_admin_blog_category_add:
 com_admin_blog_category_edit:
     path:     /blog/edit-category/{id}
     defaults: { _controller: COMAdminBundle:Blog:editCategory }
+com_admin_blog_category_edit_common:
+    path:     /blog/category/edit-common/{id}
+    defaults: { _controller: COMAdminBundle:Blog:editCategoryCommon }
 
 #advert
 com_admin_advert:

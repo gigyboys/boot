@@ -16,6 +16,7 @@ use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\PostCategoryTranslate;
 use COM\BlogBundle\Entity\PostIllustration;
 use COM\BlogBundle\Form\Type\PostCommonType;
+use COM\BlogBundle\Form\Type\PostCategoryCommonType;
 use COM\BlogBundle\Form\Type\PostInitType;
 use COM\BlogBundle\Form\Type\PostCategoryInitType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
@@ -287,5 +288,42 @@ class BlogController extends Controller
         return $this->render('COMAdminBundle:blog:edit_category.html.twig', array(
 			'postCategory' => $postCategory,
 		));
+    }
+	
+    public function editCategoryCommonAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+        
+        $postCategory = $postCategoryRepository->find($id);
+        
+		$postCategoryTemp = new PostCategory();
+		$formPostCategoryCommon = $this->get('form.factory')->create(new PostCategoryCommonType(), $postCategoryTemp);
+		
+        $response = new Response();
+		
+		if ($formPostCategoryCommon->handleRequest($request)->isValid()) {
+			$postCategory->setDefaultName($postCategoryTemp->getDefaultName());
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($postCategoryTemp->getSlug());
+			
+			$postCategory->setSlug($slug);
+            
+			$em->persist($postCategory);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'defaultName' => $postCategory->getDefaultName(),
+                'slug' => $postCategory->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 }
