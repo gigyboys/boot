@@ -6,7 +6,7 @@
 
 {% block body_header %}
 	<div style="padding:8px;float:left">
-		<span>School </span> 
+		<span>Blog </span> 
 		<span class="dd" style="display:inline-block;">
 			<span href="#" class="dd_src" style="cursor:pointer">
 				<span style="
@@ -45,6 +45,20 @@
 			<div>                
 				<div><label for="defaultTitle" class="required">defaultTitle * : </label></div>
 				<div><input type="text" id="defaultTitle" name="defaultTitle" required="required"  class="default_input" /></div>
+			</div>
+
+			<div>                
+				<div><label for="category" class="required">category : </label></div>
+				{# twig extension #}
+				{% set categories = getAllPostCategory() %}
+				<div>
+					<select id="category" name="category" class="default_input">
+						<option value="0"></option>
+						{% for category in categories %}
+							<option value="{{ category.id }}">{{ category.defaultName }}</option>
+						{% endfor %}
+					</select> 
+				</div>
 			</div>
 			
 			<div style="padding:10px 0">

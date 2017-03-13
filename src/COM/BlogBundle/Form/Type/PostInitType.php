@@ -11,6 +11,7 @@ class PostInitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('defaultTitle', 'text')
+				->add('category', 'integer')
                 ->add('ajouter', 'submit')
         ;
     }

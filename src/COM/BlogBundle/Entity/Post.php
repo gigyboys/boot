@@ -86,6 +86,8 @@ class Post extends Controller
 	
     private $content;
 	
+    private $category;
+	
 
 
     /**
@@ -348,31 +350,17 @@ class Post extends Controller
         return $this->content;
     }
 	
-	/**
-    * @ORM\PostLoad
-    */
-	/*public function populateLang()
-	{
-		$em = $this->getDoctrine()->getManager();
-		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
-		$postTranslateRepository = $em->getRepository('COMBlogBundle:PostTranslate');
-		
-		$request = $this->get('request');
-		$shortLocale = $request->getLocale();
-		$locale = $localeRepository->findOneBy(array(
-			'locale' => $shortLocale,
-		));
-		
-		$postTranslate = $postTranslateRepository->findOneBy(array(
-			'post' => $post,
-			'locale' => $locale,
-		));
-		
-		$this->setTitle($postTranslate->getTitle());
-		$this->setContent($postTranslate->getContent());
-		return $this;
-	}
-	*/
+	//category
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
     /**
      * Add view

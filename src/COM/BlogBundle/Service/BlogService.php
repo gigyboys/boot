@@ -4,8 +4,8 @@ namespace COM\BlogBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\BlogBundle\Entity\Post;
-use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\PostCategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
 
@@ -24,10 +24,15 @@ class BlogService {
 			'post' => $post,
 			'locale' => $locale,
 		));
-		
-		$post->setTitle($postTranslate->getTitle());
-		$post->setContent($postTranslate->getContent());
-		$post->setDescription($postTranslate->getDescription());
+		if($postTranslate){
+			$post->setTitle($postTranslate->getTitle());
+			$post->setContent($postTranslate->getContent());
+			$post->setDescription($postTranslate->getDescription());
+		}else{
+			$post->setTitle($post->getDefaultTitle());
+			$post->setContent("");
+			$post->setDescription("");
+		}
 		
 		return $post;
     }
@@ -60,6 +65,24 @@ class BlogService {
         }
     }
     
+    public function hydratePostCategoryLang(PostCategory $postCategory, Locale $locale) {
+		$postCategoryTranslateRepository = $this->em->getRepository('COMBlogBundle:PostCategoryTranslate');
+		
+		$postCategoryTranslate = $postTranslateRepository->findOneBy(array(
+			'postCategory' => $postCategory,
+			'locale' => $locale,
+		));
+		if($postCategoryTranslate){
+			$postCategory->setTitle($postCategoryTranslate->getName());
+			$postCategory->setDescription($postCategoryTranslate->getDescription());
+		}else{
+			$postCategory->setTitle($postCategory->getDefaultTitle());
+			$postCategory->setDescription("");
+		}
+		
+		return $postCategory;
+    }
+    
     public function getPostCategoryTranslate(PostCategory $postCategory, $locale) {
         $postCategoryTranslateRepository = $this->em->getRepository('COMBlogBundle:PostCategoryTranslate');
 
@@ -69,6 +92,14 @@ class BlogService {
         ));
         
 		return $postCategoryTranslate;
+    }
+    
+    public function getAllPostCategory() {
+        $postCategoryRepository = $this->em->getRepository('COMBlogBundle:PostCategory');
+
+        $postCategories = $postCategoryRepository->findAll();
+        
+		return $postCategories;
     }
 
 }

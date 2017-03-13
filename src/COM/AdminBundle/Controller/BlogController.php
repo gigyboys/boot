@@ -12,6 +12,7 @@ use COM\PlatformBundle\Entity\PostSchool;
 use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\CategoryPost;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\PostCategoryTranslate;
 use COM\BlogBundle\Entity\PostIllustration;
@@ -44,6 +45,7 @@ class BlogController extends Controller
     public function addPostAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$post = new Post();
@@ -70,6 +72,17 @@ class BlogController extends Controller
 			}
 			
 			$em->persist($post);
+			
+			if($post->getCategory() != 0){
+				$postCategory = $postCategoryRepository->find($post->getCategory());
+				if($postCategory){
+					$categoryPost = new CategoryPost();
+					$categoryPost->setPostCategory($postCategory);
+					$categoryPost->setPost($post);
+					$em->persist($categoryPost);
+				}
+			}
+			
 			$em->flush();
 			
 			$url = $this->get('router')->generate('com_admin_blog_post_edit', array('id' => $post->getId()));
