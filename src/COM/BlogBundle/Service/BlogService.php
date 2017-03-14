@@ -101,5 +101,19 @@ class BlogService {
         
 		return $postCategories;
     }
+    
+    public function getCategoryByPost(Post $post) {
+        $categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
+		$postCategoryRepository = $this->em->getRepository('COMBlogBundle:PostCategory');
+
+        $categoryPost = $categoryPostRepository->findOneBy(array(
+            'post' => $post,
+        ));
+        if($categoryPost){
+			return $categoryPost->getPostCategory();
+		}else{
+			return null;
+		}
+    }
 
 }

@@ -164,6 +164,8 @@ class BlogController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryPostRepository = $em->getRepository('COMBlogBundle:CategoryPost');
         
         $post = $postRepository->find($id);
         
@@ -181,12 +183,35 @@ class BlogController extends Controller
 			$post->setSlug($slug);
             
 			$em->persist($post);
+			
+			$categoryPosts = $categoryPostRepository->findBy(array(
+                'post' => $post,
+            ));
+			if($categoryPosts){
+				foreach ($categoryPosts as $categoryPost) {
+					$em->remove($categoryPost);
+				}
+			}
+			$postCategoryName = "NAN";
+			if($postTemp->getCategory() != 0){
+				$postCategory = $postCategoryRepository->find($postTemp->getCategory());
+				if($postCategory){
+					$categoryPost = new CategoryPost();
+					$categoryPost->setPostCategory($postCategory);
+					$categoryPost->setPost($post);
+					$em->persist($categoryPost);
+					$postCategoryName = $postCategory->getDefaultName();
+				}
+			}
+			
+			
             $em->flush();
 
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'defaultTitle' => $post->getDefaultTitle(),
                 'slug' => $post->getSlug(),
+                'category' => $postCategoryName,
             )));
 		}else{
             $response->setContent(json_encode(array(

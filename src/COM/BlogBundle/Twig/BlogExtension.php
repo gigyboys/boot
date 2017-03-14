@@ -20,6 +20,7 @@ class BlogExtension extends \Twig_Extension {
             'postIllustration' => new \Twig_Function_Method($this, 'postIllustrationFunction'),
             'getPostCategoryTranslate' => new \Twig_Function_Method($this, 'getPostCategoryTranslateFunction'),
             'getAllPostCategory' => new \Twig_Function_Method($this, 'getAllPostCategoryFunction'),
+            'getCategoryByPost' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
         );
     }
 
@@ -37,6 +38,10 @@ class BlogExtension extends \Twig_Extension {
 
     public function getAllPostCategoryFunction() {
         return $this->blogService->getAllPostCategory();
+    }
+
+    public function getCategoryByPostFunction(Post $post) {
+        return $this->blogService->getCategoryByPost($post);
     }
 
     public function getName() {
