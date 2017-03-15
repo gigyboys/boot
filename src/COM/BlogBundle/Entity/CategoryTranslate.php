@@ -5,12 +5,12 @@ namespace COM\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PostCategoryTranslate
+ * CategoryTranslate
  *
- * @ORM\Table(name="bg_post_category_translate")
- * @ORM\Entity(repositoryClass="COM\BlogBundle\Entity\PostCategoryTranslateRepository")
+ * @ORM\Table(name="bg_category_translate")
+ * @ORM\Entity(repositoryClass="COM\BlogBundle\Entity\CategoryTranslateRepository")
  */
-class PostCategoryTranslate
+class CategoryTranslate
 {
     /**
      * @var integer
@@ -22,10 +22,10 @@ class PostCategoryTranslate
     private $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\PostCategory", inversedBy="postCategoryTranslates")
-	 * @ORM\JoinColumn(name="post_category_id", nullable=false)
+	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\Category", inversedBy="categoryTranslates")
+	 * @ORM\JoinColumn(name="category_id", nullable=false)
 	 */
-	private $postCategory;
+	private $category;
 
 	/**
 	* @ORM\ManyToOne(targetEntity="COM\PlatformBundle\Entity\Locale")
@@ -106,33 +106,33 @@ class PostCategoryTranslate
 	
 
     /**
-     * Set postCategory
+     * Set category
      *
-     * @param \COM\BlogBundle\Entity\PostCategory $postCategory
-     * @return PostCategoryTranslate
+     * @param \COM\BlogBundle\Entity\Category $category
+     * @return CategoryTranslate
      */
-    public function setPostCategory(\COM\BlogBundle\Entity\PostCategory $postCategory)
+    public function setCategory(\COM\BlogBundle\Entity\Category $category)
     {
-        $this->postCategory = $postCategory;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get postCategory
+     * Get category
      *
-     * @return \COM\BlogBundle\Entity\PostCategory 
+     * @return \COM\BlogBundle\Entity\Category 
      */
-    public function getPostCategory()
+    public function getCategory()
     {
-        return $this->postCategory;
+        return $this->category;
     }
 
     /**
      * Set locale
      *
      * @param \COM\PlatformBundle\Entity\Locale $locale
-     * @return PostCategoryTranslate
+     * @return CategoryTranslate
      */
     public function setLocale(\COM\PlatformBundle\Entity\Locale $locale)
     {

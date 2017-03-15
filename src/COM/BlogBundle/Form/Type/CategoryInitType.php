@@ -6,12 +6,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class PostCategoryCommonType extends AbstractType
+class CategoryInitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('defaultName', 'text')
-                ->add('slug', 'text')
+                ->add('ajouter', 'submit')
         ;
     }
     
@@ -21,7 +21,7 @@ class PostCategoryCommonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COM\BlogBundle\Entity\PostCategory',
+            'data_class' => 'COM\BlogBundle\Entity\Category',
             'csrf_protection' => false,
         ));
     }

@@ -28,10 +28,10 @@ class CategoryPost
 	private $post;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\PostCategory")
-	 * @ORM\JoinColumn(name="post_category_id", nullable=false)
+	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\Category")
+	 * @ORM\JoinColumn(name="category_id", nullable=false)
 	 */
-	private $postCategory;
+	private $category;
 
 
     /**
@@ -68,25 +68,25 @@ class CategoryPost
     }
 
     /**
-     * Set postCategory
+     * Set category
      *
-     * @param \COM\BlogBundle\Entity\PostCategory $postCategory
+     * @param \COM\BlogBundle\Entity\Category $category
      * @return CategoryPost
      */
-    public function setPostCategory(\COM\BlogBundle\Entity\PostCategory $postCategory)
+    public function setCategory(\COM\BlogBundle\Entity\Category $category)
     {
-        $this->postCategory = $postCategory;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get postCategory
+     * Get category
      *
-     * @return \COM\BlogBundle\Entity\PostCategory 
+     * @return \COM\BlogBundle\Entity\Category 
      */
-    public function getPostCategory()
+    public function getCategory()
     {
-        return $this->postCategory;
+        return $this->category;
     }
 }

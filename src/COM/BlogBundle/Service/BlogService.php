@@ -4,9 +4,9 @@ namespace COM\BlogBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\BlogBundle\Entity\Post;
-use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\Category;
 use COM\BlogBundle\Entity\PostTranslate;
-use COM\BlogBundle\Entity\PostCategoryTranslate;
+use COM\BlogBundle\Entity\CategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
 
 class BlogService {
@@ -65,52 +65,52 @@ class BlogService {
         }
     }
     
-    public function hydratePostCategoryLang(PostCategory $postCategory, Locale $locale) {
-		$postCategoryTranslateRepository = $this->em->getRepository('COMBlogBundle:PostCategoryTranslate');
+    public function hydrateCategoryLang(Category $category, Locale $locale) {
+		$categoryTranslateRepository = $this->em->getRepository('COMBlogBundle:CategoryTranslate');
 		
-		$postCategoryTranslate = $postTranslateRepository->findOneBy(array(
-			'postCategory' => $postCategory,
+		$categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+			'category' => $category,
 			'locale' => $locale,
 		));
-		if($postCategoryTranslate){
-			$postCategory->setTitle($postCategoryTranslate->getName());
-			$postCategory->setDescription($postCategoryTranslate->getDescription());
+		if($categoryTranslate){
+			$category->setTitle($categoryTranslate->getName());
+			$category->setDescription($categoryTranslate->getDescription());
 		}else{
-			$postCategory->setTitle($postCategory->getDefaultTitle());
-			$postCategory->setDescription("");
+			$category->setTitle($category->getDefaultTitle());
+			$category->setDescription("");
 		}
 		
-		return $postCategory;
+		return $category;
     }
     
-    public function getPostCategoryTranslate(PostCategory $postCategory, $locale) {
-        $postCategoryTranslateRepository = $this->em->getRepository('COMBlogBundle:PostCategoryTranslate');
+    public function getCategoryTranslate(Category $category, $locale) {
+        $categoryTranslateRepository = $this->em->getRepository('COMBlogBundle:CategoryTranslate');
 
-        $postCategoryTranslate = $postCategoryTranslateRepository->findOneBy(array(
-            'postCategory' => $postCategory,
+        $categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+            'category' => $category,
             'locale' => $locale,
         ));
         
-		return $postCategoryTranslate;
+		return $categoryTranslate;
     }
     
-    public function getAllPostCategory() {
-        $postCategoryRepository = $this->em->getRepository('COMBlogBundle:PostCategory');
+    public function getAllCategory() {
+        $categoryRepository = $this->em->getRepository('COMBlogBundle:Category');
 
-        $postCategories = $postCategoryRepository->findAll();
+        $categories = $categoryRepository->findAll();
         
-		return $postCategories;
+		return $categories;
     }
     
     public function getCategoryByPost(Post $post) {
         $categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
-		$postCategoryRepository = $this->em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $this->em->getRepository('COMBlogBundle:Category');
 
         $categoryPost = $categoryPostRepository->findOneBy(array(
             'post' => $post,
         ));
         if($categoryPost){
-			return $categoryPost->getPostCategory();
+			return $categoryPost->getCategory();
 		}else{
 			return null;
 		}

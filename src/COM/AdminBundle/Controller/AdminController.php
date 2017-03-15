@@ -9,7 +9,7 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\SchoolTranslate;
-use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\Category;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\AdvertBundle\Entity\AdvertCategory;

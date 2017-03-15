@@ -40,12 +40,6 @@ class Post extends Controller
 	private $views;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\PostCategory", inversedBy="posts")
-	 * @ORM\JoinColumn(name="post_category_id", nullable=true)
-	 */
-	private $postCategory;
-
-	/**
 	* @ORM\OneToMany(targetEntity="COM\PlatformBundle\Entity\Comment", mappedBy="post")
 	*/
 	private $comments;
@@ -86,7 +80,7 @@ class Post extends Controller
 	
     private $content;
 	
-    private $category;
+    private $categoryId;
 	
 
 
@@ -287,29 +281,6 @@ class Post extends Controller
     {
         return $this->comments;
     }
-
-    /**
-     * Set postCategory
-     *
-     * @param \COM\BlogBundle\Entity\PostCategory $postCategory
-     * @return Post
-     */
-    public function setPostCategory(\COM\BlogBundle\Entity\PostCategory $postCategory = null)
-    {
-        $this->postCategory = $postCategory;
-
-        return $this;
-    }
-
-    /**
-     * Get postCategory
-     *
-     * @return \COM\BlogBundle\Entity\postCategory 
-     */
-    public function getPostCategory()
-    {
-        return $this->postCategory;
-    }
 	
 	//title
     public function setTitle($title)
@@ -350,16 +321,16 @@ class Post extends Controller
         return $this->content;
     }
 	
-	//category
-    public function setCategory($category)
+	//categoryId
+    public function setCategoryId($categoryId)
     {
-        $this->category = $category;
+        $this->categoryId = $categoryId;
 
         return $this;
     }
-    public function getCategory()
+    public function getCategoryId()
     {
-        return $this->category;
+        return $this->categoryId;
     }
 
     /**

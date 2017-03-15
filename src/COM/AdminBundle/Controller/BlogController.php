@@ -11,17 +11,17 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\PlatformBundle\Entity\PostSchool;
 use COM\UserBundle\Entity\User;
 use COM\BlogBundle\Entity\Post;
-use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\Category;
 use COM\BlogBundle\Entity\CategoryPost;
 use COM\BlogBundle\Entity\PostTranslate;
-use COM\BlogBundle\Entity\PostCategoryTranslate;
+use COM\BlogBundle\Entity\CategoryTranslate;
 use COM\BlogBundle\Entity\PostIllustration;
 use COM\BlogBundle\Form\Type\PostCommonType;
-use COM\BlogBundle\Form\Type\PostCategoryCommonType;
+use COM\BlogBundle\Form\Type\CategoryCommonType;
 use COM\BlogBundle\Form\Type\PostInitType;
-use COM\BlogBundle\Form\Type\PostCategoryInitType;
+use COM\BlogBundle\Form\Type\CategoryInitType;
 use COM\BlogBundle\Form\Type\PostTranslateType;
-use COM\BlogBundle\Form\Type\PostCategoryTranslateType;
+use COM\BlogBundle\Form\Type\CategoryTranslateType;
 use COM\BlogBundle\Form\Type\PostIllustrationType;
 
 class BlogController extends Controller
@@ -45,7 +45,7 @@ class BlogController extends Controller
     public function addPostAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$post = new Post();
@@ -73,11 +73,11 @@ class BlogController extends Controller
 			
 			$em->persist($post);
 			
-			if($post->getCategory() != 0){
-				$postCategory = $postCategoryRepository->find($post->getCategory());
-				if($postCategory){
+			if($post->getCategoryId() != 0){
+				$category = $categoryRepository->find($post->getCategoryId());
+				if($category){
 					$categoryPost = new CategoryPost();
-					$categoryPost->setPostCategory($postCategory);
+					$categoryPost->setCategory($category);
 					$categoryPost->setPost($post);
 					$em->persist($categoryPost);
 				}
@@ -164,7 +164,7 @@ class BlogController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		$categoryPostRepository = $em->getRepository('COMBlogBundle:CategoryPost');
         
         $post = $postRepository->find($id);
@@ -192,15 +192,15 @@ class BlogController extends Controller
 					$em->remove($categoryPost);
 				}
 			}
-			$postCategoryName = "NAN";
-			if($postTemp->getCategory() != 0){
-				$postCategory = $postCategoryRepository->find($postTemp->getCategory());
-				if($postCategory){
+			$categoryName = "NAN";
+			if($postTemp->getCategoryId() != 0){
+				$category = $categoryRepository->find($postTemp->getCategoryId());
+				if($category){
 					$categoryPost = new CategoryPost();
-					$categoryPost->setPostCategory($postCategory);
+					$categoryPost->setCategory($category);
 					$categoryPost->setPost($post);
 					$em->persist($categoryPost);
-					$postCategoryName = $postCategory->getDefaultName();
+					$categoryName = $category->getDefaultName();
 				}
 			}
 			
@@ -211,7 +211,7 @@ class BlogController extends Controller
                 'state' => 1,
                 'defaultTitle' => $post->getDefaultTitle(),
                 'slug' => $post->getSlug(),
-                'category' => $postCategoryName,
+                'category' => $categoryName,
             )));
 		}else{
             $response->setContent(json_encode(array(
@@ -274,11 +274,11 @@ class BlogController extends Controller
     public function categoryAction()
     {
 		$em = $this->getDoctrine()->getManager();
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 
-		$postCategories = $postCategoryRepository->findAll();
+		$categories = $categoryRepository->findAll();
 		
-        return $this->render('COMAdminBundle:blog:category.html.twig', array('postCategories' => $postCategories));
+        return $this->render('COMAdminBundle:blog:category.html.twig', array('categories' => $categories));
     }
 	
     public function addCategoryAction(Request $request)
@@ -286,76 +286,76 @@ class BlogController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
-		$postCategory = new PostCategory();
-		$formInitPostCategory = $this->get('form.factory')->create(new PostCategoryInitType(), $postCategory);
+		$category = new Category();
+		$formInitCategory = $this->get('form.factory')->create(new CategoryInitType(), $category);
 		
-		if ($formInitPostCategory->handleRequest($request)->isValid()) {
+		if ($formInitCategory->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
-			$slug = $platformService->sluggify($postCategory->getDefaultName());
-			$postCategory->setSlug($slug);
+			$slug = $platformService->sluggify($category->getDefaultName());
+			$category->setSlug($slug);
 			
 			$locales = $localeRepository->findAll();
 			foreach($locales as $locale){
-				$postCategoryTranslate = new PostCategoryTranslate();
-				$postCategoryTranslate->setPostCategory($postCategory);
-				$postCategoryTranslate->setLocale($locale);
-				$postCategoryTranslate->setName($locale->getLocale()." ".$postCategory->getDefaultName());
-				$postCategoryTranslate->setDescription($locale->getLocale().". Description .".$postCategory->getDefaultName());
-				$em->persist($postCategoryTranslate);
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setCategory($category);
+				$categoryTranslate->setLocale($locale);
+				$categoryTranslate->setName($locale->getLocale()." ".$category->getDefaultName());
+				$categoryTranslate->setDescription($locale->getLocale().". Description .".$category->getDefaultName());
+				$em->persist($categoryTranslate);
 			}
 			
-			$em->persist($postCategory);
+			$em->persist($category);
 			$em->flush();
 			
-			$url = $this->get('router')->generate('com_admin_blog_category_edit', array('id' => $postCategory->getId()));
+			$url = $this->get('router')->generate('com_admin_blog_category_edit', array('id' => $category->getId()));
 			return new RedirectResponse($url);
 		}
 		
         return $this->render('COMAdminBundle:blog:add_category.html.twig', array(
-			'formInitPostCategory' => $formInitPostCategory->createView(),
+			'formInitCategory' => $formInitCategory->createView(),
 		));
     }
 	
     public function editCategoryAction($id)
     {
 		$em = $this->getDoctrine()->getManager();
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 
-		$postCategory = $postCategoryRepository->find($id);
+		$category = $categoryRepository->find($id);
 		
         return $this->render('COMAdminBundle:blog:edit_category.html.twig', array(
-			'postCategory' => $postCategory,
+			'category' => $category,
 		));
     }
 	
     public function editCategoryCommonAction($id, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
         
-        $postCategory = $postCategoryRepository->find($id);
+        $category = $categoryRepository->find($id);
         
-		$postCategoryTemp = new PostCategory();
-		$formPostCategoryCommon = $this->get('form.factory')->create(new PostCategoryCommonType(), $postCategoryTemp);
+		$categoryTemp = new Category();
+		$formCategoryCommon = $this->get('form.factory')->create(new CategoryCommonType(), $categoryTemp);
 		
         $response = new Response();
 		
-		if ($formPostCategoryCommon->handleRequest($request)->isValid()) {
-			$postCategory->setDefaultName($postCategoryTemp->getDefaultName());
+		if ($formCategoryCommon->handleRequest($request)->isValid()) {
+			$category->setDefaultName($categoryTemp->getDefaultName());
 			
 			$platformService = $this->container->get('com_platform.platform_service');
-			$slug = $platformService->sluggify($postCategoryTemp->getSlug());
+			$slug = $platformService->sluggify($categoryTemp->getSlug());
 			
-			$postCategory->setSlug($slug);
+			$category->setSlug($slug);
             
-			$em->persist($postCategory);
+			$em->persist($category);
             $em->flush();
 
             $response->setContent(json_encode(array(
                 'state' => 1,
-                'defaultName' => $postCategory->getDefaultName(),
-                'slug' => $postCategory->getSlug(),
+                'defaultName' => $category->getDefaultName(),
+                'slug' => $category->getSlug(),
             )));
 		}else{
             $response->setContent(json_encode(array(
@@ -369,40 +369,40 @@ class BlogController extends Controller
     public function editCategoryTranslateAction($id, $locale, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
-		$postCategoryRepository = $em->getRepository('COMBlogBundle:PostCategory');
-		$postCategoryTranslateRepository = $em->getRepository('COMBlogBundle:PostCategoryTranslate');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
+		$categoryTranslateRepository = $em->getRepository('COMBlogBundle:CategoryTranslate');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
         
-        $postCategory = $postCategoryRepository->find($id);
+        $category = $categoryRepository->find($id);
         $localeObj = $localeRepository->findOneBy(array(
 			'locale' => $locale,
 		));
         
-		$postCategoryTranslateTemp = new PostCategoryTranslate();
-		$formPostCategoryTranslate = $this->get('form.factory')->create(new PostCategoryTranslateType(), $postCategoryTranslateTemp);
+		$categoryTranslateTemp = new CategoryTranslate();
+		$formCategoryTranslate = $this->get('form.factory')->create(new CategoryTranslateType(), $categoryTranslateTemp);
 		
         $response = new Response();
 		
-		if ($formPostCategoryTranslate->handleRequest($request)->isValid()) {
-			$postCategoryTranslate = $postCategoryTranslateRepository->findOneBy(array(
-				'postCategory' => $postCategory,
+		if ($formCategoryTranslate->handleRequest($request)->isValid()) {
+			$categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+				'category' => $category,
 				'locale' => $localeObj,
 			));
-			if(!$postCategoryTranslate){
-				$postCategoryTranslate = new PostCategoryTranslate();
-				$postCategoryTranslate->setLocale($localeObj);
-				$postCategoryTranslate->setPostCategory($postCategory);
+			if(!$categoryTranslate){
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setLocale($localeObj);
+				$categoryTranslate->setCategory($category);
 			}
-			$postCategoryTranslate->setName($postCategoryTranslateTemp->getName());
-			$postCategoryTranslate->setDescription($postCategoryTranslateTemp->getDescription());
+			$categoryTranslate->setName($categoryTranslateTemp->getName());
+			$categoryTranslate->setDescription($categoryTranslateTemp->getDescription());
             
-			$em->persist($postCategoryTranslate);
+			$em->persist($categoryTranslate);
             $em->flush();
 
             $response->setContent(json_encode(array(
                 'state' => 1,
-                'name' => $postCategoryTranslate->getName(),
-                'description' => $postCategoryTranslate->getDescription()
+                'name' => $categoryTranslate->getName(),
+                'description' => $categoryTranslate->getDescription()
             )));
 		}else{
             $response->setContent(json_encode(array(

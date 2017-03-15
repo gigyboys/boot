@@ -48,11 +48,11 @@
 			</div>
 
 			<div>                
-				<div><label for="category" class="required">category : </label></div>
+				<div><label for="categoryId" class="required">category : </label></div>
 				{# twig extension #}
-				{% set categories = getAllPostCategory() %}
+				{% set categories = getAllCategory() %}
 				<div>
-					<select id="category" name="category" class="default_input">
+					<select id="categoryId" name="categoryId" class="default_input">
 						<option value="0"></option>
 						{% for category in categories %}
 							<option value="{{ category.id }}">{{ category.defaultName }}</option>

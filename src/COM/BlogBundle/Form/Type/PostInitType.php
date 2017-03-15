@@ -11,7 +11,7 @@ class PostInitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('defaultTitle', 'text')
-				->add('category', 'integer')
+				->add('categoryId', 'integer')
                 ->add('ajouter', 'submit')
         ;
     }
@@ -25,7 +25,6 @@ class PostInitType extends AbstractType
             'data_class' => 'COM\BlogBundle\Entity\Post',
             'csrf_protection' => false,
         ));
-		//$this->configureOptions($resolver);
     }
 
     /**

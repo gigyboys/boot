@@ -10,7 +10,6 @@ use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Entity\SchoolAdmin;
-use COM\BlogBundle\Entity\PostCategory;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\AdvertBundle\Entity\AdvertCategory;
@@ -256,23 +255,9 @@ class InitController extends Controller
 		/** fin traitement school admin  **/
 		
 		
-		/** traitement category post **/
-		
-		$postCategory1 = new PostCategory();
-		$postCategory1->setDefaultName('Avenir');
-		$postCategory1->setSlug('avenir');
-		$em->persist($postCategory1);
-		
-		$postCategory2 = new PostCategory();
-		$postCategory2->setDefaultName('Système');
-		$postCategory2->setSlug('systeme');
-		$em->persist($postCategory2);
-		/** fin traitement category post  **/
-		
 		/** traitement posts **/
 		$post1 = new Post();
 		$post1->setUser($user1);
-		$post1->setPostCategory($postCategory1);
 		$post1->setDefaultTitle('l\'avenir des étudiants en gestion');
 		$post1->setSlug('l-avenir-des-etudiants-en-gestion');
 		$post1->setDate(new \DateTime());
@@ -281,7 +266,6 @@ class InitController extends Controller
 		
 		$post2 = new Post();
 		$post2->setUser($user2);
-		$post2->setPostCategory($postCategory1);
 		$post2->setDefaultTitle('Que faire après le bacc?');
 		$post2->setSlug('que-faire-après-le-bacc');
 		$post2->setDate(new \DateTime());
@@ -290,7 +274,6 @@ class InitController extends Controller
 		
 		$post3 = new Post();
 		$post3->setUser($user2);
-		$post3->setPostCategory($postCategory2);
 		$post3->setDefaultTitle('Les avantages du système LMD');
 		$post3->setSlug('les-avantages-du-systeme-lmd');
 		$post3->setDate(new \DateTime());

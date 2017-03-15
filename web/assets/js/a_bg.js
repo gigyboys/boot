@@ -42,7 +42,7 @@ $(function() {
 		var data = {
 			defaultTitle : bloc_editable.find("#bg_input_defaulttitle").val(),
 			slug : bloc_editable.find("#bg_input_slug").val(),
-			category : bloc_editable.find("#bg_select_category").val()
+			categoryId : bloc_editable.find("#bg_select_category").val()
 		};
 		loadBlocEdit(bloc_editable);
         $.ajax({

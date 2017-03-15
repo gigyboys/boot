@@ -1,7 +1,7 @@
 {% extends "COMAdminBundle::admin.html.twig" %}
 
 {% block title %}
-  List of postcategories
+  List of categories
 {% endblock %}
 
 {% block body_header %}
@@ -23,16 +23,16 @@
 				<a class="link" href="test.html">menu 2 </a>
 			</div>
 		</span> 
-		<span>List of postcategories </span>
+		<span>List of categories </span>
 	</div>
 	<div style="padding:8px;float:right">
-		<span><a href="{{ path('com_admin_blog_category_add') }}">New postCategory</a></td></span> 
+		<span><a href="{{ path('com_admin_blog_category_add') }}">New Category</a></td></span> 
 	</div>
 {% endblock %}
 
 {% block content_body %}
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		List of postcategories...
+		List of categories...
 	</div>
 	
 	<div class="a_datatable">
@@ -53,10 +53,11 @@
 					<th>name</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
-				{% for postCategory in postCategories %}
+				{% for category in categories %}
 					<tr class="a_table_line">
-						<td class="a_table_cell_id">{{ postCategory.id }}</td>
-						<td><a href="{{ path('com_admin_blog_category_edit', {'id': postCategory.id}) }}">{{ postCategory.defaultName }}</a></td>
+						<td class="a_table_cell_id">{{ category.id }}</td>
+						<td><a href="{{ path('com_admin_blog_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
+						<td><a href="{{ path('com_admin_blog_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
 						<td class="a_table_cell_action">action</td>
 					</tr>
 				{% endfor %}

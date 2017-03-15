@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class PostCategoryTranslateType extends AbstractType
+class CategoryTranslateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,7 +21,7 @@ class PostCategoryTranslateType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COM\BlogBundle\Entity\PostCategoryTranslate',
+            'data_class' => 'COM\BlogBundle\Entity\CategoryTranslate',
             'csrf_protection' => false,
         ));
     }

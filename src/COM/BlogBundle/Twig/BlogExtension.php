@@ -4,7 +4,7 @@ namespace COM\BlogBundle\Twig;
 
 use COM\BlogBundle\Service\BlogService;
 use COM\BlogBundle\Entity\Post;
-use COM\BlogBundle\Entity\PostCategory;
+use COM\BlogBundle\Entity\Category;
 
 class BlogExtension extends \Twig_Extension {
 
@@ -18,8 +18,8 @@ class BlogExtension extends \Twig_Extension {
         return array(
             'getPostTranslate' => new \Twig_Function_Method($this, 'getPostTranslateFunction'),
             'postIllustration' => new \Twig_Function_Method($this, 'postIllustrationFunction'),
-            'getPostCategoryTranslate' => new \Twig_Function_Method($this, 'getPostCategoryTranslateFunction'),
-            'getAllPostCategory' => new \Twig_Function_Method($this, 'getAllPostCategoryFunction'),
+            'getCategoryTranslate' => new \Twig_Function_Method($this, 'getCategoryTranslateFunction'),
+            'getAllCategory' => new \Twig_Function_Method($this, 'getAllCategoryFunction'),
             'getCategoryByPost' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
         );
     }
@@ -32,12 +32,12 @@ class BlogExtension extends \Twig_Extension {
         return $this->blogService->getIllustration($post);
     }
 
-    public function getPostCategoryTranslateFunction(PostCategory $postCategory, $locale) {
-        return $this->blogService->getPostCategoryTranslate($postCategory, $locale);
+    public function getCategoryTranslateFunction(Category $category, $locale) {
+        return $this->blogService->getCategoryTranslate($category, $locale);
     }
 
-    public function getAllPostCategoryFunction() {
-        return $this->blogService->getAllPostCategory();
+    public function getAllCategoryFunction() {
+        return $this->blogService->getAllCategory();
     }
 
     public function getCategoryByPostFunction(Post $post) {
