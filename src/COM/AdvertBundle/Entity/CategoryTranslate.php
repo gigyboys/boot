@@ -5,12 +5,12 @@ namespace COM\AdvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AdvertCategoryTranslate
+ * CategoryTranslate
  *
- * @ORM\Table(name="at_advert_category_translate")
+ * @ORM\Table(name="at_category_translate")
  * @ORM\Entity(repositoryClass="COM\AdvertBundle\Entity\CategoryTranslateRepository")
  */
-class AdvertCategoryTranslate
+class CategoryTranslate
 {
     /**
      * @var integer

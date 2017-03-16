@@ -5,12 +5,12 @@ namespace COM\AdvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AdvertCategory
+ * Category
  *
- * @ORM\Table(name="at_advert_category")
+ * @ORM\Table(name="at_category")
  * @ORM\Entity(repositoryClass="COM\AdvertBundle\Entity\CategoryRepository")
  */
-class AdvertCategory
+class Category
 {
     /**
      * @var integer
@@ -22,7 +22,7 @@ class AdvertCategory
     private $id;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="COM\AdvertBundle\Entity\Advert", mappedBy="advertCategory")
+	 * @ORM\OneToMany(targetEntity="COM\AdvertBundle\Entity\Advert", mappedBy="category")
 	 */
 	private $adverts;
 
@@ -61,7 +61,7 @@ class AdvertCategory
      * Set slug
      *
      * @param string $slug
-     * @return AdvertCategory
+     * @return Category
      */
     public function setSlug($slug)
     {
@@ -91,7 +91,7 @@ class AdvertCategory
      * Set defaultName
      *
      * @param string $defaultName
-     * @return AdvertCategory
+     * @return Category
      */
     public function setDefaultName($defaultName)
     {
@@ -114,7 +114,7 @@ class AdvertCategory
      * Add advert
      *
      * @param \COM\AdvertBundle\Entity\Advert $advert
-     * @return AdvertCategory
+     * @return Category
      */
     public function addAdvert(\COM\AdvertBundle\Entity\Advert $advert)
     {

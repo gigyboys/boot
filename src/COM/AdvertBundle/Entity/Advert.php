@@ -37,12 +37,6 @@ class Advert
 	 */
 	private $views;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="COM\AdvertBundle\Entity\AdvertCategory", inversedBy="adverts")
-	 * @ORM\JoinColumn(name="advert_category_id", nullable=true)
-	 */
-	private $advertCategory;
-
     /**
      * @var string
      *
@@ -219,29 +213,6 @@ class Advert
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set advertCategory
-     *
-     * @param \COM\AdvertBundle\Entity\AdvertCategory $advertCategory
-     * @return Advert
-     */
-    public function setAdvertCategory(\COM\AdvertBundle\Entity\AdvertCategory $advertCategory = null)
-    {
-        $this->advertCategory = $advertCategory;
-
-        return $this;
-    }
-
-    /**
-     * Get advertCategory
-     *
-     * @return \COM\AdvertBundle\Entity\AdvertCategory 
-     */
-    public function getAdvertCategory()
-    {
-        return $this->advertCategory;
     }
 
     /**
