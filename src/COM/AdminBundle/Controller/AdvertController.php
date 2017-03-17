@@ -11,11 +11,16 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\AdvertBundle\Entity\Advert;
 use COM\AdvertBundle\Entity\AdvertTranslate;
+use COM\AdvertBundle\Entity\Category;
+use COM\AdvertBundle\Entity\CategoryTranslate;
 use COM\AdvertBundle\Form\Type\AdvertCommonType;
+use COM\AdvertBundle\Form\Type\CategoryCommonType;
 use COM\AdvertBundle\Entity\AdvertIllustration;
 use COM\AdvertBundle\Form\Type\AdvertIllustrationType;
 use COM\AdvertBundle\Form\Type\AdvertTranslateType;
+use COM\AdvertBundle\Form\Type\CategoryTranslateType;
 use COM\AdvertBundle\Form\Type\AdvertInitType;
+use COM\AdvertBundle\Form\Type\CategoryInitType;
 
 class AdvertController extends Controller
 {
@@ -270,5 +275,89 @@ class AdvertController extends Controller
         return $this->render('COMAdminBundle:advert:edit_category.html.twig', array(
 			'category' => $category,
 		));
+    }
+	
+    public function editCategoryCommonAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
+        
+        $category = $categoryRepository->find($id);
+        
+		$categoryTemp = new Category();
+		$formCategoryCommon = $this->get('form.factory')->create(new CategoryCommonType(), $categoryTemp);
+		
+        $response = new Response();
+		
+		if ($formCategoryCommon->handleRequest($request)->isValid()) {
+			$category->setDefaultName($categoryTemp->getDefaultName());
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($categoryTemp->getSlug());
+			
+			$category->setSlug($slug);
+            
+			$em->persist($category);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'defaultName' => $category->getDefaultName(),
+                'slug' => $category->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editCategoryTranslateAction($id, $locale, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
+		$categoryTranslateRepository = $em->getRepository('COMAdvertBundle:CategoryTranslate');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        
+        $category = $categoryRepository->find($id);
+        $localeObj = $localeRepository->findOneBy(array(
+			'locale' => $locale,
+		));
+        
+		$categoryTranslateTemp = new CategoryTranslate();
+		$formCategoryTranslate = $this->get('form.factory')->create(new CategoryTranslateType(), $categoryTranslateTemp);
+		
+        $response = new Response();
+		
+		if ($formCategoryTranslate->handleRequest($request)->isValid()) {
+			$categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+				'category' => $category,
+				'locale' => $localeObj,
+			));
+			if(!$categoryTranslate){
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setLocale($localeObj);
+				$categoryTranslate->setCategory($category);
+			}
+			$categoryTranslate->setName($categoryTranslateTemp->getName());
+			$categoryTranslate->setDescription($categoryTranslateTemp->getDescription());
+            
+			$em->persist($categoryTranslate);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $categoryTranslate->getName(),
+                'description' => $categoryTranslate->getDescription()
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 }
