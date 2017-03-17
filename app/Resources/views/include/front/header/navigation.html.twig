@@ -105,12 +105,6 @@
 					
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 					
-						{# 
-						appel du fonction (twig.extension) userAvatar pour avoir le path de l'avatar 
-						
-						{% set avatar=userAvatar(app.user) %}
-						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
-						#}
 						{% set avatar=userAvatar(app.user) %}
 						{% if avatar != "default.jpeg" %}
 							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
