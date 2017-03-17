@@ -46,6 +46,20 @@
 				<div><label for="defaultTitle" class="required">defaultTitle * : </label></div>
 				<div><input type="text" id="defaultTitle" name="defaultTitle" required="required"  class="default_input" /></div>
 			</div>
+
+			<div>                
+				<div><label for="categoryId" class="required">category : </label></div>
+				{# twig extension #}
+				{% set categories = getAllAdvertCategory() %}
+				<div>
+					<select id="categoryId" name="categoryId" class="default_input">
+						<option value="0"></option>
+						{% for category in categories %}
+							<option value="{{ category.id }}">{{ category.defaultName }}</option>
+						{% endfor %}
+					</select> 
+				</div>
+			</div>
 			
 			<div style="padding:10px 0">
 				<button type="submit" id="ajouter" name="ajouter" class="standar_button">{{ 'Ajouter' | trans }}</button>

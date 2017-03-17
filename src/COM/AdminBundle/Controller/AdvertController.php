@@ -39,6 +39,7 @@ class AdvertController extends Controller
     public function addAdvertAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$advert = new Advert();
@@ -64,6 +65,17 @@ class AdvertController extends Controller
 			}
 			
 			$em->persist($advert);
+			
+			if($advert->getCategoryId() != 0){
+				$category = $categoryRepository->find($advert->getCategoryId());
+				if($category){
+					$categoryAdvert = new CategoryAdvert();
+					$categoryAdvert->setCategory($category);
+					$categoryAdvert->setAdvert($advert);
+					$em->persist($categoryAdvert);
+				}
+			}
+			
 			$em->flush();
 			
 			$url = $this->get('router')->generate('com_admin_advert_edit', array('id' => $advert->getId()));
