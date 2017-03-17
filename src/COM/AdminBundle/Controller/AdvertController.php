@@ -213,4 +213,62 @@ class AdvertController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+    public function categoryAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
+
+		$categories = $categoryRepository->findAll();
+		
+        return $this->render('COMAdminBundle:advert:category.html.twig', array('categories' => $categories));
+    }
+	
+    public function addCategoryAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$category = new Category();
+		$formInitCategory = $this->get('form.factory')->create(new CategoryInitType(), $category);
+		
+		if ($formInitCategory->handleRequest($request)->isValid()) {
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($category->getDefaultName());
+			$category->setSlug($slug);
+			
+			$locales = $localeRepository->findAll();
+			foreach($locales as $locale){
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setCategory($category);
+				$categoryTranslate->setLocale($locale);
+				$categoryTranslate->setName($locale->getLocale()." ".$category->getDefaultName());
+				$categoryTranslate->setDescription($locale->getLocale().". Description .".$category->getDefaultName());
+				$em->persist($categoryTranslate);
+			}
+			
+			$em->persist($category);
+			$em->flush();
+			
+			$url = $this->get('router')->generate('com_admin_blog_category_edit', array('id' => $category->getId()));
+			return new RedirectResponse($url);
+		}
+		
+        return $this->render('COMAdminBundle:blog:add_category.html.twig', array(
+			'formInitCategory' => $formInitCategory->createView(),
+		));
+    }
+	
+    public function editCategoryAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+
+		$category = $categoryRepository->find($id);
+		
+        return $this->render('COMAdminBundle:advert:edit_category.html.twig', array(
+			'category' => $category,
+		));
+    }
 }

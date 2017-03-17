@@ -15,27 +15,7 @@
 			</div>
 			<div class="a_nav_sub_item">
 				<div class="a_nav_sub_item_icon"><div></div></div>
-				<div class="a_nav_sub_item_text">Filière</div>
-			</div>
-		</div>
-	</div>
-	<div class="a_nav_item not_selected">
-		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
-			<div class="a_nav_main_item_text">Annonce</div>
-		</div>
-		<div class="a_nav_sub_content" style="">
-			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
-				<div class="a_nav_sub_item_text">
-					<a href="{{ path('com_admin_advert') }}">
-						<span>{{ 'Advert' | trans }}</span>
-					</a>
-				</div>
-			</div>
-			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
-				<div class="a_nav_sub_item_text">Catégories</div>
+				<div class="a_nav_sub_item_text">{{ 'fields' | trans }}</div>
 			</div>
 		</div>
 	</div>
@@ -57,6 +37,30 @@
 				<div class="a_nav_sub_item_icon"><div></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_blog_category') }}">
+						<span>{{ 'Categories' | trans }}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="a_nav_item not_selected">
+		<div class="a_nav_main_item">
+			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_text">{{ 'Advert' | trans }}</div>
+		</div>
+		<div class="a_nav_sub_content" style="">
+			<div class="a_nav_sub_item">
+				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_text">
+					<a href="{{ path('com_admin_advert') }}">
+						<span>{{ 'Adverts' | trans }}</span>
+					</a>
+				</div>
+			</div>
+			<div class="a_nav_sub_item">
+				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_text">
+					<a href="{{ path('com_admin_advert_category') }}">
 						<span>{{ 'Categories' | trans }}</span>
 					</a>
 				</div>

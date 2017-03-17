@@ -11,6 +11,7 @@ class AdvertCommonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('defaultTitle', 'text')
+				->add('categoryId', 'integer')
                 ->add('slug', 'text')
         ;
     }

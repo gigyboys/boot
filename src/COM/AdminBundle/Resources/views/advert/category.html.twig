@@ -57,8 +57,8 @@
 				{% for category in categories %}
 					<tr class="a_table_line">
 						<td class="a_table_cell_id">{{ category.id }}</td>
-						<td><a href="{{ path('com_admin_blog_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
-						<td><a href="{{ path('com_admin_blog_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
+						<td><a href="{{ path('com_admin_advert_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
+						<td><a href="{{ path('com_admin_advert_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
 						<td class="a_table_cell_action">action</td>
 					</tr>
 				{% endfor %}

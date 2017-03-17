@@ -71,6 +71,8 @@ class Advert
 	
 	private $content;
 	
+	private $categoryId;
+	
     /**
      * Constructor
      */
@@ -294,5 +296,17 @@ class Advert
     public function getContent()
     {
         return $this->content;
+    }
+	
+	//categoryId
+    public function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
+
+        return $this;
+    }
+    public function getCategoryId()
+    {
+        return $this->categoryId;
     }
 }

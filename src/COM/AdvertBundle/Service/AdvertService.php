@@ -4,7 +4,9 @@ namespace COM\AdvertBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\AdvertBundle\Entity\Advert;
+use COM\AdvertBundle\Entity\Category;
 use COM\AdvertBundle\Entity\AdvertTranslate;
+use COM\AdvertBundle\Entity\CategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
 
 class AdvertService {
@@ -54,6 +56,57 @@ class AdvertService {
         else{
             return 'default.jpeg';
         }
+    }
+    
+    public function hydrateCategoryLang(Category $category, Locale $locale) {
+		$categoryTranslateRepository = $this->em->getRepository('COMAdvertBundle:CategoryTranslate');
+		
+		$categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+			'category' => $category,
+			'locale' => $locale,
+		));
+		if($categoryTranslate){
+			$category->setTitle($categoryTranslate->getName());
+			$category->setDescription($categoryTranslate->getDescription());
+		}else{
+			$category->setTitle($category->getDefaultTitle());
+			$category->setDescription("");
+		}
+		
+		return $category;
+    }
+    
+    public function getCategoryTranslate(Category $category, $locale) {
+        $categoryTranslateRepository = $this->em->getRepository('COMAdvertBundle:CategoryTranslate');
+
+        $categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+            'category' => $category,
+            'locale' => $locale,
+        ));
+        
+		return $categoryTranslate;
+    }
+    
+    public function getAllCategory() {
+        $categoryRepository = $this->em->getRepository('COMAdvertBundle:Category');
+
+        $categories = $categoryRepository->findAll();
+        
+		return $categories;
+    }
+    
+    public function getCategoryByAdvert(Advert $advert) {
+        $categoryAdvertRepository = $this->em->getRepository('COMAdvertBundle:CategoryAdvert');
+		$categoryRepository = $this->em->getRepository('COMAdvertBundle:Category');
+
+        $categoryAdvert = $categoryAdvertRepository->findOneBy(array(
+            'advert' => $advert,
+        ));
+        if($categoryAdvert){
+			return $categoryAdvert->getCategory();
+		}else{
+			return null;
+		}
     }
 
 }

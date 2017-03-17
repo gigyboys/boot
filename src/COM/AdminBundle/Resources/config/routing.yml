@@ -82,6 +82,15 @@ com_admin_advert_edit_common:
 com_admin_advert_edit_translate:
     path:     /advert/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:Advert:editAdvertTranslate }
+com_admin_advert_category:
+    path:     /advert/category
+    defaults: { _controller: COMAdminBundle:Advert:category }
+com_admin_advert_category_add:
+    path:     /advert/category/add
+    defaults: { _controller: COMAdminBundle:Advert:addCategory }
+com_admin_advert_category_edit:
+    path:     /advert/edit-category/{id}
+    defaults: { _controller: COMAdminBundle:Advert:editCategory }
 
 #newsletter
 com_admin_newsletter:

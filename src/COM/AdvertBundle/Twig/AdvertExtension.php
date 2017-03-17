@@ -4,6 +4,7 @@ namespace COM\AdvertBundle\Twig;
 
 use COM\AdvertBundle\Service\AdvertService;
 use COM\AdvertBundle\Entity\Advert;
+use COM\AdvertBundle\Entity\Category;
 
 class AdvertExtension extends \Twig_Extension {
 
@@ -17,6 +18,9 @@ class AdvertExtension extends \Twig_Extension {
         return array(
             'getAdvertTranslate' => new \Twig_Function_Method($this, 'getAdvertTranslateFunction'),
             'advertIllustration' => new \Twig_Function_Method($this, 'advertIllustrationFunction'),
+            'getAdvertCategoryTranslate' => new \Twig_Function_Method($this, 'getCategoryTranslateFunction'),
+            'getAllAdvertCategory' => new \Twig_Function_Method($this, 'getAllCategoryFunction'),
+            'getCategoryByAdvert' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
         );
     }
 
@@ -26,6 +30,18 @@ class AdvertExtension extends \Twig_Extension {
 
     public function advertIllustrationFunction(Advert $advert) {
         return $this->advertService->getIllustration($advert);
+    }
+
+    public function getCategoryTranslateFunction(Category $category, $locale) {
+        return $this->advertService->getCategoryTranslate($category, $locale);
+    }
+
+    public function getAllCategoryFunction() {
+        return $this->advertService->getAllCategory();
+    }
+
+    public function getCategoryByPostFunction(Advert $advert) {
+        return $this->advertService->getCategoryByPost($advert);
     }
 
     public function getName() {
