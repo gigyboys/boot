@@ -41,7 +41,8 @@ $(function() {
 		console.log(target);
 		var data = {
 			defaultTitle : bloc_editable.find("#at_input_defaulttitle").val(),
-			slug : bloc_editable.find("#at_input_slug").val()
+			slug : bloc_editable.find("#at_input_slug").val(),
+			categoryId : bloc_editable.find("#at_select_category").val()
 		};
 		loadBlocEdit(bloc_editable);
         $.ajax({
@@ -54,6 +55,7 @@ $(function() {
 				if(data.state){
 					bloc_editable.find("#at_view_defaulttitle").text(data.defaultTitle);
 					bloc_editable.find("#at_view_slug").text(data.slug);
+					bloc_editable.find("#at_view_category").text(data.category);
 					resetBlocEdit(bloc_editable);
 				}
 				else{

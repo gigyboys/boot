@@ -20,7 +20,7 @@ class AdvertExtension extends \Twig_Extension {
             'advertIllustration' => new \Twig_Function_Method($this, 'advertIllustrationFunction'),
             'getAdvertCategoryTranslate' => new \Twig_Function_Method($this, 'getCategoryTranslateFunction'),
             'getAllAdvertCategory' => new \Twig_Function_Method($this, 'getAllCategoryFunction'),
-            'getCategoryByAdvert' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
+            'getCategoryByAdvert' => new \Twig_Function_Method($this, 'getCategoryByAdvertFunction'),
         );
     }
 
@@ -40,8 +40,8 @@ class AdvertExtension extends \Twig_Extension {
         return $this->advertService->getAllCategory();
     }
 
-    public function getCategoryByPostFunction(Advert $advert) {
-        return $this->advertService->getCategoryByPost($advert);
+    public function getCategoryByAdvertFunction(Advert $advert) {
+        return $this->advertService->getCategoryByAdvert($advert);
     }
 
     public function getName() {

@@ -204,7 +204,6 @@ class BlogController extends Controller
 				}
 			}
 			
-			
             $em->flush();
 
             $response->setContent(json_encode(array(

@@ -25,7 +25,7 @@ class CategoryAdvert
 	 * @ORM\ManyToOne(targetEntity="COM\AdvertBundle\Entity\Advert")
 	 * @ORM\JoinColumn(name="advert_id", nullable=false)
 	 */
-	private $post;
+	private $advert;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="COM\AdvertBundle\Entity\Category")
@@ -42,29 +42,6 @@ class CategoryAdvert
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set post
-     *
-     * @param \COM\AdvertBundle\Entity\Advert $post
-     * @return CategoryAdvert
-     */
-    public function setPost(\COM\AdvertBundle\Entity\Advert $post)
-    {
-        $this->post = $post;
-
-        return $this;
-    }
-
-    /**
-     * Get post
-     *
-     * @return \COM\AdvertBundle\Entity\Advert 
-     */
-    public function getPost()
-    {
-        return $this->post;
     }
 
     /**
@@ -88,5 +65,28 @@ class CategoryAdvert
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set advert
+     *
+     * @param \COM\AdvertBundle\Entity\Advert $advert
+     * @return CategoryAdvert
+     */
+    public function setAdvert(\COM\AdvertBundle\Entity\Advert $advert)
+    {
+        $this->advert = $advert;
+
+        return $this;
+    }
+
+    /**
+     * Get advert
+     *
+     * @return \COM\AdvertBundle\Entity\Advert 
+     */
+    public function getAdvert()
+    {
+        return $this->advert;
     }
 }

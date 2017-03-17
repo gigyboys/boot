@@ -37,6 +37,8 @@
 			<input style="display:none" id="advertillustrationfile" name="file" class="ajax_advert_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_advert_change_illustration', {'id': advert.id}) }}" /> 
 		</div>
 		<div style="margin-left: 136px;">
+			{# twig extension #}
+			{% set category = getCategoryByAdvert(advert) %}
 			<div class="bloc_editable">
 				<div class="bloc_view">
 					<table>
@@ -50,6 +52,19 @@
 							<td>:</td>
 							<td style="padding:5px"><span id="at_view_slug">{{ advert.slug }}</span></td>
 						</tr>
+							<tr>
+								<td><label for="category" class="required">category </label></td>
+								<td>:</td>
+								<td style="padding:5px">
+									<span id="at_view_category">
+										{% if category is not null %}
+											{{ category.defaultName }}
+										{% else %}
+											NAN
+										{% endif %} 
+									</span>
+								</td>
+							</tr>
 					</table>
 				</div>
 				<div class="bloc_edit" style="display:none">
@@ -63,6 +78,26 @@
 							<td>Slug</td>
 							<td>:</td>
 							<td style="padding:5px"><input type="text" id="at_input_slug" class="default_input" value="{{ advert.slug }}" /></td>
+						</tr>
+						<tr>
+							<td><label for="at_select_category" class="required">category </label></td>
+							<td>:</td>
+							<td style="padding:5px">
+								{# twig extension #}
+								{% set categories = getAllAdvertCategory() %}
+								<select id="at_select_category" name="at_select_category" class="default_input">
+									<option value="0"></option>
+									{% for categoryItem in categories %}
+										{% set selected = "" %}
+										{% if category is not null %}
+											{% if category.id == categoryItem.id %}
+												{% set selected = "selected" %}
+											{% endif %}
+										{% endif %} 
+										<option value="{{ categoryItem.id }}" {{ selected }}>{{ categoryItem.defaultName }}</option>
+									{% endfor %}
+								</select> 
+							</td>
 						</tr>
 					</table>
 				</div>

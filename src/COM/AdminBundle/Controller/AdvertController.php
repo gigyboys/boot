@@ -12,6 +12,7 @@ use COM\UserBundle\Entity\User;
 use COM\AdvertBundle\Entity\Advert;
 use COM\AdvertBundle\Entity\AdvertTranslate;
 use COM\AdvertBundle\Entity\Category;
+use COM\AdvertBundle\Entity\CategoryAdvert;
 use COM\AdvertBundle\Entity\CategoryTranslate;
 use COM\AdvertBundle\Form\Type\AdvertCommonType;
 use COM\AdvertBundle\Form\Type\CategoryCommonType;
@@ -41,9 +42,9 @@ class AdvertController extends Controller
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$advert = new Advert();
-		$formAdvertPost = $this->get('form.factory')->create(new AdvertInitType(), $advert);
+		$formAdvertInit = $this->get('form.factory')->create(new AdvertInitType(), $advert);
 		
-		if ($formAdvertPost->handleRequest($request)->isValid()) {
+		if ($formAdvertInit->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($advert->getDefaultTitle());
 			$advert->setSlug($slug);
@@ -70,7 +71,7 @@ class AdvertController extends Controller
 		}
 		
         return $this->render('COMAdminBundle:advert:add_advert.html.twig', array(
-			'formAdvertPost' => $formAdvertPost->createView(),
+			'formAdvertInit' => $formAdvertInit->createView(),
 		));
     }
 	
@@ -139,6 +140,8 @@ class AdvertController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		$categoryRepository = $em->getRepository('COMAdvertBundle:Category');
+		$categoryAdvertRepository = $em->getRepository('COMAdvertBundle:CategoryAdvert');
         
         $advert = $advertRepository->find($id);
         
@@ -156,12 +159,34 @@ class AdvertController extends Controller
 			$advert->setSlug($slug);
             
 			$em->persist($advert);
+			
+			$categoryAdverts = $categoryAdvertRepository->findBy(array(
+                'advert' => $advert,
+            ));
+			if($categoryAdverts){
+				foreach ($categoryAdverts as $categoryAdvert) {
+					$em->remove($categoryAdvert);
+				}
+			}
+			$categoryName = "NAN";
+			if($advertTemp->getCategoryId() != 0){
+				$category = $categoryRepository->find($advertTemp->getCategoryId());
+				if($category){
+					$categoryAdvert = new CategoryAdvert();
+					$categoryAdvert->setCategory($category);
+					$categoryAdvert->setAdvert($advert);
+					$em->persist($categoryAdvert);
+					$categoryName = $category->getDefaultName();
+				}
+			}
+			
             $em->flush();
 
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'defaultTitle' => $advert->getDefaultTitle(),
                 'slug' => $advert->getSlug(),
+                'category' => $categoryName,
             )));
 		}else{
             $response->setContent(json_encode(array(
