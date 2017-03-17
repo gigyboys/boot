@@ -255,11 +255,11 @@ class AdvertController extends Controller
 			$em->persist($category);
 			$em->flush();
 			
-			$url = $this->get('router')->generate('com_admin_blog_category_edit', array('id' => $category->getId()));
+			$url = $this->get('router')->generate('com_admin_advert_category_edit', array('id' => $category->getId()));
 			return new RedirectResponse($url);
 		}
 		
-        return $this->render('COMAdminBundle:blog:add_category.html.twig', array(
+        return $this->render('COMAdminBundle:advert:add_category.html.twig', array(
 			'formInitCategory' => $formInitCategory->createView(),
 		));
     }
