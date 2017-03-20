@@ -108,7 +108,8 @@
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">
-						info
+						Biography<br />
+						{{ user.biography }}
 					</div>
 				</div>
 			</div>
@@ -136,7 +137,39 @@
 				<div class="cr">
 					<div class="ct">
 						<div style="padding:5px; min-height:100px">
-							paramètres
+							<div style="margin:5px;">
+								Password <span id="msg_password"></span>
+							</div>
+							
+							<div class="bloc_editable" style="margin-bottom:1px">
+								<div class="bloc_view">
+									
+								</div>
+								<div class="bloc_edit" style="display:none;margin:5px;">
+									<form action="" name="form_ur_password" method="post" id="password">
+										<div>                
+											<div><label for="name" class="required">Actual password :</label></div>
+											<div><input type="password" id="ur_input_current_password" class="default_input" value="" /></div>
+										</div>
+										<div>                
+											<div><label for="name" class="required">new password :</label></div>
+											<div><input type="password" id="ur_input_new_password" class="default_input" value="" /></div>
+										</div>
+										<div>                
+											<div><label for="name" class="required">retape :</label></div>
+											<div><input type="password" id="ur_input_repeat_password" class="default_input" value="" /></div>
+										</div>
+										<input type="submit" style="display:none" value="Enregistrer" />
+									</form>
+								</div>
+								<div class="bloc_action" style="margin:5px; border:1px solid transparent">
+									<span class="btn_edit standar_button">Modifier</span> 
+									<span class="btn_save standar_button" id="btn_save_ur_password" data-target="{{ path('com_user_modify_password') }}" style="display:none">Enregistrer</span>
+									<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+									<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

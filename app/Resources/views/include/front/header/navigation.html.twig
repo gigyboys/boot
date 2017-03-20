@@ -73,7 +73,7 @@
 			<div id="locale" style="display: block; margin-top: 4px; float:left">
 				<div class="dd" style="display:inline-block;">
 					<a href="#" class="dd_src standar_button" style="">
-						<span style="display:inline-block; height: 20px;">Locale</span>
+						<span style="display:inline-block; height: 20px;">Locale : {{ app.request.getLocale() }}</span>
 					</a>
 					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
 						{# 
@@ -144,7 +144,7 @@
 										<div style="float:left;width:70px;height:70px">
 											<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
 										</div>
-										<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0">
+										<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0; overflow:hidden;text-overflow: ellipsis;">
 											<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
 												{{ app.user.username }}<br />
 												{{ app.user.name }}<br />

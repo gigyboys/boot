@@ -9,7 +9,9 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\UserBundle\Entity\User;
+use COM\UserBundle\Entity\UserPassword;
 use COM\UserBundle\Form\Type\UserType;
+use COM\UserBundle\Form\Type\UserPasswordType;
 use COM\UserBundle\Form\Type\UserCommonType;
 use COM\UserBundle\Entity\Avatar;
 use COM\UserBundle\Form\Type\AvatarType;
@@ -281,6 +283,59 @@ class UserController extends Controller
 			}
 			$response->headers->set('Content-Type', 'application/json');
 			return $response;
+		}else{
+            throw new NotFoundHttpException('Page not found');
+        }
+    }
+	
+    public function editUserPasswordAction(Request $request)
+    {
+		if ($request->isXmlHttpRequest()){
+			$em = $this->getDoctrine()->getManager();
+			$userRepository = $em->getRepository('COMUserBundle:User');
+			
+			$user = $this->getUser();
+			if($user){
+				$userPassword = new UserPassword();
+				$formUserPassword = $this->get('form.factory')->create(new UserPasswordType(), $userPassword);
+				
+				$response = new Response();
+				
+				if ($formUserPassword->handleRequest($request)->isValid()) {
+					//traitement
+					$encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+					$currentPasswordEncoded = $encoder->encodePassword($userPassword->getCurrentPassword(), $user->getSalt());
+					if($user->getPassword() == $currentPasswordEncoded && $userPassword->getNewPassword() != "" && $userPassword->getNewPassword() == $userPassword->getRepeatPassword()) {
+						$newPasswordEncoded = $encoder->encodePassword($userPassword->getNewPassword(), $user->getSalt());
+						$user->setPassword($newPasswordEncoded);
+						$em->persist($user);
+						$em->flush();
+						
+						$response->setContent(json_encode(array(
+							'state' => 1,
+							'currentPassword' => $userPassword->getCurrentPassword(),
+							'newPassword' => $userPassword->getNewPassword(),
+							'repeatPassword' => $userPassword->getRepeatPassword(),
+							'newPasswordEncoded' => $newPasswordEncoded,
+						)));
+					} else {
+						$response->setContent(json_encode(array(
+							'state' => 0,
+							'message' => 'serveur message : une erreur est survenue',
+						)));
+					}
+					//fin traitement
+				}else{
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'serveur message : une erreur est survenue',
+					)));
+				}
+				$response->headers->set('Content-Type', 'application/json');
+				return $response;
+			}else{
+				
+			}
 		}else{
             throw new NotFoundHttpException('Page not found');
         }

@@ -12,7 +12,7 @@ use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Entity\SchoolAdmin;
 use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
-use COM\AdvertBundle\Entity\AdvertCategory;
+use COM\AdvertBundle\Entity\Category AS AdvertCategory;
 use COM\AdvertBundle\Entity\Advert;
 use COM\AdvertBundle\Entity\AdvertTranslate;
 use COM\PlatformBundle\Entity\PostSchool;
@@ -485,7 +485,6 @@ class InitController extends Controller
 		/** traitement advert  **/
 		$advert1 = new Advert();
 		$advert1->setUser($user1);
-		$advert1->setAdvertCategory($advertCategory1);
 		$advert1->setDefaultTitle("Concours d'entrée en première année");
 		$advert1->setSlug("concours-d-entree-en-premiere-annee");
 		$advert1->setDate(new \DateTime());
