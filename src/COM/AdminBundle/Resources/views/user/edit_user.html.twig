@@ -43,6 +43,11 @@
 								<td>:</td>
 								<td style="padding:5px"><span id="bg_view_slug">{{ user.name }}</span></td>
 							</tr>
+							<tr>
+								<td>Location</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_slug">{{ user.location }}</span></td>
+							</tr>
 						</table>
 					</div>
 					
@@ -58,7 +63,7 @@
 				<div class="a_content_tab_header_content">
 					<div class="a_content_tab_header_item selected" id="tab_1">
 						<div class="a_content_tab_header_item_text">
-							Lorem
+							{{ 'Biography' | trans }}
 						</div>
 					</div>
 					<div class="a_content_tab_header_item" id="tab_2">
@@ -74,7 +79,11 @@
 			</div>
 			<div class="a_content_tab_content">
 				<div class="a_content_tab_content_item selected" id="content_tab_1" style="">
-					Lorem ipsum 1
+					{% if user.Biography != "" %}
+						{{ user.Biography }}
+					{% else %}
+						Non renseigné
+					{% endif %}
 				</div>
 				<div class="a_content_tab_content_item not_selected" id="content_tab_2" style="">
 					Lorem ipsum 2

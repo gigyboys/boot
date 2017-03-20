@@ -86,6 +86,13 @@ class User implements UserInterface
      */
     private $name;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="biography", type="text", nullable=true)
+     */
+    private $biography;
+
 
     /**
      * Get id
@@ -389,4 +396,27 @@ class User implements UserInterface
 	public function eraseCredentials(){
 		
 	}
+
+    /**
+     * Set biography
+     *
+     * @param string $biography
+     * @return User
+     */
+    public function setBiography($biography)
+    {
+        $this->biography = $biography;
+
+        return $this;
+    }
+
+    /**
+     * Get biography
+     *
+     * @return string 
+     */
+    public function getBiography()
+    {
+        return $this->biography;
+    }
 }
