@@ -98,6 +98,14 @@ com_admin_advert_category_edit_translate:
     path:     /advert/category/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:Advert:editCategoryTranslate }
 
+#user
+com_admin_user:
+    path:     /user
+    defaults: { _controller: COMAdminBundle:User:index }
+com_admin_user_edit:
+    path:     /user/edit-user/{id}
+    defaults: { _controller: COMAdminBundle:User:editUser }
+
 #newsletter
 com_admin_newsletter:
     path:     /newsletter

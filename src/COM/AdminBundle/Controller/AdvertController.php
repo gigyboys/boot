@@ -91,7 +91,6 @@ class AdvertController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
-		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 
 		$advert = $advertRepository->find($id);
 		

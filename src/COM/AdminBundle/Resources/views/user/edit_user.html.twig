@@ -1,0 +1,86 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  User {{ user.id }}
+{% endblock %}
+
+{% block content_body %}
+	{#
+	<div id="a_content_body_left">
+	#}
+		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+			User id {{ user.id }}
+		</div>
+		
+		<div style="padding:5px">
+			<div style="float:left; height: 122px;margin:5px">
+				{% set avatar=userAvatar(user) %}
+				{% if avatar != "default.jpeg" %}
+					{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+				{% else %}
+					{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+				{% endif %}
+				
+				<img id="post_illustration" style="width: 116px; height: 116px" src="{{ pathtoavatar | imagine_filter('116x116') }}" alt="img post" />
+			</div>
+			<div style="margin-left: 136px;">
+			
+				<div class="bloc_editable2">
+					<div class="bloc_view2">
+						<table>
+							<tr>
+								<td>Username</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_defaulttitle">{{ user.username }}</span></td>
+							</tr>
+							<tr>
+								<td>email</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_slug">{{ user.email }}</span></td>
+							</tr>
+							<tr>
+								<td>Name</td>
+								<td>:</td>
+								<td style="padding:5px"><span id="bg_view_slug">{{ user.name }}</span></td>
+							</tr>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		
+		
+		<div id="a_content_tab">
+		
+			<div class="a_content_tab_header">
+				<div class="a_content_tab_header_content">
+					<div class="a_content_tab_header_item selected" id="tab_1">
+						<div class="a_content_tab_header_item_text">
+							Lorem
+						</div>
+					</div>
+					<div class="a_content_tab_header_item" id="tab_2">
+						<div class="a_content_tab_header_item_text">
+							Ipsum
+						</div>
+					</div>
+				</div>
+				<div class="a_content_tab_header_sep">
+					<div class="a_content_tab_header_sep_slide">
+					</div>
+				</div>
+			</div>
+			<div class="a_content_tab_content">
+				<div class="a_content_tab_content_item selected" id="content_tab_1" style="">
+					Lorem ipsum 1
+				</div>
+				<div class="a_content_tab_content_item not_selected" id="content_tab_2" style="">
+					Lorem ipsum 2
+				</div>
+			</div>
+		</div>
+	
+{% endblock %}
+
