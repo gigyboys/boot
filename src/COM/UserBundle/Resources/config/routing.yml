@@ -13,6 +13,9 @@ com_user_modify_avatar:
 com_user_modify_common:
     path:     /user/modify-common/{user_id}
     defaults: { _controller: COMUserBundle:User:editUserCommon }
+com_user_modify_biography:
+    path:     /user/modify-biography
+    defaults: { _controller: COMUserBundle:User:editUserBiography }
 com_user_modify_password:
     path:     /user/modify-password
     defaults: { _controller: COMUserBundle:User:editUserPassword }

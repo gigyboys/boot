@@ -102,7 +102,45 @@ $(function() {
         });
     });
 	
+	$('#btn_save_ur_biography').on('click', function(){
+		$("#msg_biography").html("");
+        var $this = $(this);
+		var bloc_editable = $this.closest(".bloc_editable");
+        var target = $this.data('target');
+		console.log(target);
+		var data = {
+			biography : bloc_editable.find("#ur_area_biography").val()
+		};
+		loadBlocEdit(bloc_editable);
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					resetBlocEdit(bloc_editable);
+					$("#msg_biography").html("<span style='color:#090'>Success! your biography has been updated</span>");
+					$("#ur_view_biography").html(data.biography);
+				}
+				else{
+					editBlocEdit(bloc_editable);
+					alert(data.message);
+				}
+				bloc_editable.find(".btn_loading").hide();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				bloc_editable.find(".btn_loading").hide();
+			}
+        });
+    });
+	
 	$('#btn_save_ur_password').on('click', function(){
+		$("#msg_password").html("");
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
         var target = $this.data('target');
@@ -122,7 +160,7 @@ $(function() {
                 console.log(data.state);
 				if(data.state){
 					resetBlocEdit(bloc_editable);
-					$("#msg_password").html("<span style='color:#090'>Success! your password is updated</span>");
+					$("#msg_password").html("<span style='color:#090'>Success! your password has been updated</span>");
 					$("#ur_input_current_password").val("");
 					$("#ur_input_new_password").val("");
 					$("#ur_input_repeat_password").val("");

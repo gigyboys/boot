@@ -13,6 +13,7 @@ use COM\UserBundle\Entity\UserPassword;
 use COM\UserBundle\Form\Type\UserType;
 use COM\UserBundle\Form\Type\UserPasswordType;
 use COM\UserBundle\Form\Type\UserCommonType;
+use COM\UserBundle\Form\Type\UserBiographyType;
 use COM\UserBundle\Entity\Avatar;
 use COM\UserBundle\Form\Type\AvatarType;
 
@@ -205,9 +206,8 @@ class UserController extends Controller
     {
 		if ($request->isXmlHttpRequest()){
 			$em = $this->getDoctrine()->getManager();
-			$userRepository = $em->getRepository('COMUserBundle:User');
 			
-			$user = $userRepository->find($user_id);
+			$user = $this->getUser();
 			
 			$userTemp = new User();
 			$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
@@ -288,11 +288,50 @@ class UserController extends Controller
         }
     }
 	
+    public function editUserBiographyAction(Request $request)
+    {
+		if ($request->isXmlHttpRequest()){
+			$em = $this->getDoctrine()->getManager();
+			
+			$user = $this->getUser();
+			if($user){
+				$userTemp = new User();
+				$formUserBiography = $this->get('form.factory')->create(new UserBiographyType(), $userTemp);
+				
+				$response = new Response();
+				
+				if ($formUserBiography->handleRequest($request)->isValid()) {
+					//traitement
+				
+					$user->setBiography($userTemp->getBiography());
+					$em->persist($user);
+					$em->flush();
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'biography' => $user->getBiography(),
+					)));
+					//fin traitement
+				}else{
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'serveur message : une erreur est survenue',
+					)));
+				}
+				$response->headers->set('Content-Type', 'application/json');
+				return $response;
+			}else{
+				
+			}
+		}else{
+            throw new NotFoundHttpException('Page not found');
+        }
+    }
+	
     public function editUserPasswordAction(Request $request)
     {
 		if ($request->isXmlHttpRequest()){
 			$em = $this->getDoctrine()->getManager();
-			$userRepository = $em->getRepository('COMUserBundle:User');
 			
 			$user = $this->getUser();
 			if($user){
