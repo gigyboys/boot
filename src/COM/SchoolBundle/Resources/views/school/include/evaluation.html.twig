@@ -1,0 +1,51 @@
+<div style="padding:5px; min-height:100px">
+	<div>
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<div>
+				<form action="" name="" method="post" id="">
+					<div style="margin-bottom:5px">
+					{{ app.user.name }}
+					</div>
+					<div style="width:50px;float:left">
+						{% set avatar=userAvatar(app.user) %}
+						{% if avatar != "default.jpeg" %}
+							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						{% else %}
+							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+						{% endif %}
+						<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:50px; height: 50px" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" /></span>
+					</div>
+					<div style="margin-left:60px">
+						<div style="margin:0px 0; padding:5px 0">
+							<div style="float:left; padding-top:2px">Mark : </div>
+							<div style="float:left; padding:4px"><div class="eval_item" data-value="20" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<div style="float:left; padding:4px"><div class="eval_item" data-value="40" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<div style="float:left; padding:4px"><div class="eval_item" data-value="60" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<div style="float:left; padding:4px"><div class="eval_item" data-value="80" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<div style="float:left; padding:4px"><div class="eval_item" data-value="100" style="cursor:pointer; border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<input type="hidden" id="sl_evaluation_mark" class="" value="80" />
+						</div>
+						<textarea class="default_textarea" id="sl_evaluation_comment" style="min-height:60px"></textarea>
+						<div style="margin:5px 0 0 0">
+							<span class="btn_save standar_button" id="btn_eval_sl" data-target="{{ path('com_school_add_evaluation', {'id': school.id}) }}">Evaluer</span>
+						</div>
+					</div>
+					<div style="clear:both"></div>
+				</form>
+			</div>
+		{% else %}
+			connectez-vous pour pouvoir partager votre évaluation
+		{% endif %}
+	</div>
+	{% if school.evaluations|length == 0 %}
+		<div style="margin:10px 0">
+			Aucune évaluation
+		</div>
+	{% else %}
+		<div>
+			{% for evaluation in school.evaluations %}
+				{{ include("COMSchoolBundle:school:include/evaluation_item.html.twig") }}
+			{% endfor %}
+		</div>
+	{% endif %}
+</div>

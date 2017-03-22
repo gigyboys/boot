@@ -45,7 +45,11 @@ $(function() {
     });
     
     link.click(function(e) {
-        window.location=$(this).attr("href");
+		if($(this).attr("target") == "_blank"){
+			window.open($(this).attr("href"), '_blank');
+		}else{
+			window.location=$(this).attr("href");
+		}
     }); 
     
 });

@@ -85,12 +85,53 @@ $(function() {
     $(window).resize(function() {
         slContent();
     });
-	
-    /*$("#footer_content").click(function() {
-            alert($("#footer_content").width());
-            alert(4*($(".footer_row").width()+20));
-    });*/
 
     slContent();
+	
+	
+    $('#btn_eval_sl').on('click', function(){
+        var $this = $(this);
+		//var bloc_editable = $this.closest(".bloc_editable");
+        var target = $this.data('target');
+		console.log(target);
+		var data = {
+			comment : $("#sl_evaluation_comment").val(), 
+			mark : $("#sl_evaluation_mark").val()
+		};
+		//loadBlocEdit(bloc_editable);
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });		
+    });
+	
+	
+    $('.eval_item').on('click', function(){
+        var $this = $(this);
+		$(".eval_item").each(function() {
+			var item = $(this);
+			if(item.data("value") <= $this.data("value")){
+				item.css("background", "#2a2");
+			}else{
+				item.css("background", "#fff");
+			}
+			$("#sl_evaluation_mark").val($this.data("value"));
+		});
+    });
 	
 });

@@ -21,7 +21,7 @@
 					
 					<img style="width: 100px; height: 100px; border:5px solid #ccc; border-radius:10px" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
 				</div>
-				<div style="margin-left: 136px; min-height:136px">
+				<div style="margin-left: 120px; min-height:110px">
 					<div id="" style="color:#333; font-size:18px">
 						{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
 					</div>
@@ -96,12 +96,7 @@
 		<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "display:none">
 			<div class="cr">
 				<div class="ct">
-					<!--<div style="border-bottom: 1px solid #999; padding:5px">
-						Evaluations
-					</div>-->
-					<div style="padding:5px; min-height:100px">
-						Evaluations
-					</div>
+					{{ include("COMSchoolBundle:school:include/evaluation.html.twig") }}
 				</div>
 			</div>
 		</div>

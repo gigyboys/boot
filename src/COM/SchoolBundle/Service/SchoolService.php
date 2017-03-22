@@ -4,6 +4,7 @@ namespace COM\SchoolBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Evaluation;
 use COM\UserBundle\Entity\User;
 use COM\PlatformBundle\Entity\Locale;
 
@@ -58,6 +59,17 @@ class SchoolService {
     
     public function getSchoolAdmins($school) {
         $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
+
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'school' => $school,
+            'active' => true,
+        ));
+        
+		return $schoolAdmins;
+    }
+    
+    public function getEvaluations($school) {
+        $evaluationRepository = $this->em->getRepository('COMSchoolBundle:Evaluation');
 
         $schoolAdmins = $schoolAdminRepository->findBy(array(
             'school' => $school,

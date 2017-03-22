@@ -3,11 +3,15 @@
 namespace COM\SchoolBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Evaluation;
 use COM\PlatformBundle\Entity\Locale;
 use COM\PlatformBundle\Entity\View;
 use COM\BlogBundle\Entity\Post;
+use COM\SchoolBundle\Form\Type\EvaluationType;
 
 class SchoolController extends Controller
 {
@@ -89,5 +93,58 @@ class SchoolController extends Controller
 			'postSchools' => $postSchools,
 			'entityView' => 'school',
 		));
+    }
+	
+	public function addEvaluationAction($id, Request $request)
+    {
+		if ($request->isXmlHttpRequest()){
+			$em = $postRepository = $this->getDoctrine()->getManager();
+			$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+			
+			$user = $this->getUser();
+			
+			if($user){
+				$school = $schoolRepository->find($id);
+				
+				$evaluation = new Evaluation();
+				$formEvaluation = $this->get('form.factory')->create(new EvaluationType(), $evaluation);
+				
+				$response = new Response();
+				
+				if ($formEvaluation->handleRequest($request)->isValid()) {
+					
+					$evaluation->setUser($user);
+					$evaluation->setSchool($school);
+					$evaluation->setDate(new \DateTime());
+					
+					$em->persist($evaluation);
+					$em->flush();
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'schoolId' => $school->getId(),
+						'evaluationId' => $evaluation->getId(),
+						'evaluationMark' => $evaluation->getMark(),
+						'evaluationComment' => $evaluation->getComment(),
+						'userId' => $user->getId(),
+					)));
+				}else{
+					$response->setContent(json_encode(array(
+						'state' => 0,
+						'message' => 'serveur message : une erreur est survenue',
+					)));
+				}
+			}else{
+				$response->setContent(json_encode(array(
+					'state' => 0,
+					'message' => 'serveur message : user not connected',
+				)));
+			}
+			$response->headers->set('Content-Type', 'application/json');
+			return $response;
+			
+		}else{
+            throw new NotFoundHttpException('Page not found');
+        }
     }
 }

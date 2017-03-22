@@ -4,3 +4,6 @@ com_school_home:
 com_school_view:
     path:     /{slug}
     defaults: { _controller: COMSchoolBundle:School:view }
+com_school_add_evaluation:
+    path:     /add-evaluation/{id}
+    defaults: { _controller: COMSchoolBundle:School:addEvaluation }
