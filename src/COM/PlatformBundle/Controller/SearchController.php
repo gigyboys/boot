@@ -15,7 +15,7 @@ class SearchController extends Controller
 	
     public function indexAction()
     {
-		$em = $postRepository = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');

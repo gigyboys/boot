@@ -15,13 +15,12 @@ use COM\SchoolBundle\Form\Type\EvaluationType;
 
 class SchoolController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-		$em = $postRepository = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		
-		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
@@ -40,19 +39,15 @@ class SchoolController extends Controller
 		));
     }
 	
-    public function viewAction($slug)
+    public function viewAction($slug, $type, Request $request)
     {
-		$em = $postRepository = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
-		$schoolTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolTranslate');
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
-		$postTranslateRepository = $em->getRepository('COMBlogBundle:PostTranslate');
 		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
 		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
-		$viewRepository = $em->getRepository('COMPlatformBundle:View');
 		
-		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
@@ -63,11 +58,6 @@ class SchoolController extends Controller
 		));
 		$schoolService = $this->container->get('com_school.school_service');
 		$schoolService->hydrateSchoolLang($school, $locale);
-			
-		$schoolTranslate = $schoolTranslateRepository->findOneBy(array(
-			'locale' => $locale,
-			'school' => $school,
-		));
 		
 		$postSchools = $postSchoolRepository->findBy(array(
 			'school' => $school,
@@ -86,19 +76,23 @@ class SchoolController extends Controller
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($school, $request);
 		
+		$types = array("about", "post", "advert", "evaluation");
+		if (!in_array($type, $types)) {
+			$type = "about";
+		}
         return $this->render('COMSchoolBundle:school:view_school.html.twig', array(
 			'school' => $school,
-			'schoolTranslate' => $schoolTranslate,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
 			'entityView' => 'school',
+			'type' => $type,
 		));
     }
 	
 	public function addEvaluationAction($id, Request $request)
     {
 		if ($request->isXmlHttpRequest()){
-			$em = $postRepository = $this->getDoctrine()->getManager();
+			$em = $this->getDoctrine()->getManager();
 			$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 			
 			$user = $this->getUser();

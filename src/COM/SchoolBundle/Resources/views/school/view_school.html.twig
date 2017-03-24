@@ -36,15 +36,16 @@
 			</div>
 		</div>
 	</div>
+	
 	<div id="sl_dl">
 		<div id="sl_onglet_head" style="">
 			<div class="cr">
 				<div class="ct">
 					<div style="margin:0 10px">
-						<span class="tab_sl_item selected" id="tab_sl_about" style="">A propos</span>  
-						<span class="tab_sl_item" id="tab_sl_new" style="">Actualités</span>  
-						<span class="tab_sl_item" id="tab_sl_advert" style="">Annonces</span>  
-						<span class="tab_sl_item" id="tab_sl_evaluation" style="">Evaluations</span>
+						<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >A propos</span>  
+						<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >Actualités</span>  
+						<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">Annonces</span>  
+						<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">Evaluations</span>
 					</div>
 				</div>
 			</div>
@@ -53,7 +54,7 @@
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">
-					{{ schoolTranslate.description | raw}}
+					{{ school.description | raw}}
 					</div>
 				</div>
 			</div>

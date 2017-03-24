@@ -12,6 +12,9 @@ $(function() {
 		content_tab_sl_item.removeClass('selected').css('display','none');
 		
 		content.addClass('selected').css('display','block');
+		console.log($(this).data("link"));
+		document.title = $(this).data("title");
+		history.pushState('', '', $(this).data("link"));
 		
     });
 	

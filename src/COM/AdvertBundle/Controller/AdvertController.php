@@ -27,7 +27,7 @@ class AdvertController extends Controller
 	
     public function viewAction($slug)
     {
-		$em = $postRepository = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
 		$advertTranslateRepository = $em->getRepository('COMAdvertBundle:AdvertTranslate');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
