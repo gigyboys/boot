@@ -1,7 +1,7 @@
 <div style="margin-bottom:10px">
-	<div style="background:#bbb; height:1px; width:100%; margin:12px 0"></div>
+	<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
 	<div style="margin-bottom:5px">
-	Par : <a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': evaluation.user.username}) }}">{{ evaluation.user.name }}</a> - mark : {{ evaluation.mark }} - on {{ evaluation.date | date('Y-m-d H:i:s') }}
+	By : <a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': evaluation.user.username}) }}">{{ evaluation.user.name }}</a> on {{ evaluation.date | date('Y-m-d H:i:s') }}
 	</div>
 	<div style="width:50px;float:left">
 		{% set avatar=userAvatar(evaluation.user) %}
@@ -13,7 +13,48 @@
 		<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:50px; height: 50px" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ evaluation.user.username }}" /></span>
 	</div>
 	<div style="margin-left:60px">
-	{{ evaluation.comment }}
+		<div style="height:26px">
+			<div style="float:left; padding-top:2px">Mark : </div>
+			{% if evaluation.mark <= 20 %}
+				<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="40" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="60" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="80" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+			
+			{% elseif evaluation.mark <= 40 %}
+				<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="40" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="60" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="80" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+		
+			{% elseif evaluation.mark <= 60 %}
+				<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="40" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="60" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="80" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+			
+			{% elseif evaluation.mark <= 80 %}
+				<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="40" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="60" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="80" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+			
+			{% elseif evaluation.mark <= 100 %}
+				<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="40" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="60" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="80" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+				<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+			{% endif %}
+			
+		</div>
+		<div style="margin-bottom:5px">
+			{{ evaluation.comment | nl2br  }}
+		</div>
 	</div>
 	<div style="clear:both"></div>
 </div>

@@ -4,7 +4,7 @@
 			<div>
 				<form action="" name="" method="post" id="">
 					<div style="margin-bottom:5px">
-					{{ app.user.name }}
+					{{ app.user.name }} :
 					</div>
 					<div style="width:50px;float:left">
 						{% set avatar=userAvatar(app.user) %}
@@ -34,15 +34,19 @@
 				</form>
 			</div>
 		{% else %}
-			connectez-vous pour pouvoir partager votre évaluation
+			<div style="padding: 5px 0 0 0">
+				<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
+			</div>
 		{% endif %}
 	</div>
 	{% if school.evaluations|length == 0 %}
-		<div style="margin:10px 0">
-			Aucune évaluation
+		<div id="evaluation_list" style="margin:10px 0">
+		</div>
+		<div id="evaluation_empty" style="margin:10px 0">
+			Aucune évaluation à propos de {{ school.name }}
 		</div>
 	{% else %}
-		<div>
+		<div id="evaluation_list">
 			{% for evaluation in school.evaluations %}
 				{{ include("COMSchoolBundle:school:include/evaluation_item.html.twig") }}
 			{% endfor %}

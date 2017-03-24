@@ -107,6 +107,8 @@ $(function() {
             success: function(data){
                 console.log(data.state);
 				if(data.state){
+					$("#evaluation_list").prepend(data.evaluationItem);
+					$("#evaluation_empty").remove();
 				}
 				else{
 					alert("une erreur est survenue");

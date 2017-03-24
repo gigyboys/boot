@@ -120,6 +120,9 @@ class SchoolController extends Controller
 					$em->persist($evaluation);
 					$em->flush();
 					
+					$evaluationItem = $this->renderView('COMSchoolBundle:school:include/evaluation_item.html.twig', array(
+					  'evaluation' => $evaluation
+					));
 					$response->setContent(json_encode(array(
 						'state' => 1,
 						'schoolId' => $school->getId(),
@@ -127,6 +130,7 @@ class SchoolController extends Controller
 						'evaluationMark' => $evaluation->getMark(),
 						'evaluationComment' => $evaluation->getComment(),
 						'userId' => $user->getId(),
+						'evaluationItem' => $evaluationItem,
 					)));
 				}else{
 					$response->setContent(json_encode(array(
