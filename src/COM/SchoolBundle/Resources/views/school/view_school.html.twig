@@ -23,7 +23,9 @@
 				</div>
 				<div style="margin-left: 120px; min-height:110px">
 					<div id="" style="color:#333; font-size:18px">
-						{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+						<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
+							{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+						</a>
 					</div>
 					<div id="">
 						{{ school.shortDescription }}
@@ -50,7 +52,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_about" style = "">
+		<div class="content_tab_sl_item" id="content_tab_sl_about" style = "{% if type != 'about' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">
@@ -59,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_new" style = "display:none">
+		<div class="content_tab_sl_item" id="content_tab_sl_new" style = "{% if type != 'post' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<!--<div style="border-bottom: 1px solid #999; padding:5px">
@@ -78,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_advert" style = "display:none">
+		<div class="content_tab_sl_item" id="content_tab_sl_advert" style = "{% if type != 'advert' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<!--<div style="border-bottom: 1px solid #999; padding:5px">
@@ -97,7 +99,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "display:none">
+		<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "{% if type != 'evaluation' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					{{ include("COMSchoolBundle:school:include/evaluation.html.twig") }}

@@ -31,8 +31,8 @@ stfalcon_tinymce:
                 - "emoticons template paste textcolor"
             #toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
             #toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
-            #toolbar1: "insertfile undo redo | hr anchor pagebreak | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table | preview code"
-            toolbar1: "insertfile undo redo | styleselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table | preview"
+            toolbar1: "insertfile undo redo | preview code | styleselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table"
+            #toolbar1: "insertfile undo redo | styleselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table | preview"
             image_advtab: true
             templates:
                 - {title: 'Test template 1', content: 'Test 1'}
