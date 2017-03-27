@@ -58,6 +58,7 @@
 	height:60px;
 	background:#eee;
 	text-align:center;
+	overflow:hidden
 }
 .sl_action{
 	width:auto;
