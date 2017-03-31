@@ -21,6 +21,18 @@ class FieldTranslate
      */
     private $id;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\SchoolBundle\Entity\Field")
+	 * @ORM\JoinColumn(name="field_id", nullable=false)
+	 */
+	private $field;
+
+	/**
+	* @ORM\ManyToOne(targetEntity="COM\PlatformBundle\Entity\Locale")
+	* @ORM\JoinColumn(name="locale_id", nullable=false)
+	*/
+	private $locale;
+
     /**
      * @var string
      *
@@ -90,5 +102,51 @@ class FieldTranslate
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set field
+     *
+     * @param \COM\SchoolBundle\Entity\Field $field
+     * @return FieldTranslate
+     */
+    public function setField(\COM\SchoolBundle\Entity\Field $field)
+    {
+        $this->field = $field;
+
+        return $this;
+    }
+
+    /**
+     * Get field
+     *
+     * @return \COM\SchoolBundle\Entity\Field 
+     */
+    public function getField()
+    {
+        return $this->field;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param \COM\PlatformBundle\Entity\Locale $locale
+     * @return FieldTranslate
+     */
+    public function setLocale(\COM\PlatformBundle\Entity\Locale $locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return \COM\PlatformBundle\Entity\Locale 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

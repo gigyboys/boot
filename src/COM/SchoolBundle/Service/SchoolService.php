@@ -4,6 +4,7 @@ namespace COM\SchoolBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\Evaluation;
 use COM\UserBundle\Entity\User;
 use COM\PlatformBundle\Entity\Locale;
@@ -77,5 +78,16 @@ class SchoolService {
         ));
         
 		return $schoolAdmins;
+    }
+    
+    public function getFieldTranslate(Field $field, $locale) {
+        $fieldTranslateRepository = $this->em->getRepository('COMSchoolBundle:FieldTranslate');
+
+        $fieldTranslate = $fieldTranslateRepository->findOneBy(array(
+            'field' => $field,
+            'locale' => $locale,
+        ));
+        
+		return $fieldTranslate;
     }
 }

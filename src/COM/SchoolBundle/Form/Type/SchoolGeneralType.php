@@ -25,7 +25,6 @@ class SchoolGeneralType extends AbstractType
             'data_class' => 'COM\SchoolBundle\Entity\School',
             'csrf_protection' => false,
         ));
-		//$this->configureOptions($resolver);
     }
 
     /**

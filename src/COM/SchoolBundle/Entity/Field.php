@@ -27,6 +27,19 @@ class Field
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="COM\SchoolBundle\Entity\School")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $school;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="default_name", type="string", length=255)
+     */
+    private $defaultName;
 
     private $locale;
 
@@ -64,5 +77,51 @@ class Field
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set defaultName
+     *
+     * @param string $defaultName
+     * @return Field
+     */
+    public function setDefaultName($defaultName)
+    {
+        $this->defaultName = $defaultName;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultName
+     *
+     * @return string 
+     */
+    public function getDefaultName()
+    {
+        return $this->defaultName;
+    }
+
+    /**
+     * Set school
+     *
+     * @param \COM\SchoolBundle\Entity\School $school
+     * @return Field
+     */
+    public function setSchool(\COM\SchoolBundle\Entity\School $school)
+    {
+        $this->school = $school;
+
+        return $this;
+    }
+
+    /**
+     * Get school
+     *
+     * @return \COM\SchoolBundle\Entity\School 
+     */
+    public function getSchool()
+    {
+        return $this->school;
     }
 }

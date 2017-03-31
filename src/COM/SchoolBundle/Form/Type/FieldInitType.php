@@ -6,13 +6,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class SchoolTranslateType extends AbstractType
+class FieldInitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text')
-                ->add('shortDescription', 'text')
-                ->add('description', 'text')
+        $builder->add('defaultName', 'text')
+                ->add('ajouter', 'submit')
         ;
     }
     
@@ -22,7 +21,7 @@ class SchoolTranslateType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COM\SchoolBundle\Entity\SchoolTranslate',
+            'data_class' => 'COM\SchoolBundle\Entity\Field',
             'csrf_protection' => false,
         ));
     }
