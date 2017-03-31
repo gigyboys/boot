@@ -87,17 +87,16 @@ class SchoolFieldController extends Controller
 	/*
 	 * School Edition field
 	 */
-    public function editFieldAction($school_id, $field_id)
+    public function editFieldAction($field_id)
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
-		$school = $schoolRepository->find($school_id);
 		$field = $fieldRepository->find($field_id);
 		
         return $this->render('COMAdminBundle:school:edit_field.html.twig', array(
-			'school' => $school,
 			'field' => $field,
+			'school' => $field->getSchool(),
 		));
     }
 	

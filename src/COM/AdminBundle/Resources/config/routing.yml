@@ -31,7 +31,7 @@ com_admin_school_field_add:
     path:     /school/{school_id}/field/add
     defaults: { _controller: COMAdminBundle:SchoolField:addField }
 com_admin_school_field_edit:
-    path:     /school/{school_id}/edit-field/{field_id}
+    path:     /school/edit-field/{field_id}
     defaults: { _controller: COMAdminBundle:SchoolField:editField }
 com_admin_school_field_edit_common:
     path:     /school/edit-field-common/{id}

@@ -105,7 +105,7 @@
 				{% for field in fields %}
 					<tr class="a_table_line">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ field.id }}</td>
-						<td><a href="{{ path('com_admin_school_field_edit', {'school_id': school.id, 'field_id': field.id}) }}">{{ field.defaultName }}</a></td>
+						<td><a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a></td>
 						<td class="a_table_cell_action">action</td>
 					</tr>
 				{% endfor %}
