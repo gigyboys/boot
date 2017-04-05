@@ -106,7 +106,16 @@
 					<tr class="a_table_line">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ field.id }}</td>
 						<td><a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a></td>
-						<td class="a_table_cell_action">action</td>
+						<td class="a_table_cell_action">
+							<span class="dd" style="display:inline-block;">
+								<span href="#" class="dd_src" style="cursor:pointer">
+									action
+								</span>
+								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+									<a class="link" href="#">Supprimer</a>
+								</div>
+							</span> 
+						</td>
 					</tr>
 				{% endfor %}
 			</table>

@@ -47,6 +47,7 @@ class SchoolController extends Controller
 		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
 		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
 		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -73,6 +74,10 @@ class SchoolController extends Controller
 			'school' => $school,
 		));
 		
+		$fields = $fieldRepository->findBy(array(
+			'school' => $school
+		));
+		
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($school, $request);
 		
@@ -84,6 +89,7 @@ class SchoolController extends Controller
 			'school' => $school,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'fields' => $fields,
 			'entityView' => 'school',
 			'type' => $type,
 		));
@@ -97,6 +103,7 @@ class SchoolController extends Controller
 		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
 		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
 		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -121,6 +128,10 @@ class SchoolController extends Controller
 			'school' => $school,
 		));
 		
+		$fields = $fieldRepository->findBy(array(
+			'school' => $school
+		));
+		
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($school, $request);
 		
@@ -130,6 +141,7 @@ class SchoolController extends Controller
 			'school' => $school,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'fields' => $fields,
 			'entityView' => 'school',
 			'type' => $type,
 		));

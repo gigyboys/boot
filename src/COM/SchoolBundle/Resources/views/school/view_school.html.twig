@@ -56,7 +56,22 @@
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">
-					{{ school.description | raw}}
+						<div>
+							{{ school.description | raw}}
+						</div>
+						<div>
+							{# fields #}
+							{% if fields %}
+								<div style="font-weight:bold">
+									Fields
+								</div>
+								{% for field in fields %}
+									<div>
+										{{ field.defaultName }}
+									</div>
+								{% endfor %}
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
