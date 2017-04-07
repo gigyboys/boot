@@ -174,4 +174,57 @@ $(function() {
         });
     });
 	
+	//delete field
+	$('.delete_field').live('click', function() {
+		var fieldId = $(this).data("id");
+		var fieldDefaultName = $(this).data("defaultname");
+		var fieldTarget = $(this).data("target");
+		
+		var content = "";
+		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
+			content += '<div style="text-align:center;padding:10px 0"> Voulez vous effectuer la suppression du fied "'+fieldDefaultName+'"?</div>';
+			content += '<div style="text-align:center">	';
+				content += '<span class="button_closable" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Annuler	</span>';
+				content += '<span class="confirm_delete_field button_closable" data-id="'+fieldId+'" data-target="'+fieldTarget+'" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Confirmer	</span>	';
+			content += '</div>';
+		content += '</div>';
+        
+		popup(content, 500, true);
+		
+    });
+	
+	//confirm delete field
+	$('.confirm_delete_field').live('click', function() {
+		var $this = $(this);
+		var fieldId = $this.data("id");
+        var target = $this.data('target');
+		var data = {
+			id : fieldId
+		};
+		var widthLoadDeleteField = $( "#field_"+data.id ).width()-2;
+		var heightLoadDeleteField = $( "#field_"+data.id ).height()-2;
+		$( "#field_"+data.id ).find(".a_table_cell_id").prepend("<div class=\"load_delete_field\" style=\"position:absolute; text-align:center; height:"+heightLoadDeleteField+"px; width:"+widthLoadDeleteField+"px; background:rgba(255,255,255,0.8)\">Suppression chargement ...</div>");
+        
+		$.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					$( "#field_"+data.id ).remove();
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
 });

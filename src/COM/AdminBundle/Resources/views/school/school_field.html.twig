@@ -5,25 +5,28 @@
 {% endblock %}
 
 {% block body_header %}
-	<div style="padding:8px; float:left">
-		<span>School </span> 
-		<span class="dd" style="display:inline-block;">
-			<span href="#" class="dd_src" style="cursor:pointer">
-				<span style="
-					display:inline-block; 
-					border-left: 8px solid #444;
-					border-top: 5px solid transparent;
-					border-bottom: 5px solid transparent;
-					border-right: 0px solid transparent;
-					">
-				</span>
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
 			</span>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				<a class="link" href="test.html">menu 1</a><br />
-				<a class="link" href="test.html">menu 2 </a>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
 			</div>
 		</span> 
-		<span>Fields </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_administrator', {'school_id': school.id}) }}">Admin</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_field', {'school_id': school.id}) }}"><span>{{ 'Fields' | trans }}</span></a> </span>
 	</div>
 	<div style="padding:8px; float:right">
 		<div style="float:left">
@@ -103,8 +106,10 @@
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for field in fields %}
-					<tr class="a_table_line">
-						<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ field.id }}</td>
+					<tr class="a_table_line field_item" id="field_{{ field.id }}">
+						<td class="a_table_cell_id" style="width: 50px; text-align:center">
+							<div>{{ field.id }}</div>
+						</td>
 						<td><a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a></td>
 						<td class="a_table_cell_action">
 							<span class="dd" style="display:inline-block;">
@@ -112,7 +117,7 @@
 									action
 								</span>
 								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-									<a class="link" href="#">Supprimer</a>
+									<span class="delete_field" data-id="{{ field.id }}" data-target="{{ path('com_admin_school_field_delete', {'id': field.id}) }}" data-defaultname="{{ field.defaultName }}" style="cursor:pointer">Supprimer</span>
 								</div>
 							</span> 
 						</td>

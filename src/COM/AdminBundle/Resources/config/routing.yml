@@ -39,6 +39,9 @@ com_admin_school_field_edit_common:
 com_admin_school_field_edit_translate:
     path:     /school/edit-field-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:SchoolField:editFieldTranslate }
+com_admin_school_field_delete:
+    path:     /school/delete-field/{id}/
+    defaults: { _controller: COMAdminBundle:SchoolField:deleteField }
 
 #blog
 com_admin_blog:

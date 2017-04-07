@@ -5,25 +5,8 @@
 {% endblock %}
 
 {% block body_header %}
-	<div style="padding:8px;float:left">
-		<span>School </span> 
-		<span class="dd" style="display:inline-block;">
-			<span href="#" class="dd_src" style="cursor:pointer">
-				<span style="
-					display:inline-block; 
-					border-left: 8px solid #444;
-					border-top: 5px solid transparent;
-					border-bottom: 5px solid transparent;
-					border-right: 0px solid transparent;
-					">
-				</span>
-			</span>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				<a class="link" href="test.html">menu 1</a><br />
-				<a class="link" href="test.html">menu 2 </a>
-			</div>
-		</span> 
-		<span>Listes des ecoles </span>
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
 	</div>
 	<div style="padding:8px;float:right">
 		<span><a href="{{ path('com_admin_school_add') }}">New school</a></td></span> 

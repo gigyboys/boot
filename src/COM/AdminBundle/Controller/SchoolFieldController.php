@@ -185,4 +185,40 @@ class SchoolFieldController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+	/*
+	 * School Field delete
+	 */
+    public function deleteFieldAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
+		$fieldTranslateRepository = $em->getRepository('COMSchoolBundle:FieldTranslate');
+        
+        $field = $fieldRepository->find($id);
+
+        $response = new Response();
+
+		if ($field) {
+			$fieldTranslates = $fieldTranslateRepository->findBy(array(
+                'field' => $field,
+            ));
+			foreach($fieldTranslates as $fieldTranslate){
+				$em->remove($fieldTranslate);
+			}
+			$em->remove($field);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'id' => $id,
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
 }
