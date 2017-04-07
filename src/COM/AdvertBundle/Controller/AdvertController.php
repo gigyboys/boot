@@ -32,6 +32,8 @@ class AdvertController extends Controller
 		$advertTranslateRepository = $em->getRepository('COMAdvertBundle:AdvertTranslate');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
+		$user = $this->getUser();
+		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -48,7 +50,7 @@ class AdvertController extends Controller
 		));
 		
 		$platformService = $this->container->get('com_platform.platform_service');
-		$platformService->registerView($advert, $request);
+		$platformService->registerView($advert, $user, $request);
 		
         return $this->render('COMAdvertBundle:advert:view_advert.html.twig', array(
 			'advert' => $advert,

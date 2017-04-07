@@ -28,7 +28,7 @@ class PlatformService {
         return $locales;
     }
 	
-    public function registerView($entity, $request) {
+    public function registerView($entity, $user = null, $request) {
 		
 		$view = new View();
 		if ($entity instanceof School){
@@ -40,7 +40,7 @@ class PlatformService {
 		}else{
 			
 		}
-		$view->setUser(null);
+		$view->setUser($user);
 		$clientIp = $request->getClientIp();
 		$view->setIp($clientIp);
 		$view->setDate(new \DateTime());

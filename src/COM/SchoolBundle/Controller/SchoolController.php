@@ -49,6 +49,8 @@ class SchoolController extends Controller
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
 		
+		$user = $this->getUser();
+		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
@@ -79,7 +81,7 @@ class SchoolController extends Controller
 		));
 		
 		$platformService = $this->container->get('com_platform.platform_service');
-		$platformService->registerView($school, $request);
+		$platformService->registerView($school, $user, $request);
 		
 		$types = array("about", "post", "advert", "evaluation");
 		if (!in_array($type, $types)) {
@@ -104,6 +106,8 @@ class SchoolController extends Controller
 		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
+		
+		$user = $this->getUser();
 		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -133,7 +137,7 @@ class SchoolController extends Controller
 		));
 		
 		$platformService = $this->container->get('com_platform.platform_service');
-		$platformService->registerView($school, $request);
+		$platformService->registerView($school, $user, $request);
 		
 		$type = "about";
 		

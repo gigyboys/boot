@@ -44,6 +44,8 @@ class BlogController extends Controller
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
+		$user = $this->getUser();
+		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -58,7 +60,7 @@ class BlogController extends Controller
 		$blogService->hydratePostLang($post, $locale);
 		
 		$platformService = $this->container->get('com_platform.platform_service');
-		$platformService->registerView($post, $request);
+		$platformService->registerView($post, $user, $request);
 		
         return $this->render('COMBlogBundle:blog:view_post.html.twig', array(
 			'post' => $post,
