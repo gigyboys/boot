@@ -134,7 +134,7 @@ com_admin_forum_topic_edit_translate:
     defaults: { _controller: COMAdminBundle:Forum:editTopicTranslate }
 com_admin_forum_topic_change_illustration:
     path:     /forum/topic-change-illustration/{id}
-    defaults: { _controller: COMAdminBundle:Forum:topicChangeIllustration }
+    defaults: { _controller: COMAdminBundle:Forum:changeTopicIllustration }
 
 #user
 com_admin_user:

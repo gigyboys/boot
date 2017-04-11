@@ -2,6 +2,38 @@
 $(function() {
 	console.log("a_fm.js");
 	
+    /*
+    *upload illustration for topic
+    */
+    $('#topicillustrationfile').on('change', function(){
+		/*console.log("change avatar");*/
+        var $this = $(this);
+        var file = $this[0].files[0];
+        var target = $this.data('target');
+        var data = new FormData();
+		console.log(target);
+        data.append('file', file);
+		//console.log(data);
+		
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.illustration116x116);
+				$("#topic_illustration").attr("src", data.illustration116x116);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
     $('#btn_save_fm_topic_common').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
