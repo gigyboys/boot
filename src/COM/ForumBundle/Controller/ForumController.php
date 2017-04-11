@@ -30,4 +30,39 @@ class ForumController extends Controller
 			'topics' => $topics,
 		));
     }
+	
+    public function viewTopicAction($slug)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$topicRepository = $em->getRepository('COMForumBundle:Topic');
+		$subjectRepository = $em->getRepository('COMForumBundle:Subject');
+		$messageRepository = $em->getRepository('COMForumBundle:Message');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$topic = $topicRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		
+		if($topic){
+			$forumService = $this->container->get('com_forum.forum_service');
+			$forumService->hydrateTopicLang($topic, $locale);
+			
+			$subjects = $subjectRepository->findBy(array(
+				'topic' => $topic,
+			));
+		
+			return $this->render('COMForumBundle:forum:view_topic.html.twig', array(
+				'topic' => $topic,
+				'subjects' => $subjects,
+			));
+		}else{
+			//todo
+		}
+    }
 }

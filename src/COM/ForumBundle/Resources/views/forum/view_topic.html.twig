@@ -1,0 +1,45 @@
+{% extends "COMForumBundle::forum.html.twig" %}
+
+{% block title %}
+  Topic {{ topic.name }}
+{% endblock %}
+
+
+{% block forum_body %}
+	<div class="cr">
+		<div class="ct">
+			<div style="margin:10px; font-weight:bold">
+				Topic {{ topic.name }}
+			</div>
+			<div>
+				{% if subjects %}
+					{% for subject in subjects %}
+					<div style="background:#eee; margin:10px;">
+						<div class="topic_illustration" style="float:left; width:60px">
+							{% set avatar=userAvatar(subject.user) %}
+							{% if avatar != "default.jpeg" %}
+								{% set path='uploads/images/user/avatar/'~avatar %}
+							{% else %}
+								{% set path='default/images/user/avatar/'~avatar %}
+							{% endif %}
+							
+							<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ subject.user.username }}" />
+						</div>
+						<div style="margin-left:70px">
+							<div>
+								{{ subject.title }}
+							</div>
+						</div>
+						<div style="clear:both"></div>
+					</div>
+					{% endfor %}
+				{% else %}
+					<div style="margin:10px;">
+						Aucun sujet sur ce th&egrave;me !
+					</div>
+				{% endif %}
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -27,7 +27,7 @@
 					</div>
 					<div style="margin-left:70px">
 						<div>
-							{{ topic.name }}
+							<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}">{{ topic.name }}</a>
 						</div>
 						<div>
 							{{ topic.description }}
