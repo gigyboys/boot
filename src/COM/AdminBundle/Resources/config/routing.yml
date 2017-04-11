@@ -122,10 +122,19 @@ com_admin_forum:
     defaults: { _controller: COMAdminBundle:Forum:index }
 com_admin_forum_topic_add:
     path:     /forum/add-topic
-    defaults: { _controller: COMAdminBundle:Forum:addAdvert }
+    defaults: { _controller: COMAdminBundle:Forum:addTopic }
 com_admin_forum_topic_edit:
     path:     /forum/edit-topic/{id}
-    defaults: { _controller: COMAdminBundle:Forum:editAdvert }
+    defaults: { _controller: COMAdminBundle:Forum:editTopic }
+com_admin_forum_topic_edit_common:
+    path:     /forum/edit-topic-common/{id}
+    defaults: { _controller: COMAdminBundle:Forum:editTopicCommon }
+com_admin_forum_topic_edit_translate:
+    path:     /forum/edit-topic-translate/{id}
+    defaults: { _controller: COMAdminBundle:Forum:editTopicTranslate }
+com_admin_forum_topic_change_illustration:
+    path:     /forum/topic-change-illustration/{id}
+    defaults: { _controller: COMAdminBundle:Forum:topicChangeIllustration }
 
 #user
 com_admin_user:

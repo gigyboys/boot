@@ -25,4 +25,16 @@ class ForumController extends Controller
 		
         return $this->render('COMAdminBundle:forum:topic.html.twig', array('topics' => $topics));
     }
+	
+    public function editTopicAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$topicRepository = $em->getRepository('COMForumBundle:Topic');
+
+		$topic = $topicRepository->find($id);
+		
+        return $this->render('COMAdminBundle:forum:edit_topic.html.twig', array(
+			'topic' => $topic,
+		));
+    }
 }

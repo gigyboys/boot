@@ -1,0 +1,173 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  Edit topic {{ topic.id }}
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_forum') }}"><span>{{ 'Forum' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_forum_topic_add') }}">add Topic</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_forum_topic_edit', {'id': topic.id}) }}">{{ topic.defaultName }}</a></span>
+	</div>
+	<div style="padding:8px; float:right">
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Edit topic {{ topic.id }}
+	</div>
+	
+	<div style="padding:5px">
+		<div style="float:left; height: 122px;margin:5px">
+			{# twig extension #}
+			{% set illustration=topicIllustration(topic) %}
+			{% if illustration != "default.jpeg" %}
+				{% set path='uploads/images/forum/topic/illustration/'~illustration %}
+			{% else %}
+				{% set path='default/images/forum/topic/illustration/'~illustration %}
+			{% endif %}
+			
+			<label for="topicillustrationfile">
+				<img id="topic_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img topic" />
+			</labe>
+			<input style="display:none" id="topicillustrationfile" name="file" class="ajax_topic_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_forum_topic_change_illustration', {'id': topic.id}) }}" /> 
+		</div>
+		<div style="margin-left: 136px;">
+			
+			<div class="bloc_editable">
+				<div class="bloc_view">
+					<table>
+						<tr>
+							<td>Default name</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="at_view_defaulttitle">{{ topic.defaultName }}</span></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="at_view_slug">{{ topic.slug }}</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="bloc_edit" style="display:none">
+					<table>
+						<tr>
+							<td>Default name</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="at_input_defaulttitle" class="default_input" value="{{ topic.defaultName }}" /></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="at_input_slug" class="default_input" value="{{ topic.slug }}" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="separator"></div>
+				<div class="bloc_action" style="margin:5px">
+					<span class="btn_edit standar_button">Modifier</span> 
+					<span class="btn_save standar_button" id="btn_save_topic_common" data-target="{{ path('com_admin_forum_topic_edit_common', {'id': topic.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+				</div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	
+	{# twig extension #}
+	{% set locales = getLocales() %}
+	
+	<div id="a_content_tab">
+	
+		<div class="a_content_tab_header">
+			<div class="a_content_tab_header_content">
+				{% for locale in locales %}
+					<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+						<div class="a_content_tab_header_item_text">
+							{{ locale.label | trans }}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="a_content_tab_header_sep">
+				<div class="a_content_tab_header_sep_slide">
+				</div>
+			</div>
+		</div>
+		<div class="a_content_tab_content">
+			{% for locale in locales %}
+				{# twig extension #}
+				{% set topicTranslate = getTopicTranslate(topic, locale) %}
+				<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+					<div class="bloc_editable">
+						<div class="bloc_view">
+							<div>
+								<div style="margin: 5px 0;">
+									name {{ locale.locale }}:
+								</div>
+								<div id="" class="att_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{% if topicTranslate is not null %}
+										{{ topicTranslate.name }}
+									{% else %}
+										NAN
+									{% endif %}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Content :
+								</div>
+								<div id="" class="att_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{% if topicTranslate is not null %}
+										{{ topicTranslate.description }}
+									{% else %}
+										NAN
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<div>
+								<div style="margin: 5px 0;">
+									Title {{ locale.locale }}:
+								</div>
+								<div>
+									<input type="text" id="" class="att_input_title default_input" value="{% if topicTranslate is not null %}{{ topicTranslate.name }}{% else %}{% endif %}" />
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Content :
+								</div>
+								<div>
+									<textarea id="" class="att_input_content default_textarea tinymce">{% if topicTranslate is not null %}{{ topicTranslate.description }}{% else %}{% endif %}</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="separator"></div>
+						<div class="bloc_action" style="margin:5px">
+							<span class="btn_edit standar_button">Modifier</span> 
+							<span class="btn_save_at_trans btn_save standar_button" id="" data-target="{{ path('com_admin_forum_topic_edit_translate', {'id': topic.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+{% endblock %}
+
