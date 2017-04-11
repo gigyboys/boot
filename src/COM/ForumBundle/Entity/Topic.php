@@ -22,6 +22,12 @@ class Topic
     private $id;
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User")
+	 * @ORM\JoinColumn(name="user_id", nullable=false)
+	 */
+	private $user;
+
+	/**
 	 * @ORM\OneToMany(targetEntity="COM\ForumBundle\Entity\TopicTranslate", mappedBy="topic")
 	 */
 	private $topicTranslates;
@@ -49,6 +55,29 @@ class Topic
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \COM\UserBundle\Entity\User $user
+     * @return Advert
+     */
+    public function setUser(\COM\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \COM\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

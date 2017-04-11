@@ -27,6 +27,12 @@ class TopicTranslate
 	 */
 	private $topic;
 
+	/**
+	* @ORM\ManyToOne(targetEntity="COM\PlatformBundle\Entity\Locale")
+	* @ORM\JoinColumn(name="locale_id", nullable=false)
+	*/
+	private $locale;
+
     /**
      * @var string
      *
@@ -50,6 +56,29 @@ class TopicTranslate
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param \COM\PlatformBundle\Entity\Locale $locale
+     * @return AdvertTranslate
+     */
+    public function setLocale(\COM\PlatformBundle\Entity\Locale $locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return \COM\PlatformBundle\Entity\Locale 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**

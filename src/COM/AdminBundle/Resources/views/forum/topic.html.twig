@@ -1,0 +1,61 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  List of topics
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_forum') }}"><span>{{ 'Forum' | trans }}</span></a> </span> 
+	</div>
+	<div style="padding:8px;float:right">
+		<span><a href="{{ path('com_admin_forum_topic_add') }}">{{ 'New topic' | trans }}</a></td></span> 
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		List of topics...
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				left
+			</div>
+			<div class="a_datatable_head_right">
+				right
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id">id</th>
+					<th>title</th>
+					<th>author</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for topic in topics %}
+				<tr class="a_table_line">
+					<td class="a_table_cell_id">{{ topic.id }}</td>
+					<td><a href="{{ path('com_admin_forum_topic_edit', {'id': topic.id}) }}">{{ topic.defaultName }}</a></td>
+					<td>{{ topic.user.name }}</td>
+					<td class="a_table_cell_action">action</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				left
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

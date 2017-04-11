@@ -116,6 +116,17 @@ com_admin_advert_category_edit_translate:
     path:     /advert/category/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:Advert:editCategoryTranslate }
 
+#forum
+com_admin_forum:
+    path:     /forum
+    defaults: { _controller: COMAdminBundle:Forum:index }
+com_admin_forum_topic_add:
+    path:     /forum/add-topic
+    defaults: { _controller: COMAdminBundle:Forum:addAdvert }
+com_admin_forum_topic_edit:
+    path:     /forum/edit-topic/{id}
+    defaults: { _controller: COMAdminBundle:Forum:editAdvert }
+
 #user
 com_admin_user:
     path:     /user
