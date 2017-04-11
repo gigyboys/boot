@@ -27,7 +27,8 @@
 						</div>
 						<div style="margin-left:70px">
 							<div>
-								{{ subject.title }}
+								<a href="{{ path('com_forum_view_subject', {'slug': subject.slug}) }}">{{ subject.title }}</a>
+								
 							</div>
 						</div>
 						<div style="clear:both"></div>

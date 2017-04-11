@@ -1,0 +1,39 @@
+{% extends "COMForumBundle::forum.html.twig" %}
+
+{% block title %}
+  Subject {{ subject.title }}
+{% endblock %}
+
+
+{% block forum_body %}
+	<div class="cr">
+		<div class="ct">
+			<div style="margin:10px; font-weight:bold">
+				Subject {{ subject.title }}
+			</div>
+			<div>
+				{% for message in messages %}
+				<div style="background:#eee; margin:10px;">
+					<div class="topic_illustration" style="float:left; width:60px">
+						{% set avatar=userAvatar(message.user) %}
+						{% if avatar != "default.jpeg" %}
+							{% set path='uploads/images/user/avatar/'~avatar %}
+						{% else %}
+							{% set path='default/images/user/avatar/'~avatar %}
+						{% endif %}
+						
+						<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ message.user.username }}" />
+					</div>
+					<div style="margin-left:70px">
+						<div>
+							{{ message.message }}
+						</div>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+				{% endfor %}
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -4,3 +4,6 @@ com_forum_home:
 com_forum_view_topic:
     path:     /forum/topic/{slug}
     defaults: { _controller: COMForumBundle:Forum:viewTopic }
+com_forum_view_subject:
+    path:     /forum/subject/{slug}
+    defaults: { _controller: COMForumBundle:Forum:viewSubject }

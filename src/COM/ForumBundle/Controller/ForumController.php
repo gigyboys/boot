@@ -65,4 +65,35 @@ class ForumController extends Controller
 			//todo
 		}
     }
+	
+    public function viewSubjectAction($slug)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$topicRepository = $em->getRepository('COMForumBundle:Topic');
+		$subjectRepository = $em->getRepository('COMForumBundle:Subject');
+		$messageRepository = $em->getRepository('COMForumBundle:Message');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$subject = $subjectRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		
+		if($subject){
+			$messages = $messageRepository->findBy(array(
+				'subject' => $subject,
+			));
+			return $this->render('COMForumBundle:forum:view_subject.html.twig', array(
+				'subject' => $subject,
+				'messages' => $messages,
+			));
+		}else{
+			//todo
+		}
+    }
 }
