@@ -21,6 +21,18 @@ class Message
      */
     private $id;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User")
+	 * @ORM\JoinColumn(name="user_id", nullable=false)
+	 */
+	private $user;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="COM\ForumBundle\Entity\Subject")
+    * @ORM\JoinColumn(name="subject_id", nullable=false)
+    */
+    private $subject;
+
     /**
      * @var string
      *
@@ -37,6 +49,47 @@ class Message
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \COM\UserBundle\Entity\User $user
+     * @return Advert
+     */
+    public function setUser(\COM\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \COM\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set subject
+     */
+    public function setSubject(\COM\ForumBundle\Entity\Subject $subject)
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Get subject
+     */
+    public function getSubject()
+    {
+        return $this->subject;
     }
 
     /**

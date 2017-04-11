@@ -20,6 +20,18 @@ class Subject
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="COM\ForumBundle\Entity\Topic")
+    * @ORM\JoinColumn(name="topic_id", nullable=false)
+    */
+    private $topic;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User")
+	 * @ORM\JoinColumn(name="user_id", nullable=false)
+	 */
+	private $user;
 
     /**
      * @var string
@@ -44,6 +56,47 @@ class Subject
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \COM\UserBundle\Entity\User $user
+     * @return Advert
+     */
+    public function setUser(\COM\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \COM\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set topic
+     */
+    public function setTopic(\COM\ForumBundle\Entity\Topic $topic)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     */
+    public function getTopic()
+    {
+        return $this->topic;
     }
 
     /**
