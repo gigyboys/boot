@@ -15,6 +15,20 @@ class ForumService {
         $this->em = $em;
     }
     
+    public function hydrateTopicLang(Topic $topic, Locale $locale) {
+		$topicTranslateRepository = $this->em->getRepository('COMForumBundle:TopicTranslate');
+		
+		$topicTranslate = $topicTranslateRepository->findOneBy(array(
+			'topic' => $topic,
+			'locale' => $locale,
+		));
+		
+		$topic->setName($topicTranslate->getName());
+		$topic->setDescription($topicTranslate->getDescription());
+		
+		return $topic;
+    }
+    
     public function getTopicTranslate(Topic $topic, $locale) {
         $topicTranslateRepository = $this->em->getRepository('COMForumBundle:TopicTranslate');
 

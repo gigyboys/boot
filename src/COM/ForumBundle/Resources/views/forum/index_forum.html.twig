@@ -13,10 +13,30 @@
 			</div>
 			<div>
 				{% for topic in topics %}
-				<div>
-					{{ topic.defaultName }}
+				<div style="background:#eee; margin:10px; width:280px;float:left">
+					<div class="topic_illustration" style="float:left; width:60px">
+						{# twig extension #}
+						{% set illustration=topicIllustration(topic) %}
+						{% if illustration != "default.jpeg" %}
+							{% set path='uploads/images/forum/topic/illustration/'~illustration %}
+						{% else %}
+							{% set path='default/images/forum/topic/illustration/'~illustration %}
+						{% endif %}
+						
+						<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ topic.name }}" />
+					</div>
+					<div style="margin-left:70px">
+						<div>
+							{{ topic.name }}
+						</div>
+						<div>
+							{{ topic.description }}
+						</div>
+					</div>
+					<div style="clear:both"></div>
 				</div>
 				{% endfor %}
+				<div style="clear:both"></div>
 			</div>
 		</div>
 	</div>

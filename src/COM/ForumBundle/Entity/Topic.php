@@ -45,6 +45,9 @@ class Topic
      * @ORM\Column(name="default_name", type="string", length=255)
      */
     private $defaultName;
+	
+    private $name;
+    private $description;
 
 
     /**
@@ -164,5 +167,31 @@ class Topic
     public function getTopicTranslates()
     {
         return $this->topicTranslates;
+    }
+	
+	
+	//name
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+	
+	
+	//description
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
