@@ -50,12 +50,12 @@
 						<tr>
 							<td>Default name</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="at_view_defaulttitle">{{ topic.defaultName }}</span></td>
+							<td style="padding:5px"><span id="fm_topic_view_defaultname">{{ topic.defaultName }}</span></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><span id="at_view_slug">{{ topic.slug }}</span></td>
+							<td style="padding:5px"><span id="fm_topic_view_slug">{{ topic.slug }}</span></td>
 						</tr>
 					</table>
 				</div>
@@ -64,19 +64,19 @@
 						<tr>
 							<td>Default name</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="at_input_defaulttitle" class="default_input" value="{{ topic.defaultName }}" /></td>
+							<td style="padding:5px"><input type="text" id="fm_topic_input_defaultname" class="default_input" value="{{ topic.defaultName }}" /></td>
 						</tr>
 						<tr>
 							<td>Slug</td>
 							<td>:</td>
-							<td style="padding:5px"><input type="text" id="at_input_slug" class="default_input" value="{{ topic.slug }}" /></td>
+							<td style="padding:5px"><input type="text" id="fm_topic_input_slug" class="default_input" value="{{ topic.slug }}" /></td>
 						</tr>
 					</table>
 				</div>
 				<div class="separator"></div>
 				<div class="bloc_action" style="margin:5px">
 					<span class="btn_edit standar_button">Modifier</span> 
-					<span class="btn_save standar_button" id="btn_save_topic_common" data-target="{{ path('com_admin_forum_topic_edit_common', {'id': topic.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_save standar_button" id="btn_save_fm_topic_common" data-target="{{ path('com_admin_forum_topic_edit_common', {'id': topic.id}) }}" style="display:none">Enregistrer</span>
 					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 				</div>
@@ -152,7 +152,7 @@
 									Content :
 								</div>
 								<div>
-									<textarea id="" class="att_input_content default_textarea tinymce">{% if topicTranslate is not null %}{{ topicTranslate.description }}{% else %}{% endif %}</textarea>
+									<textarea id="" class="bgt_input_description default_textarea">{% if topicTranslate is not null %}{{ topicTranslate.description }}{% else %}{% endif %}</textarea>
 								</div>
 							</div>
 						</div>
