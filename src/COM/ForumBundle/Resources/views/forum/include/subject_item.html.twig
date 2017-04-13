@@ -1,3 +1,4 @@
+{% set messages=getMessagesBySubject(subject) %}
 <div style="padding:5px; margin:10px; border:1px solid #ddd; border-radius:4px">
 	<div class="topic_illustration" style="float:left; width:60px">
 		{% set avatar=userAvatar(subject.user) %}
@@ -11,10 +12,18 @@
 	</div>
 	<div style="margin-left:70px">
 		<div>
-			<a  style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': subject.user.username}) }}">{{ subject.user.name }}</a> on {{ subject.date | date('Y-m-d H:i:s') }}
+			<a style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': subject.user.username}) }}">{{ subject.user.name }}</a> on {{ subject.date | date('Y-m-d H:i:s') }}
 		</div>
 		<div>
 			<a href="{{ path('com_forum_view_subject', {'slug': subject.slug}) }}">{{ subject.title }}</a>
+		</div>
+		<div>
+			{{ messages | length }} 
+			{% if messages | length == 0 or messages | length == 1 %}
+				message
+			{% else %}
+				messages
+			{% endif %}
 		</div>
 	</div>
 	<div style="clear:both"></div>
