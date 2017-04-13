@@ -16,6 +16,9 @@ a:hover{
 	display:block;
 	clear:both;
 }
+.bold{
+	font-weight:bold
+}
 
 .default_input{
 	border: 1px solid #bbb;

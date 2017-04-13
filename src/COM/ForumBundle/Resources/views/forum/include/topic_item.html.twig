@@ -1,7 +1,7 @@
 {% set subjects=getSubjectsByTopic(topic) %}
 
-<div style="border:1px solid #ddd; margin:10px; width:270px;float:left; border-radius:3px; padding: 4px">
-	<div style="float:left; width:60px">
+<div class="fm_topic_item">
+	<div class="fm_topic_item_left">
 		<div class="topic_illustration">
 			{# twig extension #}
 			{% set illustration=topicIllustration(topic) %}
@@ -11,9 +11,9 @@
 				{% set path='default/images/forum/topic/illustration/'~illustration %}
 			{% endif %}
 			
-			<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ topic.name }}" />
+			<img src="{{ path | imagine_filter('60x60') }}" alt="{{ topic.name }}" />
 		</div>
-		<div style="text-align:center">
+		<div class="fm_topic_item_subject">
 			{{ subjects | length }}<br />
 			{% if subjects | length == 0 or subjects | length == 1 %}
 				Subject
@@ -21,27 +21,27 @@
 				Subjects
 			{% endif %}
 		</div>
-		<div style="text-align:center;margin-top:16px">
+		<div class="fm_topic_item_manage">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_forum_topic_edit', {'id': topic.id}) }}" target="_blank"><span>Manage</span></a>{% endif %}
 		</div>
 	</div>
-	<div style="margin-left:70px">
-		<div style="font-weight:bold">
-			<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}" style="display:block; width:auto" title="{{ topic.name }}"><span style="display:block; width:auto; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ topic.name }}</span></a>
+	<div class="fm_topic_item_right">
+		<div class="fm_topic_item_name">
+			<a class="fm_topic_item_link" href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}" title="{{ topic.name }}">{{ topic.name }}</a>
 		</div>
-		<div style="height: 57px">
+		<div class="fm_topic_item_desc">
 			<span title="{{ topic.description }}">{{ substrSpace(topic.description, 80) }}</span>
 		</div>
-		<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+		<div class="fm_topic_item_right_sep"></div>
 		<div>
 			<!-- last message -->
 			{% set message=getLastMessageByTopicId(topic.id) %}
 			{% if message is not null %}
-				Last message by <a style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">{{ message.user.username }}</a><br />
+				Last message by <a class="link bold" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">{{ message.user.username }}</a><br />
 				on {{ message.date | date('Y-m-d H:i:s') }}
 			{% else %}
 				Aucun Sujet sur ce topic<br />
-				<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}" style="display:block; width:auto" title="{{ topic.name }}">Soyez le premier à poster !!!</a>
+				<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}" title="{{ topic.name }}">Soyez le premier à poster !!!</a>
 			{% endif %}
 		</div>
 	</div>

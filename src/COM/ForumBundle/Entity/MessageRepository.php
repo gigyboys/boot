@@ -14,33 +14,10 @@ use Doctrine\ORM\QueryBuilder;
 class MessageRepository extends EntityRepository
 {
 	public function getLastMessageByTopicId($topic_id){
-		$query = $this->_em->createQuery('SELECT m FROM COMForumBundle:Message m JOIN m.subject s JOIN s.topic t WHERE t.id = :id');
+		$query = $this->_em->createQuery('SELECT m FROM COMForumBundle:Message m JOIN m.subject s JOIN s.topic t WHERE t.id = :id ORDER BY m.id DESC');
 		$query->setParameter('id', $topic_id);
-
-		// Utilisation de getSingleResult car la requête ne doit retourner qu'un seul résultat
-		$messages = $query->getResult();
-
-		/*$qb = $this->createQueryBuilder('m');
-
-		$qb
-		->where('m.subject.topic.id = :topic_id')
-		->setParameter('topic_id', $topic_id)
-		;*/
-
-		// On applique notre condition sur le QueryBuilder
-		//$this->whereCurrentYear($qb);
-
-		// On peut ajouter ce qu'on veut après
-		/*$qb->orderBy('m.id', 'DESC');
-
-		$messages = $qb
-		->getQuery()
-		->getResult()
-		;*/
-		if($messages){
-			return $messages[0];
-		}else{
-			return null;
-		}
+		$query->setMaxResults(1);
+		$message = $query->getOneOrNullResult();
+		return $message;
 	}
 }
