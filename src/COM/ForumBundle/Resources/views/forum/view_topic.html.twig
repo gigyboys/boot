@@ -9,30 +9,52 @@
 	<div class="cr">
 		<div class="ct">
 			<div style="margin:10px; font-weight:bold">
-				Topic {{ topic.name }}
+				<div>
+					{{ topic.name }} - Subjects {{ subjects | length }}
+				</div>
+			</div>
+			<div style="margin:10px;">
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+					<div class="bloc_editable" style="margin-bottom:1px">
+						<div class="bloc_view">
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<form action="" name="form_new_subject" method="post" id="form_new_subject">
+								<div>
+									<div style="margin: 5px 0;">
+										Title:
+									</div>
+									<div>
+										<input type="text" id="" class="fm_subject_title default_input" value="" required/>
+									</div>
+								</div>
+								<div style="">
+									<div style="margin: 5px 0;">
+										Message :
+									</div>
+									<div>
+										<textarea id="" class="fm_subject_message default_textarea"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="bloc_action" style="margin-top:5px; border:1px solid transparent">
+							<span class="btn_edit standar_button">Ajouter un nouveau sujet</span> 
+							<span class="btn_save standar_button" id="btn_new_subject" data-target="{{ path('com_forum_new_subject', {'topic_id': topic.id}) }}" style="display:none">Envoyer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
+						</div>
+					</div>
+				{% else %}
+					<div style="padding: 5px 0 0 0">
+						<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
+					</div>
+				{% endif %}
 			</div>
 			<div>
 				{% if subjects %}
 					{% for subject in subjects %}
-					<div style="background:#eee; margin:10px;">
-						<div class="topic_illustration" style="float:left; width:60px">
-							{% set avatar=userAvatar(subject.user) %}
-							{% if avatar != "default.jpeg" %}
-								{% set path='uploads/images/user/avatar/'~avatar %}
-							{% else %}
-								{% set path='default/images/user/avatar/'~avatar %}
-							{% endif %}
-							
-							<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ subject.user.username }}" />
-						</div>
-						<div style="margin-left:70px">
-							<div>
-								<a href="{{ path('com_forum_view_subject', {'slug': subject.slug}) }}">{{ subject.title }}</a>
-								
-							</div>
-						</div>
-						<div style="clear:both"></div>
-					</div>
+						{{ include("COMForumBundle:forum:include/subject_item.html.twig") }}
 					{% endfor %}
 				{% else %}
 					<div style="margin:10px;">

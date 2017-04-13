@@ -69,7 +69,6 @@ $(function() {
 			}
         });
 		
-		
     });
 	
     $('.btn_save_bg_trans').on('click', function(){

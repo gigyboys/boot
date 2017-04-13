@@ -1,0 +1,32 @@
+<div style="border:1px solid #ddd; margin:10px; width:270px;float:left; border-radius:3px; padding: 4px">
+	<div style="float:left; width:60px">
+		<div class="topic_illustration">
+			{# twig extension #}
+			{% set illustration=topicIllustration(topic) %}
+			{% if illustration != "default.jpeg" %}
+				{% set path='uploads/images/forum/topic/illustration/'~illustration %}
+			{% else %}
+				{% set path='default/images/forum/topic/illustration/'~illustration %}
+			{% endif %}
+			
+			<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ topic.name }}" />
+		</div>
+		<div style="text-align:center">
+			XX<br />
+			Subjects
+		</div>
+	</div>
+	<div style="margin-left:70px">
+		<div style="font-weight:bold">
+			<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}">{{ topic.name }}</a>
+		</div>
+		<div>
+			<span title="{{ topic.description }}">{{ substrSpace(topic.description, 80) }}</span>
+		</div>
+		<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+		<div>
+			<!-- last message -->
+		</div>
+	</div>
+	<div style="clear:both"></div>
+</div>

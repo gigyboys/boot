@@ -11,28 +11,43 @@
 			<div style="margin:10px; font-weight:bold">
 				Subject {{ subject.title }}
 			</div>
+			<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
 			<div>
-				{% for message in messages %}
-				<div style="background:#eee; margin:10px;">
-					<div class="topic_illustration" style="float:left; width:60px">
-						{% set avatar=userAvatar(message.user) %}
-						{% if avatar != "default.jpeg" %}
-							{% set path='uploads/images/user/avatar/'~avatar %}
-						{% else %}
-							{% set path='default/images/user/avatar/'~avatar %}
-						{% endif %}
-						
-						<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ message.user.username }}" />
-					</div>
-					<div style="margin-left:70px">
-						<div>
-							{{ message.message }}
-						</div>
-					</div>
-					<div style="clear:both"></div>
+				<div id="fm_list_msg">
+					{% for message in messages %}
+						{{ include("COMForumBundle:forum:include/message_item.html.twig") }}
+					{% endfor %}
 				</div>
-				{% endfor %}
 				<div style="clear:both"></div>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+					<div class="" style="margin:10px;">
+						<form action="" name="" method="post" id="">
+							<div style="margin-bottom:5px">
+							{{ app.user.name }} :
+							</div>
+							<div style="width:60px;float:left">
+								{% set avatar=userAvatar(app.user) %}
+								{% if avatar != "default.jpeg" %}
+									{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+								{% else %}
+									{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+								{% endif %}
+								<span style="display:block;float:left;"><img id="avatar_banner" style="width:60px; height: 60px" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="{{ app.user.username }}" /></span>
+							</div>
+							<div style="margin-left:70px">
+								<textarea class="default_textarea" id="fm_message" style="min-height:120px" required></textarea>
+								<div style="margin:5px 0 0 0">
+									<span class="tn_save standar_button" id="btn_fm_new_msg" data-target="{{ path('com_forum_new_message', {'subject_id': subject.id}) }}">R&eacute;pondre</span>
+								</div>
+							</div>
+							<div style="clear:both"></div>
+						</form>
+					</div>
+				{% else %}
+					<div style="padding: 5px 0 0 0">
+						<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>

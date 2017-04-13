@@ -34,6 +34,13 @@ class Subject
 	private $user;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -79,6 +86,29 @@ class Subject
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**

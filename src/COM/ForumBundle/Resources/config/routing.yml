@@ -7,3 +7,9 @@ com_forum_view_topic:
 com_forum_view_subject:
     path:     /forum/subject/{slug}
     defaults: { _controller: COMForumBundle:Forum:viewSubject }
+com_forum_new_subject:
+    path:     /forum/new-subject/{topic_id}
+    defaults: { _controller: COMForumBundle:Forum:newSubject }
+com_forum_new_message:
+    path:     /forum/new-message/{subject_id}
+    defaults: { _controller: COMForumBundle:Forum:newMessage }

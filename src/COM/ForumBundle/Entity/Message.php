@@ -26,6 +26,13 @@ class Message
 	 * @ORM\JoinColumn(name="user_id", nullable=false)
 	 */
 	private $user;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 	
     /**
     * @ORM\ManyToOne(targetEntity="COM\ForumBundle\Entity\Subject")
@@ -72,6 +79,29 @@ class Message
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
