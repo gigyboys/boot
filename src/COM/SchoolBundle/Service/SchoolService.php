@@ -90,4 +90,18 @@ class SchoolService {
         
 		return $fieldTranslate;
     }
+    
+    public function hydrateFieldLang(Field $field, Locale $locale) {
+		$fieldTranslateRepository = $this->em->getRepository('COMSchoolBundle:FieldTranslate');
+		
+		$fieldTranslate = $fieldTranslateRepository->findOneBy(array(
+			'field' => $field,
+			'locale' => $locale,
+		));
+		
+		$field->setName($fieldTranslate->getName());
+		$field->setDescription($fieldTranslate->getDescription());
+		
+		return $field;
+    }
 }

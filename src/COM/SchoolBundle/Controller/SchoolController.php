@@ -79,6 +79,9 @@ class SchoolController extends Controller
 		$fields = $fieldRepository->findBy(array(
 			'school' => $school
 		));
+		foreach($fields as $field){
+			$schoolService->hydrateFieldLang($field, $locale);
+		}
 		
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($school, $user, $request);

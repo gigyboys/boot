@@ -1,5 +1,7 @@
 /************** style forum ***************/
 .fm_list_topic{
+	margin:auto;
+	width:100%;
 	margin-bottom:10px;
 }
 .fm_topic_item{
@@ -45,4 +47,25 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1200px)
+{
+    .fm_list_topic{
+		width:900px;
+	}
+}
+
+@media screen and (max-width: 900px)
+{
+    .fm_list_topic{
+		width:600px;
+	}
+}
+
+@media screen and (max-width: 600px)
+{
+    .fm_list_topic{
+		width:300px;
+	}
 }

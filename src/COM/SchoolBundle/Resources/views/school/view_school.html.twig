@@ -62,12 +62,17 @@
 						<div>
 							{# fields #}
 							{% if fields %}
+								<div class="sep"></div>
 								<div style="font-weight:bold">
 									Fields
 								</div>
+								<div class="sep"></div>
 								{% for field in fields %}
-									<div>
+									<div class="bold">
 										{{ field.defaultName }}
+									</div>
+									<div>
+										{{ field.description | raw }}
 									</div>
 								{% endfor %}
 							{% endif %}
