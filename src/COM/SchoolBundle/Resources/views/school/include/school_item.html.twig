@@ -17,8 +17,9 @@
 	</div>
 	<div class="sl_label">
 		<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}">
-			{{ school.shortName }}<br />
-			<span>{{ school.name }}</span>
+			<span class="sl_shortname">{{ school.shortName }}</span>
+			<br />
+			<span class="sl_name">{{ school.name }}</span>
 		</a>
 	</div>
 	<div class="sl_action">

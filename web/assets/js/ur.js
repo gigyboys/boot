@@ -3,6 +3,10 @@ $(function() {
 	console.log("inittabuser");
 	var tab_ur_item = $('.tab_ur_item');
 	var content_tab_ur_item = $('.content_tab_ur_item');
+	var timeOutIdEnterArray = []; 
+	var timeOutIdLeaveArray = []; 
+	var timeOutIdEnter;
+	var timeOutIdLeave;
 	
 	tab_ur_item.live('click', function(e) {
         tab_ur_item.removeClass('selected');
@@ -46,7 +50,7 @@ $(function() {
 				if(data.state){
 					bloc_editable.find("#ur_view_name").text(data.name);
 					bloc_editable.find("#ur_view_username").text(data.username);
-					bloc_editable.find("#ur_view_username").text(data.location);
+					bloc_editable.find("#ur_view_location").text(data.location);
 					bloc_editable.find("#ur_view_email").text(data.email);
 					resetBlocEdit(bloc_editable);
 					document.title = data.title;
@@ -179,5 +183,39 @@ $(function() {
 			}
         });
     });
+	
+	$('body').on('mouseover','.user_hover_info',function(){
+        var $this = $(this);
+		if($this.find(".popup_user_info").length == 0){
+			clearTimeout(timeOutIdLeaveArray[$this.data("userid")]);
+			timeOutIdEnterArray[$this.data("userid")] = setTimeout(function(){
+				$(".popup_user_info").remove();
+				var htmlprepend = '<div data-userid="'+ $this.data("userid") +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:20px 10px">Information sur l\'utilisateur d\'identifiant : '+ $this.data("userid") +'</div>';
+				$this.prepend(htmlprepend);
+			}, 1300);
+		}else{
+			clearTimeout(timeOutIdLeaveArray[$this.data("userid")]);
+		}
+	});
+	
+	$('body').on('mouseover','.popup_user_info',function(){
+		var $this = $(this);
+		clearTimeout(timeOutIdLeaveArray[$this.data("userid")]);
+	});
+	
+	$('body').on('mouseout','.user_hover_info',function(){
+        var $this = $(this);
+		
+		timeOutIdLeaveArray[$this.data("userid")] = setTimeout(function(){
+			$this.find(".popup_user_info").remove();
+		}, 500);
+		
+		setTimeout(function(){
+			clearTimeout(timeOutIdEnterArray[$this.data("userid")]);
+		}, 400);
+	});
+	
+	//var timeOutIdEnterArray = []; 
+	//var timeOutIdLeaveArray = []; 
 	
 });

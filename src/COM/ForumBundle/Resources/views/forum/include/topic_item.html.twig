@@ -37,8 +37,17 @@
 			<!-- last message -->
 			{% set message=getLastMessageByTopicId(topic.id) %}
 			{% if message is not null %}
-				Last message by <a class="link bold" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">{{ message.user.username }}</a><br />
+				<div>
+				Last message by 
+				<span data-userid="{{ message.user.id }}" class="user_hover_info">
+					<a class="link bold" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">
+					{{ message.user.username }}
+					</a>
+				</span>
+				</div>
+				<div>
 				on {{ message.date | date('Y-m-d H:i:s') }}
+				</div>
 			{% else %}
 				Aucun Sujet sur ce topic<br />
 				<a href="{{ path('com_forum_view_topic', {'slug': topic.slug}) }}" title="{{ topic.name }}">Soyez le premier à poster !!!</a>

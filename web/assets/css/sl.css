@@ -45,13 +45,13 @@
 	padding:3px 3px;
 	width:218px;
 	height:140px;
-	background:rgba(255,255,255,0.8);
-	display:none;
+	background:rgba(255,255,255,0.9);
+	display:block;
 	position:absolute;
 	overflow:hidden
 }
 .sl_item:hover .sl_short_description{
-	display:block;
+	display:none;
 }
 .sl_label{
 	width:auto;
@@ -59,6 +59,9 @@
 	background:#eee;
 	text-align:center;
 	overflow:hidden
+}
+.sl_shortname{
+	font-weight:bold
 }
 .sl_action{
 	width:auto;

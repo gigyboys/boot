@@ -35,7 +35,7 @@
 								<span style="display:block;float:left;"><img id="avatar_banner" style="width:60px; height: 60px" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="{{ app.user.username }}" /></span>
 							</div>
 							<div style="margin-left:70px">
-								<textarea class="default_textarea" id="fm_message" style="min-height:120px" required></textarea>
+								<textarea class="default_textarea" id="fm_message" style="min-height:120px"></textarea>
 								<div style="margin:5px 0 0 0">
 									<span class="tn_save standar_button" id="btn_fm_new_msg" data-target="{{ path('com_forum_new_message', {'subject_id': subject.id}) }}">R&eacute;pondre</span>
 								</div>
@@ -44,8 +44,8 @@
 						</form>
 					</div>
 				{% else %}
-					<div style="padding: 5px 0 0 0">
-						<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
+					<div style="margin: 10px 0">
+						<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir ecrire votre message</a>
 					</div>
 				{% endif %}
 			</div>

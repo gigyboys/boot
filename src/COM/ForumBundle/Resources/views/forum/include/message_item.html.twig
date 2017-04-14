@@ -12,7 +12,11 @@
 		</div>
 		<div style="margin-left:70px">
 			<div>
-				<a  style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">{{ message.user.name }}</a> on {{ message.date | date('Y-m-d H:i:s') }}
+				<span data-userid="{{ message.user.id }}"  data-timeoutid="" class="user_hover_info">
+					<a  style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">
+						{{ message.user.name }}
+					</a> on {{ message.date | date('Y-m-d H:i:s') }}
+				</span>
 			</div>
 			<div>
 				{{ message.message | nl2br   }}

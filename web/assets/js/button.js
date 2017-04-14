@@ -6,6 +6,7 @@ $(function() {
     $(document).click(function() {
         var dd_target = $('.dd_target');
         dd_target.hide();
+		$(".popup_user_info").remove();
     });
     
     dd_src.live('click', function(e) {
@@ -40,6 +41,11 @@ $(function() {
     });
     
     dd_target.live('click', function(e) {
+        e.stopPropagation(); 
+        return false;      
+    });
+    
+    $(".popup_user_info").live('click', function(e) {
         e.stopPropagation(); 
         return false;      
     });
