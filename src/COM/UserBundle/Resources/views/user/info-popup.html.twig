@@ -1,0 +1,34 @@
+<div style="float:left; width:80px">
+	{% set avatar=userAvatar(user) %}
+	{% if avatar != "default.jpeg" %}
+		{% set path='uploads/images/user/avatar/'~avatar %}
+	{% else %}
+		{% set path='default/images/user/avatar/'~avatar %}
+	{% endif %}
+	
+	<img style="width: 80px; height: 80px" src="{{ path | imagine_filter('80x80') }}" alt="{{ user.username }}" />
+</div>
+<div style="margin-left: 90px">
+	<div style="margin-bottom:2px">
+		{{ user.name }}
+	</div>
+
+	<div style="margin-bottom:2px">
+		{{ user.username }} 
+		{{ user.location }}
+	</div>
+
+	<div style="margin-bottom:2px">
+		sexe
+	</div>
+
+	<div style="margin-bottom:2px">
+		{{ user.email }}
+	</div>
+</div>
+<div style="clear:both"></div>
+
+<div style="background:#eee; border-radius:4px; margin:10px 0 0 0; padding:5px">
+	{{ user.biography }}
+</div>
+

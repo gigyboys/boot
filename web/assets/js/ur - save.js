@@ -4,7 +4,9 @@ $(function() {
 	var tab_ur_item = $('.tab_ur_item');
 	var content_tab_ur_item = $('.content_tab_ur_item');
 	var timeOutIdEnterArray = []; 
-	var timeOutIdLeaveArray = [];
+	var timeOutIdLeaveArray = []; 
+	//var timeOutIdEnterCheckArray = []; 
+	//var timeOutIdLeaveCheckArray = []; 
 	
 	tab_ur_item.live('click', function(e) {
         tab_ur_item.removeClass('selected');
@@ -184,73 +186,52 @@ $(function() {
 	
 	$('body').on('mouseover','.user_hover_info',function(){
         var $this = $(this);
-		if(!$this.hasClass("ishover")){
-			$this.addClass("ishover");
-			var nbElementIsHover = $(".ishover").length;
-			$this.attr("data-userinfoid", nbElementIsHover);
-		}
 		var userid = $this.data("userid");
-		var userinfoid = $this.data("userinfoid");
-		clearTimeout(timeOutIdEnterArray[userinfoid]);
-		if($this.find(".popup_user_info").length == 0){
-			clearTimeout(timeOutIdLeaveArray[userinfoid]);
-			timeOutIdEnterArray[userinfoid] = setTimeout(function(){
-				var htmlprepend = '<div data-userinfoid="'+ userinfoid +'" data-userid="'+ userid +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:10px 10px; width:320px">';
-				htmlprepend += 'Information sur l\'utilisateur d\'identifiant : '+ userid;
-				htmlprepend += '</div>';
-				$this.prepend(htmlprepend);
-				//ajax
-				if(sessionStorage.getItem("info_user_"+userid)){
-					$this.find('.popup_user_info').html(sessionStorage.getItem("info_user_"+userid));
-				}else{
-					var target = $this.data('target');
-					var data = {
-						id : userid
-					};
-					$.ajax({
-						type: 'POST',
-						url: target,
-						data: data,
-						dataType : 'json',
-						success: function(data){
-							console.log(data.state);
-							if(data.state){
-								sessionStorage.setItem("info_user_"+userid, data.content);
-								$this.find('.popup_user_info').html(sessionStorage.getItem("info_user_"+userid));
-							}
-							else{
-							}
-						},
-						error: function(jqXHR, textStatus, errorThrown) {
-							console.log(jqXHR.status);
-							console.log(textStatus);
-							console.log(errorThrown);
-						}
-					});
-				}
-				
-			}, 700);
-		}else{
-			clearTimeout(timeOutIdLeaveArray[userinfoid]);
-		}
+		//if(!timeOutIdEnterCheckArray[userid]){
+			clearTimeout(timeOutIdEnterArray[userid]);
+			//timeOutIdEnterCheckArray[userid] = false;
+			if($this.find(".popup_user_info").length == 0){
+				clearTimeout(timeOutIdLeaveArray[userid]);
+				//timeOutIdLeaveCheckArray[userid] = false;
+				timeOutIdEnterArray[userid] = setTimeout(function(){
+					var htmlprepend = '<div data-userid="'+ userid +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:20px 10px">Information sur l\'utilisateur d\'identifiant : '+ userid +'</div>';
+					$this.prepend(htmlprepend);
+				}, 1000);
+				//timeOutIdEnterCheckArray[userid] = true;
+			}else{
+				clearTimeout(timeOutIdLeaveArray[userid]);
+				//timeOutIdLeaveCheckArray[userid] = false;
+			}
+		/*}else{
+			clearTimeout(timeOutIdEnterArray[userid]);
+		}*/
 	});
 	
 	$('body').on('mouseover','.popup_user_info',function(){
 		var $this = $(this);
 		var userid = $this.data("userid");
-		var userinfoid = $this.data("userinfoid");
-		clearTimeout(timeOutIdLeaveArray[userinfoid]);
+		clearTimeout(timeOutIdLeaveArray[userid]);
+		//timeOutIdLeaveCheckArray[userid] = false;
 	});
 	
 	$('body').on('mouseout','.user_hover_info',function(){
         var $this = $(this);
 		var userid = $this.data("userid");
-		var userinfoid = $this.data("userinfoid");
-		clearTimeout(timeOutIdLeaveArray[userinfoid]);
-		timeOutIdLeaveArray[userinfoid] = setTimeout(function(){
-			$this.find(".popup_user_info").remove();
-		}, 300);
-		clearTimeout(timeOutIdEnterArray[userinfoid]);
+		//if(!timeOutIdLeaveCheckArray[userid]){
+			clearTimeout(timeOutIdLeaveArray[userid]);
+			//timeOutIdLeaveCheckArray[userid] = false;
+			timeOutIdLeaveArray[userid] = setTimeout(function(){
+				$this.find(".popup_user_info").remove();
+			}, 350);
+			//timeOutIdLeaveCheckArray[userid] = true;
+		
+			setTimeout(function(){
+				clearTimeout(timeOutIdEnterArray[userid]);
+				//timeOutIdEnterCheckArray[userid] = false;
+			}, 250);
+		/*}else{
+			clearTimeout(timeOutIdLeaveArray[userid]);
+		}*/
 	});
 	
 });

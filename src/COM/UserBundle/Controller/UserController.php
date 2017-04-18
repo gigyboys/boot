@@ -379,4 +379,27 @@ class UserController extends Controller
             throw new NotFoundHttpException('Page not found');
         }
     }
+	
+    public function infoPopupAction($id, Request $request)
+    {
+		if ($request->isXmlHttpRequest()){
+			$em = $this->getDoctrine()->getManager();
+			$userRepository = $em->getRepository('COMUserBundle:User');
+			$user = $userRepository->find($id);
+			
+			$response = new Response();
+			$content = $this->renderView('COMUserBundle:user:info-popup.html.twig', array(
+			  'user' => $user
+			));
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'content' => $content,
+			)));
+			
+			$response->headers->set('Content-Type', 'application/json');
+			return $response;
+		}else{
+            throw new NotFoundHttpException('Page not found');
+        }
+    }
 }

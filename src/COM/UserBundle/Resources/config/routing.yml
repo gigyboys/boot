@@ -19,6 +19,9 @@ com_user_modify_biography:
 com_user_modify_password:
     path:     /user/modify-password
     defaults: { _controller: COMUserBundle:User:editUserPassword }
+com_user_info_popup:
+    path:     /user/info-popup/{id}
+    defaults: { _controller: COMUserBundle:User:infoPopup }
 com_user_profile:
     path:     /user/{username}
     defaults: { _controller: COMUserBundle:User:profile }
