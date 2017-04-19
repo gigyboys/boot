@@ -83,6 +83,7 @@ class InitController extends Controller
 		$user1->setPassword($encoder->encodePassword('user1', $salt));
 		$user1->setSalt($salt);
 		$user1->setName('Randrianilaina Modar');
+		$user1->setSex(1);
 		$user1->setRoles($roles);
 		$newsletterService->addEmail($user1->getEmail(), true);
 		$em->persist($user1);
@@ -94,6 +95,7 @@ class InitController extends Controller
 		$user2->setPassword($encoder->encodePassword('user2', $salt));
 		$user2->setSalt($salt);
 		$user2->setName('Andriamiarantsoa Fortunat');
+		$user2->setSex(1);
 		$user2->setRoles($roles);
 		$newsletterService->addEmail($user2->getEmail(), true);
 		$em->persist($user2);
@@ -105,6 +107,7 @@ class InitController extends Controller
 		$user3->setPassword($encoder->encodePassword('user3', $salt));
 		$user3->setSalt($salt);
 		$user3->setName('Rapariarison Haja');
+		$user3->setSex(1);
 		$user3->setRoles($roles);
 		$newsletterService->addEmail($user3->getEmail(), true);
 		$em->persist($user3);
@@ -116,6 +119,7 @@ class InitController extends Controller
 		$user4->setPassword($encoder->encodePassword('user4', $salt));
 		$user4->setSalt($salt);
 		$user4->setName('Misandratra Rakotondrabe Séverin');
+		$user4->setSex(1);
 		$user4->setRoles($roles);
 		$newsletterService->addEmail($user4->getEmail(), true);
 		$em->persist($user4);

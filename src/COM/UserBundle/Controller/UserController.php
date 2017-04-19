@@ -45,6 +45,12 @@ class UserController extends Controller
 			$user->setSalt(md5(time()));
 			$pass = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 			$user->setPassword($pass);
+			
+			//sex
+			if($user->getSex() == 1 || $user->getSex() == 2){
+			}else{
+				$user->setSex(3);
+			}
 			$user->setLocale($locale);
 			$em->persist($user);
 			$em->flush();

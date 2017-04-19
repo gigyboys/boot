@@ -20,7 +20,13 @@
 	</div>
 
 	<div style="margin-bottom:2px">
-		sexe
+		{% if user.sex == 1 %}
+			Homme
+		{% elseif user.sex == 2 %}
+			Femme
+		{% else %}
+			Sexe indeterminé
+		{% endif %}
 	</div>
 
 	<div style="margin-bottom:2px">

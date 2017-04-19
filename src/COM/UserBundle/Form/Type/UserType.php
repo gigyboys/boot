@@ -18,6 +18,7 @@ class UserType extends AbstractType
 					'first_options'  => array('label' => 'Password'),
 					'second_options' => array('label' => 'Repeat Password'),
 				))
+                ->add('sex', 'text')
                 ->add('register', 'submit')
         ;
     }
@@ -31,7 +32,6 @@ class UserType extends AbstractType
             'data_class' => 'COM\UserBundle\Entity\User',
             'csrf_protection' => false,
         ));
-		//$this->configureOptions($resolver);
     }
 
     /**
