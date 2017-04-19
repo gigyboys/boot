@@ -2,10 +2,12 @@
 
 namespace COM\UserBundle\Service;
 
+use \Symfony\Component\DependencyInjection\ContainerAware;
+
 use Doctrine\ORM\EntityManager;
 use COM\UserBundle\Entity\User;
 
-class UserService {
+class UserService extends ContainerAware{
 
     protected $em;
 
@@ -83,5 +85,13 @@ class UserService {
         else{
             return 'default.jpeg';
         }
+    }
+    
+    public function getLinkUserInfo(User $user, $label) {
+        $content = $this->container->get('templating')->render('COMUserBundle:user:link-user-info.html.twig', array(
+		  'user' => $user,
+		  'label' => $label,
+		));
+		return $content;
     }
 }

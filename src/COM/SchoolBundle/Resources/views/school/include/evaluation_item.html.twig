@@ -1,7 +1,11 @@
 <div style="margin-bottom:10px">
 	<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
 	<div style="margin-bottom:5px">
-	By : <a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': evaluation.user.username}) }}">{{ evaluation.user.name }}</a> on {{ evaluation.date | date('Y-m-d H:i:s') }}
+	By : 
+	{# twig extension #}
+	{% set userInfo = getLinkUserInfo(evaluation.user, evaluation.user.name) %}
+	{{ userInfo | raw }}
+	 on {{ evaluation.date | date('Y-m-d H:i:s') }}
 	</div>
 	<div style="width:50px;float:left">
 		{% set avatar=userAvatar(evaluation.user) %}

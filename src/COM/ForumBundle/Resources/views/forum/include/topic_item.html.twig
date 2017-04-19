@@ -38,15 +38,13 @@
 			{% set message=getLastMessageByTopicId(topic.id) %}
 			{% if message is not null %}
 				<div>
-				Last message by 
-				<span data-userid="{{ message.user.id }}" class="user_hover_info">
-					<a class="link bold" id="profil_link" href="{{ path('com_user_profile', {'username': message.user.username}) }}">
-					{{ message.user.username }}
-					</a>
-				</span>
+					Last message by 
+					{# twig extension #}
+					{% set userInfo = getLinkUserInfo(message.user, message.user.username) %}
+					{{ userInfo | raw }}
 				</div>
 				<div>
-				on {{ message.date | date('Y-m-d H:i:s') }}
+					on {{ message.date | date('Y-m-d H:i:s') }}
 				</div>
 			{% else %}
 				Aucun Sujet sur ce topic<br />

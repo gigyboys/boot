@@ -1,6 +1,8 @@
 services:
     com_user.user_service:
         class: COM\UserBundle\Service\UserService
+        calls:
+            - [ setContainer,[ @service_container ] ]
         arguments: ["@doctrine.orm.entity_manager"]
     com_user.user_extension:
         class: COM\UserBundle\Twig\UserExtension

@@ -190,13 +190,14 @@ $(function() {
 			$this.attr("data-userinfoid", nbElementIsHover);
 		}
 		var userid = $this.data("userid");
+		var name = $this.data("name");
 		var userinfoid = $this.data("userinfoid");
 		clearTimeout(timeOutIdEnterArray[userinfoid]);
 		if($this.find(".popup_user_info").length == 0){
 			clearTimeout(timeOutIdLeaveArray[userinfoid]);
 			timeOutIdEnterArray[userinfoid] = setTimeout(function(){
 				var htmlprepend = '<div data-userinfoid="'+ userinfoid +'" data-userid="'+ userid +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:10px 10px; width:320px">';
-				htmlprepend += 'Information sur l\'utilisateur d\'identifiant : '+ userid;
+				htmlprepend += 'Informations sur '+ name;
 				htmlprepend += '</div>';
 				$this.prepend(htmlprepend);
 				//ajax
@@ -229,7 +230,7 @@ $(function() {
 					});
 				}
 				
-			}, 700);
+			}, 650);
 		}else{
 			clearTimeout(timeOutIdLeaveArray[userinfoid]);
 		}
@@ -249,7 +250,7 @@ $(function() {
 		clearTimeout(timeOutIdLeaveArray[userinfoid]);
 		timeOutIdLeaveArray[userinfoid] = setTimeout(function(){
 			$this.find(".popup_user_info").remove();
-		}, 300);
+		}, 270);
 		clearTimeout(timeOutIdEnterArray[userinfoid]);
 	});
 	

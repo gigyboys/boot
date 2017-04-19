@@ -28,7 +28,11 @@
 </div>
 <div style="clear:both"></div>
 
-<div style="background:#eee; border-radius:4px; margin:10px 0 0 0; padding:5px">
-	{{ user.biography }}
-</div>
+{% if user.biography is not empty %}
+	<div style="background:#eee; border-radius:4px; margin:10px 0 0 0; padding:5px">
+		{{ substrSpace(user.biography, 350) }}
+	</div>
+{% endif %}
+
+
 

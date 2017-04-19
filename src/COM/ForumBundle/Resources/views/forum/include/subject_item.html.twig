@@ -12,7 +12,10 @@
 	</div>
 	<div style="margin-left:70px">
 		<div>
-			<a style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': subject.user.username}) }}">{{ subject.user.name }}</a> on {{ subject.date | date('Y-m-d H:i:s') }}
+			{# twig extension #}
+			{% set userInfo = getLinkUserInfo(subject.user, subject.user.name) %}
+			{{ userInfo | raw }}
+			 on {{ subject.date | date('Y-m-d H:i:s') }}
 		</div>
 		<div>
 			<a href="{{ path('com_forum_view_subject', {'slug': subject.slug}) }}">{{ subject.title }}</a>

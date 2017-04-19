@@ -19,6 +19,7 @@ class UserExtension extends \Twig_Extension {
             'getUserByUsername' => new \Twig_Function_Method($this, 'getUserByUsernameFunction'),
             'getUserByEmail' => new \Twig_Function_Method($this, 'getUserByEmailFunction'),
             'userAvatar' => new \Twig_Function_Method($this, 'userAvatarFunction'),
+            'getLinkUserInfo' => new \Twig_Function_Method($this, 'getLinkUserInfoFunction'),
         );
     }
 
@@ -36,6 +37,10 @@ class UserExtension extends \Twig_Extension {
 
     public function userAvatarFunction(User $user) {
         return $this->userService->getAvatar($user);
+    }
+
+    public function getLinkUserInfoFunction(User $user, $label) {
+        return $this->userService->getLinkUserInfo($user, $label);
     }
 
     public function getName() {

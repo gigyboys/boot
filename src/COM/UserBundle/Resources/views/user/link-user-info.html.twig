@@ -1,0 +1,5 @@
+<span data-userid="{{ user.id }}" data-name="{{ user.name }}" data-target="{{ path('com_user_info_popup', {'id': user.id}) }}" data-timeoutid="" class="user_hover_info" style="display:inline-block">
+	<a  style="font-weight:bold" class="link" id="profil_link" href="{{ path('com_user_profile', {'username': user.username}) }}">
+		{{ label }}
+	</a>
+</span>
