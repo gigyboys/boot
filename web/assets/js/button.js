@@ -1,7 +1,6 @@
 $(function() {
     var dd_src = $('.dd_src');
     var dd_target = $('.dd_target');
-    var link = $('.link');
     
     $(document).click(function() {
         var dd_target = $('.dd_target');
@@ -50,7 +49,7 @@ $(function() {
         return false;      
     });
     
-    link.click(function(e) {
+    $('.link').live('click', function(e) {
 		if($(this).attr("target") == "_blank"){
 			window.open($(this).attr("href"), '_blank');
 		}else{

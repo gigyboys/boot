@@ -58,11 +58,10 @@ class UserController extends Controller
 			$this->get('security.context')->setToken($token);
 			$this->get('session')->set('_security_main',serialize($token));
 			
-			//$msg = "<div style='color:#050'>Inscription validé</div>";
-			//$user = new User();
-			//$form = $this->get('form.factory')->create(new userType(), $user);
+			$type = 'profile';
 			return $this->render('COMUserBundle:user:profile.html.twig', array(
 				'user' => $user,
+				'type' => $type,
 			));
 		}
 

@@ -10,12 +10,13 @@
 </div>
 <div style="margin-left: 90px">
 	<div style="margin-bottom:2px">
-		{{ user.name }}
+		<a style="font-weight:bold" class="link" href="{{ path('com_user_profile', {'username': user.username}) }}">
+			{{ user.name }}
+		</a>
 	</div>
 
 	<div style="margin-bottom:2px">
-		{{ user.username }} 
-		{{ user.location }}
+		{{ user.username }} {{ user.location }}
 	</div>
 
 	<div style="margin-bottom:2px">
