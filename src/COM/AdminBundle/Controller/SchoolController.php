@@ -129,7 +129,7 @@ class SchoolController extends Controller
 		return $response;
     }
 	
-    public function editSchoolGeneralAction($id, Request $request)
+    public function editSchoolCommonAction($id, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
@@ -144,7 +144,10 @@ class SchoolController extends Controller
 		if ($formSchoolGeneral->handleRequest($request)->isValid()) {
 			$school->setName($schoolTemp->getName());
 			$school->setShortName($schoolTemp->getShortName());
-			$school->setSlug($schoolTemp->getSlug());
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($schoolTemp->getSlug());
+			$school->setSlug($slug);
             
 			$em->persist($school);
             $em->flush();

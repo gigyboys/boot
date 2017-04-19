@@ -5,6 +5,7 @@ namespace COM\SchoolBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Evaluation;
@@ -104,54 +105,10 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
-		$postRepository = $em->getRepository('COMBlogBundle:Post');
-		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
-		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
-		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
-		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
-		
-		$user = $this->getUser();
-		
-		$shortLocale = $request->getLocale();
-		$locale = $localeRepository->findOneBy(array(
-			'locale' => $shortLocale,
-		));
 		
 		$school = $schoolRepository->find($id);
-		$schoolService = $this->container->get('com_school.school_service');
-		$schoolService->hydrateSchoolLang($school, $locale);
-		
-		$postSchools = $postSchoolRepository->findBy(array(
-			'school' => $school,
-		));
-		
-		$blogService = $this->container->get('com_blog.blog_service');
-		foreach($postSchools as $postSchool){
-			$post = $postSchool->getPost();
-			$blogService->hydratePostLang($post, $locale);
-		}
-		
-		$advertSchools = $advertSchoolRepository->findBy(array(
-			'school' => $school,
-		));
-		
-		$fields = $fieldRepository->findBy(array(
-			'school' => $school
-		));
-		
-		$platformService = $this->container->get('com_platform.platform_service');
-		$platformService->registerView($school, $user, $request);
-		
-		$type = "about";
-		
-        return $this->render('COMSchoolBundle:school:view_school.html.twig', array(
-			'school' => $school,
-			'advertSchools' => $advertSchools,
-			'postSchools' => $postSchools,
-			'fields' => $fields,
-			'entityView' => 'school',
-			'type' => $type,
-		));
+		$url = $this->get('router')->generate('com_school_view', array('slug' => $school->getSlug()));
+		return new RedirectResponse($url);
     }
 	
 	public function addEvaluationAction($id, Request $request)

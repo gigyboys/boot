@@ -66,6 +66,13 @@ class User implements UserInterface
 	 * @ORM\Column(name="salt", type="string", length=255)
 	 */
 	private $salt;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="sex", type="integer")
+     */
+    private $sex;
 
 	/**
 	 * @ORM\Column(name="roles", type="array")
@@ -369,6 +376,29 @@ class User implements UserInterface
     public function getSalt()
     {
         return $this->salt;
+    }
+
+    /**
+     * Set sex
+     *
+     * @param integer $sex
+     * @return User
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Get sex
+     *
+     * @return integer 
+     */
+    public function getSex()
+    {
+        return $this->sex;
     }
 
     /**

@@ -17,7 +17,7 @@ com_admin_school_change_logo:
     defaults: { _controller: COMAdminBundle:School:changeLogo }
 com_admin_school_edit_common:
     path:     /school/edit-common/{id}
-    defaults: { _controller: COMAdminBundle:School:editSchoolGeneral }
+    defaults: { _controller: COMAdminBundle:School:editSchoolCommon }
 com_admin_school_edit_translate:
     path:     /school/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:School:editSchoolTranslate }
