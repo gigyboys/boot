@@ -17,7 +17,7 @@
 					<span style="display:block; height: 3px;width:20px; background:transparent"></span>
 					<span style="display:block; height: 3px;width:20px; background:#777"></span>
 				</a>
-				<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 0px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
+				<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 0px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 3px 3px;">
 					
 					<div style="width: 120px">
 						<div style="text-align:center;">
@@ -75,7 +75,7 @@
 					<a href="#" class="dd_src standar_button" style="">
 						<span style="display:inline-block; height: 20px;">Locale : {{ app.request.getLocale() }}</span>
 					</a>
-					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 4px 4px;">
+					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 3px 3px;">
 						{# 
 						appel du fonction (twig.extension) getLocales pour avoir la liste des locales
 						#}
@@ -138,65 +138,65 @@
 					</div>
 					{% endif %}					
 						
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-								<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff">
-									<div>
-										<div style="float:left;width:70px;height:70px">
-											<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
-										</div>
-										<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0; overflow:hidden;text-overflow: ellipsis;">
-											<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
-												{{ app.user.username }}<br />
-												{{ app.user.name }}<br />
-												{{ app.user.email }}<br />
-											</a>
-										</div>
-										<div style="clear:both"></div>
-									</div>
-									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
-											<span>{{ 'paramètres' | trans }}</span>
-										</a>
-									</div>
-									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="" style="display:block;padding:5px 0">
-											<span>{{ 'participations' | trans }}</span>
-										</a>
-									</div>
-									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="" style="display:block;padding:5px 0">
-											<span>{{ 'abonnements' | trans }}</span>
-										</a>
-									</div>
-									{% if is_granted('ROLE_ADMIN') %}
-										<div style="border-top:1px solid #ddd; text-align:center;">
-											<a class="link" href="{{ path('com_admin_home') }}" style="display:block;padding:5px 0">
-												<span>{{ 'panneau d\'administration' | trans }}</span>
-											</a>
-										</div>
-									{% endif %}
-									<div style="border-top:1px solid #ddd; text-align:center;">
-										<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0">
-											<span>{{ 'deconnexion' | trans }}</span>
-										</a>
-									</div>
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff">
+							<div>
+								<div style="float:left;width:70px;height:70px">
+									<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
 								</div>
-							{% else %}
-								<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-									<ul>
-										<li>
-											<a class="link" href="{{ path('com_user_login') }}">
-												<span>{{ 'Connexion' | trans }}</span>
-											</a>
-										</li>
-										<li>
-											<a class="link" href="{{ path('com_user_register') }}">
-												<span>{{ 'Inscription' | trans }}</span>
-											</a>
-										</li>
-									</ul>
+								<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0; overflow:hidden;text-overflow: ellipsis;">
+									<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+										{{ app.user.username }}<br />
+										{{ app.user.name }}<br />
+										{{ app.user.email }}<br />
+									</a>
+								</div>
+								<div style="clear:both"></div>
+							</div>
+							<div style="border-top:1px solid #ddd; text-align:center;">
+								<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
+									<span>{{ 'paramètres' | trans }}</span>
+								</a>
+							</div>
+							<div style="border-top:1px solid #ddd; text-align:center;">
+								<a class="link" href="" style="display:block;padding:5px 0">
+									<span>{{ 'participations' | trans }}</span>
+								</a>
+							</div>
+							<div style="border-top:1px solid #ddd; text-align:center;">
+								<a class="link" href="" style="display:block;padding:5px 0">
+									<span>{{ 'abonnements' | trans }}</span>
+								</a>
+							</div>
+							{% if is_granted('ROLE_ADMIN') %}
+								<div style="border-top:1px solid #ddd; text-align:center;">
+									<a class="link" href="{{ path('com_admin_home') }}" style="display:block;padding:5px 0">
+										<span>{{ 'panneau d\'administration' | trans }}</span>
+									</a>
 								</div>
 							{% endif %}
+							<div style="border-top:1px solid #ddd; text-align:center;">
+								<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0"> 
+									<span>{{ 'deconnexion' | trans }}</span>
+								</a>
+							</div>
+						</div>
+					{% else %}
+						<div class="dd_target" data-display="block" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 4px; border: 1px solid #aaa; border-radius: 0 0 3px 3px;min-width: 83px;">
+							<ul>
+								<li>
+									<a class="link" href="{{ path('com_user_login') }}">
+										<span>{{ 'Connexion' | trans }}</span>
+									</a>
+								</li>
+								<li>
+									<a class="link" href="{{ path('com_user_register') }}">
+										<span>{{ 'Inscription' | trans }}</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					{% endif %}
 						
 				</div>
 			</div>
