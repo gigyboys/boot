@@ -7,18 +7,68 @@
 
 {% block blog_body %}
 	<div class="cr">
-		<div class="ct">
-			<div>
-				Locale : {{ locale.locale }}
-			</div>
-			<div>
-				{{ post.slug }}
-			</div>
-			<div>
-				{{ post.title }}
-			</div>
-			<div>
-				{{ post.content | raw }}
+		<div style="margin:0 10px">
+			<div class="ct">
+				{#
+				<div style="margin:12px 0; font-weight:bold; font-size:14px">
+					{{ post.id }}
+				</div>
+				#}
+				<div style="margin:12px 0; font-weight:bold; font-size:14px">
+					{{ post.title }}
+				</div>
+				<div>
+					{{ post.content | raw }}
+				</div>
+				
+				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+				<span id="info_comment">
+					{{ comments | length }} 
+					{% if comments | length == 0 or comments | length == 1 %}
+						Commentaire
+					{% else %}
+						Commentaires
+					{% endif %}
+				</span>
+				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+				
+				<div>
+					<div id="bg_post_list_cmt">
+						{% for comment in comments %}
+							{{ include("COMBlogBundle:blog:include/comment_item.html.twig") }}
+						{% endfor %}
+					</div>
+					<div style="clear:both"></div>
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+						<div class="" style="margin:10px;">
+							<form action="" name="" method="post" id="">
+								<div style="margin-bottom:5px">
+								{{ app.user.name }} :
+								</div>
+								<div style="width:60px;float:left">
+									{% set avatar=userAvatar(app.user) %}
+									{% if avatar != "default.jpeg" %}
+										{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+									{% else %}
+										{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+									{% endif %}
+									<span style="display:block;float:left;"><img id="avatar_banner" style="width:60px; height: 60px" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="{{ app.user.username }}" /></span>
+								</div>
+								<div style="margin-left:70px">
+									<textarea class="default_textarea" id="bg_post_cmt_message" style="min-height:120px"></textarea>
+									<div style="margin:5px 0 0 0">
+										<span class="tn_save standar_button btn_bg_post_new_cmt" data-target="{{ path('com_blog_post_new_comment', {'post_id': post.id}) }}">R&eacute;pondre</span>
+									</div>
+								</div>
+								<div style="clear:both"></div>
+							</form>
+						</div>
+					{% else %}
+						<div style="margin: 10px 0">
+							<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir ecrire votre message</a>
+						</div>
+					{% endif %}
+				</div>
 			</div>
 		</div>
 	</div>

@@ -4,3 +4,6 @@ com_blog_home:
 com_blog_view:
     path:     /blog/{slug}
     defaults: { _controller: COMBlogBundle:Blog:view }
+com_blog_post_new_comment:
+    path:     /blog-post/new-comment/{post_id}
+    defaults: { _controller: COMBlogBundle:Blog:newComment }

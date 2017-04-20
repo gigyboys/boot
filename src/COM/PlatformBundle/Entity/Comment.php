@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Comment
  *
  * @ORM\Table(name="pm_comment")
- * @ORM\Entity(repositoryClass="COM\PlatformBundle\Entity\commentRepository")
+ * @ORM\Entity(repositoryClass="COM\PlatformBundle\Entity\CommentRepository")
  */
 class Comment
 {
@@ -26,6 +26,19 @@ class Comment
 	 * @ORM\JoinColumn(name="post_id", nullable=false)
 	 */
 	private $post;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User", inversedBy="posts")
+	 * @ORM\JoinColumn(name="user_id", nullable=false)
+	 */
+	private $user;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
     /**
      * @var string
@@ -69,6 +82,29 @@ class Comment
     }
 
     /**
+     * Set user
+     *
+     * @param \COM\UserBundle\Entity\User $user
+     * @return Post
+     */
+    public function setUser(\COM\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \COM\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * Set post
      *
      * @param \COM\BlogBundle\Entity\Post $post
@@ -89,5 +125,28 @@ class Comment
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
