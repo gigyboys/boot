@@ -4,3 +4,6 @@ com_advert_home:
 com_advert_view:
     path:     /advert/{slug}
     defaults: { _controller: COMAdvertBundle:Advert:view }
+com_advert_new_comment:
+    path:     /advert/new-comment/{advert_id}
+    defaults: { _controller: COMAdvertBundle:Advert:newComment }

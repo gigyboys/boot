@@ -23,9 +23,15 @@ class Comment
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="COM\BlogBundle\Entity\Post", inversedBy="comments")
-	 * @ORM\JoinColumn(name="post_id", nullable=false)
+	 * @ORM\JoinColumn(name="post_id", nullable=true)
 	 */
 	private $post;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\AdvertBundle\Entity\Advert")
+	 * @ORM\JoinColumn(name="advert_id", nullable=true)
+	 */
+	private $advert;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User", inversedBy="posts")
@@ -85,7 +91,7 @@ class Comment
      * Set user
      *
      * @param \COM\UserBundle\Entity\User $user
-     * @return Post
+     * @return Comment
      */
     public function setUser(\COM\UserBundle\Entity\User $user)
     {
@@ -128,10 +134,33 @@ class Comment
     }
 
     /**
+     * Set advert
+     *
+     * @param \COM\AdvertBundle\Entity\Advert $advert
+     * @return Comment
+     */
+    public function setAdvert(\COM\AdvertBundle\Entity\Advert $advert)
+    {
+        $this->advert = $advert;
+
+        return $this;
+    }
+
+    /**
+     * Get advert
+     *
+     * @return \COM\AdvertBundle\Entity\Advert 
+     */
+    public function getAdvert()
+    {
+        return $this->advert;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date
-     * @return Post
+     * @return Comment
      */
     public function setDate($date)
     {

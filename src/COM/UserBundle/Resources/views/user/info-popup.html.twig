@@ -29,14 +29,14 @@
 		{% endif %}
 	</div>
 
-	<div style="margin-bottom:2px">
+	<div>
 		{{ user.email }}
 	</div>
 </div>
 <div style="clear:both"></div>
 
 {% if user.biography is not empty %}
-	<div style="background:#eee; border-radius:4px; margin:10px 0 0 0; padding:5px">
+	<div style="background:#eee; border-radius:4px; margin:10px 0 0 0; padding:0 5px">
 		{{ substrSpace(user.biography, 350) }}
 	</div>
 {% endif %}

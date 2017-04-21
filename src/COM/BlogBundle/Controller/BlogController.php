@@ -85,7 +85,6 @@ class BlogController extends Controller
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$commentRepository = $em->getRepository('COMPlatformBundle:Comment');
         
-		
 		$comment = new Comment();
 		$formComment = $this->get('form.factory')->create(new CommentType(), $comment);
 		
