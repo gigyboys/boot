@@ -18,7 +18,6 @@ class AdvertController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
-		$advertTranslateRepository = $em->getRepository('COMAdvertBundle:AdvertTranslate');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$adverts = $advertRepository->findAll();
@@ -33,7 +32,6 @@ class AdvertController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
-		$advertTranslateRepository = $em->getRepository('COMAdvertBundle:AdvertTranslate');
 		$commentRepository = $em->getRepository('COMPlatformBundle:Comment');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
@@ -49,13 +47,11 @@ class AdvertController extends Controller
 			'slug' => $slug,
 		));
 		
+		$advertService = $this->container->get('com_advert.advert_service');
+		$advertService->hydrateAdvertLang($advert, $locale);
+		
 		$comments = $commentRepository->findBy(array(
 			'advert' => $advert,
-		));
-		
-		$advertTranslate = $advertTranslateRepository->findOneBy(array(
-			'advert' => $advert,
-			'locale' => $locale,
 		));
 		
 		$platformService = $this->container->get('com_platform.platform_service');
@@ -65,7 +61,6 @@ class AdvertController extends Controller
 			'advert' => $advert,
 			'locale' => $locale,
 			'comments' => $comments,
-			'advertTranslate' => $advertTranslate,
 			'entityView' => 'advert',
 		));
     }

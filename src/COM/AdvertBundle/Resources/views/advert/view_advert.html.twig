@@ -9,10 +9,17 @@
 	<div class="cr">
 		<div class="ct">
 			<div style="margin:12px 0; font-weight:bold; font-size:14px">
-				{{ advertTranslate.title }}
+				{{ advert.title }}
+			</div>
+			<div style="margin:10px 0;">
+				By 
+				{# twig extension #}
+				{% set userInfo = getLinkUserInfo(advert.user, advert.user.name) %} 
+				{{ userInfo | raw }}
+				  on {{ advert.date | date('Y-m-d H:i:s') }}
 			</div>
 			<div>
-				{{ advertTranslate.content | raw }}
+				{{ advert.content | raw }}
 			</div>
 			
 				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
@@ -29,7 +36,7 @@
 				<div>
 					<div id="at_list_cmt">
 						{% for comment in comments %}
-							{{ include("COMBlogBundle:blog:include/comment_item.html.twig") }}
+							{{ include("COMAdvertBundle:advert:include/comment_item.html.twig") }}
 						{% endfor %}
 					</div>
 					<div style="clear:both"></div>

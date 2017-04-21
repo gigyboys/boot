@@ -17,6 +17,13 @@
 				<div style="margin:12px 0; font-weight:bold; font-size:14px">
 					{{ post.title }}
 				</div>
+				<div style="margin:10px 0;">
+					By 
+					{# twig extension #}
+					{% set userInfo = getLinkUserInfo(post.user, post.user.name) %} 
+					{{ userInfo | raw }}
+					  on {{ post.date | date('Y-m-d H:i:s') }}
+				</div>
 				<div>
 					{{ post.content | raw }}
 				</div>
