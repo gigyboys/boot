@@ -200,6 +200,11 @@ $(function() {
 				htmlprepend += 'Informations sur '+ name;
 				htmlprepend += '</div>';
 				$this.prepend(htmlprepend);
+				var decalage = $(window).width() - $this.find(".popup_user_info").width() - $this.find(".popup_user_info").offset().left - 30; 
+				//alert (decalage);
+				if (decalage < 0){
+					$this.find(".popup_user_info").css('margin-left',decalage);
+				}
 				//ajax
 				if(sessionStorage.getItem("info_user_"+userid)){
 					$this.find('.popup_user_info').html(sessionStorage.getItem("info_user_"+userid));

@@ -23,7 +23,7 @@ a:hover{
 .default_input{
 	border: 1px solid #bbb;
 	border-radius: 3px;
-	min-width: 300px;
+	width: 350px;
 	height: 30px;
 	padding:5px;
 	box-sizing: border-box;
@@ -47,6 +47,19 @@ a:hover{
 	font-family: calibri, arial;
 	font-size: 16px;
 }
+.default_textarea_2{
+	border: 1px solid #bbb;
+	border-radius: 3px;
+	width: 350px;
+	padding:5px;
+	box-sizing: border-box;
+	font-family: calibri;
+	font-size:16px;
+	resize:vertical;
+	min-height: 120px;
+	font-family: calibri, arial;
+	font-size: 16px;
+}
 .default_textarea:focus{
 	box-shadow: 1px 1px 5px #ccc;
 }
@@ -65,4 +78,12 @@ a:hover{
 	height:1px; 
 	width:100%; 
 	margin:12px 0
+}
+
+
+@media screen and (max-width: 370px)
+{
+    .default_input, .default_textarea_2{
+		width: 100%;
+	}
 }
