@@ -21,6 +21,12 @@ class Contact
      */
     private $id;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="COM\UserBundle\Entity\User")
+	 * @ORM\JoinColumn(name="user_id", nullable=true)
+	 */
+	private $user;
+
     /**
      * @var string
      *
@@ -45,7 +51,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=255)
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
     private $website;
 
@@ -65,6 +71,29 @@ class Contact
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \COM\UserBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\COM\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \COM\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

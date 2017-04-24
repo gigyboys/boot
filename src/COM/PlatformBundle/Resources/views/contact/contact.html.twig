@@ -8,11 +8,39 @@
 {% block platform_body %}
 	<div class="cr">
 		<div class="ct">
-			{{ msg | raw }}
-			<div style="margin:20px">
+			
+			<div style="margin:10px 0; padding:10px 4px; background:#f5f5f5; border:1px solid #ddd; border-radius:3px">
 				Contact...
 			</div>
-			 {{ form(formContact) }}
+			 {#{ form(formContact) }#}
+			<div style="margin:0px">
+				{{ msg | raw }}
+			</div>
+			<div style="margin:10px 0">
+				<form name="" method="post" action="{{ path('cf_platform_contact') }}" id="form-contact">
+					<div>
+						<div>                
+							<div><label for="contact_name" class="required">{{ 'full name' | trans }} *:</label></div>
+							<div><input type="text" id="contact_name" name="name" required="required" value="{{ contact.name }}" class="default_input" /></div>
+						</div>
+						
+						<div>                
+							<div><label for="contact_email" class="required">{{ 'email' | trans }} *:</label></div>
+							<div><input type="email" id="contact_name" name="email" required="required" value="{{ contact.email }}" class="default_input" /></div>
+						</div>
+						
+						<div>                
+							<div><label for="contact_content" class="required">{{ 'your message' | trans }} *:</label></div>
+							<div><textarea id="contact_content" class="default_textarea" name="content"  required="required">{{ contact.content }}</textarea></div>
+						</div>
+						
+						<div style="margin-top : 10px">
+							<button type="submit" id="Inscription" name="Envoyer" class="standar_button">{{ 'connexion' | trans }}</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			
 		</div>
 	</div>
 {% endblock %}
