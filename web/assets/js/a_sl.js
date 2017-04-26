@@ -2,6 +2,7 @@
 $(function() {
 	console.log("a_sl.js");
 	
+	var timeOutIdQuery = 0; 
     /*
     *upload logo for school
     */
@@ -191,6 +192,174 @@ $(function() {
         
 		popup(content, 500, true);
 		
+    });
+	
+	$('#input_sl_search_not_admin').on('keyup', function(ed){
+        var $this = $(this);
+		var query = $this.val();
+		if(ed.which != 38 && ed.which != 40 && ed.which != 13){
+			$('#view_result_wrap').show();
+			
+			$('#view_query').html(query);
+			var target = $this.data('target');
+			clearTimeout(timeOutIdQuery);
+			timeOutIdQuery = setTimeout(function(){
+				var data = {
+					query: query
+				};
+				$.ajax({
+					type: 'POST',
+					url: target,
+					data: data,
+					dataType : 'json',
+					success: function(data){
+						if(data.users.length>0){
+							var htmlappend = '<div>';
+							for(var i = 0; i <data.users.length; i++ ){
+								var user = data.users[i];
+								//alert(user.username);
+								htmlappend += '<div style="background:#ccc; height:1px; width:100%; margin:3px 0"></div>';
+								htmlappend += '<div data-id="'+user.id+'" data-target="'+user.urlSetAdmin+'" data-username="'+user.username+'" class="item_user" style="padding:2px; cursor:pointer">';
+								htmlappend += '<div style="width:60px;height:60px;background:#ddd;float:left">';
+								htmlappend += '<img id="" style="width: 60px; height: 60px" src="'+user.avatar+'" alt="'+user.username+'" />';
+								htmlappend += '</div>';
+								htmlappend += '<div style="margin-left:65px">';
+								htmlappend += user.username+'<br />'+user.name+'<br />'+user.email;
+								htmlappend += '</div>';
+								htmlappend += '<div style="clear:both"></div>';
+								htmlappend += '</div>';
+							}
+							htmlappend += '</div>';
+							$("#view_result").html(htmlappend);
+							$("#view_result .item_user").first().addClass("user_selected");
+							
+							$('#view_result').on('mouseover','.item_user',function(){
+								var $this = $(this);
+								$("#view_result .item_user").removeClass("user_selected");
+								$this.addClass("user_selected");
+							});
+							
+						}else{
+							//alert("Aucun resultat");
+							var htmlappend = '<div>';
+							htmlappend += '<div style="background:#ccc; height:1px; width:100%; margin:3px 0"></div>';
+							htmlappend += '<div>Aucun resultat trouvé</div>';
+							htmlappend += '</div>';
+							$("#view_result").html(htmlappend);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+					}
+				});
+			}, 400);
+		}
+    });
+		
+	$(document).keydown(function(ed) {
+		var userSelected = $( "#view_result .item_user.user_selected" );
+		var indexUserSelected = $( "#view_result .item_user" ).index( userSelected );
+		var users = $( "#view_result .item_user" );
+		var lengthusers = users.length;
+		switch(ed.which) {
+			case 38: // up
+				var indexPrecUserSelected = indexUserSelected-1;
+				if(indexUserSelected == 0){
+					indexPrecUserSelected = lengthusers-1
+				}
+				
+				userSelected.removeClass("user_selected");
+				$( "#view_result .item_user" ).eq(indexPrecUserSelected).addClass("user_selected");
+				ed.preventDefault();
+			break;
+
+			case 40: // down
+				var indexNextUserSelected = 0;
+				if(lengthusers-1>indexUserSelected){
+					indexNextUserSelected = indexUserSelected+1;
+				}
+				
+				userSelected.removeClass("user_selected");
+				$( "#view_result .item_user" ).eq(indexNextUserSelected).addClass("user_selected");
+				ed.preventDefault();
+			break;
+
+			case 13: // enter
+				if(userSelected.length == 1){
+					//alert("id : "+ userSelected.data("id") + " - name : "+userSelected.data("username"));
+					setAdmin(userSelected);
+					ed.preventDefault();
+				}
+			break;
+
+			default: return;
+		}
+		
+	});
+	
+	function setAdmin(element){
+		var $this = element;
+		//alert("id : "+ $this.data("id") + " - name : "+$this.data("username"));
+		$("#view_result").html("");
+		$("#view_result_wrap").hide();
+		var target = $this.data('target');
+		var data = {
+		};
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					$("#a_sl_list_admin").prepend(data.schoolAdminItem);
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+			}
+        });
+	}
+	
+	$('#view_result_wrap').on('click', '.item_user', function(ed){
+		var $this = $(this);
+		setAdmin($this);
+    });
+	
+	$('.remove_school_admin').live('click', function(ed){
+		var $this = $(this);
+		var target = $this.data('target');
+		var data = {
+		};
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$this.closest(".school_admin_item").remove();
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+			}
+        });
+    });
+	
+	
+	$(document).click(function() {
+		$("#view_result").html("");
+		$("#view_result_wrap").hide();
+    });
+	
+	$("#view_result_wrap").live('click', function(e) {
+        e.stopPropagation(); 
+        return false;      
     });
 	
 	//confirm delete field

@@ -213,4 +213,9 @@ a:hover{
 	display:block;
 }
 
+/* user admin school */
+.user_selected{
+	background : #ddd;
+}
+
 

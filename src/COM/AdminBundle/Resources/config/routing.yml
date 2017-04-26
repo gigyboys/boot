@@ -21,9 +21,18 @@ com_admin_school_edit_common:
 com_admin_school_edit_translate:
     path:     /school/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:School:editSchoolTranslate }
-com_admin_school_administrator:
+com_admin_school_admin:
     path:     /school/edit-school/{school_id}/admin
     defaults: { _controller: COMAdminBundle:SchoolAdmin:index }
+com_admin_school_get_not_admin:
+    path:     /school/edit-school/{school_id}/get-not-admin
+    defaults: { _controller: COMAdminBundle:SchoolAdmin:getUsersNotAdminSchool }
+com_admin_school_set_admin:
+    path:     /school/edit-school/{school_id}/set-admin/{user_id}
+    defaults: { _controller: COMAdminBundle:SchoolAdmin:setAdminSchool }
+com_admin_school_remove_admin:
+    path:     /school/edit-school/{school_id}/remove-admin/{user_id}
+    defaults: { _controller: COMAdminBundle:SchoolAdmin:removeAdminSchool }
 com_admin_school_field:
     path:     /school/edit-school/{school_id}/field
     defaults: { _controller: COMAdminBundle:SchoolField:index }

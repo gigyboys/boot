@@ -1,0 +1,19 @@
+<div class="school_admin_item">
+	<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+	{# twig extension #}
+	{% set avatar=userAvatar(schoolAdmin.user) %}
+	{% if avatar != "default.jpeg" %}
+		{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+	{% else %}
+		{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+	{% endif %}
+	<div style="float:left; width:60px; height:60px">
+		<img id="user_avatar" style="width: 60px; height: 60px" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="img ur" />
+	</div>
+	<div style="margin-left:65px">
+		<span>{{ schoolAdmin.user.name }}</span><br />
+		<span>{{ schoolAdmin.user.email }} ({{ schoolAdmin.user.username }})</span><br />
+		<span style="cursor:pointer" class="remove_school_admin" data-target="{{ path('com_admin_school_remove_admin', {'school_id': schoolAdmin.school.id, 'user_id': schoolAdmin.user.id}) }}">Remove from list</span>
+	</div>
+	<div style="clear:both"></div>
+</div>

@@ -69,6 +69,15 @@ class SchoolService {
 		return $schoolAdmins;
     }
     
+    public function getSchoolNotAdmins($school, $query) {
+        $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
+        $userRepository = $this->em->getRepository('COMUserBundle:User');
+
+        $schoolNotAdmins = $userRepository->findAll();
+        
+		return $schoolNotAdmins;
+    }
+    
     public function getEvaluations($school) {
         $evaluationRepository = $this->em->getRepository('COMSchoolBundle:Evaluation');
 

@@ -70,18 +70,22 @@
 						<span style="display:block;margin-left:36px;padding-top:6px">{{ post.defaultTitle }}</span>
 						<span style="clear:both"></span>
 					</a></td>
-					
-					{% set avatar=userAvatar(post.user) %}
-					{% if avatar != "default.jpeg" %}
-						{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
-					{% else %}
-						{% set pathtoavatar='default/images/user/avatar/'~avatar %}
-					{% endif %}
-					
+					{#
+						{% set avatar=userAvatar(post.user) %}
+						{% if avatar != "default.jpeg" %}
+							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
+						{% else %}
+							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
+						{% endif %}
+						
+						<td>
+							<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ post.user.username }}" /></span>
+							<span style="display:block;margin-left:36px;padding-top:6px">{{ post.user.name }}</span>
+							<span style="clear:both"></span>
+						</td>
+					#}
 					<td>
-						<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ post.user.username }}" /></span>
-						<span style="display:block;margin-left:36px;padding-top:6px">{{ post.user.name }}</span>
-						<span style="clear:both"></span>
+						<span>{{ post.user.name }}</span>
 					</td>
 					<td class="a_table_cell_action">action</td>
 				</tr>

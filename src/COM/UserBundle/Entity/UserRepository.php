@@ -19,21 +19,27 @@ class UserRepository extends EntityRepository
             'school' => $school,
             'active' => true,
         ));
-		
-		$user_ids = array();
-            
-		foreach ($schoolAdmins as $schoolAdmin){
-			array_push($user_ids, $schoolAdmin->getUser()->getId());
-		}
-		
 		$qb = $this->createQueryBuilder('user');
+		if($schoolAdmins){
+			$user_ids = array();
+			foreach ($schoolAdmins as $schoolAdmin){
+				array_push($user_ids, $schoolAdmin->getUser()->getId());
+			}
 
-		$qb
-		->where('user.id NOT IN (:user_ids)')
-		->setParameter('user_ids', $user_ids)
-        ->andWhere('(user.username LIKE :query) OR (user.email LIKE :query) OR (user.name LIKE :query)')
-        ->setParameter('query', $query)
-		;
+			$qb
+			->where('user.id NOT IN (:user_ids)')
+			->setParameter('user_ids', $user_ids)
+			->andwhere('(user.username LIKE :query) OR (user.email LIKE :query) OR (user.name LIKE :query)')
+			->setParameter('query', '%'.$query.'%')
+			->setMaxResults( 4 );
+			;
+		}else{
+			$qb
+			->where('(user.username LIKE :query) OR (user.email LIKE :query) OR (user.name LIKE :query)')
+			->setParameter('query', '%'.$query.'%')
+			->setMaxResults( 4 );
+			;
+		}
 		
         $users = $qb->getQuery()->getResult();
 		return $users;

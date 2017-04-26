@@ -6,6 +6,8 @@ $(function() {
         var dd_target = $('.dd_target');
         dd_target.hide();
 		$(".popup_user_info").remove();
+		$("view_result_wrap").hide();
+		
     });
     
     dd_src.live('click', function(e) {
