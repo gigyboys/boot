@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\Evaluation;
+use COM\BlogBundle\Entity\Post;
 use COM\UserBundle\Entity\User;
 use COM\PlatformBundle\Entity\Locale;
 
@@ -87,6 +88,29 @@ class SchoolService {
         ));
         
 		return $schoolAdmins;
+    }
+    
+    public function getNotSchoolsByPostAndUser(Post $post, User $user) {
+        $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
+        $postSchoolRepository = $this->em->getRepository('COMPlatformBundle:PostSchool');
+        
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'user' => $user,
+            'active' => true,
+        ));
+		
+		$listSchool = array();
+		foreach($schoolAdmins as $schoolAdmin){
+			$postSchool = $postSchoolRepository->findOneBy(array(
+				'school' => $schoolAdmin->getSchool(),
+				'post' => $post,
+			));
+			if(!$postSchool){
+				array_push($listSchool, $schoolAdmin->getSchool());
+			}
+		}
+        
+		return $listSchool;
     }
     
     public function getFieldTranslate(Field $field, $locale) {

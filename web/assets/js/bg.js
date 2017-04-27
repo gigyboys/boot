@@ -54,7 +54,6 @@ $(function() {
 		var data = {
 			message : $("#bg_post_cmt_message").val()
 		};
-		//loadBlocEdit(bloc_editable);
         $.ajax({
             type: 'POST',
             url: target,
@@ -77,6 +76,36 @@ $(function() {
 				console.log(errorThrown);
 			}
         });		
+    });
+	
+	$('.not_school_post').live('click', function(e){
+		var $this = $(this);
+        var target = $this.data('target');
+		var data = {
+		};
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					$this.remove();
+					if($("#btn_add_to_sl .not_school_post").length == 0){
+						$("#btn_add_to_sl").remove();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });	
     });
 	
 });

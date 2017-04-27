@@ -2,7 +2,7 @@ footer{
 }
 
 #footer_navigation{
-	background:#ddd;
+	background:#eee;
 	min-height: 120px;
 }
 
@@ -34,8 +34,9 @@ footer{
 }
 
 #copyright{
-	background:#ccc;
-	min-height: 120px;
+	background:#fff;
+	min-height: 30px;
+	padding:16px 0;
 }
 
 #copyright_content{

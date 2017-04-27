@@ -7,3 +7,6 @@ com_blog_view:
 com_blog_post_new_comment:
     path:     /blog-post/new-comment/{post_id}
     defaults: { _controller: COMBlogBundle:Blog:newComment }
+com_blog_post_set_post_school:
+    path:     /blog-post/set-post-school/{post_id}/{school_id}
+    defaults: { _controller: COMBlogBundle:Blog:setPostSchool }

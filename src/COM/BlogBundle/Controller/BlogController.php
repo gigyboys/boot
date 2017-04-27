@@ -11,6 +11,7 @@ use COM\BlogBundle\Entity\Post;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\PlatformBundle\Entity\View;
 use COM\PlatformBundle\Entity\Comment;
+use COM\PlatformBundle\Entity\PostSchool;
 use COM\PlatformBundle\Form\Type\CommentType;
 
 class BlogController extends Controller
@@ -127,6 +128,67 @@ class BlogController extends Controller
 			}else{
 				$response->setContent(json_encode(array(
 					'state' => 0,
+				)));
+			}
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	public function setPostSchoolAction($post_id, $school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolAdminRepository = $em->getRepository('COMSchoolBundle:SchoolAdmin');
+		
+		$post = $postRepository->find($post_id);
+		$school = $schoolRepository->find($school_id);
+		$user = $this->getUser();
+		
+		$schoolAdmin = null;
+		if($user){
+			$schoolAdmin = $schoolAdminRepository->findOneBy(array(
+				'user' => $user,
+				'school' => $school,
+			));
+		}
+		
+        $response = new Response();
+		
+		if ($post && $school && $schoolAdmin) {
+			$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
+			
+			$postSchool = $postSchoolRepository->findOneBy(array(
+				'post' => $post,
+				'school' => $school,
+			));
+			
+			if($postSchool){
+				$response->setContent(json_encode(array(
+					'state' => 0,
+				)));
+			}else{
+				$postSchool = new PostSchool();
+				$postSchool->setPost($post);
+				$postSchool->setSchool($school);
+				$postSchool->setUser($user);
+				$postSchool->setUserConfirmation($user);
+				$postSchool->setPostToSchool(true);
+				$postSchool->setConfirmation(true);
+				$postSchool->setDate(new \DateTime());
+				$postSchool->setDateConfirmation(new \DateTime());
+				
+				$em->persist($postSchool);
+				$em->flush();
+				
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'schoolId' => $school->getId(),
 				)));
 			}
 		}else{

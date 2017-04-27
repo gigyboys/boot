@@ -95,6 +95,7 @@ class SchoolController extends Controller
 			'school' => $school,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'locale' => $locale,
 			'fields' => $fields,
 			'entityView' => 'school',
 			'type' => $type,
