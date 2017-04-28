@@ -168,4 +168,58 @@ class SchoolController extends Controller
             throw new NotFoundHttpException('Page not found');
         }
     }
+	
+	public function toogleSubscriptionAction($school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		
+		$school = $schoolRepository->find($school_id);
+		$user = $this->getUser();
+		
+        $response = new Response();
+		
+		if ($school && $user) {
+			$schoolSubscriptionRepository = $em->getRepository('COMSchoolBundle:SchoolSubscription');
+			
+			$schoolSubscription = $schoolSubscriptionRepository->findOneBy(array(
+				'user' => $user,
+				'school' => $school,
+			));
+			
+			if($schoolSubscription){
+				if($schoolSubscription->getActive()){
+					$schoolSubscription->setActive(false);
+				}else{
+					$schoolSubscription->setActive(true);
+				}
+			}else{
+				$schoolSubscription = new PostSchool();
+				$schoolSubscription->setSchool($school);
+				$schoolSubscription->setUser($user);
+				$schoolSubscription->setActive(true);
+				$schoolSubscription->setDate(new \DateTime());
+			}
+			
+			$em->persist($schoolSubscription);
+			$em->flush();
+			
+			if($schoolSubscription->getActive()){
+				$active = 1;
+			}else{
+				$active = 0;
+			}
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'active' => $active,
+			)));
+			
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
 }

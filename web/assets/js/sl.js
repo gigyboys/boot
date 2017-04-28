@@ -139,4 +139,34 @@ $(function() {
 		});
     });
 	
+	//toogleSubscription
+    $('#toggle_subscription').on('click', function(){
+        var $this = $(this);
+        var target = $this.data('target');
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					if(data.active){
+						$(".subscription_btn").hide();
+						$(".unsubscription_btn").show();
+					}else{
+						$(".subscription_btn").show();
+						$(".unsubscription_btn").hide();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });		
+    });
+	
 });

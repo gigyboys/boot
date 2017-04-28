@@ -10,7 +10,6 @@
 		<div class="ct">
 			<div style="margin:0 10px">
 				<div style="float:left;">
-					 
 					{# twig extension #}
 					{% set logo=schoolLogo(school) %}
 					{% if logo != "default.jpeg" %}
@@ -31,7 +30,19 @@
 						{{ school.shortDescription }}
 					</div>
 					<div style="margin-top:10px">
-						<span>S'abonner</span> {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_school_edit', {'id': school.id}) }}" target="_blank"><span>Administrer</span></a>{% endif %}
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+						<span id="toggle_subscription" data-target="{{ path('com_school_toggle_subscription', {'school_id': school.id}) }}" style="cursor:pointer">
+							{% set isSubscribed = isSubscribed(school, app.user) %}
+							{% if isSubscribed %}
+								<span class="subscription_btn" style="color:#283;display:none">S'abonner</span>
+								<span class="unsubscription_btn">Se désabonner</span>
+							{% else %}
+								<span class="subscription_btn" style="color:#283">S'abonner</span>
+								<span class="unsubscription_btn" style="display:none">Se désabonner</span>
+							{% endif %}
+						</span> 
+						{% endif %}
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_school_edit', {'id': school.id}) }}" target="_blank"><span>Administrer</span></a>{% endif %}
 					</div>
 				</div>
 				<div style="clear:both"></div>

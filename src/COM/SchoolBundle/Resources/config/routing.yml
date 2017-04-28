@@ -13,3 +13,6 @@ com_school_view:
     defaults:
         _controller: COMSchoolBundle:School:view
         type: about
+com_school_toggle_subscription:
+    path:     /school/{school_id}/toggle-subscription
+    defaults: { _controller: COMSchoolBundle:School:toogleSubscription }

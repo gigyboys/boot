@@ -33,6 +33,9 @@ com_admin_school_set_admin:
 com_admin_school_remove_admin:
     path:     /school/edit-school/{school_id}/remove-admin/{user_id}
     defaults: { _controller: COMAdminBundle:SchoolAdmin:removeAdminSchool }
+com_admin_school_subscriber:
+    path:     /school/edit-school/{school_id}/subscriber
+    defaults: { _controller: COMAdminBundle:SchoolSubscription:index }
 com_admin_school_field:
     path:     /school/edit-school/{school_id}/field
     defaults: { _controller: COMAdminBundle:SchoolField:index }

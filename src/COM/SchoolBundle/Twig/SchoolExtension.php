@@ -25,6 +25,7 @@ class SchoolExtension extends \Twig_Extension {
             'getFieldTranslate' => new \Twig_Function_Method($this, 'getFieldTranslateFunction'),
             'getNotSchoolsByPostAndUser' => new \Twig_Function_Method($this, 'getNotSchoolsByPostAndUserFunction'),
             'getNotSchoolsByAdvertAndUser' => new \Twig_Function_Method($this, 'getNotSchoolsByAdvertAndUserFunction'),
+            'isSubscribed' => new \Twig_Function_Method($this, 'isSubscribedFunction'),
         );
     }
 
@@ -50,6 +51,10 @@ class SchoolExtension extends \Twig_Extension {
 
     public function getNotSchoolsByAdvertAndUserFunction(Advert $advert, User $user) {
         return $this->schoolService->getNotSchoolsByAdvertAndUser($advert, $user);
+    }
+
+    public function isSubscribedFunction(School $school, User $user) {
+        return $this->schoolService->isSubscribed($school, $user);
     }
 
     public function getName() {

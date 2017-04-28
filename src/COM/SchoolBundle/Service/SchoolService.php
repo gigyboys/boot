@@ -161,4 +161,20 @@ class SchoolService {
 		
 		return $field;
     }
+    
+    public function isSubscribed(School $school, User $user) {
+        $schoolSubscriptionRepository = $this->em->getRepository('COMSchoolBundle:SchoolSubscription');
+        
+        $schoolSubscription = $schoolSubscriptionRepository->findOneBy(array(
+            'user' => $user,
+            'school' => $school,
+            'active' => true,
+        ));
+		
+		if($schoolSubscription){
+			return true;
+		}
+        
+		return false;
+    }
 }
