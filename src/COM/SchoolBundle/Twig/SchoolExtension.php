@@ -44,6 +44,10 @@ class SchoolExtension extends \Twig_Extension {
         return $this->schoolService->getFieldTranslate($field, $locale);
     }
 
+    public function getNotSchoolsByPostAndUserFunction(Post $post, User $user) {
+        return $this->schoolService->getNotSchoolsByPostAndUser($post, $user);
+    }
+
     public function getNotSchoolsByAdvertAndUserFunction(Advert $advert, User $user) {
         return $this->schoolService->getNotSchoolsByAdvertAndUser($advert, $user);
     }
