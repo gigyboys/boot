@@ -28,29 +28,32 @@
 					{{ post.content | raw }}
 				</div>
 				
-				<div style="background:#f5f5f5; border:1px solid #7ae; padding:5px; width:100%; margin:12px 0;border-radius:3px"> 
-					<div>Actions admin : </div>
-					<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
-					<div>
-					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}" target="_blank"><span>Manage</span></a>{% endif %}&nbsp;
-					{% set schools = getNotSchoolsByPostAndUser(post, app.user) %} 
-					{% if schools %}
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<div style="background:#f5f5f5; border:1px solid #7ae; padding:5px; width:100%; margin:12px 0;border-radius:3px"> 
+						<div>Actions admin : </div>
+						<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+						<div>
+						{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}" target="_blank"><span>Manage</span></a>{% endif %}&nbsp;
 						
-						<span class="dd" style="display:inline-block;" id="btn_add_to_sl">
-							<span href="#" class="dd_src" style="cursor:pointer">
-								Add to ...
-							</span>
-							<div class="dd_target" style="margin-top: 3px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#fff;box-shadow: 1px 1px 5px #ccc;">
-								<div style="margin:5px">
-										{% for school in schools %}
-											<div style="cursor:pointer" data-schoolId="{{ school.id }}" data-target="{{ path('com_blog_post_set_post_school', {'post_id': post.id, 'school_id': school.id}) }}" class="not_school_post">{{ school.shortName }} - {{ school.name }}</div>
-										{% endfor %}
-								</div>
-							</div>
-						</span> 
-					{% endif %}
+							{% set schools = getNotSchoolsByPostAndUser(post, app.user) %} 
+							{% if schools %}
+								
+								<span class="dd" style="display:inline-block;" id="btn_add_to_sl">
+									<span href="#" class="dd_src" style="cursor:pointer">
+										Add to ...
+									</span>
+									<div class="dd_target" style="margin-top: 3px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#fff;box-shadow: 1px 1px 5px #ccc;">
+										<div style="margin:5px">
+												{% for school in schools %}
+													<div style="cursor:pointer" data-schoolId="{{ school.id }}" data-target="{{ path('com_blog_post_set_post_school', {'post_id': post.id, 'school_id': school.id}) }}" class="not_school_post">{{ school.shortName }} - {{ school.name }}</div>
+												{% endfor %}
+										</div>
+									</div>
+								</span> 
+							{% endif %}
+						</div>
 					</div>
-				</div>
+				{% endif %}
 				
 				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
 				<span id="info_comment">

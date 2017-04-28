@@ -7,6 +7,7 @@ use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\Evaluation;
 use COM\BlogBundle\Entity\Post;
+use COM\AdvertBundle\Entity\Advert;
 use COM\UserBundle\Entity\User;
 use COM\PlatformBundle\Entity\Locale;
 
@@ -106,6 +107,29 @@ class SchoolService {
 				'post' => $post,
 			));
 			if(!$postSchool){
+				array_push($listSchool, $schoolAdmin->getSchool());
+			}
+		}
+        
+		return $listSchool;
+    }
+    
+    public function getNotSchoolsByAdvertAndUser(Advert $advert, User $user) {
+        $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
+        $advertSchoolRepository = $this->em->getRepository('COMPlatformBundle:AdvertSchool');
+        
+        $schoolAdmins = $schoolAdminRepository->findBy(array(
+            'user' => $user,
+            'active' => true,
+        ));
+		
+		$listSchool = array();
+		foreach($schoolAdmins as $schoolAdmin){
+			$advertSchool = $advertSchoolRepository->findOneBy(array(
+				'school' => $schoolAdmin->getSchool(),
+				'advert' => $advert,
+			));
+			if(!$advertSchool){
 				array_push($listSchool, $schoolAdmin->getSchool());
 			}
 		}

@@ -10,6 +10,7 @@ use COM\AdvertBundle\Entity\Advert;
 use COM\AdvertBundle\Entity\AdvertTranslate;
 use COM\PlatformBundle\Entity\View;
 use COM\PlatformBundle\Entity\Comment;
+use COM\PlatformBundle\Entity\AdvertSchool;
 use COM\PlatformBundle\Form\Type\CommentType;
 
 class AdvertController extends Controller
@@ -113,6 +114,67 @@ class AdvertController extends Controller
 			}else{
 				$response->setContent(json_encode(array(
 					'state' => 0,
+				)));
+			}
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	public function setAdvertSchoolAction($advert_id, $school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolAdminRepository = $em->getRepository('COMSchoolBundle:SchoolAdmin');
+		
+		$advert = $advertRepository->find($advert_id);
+		$school = $schoolRepository->find($school_id);
+		$user = $this->getUser();
+		
+		$schoolAdmin = null;
+		if($user){
+			$schoolAdmin = $schoolAdminRepository->findOneBy(array(
+				'user' => $user,
+				'school' => $school,
+			));
+		}
+		
+        $response = new Response();
+		
+		if ($advert && $school && $schoolAdmin) {
+			$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
+			
+			$advertSchool = $advertSchoolRepository->findOneBy(array(
+				'advert' => $advert,
+				'school' => $school,
+			));
+			
+			if($advertSchool){
+				$response->setContent(json_encode(array(
+					'state' => 0,
+				)));
+			}else{
+				$advertSchool = new AdvertSchool();
+				$advertSchool->setAdvert($advert);
+				$advertSchool->setSchool($school);
+				$advertSchool->setUser($user);
+				$advertSchool->setUserConfirmation($user);
+				$advertSchool->setAdvertToSchool(true);
+				$advertSchool->setConfirmation(true);
+				$advertSchool->setDate(new \DateTime());
+				$advertSchool->setDateConfirmation(new \DateTime());
+				
+				$em->persist($advertSchool);
+				$em->flush();
+				
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'schoolId' => $school->getId(),
 				)));
 			}
 		}else{
