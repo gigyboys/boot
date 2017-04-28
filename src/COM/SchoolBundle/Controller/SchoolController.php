@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Evaluation;
+use COM\SchoolBundle\Entity\SchoolSubscription;
 use COM\PlatformBundle\Entity\Locale;
 use COM\PlatformBundle\Entity\View;
 use COM\BlogBundle\Entity\Post;
@@ -194,7 +195,7 @@ class SchoolController extends Controller
 					$schoolSubscription->setActive(true);
 				}
 			}else{
-				$schoolSubscription = new PostSchool();
+				$schoolSubscription = new SchoolSubscription();
 				$schoolSubscription->setSchool($school);
 				$schoolSubscription->setUser($user);
 				$schoolSubscription->setActive(true);
