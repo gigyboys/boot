@@ -140,8 +140,51 @@
 		<div class="content_tab_ur_item" id="content_tab_ur_school" style = "display:none">
 			<div class="cr">
 				<div class="ct">
-					<div style="padding:5px; min-height:100px">
-						ecole suivie
+					<div style="padding:5px; min-height:80px">
+						<div style="">
+						Ecoles suivies
+						</div>
+						
+						{% if schoolSubscriptions | length == 0 %}
+							<div>
+								<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+								<div style="">
+									Aucune Ecole suivie
+								</div>
+							</div>
+						{% else %}
+							<div style="">
+								{% for schoolSubscription in schoolSubscriptions %}
+									<div style="">
+										<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+										<div style="float:left;width:80px;height:80px">
+											{# twig extension #}
+											{% set logo=schoolLogo(schoolSubscription.school) %}
+											{% if logo != "default.jpeg" %}
+												{% set pathtologo='uploads/images/school/logo/'~logo %}
+											{% else %}
+												{% set pathtologo='default/images/school/logo/'~logo %}
+											{% endif %}
+											
+											<img style="" src="{{ pathtologo | imagine_filter('80x80') }}" alt="img sl" />
+										</div>
+										<div style="margin-left:85px">
+											<div>
+												<a title="{{ schoolSubscription.school.name }}" href="{{ path('com_school_view', {'slug': schoolSubscription.school.slug}) }}">
+													<span><span>{{ schoolSubscription.school.name }}</span> <span>{{ schoolSubscription.school.shortName }}</span></span>
+												</a>
+											</div>
+											<div>
+												{# twig extension #}
+												{% set schoolTranslate = getSchoolTranslate(schoolSubscription.school, locale) %}
+												{{ substrSpace(schoolTranslate.shortDescription, 500) }}
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</div>
+								{% endfor %}
+							</div>
+						{% endif %}
 					</div>
 				</div>
 			</div>

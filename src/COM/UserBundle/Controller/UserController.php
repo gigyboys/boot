@@ -102,6 +102,7 @@ class UserController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$userRepository = $em->getRepository('COMUserBundle:User');
+		$schoolSubscriptionRepository = $em->getRepository('COMSchoolBundle:SchoolSubscription');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$request = $this->get('request');
@@ -114,11 +115,16 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
+		$schoolSubscriptions = $schoolSubscriptionRepository->findBy(array(
+			'user' => $user,
+		));
+		
 		$type = 'profile';
         return $this->render('COMUserBundle:user:profile.html.twig', array(
 			'user' => $user,
 			'locale' => $locale,
 			'type' => $type,
+			'schoolSubscriptions' => $schoolSubscriptions,
 		));
     }
 	
