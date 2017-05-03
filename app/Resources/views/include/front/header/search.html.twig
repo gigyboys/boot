@@ -1,4 +1,18 @@
-<div id="search" class="cr">
+{% if viewSchool is defined and viewSchool%}
+
+{# twig extension #}
+{% set cover=schoolCover(school) %}
+{% if cover != "default.jpeg" %}
+	{% set pathtocover='uploads/images/school/cover/'~cover %}
+{% else %}
+	{% set pathtocover='default/images/school/cover/'~cover %}
+{% endif %}
+
+
+<div id="search" class="cr" style="background: rgba(255, 255, 255, 1) url('{{ asset(pathtocover) }}') no-repeat scroll center center / cover ;">
+{% else %}
+<div id="search" class="cr" style="background: rgba(255, 255, 255, 1) url('{{ asset('assets/image/cover.jpg') }}') no-repeat scroll center center / cover ;">
+{% endif %}
 	<div id="search_content"  class="ct">
 		<div id="search_hidden">
 			

@@ -99,6 +99,7 @@ class SchoolController extends Controller
 			'locale' => $locale,
 			'fields' => $fields,
 			'entityView' => 'school',
+			'viewSchool' => true,
 			'type' => $type,
 		));
     }

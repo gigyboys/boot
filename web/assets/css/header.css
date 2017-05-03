@@ -6,7 +6,7 @@ header{
 }
 
 #navigation{
-	background:rgba(255,255,255,0.8);
+	background:rgba(255,255,255,0.9);
 	height: 40px;
 	position:fixed;
 	border-bottom: 1px solid #888;
@@ -75,11 +75,9 @@ header{
 
 #search{
 	background:#eee;
-	/*height: 290px;*/
 }
 
 #search_content{
-	/*height: 290px;*/
 	padding-top: 1px
 }
 
@@ -91,7 +89,7 @@ header{
 
 #search_header{
 	width: auto;
-	height: 60px;
+	height: 80px;
 	background: transparent
 }
 
@@ -99,16 +97,19 @@ header{
 	width: auto;
 	margin-left: 80px;
 	margin-right: 80px;
-	/*height: 136px;*/
-	border-radius: 2px;
-	/*margin-top: 100px;*/
-	background: #ffffff;
+	border-radius: 3px;
+	background: rgba(255,255,255,0.6);
 	padding-bottom:10px;
+	border:1px solid #ccc;
+}
+
+#q_sl{
+	background: rgba(255,255,255,0.5);
 }
 
 #search_footer{
 	width: auto;
-	height: 60px;
+	height: 80px;
 	background: transparent
 }
 
@@ -137,7 +138,7 @@ header{
 }
 
 #search_entity{
-	padding-left:5px
+	padding-left:5px;
 }
 
 .search_entity_item{
@@ -147,6 +148,9 @@ header{
 	padding: 7px 15px;
 	border-radius: 0 0 2px 2px;
 	cursor:pointer;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
 }
 
 .search_entity_item.selected{

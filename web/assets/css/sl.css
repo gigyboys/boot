@@ -6,6 +6,9 @@
 	
 }
 /**************liste school***************/
+#sl_list{
+	padding:10px 0;
+}
 .sll{
 	float:left;
 	width:960px
@@ -32,6 +35,9 @@
 	height:140px;
 	background:#fff;
 	text-align:center;
+	overflow:hidden;
+	position:relative;
+	z-index:5;
 }
 .sl_logo{
 	width:218px;
@@ -39,6 +45,7 @@
 	background:#fff;
 	text-align:center;
 	position:absolute;
+	z-index:4;
 }
 .sl_short_description{
 	box-sizing: border-box;
@@ -46,12 +53,13 @@
 	width:218px;
 	height:140px;
 	background:rgba(255,255,255,0.9);
-	display:block;
+	display:none;
 	position:absolute;
-	overflow:hidden
+	overflow:hidden;
+	z-index:4;
 }
 .sl_item:hover .sl_short_description{
-	display:none;
+	display:block;
 }
 .sl_label{
 	width:auto;

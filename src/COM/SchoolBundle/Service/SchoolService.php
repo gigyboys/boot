@@ -60,6 +60,22 @@ class SchoolService {
         }
     }
     
+    public function getCover(School $school) {
+        $coverRepository = $this->em->getRepository('COMSchoolBundle:Cover');
+
+        $cover = $coverRepository->findOneBy(array(
+            'school' => $school,
+            'current' => true,
+        ));
+
+        if($cover){
+            return $cover->getPath();
+        }
+        else{
+            return 'default.jpeg';
+        }
+    }
+    
     public function getSchoolAdmins($school) {
         $schoolAdminRepository = $this->em->getRepository('COMSchoolBundle:SchoolAdmin');
 

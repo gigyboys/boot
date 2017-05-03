@@ -34,6 +34,36 @@ $(function() {
 			}
         });
     });
+    /*
+    *upload cover for school
+    */
+    $('#coverfile').on('change', function(){
+		/*console.log("change avatar");*/
+        var $this = $(this);
+        var file = $this[0].files[0];
+        var target = $this.data('target');
+        var data = new FormData();
+		console.log(target);
+        data.append('file', file);
+		//console.log(data);
+		
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+            success: function(data){
+				$("#cover_box").append(data.cover300x100);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
 	
     $('#btn_save_sl_common').on('click', function(){
         var $this = $(this);

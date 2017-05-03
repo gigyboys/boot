@@ -38,183 +38,189 @@
 {% endblock %}
 
 {% block content_body %}
-	{#
-	<div id="a_content_body_left">
-	#}
-		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-			Edit school  {{ school.id }}
-			- 
-			<span class="dd" style="display:inline-block;">
-					<span href="#" class="dd_src" style="cursor:pointer">
-						info
-					</span>
-					<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-						info
-					</span>
+
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Edit school  {{ school.id }}
+		- 
+		<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					info
 				</span>
+				<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+					info
+				</span>
+			</span>
+	</div>
+	
+	<div style="">
+		<div style="float:left; height: 122px;margin:5px">
+			{# twig extension #}
+			{% set logo=schoolLogo(school) %}
+			{% if logo != "default.jpeg" %}
+				{% set pathtologo='uploads/images/school/logo/'~logo %}
+			{% else %}
+				{% set pathtologo='default/images/school/logo/'~logo %}
+			{% endif %}
+			
+			<label for="logofile">
+				<img id="school_logo" style="width: 116px; height: 116px" src="{{ pathtologo | imagine_filter('116x116') }}" alt="img sl" />
+			</label>
+			<input style="display:none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_change_logo', {'school_id': school.id}) }}" /> 
 		</div>
+		<div style="margin-left: 136px;">
 		
-		<div style="">
-			<div style="float:left; height: 122px;margin:5px">
-				{# twig extension #}
-				{% set logo=schoolLogo(school) %}
-				{% if logo != "default.jpeg" %}
-					{% set pathtologo='uploads/images/school/logo/'~logo %}
-				{% else %}
-					{% set pathtologo='default/images/school/logo/'~logo %}
-				{% endif %}
-				
-				<label for="logofile">
-					<img id="school_logo" style="width: 116px; height: 116px" src="{{ pathtologo | imagine_filter('116x116') }}" alt="img sl" />
-				</labe>
-				<input style="display:none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_change_logo', {'school_id': school.id}) }}" /> 
-			</div>
-			<div style="margin-left: 136px;">
-				<div class="bloc_editable">
-					<div class="bloc_view">
-						<table>
-							<tr>
-								<td>Name</td>
-								<td>:</td>
-								<td style="padding:5px"><span id="sl_view_name">{{ school.name }}</span></td>
-							</tr>
-							<tr>
-								<td>ShortName</td>
-								<td>:</td>
-								<td style="padding:5px"><span id="sl_view_shortname">{{ school.shortName }}</span></td>
-							</tr>
-							<tr>
-								<td>Slug</td>
-								<td>:</td>
-								<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
-							</tr>
-						</table>
-					</div>
-					<div class="bloc_edit" style="display:none">
-						<table>
-							<tr>
-								<td>Name</td>
-								<td>:</td>
-								<td style="padding:5px"><input type="text" id="sl_input_name" class="default_input" value="{{ school.name }}" /></td>
-							</tr>
-							<tr>
-								<td>ShortName</td>
-								<td>:</td>
-								<td style="padding:5px"><input type="text" id="sl_input_shortname" class="default_input" value="{{ school.shortName }}" /></td>
-							</tr>
-							<tr>
-								<td>Slug</td>
-								<td>:</td>
-								<td style="padding:5px"><input type="text" id="sl_input_slug" class="default_input" value="{{ school.slug }}" /></td>
-							</tr>
-						</table>
-					</div>
-					<div class="separator"></div>
-					<div class="bloc_action" style="margin:5px">
-						<span class="btn_edit standar_button">Modifier</span> 
-						<span class="btn_save standar_button" id="btn_save_sl_common" data-target="{{ path('com_admin_school_edit_common', {'id': school.id}) }}" style="display:none">Enregistrer</span>
-						<span class="btn_reset standar_button" style="display:none">Annuler</span> 
-						<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
-					</div>
+			<div style="border:1px solid #ccc;margin:10px 5px; border-radius:4px">
+				<div style="padding:5px">
+					<label for="coverfile">
+						<span style="cursor:pointer">Add cover ...</span>
+					</label>
+					<input style="display:none" id="coverfile" name="file" class="ajax_school_cover" type="file" accept="image/*" data-target="{{ path('com_admin_school_add_cover', {'school_id': school.id}) }}" /> 
+				</div>
+				<div id="cover_box" style="border-top:1px solid #ccc;padding:4px;min-height:100px">
+					
 				</div>
 			</div>
-			<div style="clear:both"></div>
+			
+			<div class="bloc_editable">
+				<div class="bloc_view">
+					<table>
+						<tr>
+							<td>Name</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="sl_view_name">{{ school.name }}</span></td>
+						</tr>
+						<tr>
+							<td>ShortName</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="sl_view_shortname">{{ school.shortName }}</span></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="bloc_edit" style="display:none">
+					<table>
+						<tr>
+							<td>Name</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="sl_input_name" class="default_input" value="{{ school.name }}" /></td>
+						</tr>
+						<tr>
+							<td>ShortName</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="sl_input_shortname" class="default_input" value="{{ school.shortName }}" /></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="sl_input_slug" class="default_input" value="{{ school.slug }}" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="separator"></div>
+				<div class="bloc_action" style="margin:5px">
+					<span class="btn_edit standar_button">Modifier</span> 
+					<span class="btn_save standar_button" id="btn_save_sl_common" data-target="{{ path('com_admin_school_edit_common', {'id': school.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+				</div>
+			</div>
 		</div>
-		
-		{# twig extension #}
-		{% set locales = getLocales() %}
-		
-		<div id="a_content_tab">
-			<div class="a_content_tab_header">
-				<div class="a_content_tab_header_content">
-					{% for locale in locales %}
-						<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
-							<div class="a_content_tab_header_item_text">
-								{{ locale.label | trans }}
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-				<div class="a_content_tab_header_sep">
-					<div class="a_content_tab_header_sep_slide">
-					</div>
-				</div>
-			</div>
-			<div class="a_content_tab_content">
+		<div style="clear:both"></div>
+	</div>
+	
+	{# twig extension #}
+	{% set locales = getLocales() %}
+	
+	<div id="a_content_tab">
+		<div class="a_content_tab_header">
+			<div class="a_content_tab_header_content">
 				{% for locale in locales %}
-					{# twig extension #}
-					{% set schoolTranslate = getSchoolTranslate(school, locale) %}
-					<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
-						<div class="bloc_editable">
-							<div class="bloc_view">
-								<div>
-									<div style="margin: 5px 0;">
-										name {{ locale.locale }}:
-									</div>
-									<div id="" class="slt_view_name" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ schoolTranslate.name }}
-									</div>
-								</div>
-								
-								<div style="">
-									<div style="margin: 5px 0;">
-										Short description :
-									</div>
-									<div id="" class="slt_view_shortdescription" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ schoolTranslate.shortDescription }}
-									</div>
-								</div>
-								
-								<div style="">
-									<div style="margin: 5px 0;">
-										Description :
-									</div>
-									<div id="" class="slt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ schoolTranslate.description | raw }}
-									</div>
-								</div>
-							</div>
-							<div class="bloc_edit" style="display:none">
-								<div>
-									<div style="margin: 5px 0;">
-										name :
-									</div>
-									<div>
-										<input type="text" id="" class="slt_input_name default_input" value="{{ schoolTranslate.name }}" />
-									</div>
-								</div>
-								<div style="">
-									<div style="margin: 5px 0;">
-										Short description :
-									</div>
-									<div>
-										<textarea id="" class="slt_input_shortdescription default_textarea">{{ schoolTranslate.shortDescription }}</textarea>
-									</div>
-								</div>
-								<div style="">
-									<div style="margin: 5px 0;">
-										Description :
-									</div>
-									<div>
-										<textarea id="" class="slt_input_description default_textarea tinymce" data-theme="advanced">{{ schoolTranslate.description | raw }}</textarea>
-									</div>
-								</div>
-							</div>
-							<div class="separator"></div>
-							<div class="bloc_action" style="margin:5px">
-								<span class="btn_edit standar_button">Modifier</span> 
-								<span class="btn_save_sl_trans btn_save standar_button" id="" data-target="{{ path('com_admin_school_edit_translate', {'id': school.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
-								<span class="btn_reset standar_button" style="display:none">Annuler</span> 
-								<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
-							</div>
+					<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+						<div class="a_content_tab_header_item_text">
+							{{ locale.label | trans }}
 						</div>
 					</div>
 				{% endfor %}
 			</div>
+			<div class="a_content_tab_header_sep">
+				<div class="a_content_tab_header_sep_slide">
+				</div>
+			</div>
 		</div>
-	
-	{#
+		<div class="a_content_tab_content">
+			{% for locale in locales %}
+				{# twig extension #}
+				{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+				<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+					<div class="bloc_editable">
+						<div class="bloc_view">
+							<div>
+								<div style="margin: 5px 0;">
+									name {{ locale.locale }}:
+								</div>
+								<div id="" class="slt_view_name" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ schoolTranslate.name }}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Short description :
+								</div>
+								<div id="" class="slt_view_shortdescription" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ schoolTranslate.shortDescription }}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div id="" class="slt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ schoolTranslate.description | raw }}
+								</div>
+							</div>
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<div>
+								<div style="margin: 5px 0;">
+									name :
+								</div>
+								<div>
+									<input type="text" id="" class="slt_input_name default_input" value="{{ schoolTranslate.name }}" />
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Short description :
+								</div>
+								<div>
+									<textarea id="" class="slt_input_shortdescription default_textarea">{{ schoolTranslate.shortDescription }}</textarea>
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div>
+									<textarea id="" class="slt_input_description default_textarea tinymce" data-theme="advanced">{{ schoolTranslate.description | raw }}</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="separator"></div>
+						<div class="bloc_action" style="margin:5px">
+							<span class="btn_edit standar_button">Modifier</span> 
+							<span class="btn_save_sl_trans btn_save standar_button" id="" data-target="{{ path('com_admin_school_edit_translate', {'id': school.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
-	<div id="a_content_body_right"></div>
-	#}
 {% endblock %}

@@ -9,7 +9,18 @@
 <div class="sl_item" style="">
 	<div class="sl_header">
 		<div class="sl_logo">
-			<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />
+			{#<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />#}
+			
+			{# twig extension #}
+			{% set cover=schoolCover(school) %}
+			{% if cover != "default.jpeg" %}
+				{% set pathtocover='uploads/images/school/cover/'~cover %}
+			{% else %}
+				{% set pathtocover='default/images/school/cover/'~cover %}
+			{% endif %}
+
+
+			<img style="" src="{{ pathtocover | imagine_filter('218x140') }}" alt="img sl" />
 		</div>
 		<div class="sl_short_description">
 			{{ substrSpace(school.shortDescription, 180) }}

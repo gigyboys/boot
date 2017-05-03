@@ -11,7 +11,9 @@ use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Logo;
+use COM\SchoolBundle\Entity\Cover;
 use COM\SchoolBundle\Form\Type\LogoType;
+use COM\SchoolBundle\Form\Type\CoverType;
 use COM\SchoolBundle\Entity\SchoolTranslate;
 use COM\SchoolBundle\Form\Type\SchoolInitType;
 use COM\SchoolBundle\Form\Type\SchoolGeneralType;
@@ -114,6 +116,54 @@ class SchoolController extends Controller
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'logo116x116' => $logo116x116,
+            )));
+            $response->headers->set('Content-Type', 'application/json');
+            
+            return $response;
+        }
+
+        $response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
+    }
+
+	public function addCoverAction($school_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $coverRepository = $em->getRepository('COMSchoolBundle:Cover');
+        
+        $cover = new Cover();
+        $school = $schoolRepository->find($school_id);
+        
+        $formCover = $this->get('form.factory')->create(new CoverType, $cover);
+        $formCover->handleRequest($this->getRequest());
+
+        if ($formCover->isValid()) {
+            $covers = $coverRepository->findBy(array('school' => $school));
+            
+            foreach ($covers as $schoolCover) {
+                $schoolCover->setCurrent(false);
+            }
+			
+            $cover->setCurrent(true);
+            $cover->setSchool($school);
+			
+            $em->persist($cover);
+            $em->flush();
+			
+            $cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+			  'coverPath' => $cover->getWebPath()
+			));
+			
+			$response = new Response();
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'cover300x100' => $cover300x100,
             )));
             $response->headers->set('Content-Type', 'application/json');
             
