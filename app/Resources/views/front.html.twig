@@ -12,6 +12,7 @@
 		
 		{% block stylesheets %}
 			{% stylesheets
+				'assets/css/common.css'
 				'assets/css/header.css'
 				'assets/css/style.css'
 				'assets/css/container.css'
@@ -23,10 +24,14 @@
 				'assets/css/button.css'
 				'assets/css/popup.css'
 			%}
-          <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-        {% endstylesheets %}
-
-    {% endblock %}
+				<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+			{% endstylesheets %}
+		{% endblock %}
+		{% block styledirect %}
+			<style type="text/css">
+				#search{background: rgba(255, 255, 255, 1) url('{{ asset('assets/image/cover.jpg') }}') no-repeat scroll center center / cover ;}
+			</style>
+		{% endblock %}
     </head>
     <body>
 		<header>

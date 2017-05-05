@@ -8,7 +8,28 @@
 {% block platform_body %}
 	<div class="cr">
 		<div class="ct">
-			Tongasoa!!! Ny fianarana no lova tsara indrindra.
+			<div style="margin:30px 10px; font-size:16px;text-align:center">
+				Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.
+			</div>
 		</div>
 	</div>
+	
+	{# twig extension #}
+	{% set school = getSchoolById(1) %}
+	{% if school %}
+		{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+		<div class="cr">
+			<div class="ct">
+				<div id="sl_oftheday_title">
+					<span>The school of the day</span>
+				</div>
+				<div id="sl_oftheday_desc">
+					{{ schoolTranslate.shortDescription }}
+				</div>
+				<div id="sl_oftheday_wrap">
+					{{ include("COMSchoolBundle:school:include/school_of_the_day.html.twig") }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}

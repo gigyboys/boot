@@ -1,0 +1,46 @@
+<div class="sl_oftheday">
+
+	{% set cover=schoolCover(school) %}
+	{% if cover != "default.jpeg" %}
+		{% set pathtocover='uploads/images/school/cover/'~cover %}
+	{% else %}
+		{% set pathtocover='default/images/school/cover/'~cover %}
+	{% endif %}
+	<div class="cover_box" style="background: rgba(255, 255, 255, 1) url('{{ pathtocover | imagine_filter('1200x300') }}') no-repeat scroll center center / cover ;">
+	
+		<div class="label">
+			<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}">
+				{{ school.name }}<br />
+				{{ school.shortName }}
+			</a>
+		</div>
+	
+	</div>
+	
+	{# twig extension #}
+	{% set logo=schoolLogo(school) %}
+	{% if logo != "default.jpeg" %}
+		{% set pathtologo='uploads/images/school/logo/'~logo %}
+	{% else %}
+		{% set pathtologo='default/images/school/logo/'~logo %}
+	{% endif %}
+	<div class="logo_box">
+		<img src="{{ pathtologo | imagine_filter('160x160') }}" alt="img sl" />
+	</div>
+	<div class="link_box">
+		<span class="link_item">
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}">About</a>
+		</span><!--
+		--><span class="link_item">
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}">News</a>
+		</span><!--
+		--><span class="link_item">
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">Adverts</a>
+		</span><!--
+		--><span class="link_item">
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">Evaluations</a>
+		</span>
+	</div>
+	<div class="both"></div>
+	<div class="under"></div>
+</div>

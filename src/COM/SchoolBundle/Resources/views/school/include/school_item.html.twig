@@ -35,16 +35,16 @@
 	</div>
 	<div class="sl_action">
 		<div class="sl_action_about">
-			AU
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}">AU</a>
 		</div>
 		<div class="sl_action_bg">
-			BG
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}">BG</a>
 		</div>
 		<div class="sl_action_at">
-			AT
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">AT</a>
 		</div>
 		<div class="sl_action_evaluation">
-			EV
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">EV</a>
 		</div>
 	</div>
 </div>

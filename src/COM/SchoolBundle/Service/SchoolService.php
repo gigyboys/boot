@@ -19,6 +19,12 @@ class SchoolService {
         $this->em = $em;
     }
     
+    public function getSchoolById($id) {
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+        $school = $schoolRepository->find($id);
+		return $school;
+    }
+    
     public function hydrateSchoolLang(School $school, Locale $locale) {
 		$schoolTranslateRepository = $this->em->getRepository('COMSchoolBundle:SchoolTranslate');
 		

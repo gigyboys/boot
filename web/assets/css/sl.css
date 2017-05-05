@@ -21,11 +21,14 @@
 	border-top:1px solid transparent;
 	width:240px
 }
+.sl_item_list{
+	float:left
+}
 .sl_item{
 	width:220px;
 	box-sizing:border-box;
 	margin:10px;
-	float:left;
+	/*float:left;*/
 	border:1px solid #ddd;
 	border-radius:3px;
 	overflow:hidden
@@ -84,6 +87,10 @@
 	margin:4px 0px;
 	background: #eee
 }
+.sl_action_about a, .sl_action_bg a, .sl_action_at a, .sl_action_evaluation a{
+	display:block;
+	padding-top:4px
+}
 .sl_action_about, .sl_action_evaluation{
 	width: 50px;
 }
@@ -106,4 +113,82 @@
 #sl_onglet_head .tab_sl_item.selected{
 	color:#000;
 	background:#fff;
+}
+/***********begin school of the day ********************/
+#sl_oftheday_title{
+	font-size: 20px; 
+	margin:10px; 
+	font-weight:bold
+}
+#sl_oftheday_desc{
+	margin:10px;
+}
+#sl_oftheday_wrap{
+	margin:10px;
+}
+.sl_oftheday  .cover_box{
+	border-radius:4px; 
+	box-sizing:border-box; 
+	border: 4px solid #ddd; 
+	width:100%;
+	min-height:300px;
+	position:relative; 
+	z-index:5;
+}
+.sl_oftheday  .label{
+	margin-left:184px;
+	margin-top:165px;
+	background:transparent;
+}
+.sl_oftheday  .label a{
+	color:#fff;
+	font-size:18px;
+	text-shadow: 1px 1px 3px #000;
+}
+.sl_oftheday  .logo_box{
+	float:left;
+	width:174px;
+	position:relative; 
+	z-index:6;
+}
+.sl_oftheday  .logo_box img{
+	background:#fff; 
+	width: 160px; 
+	height: 160px; 
+	border:4px solid #ddd; 
+	border-radius:5px;
+	margin-top:-132px; 
+	margin-left:14px;
+	position:relative; 
+	z-index:7
+}
+.sl_oftheday  .link_box{
+	margin-left:184px; 
+	height:40px; 
+	background:#fff;
+	text-align:right;
+	box-sizing:border-box; 
+	padding:0 6px
+}
+.sl_oftheday  .link_item{
+	height:32px;
+	margin-left:4px;
+	margin-top:4px;
+	box-sizing:border-box; 
+	background:#eee; 
+	border:1px solid #999; 
+	display:inline-block;
+}
+.sl_oftheday  .link_item a{
+	display:block;
+	padding:5px 10px
+}
+.sl_oftheday  .under{
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+	border-bottom:1px solid #ddd; 
+	border-radius:0 0 4px 4px ;
+	height:14px;width:100%; 
+	box-sizing:border-box;
+	margin-top:-13px;
 }

@@ -12,13 +12,26 @@
 				<div class="sll" style="background:transparent">
 					<div class="sll_ct" style="">
 						{% for school in schools %}
+							<div class="sl_item_list">
 							{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+							</div>
 						{% endfor %}
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class="slr" style="">
-					<div style="min-height:500px; margin:10px; width:auto; background:#eee"></div>
+					<div style="min-height:500px; width:auto; background:#fff">
+						{# twig extension #}
+						{% set school = getSchoolById(2) %}
+						<div style="font-size: 20px; margin:10px 10px 0px 10px ; font-weight:bold; background:#ddd; text-align:center; padding:10px; border-bottom:3px solid #aaa">
+							<span>The school <br />of the day</span>
+						</div>
+						<div style="">
+						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+						</div>
+						{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+						<div style="margin:10px;text-align:center">{{ schoolTranslate.shortDescription }}</div>
+					</div>
 				</div>
 				<div style="clear:both"></div>
 			</div>

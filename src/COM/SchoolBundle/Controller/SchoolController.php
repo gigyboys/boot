@@ -37,6 +37,7 @@ class SchoolController extends Controller
 		
         return $this->render('COMSchoolBundle:school:index.html.twig', array(
 			'schools' => $schools,
+			'locale' => $locale,
 			'entityView' => 'school',
 		));
     }
