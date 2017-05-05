@@ -72,8 +72,8 @@
 		<div id="nav_right">
 			<div id="locale" style="display: block; margin-top: 4px; float:left">
 				<div class="dd" style="display:inline-block;">
-					<a href="#" class="dd_src standar_button" style="">
-						<span style="display:inline-block; height: 20px;">Locale : {{ app.request.getLocale() }}</span>
+					<a href="#" class="dd_src standar_button" style="height: 20px;">
+						<span style="display:inline-block;">Locale : {{ app.request.getLocale() }}</span>
 					</a>
 					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 0 0 3px 3px;">
 						{# 
@@ -121,9 +121,9 @@
 												<img id="avatar_banner" style="width:30px; height: 30px" src="{{ pathtoavatar | imagine_filter('32x32') }}" alt="{{ app.user.username }}" />
 											</span>
 										</td>
-										<td style=" padding:0px" class="user_name">
-											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px">
-												<span>{{ app.user.name }}</span>
+										<td style=" padding:0px" class="user_name" title="{{ app.user.name }}">
+											<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px;max-width:240px;">
+												<span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block; width: 100%">{{ app.user.name }}</span>
 											</span>
 										</td>
 									</tr>
@@ -133,18 +133,18 @@
 					{% else %}
 					<div class="dd_src" style="cursor:pointer">
 						<span style="display:block; background:#ccc; height:26px; padding-left:5px; padding-right:5px ; padding-top:4px;border-radius:3px;border:1px solid #aaa;overflow:hidden">
-							Mon compte
+							{{ 'my account' | trans }}
 						</span>
 					</div>
 					{% endif %}					
 						
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-						<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff">
+						<div class="dd_target" data-display="block" style="margin-top: 4px; position: absolute; display: none; border: 1px solid #aaa; border-radius: 0 0 4px 4px;background:#fff;width:280px">
 							<div>
 								<div style="float:left;width:70px;height:70px">
 									<img id="avatar_banner" style="width:50px; height: 50px; margin:10px;" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
 								</div>
-								<div style="margin-left:70px;width: 150px;min-height:70px; padding:5px 0; overflow:hidden;text-overflow: ellipsis;">
+								<div style="margin-left:0px;width: 205px;min-height:70px; padding:5px 0; overflow:hidden;text-overflow: ellipsis;box-sizing:border-box">
 									<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
 										{{ app.user.username }}<br />
 										{{ app.user.name }}<br />
@@ -155,7 +155,7 @@
 							</div>
 							<div style="border-top:1px solid #ddd; text-align:center;">
 								<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}" style="display:block;padding:5px 0">
-									<span>{{ 'paramètres' | trans }}</span>
+									<span>{{ 'settings' | trans }}</span>
 								</a>
 							</div>
 							<div style="border-top:1px solid #ddd; text-align:center;">
@@ -171,13 +171,13 @@
 							{% if is_granted('ROLE_ADMIN') %}
 								<div style="border-top:1px solid #ddd; text-align:center;">
 									<a class="link" href="{{ path('com_admin_home') }}" style="display:block;padding:5px 0">
-										<span>{{ 'panneau d\'administration' | trans }}</span>
+										<span>{{ 'dashboard' | trans }}</span>
 									</a>
 								</div>
 							{% endif %}
 							<div style="border-top:1px solid #ddd; text-align:center;">
 								<a class="link" href="{{ path('logout') }}" style="display:block;padding:5px 0"> 
-									<span>{{ 'deconnexion' | trans }}</span>
+									<span>{{ 'sign out' | trans }}</span>
 								</a>
 							</div>
 						</div>
@@ -186,12 +186,12 @@
 							<ul>
 								<li>
 									<a class="link" href="{{ path('com_user_login') }}">
-										<span>{{ 'Connexion' | trans }}</span>
+										<span>{{ 'sign in' | trans }}</span>
 									</a>
 								</li>
 								<li>
 									<a class="link" href="{{ path('com_user_register') }}">
-										<span>{{ 'Inscription' | trans }}</span>
+										<span>{{ 'sign up' | trans }}</span>
 									</a>
 								</li>
 							</ul>

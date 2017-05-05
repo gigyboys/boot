@@ -8,8 +8,8 @@
 {% block school_body %}
 	<div class="cr">
 		<div class="ct">
-			<div id="sl_list" style="overflow:hidden">
-				<div class="sll" style="background:transparent">
+			<div id="sl_list">
+				<div class="sll">
 					<div class="sll_ct" style="">
 						{% for school in schools %}
 							<div class="sl_item_list">
@@ -20,17 +20,17 @@
 					</div>
 				</div>
 				<div class="slr" style="">
-					<div style="min-height:500px; width:auto; background:#fff">
+					<div id="sl_oftheday_right">
 						{# twig extension #}
 						{% set school = getSchoolById(2) %}
-						<div style="font-size: 20px; margin:10px 10px 0px 10px ; font-weight:bold; background:#ddd; text-align:center; padding:10px; border-bottom:3px solid #aaa">
+						<div class="title">
 							<span>The school <br />of the day</span>
 						</div>
 						<div style="">
 						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
 						</div>
 						{% set schoolTranslate = getSchoolTranslate(school, locale) %}
-						<div style="margin:10px;text-align:center">{{ schoolTranslate.shortDescription }}</div>
+						<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
 					</div>
 				</div>
 				<div class="both"></div>

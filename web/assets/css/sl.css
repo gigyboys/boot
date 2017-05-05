@@ -8,6 +8,7 @@
 /**************liste school***************/
 #sl_list{
 	padding:10px 0;
+	overflow:hidden
 }
 .sll{
 	float:left;
@@ -194,4 +195,18 @@
 	height:14px;width:100%; 
 	box-sizing:border-box;
 	margin-top:-13px;
+}
+/***********end school of the day ********************/
+/*********** begin school of the day right list********************/
+#sl_oftheday_right .title{
+	font-size: 20px; 
+	margin:10px 10px 0px 10px ; 
+	font-weight:bold; 
+	background:#ddd; 
+	text-align:center; 
+	padding:10px; 
+	border-bottom:3px solid #aaa
+}
+#sl_oftheday_right .sl_desc{
+	margin:10px;text-align:center
 }
