@@ -18,7 +18,7 @@
 						{{ include("COMForumBundle:forum:include/message_item.html.twig") }}
 					{% endfor %}
 				</div>
-				<div style="clear:both"></div>
+				<div class="both"></div>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
 					<div class="" style="margin:10px;">
 						<form action="" name="" method="post" id="">
@@ -40,7 +40,7 @@
 									<span class="tn_save standar_button" id="btn_fm_new_msg" data-target="{{ path('com_forum_new_message', {'subject_id': subject.id}) }}">R&eacute;pondre</span>
 								</div>
 							</div>
-							<div style="clear:both"></div>
+							<div class="both"></div>
 						</form>
 					</div>
 				{% else %}

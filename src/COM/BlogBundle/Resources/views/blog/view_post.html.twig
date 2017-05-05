@@ -72,7 +72,7 @@
 							{{ include("COMBlogBundle:blog:include/comment_item.html.twig") }}
 						{% endfor %}
 					</div>
-					<div style="clear:both"></div>
+					<div class="both"></div>
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
 						<div class="" style="margin:10px;">
 							<form action="" name="" method="post" id="">
@@ -94,7 +94,7 @@
 										<span class="btn_save standar_button btn_bg_post_new_cmt" data-target="{{ path('com_blog_post_new_comment', {'post_id': post.id}) }}">R&eacute;pondre</span>
 									</div>
 								</div>
-								<div style="clear:both"></div>
+								<div class="both"></div>
 							</form>
 						</div>
 					{% else %}
