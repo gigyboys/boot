@@ -92,6 +92,11 @@ $(function() {
     slContent();
 	
 	
+    $('#sl_oftheday_title').on('click', function(){
+        $('#sl_oftheday_desc').toggle();
+    });
+	
+	
     $('#btn_eval_sl').on('click', function(){
         var $this = $(this);
 		//var bloc_editable = $this.closest(".bloc_editable");
