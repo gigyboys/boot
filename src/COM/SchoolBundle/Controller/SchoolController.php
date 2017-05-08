@@ -17,7 +17,7 @@ use COM\SchoolBundle\Form\Type\EvaluationType;
 
 class SchoolController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction($page, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
@@ -27,8 +27,15 @@ class SchoolController extends Controller
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
 		));
+		$limit = 12;
+		$offset = ($page-1) * $limit;
+		$schools = $schoolRepository->getSchoolOffsetLimit($offset, $limit);
+		if(!$schools){
+			$url = $this->get('router')->generate('com_school_home', array('page' => 1));
+			return new RedirectResponse($url);
+		}
 		
-		$schools = $schoolRepository->findAll();
+		$allSchools = $schoolRepository->findAll();
 		
 		$schoolService = $this->container->get('com_school.school_service');
 		foreach($schools as $school){
@@ -36,7 +43,9 @@ class SchoolController extends Controller
 		}
 		
         return $this->render('COMSchoolBundle:school:index.html.twig', array(
+			'allSchools' => $allSchools,
 			'schools' => $schools,
+			'currentpage' => $page,
 			'locale' => $locale,
 			'entityView' => 'school',
 		));

@@ -19,7 +19,6 @@ class SchoolRepository extends EntityRepository
 
         $qb
         ->where('school.name LIKE :critere OR school.shortName LIKE :critere')
-        /*->orWhere('project.description LIKE :critere')*/
         ->setParameter('critere', '%'.$critere.'%')
         ->orderBy('school.name', 'ASC')
         ;
@@ -28,5 +27,18 @@ class SchoolRepository extends EntityRepository
         ->getQuery()
         ->getResult()
         ;
+    }
+	
+	public function getSchoolOffsetLimit($offset, $limit) {
+		
+		$qb = $this->createQueryBuilder('school');
+
+		$qb
+		->setFirstResult($offset)
+		->setMaxResults($limit)
+		;
+		
+        $users = $qb->getQuery()->getResult();
+		return $users;
     }
 }

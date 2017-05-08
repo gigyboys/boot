@@ -1,6 +1,8 @@
 com_school_home:
-    path:     /school
-    defaults: { _controller: COMSchoolBundle:School:index }
+    path:     /school/{page}
+    defaults:
+        _controller: COMSchoolBundle:School:index
+        page: 1
 com_school_add_evaluation:
     path:     /add-evaluation/{id}
     defaults: { _controller: COMSchoolBundle:School:addEvaluation }
