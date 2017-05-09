@@ -46,8 +46,156 @@ header{
 	background: #fff;
 }
 
+
+
 #nav_right{
 	float:right
+}
+/* locale */
+#nav_right #locale{
+	display: block; 
+	margin-top: 4px; 
+	float:left
+}
+#nav_right #locale .dd{
+	display:inline-block;
+}
+#nav_right #locale .dd_src{
+	height: 20px;
+}
+#nav_right #locale .dd_src span{
+	display:inline-block;
+}
+#nav_right #locale .dd_target{
+	text-align: left; 
+	margin-top: 4px; 
+	position: absolute; 
+	display: none; 
+	background: #fff; 
+	padding: 0px; 
+	border: 1px solid #aaa; 
+	border-radius: 0 0 3px 3px;
+}
+#nav_right #locale .local_item .local_icon{
+	display:block;
+	height:20px; 
+	width:25px; 
+	background:#ccc
+}
+#nav_right #locale .local_item .local_state{
+	display:block; 
+	background:#4d4; 
+	width:12px; 
+	height:12px; 
+	border-radius:50%
+}
+/* user */
+#nav_right #user{
+	display: block; 
+	margin-top: 4px; 
+	float:left
+}
+#nav_right #user .dd{
+	display:block; 
+	margin:0px;
+}
+#nav_right #user .dd_src{
+	cursor:pointer
+}
+#nav_right #user .dd_src .connected{
+	display:block; 
+	border-radius:3px;
+	border:1px solid #aaa;
+	overflow:hidden
+}
+#nav_right #user .dd_src .connected table{
+	border-collapse: collapse;
+	border:0px solid #999; 
+	padding:0px; 
+	margin:0px
+}
+#nav_right #user .dd_src .connected table td{
+	padding:0px;
+}
+#nav_right #user .dd_src .connected .user_avatar .wrap{
+	display:block; 
+	background:#ccc; 
+	height:30px;
+}
+#nav_right #user .dd_src .connected .user_name .wrap{
+	display:block; 
+	background:#ccc; 
+	height:26px; 
+	padding-left:5px; 
+	padding-right:5px ; 
+	padding-top:4px;
+	max-width:240px;
+}
+#nav_right #user .dd_src .connected .user_name .wrap span{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:inline-block; 
+	width: 100%
+}
+
+#nav_right #user .dd_src .not_connected{
+	display:block; 
+	background:#ccc; 
+	height:26px; 
+	padding-left:5px; 
+	padding-right:5px ; 
+	padding-top:4px;
+	border-radius:3px;
+	border:1px solid #aaa;
+	overflow:hidden
+}
+#nav_right #user .dd_target.connected{
+	margin-top: 4px; 
+	position: absolute; 
+	display: none; 
+	border: 1px solid #aaa; 
+	border-radius: 0 0 4px 4px;
+	background:#fff;
+	width:280px
+}
+#nav_right #user #user_info_header .avatar_wrap{
+	float:left;
+	width:70px;
+	height:70px
+}
+#nav_right #user #user_info_header .avatar_wrap #avatar_banner{
+	width:50px; 
+	height: 50px; 
+	margin:10px;
+}
+#nav_right #user #user_info_header .info_wrap{
+	margin-left:0px;
+	width: 205px;
+	min-height:70px; 
+	padding:5px 0; 
+	overflow:hidden;
+	text-overflow: ellipsis;
+	box-sizing:border-box
+}
+#nav_right #user .dd_target.connected .link_wrap{
+	border-top:1px solid #ddd; 
+	text-align:center;
+}
+#nav_right #user .dd_target.connected .link_wrap .link{
+	display:block;
+	padding:5px 0
+}
+#nav_right #user .dd_target.not_connected{
+	text-align: left; 
+	margin-top: 4px; 
+	position: absolute; 
+	display: none; 
+	background: #fff; 
+	padding: 4px; 
+	border: 1px solid #aaa; 
+	border-radius: 0 0 3px 3px;
+	min-width: 83px;
 }
 
 #nav_right ul{
@@ -206,7 +354,43 @@ header{
 .nav_responsive{
 	display:none;float:left
 }
-
+.nav_responsive .dd_src{
+	display: block;
+	height:40px;
+	padding:12px 8px;
+	box-sizing:border-box;
+}
+.nav_responsive .dd_src .normal{
+	display:block; 
+	height: 3px;
+	width:20px; 
+	background:#777
+}
+.nav_responsive .dd_src .transparent{
+	display:block; 
+	height: 3px;
+	width:20px; 
+	background:transparent
+}
+.nav_responsive .dd_target{
+	text-align: left; 
+	margin-top: 0px; 
+	position: absolute; 
+	display: none; 
+	background: #fff; 
+	padding: 0px; 
+	border: 1px solid #aaa; 
+	border-radius: 0 0 3px 3px;
+	width: 120px
+}
+.nav_responsive .dd_target .link_wrap{
+	border-top:1px solid #ddd; 
+	text-align:center;
+}
+.nav_responsive .dd_target .link_wrap .link{
+	display:block;
+	padding:5px 0
+}
 
 @media screen and (max-width: 700px)
 {
