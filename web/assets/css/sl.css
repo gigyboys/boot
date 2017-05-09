@@ -14,25 +14,28 @@
 	float:left;
 	width:960px
 }
+#sll_load_list{
+	background:rgba(255,255,255,0.8);
+	font-size:25px; 
+	position:absolute;
+	z-index:10;
+	box-sizing:border-box; 
+	padding-top:50px;
+	text-align:center
+}
 .sll_ct{
 	margin:auto
-}
-.slr{
-	margin-left:960px;
-	border-top:1px solid transparent;
-	width:240px
-}
-.sl_item_list{
-	float:left
 }
 .sl_item{
 	width:220px;
 	box-sizing:border-box;
 	margin:10px;
-	/*float:left;*/
 	border:1px solid #ddd;
 	border-radius:3px;
 	overflow:hidden
+}
+.sll_ct .sl_item{
+	float:left
 }
 .sl_header{
 	width:auto;
@@ -94,6 +97,28 @@
 }
 .sl_action_about, .sl_action_evaluation{
 	width: 50px;
+}
+.sll_pagination{
+	margin:10px 0;
+	text-align:center
+}
+.sll_pagination_item{
+	display:inline-block;
+	box-sizing:border-box;
+	width:40px;padding:6px 0; 
+	text-align:center;
+	border : 1px solid #ddd; 
+}
+.sll_pagination_item:hover{
+	border : 1px solid #aaa; 
+}
+.sll_pagination_item.active{
+	background:#eee
+}
+.slr{
+	margin-left:960px;
+	border-top:1px solid transparent;
+	width:240px
 }
 /**************end liste school************/
 #sl_onglet_head{

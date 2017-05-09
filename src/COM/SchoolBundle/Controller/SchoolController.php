@@ -30,10 +30,6 @@ class SchoolController extends Controller
 		$limit = 12;
 		$offset = ($page-1) * $limit;
 		$schools = $schoolRepository->getSchoolOffsetLimit($offset, $limit);
-		if(!$schools){
-			$url = $this->get('router')->generate('com_school_home', array('page' => 1));
-			return new RedirectResponse($url);
-		}
 		
 		$allSchools = $schoolRepository->findAll();
 		
@@ -42,13 +38,50 @@ class SchoolController extends Controller
 			$schoolService->hydrateSchoolLang($school, $locale);
 		}
 		
-        return $this->render('COMSchoolBundle:school:index.html.twig', array(
-			'allSchools' => $allSchools,
-			'schools' => $schools,
-			'currentpage' => $page,
-			'locale' => $locale,
-			'entityView' => 'school',
-		));
+		$response = new Response();
+		if ($request->isXmlHttpRequest()){
+			//listSchool
+			$listSchools = array();
+			foreach($schools as $school){
+				$school_view = $this->renderView('COMSchoolBundle:school:include/school_item.html.twig', array(
+				  'school' => $school,
+				));
+				array_push($listSchools, array(
+					"school_id" 	=> $school->getId(),
+					"school_view" 	=> $school_view,
+				));
+			}
+			
+			//pagination
+			$pagination = $this->renderView('COMSchoolBundle:school:include/pagination_list_school.html.twig', array(
+				'allSchools' => $allSchools,
+				'schools' => $schools,
+				'currentpage' => $page,
+				'locale' => $locale,
+			));
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'schools' => $listSchools,
+				'currentpage' => $page,
+				'pagination' => $pagination,
+				'locale' => $locale,
+			)));
+		}else{
+			if(!$schools){
+				$url = $this->get('router')->generate('com_school_home', array('page' => 1));
+				return new RedirectResponse($url);
+			}
+			$response = $this->render('COMSchoolBundle:school:index.html.twig', array(
+				'allSchools' => $allSchools,
+				'schools' => $schools,
+				'currentpage' => $page,
+				'locale' => $locale,
+				'entityView' => 'school',
+			));
+		}
+		
+		return $response;
     }
 	
     public function viewAction($slug, $type, Request $request)
