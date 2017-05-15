@@ -11,7 +11,7 @@
 			<div style="margin:10px; font-weight:bold">
 				Subject {{ subject.title }}
 			</div>
-			<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+			<div class="sp mg_v10"></div>
 			<div>
 				<div id="fm_list_msg">
 					{% for message in messages %}
@@ -20,7 +20,7 @@
 				</div>
 				<div class="both"></div>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
-					<div class="" style="margin:10px;">
+					<div class="mg_10">
 						<form action="" name="" method="post" id="">
 							<div style="margin-bottom:5px">
 							{{ app.user.name }} :

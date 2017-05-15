@@ -147,7 +147,7 @@
 						
 						{% if schoolSubscriptions | length == 0 %}
 							<div>
-								<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+								<div class="sp mg_v5"></div>
 								<div style="">
 									Aucune Ecole suivie
 								</div>
@@ -156,7 +156,7 @@
 							<div style="">
 								{% for schoolSubscription in schoolSubscriptions %}
 									<div style="">
-										<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+										<div class="sp mg_v5"></div>
 										<div style="float:left;width:80px;height:80px">
 											{# twig extension #}
 											{% set logo=schoolLogo(schoolSubscription.school) %}

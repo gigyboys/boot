@@ -7,31 +7,26 @@
 
 {% block blog_body %}
 	<div class="cr">
-		<div style="margin:0 10px">
+		<div class="mg_v10">
 			<div class="ct">
-				{#
-				<div style="margin:12px 0; font-weight:bold; font-size:14px">
-					{{ post.id }}
-				</div>
-				#}
-				<div style="margin:12px 0; font-weight:bold;">
+				<div class="mg_10" style="font-weight:bold;">
 					<span style=" font-size:16px; color:#555">{{ post.title }}</span>
 				</div>
-				<div style="margin:10px 0;">
+				<div class="mg_10">
 					By 
 					{# twig extension #}
 					{% set userInfo = getLinkUserInfo(post.user, post.user.name) %} 
 					{{ userInfo | raw }}
 					  on {{ post.date | date('Y-m-d H:i:s') }}
 				</div>
-				<div>
+				<div class="mg_10">
 					{{ post.content | raw }}
 				</div>
 				
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-					<div style="background:#f5f5f5; border:1px solid #7ae; padding:5px; width:100%; margin:12px 0;border-radius:3px"> 
+					<div class="mg_10" style="background:#f5f5f5; border:1px solid #7ae; padding:5px; border-radius:3px;box-sizing:border-box"> 
 						<div>Actions admin : </div>
-						<div style="background:#ccc; height:1px; width:100%; margin:4px 0"></div>
+						<div class="sp mg_v5"></div>
 						<div>
 						{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}" target="_blank"><span>Manage</span></a>{% endif %}&nbsp;
 						
@@ -55,16 +50,16 @@
 					</div>
 				{% endif %}
 				
-				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
-				<span id="info_comment">
+				<div class="sp mg_v10"></div>
+				<div id="info_comment" class="mg_h10">
 					{{ comments | length }} 
 					{% if comments | length == 0 or comments | length == 1 %}
 						Commentaire
 					{% else %}
 						Commentaires
 					{% endif %}
-				</span>
-				<div style="background:#ccc; height:1px; width:100%; margin:12px 0"></div>
+				</div>
+				<div class="sp mg_v10"></div>
 				
 				<div>
 					<div id="bg_post_list_cmt">
@@ -74,9 +69,9 @@
 					</div>
 					<div class="both"></div>
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
-						<div class="" style="margin:10px;">
+						<div class="mg_10">
 							<form action="" name="" method="post" id="">
-								<div style="margin-bottom:5px">
+								<div class="mg_b5">
 								{{ app.user.name }} :
 								</div>
 								<div style="width:60px;float:left">
@@ -90,7 +85,7 @@
 								</div>
 								<div style="margin-left:70px">
 									<textarea class="default_textarea" id="bg_post_cmt_message" style="min-height:120px"></textarea>
-									<div style="margin:5px 0 0 0">
+									<div class="mg_t5">
 										<span class="btn_save standar_button btn_bg_post_new_cmt" data-target="{{ path('com_blog_post_new_comment', {'post_id': post.id}) }}">R&eacute;pondre</span>
 									</div>
 								</div>
@@ -98,7 +93,7 @@
 							</form>
 						</div>
 					{% else %}
-						<div style="margin: 10px 0">
+						<div class="mg_v10">
 							<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir ecrire votre message</a>
 						</div>
 					{% endif %}
