@@ -36,6 +36,21 @@ com_admin_school_set_admin:
 com_admin_school_remove_admin:
     path:     /school/edit-school/{school_id}/remove-admin/{user_id}
     defaults: { _controller: COMAdminBundle:SchoolAdmin:removeAdminSchool }
+com_admin_school_contact:
+    path:     /school/edit-school/{school_id}/contact
+    defaults: { _controller: COMAdminBundle:SchoolContact:index }
+com_admin_school_contact_add:
+    path:     /school/{school_id}/contact/add
+    defaults: { _controller: COMAdminBundle:SchoolContact:addContact }
+com_admin_school_contact_edit:
+    path:     /school/edit-contact/{contact_id}
+    defaults: { _controller: COMAdminBundle:SchoolContact:editContact }
+com_admin_school_contact_edit_common:
+    path:     /school/edit-contact-common/{contact_id}
+    defaults: { _controller: COMAdminBundle:SchoolContact:editContactCommon }
+com_admin_school_contact_edit_translate:
+    path:     /school/edit-contact-translate/{contact_id}/{locale}
+    defaults: { _controller: COMAdminBundle:SchoolContact:editContactTranslate }
 com_admin_school_subscriber:
     path:     /school/edit-school/{school_id}/subscriber
     defaults: { _controller: COMAdminBundle:SchoolSubscription:index }

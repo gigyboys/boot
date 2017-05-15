@@ -1,0 +1,108 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  school add Field
+{% endblock %}
+
+{% block body_header %}
+	<div style="padding:8px; float:left">
+		<span>School </span> 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				<span style="
+					display:inline-block; 
+					border-left: 8px solid #444;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-right: 0px solid transparent;
+					">
+				</span>
+			</span>
+			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<a class="link" href="test.html">menu 1</a><br />
+				<a class="link" href="test.html">menu 2 </a>
+			</div>
+		</span> 
+		<span>Contact </span> 
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
+						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
+						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
+						<a class="link" href="">evaluations</a>
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="">
+		<div style="float:left; height: 86px;margin:5px">
+			{# twig extension #}
+			{% set logo=schoolLogo(school) %}
+			{% if logo != "default.jpeg" %}
+				{% set pathtologo='uploads/images/school/logo/'~logo %}
+			{% else %}
+				{% set pathtologo='default/images/school/logo/'~logo %}
+			{% endif %}
+			<img id="school_logo" style="width: 80px; height: 80px" src="{{ pathtologo | imagine_filter('80x80') }}" alt="img sl" />
+		</div>
+		<div style="margin-left: 90px;">
+			<div>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_name">{{ school.name }}</span></td>
+					</tr>
+					<tr>
+						<td>ShortName</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_shortname">{{ school.shortName }}</span></td>
+					</tr>
+					<tr>
+						<td>Slug</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="both"></div>
+	</div>
+	
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Add contact
+	</div>
+	
+		<div style="padding:5px">
+	<div style="margin: 10px 0">
+		Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum. 
+	</div>
+	<div class="">
+		<form name="" method="post">
+
+			<div>                
+				<div><label for="name" class="required">address * : </label></div>
+				<div><input type="text" id="address" name="address" required="required"  class="default_input" /></div>
+			</div>
+			
+			<div style="padding:10px 0">
+				<button type="submit" id="ajouter" name="ajouter" class="standar_button">{{ 'Ajouter' | trans }}</button>
+			</div>
+		</form>
+	</div>
+	<div style="margin: 10px 0">
+		Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum. 
+	</div>
+	</div>
+{% endblock %}

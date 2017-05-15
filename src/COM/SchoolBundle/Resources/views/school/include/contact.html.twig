@@ -1,0 +1,16 @@
+<div style="padding:5px; min-height:100px">
+	{% if schoolContacts|length == 0 %}
+		<div id="" style="margin:10px 0">
+			Aucun contact à afficher
+		</div>
+	{% else %}
+		<div>
+			Contact
+		</div>
+		<div id="contact_list">
+			{% for schoolContact in schoolContacts %}
+				{{ include("COMSchoolBundle:school:include/contact_item.html.twig") }}
+			{% endfor %}
+		</div>
+	{% endif %}
+</div>

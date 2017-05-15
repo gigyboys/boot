@@ -137,6 +137,9 @@ $(function() {
         });
     });
 	
+	/*
+	* save common field
+	*/
     $('#btn_save_field_common').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
@@ -413,6 +416,84 @@ $(function() {
                 console.log(data.state);
 				if(data.state){
 					$( "#field_"+data.id ).remove();
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
+	/*
+	* save common contact
+	*/
+    $('#btn_save_sl_contact_common').on('click', function(){
+        var $this = $(this);
+		var bloc_editable = $this.closest(".bloc_editable");
+        var target = $this.data('target');
+		console.log(target);
+		var data = {
+			address : bloc_editable.find("#sl_contact_input_address").val(),
+			phone : bloc_editable.find("#sl_contact_input_phone").val(),
+			website : bloc_editable.find("#sl_contact_input_website").val(),
+			longitude : bloc_editable.find("#sl_contact_input_longitude").val(),
+			latitude : bloc_editable.find("#sl_contact_input_latitude").val()
+		};
+		loadBlocEdit(bloc_editable);
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					bloc_editable.find("#sl_contact_view_address").text(data.address);
+					bloc_editable.find("#sl_contact_view_phone").text(data.phone);
+					bloc_editable.find("#sl_contact_view_website").text(data.website);
+					bloc_editable.find("#sl_contact_view_longitude").text(data.longitude);
+					bloc_editable.find("#sl_contact_view_latitude").text(data.latitude);
+					resetBlocEdit(bloc_editable);
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
+	/*
+	* save translate contact
+	*/
+    $('.btn_save_sl_contactt').on('click', function(){
+        var $this = $(this);
+		var bloc_editable = $this.closest(".bloc_editable");
+        var target = $this.data('target');
+		console.log(target);
+		var data = {
+			description : bloc_editable.find(".sl_contactt_input_description").val()
+		};
+		loadBlocEdit(bloc_editable);
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					bloc_editable.find(".sl_contactt_view_description").html(data.description);
+					resetBlocEdit(bloc_editable);
 				}
 				else{
 					alert("une erreur est survenue");

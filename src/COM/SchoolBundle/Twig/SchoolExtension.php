@@ -5,6 +5,7 @@ namespace COM\SchoolBundle\Twig;
 use COM\SchoolBundle\Service\SchoolService;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Field;
+use COM\SchoolBundle\Entity\SchoolContact;
 use COM\BlogBundle\Entity\Post;
 use COM\AdvertBundle\Entity\Advert;
 use COM\UserBundle\Entity\User;
@@ -28,6 +29,7 @@ class SchoolExtension extends \Twig_Extension {
             'getNotSchoolsByPostAndUser' => new \Twig_Function_Method($this, 'getNotSchoolsByPostAndUserFunction'),
             'getNotSchoolsByAdvertAndUser' => new \Twig_Function_Method($this, 'getNotSchoolsByAdvertAndUserFunction'),
             'isSubscribed' => new \Twig_Function_Method($this, 'isSubscribedFunction'),
+            'getSchoolContactTranslate' => new \Twig_Function_Method($this, 'getSchoolContactTranslateFunction'),
         );
     }
 
@@ -69,6 +71,10 @@ class SchoolExtension extends \Twig_Extension {
 
     public function getName() {
             return 'school_extension';
+    }
+
+    public function getSchoolContactTranslateFunction(SchoolContact $schoolContact, $locale) {
+        return $this->schoolService->getSchoolContactTranslate($schoolContact, $locale);
     }
 
 }

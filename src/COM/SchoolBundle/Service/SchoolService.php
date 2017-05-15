@@ -5,6 +5,7 @@ namespace COM\SchoolBundle\Service;
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
 use COM\SchoolBundle\Entity\Field;
+use COM\SchoolBundle\Entity\SchoolContact;
 use COM\SchoolBundle\Entity\Evaluation;
 use COM\BlogBundle\Entity\Post;
 use COM\AdvertBundle\Entity\Advert;
@@ -198,5 +199,16 @@ class SchoolService {
 		}
         
 		return false;
+    }
+    
+    public function getSchoolContactTranslate(SchoolContact $schoolContact, $locale) {
+        $schoolContactTranslateRepository = $this->em->getRepository('COMSchoolBundle:SchoolContactTranslate');
+
+        $schoolContactTranslate = $schoolContactTranslateRepository->findOneBy(array(
+            'schoolContact' => $schoolContact,
+            'locale' => $locale,
+        ));
+        
+		return $schoolContactTranslate;
     }
 }

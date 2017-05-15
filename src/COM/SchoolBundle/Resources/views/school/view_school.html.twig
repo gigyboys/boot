@@ -73,6 +73,7 @@
 						<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >Actualités</span>  
 						<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">Annonces</span>  
 						<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">Evaluations</span>
+						<span class="tab_sl_item{% if type == 'contact' %} selected{% endif %}" id="tab_sl_contact" data-title="{{ school.name }} - contacts" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">Contacts</span>
 					</div>
 				</div>
 			</div>
@@ -175,6 +176,13 @@
 			<div class="cr">
 				<div class="ct">
 					{{ include("COMSchoolBundle:school:include/evaluation.html.twig") }}
+				</div>
+			</div>
+		</div>
+		<div class="content_tab_sl_item" id="content_tab_sl_contact" style = "{% if type != 'contact' %}display:none{% endif %}">
+			<div class="cr">
+				<div class="ct">
+					{{ include("COMSchoolBundle:school:include/contact.html.twig") }}
 				</div>
 			</div>
 		</div>

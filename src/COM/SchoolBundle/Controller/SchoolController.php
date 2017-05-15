@@ -91,6 +91,7 @@ class SchoolController extends Controller
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
 		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
+		$schoolContactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
 		
@@ -121,6 +122,10 @@ class SchoolController extends Controller
 			'school' => $school,
 		));
 		
+		$schoolContacts = $schoolContactRepository->findBy(array(
+			'school' => $school,
+		));
+		
 		$fields = $fieldRepository->findBy(array(
 			'school' => $school
 		));
@@ -131,7 +136,7 @@ class SchoolController extends Controller
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($school, $user, $request);
 		
-		$types = array("about", "post", "advert", "evaluation");
+		$types = array("about", "post", "advert", "evaluation", "contact");
 		if (!in_array($type, $types)) {
 			$type = "about";
 		}
@@ -139,6 +144,7 @@ class SchoolController extends Controller
 			'school' => $school,
 			'advertSchools' => $advertSchools,
 			'postSchools' => $postSchools,
+			'schoolContacts' => $schoolContacts,
 			'locale' => $locale,
 			'fields' => $fields,
 			'entityView' => 'school',

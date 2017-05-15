@@ -1,0 +1,139 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  school id : {{ school.id }} - Contact
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}"><span>{{ 'Contact' | trans }}</span></a> </span>
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
+						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
+						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
+						<a class="link" href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}">Admin</a><br />
+						<a class="link" href="">evaluations</a>
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="">
+		<div style="float:left; height: 86px;margin:5px">
+			{# twig extension #}
+			{% set logo=schoolLogo(school) %}
+			{% if logo != "default.jpeg" %}
+				{% set pathtologo='uploads/images/school/logo/'~logo %}
+			{% else %}
+				{% set pathtologo='default/images/school/logo/'~logo %}
+			{% endif %}
+			<img id="school_logo" style="width: 80px; height: 80px" src="{{ pathtologo | imagine_filter('80x80') }}" alt="img sl" />
+		</div>
+		<div style="margin-left: 90px;">
+			<div>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_name">{{ school.name }}</span></td>
+					</tr>
+					<tr>
+						<td>ShortName</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_shortname">{{ school.shortName }}</span></td>
+					</tr>
+					<tr>
+						<td>Slug</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="both"></div>
+	</div>
+	
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		Contact list | <span><a href="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">New contact</a></td></span>
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				left
+			</div>
+			<div class="a_datatable_head_right">
+				right
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
+					<th>Address</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for contact in contacts %}
+					<tr class="a_table_line field_item" id="field_{{ contact.id }}">
+						<td class="a_table_cell_id" style="width: 50px; text-align:center">
+							<div>{{ contact.id }}</div>
+						</td>
+						<td><a href="{{ path('com_admin_school_contact_edit', {'contact_id': contact.id}) }}">{{ contact.address }}</a></td>
+						<td class="a_table_cell_action">
+							<span class="dd" style="display:inline-block;">
+								<span href="#" class="dd_src" style="cursor:pointer">
+									action
+								</span>
+								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+									actions
+								</div>
+							</span> 
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				left
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
