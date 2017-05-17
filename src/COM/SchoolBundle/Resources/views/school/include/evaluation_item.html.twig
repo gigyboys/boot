@@ -18,17 +18,17 @@
 	</div>
 	<div style="margin-left:60px">
 		<div style="height:26px">
-			<div style="float:left; padding-top:2px">Mark : </div>
+			<div class="left" style="padding-top:2px">Mark : </div>
 			{% set mark = evaluation.mark/20 %}
 			{% for i in 1..5 %}
 				{% if i <= mark %}
-					<div style="float:left; padding:4px"><div class="" data-value="20" style="border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
+					<div class="left pd_5"><div class="eval_star_view_item selected" data-value="20"></div></div>
 				{% else %}
-					<div style="float:left; padding:4px"><div class="" data-value="100" style="border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+					<div class="left pd_5"><div class="eval_star_view_item" data-value="100"></div></div>
 				{% endif %}
 			{% endfor %}			
 		</div>
-		<div style="margin-bottom:5px">
+		<div class="mg_b5">
 			{{ evaluation.comment | nl2br  }}
 		</div>
 	</div>

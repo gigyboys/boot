@@ -1,9 +1,9 @@
-<div style="padding:5px; min-height:100px">
+<div class="pd_5">
 	<div>
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<div>
 				<form action="" name="" method="post" id="">
-					<div style="margin-bottom:5px">
+					<div class="mg_b5">
 					{{ app.user.name }} :
 					</div>
 					<div style="width:50px;float:left">
@@ -16,17 +16,17 @@
 						<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:50px; height: 50px" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" /></span>
 					</div>
 					<div style="margin-left:60px">
-						<div style="margin:0px 0; padding:5px 0">
+						<div class="pd_v5">
 							<div style="float:left; padding-top:2px">Mark : </div>
-							<div style="float:left; padding:4px"><div class="eval_item" data-value="20" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
-							<div style="float:left; padding:4px"><div class="eval_item" data-value="40" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
-							<div style="float:left; padding:4px"><div class="eval_item" data-value="60" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
-							<div style="float:left; padding:4px"><div class="eval_item" data-value="80" style="cursor:pointer; border-radius:50%; background:#2a2; width:14px; height:14px; border:1px solid #2a2"></div></div>
-							<div style="float:left; padding:4px"><div class="eval_item" data-value="100" style="cursor:pointer; border-radius:50%; background:#fff; width:14px; height:14px; border:1px solid #2a2"></div></div>
+							<div class="left pd_5"><div class="eval_star_item selected" data-value="20"></div></div>
+							<div class="left pd_5"><div class="eval_star_item selected" data-value="40"></div></div>
+							<div class="left pd_5"><div class="eval_star_item selected" data-value="60"></div></div>
+							<div class="left pd_5"><div class="eval_star_item selected" data-value="80"></div></div>
+							<div class="left pd_5"><div class="eval_star_item" data-value="100"></div></div>
 							<input type="hidden" id="sl_evaluation_mark" class="" value="80" />
 						</div>
 						<textarea class="default_textarea" id="sl_evaluation_comment" style="min-height:60px"></textarea>
-						<div style="margin:5px 0 0 0">
+						<div class="mg_t10">
 							<span class="btn_save standar_button" id="btn_eval_sl" data-target="{{ path('com_school_add_evaluation', {'id': school.id}) }}">Evaluer</span>
 						</div>
 					</div>
@@ -34,15 +34,15 @@
 				</form>
 			</div>
 		{% else %}
-			<div style="padding: 5px 0 0 0">
+			<div class="pd_t5">
 				<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
 			</div>
 		{% endif %}
 	</div>
 	{% if school.evaluations|length == 0 %}
-		<div id="evaluation_list" style="margin:10px 0">
+		<div id="evaluation_list" class="mg_v10">
 		</div>
-		<div id="evaluation_empty" style="margin:10px 0">
+		<div id="evaluation_empty" class="mg_v10">
 			Aucune évaluation à propos de {{ school.name }}
 		</div>
 	{% else %}

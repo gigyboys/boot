@@ -235,3 +235,18 @@
 #sl_oftheday_right .sl_desc{
 	margin:10px;text-align:center
 }
+
+/**** tab evaluation *****/
+.eval_star_item, .eval_star_view_item{
+	border-radius:50%; 
+	width:14px; 
+	height:14px; 
+	border:1px solid #2a2;
+	background:#fff;
+}
+.eval_star_item{
+	cursor:pointer; 
+}
+.eval_star_item.selected, .eval_star_view_item.selected{
+	background:#2a2;
+}

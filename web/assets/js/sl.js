@@ -91,12 +91,16 @@ $(function() {
 
     slContent();
 	
-	
+	/*
+	* toogle school of the day description
+	*/
     $('#sl_oftheday_title').on('click', function(){
         $('#sl_oftheday_desc').toggle();
     });
 	
-	
+	/*
+	* on click button evaluate
+	*/
     $('#btn_eval_sl').on('click', function(){
         var $this = $(this);
 		//var bloc_editable = $this.closest(".bloc_editable");
@@ -116,6 +120,7 @@ $(function() {
                 console.log(data.state);
 				if(data.state){
 					$("#evaluation_list").prepend(data.evaluationItem);
+					$("#sl_evaluation_comment").val(""), 
 					$("#evaluation_empty").remove();
 				}
 				else{
@@ -130,21 +135,23 @@ $(function() {
         });		
     });
 	
-	
-    $('.eval_item').on('click', function(){
+	/*
+	* click on evaluation star
+	*/
+    $('.eval_star_item').on('click', function(){
         var $this = $(this);
-		$(".eval_item").each(function() {
+		$(".eval_star_item").each(function() {
 			var item = $(this);
 			if(item.data("value") <= $this.data("value")){
-				item.css("background", "#2a2");
+				item.addClass("selected");
 			}else{
-				item.css("background", "#fff");
+				item.removeClass("selected");
 			}
 			$("#sl_evaluation_mark").val($this.data("value"));
 		});
     });
 	
-	//toogleSubscription
+	//toogleSubscription school
     $('#toggle_subscription').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
@@ -174,8 +181,9 @@ $(function() {
         });		
     });
 	
-	
-	
+	/*
+	* Navigation pagination ajax
+	*/
     $('.sll_pagination_item').live('click', function(e){
         e.preventDefault(true);
 		var $this = $(this);
