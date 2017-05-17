@@ -1,0 +1,23 @@
+<div style="padding:5px; min-height:100px">
+	<div>
+		{{ school.description | raw}}
+	</div>
+	<div>
+		{# fields #}
+		{% if fields %}
+			<div class="sep"></div>
+			<div style="font-weight:bold">
+				Fields
+			</div>
+			<div class="sep"></div>
+			{% for field in fields %}
+				<div class="bold">
+					{{ field.defaultName }}
+				</div>
+				<div>
+					{{ field.description | raw }}
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<div style="padding:5px; min-height:100px">
+	{% if advertSchools|length == 0 %}
+		Aucune annonce à afficher
+	{% endif %}
+	{% for advertSchool in advertSchools %}
+		<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
+			<div>
+				<span><a style="font-weight:bold;color:#666" href="{{ path('com_advert_view', {'slug': advertSchool.advert.slug}) }}">{{ advertSchool.advert.defaultTitle }}</a></span>
+			</div>
+			<div>
+				{% set advertTranslate = getAdvertTranslate(advertSchool.advert, locale) %}
+				{% set advertTranslate = getAdvertTranslate(advertSchool.advert, locale) %}
+				{{ substrSpace(advertTranslate.content | raw| striptags | convert_encoding('UTF-8', 'HTML-ENTITIES'), 500) }}
+			</div>
+			<div>
+				{# twig extension #}
+				{% set userInfo = getLinkUserInfo(advertSchool.advert.user, advertSchool.advert.user.name) %}
+				By {{ userInfo | raw }}
+				  on {{ advertSchool.advert.date | date('Y-m-d H:i:s') }}
+			</div>
+		</div>
+	{% endfor %}
+</div>
