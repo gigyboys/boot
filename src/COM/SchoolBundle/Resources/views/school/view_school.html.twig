@@ -4,7 +4,6 @@
   {{ school.name }}
 {% endblock %}
 
-
 {% block styledirect %}
 	{# twig extension #}
 	{% set cover=schoolCover(school) %}
@@ -23,8 +22,7 @@
 	<div id="sl_gl" class="cr">
 		<div class="ct">
 			<div style="padding:5px 9px 1px 9px; border:1px solid transparent">
-				
-				<div style="float:left;">
+				<div class="left">
 					{# twig extension #}
 					{% set logo=schoolLogo(school) %}
 					{% if logo != "default.jpeg" %}
@@ -33,18 +31,18 @@
 						{% set pathtologo='default/images/school/logo/'~logo %}
 					{% endif %}
 					
-					<img style="width: 100px; height: 100px; border:4px solid #ddd; border-radius:5px;margin-top:-30px;background:#fff" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
+					<img id="sl_view_logo" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
 				</div>
-				<div style="margin-left: 120px; min-height:110px">
-					<div id="" style="color:#333; font-size:18px; margin-bottom: 6px">
+				<div style="min-height:110px">
+					<div id="sl_view_name">
 						<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
 							{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
 						</a>
 					</div>
-					<div id="">
+					<div id="sl_view_description">
 						{{ school.shortDescription }}
 					</div>
-					<div style="margin-top:10px">
+					<div id="sl_view_action">
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
 						<span id="toggle_subscription" data-target="{{ path('com_school_toggle_subscription', {'school_id': school.id}) }}" style="cursor:pointer">
 							{% set isSubscribed = isSubscribed(school, app.user) %}
@@ -64,12 +62,11 @@
 			</div>
 		</div>
 	</div>
-	
 	<div id="sl_dl">
 		<div id="sl_onglet_head" style="">
 			<div class="cr">
 				<div class="ct">
-					<div style="margin:0 10px">
+					<div class="mg_h10">
 						<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >
 							A propos
 						</span>  
