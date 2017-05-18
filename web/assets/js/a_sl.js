@@ -55,7 +55,8 @@ $(function() {
             processData: false,
             dataType : 'json',
             success: function(data){
-				$("#cover_box").append(data.cover300x100);
+				//$("#cover_box").append(data.cover300x100);
+				$("#cover_box").html(data.cover300x100);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);

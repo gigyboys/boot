@@ -103,36 +103,42 @@ $(function() {
 	*/
     $('#btn_eval_sl').on('click', function(){
         var $this = $(this);
-		//var bloc_editable = $this.closest(".bloc_editable");
         var target = $this.data('target');
 		console.log(target);
-		var data = {
-			comment : $("#sl_evaluation_comment").val(), 
-			mark : $("#sl_evaluation_mark").val()
-		};
-		//loadBlocEdit(bloc_editable);
-        $.ajax({
-            type: 'POST',
-            url: target,
-            data: data,
-            dataType : 'json',
-            success: function(data){
-                console.log(data.state);
-				if(data.state){
-					$("#evaluation_list").prepend(data.evaluationItem);
-					$("#sl_evaluation_comment").val(""), 
-					$("#evaluation_empty").remove();
+		if($.trim($("#sl_evaluation_comment").val()) != ""){
+			var data = {
+				comment : $.trim($("#sl_evaluation_comment").val()), 
+				mark : $("#sl_evaluation_mark").val()
+			};
+			$("#add_evaluation_action .btn_save").hide();
+			$("#add_evaluation_action .btn_loading").css("display", "inline-block");
+			$.ajax({
+				type: 'POST',
+				url: target,
+				data: data,
+				dataType : 'json',
+				success: function(data){
+					console.log(data.state);
+					if(data.state){
+						$("#evaluation_list").prepend(data.evaluationItem);
+						$("#sl_evaluation_comment").val(""), 
+						$("#evaluation_empty").remove();
+						$("#add_evaluation_action .btn_save").css("display", "inline-block");
+						$("#add_evaluation_action .btn_loading").hide();
+					}
+					else{
+						alert("une erreur est survenue");
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.status);
+					console.log(textStatus);
+					console.log(errorThrown);
 				}
-				else{
-					alert("une erreur est survenue");
-				}
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-				console.log(jqXHR.status);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-        });		
+			});	
+		}else{
+			alert("Remplissez le champ");
+		}
     });
 	
 	/*
