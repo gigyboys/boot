@@ -65,9 +65,21 @@ class BlogController extends Controller
 		$blogService = $this->container->get('com_blog.blog_service');
 		$blogService->hydratePostLang($post, $locale);
 		
-		$comments = $commentRepository->findBy(array(
+		$Allcomments = $commentRepository->findBy(array(
 			'post' => $post,
 		));
+		
+		//$page = 1;
+		$limit = 10;
+		//$offset = ($page-1) * $limit;
+		$type = "post";
+		$comments = $commentRepository->getCommentsOffsetLimit($type, $post, $limit);
+		
+		$previousComment = null;
+		if($comments[0]){
+			$firstComment = $comments[0];
+			$previousComment = $commentRepository->getPreviousComment($firstComment, $type, $post);
+		}
 		
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($post, $user, $request);
@@ -76,8 +88,69 @@ class BlogController extends Controller
 			'post' => $post,
 			'locale' => $locale,
 			'comments' => $comments,
+			'Allcomments' => $Allcomments,
+			'previousComment' => $previousComment,
 			'entityView' => 'blog',
 		));
+    }
+	
+	public function loadCommentsAction($post_id, $comment_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$commentRepository = $em->getRepository('COMPlatformBundle:Comment');
+        
+		$comment = new Comment();
+		$post = $postRepository->find($post_id);
+		$lastComment = $commentRepository->find($comment_id);
+		
+        $response = new Response();
+		if($post && $lastComment){
+			$limit = 10;
+			$type = "post";
+			$comments = $commentRepository->getCommentsSince($lastComment, $type, $post, $limit);
+			
+			$listComments = array();
+			foreach($comments as $comment){
+				$commentItem = $this->renderView('COMBlogBundle:blog:include/comment_item.html.twig', array(
+				  'comment' => $comment
+				));
+				array_push($listComments, array(
+					"id" 			=> $comment->getId(),
+					"commentItem" 	=> $commentItem,
+				));
+			}
+		
+			$previousComment = null;
+			$previousCommentId = 0;
+			$urlLoadComment = null;
+			
+			if($comments[0]){
+				$firstComment = $comments[0];
+				$previousComment = $commentRepository->getPreviousComment($firstComment, $type, $post);
+			}
+			if ($previousComment){
+				$previousCommentId = $previousComment->getId();
+				$urlLoadComment = $this->get('router')->generate('com_blog_post_load_comment', array(
+					'post_id' => $post->getId(),
+					'comment_id' => $previousCommentId,
+				));
+			}
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'comments' => $listComments,
+				'previousCommentId' => $previousCommentId,
+				'urlLoadComment' => $urlLoadComment,
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 	
 	public function newCommentAction($post_id, Request $request)

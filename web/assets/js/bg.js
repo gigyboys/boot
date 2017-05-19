@@ -47,6 +47,53 @@ $(function() {
 
     bgContent();
 	
+	/*
+	* load commentItem
+	*/
+	$('#load_comment').on('click', function(){
+        var $this = $(this);
+        var target = $this.attr("data-target");
+		
+		var data = {
+		};
+		$("#bg_load_comment_action #load_comment").hide();
+		$("#bg_load_comment_action .btn_loading").css("display", "block");
+		$.ajax({
+			type: 'POST',
+			url: target,
+			data: data,
+			dataType : 'json',
+			success: function(data){
+				console.log(data.state);
+				if(data.state){
+					var htmlprepend = '';
+					for(var i = 0; i <data.comments.length; i++ ){
+						var comment = data.comments[i];
+						htmlprepend += comment.commentItem;
+					}
+					$("#bg_post_list_cmt").prepend(htmlprepend);
+					if(data.previousCommentId > 0){
+						$("#load_comment").attr("data-target", data.urlLoadComment);
+						$("#load_comment").attr("data-previous-cmt", data.previousCommentId);
+						
+						$("#bg_load_comment_action #load_comment").css("display", "block");
+						$("#bg_load_comment_action .btn_loading").hide();
+					}else{
+						$("#bg_load_comment_action").remove();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});	
+    });
+	
 	$('.btn_bg_post_new_cmt').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');

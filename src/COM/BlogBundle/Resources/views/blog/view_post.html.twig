@@ -52,13 +52,23 @@
 				
 				<div class="sp mg_v10"></div>
 				<div id="info_comment" class="mg_h10">
-					{{ comments | length }} 
-					{% if comments | length == 0 or comments | length == 1 %}
+					{{ Allcomments | length }} 
+					{% if Allcomments | length == 0 or Allcomments | length == 1 %}
 						Commentaire
 					{% else %}
 						Commentaires
 					{% endif %}
 				</div>
+				
+				{% if previousComment %}
+					<div id="bg_load_comment_action">
+						<div class="sp mg_v10"></div>
+						<div id="load_comment" data-target="{{ path('com_blog_post_load_comment', {'post_id': post.id, 'comment_id': previousComment.id}) }}" data-previous-cmt="{{ previousComment.id }}" class="mg_h10" style="text-align:center; cursor:pointer">
+							Load comments
+						</div>
+						<div class="btn_loading" style="text-align:center;display:none;">Chargement...</div>
+					</div>
+				{% endif %}
 				<div class="sp mg_v10"></div>
 				
 				<div>
