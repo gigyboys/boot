@@ -40,7 +40,9 @@ $(function() {
 					critere = "entity=advert";
 					break;
 			}
-			critere = critere+"&q="+q;
+			q = encodeURIComponent(q.trim());
+			var q2 = q.replace(/\s/g,"%20");
+			critere = critere+"&q="+q2;
 			window.location=target+"?"+critere;
 		}
 	});

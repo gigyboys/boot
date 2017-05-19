@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+	
+	//search
+    public function getPostSearch($critere)
+    {
+        $qb = $this->createQueryBuilder('post');
+
+        $qb
+        ->where('post.defaultTitle LIKE :critere')
+        ->setParameter('critere', '%'.$critere.'%')
+        ->orderBy('post.date', 'DESC')
+        ;
+
+        return $qb
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

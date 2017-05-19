@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class AdvertRepository extends EntityRepository
 {
+	
+	//search
+    public function getAdvertSearch($critere)
+    {
+        $qb = $this->createQueryBuilder('advert');
+
+        $qb
+        ->where('advert.defaultTitle LIKE :critere')
+        ->setParameter('critere', '%'.$critere.'%')
+        ->orderBy('advert.date', 'DESC')
+        ;
+
+        return $qb
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

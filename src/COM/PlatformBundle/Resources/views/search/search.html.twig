@@ -6,27 +6,97 @@
 
 
 {% block platform_body %}
-	<div>
-		Resultat de recherche...
+	<div class="cr">
+		<div class="ct">
+			<div class="mg_t10 mg_h10 pd_5" style="border : 1px solid #ddd">
+			Recherche sur l'entité <span style="font-weight:bold">{{ entity }}</span><br />
+			Critère de recherche <span style="font-weight:bold">{{ q }}</span>.
+			</div>
+		</div>
 	</div>
-	<div style="margin: 10px; background:#ddd; padding: 5px">
-		Recherche sur l'entité <span style="font-weight:bold">{{ entity }}</span><br />
-		Critère de recherche <span style="font-weight:bold">{{ q }}</span>.
-	</div>
-	<div>
-		liste resultat<br />
-		{% if entity == 'school' %}
-			{% for school in resultList %}
-				{{ include("COMPlatformBundle:search:include/school_item.html.twig") }}
-			{% endfor %}
-		{% elseif entity == 'new' %}
-			{% for post in resultList %}
-				{{ include("COMPlatformBundle:search:include/new_item.html.twig") }}
-			{% endfor %}
-		{% elseif entity == 'advert' %}
-			{% for advert in resultList %}
-				{{ include("COMPlatformBundle:search:include/advert_item.html.twig") }}
-			{% endfor %}
-		{% endif %}
-	</div>
+	
+	{% if entity == 'school' %}
+		<div class="cr">
+			<div class="ct">
+				<div id="sl_list">
+					<div class="sll">
+						<div id="sll_load_list" style="display:none;">chargement ...</div>
+						<div class="sll_ct" style="">
+							{% for school in resultList %}
+								{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+							{% endfor %}
+							<div class="both"></div>
+						</div>
+						<div class="sll_pagination">
+							{#{ include("COMSchoolBundle:school:include/pagination_list_school.html.twig") }#}
+						</div>
+					</div>
+					<div class="slr" style="">
+						<div id="sl_oftheday_right">
+							{# twig extension #}
+							{% set school = getSchoolById(2) %}
+							<div class="title">
+								<span>The school <br />of the day</span>
+							</div>
+							<div style="">
+							{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+							</div>
+							{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+							<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
+						</div>
+					</div>
+					<div class="both"></div>
+				</div>
+			</div>
+		</div>
+	{% elseif entity == 'post' %}
+		<div class="cr">
+			<div class="ct">
+				<div class="mg_h10">
+					{% for post in resultList %}
+						<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
+							<div>
+								<span><a style="font-weight:bold;color:#666" href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.defaultTitle }}</a></span>
+							</div>
+							<div>
+								{% set postTranslate = getPostTranslate(post, locale) %}
+								{{ substrSpace(postTranslate.description, 500) }}
+							</div>
+							<div>
+								{# twig extension #}
+								{% set userInfo = getLinkUserInfo(post.user, post.user.name) %}
+								By {{ userInfo | raw }}
+								  on {{ post.date | date('Y-m-d H:i:s') }}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% elseif entity == 'advert' %}
+		<div class="cr">
+			<div class="ct">
+				<div class="mg_h10">
+					{% for advert in resultList %}
+						<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
+							<div>
+								<span><a style="font-weight:bold;color:#666" href="{{ path('com_advert_view', {'slug': advert.slug}) }}">{{ advert.defaultTitle }}</a></span>
+							</div>
+							<div>
+								{% set advertTranslate = getAdvertTranslate(advert, locale) %}
+								{% set advertTranslate = getAdvertTranslate(advert, locale) %}
+								{{ substrSpace(advertTranslate.content | raw| striptags | convert_encoding('UTF-8', 'HTML-ENTITIES'), 500) }}
+							</div>
+							<div>
+								{# twig extension #}
+								{% set userInfo = getLinkUserInfo(advert.user, advert.user.name) %}
+								By {{ userInfo | raw }}
+								  on {{ advert.date | date('Y-m-d H:i:s') }}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}
