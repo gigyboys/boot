@@ -12,7 +12,6 @@ $(function() {
 		content_tab_sl_item.removeClass('selected').css('display','none');
 		
 		content.addClass('selected').css('display','block');
-		console.log($(this).data("link"));
 		document.title = $(this).data("title");
 		history.pushState('', '', $(this).data("link"));
 		
@@ -39,7 +38,6 @@ $(function() {
                 sll_ct.css('width', row12);
                 sll.css('width', widthBloc);
                 slr.css('width', row4);
-				console.log(sll.css('width'));
                 sll.css('float', 'left');
                 slr.css('margin-left', widthBloc);
             }
@@ -50,7 +48,6 @@ $(function() {
 					widthBloc = sl_list.width()-row4;
 					sll_ct.css('width', row8);
 					sll.css('width', widthBloc);
-					console.log(sll.css('width'));
 					sll.css('float', 'left');
 					slr.css('margin-left', widthBloc);
 				}
@@ -60,7 +57,6 @@ $(function() {
 						widthBloc = sl_list.width();
 						sll_ct.css('width', row8);
 						sll.css('width', widthBloc);
-						console.log(sll.css('width'));
 						sll.css('float', 'none');
 					}
 					else{
@@ -68,7 +64,6 @@ $(function() {
 						widthBloc = sl_list.width();
 						sll_ct.css('width', row4);
 						sll.css('width', widthBloc);
-						console.log(sll.css('width'));
 						sll.css('float', 'none');
 					}
 				}
@@ -104,7 +99,6 @@ $(function() {
     $('#btn_eval_sl').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
-		console.log(target);
 		if($.trim($("#sl_evaluation_comment").val()) != ""){
 			var data = {
 				comment : $.trim($("#sl_evaluation_comment").val()), 
@@ -118,7 +112,6 @@ $(function() {
 				data: data,
 				dataType : 'json',
 				success: function(data){
-					console.log(data.state);
 					if(data.state){
 						$("#evaluation_list").prepend(data.evaluationItem);
 						$("#sl_evaluation_comment").val(""), 

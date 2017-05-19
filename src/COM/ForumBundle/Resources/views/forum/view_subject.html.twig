@@ -8,8 +8,12 @@
 {% block forum_body %}
 	<div class="cr">
 		<div class="ct">
-			<div style="margin:10px; font-weight:bold">
-				Subject {{ subject.title }}
+			<div class="mg_10">
+				<span style="font-weight:bold">Subject {{ subject.title }}</span><br />
+				By 
+				{# twig extension #}
+				{% set userInfo = getLinkUserInfo(subject.user, subject.user.name) %}
+				{{ userInfo | raw }}
 			</div>
 			<div class="sp mg_v10"></div>
 			<div>
@@ -36,8 +40,9 @@
 							</div>
 							<div style="margin-left:70px">
 								<textarea class="default_textarea" id="fm_message" style="min-height:120px"></textarea>
-								<div style="margin:5px 0 0 0">
-									<span class="tn_save standar_button" id="btn_fm_new_msg" data-target="{{ path('com_forum_new_message', {'subject_id': subject.id}) }}">R&eacute;pondre</span>
+								<div id="fm_add_message_action" class="mg_t10">
+									<span class="btn_save standar_button" id="btn_fm_new_msg" data-target="{{ path('com_forum_new_message', {'subject_id': subject.id}) }}">R&eacute;pondre</span>
+									<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span>
 								</div>
 							</div>
 							<div class="both"></div>

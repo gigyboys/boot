@@ -85,8 +85,9 @@
 								</div>
 								<div style="margin-left:70px">
 									<textarea class="default_textarea" id="bg_post_cmt_message" style="min-height:120px"></textarea>
-									<div class="mg_t5">
+									<div id="bg_add_comment_action" class="mg_t10">
 										<span class="btn_save standar_button btn_bg_post_new_cmt" data-target="{{ path('com_blog_post_new_comment', {'post_id': post.id}) }}">R&eacute;pondre</span>
+										<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span>
 									</div>
 								</div>
 								<div class="both"></div>

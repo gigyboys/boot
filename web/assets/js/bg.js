@@ -51,31 +51,39 @@ $(function() {
         var $this = $(this);
         var target = $this.data('target');
 		console.log(target);
-		var data = {
-			message : $("#bg_post_cmt_message").val()
-		};
-        $.ajax({
-            type: 'POST',
-            url: target,
-            data: data,
-            dataType : 'json',
-            success: function(data){
-                console.log(data.state);
-				if(data.state){
-					$("#bg_post_list_cmt").append(data.commentItem);
-					$("#bg_post_cmt_message").val("");
-					$("#info_comment").html(data.infoComment);
+		if($.trim($("#bg_post_cmt_message").val()) != ""){
+			var data = {
+				message : $("#bg_post_cmt_message").val()
+			};
+			$("#bg_add_comment_action .btn_save").hide();
+			$("#bg_add_comment_action .btn_loading").css("display", "inline-block");
+			$.ajax({
+				type: 'POST',
+				url: target,
+				data: data,
+				dataType : 'json',
+				success: function(data){
+					console.log(data.state);
+					if(data.state){
+						$("#bg_post_list_cmt").append(data.commentItem);
+						$("#bg_post_cmt_message").val("");
+						$("#info_comment").html(data.infoComment);
+						$("#bg_add_comment_action .btn_save").css("display", "inline-block");
+						$("#bg_add_comment_action .btn_loading").hide();
+					}
+					else{
+						alert("une erreur est survenue");
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.status);
+					console.log(textStatus);
+					console.log(errorThrown);
 				}
-				else{
-					alert("une erreur est survenue");
-				}
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-				console.log(jqXHR.status);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-        });		
+			});		
+		}else{
+			alert("Remplissez le champ");
+		}	
     });
 	
 	$('.not_school_post').live('click', function(e){
