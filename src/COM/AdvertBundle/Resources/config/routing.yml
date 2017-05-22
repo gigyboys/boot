@@ -7,6 +7,9 @@ com_advert_view:
 com_advert_new_comment:
     path:     /advert/new-comment/{advert_id}
     defaults: { _controller: COMAdvertBundle:Advert:newComment }
+com_advert_load_comment:
+    path:     /advert/load-comment/{advert_id}/{comment_id}
+    defaults: { _controller: COMAdvertBundle:Advert:loadComments }
 com_advert_set_advert_school:
     path:     /advert/set-advert-school/{advert_id}/{school_id}
     defaults: { _controller: COMAdvertBundle:Advert:setAdvertSchool }

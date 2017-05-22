@@ -65,20 +65,19 @@ class BlogController extends Controller
 		$blogService = $this->container->get('com_blog.blog_service');
 		$blogService->hydratePostLang($post, $locale);
 		
-		$Allcomments = $commentRepository->findBy(array(
+		$allComments = $commentRepository->findBy(array(
 			'post' => $post,
 		));
 		
-		//$page = 1;
 		$limit = 10;
-		//$offset = ($page-1) * $limit;
 		$type = "post";
-		$comments = $commentRepository->getCommentsOffsetLimit($type, $post, $limit);
+		$order = "DESC";
+		$comments = $commentRepository->getCommentsLimit($type, $post, $limit, $order);
 		
 		$previousComment = null;
 		if($comments[0]){
 			$firstComment = $comments[0];
-			$previousComment = $commentRepository->getPreviousComment($firstComment, $type, $post);
+			$previousComment = $commentRepository->getSinceComment($firstComment, $type, $post);
 		}
 		
 		$platformService = $this->container->get('com_platform.platform_service');
@@ -88,7 +87,7 @@ class BlogController extends Controller
 			'post' => $post,
 			'locale' => $locale,
 			'comments' => $comments,
-			'Allcomments' => $Allcomments,
+			'allComments' => $allComments,
 			'previousComment' => $previousComment,
 			'entityView' => 'blog',
 		));
@@ -108,7 +107,8 @@ class BlogController extends Controller
 		if($post && $lastComment){
 			$limit = 10;
 			$type = "post";
-			$comments = $commentRepository->getCommentsSince($lastComment, $type, $post, $limit);
+			$order = "DESC";
+			$comments = $commentRepository->getCommentsSince($lastComment, $type, $post, $limit, $order);
 			
 			$listComments = array();
 			foreach($comments as $comment){
@@ -127,7 +127,7 @@ class BlogController extends Controller
 			
 			if($comments[0]){
 				$firstComment = $comments[0];
-				$previousComment = $commentRepository->getPreviousComment($firstComment, $type, $post);
+				$previousComment = $commentRepository->getSinceComment($firstComment, $type, $post, $order);
 			}
 			if ($previousComment){
 				$previousCommentId = $previousComment->getId();

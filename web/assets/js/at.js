@@ -2,6 +2,53 @@
 $(function() {
 	console.log("at.js");
 	
+	/*
+	* load commentItem
+	*/
+	$('#at_load_comment').on('click', function(){
+        var $this = $(this);
+        var target = $this.attr("data-target");
+		
+		var data = {
+		};
+		$("#at_load_comment_action #at_load_comment").hide();
+		$("#at_load_comment_action .btn_loading").css("display", "block");
+		$.ajax({
+			type: 'POST',
+			url: target,
+			data: data,
+			dataType : 'json',
+			success: function(data){
+				console.log(data.state);
+				if(data.state){
+					var htmlappend = '';
+					for(var i = 0; i <data.comments.length; i++ ){
+						var comment = data.comments[i];
+						htmlappend += comment.commentItem;
+					}
+					$("#at_list_cmt").append(htmlappend);
+					if(data.previousCommentId > 0){
+						$("#at_load_comment").attr("data-target", data.urlLoadComment);
+						$("#at_load_comment").attr("data-previous-cmt", data.previousCommentId);
+						
+						$("#at_load_comment_action #at_load_comment").css("display", "block");
+						$("#at_load_comment_action .btn_loading").hide();
+					}else{
+						$("#at_load_comment_action").remove();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});	
+    });
+	
 	$('.btn_at_new_cmt').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
@@ -19,7 +66,7 @@ $(function() {
 				success: function(data){
 					console.log(data.state);
 					if(data.state){
-						$("#at_list_cmt").append(data.commentItem);
+						$("#at_list_cmt").prepend(data.commentItem);
 						$("#at_cmt_message").val("");
 						$("#info_comment").html(data.infoComment);
 						$("#at_add_comment_action .btn_save").css("display", "inline-block");

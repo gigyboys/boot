@@ -51,8 +51,8 @@
 			
 			<div class="sp mg_v10"></div>
 			<div id="info_comment" class="mg_h10">
-				{{ comments | length }} 
-				{% if comments | length == 0 or comments | length == 1 %}
+				{{ allComments | length }} 
+				{% if allComments | length == 0 or allComments | length == 1 %}
 					Commentaire
 				{% else %}
 					Commentaires
@@ -60,13 +60,6 @@
 			</div>
 			<div class="sp mg_v10"></div>
 			
-			<div>
-				<div id="at_list_cmt">
-					{% for comment in comments %}
-						{{ include("COMAdvertBundle:advert:include/comment_item.html.twig") }}
-					{% endfor %}
-				</div>
-				<div class="both"></div>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
 					<div class="" style="margin:10px;">
 						<form action="" name="" method="post" id="">
@@ -95,6 +88,23 @@
 				{% else %}
 					<div style="margin: 10px 0">
 						<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir ecrire votre message</a>
+					</div>
+				{% endif %}
+				
+			<div>
+				<div id="at_list_cmt">
+					{% for comment in comments %}
+						{{ include("COMAdvertBundle:advert:include/comment_item.html.twig") }}
+					{% endfor %}
+				</div>
+				<div class="both"></div>
+				{% if previousComment %}
+					<div id="at_load_comment_action" class="mg_b10">
+						<div class="sp mg_v10"></div>
+						<div id="at_load_comment" data-target="{{ path('com_advert_load_comment', {'advert_id': advert.id, 'comment_id': previousComment.id}) }}" data-previous-cmt="{{ previousComment.id }}" class="mg_h10" style="text-align:center; cursor:pointer">
+							Load comments
+						</div>
+						<div class="btn_loading" style="text-align:center;display:none;">Chargement...</div>
 					</div>
 				{% endif %}
 			</div>

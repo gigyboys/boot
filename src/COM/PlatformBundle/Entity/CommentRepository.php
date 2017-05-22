@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class CommentRepository extends EntityRepository
 {
 	
-	public function getCommentsOffsetLimit($type, $entity, $limit) {
+	public function getCommentsLimit($type, $entity, $limit, $order) {
 		
 		$qb = $this->createQueryBuilder('comment');
 
@@ -27,22 +27,59 @@ class CommentRepository extends EntityRepository
         $commentsTemp = $qb->getQuery()->getResult();
 		
 		$comments = array();
-		foreach($commentsTemp as $comment){
-			array_unshift($comments, $comment);
+		if($order == 'DESC'){
+			foreach($commentsTemp as $comment){
+				array_unshift($comments, $comment);
+			}
+		}else{
+			$comments = $commentsTemp;
 		}
 		
 		return $comments;
     }
 	
-	public function getPreviousComment($comment, $type, $entity) {
+	public function getCommentsSince($comment, $type, $entity, $limit, $order) {
 		
 		$qb = $this->createQueryBuilder('comment');
 
 		$qb
 		->where('comment.'.$type.' =:'.$type)
-        ->setParameter($type, $entity)
-		->andWhere('comment.id < :idNextComment')
-        ->setParameter('idNextComment', $comment->getId())
+        ->setParameter($type, $entity);
+		
+		$qb->andWhere('comment.id <= :idComment');
+		
+		$qb
+        ->setParameter('idComment', $comment->getId())
+		->setMaxResults($limit)
+		->orderBy('comment.id', 'DESC')
+		;
+		
+        $commentsTemp = $qb->getQuery()->getResult();
+		
+		$comments = array();
+		if($order == 'DESC'){
+			foreach($commentsTemp as $comment){
+				array_unshift($comments, $comment);
+			}
+		}else{
+			$comments = $commentsTemp;
+		}
+		
+		return $comments;
+    }
+	
+	public function getSinceComment($comment, $type, $entity) {
+		
+		$qb = $this->createQueryBuilder('comment');
+
+		$qb
+		->where('comment.'.$type.' =:'.$type)
+        ->setParameter($type, $entity);
+		
+		$qb->andWhere('comment.id < :idComment');
+		
+		$qb
+        ->setParameter('idComment', $comment->getId())
 		->setMaxResults(1)
 		->orderBy('comment.id', 'DESC')
 		;
@@ -50,28 +87,5 @@ class CommentRepository extends EntityRepository
         $comment = $qb->getQuery()->getOneOrNullResult();
 		
 		return $comment;
-    }
-	
-	public function getCommentsSince($comment, $type, $entity, $limit) {
-		
-		$qb = $this->createQueryBuilder('comment');
-
-		$qb
-		->where('comment.'.$type.' =:'.$type)
-        ->setParameter($type, $entity)
-		->andWhere('comment.id <= :idNextComment')
-        ->setParameter('idNextComment', $comment->getId())
-		->setMaxResults($limit)
-		->orderBy('comment.id', 'DESC')
-		;
-		
-        $commentsTemp = $qb->getQuery()->getResult();
-		
-		$comments = array();
-		foreach($commentsTemp as $comment){
-			array_unshift($comments, $comment);
-		}
-		
-		return $comments;
     }
 }

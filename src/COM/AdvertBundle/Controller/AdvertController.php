@@ -51,9 +51,21 @@ class AdvertController extends Controller
 		$advertService = $this->container->get('com_advert.advert_service');
 		$advertService->hydrateAdvertLang($advert, $locale);
 		
-		$comments = $commentRepository->findBy(array(
+		$allComments = $commentRepository->findBy(array(
 			'advert' => $advert,
 		));
+		
+		$limit = 10;
+		$type = "advert";
+		$order = "ASC";
+		$comments = $commentRepository->getCommentsLimit($type, $advert, $limit, $order);
+		
+		$previousComment = null;
+		if(count($comments)){
+			$index = count($comments)-1;
+			$firstComment = $comments[$index];
+			$previousComment = $commentRepository->getSinceComment($firstComment, $type, $advert);
+		}
 		
 		$platformService = $this->container->get('com_platform.platform_service');
 		$platformService->registerView($advert, $user, $request);
@@ -62,8 +74,71 @@ class AdvertController extends Controller
 			'advert' => $advert,
 			'locale' => $locale,
 			'comments' => $comments,
+			'allComments' => $allComments,
+			'previousComment' => $previousComment,
 			'entityView' => 'advert',
 		));
+    }
+	
+	public function loadCommentsAction($advert_id, $comment_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		$commentRepository = $em->getRepository('COMPlatformBundle:Comment');
+        
+		$comment = new Comment();
+		$advert = $advertRepository->find($advert_id);
+		$lastComment = $commentRepository->find($comment_id);
+		
+        $response = new Response();
+		if($advert && $lastComment){
+			$limit = 10;
+			$type = "advert";
+			$order = "ASC";
+			$comments = $commentRepository->getCommentsSince($lastComment, $type, $advert, $limit, $order);
+			
+			$listComments = array();
+			foreach($comments as $comment){
+				$commentItem = $this->renderView('COMAdvertBundle:advert:include/comment_item.html.twig', array(
+				  'comment' => $comment
+				));
+				array_push($listComments, array(
+					"id" 			=> $comment->getId(),
+					"commentItem" 	=> $commentItem,
+				));
+			}
+		
+			$previousComment = null;
+			$previousCommentId = 0;
+			$urlLoadComment = null;
+			
+			if(count($comments)){
+				$index = count($comments)-1;
+				$firstComment = $comments[$index];
+				$previousComment = $commentRepository->getSinceComment($firstComment, $type, $advert, $order);
+			}
+			if ($previousComment){
+				$previousCommentId = $previousComment->getId();
+				$urlLoadComment = $this->get('router')->generate('com_advert_load_comment', array(
+					'advert_id' => $advert->getId(),
+					'comment_id' => $previousCommentId,
+				));
+			}
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'comments' => $listComments,
+				'previousCommentId' => $previousCommentId,
+				'urlLoadComment' => $urlLoadComment,
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 	
 	public function newCommentAction($advert_id, Request $request)
@@ -96,7 +171,7 @@ class AdvertController extends Controller
 					'advert' => $advert,
 				));
 					
-				$commentItem = $this->renderView('COMBlogBundle:blog:include/comment_item.html.twig', array(
+				$commentItem = $this->renderView('COMAdvertBundle:advert:include/comment_item.html.twig', array(
 				  'comment' => $comment
 				));
 				
