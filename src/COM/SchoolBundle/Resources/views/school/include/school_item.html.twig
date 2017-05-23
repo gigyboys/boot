@@ -27,8 +27,10 @@
 	</div>
 	<div class="sl_label">
 		<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}">
-			<span class="sl_shortname">{{ school.shortName }}</span>
-			<br />
+			{% if school.shortName | trim != "" %}
+				<span class="sl_shortname">{{ school.shortName }}</span>
+				<br />
+			{% endif %}
 			<span class="sl_name">{{ school.name }}</span>
 		</a>
 	</div>

@@ -114,7 +114,7 @@
 											</td>
 											<td class="user_name" title="{{ app.user.name }}">
 												<span class="wrap">
-													<span>{{ app.user.name }}</span>
+													<span id="nav_src_ur_name">{{ app.user.name }}</span>
 												</span>
 											</td>
 										</tr>
@@ -136,16 +136,16 @@
 										<img id="avatar_banner" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" />
 									</div>
 									<div class="info_wrap">
-										<a class="link" id="profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
-											{{ app.user.username }}<br />
-											{{ app.user.name }}<br />
-											{{ app.user.email }}<br />
+										<a class="link" id="ur_profil_link" href="{{ path('com_user_profile', {'username': app.user.username}) }}">
+											<span id="nav_target_ur_username">{{ app.user.username }}</span><br />
+											<span id="nav_target_ur_name">{{ app.user.name }}</span><br />
+											<span id="nav_target_ur_email">{{ app.user.email }}</span>
 										</a>
 									</div>
 									<div class="both"></div>
 								</div>
 								<div class="link_wrap">
-									<a class="link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}">
+									<a class="link" id="ur_setting_link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}">
 										<span>{{ 'settings' | trans }}</span>
 									</a>
 								</div>

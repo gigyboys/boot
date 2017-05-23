@@ -60,11 +60,15 @@ class SchoolController extends Controller
 				'locale' => $locale,
 			));
 			
+			$currentUrl = $this->get('router')->generate('com_school_home', array('page' => $page));
+			
 			$response->setContent(json_encode(array(
 				'state' => 1,
 				'schools' => $listSchools,
 				'currentpage' => $page,
 				'pagination' => $pagination,
+				'currentUrl' => $currentUrl,
+				'page' => $page,
 				'locale' => $locale,
 			)));
 		}else{

@@ -210,6 +210,7 @@ $(function() {
 					htmlappend += '<div class="both"></div>';
 					$(".sll_ct").html(htmlappend);
 					$(".sll_pagination").html(data.pagination);
+					history.pushState('', 'School - page '+data.page, data.currentUrl);
 				}
 				else{
 					alert("une erreur est survenue");

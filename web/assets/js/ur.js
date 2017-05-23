@@ -14,9 +14,8 @@ $(function() {
 		content_tab_ur_item.removeClass('selected').css('display','none');
 		
 		content.addClass('selected').css('display','block');
-		console.log($(this).data("link"));
 		document.title = $(this).data("title");
-		history.pushState('', '', $(this).data("link"));
+		history.pushState('', '', $(this).attr("data-link"));
 		
     });
 	
@@ -46,14 +45,30 @@ $(function() {
             success: function(data){
                 console.log(data.state);
 				if(data.state){
+					//name
 					bloc_editable.find("#ur_view_name").text(data.name);
+					$("#nav_src_ur_name").text(data.name);
+					$("#nav_target_ur_name").text(data.name);
+					
+					//username
 					bloc_editable.find("#ur_view_username").text(data.username);
+					$("#nav_target_ur_username").text(data.username);
+					
+					//location
 					bloc_editable.find("#ur_view_location").text(data.location);
+					
+					//email
 					bloc_editable.find("#ur_view_email").text(data.email);
+					$("#nav_target_ur_email").text(data.email);
+					
 					resetBlocEdit(bloc_editable);
 					document.title = data.title;
 					history.pushState('', 'Profile '+data.username, data.url);
-					$("#profil_link").attr("href", data.url);
+					
+					$("#ur_profil_link").attr("href", data.url);
+					$("#tab_ur_about").attr("data-link", data.url);
+					$("#ur_setting_link").attr("href", data.urlSetting);
+					$("#tab_ur_setting").attr("data-link", data.urlSetting);
 				}
 				else{
 					editBlocEdit(bloc_editable);

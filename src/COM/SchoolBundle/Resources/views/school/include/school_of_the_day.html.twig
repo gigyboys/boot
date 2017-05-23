@@ -10,8 +10,12 @@
 	
 		<div class="label">
 			<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}">
-				{{ school.name }}<br />
-				{{ school.shortName }}
+				{{ school.name }}
+				
+				{% if school.shortName | trim != "" %}
+					<br />
+					{{ school.shortName }}
+				{% endif %}
 			</a>
 		</div>
 	

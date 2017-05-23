@@ -276,7 +276,10 @@ class UserController extends Controller
 					$location = "";
 				}
 				$title = 'Profile '.$user->getUsername();
+				
 				$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+				$urlSetting = $this->get('router')->generate('com_user_profile_setting', array('username' => $user->getUsername()));
+				
 				$response->setContent(json_encode(array(
 					'state' => 1,
 					'name' => $user->getName(),
@@ -285,6 +288,7 @@ class UserController extends Controller
 					'email' => $user->getEmail(),
 					'title' => $title,
 					'url' => $url,
+					'urlSetting' => $urlSetting,
 				)));
 			}else{
 				$response->setContent(json_encode(array(

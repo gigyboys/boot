@@ -36,7 +36,12 @@
 				<div style="min-height:110px">
 					<div id="sl_view_name">
 						<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
-							{{ school.name }} ({{ school.shortName }}) ({{ school.views | length }} vues)
+							{{ school.name }} 
+							{% if school.shortName | trim != "" %}
+								({{ school.shortName }}) 
+							{% endif %}
+							
+							({{ school.views | length }} vues)
 						</a>
 					</div>
 					<div id="sl_view_description">
@@ -47,11 +52,11 @@
 						<span id="toggle_subscription" data-target="{{ path('com_school_toggle_subscription', {'school_id': school.id}) }}" style="cursor:pointer">
 							{% set isSubscribed = isSubscribed(school, app.user) %}
 							{% if isSubscribed %}
-								<span class="subscription_btn" style="color:#283;display:none">S'abonner</span>
-								<span class="unsubscription_btn">Se désabonner</span>
+								<span class="subscription_btn" style="color:#2981c5;display:none">S'abonner</span>
+								<span class="unsubscription_btn" style="color:#a92c32">Se désabonner</span>
 							{% else %}
-								<span class="subscription_btn" style="color:#283">S'abonner</span>
-								<span class="unsubscription_btn" style="display:none">Se désabonner</span>
+								<span class="subscription_btn" style="color:#2981c5">S'abonner</span>
+								<span class="unsubscription_btn" style="display:none;color:#a92c32">Se désabonner</span>
 							{% endif %}
 						</span> 
 						{% endif %}

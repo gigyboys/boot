@@ -171,7 +171,14 @@
 										<div style="margin-left:85px">
 											<div>
 												<a title="{{ schoolSubscription.school.name }}" href="{{ path('com_school_view', {'slug': schoolSubscription.school.slug}) }}">
-													<span><span>{{ schoolSubscription.school.name }}</span> <span>{{ schoolSubscription.school.shortName }}</span></span>
+													<span>
+														<span>{{ schoolSubscription.school.name }}</span> 
+														
+				
+														{% if schoolSubscription.school.shortName | trim != "" %}
+															<span>{{ schoolSubscription.school.shortName }}</span>
+														{% endif %}
+													</span>
 												</a>
 											</div>
 											<div>
