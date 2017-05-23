@@ -56,6 +56,7 @@ $(function() {
 			var data = {
 				message : $("#at_cmt_message").val()
 			};
+			$("#at_add_comment_error").remove();
 			$("#at_add_comment_action .btn_save").hide();
 			$("#at_add_comment_action .btn_loading").css("display", "inline-block");
 			$.ajax({
@@ -83,7 +84,8 @@ $(function() {
 				}
 			});			
 		}else{
-			alert("Remplissez le champ");
+			var errorHtml = '<div style="color:#d22">Veuillez bien remplir le champ</div>';
+			$("#at_add_comment_error").html(errorHtml);
 		}	
     });
 	

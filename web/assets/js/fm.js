@@ -11,6 +11,7 @@ $(function() {
 				title : bloc_editable.find(".fm_subject_title").val(),
 				message : bloc_editable.find(".fm_subject_message").val(),
 			};
+			$("#fm_add_subject_error").remove();
 			loadBlocEdit(bloc_editable);
 			$.ajax({
 				type: 'POST',
@@ -32,7 +33,8 @@ $(function() {
 				}
 			});	
 		}else{
-			alert("Remplissez bien les champ");
+			var errorHtml = '<div style="color:#d22">Veuillez bien remplir le champ</div>';
+			$("#fm_add_subject_error").html(errorHtml);
 		}	
     });
 	
@@ -43,6 +45,7 @@ $(function() {
 			var data = {
 				message : $("#fm_message").val()
 			};
+			$("#fm_add_message_error").remove();
 			$("#fm_add_message_action .btn_save").hide();
 			$("#fm_add_message_action .btn_loading").css("display", "inline-block");
 			$.ajax({
@@ -68,7 +71,8 @@ $(function() {
 				}
 			});		
 		}else{
-			alert("Remplissez le champ");
+			var errorHtml = '<div style="color:#d22">Veuillez bien remplir le champ</div>';
+			$("#fm_add_message_error").html(errorHtml);
 		}
     });
 });

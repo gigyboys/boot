@@ -104,6 +104,7 @@ $(function() {
 				comment : $.trim($("#sl_evaluation_comment").val()), 
 				mark : $("#sl_evaluation_mark").val()
 			};
+			$("#add_evaluation_error").remove();
 			$("#add_evaluation_action .btn_save").hide();
 			$("#add_evaluation_action .btn_loading").css("display", "inline-block");
 			$.ajax({
@@ -130,7 +131,8 @@ $(function() {
 				}
 			});	
 		}else{
-			alert("Remplissez le champ");
+			var errorHtml = '<div style="color:#d22">Veuillez bien fournir votre évaluation</div>';
+			$("#add_evaluation_error").html(errorHtml);
 		}
     });
 	
