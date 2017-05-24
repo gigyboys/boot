@@ -68,7 +68,13 @@
 				<div id="locale">
 					<div class="dd">
 						<a href="#" class="dd_src standar_button">
-							<span>Locale : {{ app.request.getLocale() }}</span>
+							<span class="current_locale" style="display:inline-block;vertical-align: middle;">
+								{% set currentLocale = getLocale(app.request.getLocale()) %}
+								<span style="display:inline-block;margin-top:-6px;vertical-align: middle;">{{ currentLocale.label | trans }}</span> 
+								<span style="display:inline-block;vertical-align: middle; width:26px;text-align:center">
+									<img src="{{ asset('assets/image/flag/' ~ app.request.getLocale() ~ '.svg')  }}" alt="{{ app.request.getLocale() }}" height="20px" width="20px" />
+								</span>
+							</span>
 						</a>
 						<div class="dd_target" data-display="block" id="locale_choice">
 							{# 
@@ -80,13 +86,24 @@
 									{% set route = app.request.attributes.get('_route') %}
 									{% set params = app.request.attributes.get('_route_params')|merge({'_locale': locale.locale}) %}
 									<tr class="local_item">
-										<td><span class="local_icon"></span></td>
-										<td><span class="local_label"><a class="link" href="{{ path(route, params) }}">{{ locale.label | trans }}</a></span></td>
 										<td>
-										{% if app.request.getLocale() == locale.locale %}
-											<span class="local_state"></span>
-										{% endif %}
+											<span class="local_icon">
+												{% if app.request.getLocale() == locale.locale %}
+													{% set borderColor = '#4d4' %}
+												{% else %}
+													{% set borderColor = '#ccc' %}
+												{% endif %}
+												<img src="{{ asset('assets/image/flag/' ~ locale.locale ~ '.svg')  }}" alt="{{ locale.locale }}" height="20px" width="20px" style="border:2px solid {{ borderColor }}; border-radius:50% 50%" />
+											</span>
 										</td>
+										<td><span class="local_label"><a class="link" href="{{ path(route, params) }}">{{ locale.label | trans }}</a></span></td>
+										{#
+											<td>
+											{% if app.request.getLocale() == locale.locale %}
+												<span class="local_state"></span>
+											{% endif %}
+											</td>
+										#}
 									</tr>
 								{% endfor %}
 							</table>
