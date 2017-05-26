@@ -21,6 +21,7 @@ class BlogExtension extends \Twig_Extension {
             'getCategoryTranslate' => new \Twig_Function_Method($this, 'getCategoryTranslateFunction'),
             'getAllCategory' => new \Twig_Function_Method($this, 'getAllCategoryFunction'),
             'getCategoryByPost' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
+            'getCommentsByPost' => new \Twig_Function_Method($this, 'getCommentsByPostFunction'),
         );
     }
 
@@ -38,6 +39,10 @@ class BlogExtension extends \Twig_Extension {
 
     public function getAllCategoryFunction() {
         return $this->blogService->getAllCategory();
+    }
+
+    public function getCommentsByPostFunction(Post $post) {
+        return $this->blogService->getCommentsByPost($post);
     }
 
     public function getCategoryByPostFunction(Post $post) {

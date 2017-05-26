@@ -75,7 +75,7 @@ class BlogController extends Controller
 		$comments = $commentRepository->getCommentsLimit($type, $post, $limit, $order);
 		
 		$previousComment = null;
-		if($comments[0]){
+		if(count($comments)>0){
 			$firstComment = $comments[0];
 			$previousComment = $commentRepository->getSinceComment($firstComment, $type, $post);
 		}

@@ -1,4 +1,22 @@
 <div class="post_item">
+	<h2 class="post_title">
+		<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+	</h2>
+	<div class="meta_info">
+		<div class="date_info">{{ post.date | date('Y-m-d H:i:s') }}</div>
+		
+		{% set category = getCategoryByPost(post) %}
+		{% if category %}
+			<div class="tag_info"><a href="#" rel="category tag">{{ category.defaultName }}</a></div>
+		{% endif %}
+		
+		{% set comments = getCommentsByPost(post) %}
+		{% if comments | length == 0 or comments | length == 1  %}
+			<div class="comment_info">{{ comments | length }} commentaire</div>
+		{% else %}
+			<div class="comment_info">{{ comments | length }} commentaires</div>
+		{% endif %}
+	</div>
 	<div class="post_image">
 		{# twig extension #}
 		{% set illustration=postIllustration(post) %}
@@ -8,18 +26,15 @@
 			{% set path='default/images/post/illustration/'~illustration %}
 		{% endif %}
 		
-		<img style="width: 160px; height: 160px" src="{{ path | imagine_filter('160x160') }}" alt="{{ post.title }}" />
+		<img style="width: 100%; height: auto" src="{{ path | imagine_filter('960x280') }}" alt="{{ post.title }}" />
 	</div>
 	<div class="post_ct">
-		<div class="post_ct_title">
-			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
-		</div>
 		<div class="post_ct_desc" style="margin:10px 0">
-			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ substrSpace(post.description, 500) }}</a>
-		</div>
-		<div class="post_ct_info">
-			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }} : information</a>
+			{{ substrSpace(post.description, 600) }}
 		</div>
 	</div>
-	<div class="both"></div>
+	<div class="post_action">
+		<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">Lire la suite</a>
+	</div>
+	<div class="sp mg_v10"></div>
 </div>

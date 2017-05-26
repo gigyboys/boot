@@ -1,0 +1,25 @@
+<div class="post_item">
+	<div class="post_image">
+		{# twig extension #}
+		{% set illustration=postIllustration(post) %}
+		{% if illustration != "default.jpeg" %}
+			{% set path='uploads/images/post/illustration/'~illustration %}
+		{% else %}
+			{% set path='default/images/post/illustration/'~illustration %}
+		{% endif %}
+		
+		<img style="width: 160px; height: 160px" src="{{ path | imagine_filter('160x160') }}" alt="{{ post.title }}" />
+	</div>
+	<div class="post_ct">
+		<div class="post_ct_title">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
+		</div>
+		<div class="post_ct_desc" style="margin:10px 0">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ substrSpace(post.description, 500) }}</a>
+		</div>
+		<div class="post_ct_info">
+			<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }} : information</a>
+		</div>
+	</div>
+	<div class="both"></div>
+</div>

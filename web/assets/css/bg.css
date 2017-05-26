@@ -14,13 +14,36 @@
 .post_item{
 	margin-bottom:20px
 }
-.post_image{
-	width: 160px; 
-	height:160px; 
-	background:#ddd; 
-	float:left
+.post_item .post_title{
+	font-size:25px;
+	margin: 15px 0;
 }
+.post_item .meta_info{
+    min-height: 14px;
+	margin-bottom: 15px;
+}
+.post_item .meta_info .date_info, .post_item .meta_info .tag_info, .post_item .meta_info .comment_info {
+    display:inline-block;
+	padding-right: 20px;
+}
+.post_item .post_image{
+	margin-bottom: 20px;
+}
+.post_item .post_action{
+	margin-bottom: 20px;
+}
+.post_item .post_action a{
+	font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #225599 0px, #3366aa 100%) repeat scroll 0 0;
+    border-bottom: 2px solid #225599;
+    color: #fff;
+}
+/*
 .post_ct{
 	margin-left:170px; 
 	background:#eee
 }
+*/

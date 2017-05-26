@@ -115,5 +115,15 @@ class BlogService {
 			return null;
 		}
     }
+    
+    public function getCommentsByPost(Post $post) {
+        $commentRepository = $this->em->getRepository('COMPlatformBundle:Comment');
+
+        $comments = $commentRepository->findBy(array(
+            'post' => $post,
+        ));
+		
+		return $comments;
+    }
 
 }
