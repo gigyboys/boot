@@ -11,6 +11,7 @@ class SchoolContactCommonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('address', 'text')
+                ->add('email', 'text')
                 ->add('phone', 'text')
                 ->add('website', 'text')
                 ->add('longitude', 'text')

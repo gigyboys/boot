@@ -440,6 +440,7 @@ $(function() {
 		console.log(target);
 		var data = {
 			address : bloc_editable.find("#sl_contact_input_address").val(),
+			email : bloc_editable.find("#sl_contact_input_email").val(),
 			phone : bloc_editable.find("#sl_contact_input_phone").val(),
 			website : bloc_editable.find("#sl_contact_input_website").val(),
 			longitude : bloc_editable.find("#sl_contact_input_longitude").val(),
@@ -455,6 +456,7 @@ $(function() {
                 console.log(data.state);
 				if(data.state){
 					bloc_editable.find("#sl_contact_view_address").text(data.address);
+					bloc_editable.find("#sl_contact_view_email").text(data.email);
 					bloc_editable.find("#sl_contact_view_phone").text(data.phone);
 					bloc_editable.find("#sl_contact_view_website").text(data.website);
 					bloc_editable.find("#sl_contact_view_longitude").text(data.longitude);

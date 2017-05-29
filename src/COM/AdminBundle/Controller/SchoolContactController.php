@@ -59,6 +59,7 @@ class SchoolContactController extends Controller
 		
 		if ($formInitSchoolContact->handleRequest($request)->isValid()) {
 			$schoolContact->setSchool($school);
+			$schoolContact->setEmail("");
 			$schoolContact->setPhone("");
 			$schoolContact->setWebsite("");
 			$schoolContact->setLongitude("");
@@ -113,6 +114,7 @@ class SchoolContactController extends Controller
 		
 		if ($formSchoolContactCommon->handleRequest($request)->isValid()) {
 			$schoolContact->setAddress($schoolContactTemp->getAddress());
+			$schoolContact->setEmail($schoolContactTemp->getEmail());
 			$schoolContact->setPhone($schoolContactTemp->getPhone());
 			$schoolContact->setWebsite($schoolContactTemp->getWebsite());
 			$schoolContact->setLongitude($schoolContactTemp->getLongitude());
@@ -124,6 +126,7 @@ class SchoolContactController extends Controller
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'address' => $schoolContact->getAddress(),
+                'email' => $schoolContact->getEmail(),
                 'phone' => $schoolContact->getPhone(),
                 'website' => $schoolContact->getWebsite(),
                 'longitude' => $schoolContact->getLongitude(),

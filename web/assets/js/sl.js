@@ -104,7 +104,7 @@ $(function() {
 				comment : $.trim($("#sl_evaluation_comment").val()), 
 				mark : $("#sl_evaluation_mark").val()
 			};
-			$("#add_evaluation_error").remove();
+			$("#add_evaluation_error").html("");
 			$("#add_evaluation_action .btn_save").hide();
 			$("#add_evaluation_action .btn_loading").css("display", "inline-block");
 			$.ajax({

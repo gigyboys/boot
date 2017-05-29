@@ -56,7 +56,7 @@ $(function() {
 			var data = {
 				message : $("#at_cmt_message").val()
 			};
-			$("#at_add_comment_error").remove();
+			$("#at_add_comment_error").html("");
 			$("#at_add_comment_action .btn_save").hide();
 			$("#at_add_comment_action .btn_loading").css("display", "inline-block");
 			$.ajax({

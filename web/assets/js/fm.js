@@ -11,7 +11,7 @@ $(function() {
 				title : bloc_editable.find(".fm_subject_title").val(),
 				message : bloc_editable.find(".fm_subject_message").val(),
 			};
-			$("#fm_add_subject_error").remove();
+			$("#fm_add_subject_error").html("");
 			loadBlocEdit(bloc_editable);
 			$.ajax({
 				type: 'POST',
@@ -45,7 +45,7 @@ $(function() {
 			var data = {
 				message : $("#fm_message").val()
 			};
-			$("#fm_add_message_error").remove();
+			$("#fm_add_message_error").html("");
 			$("#fm_add_message_action .btn_save").hide();
 			$("#fm_add_message_action .btn_loading").css("display", "inline-block");
 			$.ajax({

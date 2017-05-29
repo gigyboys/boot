@@ -102,7 +102,7 @@ $(function() {
 			var data = {
 				message : $("#bg_post_cmt_message").val()
 			};
-			$("#bg_add_comment_error").remove();
+			$("#bg_add_comment_error").html("");
 			$("#bg_add_comment_action .btn_save").hide();
 			$("#bg_add_comment_action .btn_loading").css("display", "inline-block");
 			$.ajax({
