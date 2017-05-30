@@ -44,6 +44,8 @@ class SchoolController extends Controller
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($school->getName());
 			$school->setSlug($slug);
+			$published = false;
+			$school->setPublished($published);
 			
 			$locales = $localeRepository->findAll();
 			foreach($locales as $locale){
@@ -176,6 +178,38 @@ class SchoolController extends Controller
 		)));
 		$response->headers->set('Content-Type', 'application/json');
 		
+		return $response;
+    }
+	
+    public function tooglePublicationAction($school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        
+        $school = $schoolRepository->find($school_id);
+		
+        $response = new Response();
+		
+		if ($school) {
+			if($school->getPublished() == true){
+				$school->setPublished(false) ;
+			}else{
+				$school->setPublished(true) ;
+			}
+            
+			$em->persist($school);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'published' => $school->getPublished(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
 	

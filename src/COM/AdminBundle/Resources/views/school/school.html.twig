@@ -36,6 +36,7 @@
 					<th class="" style="width: 36px" >logo</th>
 					<th>Name</th>
 					<th>Short name</th>
+					<th>Published</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for school in schools %}
@@ -53,6 +54,13 @@
 					</td>
 					<td><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></td>
 					<td>{{ school.shortName }}</td>
+					<td>
+						{% if school.published %}
+							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+						{% else %}
+							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+						{% endif %}
+					</td>
 					<td class="a_table_cell_action">action</td>
 				</tr>
 				{% endfor %}

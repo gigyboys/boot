@@ -29,9 +29,12 @@ class SchoolController extends Controller
 		));
 		$limit = 12;
 		$offset = ($page-1) * $limit;
-		$schools = $schoolRepository->getSchoolOffsetLimit($offset, $limit);
+		$publishState = 1; // published == true
+		$schools = $schoolRepository->getSchoolOffsetLimit($offset, $limit, $publishState);
 		
-		$allSchools = $schoolRepository->findAll();
+		$allSchools = $schoolRepository->findBy(array(
+			"published" 	=> true
+		));
 		
 		$schoolService = $this->container->get('com_school.school_service');
 		foreach($schools as $school){

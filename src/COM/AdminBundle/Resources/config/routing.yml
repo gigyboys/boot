@@ -15,6 +15,9 @@ com_admin_school_edit:
 com_admin_school_change_logo:
     path:     /school/change-logo/{school_id}
     defaults: { _controller: COMAdminBundle:School:changeLogo }
+com_admin_school_toogle_publication:
+    path:     /school/toogle-publication/{school_id}
+    defaults: { _controller: COMAdminBundle:School:tooglePublication }
 com_admin_school_add_cover:
     path:     /school/add-cover/{school_id}
     defaults: { _controller: COMAdminBundle:School:addCover }

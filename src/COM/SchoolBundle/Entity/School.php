@@ -49,6 +49,13 @@ class School
      * @ORM\Column(name="short_name", type="string", length=255)
      */
     private $shortName;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
 
     /**
      * @var string
@@ -63,6 +70,14 @@ class School
 
     private $shortDescription;
 
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->schoolTranslates = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -142,12 +157,30 @@ class School
     {
         return $this->shortName;
     }
+
+
     /**
-     * Constructor
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return School
      */
-    public function __construct()
+    public function setPublished($published)
     {
-        $this->schoolTranslates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
     /**

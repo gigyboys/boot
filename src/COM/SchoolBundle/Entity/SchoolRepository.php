@@ -13,13 +13,27 @@ use Doctrine\ORM\EntityRepository;
 class SchoolRepository extends EntityRepository
 {
 	//search
-    public function getSchoolSearch($critere)
+    public function getSchoolSearch($critere, $publishState = 2)
     {
         $qb = $this->createQueryBuilder('school');
 
         $qb
         ->where('school.name LIKE :critere OR school.shortName LIKE :critere')
-        ->setParameter('critere', '%'.$critere.'%')
+        ->setParameter('critere', '%'.$critere.'%');
+		
+		if($publishState == 0){
+			$qb
+			->andWhere('school.published = :published')
+			->setParameter('published', false);
+		}
+		
+		if($publishState == 1){
+			$qb
+			->andWhere('school.published = :published')
+			->setParameter('published', true);
+		}
+		
+		$qb
         ->orderBy('school.name', 'ASC')
         ;
 
@@ -29,10 +43,22 @@ class SchoolRepository extends EntityRepository
         ;
     }
 	
-	public function getSchoolOffsetLimit($offset, $limit) {
+	public function getSchoolOffsetLimit($offset, $limit, $publishState = 2) {
 		
 		$qb = $this->createQueryBuilder('school');
 
+		if($publishState == 0){
+			$qb
+			->where('school.published = :published')
+			->setParameter('published', false);
+		}
+		
+		if($publishState == 1){
+			$qb
+			->where('school.published = :published')
+			->setParameter('published', true);
+		}
+		
 		$qb
 		->setFirstResult($offset)
 		->setMaxResults($limit)

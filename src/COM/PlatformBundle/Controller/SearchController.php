@@ -36,7 +36,8 @@ class SearchController extends Controller
 		$entityView = "";
 		switch ($entity){
 			case "school":
-				$schools = $schoolRepository->getSchoolSearch($q);
+				$publishState = 1; // published == true
+				$schools = $schoolRepository->getSchoolSearch($q, $publishState);
 				$resultList = $schools;
 				$entityView = "school";
 			break ;
