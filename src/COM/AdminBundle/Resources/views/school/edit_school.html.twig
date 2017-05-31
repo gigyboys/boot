@@ -39,7 +39,6 @@
 {% endblock %}
 
 {% block content_body %}
-
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
 		Edit school #{{ school.id }}
 		{#- 
@@ -51,16 +50,6 @@
 				info
 			</span>
 		</span> #}
-		- 
-		<span id="toggle_publishState" data-target="{{ path('com_admin_school_toogle_publication', {'school_id': school.id}) }}" style="cursor:pointer">
-			{% if school.published %}
-				<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-				<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
-			{% else %}
-				<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-				<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
-			{% endif %}
-		</span>
 	</div>
 	
 	<div style="">
@@ -79,8 +68,6 @@
 			<input style="display:none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_change_logo', {'school_id': school.id}) }}" /> 
 		</div>
 		<div style="margin-left: 136px;">
-		
-			
 		
 			<div style="border:1px solid transparent; margin:5px; border-radius:4px">
 				<div style="border-bottom:1px solid #ccc;padding:5px">
@@ -245,4 +232,16 @@
 			{% endfor %}
 		</div>
 	</div>
+{% endblock %}
+
+{% block body_footer %}
+	<span id="toggle_publishState" data-target="{{ path('com_admin_school_toogle_publication', {'school_id': school.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if school.published %}
+			<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% else %}
+			<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% endif %}
+	</span>
 {% endblock %}

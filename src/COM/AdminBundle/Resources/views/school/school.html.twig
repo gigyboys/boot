@@ -21,10 +21,10 @@
 	<div class="a_datatable">
 		<div class="a_datatable_head">
 			<div class="a_datatable_head_left">
-				left
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input" id="a_list_sl_search_input" /></span><span id="a_list_sl_search_view"></span>
 			</div>
 			<div class="a_datatable_head_right">
-				right
+				{#right#}
 			</div>
 		</div>
 		
@@ -40,7 +40,7 @@
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for school in schools %}
-				<tr class="a_table_line">
+				<tr class="a_table_line" data-text="{{ school.name }} {{ school.shortName }}" style="display:table-row">
 					<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ school.id }}</td>
 					<td class="">
 						{# twig extension #}
@@ -69,15 +69,23 @@
 		
 		<div class="a_datatable_foot">
 			<div class="a_datatable_foot_left">
-				left
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" id="result_state">{{ schools | length }} resultat(s)</span>
 			</div>
 			<div class="a_datatable_foot_right">
+				{#
 				<span>right</span> 
 				<span>1</span> 
 				<span>2</span> 
 				<span>3</span> 
+				#}
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block body_footer %}
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ schools | length }} schools</span> | 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ publishedSchools | length }} published schools</span> | 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ NotPublishedSchools | length }} not published schools</span> 
 {% endblock %}
 

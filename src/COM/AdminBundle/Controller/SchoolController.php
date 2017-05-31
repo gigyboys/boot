@@ -28,8 +28,18 @@ class SchoolController extends Controller
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 
 		$schools = $schoolRepository->findAll();
+		$publishedSchools = $schoolRepository->findBy(array(
+			'published' => true
+		));
+		$NotPublishedSchools = $schoolRepository->findBy(array(
+			'published' => false
+		));
 		
-        return $this->render('COMAdminBundle:school:school.html.twig', array('schools' => $schools));
+        return $this->render('COMAdminBundle:school:school.html.twig', array(
+			'schools' => $schools,
+			'publishedSchools' => $publishedSchools,
+			'NotPublishedSchools' => $NotPublishedSchools,
+		));
     }
 	
     public function addSchoolAction(Request $request)
