@@ -84,7 +84,9 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Fields list | <span><a href="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">New field</a></td></span>
+		Fields list | 
+		{#<span><a href="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">New field</a></td></span> | #}
+		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer">Add field <img src="{{ asset('assets/image/new.png') }}" style="width:12px;height:12px" /></span>
 	</div>
 	
 	<div class="a_datatable">

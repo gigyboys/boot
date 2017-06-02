@@ -30,7 +30,6 @@ function popup(content, width, closable = true, background = 'rgba(0,0,0,0.5)'){
 }
 
 $(function() {
-    
     $('.otherpopup').live('click', function() {
 		var content = '<div style="padding:5px; width:auto; background:#fff""><div style="text-align:center"> other popup apert<br /> ok...</div><div style="text-align:center">	<span class="button_closable" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;">	Confirmer	</span></div></div>';
         popup(content, 300, false);
@@ -62,9 +61,16 @@ $(function() {
     });
 	
 	$(window).resize(function() {
+		centerBloc($('.popup_content'), $('.popup'));/*
         var popup_content_height = $('.popup_content').height();
 		var popup_height = $('.popup').height();
-		$('.popup').css('margin-top', (popup_content_height-popup_height)/2);
+		$('.popup').css('margin-top', (popup_content_height-popup_height)/2);*/
     });
     
 });
+
+function centerBloc(popup_content, popup){
+	var popup_content_height = popup_content.height();
+	var popup_height = popup.height();
+	popup.css('margin-top', (popup_content_height-popup_height)/2);
+}

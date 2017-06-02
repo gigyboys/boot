@@ -84,6 +84,32 @@ class SchoolFieldController extends Controller
 		));
     }
 	
+	//add ajax
+    public function addFieldAjaxAction($school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+
+		$school = $schoolRepository->find($school_id);
+		
+		$field = new Field();
+		
+        $response = new Response();
+
+		$content = $this->renderView('COMAdminBundle:school:school_field_add_ajax.html.twig', array(
+			'school' => $school,
+		));
+			
+		$response->setContent(json_encode(array(
+			'state' => 1,
+			'content' => $content,
+		)));
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
 	/*
 	 * School Edition field
 	 */

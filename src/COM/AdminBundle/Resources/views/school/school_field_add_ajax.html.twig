@@ -1,0 +1,33 @@
+<div style="background:#fff;">
+	<div style="border-bottom:1px solid #ddd; padding: 10px;  height:32px">
+		<div style="float:left">
+			Add field
+		</div>
+		<div style="float:right;cursor: pointer; " class="button_closable">
+			x
+		</div>
+	</div>
+	
+	<div style="background:#fff; padding: 5px; ">
+		<div style="padding:5px">
+			<div style="margin: 5px 0">
+				Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. 
+				Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus.
+			</div>
+			<div class="">
+				<form name="form_add_field" method="post" action="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">
+					<div>                
+						<div><label for="name" class="required">DefaultName * : </label></div>
+						<div><input type="text" id="defaultName" name="defaultName" required="required"  class="default_input" /></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div style="border-top:1px solid #ddd;">
+		<div style="padding:10px; text-align:right">
+			<span class="standar_button button_closable">Annuller</span>
+			<span id="add_field_ajax_btn_submit" class="standar_button" onclick="javascript:document.form_add_field.submit()">{{ 'Ajouter' | trans }}</span>
+		</div>
+	</div>
+</div>
