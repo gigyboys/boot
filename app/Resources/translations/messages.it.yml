@@ -1,7 +1,8 @@
 home: home
 school: scuola
 blog: blog
-advert: annonce
+advert: pubblicità
+forum: foro
 contact.us: scrivici
 
 about: 	chi siamo
@@ -15,4 +16,8 @@ italian: italiano
 deutch: tedesco
 spain: spagnolo
 
-full.name: nom complet
+my.account: mio conto
+sign.in: registrati
+sign.up: Registrazione
+
+full.name: nome completo

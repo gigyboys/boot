@@ -2,6 +2,7 @@ home: inicio
 school: escuela
 blog: blog
 advert: annonce
+forum: foro
 contact.us: contacto
 
 about: 	quienes somos
@@ -15,4 +16,8 @@ italian: italiano
 deutch: alemán
 spain: español
 
-full.name: nom complet
+my.account: mi cuenta
+sign.in: registrarse
+sign.up: Regístrate
+
+full.name: nombre completo

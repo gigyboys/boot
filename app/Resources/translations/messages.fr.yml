@@ -2,6 +2,7 @@ home: accueil
 school: école
 blog: blog
 advert: annonce
+forum: forum
 contact.us: contacter nous
 
 about: à propos
@@ -14,5 +15,9 @@ malagasy: malgache
 italian: italien
 deutch: allemand
 spain: espagnol
+
+my.account: mon compte
+sign.in: se connecter
+sign.up: s'inscrire
 
 full.name: nom complet
