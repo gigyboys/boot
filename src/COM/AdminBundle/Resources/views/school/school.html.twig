@@ -6,10 +6,10 @@
 
 {% block body_header %}
 	<div class="bc">
-		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Schools' | trans }}</span></a></span> 
 	</div>
 	<div style="padding:8px;float:right">
-		<span><a href="{{ path('com_admin_school_add') }}">New school</a></td></span> 
+		<span><a href="{{ path('com_admin_school_add') }}"><img src="{{ asset('assets/image/add_icon.png') }}" /> <span>New school</span></a></td></span> 
 	</div>
 {% endblock %}
 
@@ -21,7 +21,7 @@
 	<div class="a_datatable">
 		<div class="a_datatable_head">
 			<div class="a_datatable_head_left">
-				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input" id="a_list_sl_search_input" /></span><span id="a_list_sl_search_view"></span>
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input a_list_search_input" data-target-id="list_schools" /></span>
 			</div>
 			<div class="a_datatable_head_right">
 				{#right#}
@@ -30,7 +30,7 @@
 		
 		
 		<div class="a_datatable_body">
-			<table class="a_table">
+			<table class="a_table" id="list_schools">
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
 					<th class="" style="width: 36px" >logo</th>
@@ -69,7 +69,7 @@
 		
 		<div class="a_datatable_foot">
 			<div class="a_datatable_foot_left">
-				<span style="display:inline-block; margin-top:6px; margin-left:6px" id="result_state">{{ schools | length }} resultat(s)</span>
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" class="result_state">{{ schools | length }} resultat(s)</span>
 			</div>
 			<div class="a_datatable_foot_right">
 				{#

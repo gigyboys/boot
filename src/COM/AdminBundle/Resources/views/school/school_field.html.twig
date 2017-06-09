@@ -6,7 +6,7 @@
 
 {% block body_header %}
 	<div class="bc">
-		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto"  /> <span>{{ 'Schools' | trans }}</span></a> </span> 
 		<span class="dd">
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
@@ -84,42 +84,52 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Fields list | 
+		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> Fields list</span> | 
 		{#<span><a href="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">New field</a></td></span> | #}
-		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer">Add field <img src="{{ asset('assets/image/new.png') }}" style="width:12px;height:12px" /></span>
+		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer"> <img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" />  Add field</span>
 	</div>
 	
 	<div class="a_datatable">
 		<div class="a_datatable_head">
 			<div class="a_datatable_head_left">
-				left
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input a_list_search_input" data-target-id="list_fields"/></span>
 			</div>
 			<div class="a_datatable_head_right">
-				right
+				{#right#}
 			</div>
 		</div>
 		
 		
 		<div class="a_datatable_body">
-			<table class="a_table">
+			<table class="a_table" id="list_fields">
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
 					<th>Name</th>
+					<th>Published</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for field in fields %}
-					<tr class="a_table_line field_item" id="field_{{ field.id }}">
+					<tr class="a_table_line field_item" id="field_{{ field.id }}" data-text="{{ field.defaultName }}" style="display:table-row">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">
 							<div>{{ field.id }}</div>
 						</td>
-						<td><a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a></td>
+						<td>
+							<a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a>
+						</td>
+						<td>
+							{% if field.published %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+							{% else %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+							{% endif %}
+						</td>
 						<td class="a_table_cell_action">
 							<span class="dd" style="display:inline-block;">
 								<span href="#" class="dd_src" style="cursor:pointer">
 									action
 								</span>
 								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-									<span class="delete_field" data-id="{{ field.id }}" data-target="{{ path('com_admin_school_field_delete', {'id': field.id}) }}" data-defaultname="{{ field.defaultName }}" style="cursor:pointer">Supprimer</span>
+									<span class="delete_field" data-id="{{ field.id }}" data-target="{{ path('com_admin_school_field_delete', {'id': field.id}) }}" data-defaultname="{{ field.defaultName }}" style="cursor:pointer; white-space: nowrap;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Supprimer</span>
 								</div>
 							</span> 
 						</td>
@@ -130,11 +140,17 @@
 		
 		<div class="a_datatable_foot">
 			<div class="a_datatable_foot_left">
-				left
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" class="result_state">{{ fields | length }} resultat(s)</span>
 			</div>
 			<div class="a_datatable_foot_right">
 				<span>right</span> 
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block body_footer %}
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ fields | length }} field(s)</span> | 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ fields | length }} published field(s)</span> | 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">xx not published field(s)</span> 
 {% endblock %}

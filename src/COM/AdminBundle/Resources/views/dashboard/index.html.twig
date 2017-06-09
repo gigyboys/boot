@@ -20,35 +20,36 @@
 	
 	<div style="padding:5px">
 		<div>
-			<div>
-				
-				<div class="dd" style="display:inline-block;">
-					<a href="#" class="dd_src" style="">
-						<span style="display:inline-block; height: 20px;">Schools : {{ schools | length }}</span>
-					</a>
-					<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 3px;">
-						{% for school in schools %}
-							<div>
-								<div style="float:left; width:36px;height:36px">
-									{# twig extension #}
-									{% set logo=schoolLogo(school) %}
-									{% if logo != "default.jpeg" %}
-										{% set pathtologo='uploads/images/school/logo/'~logo %}
-									{% else %}
-										{% set pathtologo='default/images/school/logo/'~logo %}
-									{% endif %}
-									<img id="" style="width: 32px; height: 32px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
-								</div>
-								<div style="margin-left: 40px">
-									<a class="link" href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.shortName }}</a><br />
-									<a class="link" href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a>
-								</div>
+			Schools : {{ schools | length }}
+		</div>
+		{#
+		<div>
+			<div class="dd" style="display:inline-block;">
+				<a href="#" class="dd_src" style="">
+					<span style="display:inline-block; height: 20px;">Schools : {{ schools | length }}</span>
+				</a>
+				<div class="dd_target" data-display="block" id="locale_choice" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #fff; padding: 0px; border: 1px solid #aaa; border-radius: 3px;">
+					{% for school in schools %}
+						<div>
+							<div style="float:left; width:36px;height:36px">
+								{% set logo=schoolLogo(school) %}
+								{% if logo != "default.jpeg" %}
+									{% set pathtologo='uploads/images/school/logo/'~logo %}
+								{% else %}
+									{% set pathtologo='default/images/school/logo/'~logo %}
+								{% endif %}
+								<img id="" style="width: 32px; height: 32px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
 							</div>
-						{% endfor %}
-					</div>
+							<div style="margin-left: 40px">
+								<a class="link" href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.shortName }}</a><br />
+								<a class="link" href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
+		#}
 		<div>
 			Posts : {{ posts | length }}
 		</div>

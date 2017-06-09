@@ -6,7 +6,7 @@
 
 {% block body_header %}
 	<div class="bc">
-		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Schools' | trans }}</span></a> </span> 
 		<span class="dd">
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
@@ -40,7 +40,7 @@
 
 {% block content_body %}
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Edit school #{{ school.id }}
+		<span><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Edit school #{{ school.id }}</span>
 		{#- 
 		<span class="dd" style="display:inline-block;">
 			<span href="#" class="dd_src" style="cursor:pointer">

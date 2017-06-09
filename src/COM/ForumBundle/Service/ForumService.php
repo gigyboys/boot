@@ -25,8 +25,13 @@ class ForumService {
 			'locale' => $locale,
 		));
 		
-		$topic->setName($topicTranslate->getName());
-		$topic->setDescription($topicTranslate->getDescription());
+		if($topicTranslate){
+			$topic->setName($topicTranslate->getName());
+			$topic->setDescription($topicTranslate->getDescription());
+		}else{
+			$topic->setName($topic->getDefaultname());
+			$topic->setDescription("");
+		}
 		
 		return $topic;
     }

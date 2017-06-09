@@ -56,6 +56,7 @@ class SchoolFieldController extends Controller
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($field->getDefaultName());
 			$field->setSlug($slug);
+			$field->setPublished(false);
 			$field->setSchool($school);
 			
 			$locales = $localeRepository->findAll();

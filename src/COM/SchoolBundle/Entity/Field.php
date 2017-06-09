@@ -40,6 +40,13 @@ class Field
      * @ORM\Column(name="default_name", type="string", length=255)
      */
     private $defaultName;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
 
     private $locale;
 
@@ -100,6 +107,31 @@ class Field
     public function getDefaultName()
     {
         return $this->defaultName;
+    }
+
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Field
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
     /**

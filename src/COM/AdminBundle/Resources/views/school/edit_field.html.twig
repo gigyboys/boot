@@ -6,7 +6,7 @@
 
 {% block body_header %}
 	<div class="bc">
-		<span class="bc1"><a href="{{ path('com_admin_school') }}"><span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Schools' | trans }}</span></a> </span> 
 		<span class="dd">
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
@@ -78,7 +78,7 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Edit field {{ field.id }}
+		<span><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Edit field {{ field.id }}</span>
 	</div>
 	
 	<div style="">
@@ -115,9 +115,9 @@
 					</div>
 					<div class="separator"></div>
 					<div class="bloc_action" style="margin:5px">
-						<span class="btn_edit standar_button">Modifier</span> 
-						<span class="btn_save standar_button" id="btn_save_field_common" data-target="{{ path('com_admin_school_field_edit_common', {'id': field.id}) }}" style="display:none">Enregistrer</span>
-						<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+						<span class="btn_edit standar_button"><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Modifier</span> 
+						<span class="btn_save standar_button" id="btn_save_field_common" data-target="{{ path('com_admin_school_field_edit_common', {'id': field.id}) }}" style="display:none"><img src="{{ asset('assets/image/save_icon.png') }}" style="width:12px; height:auto" /> Enregistrer</span>
+						<span class="btn_reset standar_button" style="display:none"><img src="{{ asset('assets/image/reset_icon.png') }}" style="width:12px; height:auto" /> Annuler</span> 
 						<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 					</div>
 				</div>

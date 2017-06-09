@@ -1,12 +1,18 @@
 <div id="a_nav_main">
 	<div class="a_nav_item selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/dashboard_icon.png') }}" /></div></div>
+			<div class="a_nav_main_item_text"><a href="{{ path('com_admin_home') }}">{{ 'Dashboard' | trans }}</a></div>
+		</div>
+	</div>
+	<div class="a_nav_item not_selected">
+		<div class="a_nav_main_item">
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/sl_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">School</div>
 		</div>
 		<div class="a_nav_sub_content">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_school') }}">
 						<span>{{ 'Schools' | trans }}</span>
@@ -14,19 +20,19 @@
 				</div>
 			</div>
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">{{ 'fields' | trans }}</div>
 			</div>
 		</div>
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/bg_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">Blog</div>
 		</div>
 		<div class="a_nav_sub_content" style="">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_blog_post') }}">
 						<span>{{ 'Articles' | trans }}</span>
@@ -34,7 +40,7 @@
 				</div>
 			</div>
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_blog_category') }}">
 						<span>{{ 'Categories' | trans }}</span>
@@ -45,12 +51,12 @@
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/at_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">{{ 'Advert' | trans }}</div>
 		</div>
 		<div class="a_nav_sub_content" style="">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_advert') }}">
 						<span>{{ 'Adverts' | trans }}</span>
@@ -58,7 +64,7 @@
 				</div>
 			</div>
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_advert_category') }}">
 						<span>{{ 'Categories' | trans }}</span>
@@ -69,12 +75,12 @@
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/fm_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">Forum</div>
 		</div>
 		<div class="a_nav_sub_content" style="">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_forum') }}">
 						<span>{{ 'Topics' | trans }}</span>
@@ -82,7 +88,7 @@
 				</div>
 			</div>
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_forum') }}">
 						<span>{{ 'Subjects' | trans }}</span>
@@ -93,18 +99,18 @@
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/contact_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">Contact</div>
 		</div>
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/newsletter_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">Newsletter</div>
 		</div>
 		<div class="a_nav_sub_content" style="">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_newsletter_email') }}">
 						<span>{{ 'Emails' | trans }}</span>
@@ -112,7 +118,7 @@
 				</div>
 			</div>
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_newsletter_types') }}">
 						<span>{{ 'Types' | trans }}</span>
@@ -123,12 +129,12 @@
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/ur_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">User</div>
 		</div>
 		<div class="a_nav_sub_content" style="">
 			<div class="a_nav_sub_item">
-				<div class="a_nav_sub_item_icon"><div></div></div>
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/list_icon.png') }}" /></div></div>
 				<div class="a_nav_sub_item_text">
 					<a href="{{ path('com_admin_user') }}">
 						<span>{{ 'User' | trans }}</span>
@@ -139,7 +145,7 @@
 	</div>
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
-			<div class="a_nav_main_item_icon"><div></div></div>
+			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/setting_icon.png') }}" /></div></div>
 			<div class="a_nav_main_item_text">Configuration</div>
 		</div>
 	</div>
