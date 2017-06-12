@@ -289,7 +289,6 @@ class Post extends Controller
         return $this->comments;
     }
 
-
     /**
      * Set published
      *

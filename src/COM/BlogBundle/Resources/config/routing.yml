@@ -4,7 +4,7 @@ com_blog_home:
 com_blog_view:
     path:     /blog/{slug}
     defaults: { _controller: COMBlogBundle:Blog:view }
-com_admin_blog_post_viewbyid:
+com_blog_post_viewbyid:
     path:     /blog/id/{id}
     defaults: { _controller: COMBlogBundle:Blog:viewById }
 com_blog_post_new_comment:

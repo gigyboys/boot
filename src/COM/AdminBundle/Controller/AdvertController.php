@@ -32,8 +32,18 @@ class AdvertController extends Controller
 		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
 
 		$adverts = $advertRepository->findAll();
+		$publishedAdverts = $advertRepository->findBy(array(
+			'published' => true
+		));
+		$notPublishedAdverts = $advertRepository->findBy(array(
+			'published' => false
+		));
 		
-        return $this->render('COMAdminBundle:advert:advert.html.twig', array('adverts' => $adverts));
+        return $this->render('COMAdminBundle:advert:advert.html.twig', array(
+			'adverts' => $adverts,
+			'publishedAdverts' => $publishedAdverts,
+			'notPublishedAdverts' => $notPublishedAdverts,
+		));
     }
 	
     public function addAdvertAction(Request $request)
@@ -51,6 +61,7 @@ class AdvertController extends Controller
 			$advert->setSlug($slug);
 			$advert->setDate(new \DateTime());
 			$advert->setViewNumber(0);
+			$advert->setPublished(false);
 			$user = $this->getUser();
 			$advert->setUser($user);
 			
@@ -97,6 +108,38 @@ class AdvertController extends Controller
         return $this->render('COMAdminBundle:advert:edit_advert.html.twig', array(
 			'advert' => $advert,
 		));
+    }
+	
+    public function tooglePublicationAction($advert_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+        
+        $advert = $advertRepository->find($advert_id);
+		
+        $response = new Response();
+		
+		if ($advert) {
+			if($advert->getPublished() == true){
+				$advert->setPublished(false) ;
+			}else{
+				$advert->setPublished(true) ;
+			}
+            
+			$em->persist($advert);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'published' => $advert->getPublished(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 
 	public function changeIllustrationAction($id)

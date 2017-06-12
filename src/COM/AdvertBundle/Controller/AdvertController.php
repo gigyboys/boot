@@ -5,6 +5,7 @@ namespace COM\AdvertBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\AdvertBundle\Entity\Advert;
 use COM\AdvertBundle\Entity\AdvertTranslate;
@@ -78,6 +79,16 @@ class AdvertController extends Controller
 			'previousComment' => $previousComment,
 			'entityView' => 'advert',
 		));
+    }
+	
+    public function viewByIdAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		
+		$advert = $advertRepository->find($id);
+		$url = $this->get('router')->generate('com_advert_view', array('slug' => $advert->getSlug()));
+		return new RedirectResponse($url);
     }
 	
 	public function loadCommentsAction($advert_id, $comment_id, Request $request)

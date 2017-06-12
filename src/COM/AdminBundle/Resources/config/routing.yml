@@ -130,6 +130,9 @@ com_admin_advert_add:
 com_admin_advert_edit:
     path:     /advert/edit-advert/{id}
     defaults: { _controller: COMAdminBundle:Advert:editAdvert }
+com_admin_advert_toogle_publication:
+    path:     /advert/toogle-publication/{advert_id}
+    defaults: { _controller: COMAdminBundle:Advert:tooglePublication }
 com_admin_advert_change_illustration:
     path:     /advert/change-illustration/{id}
     defaults: { _controller: COMAdminBundle:Advert:changeIllustration }

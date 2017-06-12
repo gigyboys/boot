@@ -40,20 +40,21 @@
 				</tr>
 				{% for post in posts %}
 				<tr class="a_table_line" data-text="{{ post.defaultTitle }}" style="display:table-row">
-					{# twig extension #}
-					{% set illustration=postIllustration(post) %}
-					{% if illustration != "default.jpeg" %}
-						{% set path='uploads/images/post/illustration/'~illustration %}
-					{% else %}
-						{% set path='default/images/post/illustration/'~illustration %}
-					{% endif %}
-					
 					<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ post.id }}</td>
-					<td><a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}" style="display:block;">
-						<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
-						<span style="display:block;margin-left:36px;padding-top:6px">{{ post.defaultTitle }}</span>
-						<span class="both"></span>
-					</a></td>
+					<td>					
+						{# twig extension #}
+						{% set illustration=postIllustration(post) %}
+						{% if illustration != "default.jpeg" %}
+							{% set path='uploads/images/post/illustration/'~illustration %}
+						{% else %}
+							{% set path='default/images/post/illustration/'~illustration %}
+						{% endif %}
+						<a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}" style="display:block;">
+							<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
+							<span style="display:block;margin-left:36px;padding-top:6px">{{ post.defaultTitle }}</span>
+							<span class="both"></span>
+						</a>
+					</td>
 					{#
 						{% set avatar=userAvatar(post.user) %}
 						{% if avatar != "default.jpeg" %}
@@ -101,7 +102,7 @@
 {% endblock %}
 
 {% block body_footer %}
-	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ posts | length }} schools</span> | 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ posts | length }} posts</span> | 
 	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ publishedPosts | length }} published posts</span> | 
 	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ notPublishedPosts | length }} not published posts</span> 
 {% endblock %}

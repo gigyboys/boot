@@ -31,6 +31,13 @@ class Advert
 	 * @ORM\OneToMany(targetEntity="COM\AdvertBundle\Entity\AdvertTranslate", mappedBy="advert")
 	 */
 	private $advertTranslates;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="COM\PlatformBundle\Entity\View", mappedBy="advert")
@@ -146,6 +153,30 @@ class Advert
     public function getAdvertTranslates()
     {
         return $this->advertTranslates;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Advert
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
     /**

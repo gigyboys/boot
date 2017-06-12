@@ -4,6 +4,37 @@
   Edit advert {{ advert.id }}
 {% endblock %}
 
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_advert') }}"><img src="{{ asset('assets/image/at_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Advert' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_advert_add') }}">add advert</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_advert_category') }}">{{ 'Category' | trans }}</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_advert_edit', {'id': advert.id}) }}">{{ advert.defaultTitle }}</a></span>
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" target="_blank" href="{{ path('com_advert_viewbyid', {'id': advert.id}) }}">View</a><br />
+						{#<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />#}
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
+{% endblock %}
+
 {% block content_body %}
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
@@ -189,5 +220,17 @@
 		</div>
 	</div>
 	
+{% endblock %}
+
+{% block body_footer %}
+	<span id="toggle_publishState_advert" data-target="{{ path('com_admin_advert_toogle_publication', {'advert_id': advert.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if advert.published %}
+			<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% else %}
+			<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% endif %}
+	</span>
 {% endblock %}
 
