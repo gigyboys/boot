@@ -38,8 +38,18 @@ class BlogController extends Controller
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 
 		$posts = $postRepository->findAll();
+		$publishedPosts = $postRepository->findBy(array(
+			'published' => true
+		));
+		$notPublishedPosts = $postRepository->findBy(array(
+			'published' => false
+		));
 		
-        return $this->render('COMAdminBundle:blog:post.html.twig', array('posts' => $posts));
+        return $this->render('COMAdminBundle:blog:post.html.twig', array(
+			'posts' => $posts,
+			'publishedPosts' => $publishedPosts,
+			'notPublishedPosts' => $notPublishedPosts,
+		));
     }
 	
     public function addPostAction(Request $request)
@@ -56,6 +66,7 @@ class BlogController extends Controller
 			$slug = $platformService->sluggify($post->getDefaultTitle());
 			$post->setSlug($slug);
 			$post->setDate(new \DateTime());
+			$post->setPublished(false);
 			$post->setViewNumber(0);
 			$user = $this->getUser();
 			$post->setUser($user);
@@ -109,6 +120,38 @@ class BlogController extends Controller
 			'post' => $post,
 			'postSchools' => $postSchools,
 		));
+    }
+	
+    public function tooglePublicationAction($post_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+        
+        $post = $postRepository->find($post_id);
+		
+        $response = new Response();
+		
+		if ($post) {
+			if($post->getPublished() == true){
+				$post->setPublished(false) ;
+			}else{
+				$post->setPublished(true) ;
+			}
+            
+			$em->persist($post);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'published' => $post->getPublished(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 
 	public function changeIllustrationAction($id)

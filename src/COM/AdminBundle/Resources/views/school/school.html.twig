@@ -1,7 +1,7 @@
 {% extends "COMAdminBundle::admin.html.twig" %}
 
 {% block title %}
-  Listes des Ecoles
+	Schools lists
 {% endblock %}
 
 {% block body_header %}
@@ -15,7 +15,7 @@
 
 {% block content_body %}
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Listes des Ecoles
+		Schools lists
 	</div>
 	
 	<div class="a_datatable">
@@ -86,6 +86,6 @@
 {% block body_footer %}
 	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ schools | length }} schools</span> | 
 	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ publishedSchools | length }} published schools</span> | 
-	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ NotPublishedSchools | length }} not published schools</span> 
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ notPublishedSchools | length }} not published schools</span> 
 {% endblock %}
 

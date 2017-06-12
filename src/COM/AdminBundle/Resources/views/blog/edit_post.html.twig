@@ -1,239 +1,252 @@
 {% extends "COMAdminBundle::admin.html.twig" %}
 
 {% block title %}
-  Edition de l'article {{ post.id }}
+	Edit post {{ post.id }}
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_blog') }}"><img src="{{ asset('assets/image/bg_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Blog' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_blog_post_add') }}">add post</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_blog_category') }}">{{ 'Category' | trans }}</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_blog_post_edit', {'id': post.id}) }}">{{ post.defaultTitle }}</a></span>
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" target="_blank" href="{{ path('com_admin_blog_post_viewbyid', {'id': post.id}) }}">View</a><br />
+						{#<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />#}
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
 {% endblock %}
 
 {% block content_body %}
-	{#
-	<div id="a_content_body_left">
-	#}
-		<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-			Edition de l'article {{ post.id }}
-			- 
-			<span class="dd" style="display:inline-block;">
-					<span href="#" class="dd_src" style="cursor:pointer">
-						info
-					</span>
-					<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-						<span>Auteur : {{ post.user.name }}</span><br />
-						<span>Date d'ajout : {{ post.date | date('Y-m-d H:i:s') }}</span><br />
-						<span>Nombre de vues : {{ post.viewNumber }}</span><br />
-					</span>
-				</span>
-		</div>
-		
-		<div style="padding:5px">
-			<div style="float:left; height: 122px;margin:5px">
-				{# twig extension #}
-				{% set illustration=postIllustration(post) %}
-				{% if illustration != "default.jpeg" %}
-					{% set path='uploads/images/post/illustration/'~illustration %}
-				{% else %}
-					{% set path='default/images/post/illustration/'~illustration %}
-				{% endif %}
-				
-				<label for="illustrationfile">
-					<img id="post_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img post" />
-				</labe>
-				<input style="display:none" id="illustrationfile" name="file" class="ajax_post_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_blog_post_change_illustration', {'id': post.id}) }}" /> 
-			</div>
-			<div style="margin-left: 136px;">
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		<span><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Edit post {{ post.id }}</span>
+		- 
+		<span class="dd" style="display:inline-block;">
+			<span href="#" class="dd_src" style="cursor:pointer">
+				info
+			</span>
+			<span class="dd_target" style="display:block; padding: 5px; text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+				<span>Auteur : {{ post.user.name }}</span><br />
+				<span>Date d'ajout : {{ post.date | date('Y-m-d H:i:s') }}</span><br />
+				<span>Nombre de vues : {{ post.viewNumber }}</span><br />
+			</span>
+		</span>
+	</div>
+	
+	<div style="padding:5px">
+		<div style="float:left; height: 122px;margin:5px">
+			{# twig extension #}
+			{% set illustration=postIllustration(post) %}
+			{% if illustration != "default.jpeg" %}
+				{% set path='uploads/images/post/illustration/'~illustration %}
+			{% else %}
+				{% set path='default/images/post/illustration/'~illustration %}
+			{% endif %}
 			
-				{# twig extension #}
-				{% set category = getCategoryByPost(post) %}
-				<div class="bloc_editable">
-					<div class="bloc_view">
-						<table>
-							<tr>
-								<td>Default Title</td>
-								<td>:</td>
-								<td style="padding:5px"><span id="bg_view_defaulttitle">{{ post.defaultTitle }}</span></td>
-							</tr>
-							<tr>
-								<td>Slug</td>
-								<td>:</td>
-								<td style="padding:5px"><span id="bg_view_slug">{{ post.slug }}</span></td>
-							</tr>
-							<tr>
-								<td><label for="category" class="required">category </label></td>
-								<td>:</td>
-								<td style="padding:5px">
-									<span id="bg_view_category">
-										{% if category is not null %}
-											{{ category.defaultName }}
-										{% else %}
-											NAN
-										{% endif %} 
-									</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="bloc_edit" style="display:none">
-						<table>
-							<tr>
-								<td>Default Title</td>
-								<td>:</td>
-								<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ post.defaultTitle }}" /></td>
-							</tr>
-							<tr>
-								<td>Slug</td>
-								<td>:</td>
-								<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ post.slug }}" /></td>
-							</tr>
-							<tr>
-								<td><label for="bg_select_category" class="required">category </label></td>
-								<td>:</td>
-								<td style="padding:5px">
-									{# twig extension #}
-									{% set categories = getAllCategory() %}
-									<select id="bg_select_category" name="bg_select_category" class="default_input">
-										<option value="0"></option>
-										{% for categoryItem in categories %}
-											{% set selected = "" %}
-											{% if category is not null %}
-												{% if category.id == categoryItem.id %}
-													{% set selected = "selected" %}
-												{% endif %}
-											{% endif %} 
-											<option value="{{ categoryItem.id }}" {{ selected }}>{{ categoryItem.defaultName }}</option>
-										{% endfor %}
-									</select> 
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="separator"></div>
-					<div class="bloc_action" style="margin:5px">
-						<span class="btn_edit standar_button">Modifier</span> 
-						<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': post.id}) }}" style="display:none">Enregistrer</span>
-						<span class="btn_reset standar_button" style="display:none">Annuler</span> 
-						<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
-					</div>
-				</div>
-			</div>
-			<div class="both"></div>
+			<label for="illustrationfile">
+				<img id="post_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img post" />
+			</labe>
+			<input style="display:none" id="illustrationfile" name="file" class="ajax_post_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_blog_post_change_illustration', {'id': post.id}) }}" /> 
 		</div>
+		<div style="margin-left: 136px;">
 		
-		{# twig extension #}
-		{% set locales = getLocales() %}
-		
-		<div id="a_content_tab">
-		
-			<div class="a_content_tab_header">
-				<div class="a_content_tab_header_content">
-					{% for locale in locales %}
-						<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
-							<div class="a_content_tab_header_item_text">
-								{{ locale.label | trans }}
-							</div>
-						</div>
-					{% endfor %}
+			{# twig extension #}
+			{% set category = getCategoryByPost(post) %}
+			<div class="bloc_editable">
+				<div class="bloc_view">
+					<table>
+						<tr>
+							<td>Default Title</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="bg_view_defaulttitle">{{ post.defaultTitle }}</span></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><span id="bg_view_slug">{{ post.slug }}</span></td>
+						</tr>
+						<tr>
+							<td><label for="category" class="required">category </label></td>
+							<td>:</td>
+							<td style="padding:5px">
+								<span id="bg_view_category">
+									{% if category is not null %}
+										{{ category.defaultName }}
+									{% else %}
+										NAN
+									{% endif %} 
+								</span>
+							</td>
+						</tr>
+					</table>
 				</div>
-				<div class="a_content_tab_header_sep">
-					<div class="a_content_tab_header_sep_slide">
-					</div>
+				<div class="bloc_edit" style="display:none">
+					<table>
+						<tr>
+							<td>Default Title</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="bg_input_defaulttitle" class="default_input" value="{{ post.defaultTitle }}" /></td>
+						</tr>
+						<tr>
+							<td>Slug</td>
+							<td>:</td>
+							<td style="padding:5px"><input type="text" id="bg_input_slug" class="default_input" value="{{ post.slug }}" /></td>
+						</tr>
+						<tr>
+							<td><label for="bg_select_category" class="required">category </label></td>
+							<td>:</td>
+							<td style="padding:5px">
+								{# twig extension #}
+								{% set categories = getAllCategory() %}
+								<select id="bg_select_category" name="bg_select_category" class="default_input">
+									<option value="0"></option>
+									{% for categoryItem in categories %}
+										{% set selected = "" %}
+										{% if category is not null %}
+											{% if category.id == categoryItem.id %}
+												{% set selected = "selected" %}
+											{% endif %}
+										{% endif %} 
+										<option value="{{ categoryItem.id }}" {{ selected }}>{{ categoryItem.defaultName }}</option>
+									{% endfor %}
+								</select> 
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="separator"></div>
+				<div class="bloc_action" style="margin:5px">
+					<span class="btn_edit standar_button">Modifier</span> 
+					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': post.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 				</div>
 			</div>
-			<div class="a_content_tab_content">
+		</div>
+		<div class="both"></div>
+	</div>
+	
+	{# twig extension #}
+	{% set locales = getLocales() %}
+	
+	<div id="a_content_tab">
+	
+		<div class="a_content_tab_header">
+			<div class="a_content_tab_header_content">
 				{% for locale in locales %}
-					{# twig extension #}
-					{% set postTranslate = getPostTranslate(post, locale) %}
-					<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
-						<div class="bloc_editable">
-							<div class="bloc_view">
-								<div>
-									<div style="margin: 5px 0;">
-										title {{ locale.locale }}:
-									</div>
-									<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ postTranslate.title }}
-									</div>
-								</div>
-								
-								<div style="">
-									<div style="margin: 5px 0;">
-										Description :
-									</div>
-									<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ postTranslate.description }}
-									</div>
-								</div>
-								
-								<div style="">
-									<div style="margin: 5px 0;">
-										Content :
-									</div>
-									<div id="" class="bgt_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
-										{{ postTranslate.content | raw }}
-									</div>
-								</div>
-							</div>
-							<div class="bloc_edit" style="display:none">
-								<div>
-									<div style="margin: 5px 0;">
-										Title {{ locale.locale }}:
-									</div>
-									<div>
-										<input type="text" id="" class="bgt_input_title default_input" value="{{ postTranslate.title }}" />
-									</div>
-								</div>
-								<div style="">
-									<div style="margin: 5px 0;">
-										Description :
-									</div>
-									<div>
-										<textarea id="" class="bgt_input_description default_textarea">{{ postTranslate.description }}</textarea>
-									</div>
-								</div>
-								<div style="">
-									<div style="margin: 5px 0;">
-										Content :
-									</div>
-									<div>
-										<textarea id="" class="bgt_input_content default_textarea tinymce">{{ postTranslate.content | raw }}</textarea>
-									</div>
-								</div>
-							</div>
-							<div class="separator"></div>
-							<div class="bloc_action" style="margin:5px">
-								<span class="btn_edit standar_button">Modifier</span> 
-								<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': post.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
-								<span class="btn_reset standar_button" style="display:none">Annuler</span> 
-								<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
-							</div>
+					<div class="a_content_tab_header_item{% if locale.locale == 'fr' %} selected{% endif %}" id="tab_{{ locale.locale }}">
+						<div class="a_content_tab_header_item_text">
+							{{ locale.label | trans }}
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	{#
-	</div>
-	
-	<div id="a_content_body_right">
-		<div style="background:#ddd; padding: 5px; margin:5px 5px 5px 0; border:1px solid #bbb">
-			Liasons aux autres entités
-		</div>
-		<div style="padding:5px; border-bottom: 1px solid #aaa">
-			Ecoles 	
-		</div>
-		
-		<div style="padding:5px">
-			{% for postSchool in postSchools %}
-			<div>
-				{{ postSchool.school.shortName }}
+			<div class="a_content_tab_header_sep">
+				<div class="a_content_tab_header_sep_slide">
+				</div>
 			</div>
+		</div>
+		<div class="a_content_tab_content">
+			{% for locale in locales %}
+				{# twig extension #}
+				{% set postTranslate = getPostTranslate(post, locale) %}
+				<div class="a_content_tab_content_item{% if locale.locale == 'fr' %} selected{% else %} not_selected{% endif %}" id="content_tab_{{ locale.locale }}" style="">
+					<div class="bloc_editable">
+						<div class="bloc_view">
+							<div>
+								<div style="margin: 5px 0;">
+									title {{ locale.locale }}:
+								</div>
+								<div id="" class="bgt_view_title" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ postTranslate.title }}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div id="" class="bgt_view_description" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ postTranslate.description }}
+								</div>
+							</div>
+							
+							<div style="">
+								<div style="margin: 5px 0;">
+									Content :
+								</div>
+								<div id="" class="bgt_view_content" style="padding:5px;background:#fff; border-radius:4px;border:1px solid #eee">
+									{{ postTranslate.content | raw }}
+								</div>
+							</div>
+						</div>
+						<div class="bloc_edit" style="display:none">
+							<div>
+								<div style="margin: 5px 0;">
+									Title {{ locale.locale }}:
+								</div>
+								<div>
+									<input type="text" id="" class="bgt_input_title default_input" value="{{ postTranslate.title }}" />
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Description :
+								</div>
+								<div>
+									<textarea id="" class="bgt_input_description default_textarea">{{ postTranslate.description }}</textarea>
+								</div>
+							</div>
+							<div style="">
+								<div style="margin: 5px 0;">
+									Content :
+								</div>
+								<div>
+									<textarea id="" class="bgt_input_content default_textarea tinymce">{{ postTranslate.content | raw }}</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="separator"></div>
+						<div class="bloc_action" style="margin:5px">
+							<span class="btn_edit standar_button">Modifier</span> 
+							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': post.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
+							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
+						</div>
+					</div>
+				</div>
 			{% endfor %}
 		</div>
-		
-		<div style="padding:5px; border-bottom: 1px solid #aaa">
-			annonces	
-		</div>
-		<div style="padding:5px; border-bottom: 1px solid #aaa">
-			Evenements		
-		</div>
 	</div>
-	#}
+{% endblock %}
+
+{% block body_footer %}
+	<span id="toggle_publishState_post" data-target="{{ path('com_admin_blog_post_toogle_publication', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if post.published %}
+			<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% else %}
+			<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
+			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+		{% endif %}
+	</span>
 {% endblock %}
 

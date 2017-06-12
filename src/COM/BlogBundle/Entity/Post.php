@@ -43,6 +43,13 @@ class Post extends Controller
 	* @ORM\OneToMany(targetEntity="COM\PlatformBundle\Entity\Comment", mappedBy="post")
 	*/
 	private $comments;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
 
     /**
      * @var string
@@ -280,6 +287,31 @@ class Post extends Controller
     public function getComments()
     {
         return $this->comments;
+    }
+
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Post
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 	
 	//title

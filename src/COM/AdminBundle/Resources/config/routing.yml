@@ -92,6 +92,9 @@ com_admin_blog_post_add:
 com_admin_blog_post_edit:
     path:     /blog/edit-post/{id}
     defaults: { _controller: COMAdminBundle:Blog:editPost }
+com_admin_blog_post_toogle_publication:
+    path:     /blog/toogle-publication/{post_id}
+    defaults: { _controller: COMAdminBundle:Blog:tooglePublication }
 com_admin_blog_post_change_illustration:
     path:     /blog/post/change-illustration/{id}
     defaults: { _controller: COMAdminBundle:Blog:changeIllustration }

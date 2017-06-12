@@ -31,14 +31,14 @@ class SchoolController extends Controller
 		$publishedSchools = $schoolRepository->findBy(array(
 			'published' => true
 		));
-		$NotPublishedSchools = $schoolRepository->findBy(array(
+		$notPublishedSchools = $schoolRepository->findBy(array(
 			'published' => false
 		));
 		
         return $this->render('COMAdminBundle:school:school.html.twig', array(
 			'schools' => $schools,
 			'publishedSchools' => $publishedSchools,
-			'NotPublishedSchools' => $NotPublishedSchools,
+			'notPublishedSchools' => $notPublishedSchools,
 		));
     }
 	

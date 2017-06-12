@@ -5,6 +5,7 @@ namespace COM\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse; 
 
 use COM\PlatformBundle\Entity\Locale;
 use COM\BlogBundle\Entity\Post;
@@ -91,6 +92,16 @@ class BlogController extends Controller
 			'previousComment' => $previousComment,
 			'entityView' => 'blog',
 		));
+    }
+	
+    public function viewByIdAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		
+		$post = $postRepository->find($id);
+		$url = $this->get('router')->generate('com_blog_view', array('slug' => $post->getSlug()));
+		return new RedirectResponse($url);
     }
 	
 	public function loadCommentsAction($post_id, $comment_id, Request $request)
