@@ -22,6 +22,8 @@ class BlogExtension extends \Twig_Extension {
             'getAllCategory' => new \Twig_Function_Method($this, 'getAllCategoryFunction'),
             'getCategoryByPost' => new \Twig_Function_Method($this, 'getCategoryByPostFunction'),
             'getCommentsByPost' => new \Twig_Function_Method($this, 'getCommentsByPostFunction'),
+            'getCategoryWithPublishedPost' => new \Twig_Function_Method($this, 'getCategoryWithPublishedPostFunction'),
+            'getPublishedPostsByCategory' => new \Twig_Function_Method($this, 'getPublishedPostsByCategoryFunction'),
         );
     }
 
@@ -47,6 +49,14 @@ class BlogExtension extends \Twig_Extension {
 
     public function getCategoryByPostFunction(Post $post) {
         return $this->blogService->getCategoryByPost($post);
+    }
+
+    public function getCategoryWithPublishedPostFunction() {
+        return $this->blogService->getCategoryWithPublishedPost();
+    }
+
+    public function getPublishedPostsByCategoryFunction(Category $category) {
+        return $this->blogService->getPublishedPostsByCategory($category);
     }
 
     public function getName() {

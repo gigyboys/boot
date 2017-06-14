@@ -18,33 +18,37 @@
 				</div>
 				<div class="bgr" style="">
 					<div style="min-height:400px; margin:10px; width:auto; background:#fff">
-						<div style="min-height:20px; background:#fff;margin-bottom:6px;padding:20px;border-radius:4px;font-weight:bold">
+						
+						<div style="padding: 5px 0;">
 							Categorie
 						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							lorem
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							ipsum
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							lorem
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							ipsum
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							lorem
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							ipsum
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							lorem
-						</div>
-						<div style="min-height:20px; background:#ddd;margin-bottom:6px;padding:10px;border-radius:4px">
-							ipsum
-						</div>
+						{# twig extension #}
+						{% set categories = getCategoryWithPublishedPost() %} 
+						{% for categorie in categories %}
+							<div style="min-height:20px; background:#eee;margin-bottom:5px;padding:0 10px;border-radius:2px">
+								{% set posts = getPublishedPostsByCategory(categorie) %} 
+								<div><span style="font-weight:bold">{{ categorie.defaultName }}</span> <span>({{ posts | length }})</span></div>
+								<div class="sp mg_v10"></div>
+								<div>
+									{% set lastPost = posts[posts | length - 1] %} 
+									<div>{{ lastPost.date | date('Y-m-d H:i:s') }} </div>
+									<div>
+										{# twig extension #}
+										{% set illustration=postIllustration(lastPost) %}
+										{% if illustration != "default.jpeg" %}
+											{% set path='uploads/images/post/illustration/'~illustration %}
+										{% else %}
+											{% set path='default/images/post/illustration/'~illustration %}
+										{% endif %}
+										<a href="{{ path('com_blog_view', {'slug': lastPost.slug}) }}" style="display:block; padding-bottom:5px;min-height: 32px">
+											<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
+											<span style="display:block;margin-left:36px;">{{ lastPost.defaultTitle }}</span>
+											<span style="clear:both"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
 					</div>
 				</div>
 				<div class="both"></div>

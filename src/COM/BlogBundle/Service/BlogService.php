@@ -102,6 +102,52 @@ class BlogService {
 		return $categories;
     }
     
+    public function getCategoryWithPublishedPost() {
+        $categoryRepository = $this->em->getRepository('COMBlogBundle:Category');
+        $categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
+
+        $categorieTemps = $categoryRepository->findAll();
+		$categories = array();
+		foreach($categorieTemps as $categorieTemp){
+			$isOk = false;
+			$categoryPosts = $categoryPostRepository->findBy(array(
+				'category' => $categorieTemp,
+			));
+			
+			foreach($categoryPosts as $categoryPost){
+				$post = $categoryPost->getPost();
+				if($post->getPublished()){
+					$isOk = true;
+				}
+			}
+			
+			if($isOk){
+				array_push($categories, $categorieTemp);
+			}
+		}
+        
+		return $categories;
+    }
+    
+    public function getPublishedPostsByCategory(Category $category) {
+        $categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
+
+		$posts = array();
+		
+		$categoryPosts = $categoryPostRepository->findBy(array(
+			'category' => $category,
+		));
+		
+		foreach($categoryPosts as $categoryPost){
+			$post = $categoryPost->getPost();
+			if($post->getPublished()){
+				array_push($posts, $post);
+			}
+		}
+        
+		return $posts;
+    }
+    
     public function getCategoryByPost(Post $post) {
         $categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
 		$categoryRepository = $this->em->getRepository('COMBlogBundle:Category');

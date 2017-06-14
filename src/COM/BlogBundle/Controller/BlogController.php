@@ -30,7 +30,9 @@ class BlogController extends Controller
 			'locale' => $shortLocale,
 		));
 		
-		$posts = $postRepository->findAll();
+		$posts = $postRepository->findBy(array(
+			'published' => true,
+		));
 		
 		$blogService = $this->container->get('com_blog.blog_service');
 		

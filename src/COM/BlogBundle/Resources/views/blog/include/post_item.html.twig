@@ -26,15 +26,15 @@
 			{% set path='default/images/post/illustration/'~illustration %}
 		{% endif %}
 		
-		<img style="width: 100%; height: auto" src="{{ path | imagine_filter('960x280') }}" alt="{{ post.title }}" />
+		<img style="width: 100%; height: auto" src="{{ path | imagine_filter('960x240') }}?v=001" alt="{{ post.title }}" />
 	</div>
 	<div class="post_ct">
 		<div class="post_ct_desc" style="margin:10px 0">
-			{{ substrSpace(post.description, 600) }}
+			{{ substrSpace(post.description, 200) }}
 		</div>
 	</div>
 	<div class="post_action">
-		<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">Lire la suite</a>
+		<a class="standar_button" href="{{ path('com_blog_view', {'slug': post.slug}) }}">Lire la suite</a>
 	</div>
 	<div class="sp mg_v10"></div>
 </div>
