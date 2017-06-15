@@ -84,20 +84,42 @@
 	background:#f8f8f8;
 	text-align:center;
 }
-.sl_action_about, .sl_action_bg, .sl_action_at, .sl_action_evaluation{
+.sl_action_about, .sl_action_bg, .sl_action_at, .sl_action_evaluation, .sl_action_contact{
 	display:inline-block;
-	width: 49px;
+	width: 39px;
 	height:32px;
 	margin:4px 0px;
-	background: #eee
+	background: #f5f5f5;
+	vertical-align: top;
+	box-sizing:border-box;
 }
-.sl_action_about a, .sl_action_bg a, .sl_action_at a, .sl_action_evaluation a{
+.sl_action_about:hover, .sl_action_bg:hover, .sl_action_at:hover, .sl_action_evaluation:hover, .sl_action_contact:hover{
+	background: #ffffff;
+	border: 1px solid #ddd;
+}
+.sl_action_about a, .sl_action_bg a, .sl_action_at a, .sl_action_evaluation a, .sl_action_contact a{
 	display:block;
 	padding-top:4px
 }
+.sl_action_about a img, .sl_action_bg a img, .sl_action_at a img, .sl_action_evaluation a img, .sl_action_contact a img{
+	filter: brightness(100%);
+	-webkit-filter: brightness(100%);
+	-moz-filter: brightness(100%);
+	-o-filter: brightness(100%);
+	-ms-filter: brightness(100%);
+}
+.sl_action_about a:hover img, .sl_action_bg a:hover img, .sl_action_at a:hover img, .sl_action_evaluation a:hover img, .sl_action_contact a:hover img{
+	filter: brightness(50%);
+	-webkit-filter: brightness(50%);
+	-moz-filter: brightness(50%);
+	-o-filter: brightness(50%);
+	-ms-filter: brightness(50%);
+}
+/*
 .sl_action_about, .sl_action_evaluation{
 	width: 50px;
 }
+*/
 .sll_pagination{
 	margin:10px 0;
 	text-align:center

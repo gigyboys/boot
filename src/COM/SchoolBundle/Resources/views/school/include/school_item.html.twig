@@ -36,16 +36,26 @@
 	</div>
 	<div class="sl_action">
 		<div class="sl_action_about">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}">AU</a>
+			{# twig extension #}
+			{% set logo=schoolLogo(school) %}
+			{% if logo != "default.jpeg" %}
+				{% set pathtologo='uploads/images/school/logo/'~logo %}
+			{% else %}
+				{% set pathtologo='default/images/school/logo/'~logo %}
+			{% endif %}
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}"><img style="display:inline-block; width:20px; height:20px; border-radius: 4px 4px; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /></a>
 		</div>
 		<div class="sl_action_bg">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}">BG</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}"><img src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /></a>
 		</div>
 		<div class="sl_action_at">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">AT</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}"><img src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /></a>
 		</div>
 		<div class="sl_action_evaluation">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">EV</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}"><img src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /></a>
+		</div>
+		<div class="sl_action_contact">
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}"><img src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /></a>
 		</div>
 	</div>
 </div>

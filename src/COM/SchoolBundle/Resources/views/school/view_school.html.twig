@@ -73,19 +73,19 @@
 				<div class="ct">
 					<div class="mg_h10">
 						<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >
-							A propos
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle; width:19px; height:19px; border-radius: 50% 50%; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /> A propos</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >
-							Actualités
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /> Actualités</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">
-							Annonces
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /> Annonces</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">
-							Evaluations
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /> Evaluations</span>
 						</span>
 						<span class="tab_sl_item{% if type == 'contact' %} selected{% endif %}" id="tab_sl_contact" data-title="{{ school.name }} - contacts" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">
-							Contacts
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /> Contacts</span>
 						</span>
 					</div>
 				</div>
