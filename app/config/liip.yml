@@ -108,7 +108,7 @@ liip_imagine:
         960x240:
             quality: 100
             filters:
-                thumbnail: { size: [960, 280], mode: outbound }
+                thumbnail: { size: [960, 240], mode: outbound }
         # Prototype
         name:
             quality:              100

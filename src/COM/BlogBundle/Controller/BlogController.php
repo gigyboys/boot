@@ -45,6 +45,67 @@ class BlogController extends Controller
 			'entityView' => 'blog',
 		));
     }
+
+    public function categoryAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+			
+		$blogService = $this->container->get('com_blog.blog_service');
+		$categories = $blogService->getCategoryWithPublishedPost();
+		
+		return $this->render('COMBlogBundle:blog:category.html.twig', array(
+			'categories' => $categories,
+			'entityView' => 'blog',
+		));
+    }
+
+    public function viewCategoryAction($slug)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$category = $categoryRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		if($category){
+			/*$posts = $postRepository->findBy(array(
+				'published' => true,
+				'published' => true,
+			));*/
+			
+			$blogService = $this->container->get('com_blog.blog_service');
+			$posts = $blogService->getPublishedPostsByCategory($category);
+			
+			foreach($posts as $post){
+				$blogService->hydratePostLang($post, $locale);
+			}
+			
+			return $this->render('COMBlogBundle:blog:viewCategory.html.twig', array(
+				'posts' => $posts,
+				'category' => $category,
+				'entityView' => 'blog',
+			));
+		}else{
+			
+		}
+    }
 	
     public function viewAction($slug)
     {

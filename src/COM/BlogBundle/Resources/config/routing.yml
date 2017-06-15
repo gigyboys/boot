@@ -1,9 +1,6 @@
 com_blog_home:
     path:     /blog
     defaults: { _controller: COMBlogBundle:Blog:index }
-com_blog_view:
-    path:     /blog/{slug}
-    defaults: { _controller: COMBlogBundle:Blog:view }
 com_blog_post_viewbyid:
     path:     /blog/id/{id}
     defaults: { _controller: COMBlogBundle:Blog:viewById }
@@ -16,3 +13,12 @@ com_blog_post_load_comment:
 com_blog_post_set_post_school:
     path:     /blog-post/set-post-school/{post_id}/{school_id}
     defaults: { _controller: COMBlogBundle:Blog:setPostSchool }
+com_blog_category:
+    path:     /blog/category
+    defaults: { _controller: COMBlogBundle:Blog:category }
+com_blog_category_view:
+    path:     /blog/category/{slug}
+    defaults: { _controller: COMBlogBundle:Blog:viewCategory }
+com_blog_view:
+    path:     /blog/{slug}
+    defaults: { _controller: COMBlogBundle:Blog:view }

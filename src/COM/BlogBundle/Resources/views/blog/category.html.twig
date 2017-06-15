@@ -1,0 +1,49 @@
+{% extends "COMBlogBundle::blog.html.twig" %}
+
+{% block title %}
+  Blog - category
+{% endblock %}
+
+
+{% block blog_body %}
+	<div class="cr">
+		<div class="ct">
+			<div style="padding: 10px 0px; font-weight:bold; background:#eee;margin:10px 0;border-bottom:3px solid #ddd; text-align:center;">
+				<a href="{{ path('com_blog_category') }}" style="display:block;">
+					Categories
+				</a>
+			</div>
+			{# twig extension #}
+			{% set categories = getCategoryWithPublishedPost() %} 
+			{% for category in categories %}
+				<div style="min-height:20px; background:#eee;margin-bottom:5px;padding:10px;border-radius:2px">
+					{% set posts = getPublishedPostsByCategory(category) %} 
+					<div>
+						<a href="{{ path('com_blog_category_view', {'slug': category.slug}) }}" style="display:block;">
+							<span style="font-weight:bold">{{ category.defaultName }}</span> <span>({{ posts | length }})</span>
+						</a>
+					</div>
+					<div class="sp mg_v10"></div>
+					<div>
+						{% set lastPost = posts[posts | length - 1] %} 
+						<div>Last post on {{ lastPost.date | date('Y-m-d H:i:s') }} </div>
+						<div>
+							{# twig extension #}
+							{% set illustration=postIllustration(lastPost) %}
+							{% if illustration != "default.jpeg" %}
+								{% set path='uploads/images/post/illustration/'~illustration %}
+							{% else %}
+								{% set path='default/images/post/illustration/'~illustration %}
+							{% endif %}
+							<a href="{{ path('com_blog_view', {'slug': lastPost.slug}) }}" style="display:block; padding-bottom:5px;min-height: 27px">
+								<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
+								<span style="display:block;margin-left:36px;">{{ lastPost.defaultTitle }}</span>
+								<span style="clear:both"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

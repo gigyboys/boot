@@ -1,7 +1,7 @@
 {% extends "COMBlogBundle::blog.html.twig" %}
 
 {% block title %}
-  Blog
+  Blog - {{ category.defaultName }}
 {% endblock %}
 
 
@@ -10,6 +10,10 @@
 		<div class="ct">
 			<div id="bg_list" style="overflow:hidden">
 				<div class="bgl">
+					
+					<div style="padding: 10px 10px; font-weight:bold; background:#eee;margin-bottom:10px;border-bottom:3px solid #ddd;">
+						Les articles de la catégorie {{ category.defaultName }}
+					</div>
 					<div>
 						{% for post in posts %}
 							{{ include("COMBlogBundle:blog:include/post_item.html.twig") }}
