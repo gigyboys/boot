@@ -4,6 +4,7 @@ namespace COM\SchoolBundle\Twig;
 
 use COM\SchoolBundle\Service\SchoolService;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Category;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\SchoolContact;
 use COM\BlogBundle\Entity\Post;
@@ -30,6 +31,7 @@ class SchoolExtension extends \Twig_Extension {
             'getNotSchoolsByAdvertAndUser' => new \Twig_Function_Method($this, 'getNotSchoolsByAdvertAndUserFunction'),
             'isSubscribed' => new \Twig_Function_Method($this, 'isSubscribedFunction'),
             'getSchoolContactTranslate' => new \Twig_Function_Method($this, 'getSchoolContactTranslateFunction'),
+            'getSchoolCategoryTranslate' => new \Twig_Function_Method($this, 'getCategoryTranslateFunction'),
         );
     }
 
@@ -69,12 +71,16 @@ class SchoolExtension extends \Twig_Extension {
         return $this->schoolService->isSubscribed($school, $user);
     }
 
-    public function getName() {
-            return 'school_extension';
-    }
-
     public function getSchoolContactTranslateFunction(SchoolContact $schoolContact, $locale) {
         return $this->schoolService->getSchoolContactTranslate($schoolContact, $locale);
+    }
+
+    public function getCategoryTranslateFunction(Category $category, $locale) {
+        return $this->schoolService->getCategoryTranslate($category, $locale);
+    }
+
+    public function getName() {
+            return 'school_extension';
     }
 
 }

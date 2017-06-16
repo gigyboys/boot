@@ -169,6 +169,9 @@ $(function() {
         });		
     });
 	
+	/*
+	 *modification category bg common
+	 */
     $('#btn_save_bgcat_common').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
@@ -200,9 +203,12 @@ $(function() {
 				console.log(errorThrown);
 			}
         });
-		
     });
 	
+	
+	/*
+	 *modification category bg translate
+	 */
     $('.btn_save_bgcat_trans').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");

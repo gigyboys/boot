@@ -19,6 +19,13 @@ use COM\SchoolBundle\Form\Type\SchoolInitType;
 use COM\SchoolBundle\Form\Type\SchoolGeneralType;
 use COM\SchoolBundle\Form\Type\SchoolTranslateType;
 
+use COM\SchoolBundle\Entity\Category;
+use COM\SchoolBundle\Entity\CategorySchool;
+use COM\SchoolBundle\Entity\CategoryTranslate;
+use COM\SchoolBundle\Form\Type\CategoryCommonType;
+use COM\SchoolBundle\Form\Type\CategoryInitType;
+use COM\SchoolBundle\Form\Type\CategoryTranslateType;
+
 class SchoolController extends Controller
 {
 	
@@ -300,6 +307,151 @@ class SchoolController extends Controller
                 'name' => $schoolTranslate->getName(),
                 'shortDescription' => $schoolTranslate->getShortDescription(),
                 'description' => $schoolTranslate->getDescription(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	/*
+	 * category school
+	 */
+    public function categoryAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+
+		$categories = $categoryRepository->findAll();
+		
+        return $this->render('COMAdminBundle:school:category.html.twig', array('categories' => $categories));
+    }
+	
+    public function addCategoryAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$category = new Category();
+		$formInitCategory = $this->get('form.factory')->create(new CategoryInitType(), $category);
+		
+		if ($formInitCategory->handleRequest($request)->isValid()) {
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($category->getDefaultName());
+			$category->setSlug($slug);
+			
+			$locales = $localeRepository->findAll();
+			foreach($locales as $locale){
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setCategory($category);
+				$categoryTranslate->setLocale($locale);
+				$categoryTranslate->setName($locale->getLocale()." ".$category->getDefaultName());
+				$categoryTranslate->setDescription($locale->getLocale().". Description .".$category->getDefaultName());
+				$em->persist($categoryTranslate);
+			}
+			
+			$em->persist($category);
+			$em->flush();
+			
+			$url = $this->get('router')->generate('com_admin_school_category_edit', array('id' => $category->getId()));
+			return new RedirectResponse($url);
+		}
+		
+        return $this->render('COMAdminBundle:school:add_category.html.twig', array(
+			'formInitCategory' => $formInitCategory->createView(),
+		));
+    }
+	
+    public function editCategoryAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+
+		$category = $categoryRepository->find($id);
+		
+        return $this->render('COMAdminBundle:school:edit_category.html.twig', array(
+			'category' => $category,
+		));
+    }
+	
+    public function editCategoryCommonAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+        
+        $category = $categoryRepository->find($id);
+        
+		$categoryTemp = new Category();
+		$formCategoryCommon = $this->get('form.factory')->create(new CategoryCommonType(), $categoryTemp);
+		
+        $response = new Response();
+		
+		if ($formCategoryCommon->handleRequest($request)->isValid()) {
+			$category->setDefaultName($categoryTemp->getDefaultName());
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			$slug = $platformService->sluggify($categoryTemp->getSlug());
+			
+			$category->setSlug($slug);
+            
+			$em->persist($category);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'defaultName' => $category->getDefaultName(),
+                'slug' => $category->getSlug(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editCategoryTranslateAction($id, $locale, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categoryTranslateRepository = $em->getRepository('COMSchoolBundle:CategoryTranslate');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        
+        $category = $categoryRepository->find($id);
+        $localeObj = $localeRepository->findOneBy(array(
+			'locale' => $locale,
+		));
+        
+		$categoryTranslateTemp = new CategoryTranslate();
+		$formCategoryTranslate = $this->get('form.factory')->create(new CategoryTranslateType(), $categoryTranslateTemp);
+		
+        $response = new Response();
+		
+		if ($formCategoryTranslate->handleRequest($request)->isValid()) {
+			$categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+				'category' => $category,
+				'locale' => $localeObj,
+			));
+			if(!$categoryTranslate){
+				$categoryTranslate = new CategoryTranslate();
+				$categoryTranslate->setLocale($localeObj);
+				$categoryTranslate->setCategory($category);
+			}
+			$categoryTranslate->setName($categoryTranslateTemp->getName());
+			$categoryTranslate->setDescription($categoryTranslateTemp->getDescription());
+            
+			$em->persist($categoryTranslate);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'name' => $categoryTranslate->getName(),
+                'description' => $categoryTranslate->getDescription()
             )));
 		}else{
             $response->setContent(json_encode(array(

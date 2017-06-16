@@ -78,6 +78,21 @@ com_admin_school_field_edit_translate:
 com_admin_school_field_delete:
     path:     /school/delete-field/{id}/
     defaults: { _controller: COMAdminBundle:SchoolField:deleteField }
+com_admin_school_category:
+    path:     /school/category
+    defaults: { _controller: COMAdminBundle:School:category }
+com_admin_school_category_add:
+    path:     /school/category/add
+    defaults: { _controller: COMAdminBundle:School:addCategory }
+com_admin_school_category_edit:
+    path:     /school/edit-category/{id}
+    defaults: { _controller: COMAdminBundle:School:editCategory }
+com_admin_school_category_edit_common:
+    path:     /school/category/edit-common/{id}
+    defaults: { _controller: COMAdminBundle:School:editCategoryCommon }
+com_admin_school_category_edit_translate:
+    path:     /school/category/edit-translate/{id}/{locale}
+    defaults: { _controller: COMAdminBundle:School:editCategoryTranslate }
 
 #blog
 com_admin_blog:

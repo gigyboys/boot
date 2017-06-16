@@ -4,6 +4,7 @@ namespace COM\SchoolBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Category;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\SchoolContact;
 use COM\SchoolBundle\Entity\Evaluation;
@@ -218,5 +219,16 @@ class SchoolService {
         ));
         
 		return $schoolContactTranslate;
+    }
+    
+    public function getCategoryTranslate(Category $category, $locale) {
+        $categoryTranslateRepository = $this->em->getRepository('COMSchoolBundle:CategoryTranslate');
+
+        $categoryTranslate = $categoryTranslateRepository->findOneBy(array(
+            'category' => $category,
+            'locale' => $locale,
+        ));
+        
+		return $categoryTranslate;
     }
 }
