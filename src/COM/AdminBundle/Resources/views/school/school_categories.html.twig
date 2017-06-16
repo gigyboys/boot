@@ -1,0 +1,152 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  school id : {{ school.id }} - Categories
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto"  /> <span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_categories', {'school_id': school.id}) }}"><span>{{ 'Categories' | trans }}</span></a> </span>
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
+						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
+						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
+						<a class="link" href="">evaluations</a>
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="">
+		<div style="float:left; height: 86px;margin:5px">
+			{# twig extension #}
+			{% set logo=schoolLogo(school) %}
+			{% if logo != "default.jpeg" %}
+				{% set pathtologo='uploads/images/school/logo/'~logo %}
+			{% else %}
+				{% set pathtologo='default/images/school/logo/'~logo %}
+			{% endif %}
+			<img id="school_logo" style="width: 80px; height: 80px" src="{{ pathtologo | imagine_filter('80x80') }}" alt="img sl" />
+		</div>
+		<div style="margin-left: 90px;">
+			<div>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_name">{{ school.name }}</span></td>
+					</tr>
+					<tr>
+						<td>ShortName</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_shortname">{{ school.shortName }}</span></td>
+					</tr>
+					<tr>
+						<td>Slug</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="both"></div>
+	</div>
+	
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> All Categories</span>
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input a_list_search_input" data-target-id="list_categories"/></span>
+			</div>
+			<div class="a_datatable_head_right">
+				{#right#}
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table" id="list_categories">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
+					<th>Name</th>
+					<th>Appartenance</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for category in categories %}
+					<tr class="a_table_line category_item" id="category_{{ category.id }}" data-text="{{ category.defaultName }}" style="display:table-row">
+						<td class="a_table_cell_id" style="width: 50px; text-align:center">
+							<div>{{ category.id }}</div>
+						</td>
+						<td>
+							<a href="{{ path('com_admin_school_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a>
+						</td>
+						<td>
+							{% if true %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+							{% else %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+							{% endif %}
+						</td>
+						<td class="a_table_cell_action">
+							<span class="dd" style="display:inline-block;">
+								<span href="#" class="dd_src" style="cursor:pointer">
+									action
+								</span>
+								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
+									actions
+								</div>
+							</span> 
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" class="result_state">{{ categories | length }} resultat(s)</span>
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block body_footer %}
+	<span style="display:inline-block; margin-top:6px; margin-left:6px">{{ categories | length }} categories</span>
+{% endblock %}

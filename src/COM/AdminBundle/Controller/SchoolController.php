@@ -461,4 +461,19 @@ class SchoolController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+	public function categoriesAction($school_id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+
+		$school = $schoolRepository->find($school_id);
+		$categories = $categoryRepository->findAll();
+		
+        return $this->render('COMAdminBundle:school:school_categories.html.twig', array(
+			'school' => $school,
+			'categories' => $categories
+		));
+    }
 }

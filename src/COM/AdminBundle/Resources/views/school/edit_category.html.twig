@@ -20,11 +20,9 @@
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
 			</span>
-			{#
 			<div class="dd_target">
-				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_category_add') }}">{{ 'New Category' | trans }}</a></span>
 			</div>
-			#}
 		</span> 
 		<span class="bc1"><a href="{{ path('com_admin_school_category_edit', {id :  category.id}) }}">{{ category.defaultName }}</a></span>
 	</div>

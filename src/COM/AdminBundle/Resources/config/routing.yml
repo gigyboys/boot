@@ -93,6 +93,9 @@ com_admin_school_category_edit_common:
 com_admin_school_category_edit_translate:
     path:     /school/category/edit-translate/{id}/{locale}
     defaults: { _controller: COMAdminBundle:School:editCategoryTranslate }
+com_admin_school_categories:
+    path:     /school/edit-school/{school_id}/categories
+    defaults: { _controller: COMAdminBundle:School:categories }
 
 #blog
 com_admin_blog:
