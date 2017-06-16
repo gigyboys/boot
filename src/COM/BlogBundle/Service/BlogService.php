@@ -8,6 +8,7 @@ use COM\BlogBundle\Entity\Category;
 use COM\BlogBundle\Entity\PostTranslate;
 use COM\BlogBundle\Entity\CategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
+use COM\SchoolBundle\Entity\School;
 
 class BlogService {
 
@@ -140,6 +141,25 @@ class BlogService {
 		
 		foreach($categoryPosts as $categoryPost){
 			$post = $categoryPost->getPost();
+			if($post->getPublished()){
+				array_push($posts, $post);
+			}
+		}
+        
+		return $posts;
+    }
+    
+    public function getPublishedPostsBySchool(School $school) {
+        $postSchoolRepository = $this->em->getRepository('COMPlatformBundle:PostSchool');
+
+		$posts = array();
+		
+		$postSchools = $postSchoolRepository->findBy(array(
+			'school' => $school,
+		));
+		
+		foreach($postSchools as $postSchool){
+			$post = $postSchool->getPost();
 			if($post->getPublished()){
 				array_push($posts, $post);
 			}

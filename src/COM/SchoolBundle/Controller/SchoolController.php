@@ -119,15 +119,19 @@ class SchoolController extends Controller
 			'school' => $school,
 		));
 		
+		//posts
 		$blogService = $this->container->get('com_blog.blog_service');
-		foreach($postSchools as $postSchool){
-			$post = $postSchool->getPost();
+		$posts = $blogService->getPublishedPostsBySchool($school);
+		foreach($posts as $post){
 			$blogService->hydratePostLang($post, $locale);
 		}
 		
-		$advertSchools = $advertSchoolRepository->findBy(array(
-			'school' => $school,
-		));
+		//advert
+		$advertService = $this->container->get('com_advert.advert_service');
+		$adverts = $advertService->getPublishedAdvertsBySchool($school);
+		foreach($adverts as $advert){
+			$advertService->hydrateAdvertLang($advert, $locale);
+		}
 		
 		$schoolContacts = $schoolContactRepository->findBy(array(
 			'school' => $school,
@@ -149,8 +153,8 @@ class SchoolController extends Controller
 		}
         return $this->render('COMSchoolBundle:school:view_school.html.twig', array(
 			'school' => $school,
-			'advertSchools' => $advertSchools,
-			'postSchools' => $postSchools,
+			'adverts' => $adverts,
+			'posts' => $posts,
 			'schoolContacts' => $schoolContacts,
 			'locale' => $locale,
 			'fields' => $fields,

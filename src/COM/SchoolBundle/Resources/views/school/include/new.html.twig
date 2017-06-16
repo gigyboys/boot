@@ -1,22 +1,21 @@
 <div style="padding:5px; min-height:100px">
-	{% if postSchools|length == 0 %}
+	{% if posts|length == 0 %}
 		Aucune actualité à afficher
 	{% endif %}
 	<div>
-	{% for postSchool in postSchools %}
+	{% for post in posts %}
 		<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
 			<div>
-				<span><a style="font-weight:bold;color:#666" href="{{ path('com_blog_view', {'slug': postSchool.post.slug}) }}">{{ postSchool.post.title }}</a></span>
+				<span><a style="font-weight:bold;color:#666" href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a></span>
 			</div>
 			<div>
-				{% set postTranslate = getPostTranslate(postSchool.post, locale) %}
-				{{ substrSpace(postTranslate.description, 500) }}
+				{{ substrSpace(post.description, 500) }}
 			</div>
 			<div>
 				{# twig extension #}
-				{% set userInfo = getLinkUserInfo(postSchool.post.user, postSchool.post.user.name) %}
+				{% set userInfo = getLinkUserInfo(post.user, post.user.name) %}
 				By {{ userInfo | raw }}
-				  on {{ postSchool.post.date | date('Y-m-d H:i:s') }}
+				  on {{ post.date | date('Y-m-d H:i:s') }}
 			</div>
 		</div>
 	{% endfor %}

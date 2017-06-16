@@ -8,6 +8,7 @@ use COM\AdvertBundle\Entity\Category;
 use COM\AdvertBundle\Entity\AdvertTranslate;
 use COM\AdvertBundle\Entity\CategoryTranslate;
 use COM\PlatformBundle\Entity\Locale;
+use COM\SchoolBundle\Entity\School;
 
 class AdvertService {
 
@@ -24,6 +25,13 @@ class AdvertService {
 			'advert' => $advert,
 			'locale' => $locale,
 		));
+		if($advertTranslate){
+			$advert->setTitle($advertTranslate->getTitle());
+			$advert->setContent($advertTranslate->getContent());
+		}else{
+			$advert->setTitle($advert->getDefaultTitle());
+			$advert->setContent("");
+		}
 		
 		$advert->setTitle($advertTranslate->getTitle());
 		$advert->setContent($advertTranslate->getContent());
@@ -93,6 +101,25 @@ class AdvertService {
         $categories = $categoryRepository->findAll();
         
 		return $categories;
+    }
+    
+    public function getPublishedAdvertsBySchool(School $school) {
+        $advertSchoolRepository = $this->em->getRepository('COMPlatformBundle:AdvertSchool');
+
+		$adverts = array();
+		
+		$advertSchools = $advertSchoolRepository->findBy(array(
+			'school' => $school,
+		));
+		
+		foreach($advertSchools as $advertSchool){
+			$advert = $advertSchool->getAdvert();
+			if($advert->getPublished()){
+				array_push($adverts, $advert);
+			}
+		}
+        
+		return $adverts;
     }
     
     public function getCategoryByAdvert(Advert $advert) {

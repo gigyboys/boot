@@ -33,9 +33,13 @@ class SchoolService {
 			'school' => $school,
 			'locale' => $locale,
 		));
-		
-		$school->setDescription($schoolTranslate->getDescription());
-		$school->setShortDescription($schoolTranslate->getShortDescription());
+		if($schoolTranslate){
+			$school->setDescription($schoolTranslate->getDescription());
+			$school->setShortDescription($schoolTranslate->getShortDescription());
+		}else{
+			$school->setDescription("");
+			$school->setShortDescription("");
+		}
 		
 		return $school;
     }
@@ -178,9 +182,13 @@ class SchoolService {
 			'field' => $field,
 			'locale' => $locale,
 		));
-		
-		$field->setName($fieldTranslate->getName());
-		$field->setDescription($fieldTranslate->getDescription());
+		if($fieldTranslate){
+			$field->setName($fieldTranslate->getName());
+			$field->setDescription($fieldTranslate->getDescription());
+		}else{
+			$field->setName($field->getDefaultName());
+			$field->setDescription("");
+		}
 		
 		return $field;
     }
