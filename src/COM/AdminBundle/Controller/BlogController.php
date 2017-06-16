@@ -153,6 +153,38 @@ class BlogController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+    public function toogleShowAuthorAction($post_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+        
+        $post = $postRepository->find($post_id);
+		
+        $response = new Response();
+		
+		if ($post) {
+			if($post->getShowAuthor() == true){
+				$post->setShowAuthor(false) ;
+			}else{
+				$post->setShowAuthor(true) ;
+			}
+            
+			$em->persist($post);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'showAuthor' => $post->getShowAuthor(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
 
 	public function changeIllustrationAction($id)
     {

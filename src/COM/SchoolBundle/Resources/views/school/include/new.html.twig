@@ -12,9 +12,11 @@
 				{{ substrSpace(post.description, 500) }}
 			</div>
 			<div>
-				{# twig extension #}
-				{% set userInfo = getLinkUserInfo(post.user, post.user.name) %}
-				By {{ userInfo | raw }}
+				{% if post.showAuthor %}
+					{# twig extension #}
+					{% set userInfo = getLinkUserInfo(post.user, post.user.name) %}
+					By {{ userInfo | raw }}
+				{% endif %}
 				  on {{ post.date | date('Y-m-d H:i:s') }}
 			</div>
 		</div>

@@ -248,5 +248,14 @@
 			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
 		{% endif %}
 	</span>
+	<span id="toggle_showAuthorState_post" data-target="{{ path('com_admin_blog_post_toogle_show_author', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if post.showAuthor %}
+			<span class="show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
+			<span class="not_show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
+		{% else %}
+			<span class="show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
+			<span class="not_show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
+		{% endif %}
+	</span>
 {% endblock %}
 

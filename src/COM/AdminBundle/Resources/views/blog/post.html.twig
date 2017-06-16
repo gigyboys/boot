@@ -70,7 +70,14 @@
 						</td>
 					#}
 					<td>
-						<span>{{ post.user.name }}</span>
+						<span>
+						{% if post.showAuthor %}
+							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+						{% else %}
+							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+						{% endif %} 
+						{{ post.user.name }}
+						</span>
 					</td>
 					<td>
 						{% if post.published %}

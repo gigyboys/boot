@@ -50,6 +50,13 @@ class Post extends Controller
      * @ORM\Column(name="published", type="boolean")
      */
     private $published;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="show_author", type="boolean")
+     */
+    private $showAuthor;
 
     /**
      * @var string
@@ -311,6 +318,30 @@ class Post extends Controller
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set showAuthor
+     *
+     * @param boolean $showAuthor
+     *
+     * @return Post
+     */
+    public function setShowAuthor($showAuthor)
+    {
+        $this->showAuthor = $showAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Get showAuthor
+     *
+     * @return boolean
+     */
+    public function getShowAuthor()
+    {
+        return $this->showAuthor;
     }
 	
 	//title

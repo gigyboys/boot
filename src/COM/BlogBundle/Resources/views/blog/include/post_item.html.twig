@@ -3,6 +3,12 @@
 		<a href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a>
 	</h2>
 	<div class="meta_info">
+		{% if post.showAuthor %}
+			{# twig extension #}
+			{% set userInfo = getLinkUserInfo(post.user, post.user.name) %}
+			<div class="date_info">By {{ userInfo | raw }}</div>
+		{% endif %}
+		
 		<div class="date_info">{{ post.date | date('Y-m-d H:i:s') }}</div>
 		
 		{% set category = getCategoryByPost(post) %}

@@ -138,6 +138,37 @@ $(function() {
         });		
     });
 	
+	
+	//toogleShowAuthor post
+    $('#toggle_showAuthorState_post').on('click', function(){
+        var $this = $(this);
+        var target = $this.data('target');
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					if(data.showAuthor){
+						$(".show_author_btn").hide();
+						$(".not_show_author_btn").show();
+					}else{
+						$(".show_author_btn").show();
+						$(".not_show_author_btn").hide();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });		
+    });
+	
     $('#btn_save_bgcat_common').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");
