@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
 		$shortLocale = $request->getLocale();
@@ -18,8 +19,12 @@ class HomeController extends Controller
 			'locale' => $shortLocale,
 		));
 		
+		$categories = $categoryRepository->findAll();
+		
+		
         return $this->render('COMPlatformBundle:home:home.html.twig', array(
 			'locale' => $locale,
+			'categories' => $categories,
 		));
     }
 }

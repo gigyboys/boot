@@ -1,0 +1,45 @@
+{% extends "COMSchoolBundle::school.html.twig" %}
+
+{% block title %}
+  Schools - {{ category.defaultName }}
+{% endblock %}
+
+{% block school_body %}
+	<div class="cr">
+		<div class="ct">
+			<div id="sl_list">
+				<div class="sll">
+				
+					<div class="mg_h10">
+					{{ category.defaultName }}
+					</div>
+					<div id="sll_load_list" style="display:none;">chargement ...</div>
+					<div class="sll_ct" style="">
+						{% for school in schools %}
+							{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+						{% endfor %}
+						<div class="both"></div>
+					</div>
+					<div class="sll_pagination">
+						{{ include("COMSchoolBundle:school:include/pagination_view_category.html.twig") }}
+					</div>
+				</div>
+				<div class="slr" style="">
+					<div id="sl_oftheday_right">
+						{# twig extension #}
+						{% set school = getSchoolById(2) %}
+						<div class="title">
+							<span>The school <br />of the day</span>
+						</div>
+						<div style="">
+						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
+						</div>
+						{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+						<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
+					</div>
+				</div>
+				<div class="both"></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

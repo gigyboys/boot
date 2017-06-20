@@ -476,4 +476,48 @@ class SchoolController extends Controller
 			'categories' => $categories
 		));
     }
+	
+    public function toogleCategoryAction($school_id, $category_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+        
+        $school = $schoolRepository->find($school_id);
+        $category = $categoryRepository->find($category_id);
+		
+        $response = new Response();
+		
+		if ($school && $category) {
+			$categorySchool = $categorySchoolRepository->findOneBy(array(
+                'school' => $school,
+                'category' => $category,
+            ));
+			
+			if($categorySchool){
+				$em->remove($categorySchool);
+				$isCategory = false;
+			}else{
+				$categorySchool = new CategorySchool;
+				$categorySchool->setSchool($school);
+				$categorySchool->setCategory($category);
+				$em->persist($categorySchool);
+				$isCategory = true;
+			}
+            
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'isCategory' => $isCategory,
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
 }

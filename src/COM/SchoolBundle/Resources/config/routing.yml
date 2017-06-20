@@ -6,6 +6,14 @@ com_school_home:
 com_school_add_evaluation:
     path:     /add-evaluation/{id}
     defaults: { _controller: COMSchoolBundle:School:addEvaluation }
+com_school_toggle_subscription:
+    path:     /school/{school_id}/toggle-subscription
+    defaults: { _controller: COMSchoolBundle:School:toogleSubscription }
+com_school_category_view:
+    path:     /school/category/{slug}/{page}
+    defaults:
+        _controller: COMSchoolBundle:School:viewCategory
+        page: 1
 com_school_viewbyid:
     path:     /school/id/{id}
     defaults:
@@ -15,6 +23,3 @@ com_school_view:
     defaults:
         _controller: COMSchoolBundle:School:view
         type: about
-com_school_toggle_subscription:
-    path:     /school/{school_id}/toggle-subscription
-    defaults: { _controller: COMSchoolBundle:School:toogleSubscription }

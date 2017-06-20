@@ -641,4 +641,35 @@ $(function() {
         });
     });
 	
+	
+	//toogleCategory sl
+    $('.a_sl_toggle_cat').on('click', function(){
+        var $this = $(this);
+        var target = $this.data('target');
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					if(data.isCategory){
+						$this.find(".is_cat_btn").hide();
+						$this.find(".is_not_cat_btn").show();
+					}else{
+						$this.find(".is_cat_btn").show();
+						$this.find(".is_not_cat_btn").hide();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });		
+    });
+	
 });

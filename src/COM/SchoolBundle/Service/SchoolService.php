@@ -231,4 +231,69 @@ class SchoolService {
         
 		return $categoryTranslate;
     }
+    
+    public function isCategorySchool(School $school, Category $category) {
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+        $categorySchool = $categorySchoolRepository->findOneBy(array(
+			'school' => $school,
+			'category' => $category,
+		));
+		
+		if($categorySchool){
+			$isCategory = true;
+		}else{
+			$isCategory = false;
+		}
+        
+		return $isCategory;
+    }
+    
+    public function getSchoolByCategoryOffsetLimit(Category $category, $offset, $limit, $publishState) {
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+		$allSchools = array();
+		$schools = array();
+        $categorySchools = $categorySchoolRepository->findBy(array(
+            'category' => $category,
+        ));
+		
+		foreach($categorySchools as $categorySchool){
+			$school = $categorySchool->getSchool();
+			if($school->getPublished() == $publishState){
+				array_push($allSchools, $school);
+			}
+		}
+		
+		$start = $offset;
+		if(count($allSchools) < $offset+$limit){
+			$end = count($allSchools);
+		}else{
+			$end = $offset+$limit;
+		}
+		
+		for ($i=$offset; $i<$end; $i++) {
+			array_push($schools, $allSchools[$i]);
+		}
+        
+		return $schools;
+    }
+    
+    public function getAllSchoolByCategory(Category $category, $publishState) {
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+		$schools = array();
+        $categorySchools = $categorySchoolRepository->findBy(array(
+            'category' => $category,
+        ));
+		
+		foreach($categorySchools as $categorySchool){
+			$school = $categorySchool->getSchool();
+			if($school->getPublished() == $publishState){
+				array_push($schools, $school);
+			}
+		}
+        
+		return $schools;
+    }
 }

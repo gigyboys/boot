@@ -96,6 +96,9 @@ com_admin_school_category_edit_translate:
 com_admin_school_categories:
     path:     /school/edit-school/{school_id}/categories
     defaults: { _controller: COMAdminBundle:School:categories }
+com_admin_school_toogle_category:
+    path:     /school/edit-school/{school_id}/toogle-category/{category_id}
+    defaults: { _controller: COMAdminBundle:School:toogleCategory }
 
 #blog
 com_admin_blog:

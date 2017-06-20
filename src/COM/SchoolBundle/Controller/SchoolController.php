@@ -91,6 +91,92 @@ class SchoolController extends Controller
 		return $response;
     }
 	
+	/*
+	 * view category
+	 */
+    public function viewCategoryAction($slug, $page, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$category = $categoryRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		
+		$limit = 12;
+		$offset = ($page-1) * $limit;
+		$publishState = true; // published == true
+		$schoolService = $this->container->get('com_school.school_service');
+		
+		$schools = $schoolService->getSchoolByCategoryOffsetLimit($category, $offset, $limit, $publishState);
+		
+		$allSchools = $schoolService->getAllSchoolByCategory($category, $publishState);
+		
+		foreach($schools as $school){
+			$schoolService->hydrateSchoolLang($school, $locale);
+		}
+		
+		$response = new Response();
+		if ($request->isXmlHttpRequest()){
+			//listSchool
+			$listSchools = array();
+			foreach($schools as $school){
+				$school_view = $this->renderView('COMSchoolBundle:school:include/school_item.html.twig', array(
+				  'school' => $school,
+				));
+				array_push($listSchools, array(
+					"school_id" 	=> $school->getId(),
+					"school_view" 	=> $school_view,
+				));
+			}
+			
+			//pagination
+			$pagination = $this->renderView('COMSchoolBundle:school:include/pagination_view_category.html.twig', array(
+				'allSchools' => $allSchools,
+				'schools' => $schools,
+				'category' => $category,
+				'currentpage' => $page,
+				'locale' => $locale,
+			));
+			
+			$currentUrl = $this->get('router')->generate('com_school_home', array('page' => $page));
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'schools' => $listSchools,
+				'currentpage' => $page,
+				'pagination' => $pagination,
+				'currentUrl' => $currentUrl,
+				'category' => $category,
+				'page' => $page,
+				'locale' => $locale,
+			)));
+		}else{
+			if(!$schools){
+				$url = $this->get('router')->generate('com_school_home', array('page' => 1));
+				return new RedirectResponse($url);
+			}
+			$response = $this->render('COMSchoolBundle:school:view_category.html.twig', array(
+				'category' => $category,
+				'allSchools' => $allSchools,
+				'schools' => $schools,
+				'currentpage' => $page,
+				'locale' => $locale,
+				'entityView' => 'school',
+			));
+		}
+		
+		return $response;
+    }
+	
     public function viewAction($slug, $type, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
