@@ -296,4 +296,35 @@ class SchoolService {
         
 		return $schools;
     }
+    
+    public function getCurrentSchoolByCategory(Category $category) {
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+        $categorySchool = $categorySchoolRepository->findOneBy(array(
+            'category' => $category,
+            'current' => true,
+        ));
+		
+		if($categorySchool && $categorySchool->getSchool()->getPublished()){
+			return $categorySchool->getSchool();
+		}else{
+			$schools = array();
+			$categorySchools = $categorySchoolRepository->findBy(array(
+				'category' => $category,
+			));
+			
+			foreach($categorySchools as $categorySchool){
+				$school = $categorySchool->getSchool();
+				if($school->getPublished() == true){
+					array_push($schools, $school);
+				}
+			}
+			if($schools){
+				$index = array_rand($schools, 1);
+				return $schools[$index];
+			}
+			
+			return null;
+		}
+    }
 }

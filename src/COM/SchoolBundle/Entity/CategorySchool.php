@@ -32,6 +32,13 @@ class CategorySchool
 	 * @ORM\JoinColumn(name="category_id", nullable=false)
 	 */
 	private $category;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="current", type="boolean")
+     */
+    private $current;
 
 
     /**
@@ -88,5 +95,30 @@ class CategorySchool
     public function getCategory()
     {
         return $this->category;
+    }
+
+
+    /**
+     * Set current
+     *
+     * @param boolean $current
+     *
+     * @return CategorySchool
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * Get current
+     *
+     * @return boolean
+     */
+    public function getCurrent()
+    {
+        return $this->current;
     }
 }

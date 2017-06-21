@@ -19,18 +19,34 @@
 
 
 {% block school_body %}
+
+	{# twig extension #}
+	{% set logo=schoolLogo(school) %}
+	{% if logo != "default.jpeg" %}
+		{% set pathtologo='uploads/images/school/logo/'~logo %}
+	{% else %}
+		{% set pathtologo='default/images/school/logo/'~logo %}
+	{% endif %}
+
+	<div class="cr" id="sl_view_hidden" style="display:none; position: fixed; top: 40px; height:40px; width:100%; background:rgba(255,255,255,0.9);border-bottom: 1px solid #888;box-shadow: 1px 1px 7px #999;z-index:49;">
+		<div class="ct">
+			<div class="mg_h10">
+				<div style="float:left; width: 40px; padding-top:4px">
+					<img id="sl_view_logo_hidden" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
+				</div>
+				<div style="margin-left:44px; padding-top:8px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+					{% if school.shortName | trim != "" %}
+						({{ school.shortName }}) 
+					{% endif %} 
+					{{ school.name }} 
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="sl_gl" class="cr">
 		<div class="ct">
 			<div style="padding:5px 9px 1px 9px; border:1px solid transparent">
 				<div class="left">
-					{# twig extension #}
-					{% set logo=schoolLogo(school) %}
-					{% if logo != "default.jpeg" %}
-						{% set pathtologo='uploads/images/school/logo/'~logo %}
-					{% else %}
-						{% set pathtologo='default/images/school/logo/'~logo %}
-					{% endif %}
-					
 					<img id="sl_view_logo" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
 				</div>
 				<div style="min-height:110px">
@@ -73,19 +89,19 @@
 				<div class="ct">
 					<div class="mg_h10">
 						<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle; width:19px; height:19px; border-radius: 50% 50%; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /> A propos</span>
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom; width:19px; height:19px; border-radius: 50% 50%; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /> A propos</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /> Actualités</span>
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /> Actualités</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /> Annonces</span>
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /> Annonces</span>
 						</span>  
 						<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /> Evaluations</span>
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /> Evaluations</span>
 						</span>
 						<span class="tab_sl_item{% if type == 'contact' %} selected{% endif %}" id="tab_sl_contact" data-title="{{ school.name }} - contacts" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:middle;" src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /> Contacts</span>
+							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /> Contacts</span>
 						</span>
 					</div>
 				</div>

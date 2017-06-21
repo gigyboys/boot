@@ -147,7 +147,10 @@ class SchoolController extends Controller
 				'locale' => $locale,
 			));
 			
-			$currentUrl = $this->get('router')->generate('com_school_home', array('page' => $page));
+			$currentUrl = $this->get('router')->generate('com_school_category_view', array(
+				'slug' => $category->getSlug(),
+				'page' => $page,
+			));
 			
 			$response->setContent(json_encode(array(
 				'state' => 1,

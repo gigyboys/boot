@@ -80,11 +80,36 @@ $(function() {
 		
     }
 	
+	function toggleInfoSchool(){
+		var slgl = $( "#sl_gl" );
+		if(slgl.length != 0){
+			var slglposition = $( "#sl_gl" ).offset().top;
+			var scrollTop = $( document ).scrollTop();
+			if(slglposition-scrollTop+30 < 0){
+				$( "#sl_view_hidden" ).show();
+				$( "#navigation" ).css("border-bottom","1px solid #ddd");
+				$( "#navigation" ).css("box-shadow","0px 0px 0px #fff");
+			}else{
+				$( "#sl_view_hidden" ).hide();
+				$( "#navigation" ).css("border-bottom","1px solid #888");
+				$( "#navigation" ).css("box-shadow","1px 1px 7px #999");
+			}
+		}
+	}
+	
     $(window).resize(function() {
         slContent();
     });
 
     slContent();
+	toggleInfoSchool();
+	$( window ).scroll(function() {
+		toggleInfoSchool();
+	});
+	
+    $(window).resize(function() {
+        toggleInfoSchool();
+    });
 	
 	/*
 	* toogle school of the day description

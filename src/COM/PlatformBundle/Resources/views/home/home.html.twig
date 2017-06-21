@@ -9,21 +9,43 @@
 	<div class="cr">
 		<div class="ct">
 			<div style="margin:30px 0px;">
-				{% for category in categories %}
-					<div style="box-sizing : border-box; float:left; width: 25%; padding: 10px">
-						<div style="border:1px solid #ddd; text-align:center; border-radius:3px; background: #f8f8f8">
-							<div style="">
-								<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="display:block; padding: 10px 0;">
-									{{ category.defaultName }}
-								</a>
-							</div>
-							<div style="">
-								vilitate ipsa parum cavendi ad colligendosvilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
+				<div class="fm_list_topic">
+					{% for category in categories %}
+						<div style="box-sizing : border-box; float:left; width: 300px; padding: 10px">
+							<div style="border:1px solid #ddd; text-align:center; border-radius:3px; background: #f8f8f8">
+								<div style="">
+									<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="display:block; padding: 10px 0;">
+										{{ category.defaultName }}
+									</a>
+								</div>
+								<div class="mg_5">
+									<div class="sp"></div>
+								</div>
+								{% set school = getCurrentSchoolByCategory(category) %}
+								<div style="height:52px">
+									<div style="width: 40px; height:40px; float:left;">
+										{# twig extension #}
+										{% set logo=schoolLogo(school) %}
+										{% if logo != "default.jpeg" %}
+											{% set pathtologo='uploads/images/school/logo/'~logo %}
+										{% else %}
+											{% set pathtologo='default/images/school/logo/'~logo %}
+										{% endif %}
+										<img style="width:40px; height:40px; margin:5px;border: 1px solid #ddd; display:inline-block " src="{{ pathtologo | imagine_filter('40x40') }}" />
+									</div>
+									<div style="margin-left: 52px; margin-right: 5px; text-align:left">
+										{% if school.shortName | trim != "" %}
+											<div style="padding-top: 4px; font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ school.shortName }}</div>
+										{% endif %}
+										<div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" title="{{ school.name }}">{{ school.name }}</div>
+									</div>
+									<div class="both"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
-				<div class="both"></div>
+					{% endfor %}
+					<div class="both"></div>
+				</div>
 			</div>
 		</div>
 	</div>
