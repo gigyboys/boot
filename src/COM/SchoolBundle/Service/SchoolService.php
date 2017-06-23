@@ -8,6 +8,7 @@ use COM\SchoolBundle\Entity\Category;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\SchoolContact;
 use COM\SchoolBundle\Entity\Evaluation;
+use COM\SchoolBundle\Entity\SchoolOfTheDay;
 use COM\BlogBundle\Entity\Post;
 use COM\AdvertBundle\Entity\Advert;
 use COM\UserBundle\Entity\User;
@@ -325,6 +326,76 @@ class SchoolService {
 			}
 			
 			return null;
+		}
+    }
+    
+    public function getSchoolOfTheDay() {
+        $schoolOfTheDayRepository = $this->em->getRepository('COMSchoolBundle:SchoolOfTheDay');
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+		
+		$date = new \DateTime();
+        $schoolOfTheDay = $schoolOfTheDayRepository->findOneBy(array(
+            'day' => $date,
+            'current' => true,
+        ));
+		
+		if($schoolOfTheDay){
+			if($schoolOfTheDay->getSchool()->getPublished()){
+				return $schoolOfTheDay->getSchool();
+			}else{
+				$schoolOfTheDays = $schoolOfTheDayRepository->findBy(array(
+					'day' => $date
+				));
+            
+				foreach ($schoolOfTheDays as $schoolOfTheDay) {
+					$schoolOfTheDay->setCurrent(false);
+				}
+				
+				$schoolOfTheDay = new SchoolOfTheDay();
+				$schoolOfTheDay->setDate($date);
+				$schoolOfTheDay->setDay($date);
+				$schoolOfTheDay->setCurrent(true);
+							
+				$schools = $schoolRepository->findBy(array(
+					'published' => true,
+				));
+				$schoolsArray = array();
+				foreach($schools as $school){
+					array_push($schoolsArray, $school);
+				}
+				$index = array_rand($schoolsArray, 1);
+				$school = $schoolsArray[$index];
+				
+				
+				$schoolOfTheDay->setSchool($school);
+				
+				$this->em->persist($schoolOfTheDay);
+				$this->em->flush();
+				
+				return $school;
+			}
+		}else{
+			$schoolOfTheDay = new SchoolOfTheDay();
+			$schoolOfTheDay->setDate($date);
+			$schoolOfTheDay->setDay($date);
+			$schoolOfTheDay->setCurrent(true);
+							
+			$schools = $schoolRepository->findBy(array(
+				'published' => true,
+			));
+			$schoolsArray = array();
+			foreach($schools as $school){
+				array_push($schoolsArray, $school);
+			}
+			$index = array_rand($schoolsArray, 1);
+			$school = $schoolsArray[$index];
+			
+			$schoolOfTheDay->setSchool($school);
+				
+			$this->em->persist($schoolOfTheDay);
+			$this->em->flush();
+			
+			return $school;
 		}
     }
 }

@@ -23,7 +23,9 @@
 				<div class="slr" style="">
 					<div id="sl_oftheday_right">
 						{# twig extension #}
-						{% set school = getSchoolById(2) %}
+						
+						{#{% set school = getSchoolById(1) %}#}
+						{% set school = getSchoolOfTheDay() %}
 						<div class="title">
 							<span>The school <br />of the day</span>
 						</div>
@@ -31,7 +33,9 @@
 						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
 						</div>
 						{% set schoolTranslate = getSchoolTranslate(school, locale) %}
-						<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
+						<div class="sl_desc" style="text-align:justify">
+							{{ substrSpace(schoolTranslate.shortDescription, 165) }}
+						</div>
 					</div>
 				</div>
 				<div class="both"></div>

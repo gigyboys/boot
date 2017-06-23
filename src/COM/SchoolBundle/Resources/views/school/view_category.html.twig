@@ -9,8 +9,7 @@
 		<div class="ct">
 			<div id="sl_list">
 				<div class="sll">
-				
-					<div class="mg_h10">
+					<div class="mg_h10" style="border: 1px solid #ddd; background: #eee;padding: 10px; font-weight: bold; margin-top: 10px">
 					{{ category.defaultName }}
 					</div>
 					<div id="sll_load_list" style="display:none;">chargement ...</div>
@@ -27,7 +26,9 @@
 				<div class="slr" style="">
 					<div id="sl_oftheday_right">
 						{# twig extension #}
-						{% set school = getSchoolById(2) %}
+						
+						{#{% set school = getSchoolById(1) %}#}
+						{% set school = getSchoolOfTheDay() %}
 						<div class="title">
 							<span>The school <br />of the day</span>
 						</div>
@@ -35,7 +36,9 @@
 						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
 						</div>
 						{% set schoolTranslate = getSchoolTranslate(school, locale) %}
-						<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
+						<div class="sl_desc" style="text-align:justify">
+							{{ substrSpace(schoolTranslate.shortDescription, 180) }}
+						</div>
 					</div>
 				</div>
 				<div class="both"></div>

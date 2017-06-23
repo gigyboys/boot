@@ -230,7 +230,6 @@ class Cover
         }
     }
 
-
     /**
      * Set current
      *

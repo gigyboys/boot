@@ -22,7 +22,8 @@
 			<img style="" src="{{ pathtocover | imagine_filter('218x140') }}" alt="img sl" />
 		</div>
 		<div class="sl_short_description">
-			{{ substrSpace(school.shortDescription, 165) }}
+			{% set schoolTranslate = getSchoolTranslate(school, locale) %}
+			{{ substrSpace(schoolTranslate.shortDescription, 165) }}
 		</div>
 	</div>
 	<div class="sl_label">

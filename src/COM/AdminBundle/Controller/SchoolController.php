@@ -502,6 +502,8 @@ class SchoolController extends Controller
 				$categorySchool = new CategorySchool;
 				$categorySchool->setSchool($school);
 				$categorySchool->setCategory($category);
+				$categorySchool->setCurrent(false);
+				
 				$em->persist($categorySchool);
 				$isCategory = true;
 			}
