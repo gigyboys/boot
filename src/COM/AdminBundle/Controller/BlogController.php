@@ -70,6 +70,7 @@ class BlogController extends Controller
 			$post->setViewNumber(0);
 			$user = $this->getUser();
 			$post->setUser($user);
+			$post->setShowAuthor(true);
 			
 			$locales = $localeRepository->findAll();
 			foreach($locales as $locale){
