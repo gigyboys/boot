@@ -398,4 +398,46 @@ class SchoolService {
 			return $school;
 		}
     }
+    
+    public function getCategoriesWithPublishedSchool($limit) {
+        $categoryRepository = $this->em->getRepository('COMSchoolBundle:Category');
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+		$categoryArray = array();
+        $categories = $categoryRepository->findAll();
+		
+		foreach($categories as $category){
+			
+			$categorySchools = $categorySchoolRepository->findBy(array(
+				'category' => $category,
+			));
+			$isCategory = false;
+			foreach($categorySchools as $categorySchool){
+				$school = $categorySchool->getSchool();
+				if($school->getPublished()){
+					$isCategory = true;
+				}
+			}
+			if($isCategory){
+				array_push($categoryArray, $category);
+			}
+		}
+		
+		if($limit == 0){
+			return $categoryArray;
+		}else{			
+			$categoriesLimit = array();
+			if(count($categoryArray) < $limit){
+				$end = count($categoryArray);
+			}else{
+				$end = $limit;
+			}
+			
+			for ($i=0; $i<$end; $i++) {
+				array_push($categoriesLimit, $categoryArray[$i]);
+			}
+			
+			return $categoriesLimit;
+		}
+    }
 }

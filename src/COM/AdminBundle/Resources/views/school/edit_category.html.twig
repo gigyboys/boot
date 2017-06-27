@@ -26,6 +26,20 @@
 		</span> 
 		<span class="bc1"><a href="{{ path('com_admin_school_category_edit', {id :  category.id}) }}">{{ category.defaultName }}</a></span>
 	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" href="{{ path('com_admin_school_category_edit_schools', {'id': category.id}) }}">{{ 'Schools' | trans }}</a>
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
 {% endblock %}
 
 {% block content_body %}

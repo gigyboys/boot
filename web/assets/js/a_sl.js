@@ -672,4 +672,119 @@ $(function() {
         });		
     });
 	
+	
+	//setDefaultSchool
+	$('.cat_sl_item').live('click', function() {
+		var $this = $(this);
+        var target = $this.data('target');
+		var data = {
+		};
+		
+		$.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$( "#cat_default_sl" ).html(data.schoolName+" <span id='cat_default_null'  style='cursor:pointer'>x</span>");
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
+	//setDefaultSchool null
+	$('#cat_default_null').live('click', function() {
+		var $this = $(this);
+        var target = $('#cat_default_sl').data('target');
+		var data = {
+		};
+		
+		$.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$( "#cat_default_sl" ).html("Aucune école par défaut");
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
+	//remove school from category
+	$('.remove_sl_cat').live('click', function() {
+		var categoryId = $(this).data("cat-id");
+		var schoolId = $(this).data("sl-id");
+		var categoryName = $(this).data("cat-name");
+		var schoolName = $(this).data("sl-name");
+		var target = $(this).data("target");
+		
+		var content = "";
+		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
+			content += '<div style="text-align:center;padding:10px 0"> Voulez vous retirer "'+schoolName+'" de la catégorie "'+categoryName+'"?</div>';
+			content += '<div style="text-align:center">	';
+				content += '<span class="button_closable" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Annuler	</span>';
+				content += '<span class="confirm_remove_sl_cat button_closable" data-cat-id="'+categoryId+'" data-sl-id="'+schoolId+'" data-target="'+target+'" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Confirmer	</span>	';
+			content += '</div>';
+		content += '</div>';
+        
+		popup(content, 500, true);
+		
+    });
+	
+	//confirm remove school from category
+	$('.confirm_remove_sl_cat').live('click', function() {
+		var $this = $(this);
+		var categoryId = $this.data("cat-id");
+		var schoolId = $this.data("sl-id");
+        var target = $this.data('target');
+		var data = {
+			schoolId : schoolId
+		};
+		var widthElement = $( "#cat_sl_"+data.schoolId ).width()-2;
+		var heightElement = $( "#cat_sl_"+data.schoolId ).height()-2;
+		$( "#cat_sl_"+data.schoolId ).find(".a_table_cell_id").prepend("<div class=\"load_line\" style=\"position:absolute; text-align:center; margin-top: -8px; height:"+heightElement+"px; width:"+widthElement+"px; background:rgba(255,255,255,0.8)\">Suppression chargement ...</div>");
+        
+		$.ajax({
+            type: 'POST',
+            url: target,
+            //data: data,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$( "#cat_sl_"+data.schoolId ).remove();
+					if(data.isDefaultSchool){
+						$( "#cat_default_sl" ).html("Aucune école par défaut");
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+		
+    });
 });

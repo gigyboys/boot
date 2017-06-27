@@ -120,7 +120,7 @@ class InitController extends Controller
 		$user4->setSalt($salt);
 		$user4->setName('Misandratra Rakotondrabe Séverin');
 		$user4->setSex(1);
-		$user4->setRoles($roles);
+		//$user4->setRoles($roles);
 		$newsletterService->addEmail($user4->getEmail(), true);
 		$em->persist($user4);
 		/** fin traitement users **/
@@ -132,12 +132,14 @@ class InitController extends Controller
 		$school1->setName('Institut de Commerce et Management d\'Antananarivo');
 		$school1->setShortName('ICMA');
 		$school1->setSlug('institut-de-commerce-et-management-d-antananarivo');
+		$school1->setPublished(true);
 		$em->persist($school1);
 		
 		$school2 = new School();
 		$school2->setName('Ecole Supérieure de Technologie');
 		$school2->setShortName('EST');
 		$school2->setSlug('ecole-superieure-de-technologie');
+		$school2->setPublished(true);
 		$em->persist($school2);
 		/** fin traitement school  **/
 		
@@ -266,23 +268,10 @@ class InitController extends Controller
 		$post1->setSlug('l-avenir-des-etudiants-en-gestion');
 		$post1->setDate(new \DateTime());
 		$post1->setViewNumber(0);
+		$post1->setPublished(true);
+		$post1->setShowAuthor(true);
 		$em->persist($post1);
 		
-		$post2 = new Post();
-		$post2->setUser($user2);
-		$post2->setDefaultTitle('Que faire après le bacc?');
-		$post2->setSlug('que-faire-après-le-bacc');
-		$post2->setDate(new \DateTime());
-		$post2->setViewNumber(10);
-		$em->persist($post2);
-		
-		$post3 = new Post();
-		$post3->setUser($user2);
-		$post3->setDefaultTitle('Les avantages du système LMD');
-		$post3->setSlug('les-avantages-du-systeme-lmd');
-		$post3->setDate(new \DateTime());
-		$post3->setViewNumber(0);
-		$em->persist($post3);
 		/** fin traitement posts **/
 		
 		/** traitement posttranslates **/
@@ -342,115 +331,6 @@ class InitController extends Controller
 		$postTranslate6->setContent($contentDE);
 		$em->persist($postTranslate6);
 		
-		//post2
-		$postTranslate7 = new PostTranslate();
-		$postTranslate7->setPost($post2);
-		$postTranslate7->setLocale($localeFR);
-		$postTranslate7->setTitle('Que faire après le bacc?');
-		$postTranslate7->setDescription('description FR.');
-		$contentFR = "<div><p>fr. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate7->setContent($contentFR);
-		$em->persist($postTranslate7);
-		
-		$postTranslate8 = new PostTranslate();
-		$postTranslate8->setPost($post2);
-		$postTranslate8->setLocale($localeEN);
-		$postTranslate8->setTitle('What to do after the baccalaureate?');
-		$postTranslate8->setDescription('description en.');
-		$contentEN = "<div><p>en. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate8->setContent($contentEN);
-		$em->persist($postTranslate8);
-		
-		$postTranslate9 = new PostTranslate();
-		$postTranslate9->setPost($post2);
-		$postTranslate9->setLocale($localeMG);
-		$postTranslate9->setTitle("Inona ny ketrika vita bakalorea?");
-		$postTranslate9->setDescription('description mg.');
-		$contentMG = "<div><p>mg. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate9->setContent($contentMG);
-		$em->persist($postTranslate9);
-		
-		$postTranslate10 = new PostTranslate();
-		$postTranslate10->setPost($post2);
-		$postTranslate10->setLocale($localeIT);
-		$postTranslate10->setTitle('Cosa fare dopo il diploma di maturità?');
-		$postTranslate10->setDescription('description it.');
-		$contentIT = "<div><p>it. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate10->setContent($contentIT);
-		$em->persist($postTranslate10);
-		
-		$postTranslate11 = new PostTranslate();
-		$postTranslate11->setPost($post2);
-		$postTranslate11->setLocale($localeES);
-		$postTranslate11->setTitle('¿Qué hacer después del bachillerato?');
-		$postTranslate11->setDescription('description es.');
-		$contentES = "<div><p>es. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate11->setContent($contentES);
-		$em->persist($postTranslate11);
-		
-		$postTranslate12 = new PostTranslate();
-		$postTranslate12->setPost($post2);
-		$postTranslate12->setLocale($localeDE);
-		$postTranslate12->setTitle('Was nach dem Bakkalaureat zu tun?');
-		$postTranslate12->setDescription('description de.');
-		$contentDE = "<div><p>de. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate12->setContent($contentDE);
-		$em->persist($postTranslate12);
-		
-		//post3
-		$postTranslate13 = new PostTranslate();
-		$postTranslate13->setPost($post3);
-		$postTranslate13->setLocale($localeFR);
-		$postTranslate13->setTitle('Les avantages du système LMD');
-		$postTranslate13->setDescription('description fr.');
-		$contentFR = "<div><p>fr. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate13->setContent($contentFR);
-		$em->persist($postTranslate13);
-		
-		$postTranslate14 = new PostTranslate();
-		$postTranslate14->setPost($post3);
-		$postTranslate14->setLocale($localeEN);
-		$postTranslate14->setTitle('The advantages of the LMD system');
-		$postTranslate14->setDescription('description en.');
-		$contentEN = "<div><p>en. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate14->setContent($contentEN);
-		$em->persist($postTranslate14);
-		
-		$postTranslate15 = new PostTranslate();
-		$postTranslate15->setPost($post3);
-		$postTranslate15->setLocale($localeMG);
-		$postTranslate15->setTitle("Ny tombotsoan'ny rafitra LMD");
-		$postTranslate15->setDescription('description mg.');
-		$contentMG = "<div><p>mg. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate15->setContent($contentMG);
-		$em->persist($postTranslate15);
-		
-		$postTranslate16 = new PostTranslate();
-		$postTranslate16->setPost($post3);
-		$postTranslate16->setLocale($localeIT);
-		$postTranslate16->setTitle('I vantaggi del sistema LMD');
-		$postTranslate16->setDescription('description it.');
-		$contentIT = "<div><p>it. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate16->setContent($contentIT);
-		$em->persist($postTranslate16);
-		
-		$postTranslate17 = new PostTranslate();
-		$postTranslate17->setPost($post3);
-		$postTranslate17->setLocale($localeES);
-		$postTranslate17->setTitle('Las ventajas del sistema LMD');
-		$postTranslate17->setDescription('description es.');
-		$contentES = "<div><p>es. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate17->setContent($contentES);
-		$em->persist($postTranslate17);
-		
-		$postTranslate18 = new PostTranslate();
-		$postTranslate18->setPost($post3);
-		$postTranslate18->setLocale($localeDE);
-		$postTranslate18->setTitle('Die Vorteile des Systems LMD');
-		$postTranslate18->setDescription('description de.');
-		$contentDE = "<div><p>de. La filière compta gestion continue à offrir d'excellents débouchés d'autant plus que les métiers de comptable et d'expert-comptable manquent de jeunes pour renouveler les départs en retraite. Pleine d'atouts, la profession continue pourtant à souffrir d'une image un peu terne. Des idées souvent fausses à corriger d'urgence.</p><p>Faire du webmarketing ou du management, c'est classe. Tandis que s'engager dans des études de comptabilité l'est beaucoup moins. La faute à l'image que l'on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence. </p></div>";
-		$postTranslate18->setContent($contentDE);
-		$em->persist($postTranslate18);
 		/** fin traitement posttranslates **/
 		
 		
@@ -466,17 +346,6 @@ class InitController extends Controller
 		$postSchool1->setDateConfirmation(new \DateTime());
 		$postSchool1->setPostToSchool(true);
 		$em->persist($postSchool1);
-		
-		$postSchool2 = new PostSchool();
-		$postSchool2->setPost($post2);
-		$postSchool2->setSchool($school1);
-		$postSchool2->setUser($user2);
-		$postSchool2->setDate(new \DateTime());
-		$postSchool2->setUserConfirmation($user1);
-		$postSchool2->setConfirmation(true);
-		$postSchool2->setDateConfirmation(new \DateTime());
-		$postSchool2->setPostToSchool(true);
-		$em->persist($postSchool2);
 		/** fin traitement post_school  **/
 		
 		/** traitement advertCategory  **/
@@ -493,6 +362,7 @@ class InitController extends Controller
 		$advert1->setSlug("concours-d-entree-en-premiere-annee");
 		$advert1->setDate(new \DateTime());
 		$advert1->setViewNumber(0);
+		$advert1->setPublished(true);
 		$em->persist($advert1);
 		/** fin traitement advert  **/
 		
@@ -564,15 +434,30 @@ class InitController extends Controller
 		$topic1 = new Topic();
 		$topic1->setDefaultName("Système");
 		$topic1->setSlug("systeme");
+		$topic1->setUser($user1);
 		$em->persist($topic1);
 		/** fin traitement forum topics  **/
 		
 		/** traitement add parameter populate **/
-		$parameter = new Parameter();
-		$parameter->setParameter("populate");
-		$parameter->setValue("1");
-		$em->persist($parameter);
+		$parameter1 = new Parameter();
+		$parameter1->setParameter("populate");
+		$parameter1->setValue("1");
+		$em->persist($parameter2);
 		/** fin traitement add parameter populate **/
+		
+		/** traitement add parameter schools_by_page **/
+		$parameter2 = new Parameter();
+		$parameter2->setParameter("schools_by_page");
+		$parameter2->setValue("12");
+		$em->persist($parameter2);
+		/** fin traitement add parameter schools_by_page **/
+		
+		/** traitement add parameter categories_index **/
+		$parameter3 = new Parameter();
+		$parameter3->setParameter("categories_index");
+		$parameter3->setValue("12");
+		$em->persist($parameter3);
+		/** fin traitement add parameter categories_index **/
 		
 		
 		$em->flush();

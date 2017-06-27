@@ -119,6 +119,7 @@ class SchoolController extends Controller
             
             foreach ($logos as $schoolLogo) {
                 $schoolLogo->setCurrentLogo(false);
+				$em->persist($schoolLogo);
             }
 			
             $logo->setCurrentLogo(true);
@@ -519,6 +520,156 @@ class SchoolController extends Controller
                 'state' => 0,
             )));
 		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	public function editCategorySchoolsAction($id)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+
+		$category = $categoryRepository->find($id);
+		$categorySchools = $categorySchoolRepository->findBy(array(
+			'category' => $category
+		));
+		$defaultCategorySchool = $categorySchoolRepository->findOneBy(array(
+			'category' => $category,
+			'current' => true,
+		));
+		
+        return $this->render('COMAdminBundle:school:edit_category_schools.html.twig', array(
+			'category' => $category,
+			'categorySchools' => $categorySchools,
+			'defaultCategorySchool' => $defaultCategorySchool,
+		));
+    }
+	
+    public function editCategorySetDefaultSchoolAction($id, $school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+        
+		
+		$response = new Response();
+		$category = $categoryRepository->find($id);
+		if ($category) {
+			if ($school_id != 0) {
+				$school = $schoolRepository->find($school_id);
+				if ($school) {
+					$categorySchools = $categorySchoolRepository->findBy(array(
+						'category' => $category,
+					));
+					
+					foreach ($categorySchools as $categorySchoolTemp) {
+						$categorySchoolTemp->setCurrent(false);
+						$em->persist($categorySchoolTemp);
+					}
+					
+					$categorySchool = $categorySchoolRepository->findOneBy(array(
+						'category' => $category,
+						'school' => $school,
+					));
+					if ($categorySchool) {
+						$categorySchool->setCurrent(true);
+						$em->persist($categorySchool);
+					}else{
+						$categorySchool = new CategorySchool;
+						$categorySchool->setSchool($school);
+						$categorySchool->setCategory($category);
+						$categorySchool->setCurrent(true);
+						$em->persist($categorySchool);
+					}
+				
+					$em->flush();
+
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'categoryId' => $category->getId(),
+						'schoolId' => $categorySchool->getSchool()->getId(),
+						'schoolName' => $categorySchool->getSchool()->getName(),
+					)));
+				}else{
+					$response->setContent(json_encode(array(
+						'state' => 0,
+					)));
+				}
+			}else{
+				$categorySchools = $categorySchoolRepository->findBy(array(
+					'category' => $category,
+				));
+				
+				foreach ($categorySchools as $categorySchoolTemp) {
+					$categorySchoolTemp->setCurrent(false);
+					$em->persist($categorySchoolTemp);
+				}
+			
+				$em->flush();
+
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'categoryId' => $category->getId(),
+					'schoolId' => 0,
+				)));
+			}
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function editCategoryRemoveSchoolAction($id, $school_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+        
+		
+		$response = new Response();
+		$category = $categoryRepository->find($id);
+		$school = $schoolRepository->find($school_id);
+		
+		if ($school && $category) {
+			
+			$categorySchool = $categorySchoolRepository->findOneBy(array(
+				'category' => $category,
+				'school' => $school,
+			));
+			if ($categorySchool) {
+				$isDefaultSchool = 0;
+				if($categorySchool->getCurrent()){
+					$isDefaultSchool = 1;
+				}
+				
+				$em->remove($categorySchool);
+				$em->flush();
+
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'categoryId' => $category->getId(),
+					'schoolId' => $school->getId(),
+					'schoolName' => $school->getName(),
+					'isDefaultSchool' => $isDefaultSchool,
+				)));
+			}else{
+				$response->setContent(json_encode(array(
+					'state' => 0,
+				)));
+			}
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }

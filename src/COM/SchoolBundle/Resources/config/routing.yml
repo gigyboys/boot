@@ -1,3 +1,6 @@
+com_school_categories:
+    path:     /school/categories
+    defaults: { _controller: COMSchoolBundle:School:categories }
 com_school_home:
     path:     /school/{page}
     defaults:

@@ -21,13 +21,17 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
 		));
-		$limit = 12;
+		$parameter = $parameterRepository->findOneBy(array(
+			'parameter' => 'schools_by_page',
+		));
+		$limit = $parameter->getValue();
 		$offset = ($page-1) * $limit;
 		$publishState = 1; // published == true
 		$schools = $schoolRepository->getSchoolOffsetLimit($offset, $limit, $publishState);
@@ -47,7 +51,8 @@ class SchoolController extends Controller
 			$listSchools = array();
 			foreach($schools as $school){
 				$school_view = $this->renderView('COMSchoolBundle:school:include/school_item.html.twig', array(
-				  'school' => $school,
+					'school' => $school,
+					'locale' => $locale,
 				));
 				array_push($listSchools, array(
 					"school_id" 	=> $school->getId(),
@@ -59,6 +64,7 @@ class SchoolController extends Controller
 			$pagination = $this->renderView('COMSchoolBundle:school:include/pagination_list_school.html.twig', array(
 				'allSchools' => $allSchools,
 				'schools' => $schools,
+				'limit' => $limit,
 				'currentpage' => $page,
 				'locale' => $locale,
 			));
@@ -83,6 +89,7 @@ class SchoolController extends Controller
 				'allSchools' => $allSchools,
 				'schools' => $schools,
 				'currentpage' => $page,
+				'limit' => $limit,
 				'locale' => $locale,
 				'entityView' => 'school',
 			));
@@ -92,12 +99,43 @@ class SchoolController extends Controller
     }
 	
 	/*
+	* view list all categories
+	*/
+	public function categoriesAction(Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$limit = 0;
+		
+		$schoolService = $this->container->get('com_school.school_service');
+		
+		$categories = $schoolService->getCategoriesWithPublishedSchool($limit);
+		//$categories = null;
+		
+		
+        return $this->render('COMSchoolBundle:school:categories.html.twig', array(
+			'locale' => $locale,
+			'categories' => $categories,
+		));
+		
+    }
+	
+	/*
 	 * view category
 	 */
     public function viewCategoryAction($slug, $page, Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
@@ -111,7 +149,9 @@ class SchoolController extends Controller
 			'slug' => $slug,
 		));
 		
-		$limit = 12;
+		$limit = $parameterRepository->findOneBy(array(
+			'parameter' => 'schools_by_page',
+		))->getValue();
 		$offset = ($page-1) * $limit;
 		$publishState = true; // published == true
 		$schoolService = $this->container->get('com_school.school_service');
@@ -130,7 +170,8 @@ class SchoolController extends Controller
 			$listSchools = array();
 			foreach($schools as $school){
 				$school_view = $this->renderView('COMSchoolBundle:school:include/school_item.html.twig', array(
-				  'school' => $school,
+					'school' => $school,
+					'locale' => $locale,
 				));
 				array_push($listSchools, array(
 					"school_id" 	=> $school->getId(),
@@ -185,11 +226,11 @@ class SchoolController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
-		$postSchoolRepository = $em->getRepository('COMPlatformBundle:PostSchool');
-		$advertSchoolRepository = $em->getRepository('COMPlatformBundle:AdvertSchool');
 		$schoolContactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
 		
 		$user = $this->getUser();
 		
@@ -204,9 +245,16 @@ class SchoolController extends Controller
 		$schoolService = $this->container->get('com_school.school_service');
 		$schoolService->hydrateSchoolLang($school, $locale);
 		
-		$postSchools = $postSchoolRepository->findBy(array(
+		//categories
+		$categories = array();
+        $categorySchools = $categorySchoolRepository->findBy(array(
 			'school' => $school,
 		));
+		
+		foreach($categorySchools as $categorySchool){
+			$category = $categorySchool->getCategory();
+			array_push($categories, $category);
+		}
 		
 		//posts
 		$blogService = $this->container->get('com_blog.blog_service');
@@ -242,6 +290,7 @@ class SchoolController extends Controller
 		}
         return $this->render('COMSchoolBundle:school:view_school.html.twig', array(
 			'school' => $school,
+			'categories' => $categories,
 			'adverts' => $adverts,
 			'posts' => $posts,
 			'schoolContacts' => $schoolContacts,

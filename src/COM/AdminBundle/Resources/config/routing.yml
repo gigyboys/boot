@@ -87,6 +87,15 @@ com_admin_school_category_add:
 com_admin_school_category_edit:
     path:     /school/edit-category/{id}
     defaults: { _controller: COMAdminBundle:School:editCategory }
+com_admin_school_category_edit_schools:
+    path:     /school/edit-category/{id}/schools
+    defaults: { _controller: COMAdminBundle:School:editCategorySchools }
+com_admin_school_category_edit_setdefaultschool:
+    path:     /school/edit-category/{id}/set-default-school/{school_id}
+    defaults: { _controller: COMAdminBundle:School:editCategorySetDefaultSchool }
+com_admin_school_category_edit_removeschool:
+    path:     /school/edit-category/{id}/remove-school/{school_id}
+    defaults: { _controller: COMAdminBundle:School:editCategoryRemoveSchool }
 com_admin_school_category_edit_common:
     path:     /school/category/edit-common/{id}
     defaults: { _controller: COMAdminBundle:School:editCategoryCommon }

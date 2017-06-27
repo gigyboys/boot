@@ -11,15 +11,24 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
-		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
 			'locale' => $shortLocale,
 		));
 		
-		$categories = $categoryRepository->findAll();
+		$parameter = $parameterRepository->findOneBy(array(
+			'parameter' => 'categories_index',
+		));
+		$limit = $parameter->getValue();
+		
+		$schoolService = $this->container->get('com_school.school_service');
+		
+		//$categories = $categoryRepository->findAll();
+		$categories = $schoolService->getCategoriesWithPublishedSchool($limit);
 		
 		
         return $this->render('COMPlatformBundle:home:home.html.twig', array(

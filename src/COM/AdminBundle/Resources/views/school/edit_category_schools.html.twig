@@ -1,0 +1,163 @@
+{% extends "COMAdminBundle::admin.html.twig" %}
+
+{% block title %}
+  category id : {{ category.id }} - Schools
+{% endblock %}
+
+{% block body_header %}
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_category') }}">{{ 'Categories' | trans }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_category_add') }}">{{ 'New Category' | trans }}</a></span>
+			</div>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_category_edit', {id :  category.id}) }}">{{ category.defaultName }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			{#<div class="dd_target">
+				<span class="bc2"><a class="link" href="{{ path('com_admin_school_category_add') }}">{{ 'New Category' | trans }}</a></span>
+			</div>#}
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_category_edit_schools', {id :  category.id}) }}">{{ 'Schools' | trans }}</a></span>
+	</div>
+	<div style="padding:8px; float:right">
+		<div style="float:left">
+			<span class="dd" style="display:inline-block;">
+				<span href="#" class="dd_src" style="cursor:pointer">
+					Autres actions
+				</span>
+				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
+					<div style="margin:5px">
+						<a class="link" href="{{ path('com_admin_school_category_edit_schools', {'id': category.id}) }}">{{ 'Schools' | trans }}</a>
+					</div>
+				</div>
+			</span> 
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_body %}
+	<div style="">
+		<div style="">
+			<div>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_name">{{ category.defaultName }}</span></td>
+					</tr>
+					<tr>
+						<td>Slug</td>
+						<td>:</td>
+						<td style="padding:5px"><span id="sl_view_slug">{{ category.slug }}</span></td>
+					</tr>
+					<tr>
+						<td>Default School</td>
+						<td>:</td>
+						<td style="padding:5px">
+							{% if defaultCategorySchool is not null %}
+								<span id="cat_default_sl"  data-target="{{ path('com_admin_school_category_edit_setdefaultschool', {'id': category.id, 'school_id': '0',}) }}" >{{ defaultCategorySchool.school.name }} <span id="cat_default_null" style="cursor:pointer">x</span></span>
+							{% else %}
+								<span id="cat_default_sl" data-target="{{ path('com_admin_school_category_edit_setdefaultschool', {'id': category.id, 'school_id': '0',}) }}" >Aucune école par défaut</span>
+							{% endif %} 
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="both"></div>
+	</div>
+	
+	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
+		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> Schools list</span> 
+	</div>
+	
+	<div class="a_datatable">
+		<div class="a_datatable_head">
+			<div class="a_datatable_head_left">
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input a_list_search_input" data-target-id="category_list_schools"/></span>
+			</div>
+			<div class="a_datatable_head_right">
+				{#right#}
+			</div>
+		</div>
+		
+		
+		<div class="a_datatable_body">
+			<table class="a_table" id="category_list_schools">
+				<tr class="a_table_head">
+					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
+					<th class="" style="width: 36px" >logo</th>
+					<th>Name</th>
+					<th>Short name</th>
+					<th>Published</th>
+					<th class="a_table_cell_action">action</th>
+				</tr>
+				{% for categorySchool in categorySchools %}
+					{% set school = categorySchool.school %}
+					<tr class="a_table_line"  id="cat_sl_{{ school.id }}" data-text="{{ school.name }} {{ school.shortName }}" style="display:table-row">
+						<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ school.id }}</td>
+						<td class="">
+							{# twig extension #}
+							{% set logo=schoolLogo(school) %}
+							{% if logo != "default.jpeg" %}
+								{% set pathtologo='uploads/images/school/logo/'~logo %}
+							{% else %}
+								{% set pathtologo='default/images/school/logo/'~logo %}
+							{% endif %}
+							<img id="" style="width: 32px; height: 32px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
+						</td>
+						<td><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></td>
+						<td>{{ school.shortName }}</td>
+						<td>
+							{% if school.published %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+							{% else %}
+								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+							{% endif %}
+						</td>
+						<td class="a_table_cell_action">
+							<div class="dd" style="display:inline-block;">
+								<div href="#" class="dd_src" style="display:inline-block;cursor:pointer">
+									action
+								</div>
+								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; border: 1px solid #aaa; border-radius: 4px;">
+									<div data-target="{{ path('com_admin_school_category_edit_setdefaultschool', {'id': category.id, 'school_id': school.id,}) }}" class="cat_sl_item" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px;cursor:pointer">Set default school</div>
+									<div class="remove_sl_cat" data-sl-id="{{ school.id }}" data-cat-id="{{ category.id }}" data-target="{{ path('com_admin_school_category_edit_removeschool', {'id': category.id, 'school_id': school.id}) }}" data-sl-name="{{ school.name }}" data-cat-name="{{ category.defaultName }}" style="cursor:pointer; white-space: nowrap;padding:5px;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Remove from list</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		<div class="a_datatable_foot">
+			<div class="a_datatable_foot_left">
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" class="result_state">{{ categorySchools | length }} resultat(s)</span>
+			</div>
+			<div class="a_datatable_foot_right">
+				<span>right</span> 
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block body_footer %}
+	
+{% endblock %}

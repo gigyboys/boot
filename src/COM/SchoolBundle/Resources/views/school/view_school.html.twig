@@ -61,7 +61,19 @@
 						</a>
 					</div>
 					<div id="sl_view_description">
-						{{ school.shortDescription }}
+						<div>
+							{{ school.shortDescription }}
+						</div>
+						
+						{% if categories | length != 0 %}
+							<div id="sl_view_categories" style="margin-top:10px">
+								{% for category in categories %}
+									<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="">
+										{{ category.defaultName }}
+									</a> 
+								{% endfor %}
+							</div> 
+						{% endif %}
 					</div>
 					<div id="sl_view_action">
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
