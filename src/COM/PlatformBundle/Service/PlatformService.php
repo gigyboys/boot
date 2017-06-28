@@ -85,6 +85,9 @@ class PlatformService {
         $str = trim($str);
         $str = preg_replace($before[1], $after, $str);
         $str = trim($str, '-');
+		
+		//get 240 characters
+		$str = substr($str, 0, 240);  // bcd
 
         return $str;
     }

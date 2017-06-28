@@ -55,6 +55,7 @@ class BlogController extends Controller
     public function addPostAction(Request $request)
     {
 		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
@@ -64,6 +65,31 @@ class BlogController extends Controller
 		if ($formInitPost->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($post->getDefaultTitle());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories", 
+				"archive",
+				"archives",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $posttmp = $postRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if($posttmp || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
 			$post->setSlug($slug);
 			$post->setDate(new \DateTime());
 			$post->setPublished(false);
@@ -256,6 +282,30 @@ class BlogController extends Controller
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($postTemp->getSlug());
 			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories", 
+				"archive",
+				"archives",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $posttmp = $postRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if(($posttmp && $posttmp->getId() != $post->getId()) || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
 			$post->setSlug($slug);
             
 			$em->persist($post);
@@ -360,6 +410,7 @@ class BlogController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		
 		$category = new Category();
 		$formInitCategory = $this->get('form.factory')->create(new CategoryInitType(), $category);
@@ -367,6 +418,29 @@ class BlogController extends Controller
 		if ($formInitCategory->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($category->getDefaultName());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $categorytmp = $categoryRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if($categorytmp || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
 			$category->setSlug($slug);
 			
 			$locales = $localeRepository->findAll();
@@ -421,6 +495,28 @@ class BlogController extends Controller
 			
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($categoryTemp->getSlug());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $categorytmp = $categoryRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if(($categorytmp && $categorytmp->getId() != $category->getId()) || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
 			
 			$category->setSlug($slug);
             

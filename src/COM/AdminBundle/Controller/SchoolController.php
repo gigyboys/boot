@@ -53,6 +53,7 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		
 		$school = new School();
 		$formInitSchool = $this->get('form.factory')->create(new SchoolInitType(), $school);
@@ -60,6 +61,43 @@ class SchoolController extends Controller
 		if ($formInitSchool->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($school->getName());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"school", 
+				"blog", 
+				"advert", 
+				"forum", 
+				"about", 
+				"team", 
+				"legal-notice", 
+				"contact", 
+				"newsletter",
+				"categories", 
+				"category", 
+				"user", 
+				"admin", 
+				"logout", 
+				"login", 
+				"register",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $schooltmp = $schoolRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if($schooltmp || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
 			$school->setSlug($slug);
 			$published = false;
 			$school->setPublished($published);
@@ -249,6 +287,44 @@ class SchoolController extends Controller
 			
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($schoolTemp->getSlug());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"home", 
+				"school", 
+				"blog", 
+				"advert", 
+				"forum", 
+				"about", 
+				"team", 
+				"legal-notice", 
+				"contact", 
+				"newsletter",
+				"categories", 
+				"category", 
+				"user", 
+				"admin", 
+				"logout", 
+				"login", 
+				"register",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $schooltmp = $schoolRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if(($schooltmp && $schooltmp->getId() != $school->getId()) || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
 			$school->setSlug($slug);
             
 			$em->persist($school);
@@ -335,6 +411,7 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		
 		$category = new Category();
 		$formInitCategory = $this->get('form.factory')->create(new CategoryInitType(), $category);
@@ -342,6 +419,28 @@ class SchoolController extends Controller
 		if ($formInitCategory->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($category->getDefaultName());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $categorytmp = $categoryRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if($categorytmp || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
 			$category->setSlug($slug);
 			
 			$locales = $localeRepository->findAll();
@@ -396,6 +495,28 @@ class SchoolController extends Controller
 			
 			$platformService = $this->container->get('com_platform.platform_service');
 			$slug = $platformService->sluggify($categoryTemp->getSlug());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"category", 
+				"categories",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $categorytmp = $categoryRepository->findOneBy(array(
+					'slug' => $slugtmp
+				));
+				if(($categorytmp && $categorytmp->getId() != $category->getId()) || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
 			
 			$category->setSlug($slug);
             

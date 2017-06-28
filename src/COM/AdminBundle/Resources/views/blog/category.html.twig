@@ -43,12 +43,14 @@
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
 					<th>name</th>
+					<th>slug</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for category in categories %}
 					<tr class="a_table_line" data-text="{{ category.defaultName }}" style="display:table-row">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">{{ category.id }}</td>
 						<td><a href="{{ path('com_admin_blog_category_edit', {'id': category.id}) }}">{{ category.defaultName }}</a></td>
+						<td>{{ category.slug }}</td>
 						<td class="a_table_cell_action">action</td>
 					</tr>
 				{% endfor %}

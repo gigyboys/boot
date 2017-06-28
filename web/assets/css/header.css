@@ -109,12 +109,12 @@ header{
 #nav_right #user .dd_src .connected{
 	display:block; 
 	border-radius:3px;
-	border:1px solid #aaa;
+	border:1px solid #ccc;
 	overflow:hidden
 }
 #nav_right #user .dd_src .connected table{
 	border-collapse: collapse;
-	border:0px solid #999; 
+	border:0px solid #ccc; 
 	padding:0px; 
 	margin:0px
 }
@@ -123,12 +123,12 @@ header{
 }
 #nav_right #user .dd_src .connected .user_avatar .wrap{
 	display:block; 
-	background:#ccc; 
+	background:#eee; 
 	height:30px;
 }
 #nav_right #user .dd_src .connected .user_name .wrap{
 	display:block; 
-	background:#ccc; 
+	background:#eee; 
 	height:26px; 
 	padding-left:5px; 
 	padding-right:5px ; 

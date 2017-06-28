@@ -27,7 +27,7 @@
 						{#{% set school = getSchoolById(1) %}#}
 						{% set school = getSchoolOfTheDay() %}
 						<div class="title">
-							<span>The school <br />of the day</span>
+							<span>{{ 'the.school.of.the.day' | trans }}</span>
 						</div>
 						<div style="">
 						{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
