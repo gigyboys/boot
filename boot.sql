@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 30 Juin 2017 à 08:04
+-- Généré le :  Ven 30 Juin 2017 à 15:51
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -858,7 +858,8 @@ INSERT INTO `pm_advert_school` (`id`, `advert_id`, `school_id`, `user_id`, `user
 (4, 5, 1, 1, 1, '2017-04-28 08:33:02', 1, '2017-04-28 08:33:02', 1),
 (5, 2, 3, 1, 1, '2017-05-17 07:50:45', 1, '2017-05-17 07:50:45', 1),
 (6, 5, 3, 1, 1, '2017-05-17 07:51:02', 1, '2017-05-17 07:51:02', 1),
-(7, 1, 2, 4, 4, '2017-05-24 07:55:16', 1, '2017-05-24 07:55:16', 1);
+(7, 1, 2, 4, 4, '2017-05-24 07:55:16', 1, '2017-05-24 07:55:16', 1),
+(8, 4, 46, 2, 2, '2017-06-30 09:02:39', 1, '2017-06-30 09:02:39', 1);
 
 -- --------------------------------------------------------
 
@@ -992,7 +993,8 @@ INSERT INTO `pm_comment` (`id`, `post_id`, `message`, `user_id`, `date`, `advert
 (127, 3, 'ty tryrt yrty rt', 1, '2017-06-29 12:45:08', NULL),
 (128, 3, 'fghfh fgh\ndfgdfg\n\ndfgdfg dfgdfgd', 1, '2017-06-29 12:45:13', NULL),
 (129, 3, 'gdfgd d dg dfg', 1, '2017-06-29 12:45:17', NULL),
-(130, 1, 'djlfjgfdl jdlkfjglkdfj ldjf djfkgl djfgkl djfklgdf', 1, '2017-06-29 12:51:01', NULL);
+(130, 1, 'djlfjgfdl jdlkfjglkdfj ldjf djfkgl djfgkl djfklgdf', 1, '2017-06-29 12:51:01', NULL),
+(131, 3, 'fsdf sdf sdfs sdf', 2, '2017-06-30 07:44:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -1136,7 +1138,7 @@ INSERT INTO `pm_parameter` (`id`, `parameter`, `value`) VALUES
 (1, 'populate', '1'),
 (2, 'schools_by_page', '12'),
 (3, 'categories_index', '12'),
-(4, 'posts_by_page', '12');
+(4, 'posts_by_page', '5');
 
 -- --------------------------------------------------------
 
@@ -1182,7 +1184,9 @@ INSERT INTO `pm_post_school` (`id`, `post_id`, `school_id`, `user_id`, `user_con
 (47, 1, 9, 3, 3, '2017-05-19 16:42:22', 1, '2017-05-19 16:42:22', 1),
 (48, 13, 1, 4, 4, '2017-05-24 14:42:27', 1, '2017-05-24 14:42:27', 1),
 (49, 13, 6, 1, 1, '2017-06-20 15:08:26', 1, '2017-06-20 15:08:26', 1),
-(50, 15, 18, 2, 2, '2017-06-27 07:24:09', 1, '2017-06-27 07:24:09', 1);
+(50, 15, 18, 2, 2, '2017-06-27 07:24:09', 1, '2017-06-27 07:24:09', 1),
+(51, 15, 46, 2, 2, '2017-06-30 09:01:44', 1, '2017-06-30 09:01:44', 1),
+(52, 13, 46, 2, 2, '2017-06-30 09:02:20', 1, '2017-06-30 09:02:20', 1);
 
 -- --------------------------------------------------------
 
@@ -2584,7 +2588,21 @@ INSERT INTO `pm_view` (`id`, `school_id`, `post_id`, `advert_id`, `user_id`, `da
 (1804, 43, NULL, NULL, 1, '2017-06-29 14:48:26', '::1'),
 (1805, 11, NULL, NULL, 1, '2017-06-29 14:48:49', '::1'),
 (1806, NULL, 13, NULL, NULL, '2017-06-29 19:11:04', '::1'),
-(1807, NULL, 1, NULL, 1, '2017-06-29 21:35:10', '::1');
+(1807, NULL, 1, NULL, 1, '2017-06-29 21:35:10', '::1'),
+(1808, NULL, 3, NULL, 2, '2017-06-30 07:44:01', '::1'),
+(1809, 39, NULL, NULL, 2, '2017-06-30 08:21:38', '::1'),
+(1810, 46, NULL, NULL, 2, '2017-06-30 08:34:44', '::1'),
+(1811, 46, NULL, NULL, 2, '2017-06-30 08:37:34', '::1'),
+(1812, 46, NULL, NULL, 2, '2017-06-30 08:38:26', '::1'),
+(1813, 46, NULL, NULL, 2, '2017-06-30 08:38:38', '::1'),
+(1814, 46, NULL, NULL, 2, '2017-06-30 08:58:18', '::1'),
+(1815, 46, NULL, NULL, 2, '2017-06-30 09:00:26', '::1'),
+(1816, NULL, 15, NULL, 2, '2017-06-30 09:01:37', '::1'),
+(1817, NULL, 13, NULL, 2, '2017-06-30 09:01:55', '::1'),
+(1818, NULL, NULL, 4, 2, '2017-06-30 09:02:32', '::1'),
+(1819, 46, NULL, NULL, 2, '2017-06-30 09:03:03', '::1'),
+(1820, 46, NULL, NULL, 2, '2017-06-30 09:49:56', '::1'),
+(1821, 47, NULL, NULL, 2, '2017-06-30 09:56:20', '::1');
 
 -- --------------------------------------------------------
 
@@ -3101,7 +3119,8 @@ INSERT INTO `sl_evaluation` (`id`, `school_id`, `user_id`, `mark`, `comment`, `d
 (91, 1, 2, 80, 'por iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo \npor iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo por iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo', '2017-05-30 11:07:37'),
 (92, 1, 1, 60, 'dfsd sdf sdf', '2017-06-16 07:13:55'),
 (93, 4, 1, 80, 'dfds sdf sdf', '2017-06-21 15:39:02'),
-(94, 11, 1, 100, 'et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.', '2017-06-29 14:51:28');
+(94, 11, 1, 100, 'et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.', '2017-06-29 14:51:28'),
+(95, 46, 2, 100, 'nsternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egress', '2017-06-30 09:01:05');
 
 -- --------------------------------------------------------
 
@@ -3387,7 +3406,8 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (75, 44, 'isp-mdf.jpg', 'b193ec2e02299767643e565fae651b7218f9d13d.jpeg', 'isp-mdf.jpg', 1),
 (76, 45, 'enmglogo.jpg', '272bdb9598285740b49427281e35d472455272a3.jpeg', 'enmglogo.jpg', 1),
 (77, 46, 'oiologo.png', '8630277ee5b914fad7a3825ad008458b77a8d834.png', 'oiologo.png', 0),
-(78, 46, 'oiologo2.png', 'e909bf06a8599a024a44edcf894cc65bbf5dd6d3.png', 'oiologo2.png', 1);
+(78, 46, 'oiologo2.png', 'e909bf06a8599a024a44edcf894cc65bbf5dd6d3.png', 'oiologo2.png', 1),
+(79, 47, 'isstparamedlogo.jpg', '25555501601ead19767f7e2a2f4996a447c5f3bf.jpeg', 'isstparamedlogo.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -3452,7 +3472,8 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (43, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'ISMATEC', 'ismatec', 1),
 (44, 'Institut Supérieur Prive Madagascar Développement Formation', 'ISP-MDF', 'isp-mdf', 1),
 (45, 'Ecole Nationale de la Magistrature et des Greffes', 'ENMG', 'enmg', 1),
-(46, 'Oio School', 'OIOS', 'oio', 1);
+(46, 'Oio School', 'OIOS', 'oio', 1),
+(47, 'Institut Superieur des Sciences Technologiques', 'ISST', 'institut-superieur-des-sciences-technologiques', 1);
 
 -- --------------------------------------------------------
 
@@ -3503,7 +3524,8 @@ INSERT INTO `sl_school_admin` (`id`, `school_id`, `user_id`, `date`, `active`) V
 (28, 2, 2, '2017-05-15 07:41:53', 0),
 (29, 3, 1, '2017-05-17 07:49:49', 1),
 (30, 1, 7, '2017-06-12 13:07:21', 1),
-(31, 18, 2, '2017-06-27 07:24:02', 1);
+(31, 18, 2, '2017-06-27 07:24:02', 1),
+(32, 46, 2, '2017-06-30 09:01:27', 1);
 
 -- --------------------------------------------------------
 
@@ -3595,7 +3617,10 @@ INSERT INTO `sl_school_of_the_day` (`id`, `school_id`, `date`, `current`, `day`)
 (8, 6, '2017-06-27 06:52:59', 1, '2017-06-27'),
 (9, 34, '2017-06-28 07:28:30', 0, '2017-06-28'),
 (10, 25, '2017-06-28 19:41:51', 1, '2017-06-28'),
-(11, 43, '2017-06-29 10:49:03', 1, '2017-06-29');
+(11, 43, '2017-06-29 10:49:03', 1, '2017-06-29'),
+(12, 39, '2017-06-30 07:35:51', 0, '2017-06-30'),
+(13, 15, '2017-06-30 08:33:43', 0, '2017-06-30'),
+(14, 46, '2017-06-30 08:34:10', 1, '2017-06-30');
 
 -- --------------------------------------------------------
 
@@ -3932,12 +3957,18 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (263, 45, 4, 'Ecole Nationale de la Magistrature et des Greffes', 'it. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>it. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
 (264, 45, 5, 'Ecole Nationale de la Magistrature et des Greffes', 'es. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>es. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
 (265, 45, 6, 'Ecole Nationale de la Magistrature et des Greffes', 'de. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>de. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
-(266, 46, 1, 'Oio scholl', 'fr. Short description .Oio scholl', 'fr. Description .Oio scholl'),
-(267, 46, 2, 'Oio scholl', 'en. Short description .Oio scholl', 'en. Description .Oio scholl'),
-(268, 46, 3, 'Oio scholl', 'mg. Short description .Oio scholl', 'mg. Description .Oio scholl'),
-(269, 46, 4, 'Oio scholl', 'it. Short description .Oio scholl', 'it. Description .Oio scholl'),
-(270, 46, 5, 'Oio scholl', 'es. Short description .Oio scholl', 'es. Description .Oio scholl'),
-(271, 46, 6, 'Oio scholl', 'de. Short description .Oio scholl', 'de. Description .Oio scholl');
+(266, 46, 1, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(267, 46, 2, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(268, 46, 3, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(269, 46, 4, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(270, 46, 5, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(271, 46, 6, 'Oio scholl', 'Specimen. Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.', '<p style="text-align: justify;">Specimen. Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu. Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter virtutem et probitatem etiam eos, quos numquam vidimus, quodam modo diligamus. Quis est qui C. Fabrici, M''. Curi non cum caritate aliqua benevola memoriam usurpet, quos numquam viderit? quis autem est, qui Tarquinium Superbum, qui Sp. Cassium, Sp. Maelium non oderit? Cum duobus ducibus de imperio in Italia est decertatum, Pyrrho et Hannibale; ab altero propter probitatem eius non nimis alienos animos habemus, alterum propter crudelitatem semper haec civitas oderit.<br /><br />Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.<br /><br />Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur. Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>'),
+(272, 47, 1, 'Institut Superieur des Sciences Technologiques', 'fr. Short description .Institut Superieur des Sciences Technologiques', 'fr. Description .Institut Superieur des Sciences Technologiques'),
+(273, 47, 2, 'Institut Superieur des Sciences Technologiques', 'en. Short description .Institut Superieur des Sciences Technologiques', 'en. Description .Institut Superieur des Sciences Technologiques'),
+(274, 47, 3, 'Institut Superieur des Sciences Technologiques', 'mg. Short description .Institut Superieur des Sciences Technologiques', 'mg. Description .Institut Superieur des Sciences Technologiques'),
+(275, 47, 4, 'Institut Superieur des Sciences Technologiques', 'it. Short description .Institut Superieur des Sciences Technologiques', 'it. Description .Institut Superieur des Sciences Technologiques'),
+(276, 47, 5, 'Institut Superieur des Sciences Technologiques', 'es. Short description .Institut Superieur des Sciences Technologiques', 'es. Description .Institut Superieur des Sciences Technologiques'),
+(277, 47, 6, 'Institut Superieur des Sciences Technologiques', 'de. Short description .Institut Superieur des Sciences Technologiques', 'de. Description .Institut Superieur des Sciences Technologiques');
 
 -- --------------------------------------------------------
 
@@ -4482,12 +4513,12 @@ ALTER TABLE `fm_topic_translate`
 -- AUTO_INCREMENT pour la table `pm_advert_school`
 --
 ALTER TABLE `pm_advert_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `pm_comment`
 --
 ALTER TABLE `pm_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 --
 -- AUTO_INCREMENT pour la table `pm_contact`
 --
@@ -4522,12 +4553,12 @@ ALTER TABLE `pm_parameter`
 -- AUTO_INCREMENT pour la table `pm_post_school`
 --
 ALTER TABLE `pm_post_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT pour la table `pm_view`
 --
 ALTER TABLE `pm_view`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1808;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1822;
 --
 -- AUTO_INCREMENT pour la table `sl_category`
 --
@@ -4552,7 +4583,7 @@ ALTER TABLE `sl_cover`
 -- AUTO_INCREMENT pour la table `sl_evaluation`
 --
 ALTER TABLE `sl_evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT pour la table `sl_field`
 --
@@ -4567,17 +4598,17 @@ ALTER TABLE `sl_field_translate`
 -- AUTO_INCREMENT pour la table `sl_logo`
 --
 ALTER TABLE `sl_logo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT pour la table `sl_school`
 --
 ALTER TABLE `sl_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT pour la table `sl_school_admin`
 --
 ALTER TABLE `sl_school_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT pour la table `sl_school_contact`
 --
@@ -4592,7 +4623,7 @@ ALTER TABLE `sl_school_contact_translate`
 -- AUTO_INCREMENT pour la table `sl_school_of_the_day`
 --
 ALTER TABLE `sl_school_of_the_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `sl_school_subscription`
 --
@@ -4602,7 +4633,7 @@ ALTER TABLE `sl_school_subscription`
 -- AUTO_INCREMENT pour la table `sl_school_translate`
 --
 ALTER TABLE `sl_school_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
 --
 -- AUTO_INCREMENT pour la table `ur_avatar`
 --
