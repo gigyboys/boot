@@ -154,7 +154,17 @@
 	<div class="a_nav_item not_selected">
 		<div class="a_nav_main_item">
 			<div class="a_nav_main_item_icon"><div><img src="{{ asset('assets/image/setting_icon.png') }}" /></div></div>
-			<div class="a_nav_main_item_text">Configuration</div>
+			<div class="a_nav_main_item_text">{{ 'Settings' | trans }}</div>
+		</div>
+		<div class="a_nav_sub_content" style="">
+			<div class="a_nav_sub_item">
+				<div class="a_nav_sub_item_icon"><div><img src="{{ asset('assets/image/default_icon.png') }}" /></div></div>
+				<div class="a_nav_sub_item_text">
+					<a href="{{ path('com_admin_setting_accessibility') }}">
+						<span>{{ 'Accessibility' | trans }}</span>
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

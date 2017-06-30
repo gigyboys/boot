@@ -10,11 +10,19 @@
 		<div class="ct">
 			<div id="bg_list" style="overflow:hidden">
 				<div class="bgl">
-					<div>
+					<div id="bg_list_post">
 						{% for post in posts %}
 							{{ include("COMBlogBundle:blog:include/post_item.html.twig") }}
 						{% endfor %}
 					</div>
+					{% if previousPost %}
+						<div id="bg_load_post_action" class="mg_b10">
+							<div id="bg_load_post" data-target="{{ path('com_blog_load_posts', {'post_id': previousPost.id}) }}" data-previous-post="{{ previousPost.id }}" class="mg_h10" style="text-align:center; cursor:pointer">
+								Load posts
+							</div>
+							<div class="btn_loading" style="text-align:center;display:none;">Chargement...</div>
+						</div>
+					{% endif %}
 				</div>
 				<div class="bgr" style="">
 					<div style="min-height:400px; margin:10px; width:auto; background:#fff">

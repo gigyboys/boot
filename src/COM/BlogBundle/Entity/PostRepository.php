@@ -13,13 +13,45 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
 	
+	
+	public function getPostsLimit($limit, $order) {
+		
+		$qb = $this->createQueryBuilder('post');
+
+		$qb
+		->where('post.published = :published')
+        ->setParameter('published', true);
+
+		$qb
+		->setMaxResults($limit)
+		->orderBy('post.id', 'DESC')
+		;
+		
+        $postsTemp = $qb->getQuery()->getResult();
+		
+		$posts = array();
+		if($order == 'DESC'){
+			foreach($postsTemp as $post){
+				array_unshift($posts, $post);
+			}
+		}else{
+			$posts = $postsTemp;
+		}
+		
+		return $posts;
+    }
+	
 	//search
     public function getPostSearch($critere)
     {
         $qb = $this->createQueryBuilder('post');
 
+		$qb
+		->where('post.published = :published')
+        ->setParameter('published', true);
+
         $qb
-        ->where('post.defaultTitle LIKE :critere')
+        ->andWhere('post.defaultTitle LIKE :critere')
         ->setParameter('critere', '%'.$critere.'%')
         ->orderBy('post.date', 'DESC')
         ;
@@ -28,5 +60,57 @@ class PostRepository extends EntityRepository
         ->getQuery()
         ->getResult()
         ;
+    }
+	
+	public function getSincePost($post) {
+		
+		$qb = $this->createQueryBuilder('post');
+
+		$qb
+		->where('post.published = :published')
+        ->setParameter('published', true);
+
+		
+		$qb->andWhere('post.id < :idPost');
+		
+		$qb
+        ->setParameter('idPost', $post->getId())
+		->setMaxResults(1)
+		->orderBy('post.id', 'DESC')
+		;
+		
+        $post = $qb->getQuery()->getOneOrNullResult();
+		
+		return $post;
+    }
+	
+	public function getPostsSince($post, $limit, $order) {
+		
+		$qb = $this->createQueryBuilder('post');
+
+		$qb
+		->where('post.published = :published')
+        ->setParameter('published', true);
+		
+		$qb->andWhere('post.id <= :idPost');
+		
+		$qb
+        ->setParameter('idPost', $post->getId())
+		->setMaxResults($limit)
+		->orderBy('post.id', 'DESC')
+		;
+		
+        $postsTemp = $qb->getQuery()->getResult();
+		
+		$posts = array();
+		if($order == 'DESC'){
+			foreach($postsTemp as $post){
+				array_unshift($posts, $post);
+			}
+		}else{
+			$posts = $postsTemp;
+		}
+		
+		return $posts;
     }
 }

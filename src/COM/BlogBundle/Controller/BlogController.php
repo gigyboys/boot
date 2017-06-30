@@ -23,6 +23,7 @@ class BlogController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
 		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
@@ -30,9 +31,17 @@ class BlogController extends Controller
 			'locale' => $shortLocale,
 		));
 		
-		$posts = $postRepository->findBy(array(
+		/*$posts = $postRepository->findBy(array(
 			'published' => true,
 		));
+		*/
+		
+		$limit = $parameterRepository->findOneBy(array(
+			'parameter' => 'posts_by_page',
+		))->getValue();
+		
+		$order = "ASC";
+		$posts = $postRepository->getPostsLimit($limit, $order);
 		
 		$blogService = $this->container->get('com_blog.blog_service');
 		
@@ -40,10 +49,90 @@ class BlogController extends Controller
 			$blogService->hydratePostLang($post, $locale);
 		}
 		
+		$previousPost = null;
+		if(count($posts)){
+			$index = count($posts)-1;
+			$firstPost = $posts[$index];
+			$previousPost = $postRepository->getSincePost($firstPost);
+		}
+		
         return $this->render('COMBlogBundle:blog:index.html.twig', array(
 			'posts' => $posts,
+			'previousPost' => $previousPost,
 			'entityView' => 'blog',
 		));
+    }
+	
+	public function loadPostsAction($post_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+        
+		$lastPost = $postRepository->find($post_id);
+		
+        $response = new Response();
+		if($lastPost){		
+			$limit = $parameterRepository->findOneBy(array(
+				'parameter' => 'posts_by_page',
+			))->getValue();
+			
+			$order = "ASC";
+			$posts = $postRepository->getPostsSince($lastPost, $limit, $order);
+			
+			$blogService = $this->container->get('com_blog.blog_service');		
+			foreach($posts as $post){
+				$blogService->hydratePostLang($post, $locale);
+			}
+			
+			$listPosts = array();
+			foreach($posts as $post){
+				$postItem = $this->renderView('COMBlogBundle:blog:include/post_item.html.twig', array(
+				  'post' => $post
+				));
+				array_push($listPosts, array(
+					"id" 			=> $post->getId(),
+					"postItem" 		=> $postItem,
+				));
+			}
+		
+			$previousPost = null;
+			$previousPostId = 0;
+			$urlLoadPost = null;
+			
+			if(count($posts)){
+				$index = count($posts)-1;
+				$firstPost = $posts[$index];
+				$previousPost = $postRepository->getSincePost($firstPost);
+			}
+			if ($previousPost){
+				$previousPostId = $previousPost->getId();
+				$urlLoadPost = $this->get('router')->generate('com_blog_load_posts', array(
+					'post_id' => $previousPostId,
+				));
+			}
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'posts' => $listPosts,
+				'previousPostId' => $previousPostId,
+				'urlLoadPost' => $urlLoadPost,
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 
     public function categoryAction()

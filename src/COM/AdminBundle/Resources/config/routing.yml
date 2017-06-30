@@ -229,3 +229,8 @@ com_admin_newsletter_email:
 com_admin_newsletter_types:
     path:     /newsletter/types
     defaults: { _controller: COMAdminBundle:Newsletter:listNewsletter }
+
+#setting
+com_admin_setting_accessibility:
+    path:     /setting/accessibility
+    defaults: { _controller: COMAdminBundle:Setting:accessibility }

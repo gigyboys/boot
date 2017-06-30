@@ -1,7 +1,7 @@
 {% set nbAllSchools = allSchools | length %}
-{% set nbPagesFormat = ((nbAllSchools / 12) - 0.5) | number_format  %}
+{% set nbPagesFormat = ((nbAllSchools / limit) - 0.5) | number_format  %}
 
-{% if (nbAllSchools / 12) == nbPagesFormat%}
+{% if (nbAllSchools / limit) == nbPagesFormat%}
 	{% set nbPages = nbPagesFormat %}
 {% else %}
 	{% set nbPages = nbPagesFormat + 1 %}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 27 Juin 2017 à 07:59
+-- Généré le :  Ven 30 Juin 2017 à 08:04
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -264,7 +264,12 @@ INSERT INTO `bg_category` (`id`, `default_name`, `slug`) VALUES
 (4, 'Conférence', 'conference'),
 (5, 'Séminaire', 'seminaire'),
 (6, 'Rencontres', 'rencontres'),
-(7, 'Curabitur laoreet', 'curabitur-laoreet');
+(7, 'Curabitur laoreet', 'curabitur-laoreet'),
+(8, 'systeme', 'systeme-2'),
+(9, 'category', 'category-3'),
+(10, 'craft', 'craft'),
+(11, 'category', 'category-4'),
+(12, 'category', 'category-2');
 
 -- --------------------------------------------------------
 
@@ -291,7 +296,8 @@ INSERT INTO `bg_category_post` (`id`, `post_id`, `category_id`) VALUES
 (15, 12, 4),
 (16, 1, 2),
 (17, 14, 5),
-(18, 15, 7);
+(18, 15, 7),
+(21, 17, 2);
 
 -- --------------------------------------------------------
 
@@ -347,7 +353,37 @@ INSERT INTO `bg_category_translate` (`id`, `name`, `description`, `category_id`,
 (33, 'mg Curabitur laoreet', 'mg. Description .Curabitur laoreet', 7, 3),
 (34, 'it Curabitur laoreet', 'it. Description .Curabitur laoreet', 7, 4),
 (35, 'es Curabitur laoreet', 'es. Description .Curabitur laoreet', 7, 5),
-(36, 'de Curabitur laoreet', 'de. Description .Curabitur laoreet', 7, 6);
+(36, 'de Curabitur laoreet', 'de. Description .Curabitur laoreet', 7, 6),
+(37, 'fr systeme', 'fr. Description .systeme', 8, 1),
+(38, 'en systeme', 'en. Description .systeme', 8, 2),
+(39, 'mg systeme', 'mg. Description .systeme', 8, 3),
+(40, 'it systeme', 'it. Description .systeme', 8, 4),
+(41, 'es systeme', 'es. Description .systeme', 8, 5),
+(42, 'de systeme', 'de. Description .systeme', 8, 6),
+(43, 'fr category', 'fr. Description .category', 9, 1),
+(44, 'en category', 'en. Description .category', 9, 2),
+(45, 'mg category', 'mg. Description .category', 9, 3),
+(46, 'it category', 'it. Description .category', 9, 4),
+(47, 'es category', 'es. Description .category', 9, 5),
+(48, 'de category', 'de. Description .category', 9, 6),
+(49, 'fr craft', 'fr. Description .craft', 10, 1),
+(50, 'en craft', 'en. Description .craft', 10, 2),
+(51, 'mg craft', 'mg. Description .craft', 10, 3),
+(52, 'it craft', 'it. Description .craft', 10, 4),
+(53, 'es craft', 'es. Description .craft', 10, 5),
+(54, 'de craft', 'de. Description .craft', 10, 6),
+(55, 'fr category', 'fr. Description .category', 11, 1),
+(56, 'en category', 'en. Description .category', 11, 2),
+(57, 'mg category', 'mg. Description .category', 11, 3),
+(58, 'it category', 'it. Description .category', 11, 4),
+(59, 'es category', 'es. Description .category', 11, 5),
+(60, 'de category', 'de. Description .category', 11, 6),
+(61, 'fr category', 'fr. Description .category', 12, 1),
+(62, 'en category', 'en. Description .category', 12, 2),
+(63, 'mg category', 'mg. Description .category', 12, 3),
+(64, 'it category', 'it. Description .category', 12, 4),
+(65, 'es category', 'es. Description .category', 12, 5),
+(66, 'de category', 'de. Description .category', 12, 6);
 
 -- --------------------------------------------------------
 
@@ -371,12 +407,12 @@ CREATE TABLE `bg_post` (
 --
 
 INSERT INTO `bg_post` (`id`, `user_id`, `default_title`, `slug`, `date`, `view_number`, `published`, `show_author`) VALUES
-(1, 1, 'Concours d''entrée en première année', 'concours-d-entree-en-premiere-annee', '2017-02-06 07:24:06', 0, 0, 1),
+(1, 1, 'Concours d''entrée en première année', 'concours-d-entree-en-premiere-annee', '2017-02-06 07:24:06', 0, 1, 1),
 (2, 2, 'Que faire après le bacc?', 'que-faire-après-le-bacc', '2017-02-06 07:24:06', 10, 1, 0),
 (3, 2, 'Les avantages du système LMD', 'les-avantages-du-systeme-lmd', '2017-02-06 07:24:06', 0, 1, 1),
 (4, 1, 'Sac de transport sur roulettes de luxe', 'sac-de-transport-sur-roulettes-de-luxe', '2017-03-06 09:10:25', 0, 1, 1),
-(5, 1, 'sd sdf sdf sfd', 'sd-sdf-sdf-sfd', '2017-03-06 10:00:25', 0, 0, 1),
-(6, 1, 'Recevez nos actualités', 'recevez-nos-actualites', '2017-03-07 12:44:56', 0, 1, 1),
+(5, 1, 'pt', 'pt', '2017-03-06 10:00:25', 0, 0, 1),
+(6, 1, 'Recevez nos actualités', 'category-2', '2017-03-07 12:44:56', 0, 1, 1),
 (7, 1, 'dfgdfg', 'dfgdfg', '2017-03-13 13:39:32', 0, 1, 1),
 (8, 1, 'Integer congue placerat quam vitae mollis', 'integer-congue-placerat-quam-vitae-mollis', '2017-03-13 13:40:58', 0, 1, 0),
 (9, 1, 'infrastructure universelle', 'infrastructure-universelle', '2017-03-14 10:27:00', 0, 1, 1),
@@ -385,7 +421,9 @@ INSERT INTO `bg_post` (`id`, `user_id`, `default_title`, `slug`, `date`, `view_n
 (12, 1, '3 ingrédients d''une photo de paysage réussie', '3-ingredients-d-une-photo-de-paysage-reussie', '2017-03-15 13:07:14', 0, 1, 1),
 (13, 3, 'Travail dur! recevoir plus', 'travail-dur-recevoir-plus', '2017-03-17 10:38:44', 0, 1, 1),
 (14, 2, 'llis ultricies. Nam', 'llis-ultricies-nam', '2017-06-12 08:13:01', 0, 1, 1),
-(15, 2, 'Ouverture de la formation : economie et developpement', 'ouverture-de-la-formation-economie-et-developpement', '2017-06-27 07:14:42', 0, 1, 0);
+(15, 2, 'Ouverture de la formation : economie et developpement', 'ouverture-de-la-formation-economie-et-developpement', '2017-06-27 07:14:42', 0, 1, 0),
+(16, 1, 'category', 'category-3', '2017-06-28 15:07:43', 0, 0, 1),
+(17, 1, 'ceci-dfj-klfjqkls-fjlkqdsjfljslf', 'pt-2', '2017-06-28 15:07:55', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -559,7 +597,19 @@ INSERT INTO `bg_post_translate` (`id`, `post_id`, `locale_id`, `title`, `descrip
 (87, 15, 3, 'Ouverture de la formation : economie et developpement', 'Depuis sa création en 2008, l’Université ACEEM est une université riche en diversité culturelle et sociale de part ses étudiants cosmopolites. Après différents études de besoins, l’Université a décidé d’ouvrir une nouvelle formation, la Mention Economie et Développement. Cette nouvelle formation, tout aussi enrichissante et intéressante que la Gestion, la Communication, le Droit, l’Informatique-Electronique et les Sciences de la Santé, a pour objectif de former des Economistes experts œuvrant au sein des ONG nationales et internationales, des institutions financières et compagnies d’assurances, des institutions de développement rural et territorial, des institutions de développement socio-économique, des entreprises et multinationales.', '<p style="text-align: justify;">Depuis sa cr&eacute;ation en 2008, l&rsquo;Universit&eacute; ACEEM est une universit&eacute; riche en diversit&eacute; culturelle et sociale de part ses &eacute;tudiants cosmopolites. Apr&egrave;s diff&eacute;rents &eacute;tudes de besoins, l&rsquo;Universit&eacute; a d&eacute;cid&eacute; d&rsquo;ouvrir une nouvelle formation, la Mention Economie et D&eacute;veloppement. Cette nouvelle formation, tout aussi enrichissante et int&eacute;ressante que la Gestion, la Communication, le Droit, l&rsquo;Informatique-Electronique et les Sciences de la Sant&eacute;, a pour objectif de former des Economistes experts &oelig;uvrant au sein des ONG nationales et internationales, des institutions financi&egrave;res et compagnies d&rsquo;assurances, des institutions de d&eacute;veloppement rural et territorial, des institutions de d&eacute;veloppement socio-&eacute;conomique, des entreprises et multinationales. Pour int&eacute;grer la formation en niveau L1, les candidats doivent &ecirc;tre titulaires d&rsquo;un baccalaur&eacute;at (toutes les diverses s&eacute;ries sont admises). Nos formations suivent le syst&egrave;me LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement : LICENCE &ndash; MASTER - DOCTORAT<br /><br />Les PARCOURS que nous disposons sont:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie publique (&eacute;conomie du d&eacute;veloppement rural et&nbsp; &eacute;conomie de collectivit&eacute; territoriale)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie de d&eacute;veloppement des Entreprises (d&eacute;veloppement durable et RSE, gestion de projet de d&eacute;veloppement)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Banque, finances et assurances (techniques bancaires et assurances, &eacute;conomie et finance internationale).<br />Les inscriptions pour le concours d&rsquo;entr&eacute;e en L1 (premi&egrave;re ann&eacute;e) sont ouvertes.</p>'),
 (88, 15, 4, 'Ouverture de la formation : economie et developpement', 'Depuis sa création en 2008, l’Université ACEEM est une université riche en diversité culturelle et sociale de part ses étudiants cosmopolites. Après différents études de besoins, l’Université a décidé d’ouvrir une nouvelle formation, la Mention Economie et Développement. Cette nouvelle formation, tout aussi enrichissante et intéressante que la Gestion, la Communication, le Droit, l’Informatique-Electronique et les Sciences de la Santé, a pour objectif de former des Economistes experts œuvrant au sein des ONG nationales et internationales, des institutions financières et compagnies d’assurances, des institutions de développement rural et territorial, des institutions de développement socio-économique, des entreprises et multinationales.', '<p style="text-align: justify;">Depuis sa cr&eacute;ation en 2008, l&rsquo;Universit&eacute; ACEEM est une universit&eacute; riche en diversit&eacute; culturelle et sociale de part ses &eacute;tudiants cosmopolites. Apr&egrave;s diff&eacute;rents &eacute;tudes de besoins, l&rsquo;Universit&eacute; a d&eacute;cid&eacute; d&rsquo;ouvrir une nouvelle formation, la Mention Economie et D&eacute;veloppement. Cette nouvelle formation, tout aussi enrichissante et int&eacute;ressante que la Gestion, la Communication, le Droit, l&rsquo;Informatique-Electronique et les Sciences de la Sant&eacute;, a pour objectif de former des Economistes experts &oelig;uvrant au sein des ONG nationales et internationales, des institutions financi&egrave;res et compagnies d&rsquo;assurances, des institutions de d&eacute;veloppement rural et territorial, des institutions de d&eacute;veloppement socio-&eacute;conomique, des entreprises et multinationales. Pour int&eacute;grer la formation en niveau L1, les candidats doivent &ecirc;tre titulaires d&rsquo;un baccalaur&eacute;at (toutes les diverses s&eacute;ries sont admises). Nos formations suivent le syst&egrave;me LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement : LICENCE &ndash; MASTER - DOCTORAT<br /><br />Les PARCOURS que nous disposons sont:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie publique (&eacute;conomie du d&eacute;veloppement rural et&nbsp; &eacute;conomie de collectivit&eacute; territoriale)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie de d&eacute;veloppement des Entreprises (d&eacute;veloppement durable et RSE, gestion de projet de d&eacute;veloppement)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Banque, finances et assurances (techniques bancaires et assurances, &eacute;conomie et finance internationale).<br />Les inscriptions pour le concours d&rsquo;entr&eacute;e en L1 (premi&egrave;re ann&eacute;e) sont ouvertes.</p>'),
 (89, 15, 5, 'Ouverture de la formation : economie et developpement', 'Depuis sa création en 2008, l’Université ACEEM est une université riche en diversité culturelle et sociale de part ses étudiants cosmopolites. Après différents études de besoins, l’Université a décidé d’ouvrir une nouvelle formation, la Mention Economie et Développement. Cette nouvelle formation, tout aussi enrichissante et intéressante que la Gestion, la Communication, le Droit, l’Informatique-Electronique et les Sciences de la Santé, a pour objectif de former des Economistes experts œuvrant au sein des ONG nationales et internationales, des institutions financières et compagnies d’assurances, des institutions de développement rural et territorial, des institutions de développement socio-économique, des entreprises et multinationales.', '<p>Depuis sa cr&eacute;ation en 2008, l&rsquo;Universit&eacute; ACEEM est une universit&eacute; riche en diversit&eacute; culturelle et sociale de part ses &eacute;tudiants cosmopolites. Apr&egrave;s diff&eacute;rents &eacute;tudes de besoins, l&rsquo;Universit&eacute; a d&eacute;cid&eacute; d&rsquo;ouvrir une nouvelle formation, la Mention Economie et D&eacute;veloppement. Cette nouvelle formation, tout aussi enrichissante et int&eacute;ressante que la Gestion, la Communication, le Droit, l&rsquo;Informatique-Electronique et les Sciences de la Sant&eacute;, a pour objectif de former des Economistes experts &oelig;uvrant au sein des ONG nationales et internationales, des institutions financi&egrave;res et compagnies d&rsquo;assurances, des institutions de d&eacute;veloppement rural et territorial, des institutions de d&eacute;veloppement socio-&eacute;conomique, des entreprises et multinationales. Pour int&eacute;grer la formation en niveau L1, les candidats doivent &ecirc;tre titulaires d&rsquo;un baccalaur&eacute;at (toutes les diverses s&eacute;ries sont admises). Nos formations suivent le syst&egrave;me LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement : LICENCE &ndash; MASTER - DOCTORAT<br /><br />Les PARCOURS que nous disposons sont:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie publique (&eacute;conomie du d&eacute;veloppement rural et&nbsp; &eacute;conomie de collectivit&eacute; territoriale)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie de d&eacute;veloppement des Entreprises (d&eacute;veloppement durable et RSE, gestion de projet de d&eacute;veloppement)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Banque, finances et assurances (techniques bancaires et assurances, &eacute;conomie et finance internationale).<br />Les inscriptions pour le concours d&rsquo;entr&eacute;e en L1 (premi&egrave;re ann&eacute;e) sont ouvertes.</p>'),
-(90, 15, 6, 'Ouverture de la formation : economie et developpement', 'Depuis sa création en 2008, l’Université ACEEM est une université riche en diversité culturelle et sociale de part ses étudiants cosmopolites. Après différents études de besoins, l’Université a décidé d’ouvrir une nouvelle formation, la Mention Economie et Développement. Cette nouvelle formation, tout aussi enrichissante et intéressante que la Gestion, la Communication, le Droit, l’Informatique-Electronique et les Sciences de la Santé, a pour objectif de former des Economistes experts œuvrant au sein des ONG nationales et internationales, des institutions financières et compagnies d’assurances, des institutions de développement rural et territorial, des institutions de développement socio-économique, des entreprises et multinationales.', '<p>Depuis sa cr&eacute;ation en 2008, l&rsquo;Universit&eacute; ACEEM est une universit&eacute; riche en diversit&eacute; culturelle et sociale de part ses &eacute;tudiants cosmopolites. Apr&egrave;s diff&eacute;rents &eacute;tudes de besoins, l&rsquo;Universit&eacute; a d&eacute;cid&eacute; d&rsquo;ouvrir une nouvelle formation, la Mention Economie et D&eacute;veloppement. Cette nouvelle formation, tout aussi enrichissante et int&eacute;ressante que la Gestion, la Communication, le Droit, l&rsquo;Informatique-Electronique et les Sciences de la Sant&eacute;, a pour objectif de former des Economistes experts &oelig;uvrant au sein des ONG nationales et internationales, des institutions financi&egrave;res et compagnies d&rsquo;assurances, des institutions de d&eacute;veloppement rural et territorial, des institutions de d&eacute;veloppement socio-&eacute;conomique, des entreprises et multinationales. Pour int&eacute;grer la formation en niveau L1, les candidats doivent &ecirc;tre titulaires d&rsquo;un baccalaur&eacute;at (toutes les diverses s&eacute;ries sont admises). Nos formations suivent le syst&egrave;me LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement : LICENCE &ndash; MASTER - DOCTORAT<br /><br />Les PARCOURS que nous disposons sont:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie publique (&eacute;conomie du d&eacute;veloppement rural et&nbsp; &eacute;conomie de collectivit&eacute; territoriale)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie de d&eacute;veloppement des Entreprises (d&eacute;veloppement durable et RSE, gestion de projet de d&eacute;veloppement)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Banque, finances et assurances (techniques bancaires et assurances, &eacute;conomie et finance internationale).<br />Les inscriptions pour le concours d&rsquo;entr&eacute;e en L1 (premi&egrave;re ann&eacute;e) sont ouvertes.</p>');
+(90, 15, 6, 'Ouverture de la formation : economie et developpement', 'Depuis sa création en 2008, l’Université ACEEM est une université riche en diversité culturelle et sociale de part ses étudiants cosmopolites. Après différents études de besoins, l’Université a décidé d’ouvrir une nouvelle formation, la Mention Economie et Développement. Cette nouvelle formation, tout aussi enrichissante et intéressante que la Gestion, la Communication, le Droit, l’Informatique-Electronique et les Sciences de la Santé, a pour objectif de former des Economistes experts œuvrant au sein des ONG nationales et internationales, des institutions financières et compagnies d’assurances, des institutions de développement rural et territorial, des institutions de développement socio-économique, des entreprises et multinationales.', '<p>Depuis sa cr&eacute;ation en 2008, l&rsquo;Universit&eacute; ACEEM est une universit&eacute; riche en diversit&eacute; culturelle et sociale de part ses &eacute;tudiants cosmopolites. Apr&egrave;s diff&eacute;rents &eacute;tudes de besoins, l&rsquo;Universit&eacute; a d&eacute;cid&eacute; d&rsquo;ouvrir une nouvelle formation, la Mention Economie et D&eacute;veloppement. Cette nouvelle formation, tout aussi enrichissante et int&eacute;ressante que la Gestion, la Communication, le Droit, l&rsquo;Informatique-Electronique et les Sciences de la Sant&eacute;, a pour objectif de former des Economistes experts &oelig;uvrant au sein des ONG nationales et internationales, des institutions financi&egrave;res et compagnies d&rsquo;assurances, des institutions de d&eacute;veloppement rural et territorial, des institutions de d&eacute;veloppement socio-&eacute;conomique, des entreprises et multinationales. Pour int&eacute;grer la formation en niveau L1, les candidats doivent &ecirc;tre titulaires d&rsquo;un baccalaur&eacute;at (toutes les diverses s&eacute;ries sont admises). Nos formations suivent le syst&egrave;me LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement : LICENCE &ndash; MASTER - DOCTORAT<br /><br />Les PARCOURS que nous disposons sont:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie publique (&eacute;conomie du d&eacute;veloppement rural et&nbsp; &eacute;conomie de collectivit&eacute; territoriale)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economie de d&eacute;veloppement des Entreprises (d&eacute;veloppement durable et RSE, gestion de projet de d&eacute;veloppement)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Banque, finances et assurances (techniques bancaires et assurances, &eacute;conomie et finance internationale).<br />Les inscriptions pour le concours d&rsquo;entr&eacute;e en L1 (premi&egrave;re ann&eacute;e) sont ouvertes.</p>'),
+(91, 16, 1, 'fr category', 'fr. Description .category', 'fr. Content .category'),
+(92, 16, 2, 'en category', 'en. Description .category', 'en. Content .category'),
+(93, 16, 3, 'mg category', 'mg. Description .category', 'mg. Content .category'),
+(94, 16, 4, 'it category', 'it. Description .category', 'it. Content .category'),
+(95, 16, 5, 'es category', 'es. Description .category', 'es. Content .category'),
+(96, 16, 6, 'de category', 'de. Description .category', 'de. Content .category'),
+(97, 17, 1, 'fr pt', 'fr. Description .pt', 'fr. Content .pt'),
+(98, 17, 2, 'en pt', 'en. Description .pt', 'en. Content .pt'),
+(99, 17, 3, 'mg pt', 'mg. Description .pt', 'mg. Content .pt'),
+(100, 17, 4, 'it pt', 'it. Description .pt', 'it. Content .pt'),
+(101, 17, 5, 'es pt', 'es. Description .pt', 'es. Content .pt'),
+(102, 17, 6, 'de pt', 'de. Description .pt', 'de. Content .pt');
 
 -- --------------------------------------------------------
 
@@ -932,7 +982,17 @@ INSERT INTO `pm_comment` (`id`, `post_id`, `message`, `user_id`, `date`, `advert
 (117, 3, 'fdgd', 1, '2017-06-20 14:30:18', NULL),
 (118, 13, 'ur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite vige omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite vige', 1, '2017-06-20 15:08:18', NULL),
 (119, 2, 'dfs fsdf sfsdf', 2, '2017-06-21 15:12:55', NULL),
-(120, 15, 'les candidats doivent être titulaires d’un baccalauréat (toutes les diverses séries sont admises). Nos formations suivent le système LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement.\n\nLes inscriptions pour le concours d’entrée en L1 (première année) sont ouvertes.', 2, '2017-06-27 07:25:33', NULL);
+(120, 15, 'les candidats doivent être titulaires d’un baccalauréat (toutes les diverses séries sont admises). Nos formations suivent le système LMD, ainsi les sanctions pour chaque cycle de formation sont respectivement.\n\nLes inscriptions pour le concours d’entrée en L1 (première année) sont ouvertes.', 2, '2017-06-27 07:25:33', NULL),
+(121, 3, 'dfdsfs dsd', 1, '2017-06-29 12:43:20', NULL),
+(122, 3, 'sdf sdfsdfsdf', 1, '2017-06-29 12:43:24', NULL),
+(123, 3, 'ertert et ete ter', 1, '2017-06-29 12:43:28', NULL),
+(124, 3, 'dfgd dgd gdfg', 1, '2017-06-29 12:44:55', NULL),
+(125, 3, 'gdgd fdfg dfg df', 1, '2017-06-29 12:45:00', NULL),
+(126, 3, 'gdfgd dg d gdfgdf g', 1, '2017-06-29 12:45:03', NULL),
+(127, 3, 'ty tryrt yrty rt', 1, '2017-06-29 12:45:08', NULL),
+(128, 3, 'fghfh fgh\ndfgdfg\n\ndfgdfg dfgdfgd', 1, '2017-06-29 12:45:13', NULL),
+(129, 3, 'gdfgd d dg dfg', 1, '2017-06-29 12:45:17', NULL),
+(130, 1, 'djlfjgfdl jdlkfjglkdfj ldjf djfkgl djfgkl djfklgdf', 1, '2017-06-29 12:51:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -1075,7 +1135,8 @@ CREATE TABLE `pm_parameter` (
 INSERT INTO `pm_parameter` (`id`, `parameter`, `value`) VALUES
 (1, 'populate', '1'),
 (2, 'schools_by_page', '12'),
-(3, 'categories_index', '12');
+(3, 'categories_index', '12'),
+(4, 'posts_by_page', '12');
 
 -- --------------------------------------------------------
 
@@ -2448,7 +2509,82 @@ INSERT INTO `pm_view` (`id`, `school_id`, `post_id`, `advert_id`, `user_id`, `da
 (1729, NULL, 15, NULL, 2, '2017-06-27 07:32:58', '::1'),
 (1730, 5, NULL, NULL, 2, '2017-06-27 07:39:53', '::1'),
 (1731, 35, NULL, NULL, 2, '2017-06-27 07:49:42', '::1'),
-(1732, 9, NULL, NULL, 2, '2017-06-27 07:50:02', '::1');
+(1732, 9, NULL, NULL, 2, '2017-06-27 07:50:02', '::1'),
+(1733, 3, NULL, NULL, NULL, '2017-06-27 08:54:52', '::1'),
+(1734, 36, NULL, NULL, NULL, '2017-06-27 08:55:18', '::1'),
+(1735, 40, NULL, NULL, 2, '2017-06-27 08:58:36', '::1'),
+(1736, 33, NULL, NULL, 2, '2017-06-27 09:00:22', '::1'),
+(1737, 33, NULL, NULL, 2, '2017-06-27 09:02:15', '::1'),
+(1738, 40, NULL, NULL, 2, '2017-06-27 09:03:03', '::1'),
+(1739, 40, NULL, NULL, 2, '2017-06-27 09:04:58', '::1'),
+(1740, 24, NULL, NULL, 2, '2017-06-27 09:05:53', '::1'),
+(1741, 19, NULL, NULL, 2, '2017-06-27 09:07:12', '::1'),
+(1742, 11, NULL, NULL, 2, '2017-06-27 09:16:10', '::1'),
+(1743, 11, NULL, NULL, 2, '2017-06-27 09:16:37', '::1'),
+(1744, 11, NULL, NULL, NULL, '2017-06-27 09:17:12', '::1'),
+(1745, 6, NULL, NULL, NULL, '2017-06-27 09:18:28', '::1'),
+(1746, 6, NULL, NULL, NULL, '2017-06-27 09:28:29', '::1'),
+(1747, 11, NULL, NULL, NULL, '2017-06-27 09:30:51', '::1'),
+(1748, 10, NULL, NULL, NULL, '2017-06-27 09:32:46', '::1'),
+(1749, 10, NULL, NULL, 2, '2017-06-27 09:33:18', '::1'),
+(1750, 10, NULL, NULL, 2, '2017-06-27 09:33:53', '::1'),
+(1751, 10, NULL, NULL, 2, '2017-06-27 09:52:46', '::1'),
+(1752, 3, NULL, NULL, 2, '2017-06-27 10:23:45', '::1'),
+(1753, 39, NULL, NULL, 1, '2017-06-27 10:44:47', '::1'),
+(1754, 39, NULL, NULL, 1, '2017-06-27 10:47:44', '::1'),
+(1755, 39, NULL, NULL, 1, '2017-06-27 10:48:48', '::1'),
+(1756, 39, NULL, NULL, 1, '2017-06-27 10:55:38', '::1'),
+(1757, 39, NULL, NULL, 1, '2017-06-27 11:06:57', '::1'),
+(1758, 39, NULL, NULL, 1, '2017-06-27 11:07:31', '::1'),
+(1759, 39, NULL, NULL, 1, '2017-06-27 11:08:44', '::1'),
+(1760, 4, NULL, NULL, 1, '2017-06-27 12:34:37', '::1'),
+(1761, 39, NULL, NULL, 1, '2017-06-27 12:44:55', '::1'),
+(1762, 39, NULL, NULL, 1, '2017-06-27 12:45:34', '::1'),
+(1763, 39, NULL, NULL, 1, '2017-06-27 12:47:23', '::1'),
+(1764, 40, NULL, NULL, 1, '2017-06-27 12:47:48', '::1'),
+(1765, 39, NULL, NULL, 1, '2017-06-27 12:48:13', '::1'),
+(1766, 39, NULL, NULL, 1, '2017-06-27 12:49:27', '::1'),
+(1767, 39, NULL, NULL, 1, '2017-06-27 12:50:02', '::1'),
+(1768, 31, NULL, NULL, 1, '2017-06-27 12:51:47', '::1'),
+(1769, 39, NULL, NULL, 1, '2017-06-27 12:55:25', '::1'),
+(1770, 16, NULL, NULL, 1, '2017-06-27 13:01:12', '::1'),
+(1771, 1, NULL, NULL, 1, '2017-06-27 13:11:53', '::1'),
+(1772, 6, NULL, NULL, 1, '2017-06-27 13:40:05', '::1'),
+(1773, 4, NULL, NULL, 1, '2017-06-27 13:51:19', '::1'),
+(1774, 32, NULL, NULL, 1, '2017-06-27 14:25:08', '::1'),
+(1775, 34, NULL, NULL, NULL, '2017-06-28 07:29:50', '::1'),
+(1776, 34, NULL, NULL, NULL, '2017-06-28 07:31:28', '::1'),
+(1777, 7, NULL, NULL, NULL, '2017-06-28 08:08:31', '::1'),
+(1778, 34, NULL, NULL, NULL, '2017-06-28 09:09:56', '::1'),
+(1779, 34, NULL, NULL, NULL, '2017-06-28 10:37:38', '::1'),
+(1780, 1, NULL, NULL, 3, '2017-06-28 14:30:05', '::1'),
+(1781, NULL, 15, NULL, 1, '2017-06-28 15:16:07', '::1'),
+(1782, 41, NULL, NULL, 1, '2017-06-28 15:52:36', '::1'),
+(1783, 45, NULL, NULL, 1, '2017-06-28 16:09:21', '::1'),
+(1784, 38, NULL, NULL, 1, '2017-06-28 19:39:36', '::1'),
+(1785, 45, NULL, NULL, 1, '2017-06-28 19:40:42', '::1'),
+(1786, 34, NULL, NULL, 1, '2017-06-28 19:41:21', '::1'),
+(1787, 8, NULL, NULL, 1, '2017-06-28 19:44:32', '::1'),
+(1788, 1, NULL, NULL, 1, '2017-06-29 12:09:53', '::1'),
+(1789, 46, NULL, NULL, 1, '2017-06-29 12:11:25', '::1'),
+(1790, 46, NULL, NULL, 1, '2017-06-29 12:13:41', '::1'),
+(1791, 46, NULL, NULL, 1, '2017-06-29 12:17:43', '::1'),
+(1792, 46, NULL, NULL, 1, '2017-06-29 12:18:46', '::1'),
+(1793, 46, NULL, NULL, 1, '2017-06-29 12:20:42', '::1'),
+(1794, 46, NULL, NULL, 1, '2017-06-29 12:27:47', '::1'),
+(1795, 1, NULL, NULL, 1, '2017-06-29 12:35:56', '::1'),
+(1796, 25, NULL, NULL, 1, '2017-06-29 12:37:57', '::1'),
+(1797, NULL, 3, NULL, 1, '2017-06-29 12:42:57', '::1'),
+(1798, NULL, 3, NULL, 1, '2017-06-29 12:45:22', '::1'),
+(1799, NULL, NULL, 1, 1, '2017-06-29 12:46:30', '::1'),
+(1800, NULL, 1, NULL, 1, '2017-06-29 12:49:58', '::1'),
+(1801, NULL, 12, NULL, 1, '2017-06-29 13:12:22', '::1'),
+(1802, 46, NULL, NULL, 1, '2017-06-29 14:44:34', '::1'),
+(1803, 46, NULL, NULL, 1, '2017-06-29 14:46:42', '::1'),
+(1804, 43, NULL, NULL, 1, '2017-06-29 14:48:26', '::1'),
+(1805, 11, NULL, NULL, 1, '2017-06-29 14:48:49', '::1'),
+(1806, NULL, 13, NULL, NULL, '2017-06-29 19:11:04', '::1'),
+(1807, NULL, 1, NULL, 1, '2017-06-29 21:35:10', '::1');
 
 -- --------------------------------------------------------
 
@@ -2484,7 +2620,14 @@ INSERT INTO `sl_category` (`id`, `default_name`, `slug`) VALUES
 (15, 'Telecommunications', 'telecommunications'),
 (16, 'Communication', 'communication'),
 (17, 'Agronomie', 'agronomie'),
-(18, 'Formation Professionnelle', 'formation-professionnelle');
+(18, 'Formation Professionnelle', 'formation-professionnelle'),
+(19, 'Hotellerie', 'hotellerie'),
+(20, 'administration', 'administration'),
+(21, 'électronique', 'electronique'),
+(22, 'Bâtiments & Travaux Publics', 'batiments-travaux-publics'),
+(23, 'environnements', 'environnements'),
+(24, 'agriculture', 'agriculture'),
+(25, 'Finances', 'finances');
 
 -- --------------------------------------------------------
 
@@ -2579,8 +2722,8 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (90, 32, 10, 1),
 (91, 32, 9, 0),
 (92, 17, 9, 0),
-(93, 5, 11, 1),
-(94, 29, 11, 1),
+(93, 5, 11, 0),
+(94, 29, 11, 0),
 (95, 10, 12, 1),
 (96, 10, 1, 1),
 (97, 10, 8, 1),
@@ -2590,7 +2733,7 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (102, 33, 6, 1),
 (103, 33, 4, 1),
 (104, 33, 9, 0),
-(105, 33, 11, 1),
+(105, 33, 11, 0),
 (106, 34, 13, 0),
 (107, 35, 7, 0),
 (108, 35, 8, 0),
@@ -2615,7 +2758,27 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (127, 11, 17, 0),
 (128, 38, 18, 1),
 (129, 18, 18, 0),
-(130, 18, 16, 0);
+(130, 18, 16, 0),
+(131, 40, 11, 0),
+(132, 19, 18, 0),
+(133, 39, 19, 0),
+(134, 39, 14, 1),
+(135, 39, 7, 0),
+(136, 39, 11, 0),
+(137, 31, 19, 1),
+(139, 41, 8, 0),
+(140, 41, 25, 0),
+(141, 41, 20, 0),
+(142, 43, 9, 0),
+(143, 43, 7, 0),
+(144, 43, 12, 0),
+(145, 43, 22, 0),
+(146, 43, 17, 0),
+(147, 43, 16, 0),
+(148, 44, 19, 0),
+(149, 45, 12, 0),
+(150, 46, 11, 1),
+(151, 36, 21, 0);
 
 -- --------------------------------------------------------
 
@@ -2731,7 +2894,49 @@ INSERT INTO `sl_category_translate` (`id`, `category_id`, `locale_id`, `name`, `
 (93, 18, 3, 'mg Formation Professionnelle', 'mg. Description .Formation Professionnelle'),
 (94, 18, 4, 'it Formation Professionnelle', 'it. Description .Formation Professionnelle'),
 (95, 18, 5, 'es Formation Professionnelle', 'es. Description .Formation Professionnelle'),
-(96, 18, 6, 'de Formation Professionnelle', 'de. Description .Formation Professionnelle');
+(96, 18, 6, 'de Formation Professionnelle', 'de. Description .Formation Professionnelle'),
+(97, 19, 1, 'fr Hotellerie', 'fr. Description .Hotellerie'),
+(98, 19, 2, 'en Hotellerie', 'en. Description .Hotellerie'),
+(99, 19, 3, 'mg Hotellerie', 'mg. Description .Hotellerie'),
+(100, 19, 4, 'it Hotellerie', 'it. Description .Hotellerie'),
+(101, 19, 5, 'es Hotellerie', 'es. Description .Hotellerie'),
+(102, 19, 6, 'de Hotellerie', 'de. Description .Hotellerie'),
+(103, 20, 1, 'fr economy', 'fr. Description .economy'),
+(104, 20, 2, 'en economy', 'en. Description .economy'),
+(105, 20, 3, 'mg economy', 'mg. Description .economy'),
+(106, 20, 4, 'it economy', 'it. Description .economy'),
+(107, 20, 5, 'es economy', 'es. Description .economy'),
+(108, 20, 6, 'de economy', 'de. Description .economy'),
+(109, 21, 1, 'électronique', 'électronique'),
+(110, 21, 2, 'électronique', 'électronique'),
+(111, 21, 3, 'mg category', 'mg. Description .category'),
+(112, 21, 4, 'it category', 'it. Description .category'),
+(113, 21, 5, 'es category', 'es. Description .category'),
+(114, 21, 6, 'de category', 'de. Description .category'),
+(115, 22, 1, 'Bâtiments & Travaux Publics', 'Bâtiments & Travaux Publics'),
+(116, 22, 2, 'Bâtiments & Travaux Publics', 'Bâtiments & Travaux Publics'),
+(117, 22, 3, 'mg category-3', 'mg. Description .category-3'),
+(118, 22, 4, 'it category-3', 'it. Description .category-3'),
+(119, 22, 5, 'es category-3', 'es. Description .category-3'),
+(120, 22, 6, 'de category-3', 'de. Description .category-3'),
+(121, 23, 1, 'Environnements', 'Environnements'),
+(122, 23, 2, 'Environnements', 'Environnements'),
+(123, 23, 3, 'mg craft', 'mg. Description .craft'),
+(124, 23, 4, 'it craft', 'it. Description .craft'),
+(125, 23, 5, 'es craft', 'es. Description .craft'),
+(126, 23, 6, 'de craft', 'de. Description .craft'),
+(127, 24, 1, 'fr category', 'fr. Description .category'),
+(128, 24, 2, 'en category', 'en. Description .category'),
+(129, 24, 3, 'mg category', 'mg. Description .category'),
+(130, 24, 4, 'it category', 'it. Description .category'),
+(131, 24, 5, 'es category', 'es. Description .category'),
+(132, 24, 6, 'de category', 'de. Description .category'),
+(133, 25, 1, 'fr Finances', 'fr. Description .Finances'),
+(134, 25, 2, 'en Finances', 'en. Description .Finances'),
+(135, 25, 3, 'mg Finances', 'mg. Description .Finances'),
+(136, 25, 4, 'it Finances', 'it. Description .Finances'),
+(137, 25, 5, 'es Finances', 'es. Description .Finances'),
+(138, 25, 6, 'de Finances', 'de. Description .Finances');
 
 -- --------------------------------------------------------
 
@@ -2895,7 +3100,8 @@ INSERT INTO `sl_evaluation` (`id`, `school_id`, `user_id`, `mark`, `comment`, `d
 (90, 9, 2, 40, 'sdfsdf', '2017-05-29 15:23:36'),
 (91, 1, 2, 80, 'por iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo \npor iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo por iaculis ligula quis tincidunt. Vivamus nec commodo ipsum, sed viverra nibh. Phasellus hendrerit condimentum mi, vitae volutpat lorem convallis eu. Suspendisse commodo', '2017-05-30 11:07:37'),
 (92, 1, 1, 60, 'dfsd sdf sdf', '2017-06-16 07:13:55'),
-(93, 4, 1, 80, 'dfds sdf sdf', '2017-06-21 15:39:02');
+(93, 4, 1, 80, 'dfds sdf sdf', '2017-06-21 15:39:02'),
+(94, 11, 1, 100, 'et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.', '2017-06-29 14:51:28');
 
 -- --------------------------------------------------------
 
@@ -2935,7 +3141,8 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (26, 'd-sit-amet-ultricies-c', 3, 'd sit amet ultricies c', 0),
 (27, 'mod-sit-amet-ultricies', 2, 'mod sit amet ultricies', 0),
 (28, 'gestion-commerciale', 3, 'gestion commerciale', 0),
-(29, 'ressources-humaines', 34, 'Ressources Humaines', 0);
+(29, 'ressources-humaines', 34, 'Ressources Humaines', 0),
+(30, 'telecommunications', 4, 'Télécommunications', 0);
 
 -- --------------------------------------------------------
 
@@ -3075,7 +3282,13 @@ INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `loca
 (172, 'Ressources Humaines', 'mg. Description .Ressources Humaines', 29, 3),
 (173, 'Ressources Humaines', 'it. Description .Ressources Humaines', 29, 4),
 (174, 'Ressources Humaines', 'es. Description .Ressources Humaines', 29, 5),
-(175, 'Ressources Humaines', 'de. Description .Ressources Humaines', 29, 6);
+(175, 'Ressources Humaines', 'de. Description .Ressources Humaines', 29, 6),
+(176, 'Télécommunications', 'fr. Description .Télécommunications', 30, 1),
+(177, 'Télécommunications', 'en. Description .Télécommunications', 30, 2),
+(178, 'Télécommunications', 'mg. Description .Télécommunications', 30, 3),
+(179, 'Télécommunications', 'it. Description .Télécommunications', 30, 4),
+(180, 'Télécommunications', 'es. Description .Télécommunications', 30, 5),
+(181, 'Télécommunications', 'de. Description .Télécommunications', 30, 6);
 
 -- --------------------------------------------------------
 
@@ -3166,7 +3379,15 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (67, 10, 'logo_univ.jpg', 'e762844414d63c7ba37de1cf81d66135d54ef95d.jpeg', 'logo_univ.jpg', 1),
 (68, 11, 'logo_essa.png', '493646fcd241f652ee8441c2f6dfa8350271a5cd.png', 'logo_essa.png', 0),
 (69, 11, 'essalogo.jpg', 'ba97558792ae9bd2e3c72dfd30989cce13a51b21.jpeg', 'essalogo.jpg', 1),
-(70, 38, 'ifproglogo.jpg', '0421a15a548b2db40ca32cd4074096a284361b67.jpeg', 'ifproglogo.jpg', 1);
+(70, 38, 'ifproglogo.jpg', '0421a15a548b2db40ca32cd4074096a284361b67.jpeg', 'ifproglogo.jpg', 1),
+(71, 40, 'itulogo.jpg', '1d011e5bbd021cbbf12cca4ef2d2e2abe5305788.jpeg', 'itulogo.jpg', 1),
+(72, 39, 'issmilogo.jpg', 'b356ed009e2a294fb8447a453eec256ecb453c6a.jpeg', 'issmilogo.jpg', 1),
+(73, 41, 'imgamlogo.jpg', '056c6ca7501328ba13f7586809ed3ee4021d50a1.jpeg', 'imgamlogo.jpg', 1),
+(74, 43, 'ismateclogo.jpg', 'e1af4261bf4dc389398113409a856aa730564397.jpeg', 'ismateclogo.jpg', 1),
+(75, 44, 'isp-mdf.jpg', 'b193ec2e02299767643e565fae651b7218f9d13d.jpeg', 'isp-mdf.jpg', 1),
+(76, 45, 'enmglogo.jpg', '272bdb9598285740b49427281e35d472455272a3.jpeg', 'enmglogo.jpg', 1),
+(77, 46, 'oiologo.png', '8630277ee5b914fad7a3825ad008458b77a8d834.png', 'oiologo.png', 0),
+(78, 46, 'oiologo2.png', 'e909bf06a8599a024a44edcf894cc65bbf5dd6d3.png', 'oiologo2.png', 1);
 
 -- --------------------------------------------------------
 
@@ -3187,16 +3408,16 @@ CREATE TABLE `sl_school` (
 --
 
 INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
-(1, 'Institut national des sciences comptables et de l''administration d''entreprises', 'INSCAE', 'institut-national-des-sciences-comptables-et-de-l-administration-d-entreprises', 1),
-(2, 'Institut Supérieur de Technologie', 'IST', 'institut-superieur-de-technologie', 1),
+(1, 'Institut national des sciences comptables et de l''administration d''entreprises', 'INSCAE', 'inscae', 1),
+(2, 'Institut Supérieur de Technologie', 'IST', 'ist', 1),
 (3, 'Athénée Saint Joseph Antsirabe', 'ASJA', 'asja', 1),
 (4, 'Ecole Supérieure Polytechnique de d''Antananarivo', 'ESPA', 'espa', 1),
 (5, 'Ecole Nationale de L''Informatique', 'ENI', 'ecole-nationale-de-l-informatique', 1),
-(6, 'Université Catholique de Madagascar', 'UCM', 'universite-catholique-de-madagascar', 1),
+(6, 'Université Catholique de Madagascar', 'UCM', 'ist-2', 1),
 (7, 'Ecole Supérieure en Comptabilité d''Administration et de Management d''Entreprise', 'ESCAME', 'escame', 1),
 (8, 'GSI Université', 'GSI', 'gsi-universite', 1),
 (9, 'Centre National du Télé-Enseignement de Madagascar', 'CNTEMAD', 'centre-national-du-tele-enseignement-de-madagascar', 1),
-(10, 'Faculté de Droit, d’Economie, de Gestion et de Sociologie', 'DEGS', 'faculte-de-droit-d-rsquo-economie-de-gestion-et-de-sociologie', 1),
+(10, 'Faculté de Droit, d’Economie, de Gestion et de Sociologie', 'DEGS', 'degs', 1),
 (11, 'Ecole Supérieure des Sciences Agronomiques', 'ESSA', 'ecole-superieure-des-sciences-agronomiques', 1),
 (12, 'Faculté des Lettres et Sciences Humaines', 'LETTRES', 'faculte-des-lettres-et-sciences-humaines', 1),
 (13, 'Ecole Normale Supérieure', 'ENS', 'ecole-normale-superieure', 1),
@@ -3225,7 +3446,13 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (36, 'Espace Universitaire Regional de l''Ocean Indien', 'EUROI', 'espace-universitaire-regional-de-l-ocean-indien', 1),
 (37, 'Ecole Supérieure de la Nouvelle Technologie du multimédia et de la publicité', 'E-media', 'e-media', 1),
 (38, 'Institut de Formation PRofessionnelle Garantie Madagascar', 'IFPROG', 'ifprog', 1),
-(39, 'inibus rhoncus ipsum', 'sdfsdf', 'inibus-rhoncus-ipsum', 0);
+(39, 'Institut Superieur Saint Michel Itaosy', 'ISSMI', 'issmi', 1),
+(40, 'IT University', 'ITU', 'it-university', 1),
+(41, 'Institut de Management des Arts et Metiers', 'IMGAM', 'imgam', 1),
+(43, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'ISMATEC', 'ismatec', 1),
+(44, 'Institut Supérieur Prive Madagascar Développement Formation', 'ISP-MDF', 'isp-mdf', 1),
+(45, 'Ecole Nationale de la Magistrature et des Greffes', 'ENMG', 'enmg', 1),
+(46, 'Oio School', 'OIOS', 'oio', 1);
 
 -- --------------------------------------------------------
 
@@ -3365,7 +3592,10 @@ INSERT INTO `sl_school_of_the_day` (`id`, `school_id`, `date`, `current`, `day`)
 (2, 3, '2017-06-23 00:00:00', 0, '0000-00-00'),
 (3, 5, '2017-06-24 00:00:00', 0, '2017-06-23'),
 (7, 25, '2017-06-23 09:13:02', 1, '2017-06-23'),
-(8, 6, '2017-06-27 06:52:59', 1, '2017-06-27');
+(8, 6, '2017-06-27 06:52:59', 1, '2017-06-27'),
+(9, 34, '2017-06-28 07:28:30', 0, '2017-06-28'),
+(10, 25, '2017-06-28 19:41:51', 1, '2017-06-28'),
+(11, 43, '2017-06-29 10:49:03', 1, '2017-06-29');
 
 -- --------------------------------------------------------
 
@@ -3410,7 +3640,8 @@ INSERT INTO `sl_school_subscription` (`id`, `school_id`, `user_id`, `date`, `act
 (22, 9, 4, '2017-05-24 09:03:57', 0),
 (23, 11, 2, '2017-05-26 12:31:41', 1),
 (24, 14, 2, '2017-05-31 08:44:15', 1),
-(25, 6, 2, '2017-06-15 14:38:36', 1);
+(25, 6, 2, '2017-06-15 14:38:36', 1),
+(26, 33, 2, '2017-06-27 09:00:39', 1);
 
 -- --------------------------------------------------------
 
@@ -3626,17 +3857,17 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (190, 32, 4, 'finibus rhoncus ipsum', 'it. Short description .finibus rhoncus ipsum', 'it. Description .finibus rhoncus ipsum'),
 (191, 32, 5, 'finibus rhoncus ipsum', 'es. Short description .finibus rhoncus ipsum', 'es. Description .finibus rhoncus ipsum'),
 (192, 32, 6, 'finibus rhoncus ipsum', 'de. Short description .finibus rhoncus ipsum', 'de. Description .finibus rhoncus ipsum'),
-(193, 33, 1, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>fr. Description .ultrices nibh sa</p>'),
-(194, 33, 2, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>en. Description .ultrices nibh sa</p>'),
-(195, 33, 3, 'ultrices nibh sa', 'mg. Short description .ultrices nibh sa', 'mg. Description .ultrices nibh sa'),
-(196, 33, 4, 'ultrices nibh sa', 'it. Short description .ultrices nibh sa', 'it. Description .ultrices nibh sa'),
-(197, 33, 5, 'ultrices nibh sa', 'es. Short description .ultrices nibh sa', 'es. Description .ultrices nibh sa'),
-(198, 33, 6, 'ultrices nibh sa', 'de. Short description .ultrices nibh sa', 'de. Description .ultrices nibh sa'),
-(199, 34, 1, 'Centre de Formation des Ressources Humaines', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
+(193, 33, 1, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(194, 33, 2, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(195, 33, 3, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(196, 33, 4, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(197, 33, 5, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(198, 33, 6, 'ultrices nibh sa', 'L''IFAGI & 7ème Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation & 7ème Art a été crée en 2001. Le siège Social se trouve à Anjanahary au Lot II A 92 D et a actuellement deux annexes: à 67ha et à Manjakaray. Grâce aux résultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universités de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acquérir les compétences nécessaires dans un domaine précis de la vie professionnelle et d''acquérir un biveau de développement personnel suffisant pour surmonter les épreuves de la vie et les difficultés de toutes sortes et enfin, un sens moral visant le respect des personnes.', '<p>L''IFAGI &amp; 7&egrave;me Art ou Institut de Formation en Agronomie, Gemmologie, Industrialisation &amp; 7&egrave;me Art a &eacute;t&eacute; cr&eacute;e en 2001. Le si&egrave;ge Social se trouve &agrave; Anjanahary au Lot II A 92 D et a actuellement deux annexes: &agrave; 67ha et &agrave; Manjakaray. Gr&acirc;ce aux r&eacute;sultats des recherches incessantes des Enseignants chercheurs et desceux des autres Universit&eacute;s de Madagascar, dont l''objectif de la formation des jeunes et des personnes adultes a pour but de leur permettre d''acqu&eacute;rir les comp&eacute;tences n&eacute;cessaires dans un domaine pr&eacute;cis de la vie professionnelle et d''acqu&eacute;rir un biveau de d&eacute;veloppement personnel suffisant pour surmonter les &eacute;preuves de la vie et les difficult&eacute;s de toutes sortes et enfin, un sens moral visant le respect des personnes.</p>'),
+(199, 34, 1, 'Centre de Formation des Ressources Humaines', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
 (200, 34, 2, 'Centre de Formation des Ressources Humaines', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
 (201, 34, 3, 'accumsan tristique elit sit am', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
-(202, 34, 4, 'accumsan tristique elit sit am', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>');
-INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
+(202, 34, 4, 'accumsan tristique elit sit am', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
 (203, 34, 5, 'accumsan tristique elit sit am', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
 (204, 34, 6, 'accumsan tristique elit sit am', 'CFRH INSTITUTE est le premier Établissement Supérieur Privé à Madagascar se spécialisant dans le domaine de la « GESTION DES RESSOURCES HUMAINES ». Créé en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais également d’apporter un renforcement de compétence aux travailleurs déjà en activité. Fort de trois agréments de l’Etat, il délivre des diplômes reconnus par le Ministère de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirigé et animé par une équipe de professionnels consultants ayant des années d’expériences confirmées dans le secteur des ressources humaines au sein de groupes de sociétés les plus reconnues de la place.', '<p style="text-align: justify;">CFRH INSTITUTE est le premier &Eacute;tablissement Sup&eacute;rieur Priv&eacute; &agrave; Madagascar se sp&eacute;cialisant dans le domaine de la &laquo; GESTION DES RESSOURCES HUMAINES &raquo;. Cr&eacute;&eacute; en 2004, CFRH INSTITUTE a pour vocation de former les futurs responsables en Ressources Humaines mais &eacute;galement d&rsquo;apporter un renforcement de comp&eacute;tence aux travailleurs d&eacute;j&agrave; en activit&eacute;. Fort de trois agr&eacute;ments de l&rsquo;Etat, il d&eacute;livre des dipl&ocirc;mes reconnus par le Minist&egrave;re de la Fonction Publique du travail et des Lois Sociales. CFRH INSTITUTE est dirig&eacute; et anim&eacute; par une &eacute;quipe de professionnels consultants ayant des ann&eacute;es d&rsquo;exp&eacute;riences confirm&eacute;es dans le secteur des ressources humaines au sein de groupes de soci&eacute;t&eacute;s les plus reconnues de la place.<br /><br />NOS FORMATIONS :<br /><br />I. FORMATION CONTINUE en &laquo; PACK FORMATION &raquo; :<br />CFRH INSTITUTE a opt&eacute; pour ce syst&egrave;me incluant les trois (3) &eacute;l&eacute;ments suivants, pour un m&ecirc;me CO&Ucirc;T DE FORMATION, &agrave; savoir :<br />1) COURS ASSIST&Eacute; EN COURS DU SOIR<br />Du Lundi au Vendredi (sauf le Mercredi)<br />Horaire : de 17h30 &agrave; 19h00<br />2) COURS ASSIST&Eacute; EN COURS DU SAMEDI<br />Horaire : de 08h00 &agrave; 12h00<br />3) COURS PAR CORRESPONDANCE OU &Agrave; DISTANCE<br />Envoi des Cours une fois par semaine sous fichier PDF :<br />&bull; 1 fichier pour le module &laquo; ADMINSTRATION DU PERSONNEL &raquo;<br />&bull; 1 fichier pour le module &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;<br />Sanctions :<br />1)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN ADMINISTRATION DU PERSONNEL<br />2)&nbsp; DIPL&Ocirc;ME&nbsp; DE&nbsp; FIN&nbsp; DE&nbsp; FORMATION&nbsp; EN&nbsp; GESTION&nbsp; DES RESSOURCES HUMAINES<br />Cours de commerce international<br /><br />II. FORMATION INITIALE<br />Pour les Bacheliers, toutes s&eacute;ries,&nbsp; CFRH INSTITUTE propose des &eacute;tudes sup&eacute;rieures en salle sur la fili&egrave;re &laquo; GESTION DES RESSOURCES HUMAINES &raquo;, et dont la dur&eacute;e est de deux (2) ans. En deuxi&egrave;me ann&eacute;e, les &eacute;tudiants effectueront des stages en entreprise, et pr&eacute;senteront leur M&eacute;moire de fin d&rsquo;&Eacute;tudes en vue de l&rsquo;obtention du &laquo; D.T.S. ou&nbsp; Dipl&ocirc;me&nbsp; de&nbsp; Technicien&nbsp; Sup&eacute;rieur&nbsp; en&nbsp; GESTION&nbsp; DES&nbsp; RESSOURCES HUMAINES &raquo;.<br /><br />III. FORMATION A TITRE PRIVE<br />CFRH INSTITUTE dispose des formations &agrave; titre priv&eacute; pour les entreprises ou des particuliers qui pr&eacute;f&egrave;rent apprendre la &laquo; GESTION&nbsp; DES&nbsp; RESSOURCES&nbsp; HUMAINES &raquo; en dehors des heures d&rsquo;&eacute;tudes au CFRH INSTITUTE, et dans leurs locaux (selon leur convenance personnelle).</p>'),
 (205, 35, 1, 'Institut Universitaire Polytechnique de Madagascar', 'fr. Short description .c ultricies ac arcu vitae', '<p>fr. Description .c ultricies ac arcu vitae</p>'),
@@ -3663,13 +3894,50 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (226, 38, 4, 'Institut de Formation PRofessionnelle Garantie Madagascar', '"Avenir assuré, boulot à gogo, chômage zéro". Vous serez dès PRO avec I.F.PRO.G', '<p>it. Description .euismod sit amet ultricies</p>'),
 (227, 38, 5, 'Institut de Formation PRofessionnelle Garantie Madagascar', '"Avenir assuré, boulot à gogo, chômage zéro". Vous serez dès PRO avec I.F.PRO.G', '<p>es. Description .euismod sit amet ultricies</p>'),
 (228, 38, 6, 'Institut de Formation PRofessionnelle Garantie Madagascar', '"Avenir assuré, boulot à gogo, chômage zéro". Vous serez dès PRO avec I.F.PRO.G', '<p>de. Description .euismod sit amet ultricies</p>'),
-(229, 39, 1, 'inibus rhoncus ipsum', 'fr. Short description .inibus rhoncus ipsum', 'fr. Description .inibus rhoncus ipsum'),
-(230, 39, 2, 'inibus rhoncus ipsum', 'en. Short description .inibus rhoncus ipsum', 'en. Description .inibus rhoncus ipsum'),
-(231, 39, 3, 'inibus rhoncus ipsum', 'mg. Short description .inibus rhoncus ipsum', 'mg. Description .inibus rhoncus ipsum'),
-(232, 39, 4, 'inibus rhoncus ipsum', 'it. Short description .inibus rhoncus ipsum', 'it. Description .inibus rhoncus ipsum'),
-(233, 39, 5, 'inibus rhoncus ipsum', 'es. Short description .inibus rhoncus ipsum', 'es. Description .inibus rhoncus ipsum'),
-(234, 39, 6, 'inibus rhoncus ipsum', 'de. Short description .inibus rhoncus ipsum', 'de. Description .inibus rhoncus ipsum'),
-(235, 1, 1, 'Institut national des sciences comptables et de l''administration d''entreprises', 'Institut national des sciences comptables eInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisest de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprises', '<p>Institut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprises</p>');
+(229, 39, 1, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<p><strong>A propos</strong></p>\n<p>&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :<br />Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)<br />Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)<br /><br />Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :<br />TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES<br />GESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES<br />INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES<br /><br /><strong>Mission :</strong></p>\n<p style="text-align: justify;">S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</p>'),
+(230, 39, 2, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<div><strong>A propos</strong></div>\n<p style="text-align: justify;">&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :</p>\n<ul style="list-style-type: circle;">\n<li>Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)</li>\n<li>Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)</li>\n</ul>\n<p>Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :</p>\n<ul style="list-style-type: circle;">\n<li>TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES</li>\n<li>ESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES</li>\n<li>INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES</li>\n</ul>\n<p><strong>Mission :</strong></p>\n<div style="text-align: justify;">S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</div>'),
+(231, 39, 3, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<p style="text-align: justify;">&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :<br />Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)<br />Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)<br /><br />Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :<br />TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES<br />GESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES<br />INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES<br /><br />Mission :<br />S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</p>'),
+(232, 39, 4, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<p style="text-align: justify;">&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :<br />Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)<br />Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)<br /><br />Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :<br />TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES<br />GESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES<br />INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES<br /><br />Mission :<br />S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</p>'),
+(233, 39, 5, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<p style="text-align: justify;">&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :<br />Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)<br />Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)<br /><br />Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :<br />TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES<br />GESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES<br />INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES<br /><br />Mission :<br />S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</p>'),
+(234, 39, 6, 'Institut Superieur Saint Michel Itaosy', 'Établissement Supérieur Catholique professionnalisant sous l’égide des Pères Carmes, l’Institut Supérieur Saint Michel Itaosy, ISSMI a été fondé en 2003, avec l’agrément d’ouverture du Ministère de l’Enseignement Supérieur et de la Recherche Scientifique : ARRETE N° 532-2005/MENRS.', '<p style="text-align: justify;">&Eacute;tablissement Sup&eacute;rieur Catholique professionnalisant sous l&rsquo;&eacute;gide des P&egrave;res Carmes, l&rsquo;Institut Sup&eacute;rieur Saint Michel Itaosy, ISSMI a &eacute;t&eacute; fond&eacute; en 2003, avec l&rsquo;agr&eacute;ment d&rsquo;ouverture du Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la Recherche Scientifique : ARRETE N&deg; 532-2005/MENRS. Les dipl&ocirc;mes d&eacute;livr&eacute;s &agrave; l&rsquo;ISSMI sont reconnus par la Fonction Publique avec &eacute;quivalence administrative :<br />Bac +2 : Ex Cat IV Echelle B1 (Arr&ecirc;t&eacute; : 3491/2009-CNEAT)<br />Bac+3 : Ex Cat V Echelle A3 (Arr&ecirc;t&eacute; : 3493/ 2009-CNEAT)<br /><br />Les offres de formations &agrave; l&rsquo;ISSMI sont habilit&eacute;es par le Minist&egrave;re de l&rsquo;Enseignement Sup&eacute;rieur et de la recherche Scientifique :<br />TOURISME ENVIRONNEMENT HOTELLERIE T.E.H : Arr&ecirc;t&eacute; 1072/2014-MESupRES<br />GESTION : Arr&ecirc;t&eacute; 1949/2013- MESupRES<br />INFORMATIQUE : Arr&ecirc;t&eacute; 36831/2013- MESupRES<br /><br />Mission :<br />S&rsquo;ins&eacute;rant dans les &oelig;uvres &eacute;ducationnelles Carm&eacute;litaines, sa mise en place est une continuit&eacute; logique des travaux entrepris dans&nbsp; le cadre des &eacute;coles, des coll&egrave;ges et des lyc&eacute;es des districts de toute l&rsquo;Ile, o&ugrave; l&rsquo;Ordre est pr&eacute;sent. &laquo; Rester et Devenir Meilleur &raquo;, telle est sa devise. Il ambitionne ainsi dans un effort quasi permanent, de toujours fournir le meilleur de lui-m&ecirc;me afin de couronner de succ&egrave;s tout ce qu&rsquo;il entreprend. Se d&eacute;finir par rapport &agrave; soi ne suffit cependant pas, se positionner par rapport aux autres est aussi une autre paire de manche. Le statut de &laquo; meilleur &raquo; n&rsquo;est paradoxalement pas statique et n&rsquo;est jamais acquis d&eacute;finitivement, le chemin de la victoire et sem&eacute; d&rsquo;embuches et d&rsquo;obstacles &agrave; surmonter. Le monde concurrentiel est complexe et en incessante &eacute;volution et il nous appartient de suivre et&nbsp; de vivre ce dynamique afin de r&eacute;ussir sur tous les plans. Viser la formation int&eacute;grale de l&rsquo;homme, c&rsquo;est pr&eacute;server l&rsquo;&eacute;quilibre entre le corps, le c&oelig;ur, et l&rsquo;&acirc;me, c&rsquo;est aussi r&eacute;pondre &agrave; l&rsquo;imp&eacute;ratif du triptyque : qualit&eacute;, rigueur, t&eacute;moignage de foi vivante. Il s&rsquo;agit en r&eacute;sum&eacute; de former des jeunes citoyens responsables, performants et b&acirc;tisseur.</p>'),
+(235, 1, 1, 'Institut national des sciences comptables et de l''administration d''entreprises', 'Institut national des sciences comptables eInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisest de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprises', '<p>Institut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprisesInstitut national des sciences comptables et de l''administration d''entreprises</p>'),
+(236, 40, 1, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>'),
+(237, 40, 2, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>'),
+(238, 40, 3, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>'),
+(239, 40, 4, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>'),
+(240, 40, 5, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
+(241, 40, 6, 'IT University', 'IT University est un établissement d’enseignement supérieur privé spécialisé en informatique, nouvellement créé, pour répondre aux  besoins du secteur professionnel en matière de nouvelles technologies.', '<p>IT University est un &eacute;tablissement d&rsquo;enseignement sup&eacute;rieur priv&eacute; sp&eacute;cialis&eacute; en informatique, nouvellement cr&eacute;&eacute;, pour r&eacute;pondre aux&nbsp; besoins du secteur professionnel en mati&egrave;re de nouvelles technologies.<br /><br />IT University adopte le syst&egrave;me LMD et offre actuellement une formation de 3ans apr&egrave;s le BAC, dans les modules suivants :<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en d&eacute;veloppement d&rsquo;applications (Programmation)<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e en Base de donn&eacute;es et R&eacute;seaux<br />&nbsp;&nbsp;&nbsp; Licence sp&eacute;cialis&eacute;e&nbsp; en Web Int&eacute;gration et Web designer<br /><br />Apr&egrave;s ce programme , tous les sortants d&rsquo;IT University seront&nbsp; tout de suite op&eacute;rationnels, IT University met surtout en exergue la base math&eacute;matique dans son programme, afin de permettre aux &eacute;tudiants d&rsquo;avoir un bon niveau de raisonnement&nbsp; et&nbsp; de continuer leurs &eacute;tudes en master et en doctorat.</p>'),
+(242, 41, 1, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(243, 41, 2, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(244, 41, 3, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(245, 41, 4, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(246, 41, 5, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(247, 41, 6, 'Institut de Management des Arts et Metiers', 'L''IMGAM forme des professionnels de Madagascar depuis bientôt 25 ans. L''institut situé dans un quartier estimé de la capitale, offre aux jeunes un choix de diplômes de reconnaissance nationale et internationale, reconnu par le Ministère de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes formés à l''IMGAM ont su tirer profits des formations alliant l''académique à l''expérience professionnelle. Nos étudiants ont pour la plupart intégré rapidement le monde du travail et occupent aujourd''hui des postes de responsabilité dans plusieurs grandes entreprises tant à Madagascar qu''à l''étranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent à la fois aux besoins des étudiants et aux éxigences du marché du travail.', '<p>L''IMGAM forme des professionnels de Madagascar depuis bient&ocirc;t 25 ans. L''institut situ&eacute; dans un quartier estim&eacute; de la capitale, offre aux jeunes un choix de dipl&ocirc;mes de reconnaissance nationale et internationale, reconnu par le Minist&egrave;re de la fonction publique malgache et divers partenaires internationaux tels que l''IDRAC France, le HEC ... Des milliers de jeunes form&eacute;s &agrave; l''IMGAM ont su tirer profits des formations alliant l''acad&eacute;mique &agrave; l''exp&eacute;rience professionnelle. Nos &eacute;tudiants ont pour la plupart int&eacute;gr&eacute; rapidement le monde du travail et occupent aujourd''hui des postes de responsabilit&eacute; dans plusieurs grandes entreprises tant &agrave; Madagascar qu''&agrave; l''&eacute;tranger. Proche du monde de l''entreprise, les formations de l''IMGAM s''adaptent &agrave; la fois aux besoins des &eacute;tudiants et aux &eacute;xigences du march&eacute; du travail.</p>'),
+(248, 43, 1, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'fr. Short description .ist', '<p>fr. Description .ist</p>'),
+(249, 43, 2, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'en. Short description .ist', '<p>en. Description .ist</p>'),
+(250, 43, 3, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'mg. Short description .ist', '<p>mg. Description .ist</p>'),
+(251, 43, 4, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'it. Short description .ist', '<p>it. Description .ist</p>'),
+(252, 43, 5, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'es. Short description .ist', '<p>es. Description .ist</p>'),
+(253, 43, 6, 'Institut des Sciences Médicales, de l’Administration et de Technologie', 'de. Short description .ist', '<p>de. Description .ist</p>'),
+(254, 44, 1, 'Institut Supérieur Prive Madagascar Développement Formation', 'fr. Short description .ist', '<p>fr. Description .ist</p>'),
+(255, 44, 2, 'Institut Supérieur Prive Madagascar Développement Formation', 'en. Short description .ist', '<p>en. Description .ist</p>'),
+(256, 44, 3, 'Institut Supérieur Prive Madagascar Développement Formation', 'mg. Short description .ist', '<p>mg. Description .ist</p>'),
+(257, 44, 4, 'Institut Supérieur Prive Madagascar Développement Formation', 'it. Short description .ist', '<p>it. Description .ist</p>'),
+(258, 44, 5, 'Institut Supérieur Prive Madagascar Développement Formation', 'es. Short description .ist', '<p>es. Description .ist</p>'),
+(259, 44, 6, 'Institut Supérieur Prive Madagascar Développement Formation', 'de. Short description .ist', '<p>de. Description .ist</p>'),
+(260, 45, 1, 'Ecole Nationale de la Magistrature et des Greffes', 'Ecole Nationale de la Magistrature et des Greffes', '<p>Ecole Nationale de la Magistrature et des Greffes</p>'),
+(261, 45, 2, 'Ecole Nationale de la Magistrature et des Greffes', 'en. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>en. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
+(262, 45, 3, 'Ecole Nationale de la Magistrature et des Greffes', 'mg. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>mg. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
+(263, 45, 4, 'Ecole Nationale de la Magistrature et des Greffes', 'it. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>it. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
+(264, 45, 5, 'Ecole Nationale de la Magistrature et des Greffes', 'es. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>es. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
+(265, 45, 6, 'Ecole Nationale de la Magistrature et des Greffes', 'de. Short description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls', '<p>de. Description .ceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-klsceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kl sjd-skldf jslkdjf-lksdjfsj- fsjdf-s jkdlfj-skldfj-lsd jfsjkld-slkdjflsdj-fl sj dlfjsldkfjlsd-fljkjsdklf-jlskdfjlk-ssdjf-lskjflksdj-sj-dklfjsk-sldfjlk-jslkdceci-dfj-klfjqkls-fjlkqdsjfljslfjs-jlsdj-ldjfldj-kls</p>'),
+(266, 46, 1, 'Oio scholl', 'fr. Short description .Oio scholl', 'fr. Description .Oio scholl'),
+(267, 46, 2, 'Oio scholl', 'en. Short description .Oio scholl', 'en. Description .Oio scholl'),
+(268, 46, 3, 'Oio scholl', 'mg. Short description .Oio scholl', 'mg. Description .Oio scholl'),
+(269, 46, 4, 'Oio scholl', 'it. Short description .Oio scholl', 'it. Description .Oio scholl'),
+(270, 46, 5, 'Oio scholl', 'es. Short description .Oio scholl', 'es. Description .Oio scholl'),
+(271, 46, 6, 'Oio scholl', 'de. Short description .Oio scholl', 'de. Description .Oio scholl');
 
 -- --------------------------------------------------------
 
@@ -3820,7 +4088,8 @@ ALTER TABLE `at_category_translate`
 -- Index pour la table `bg_category`
 --
 ALTER TABLE `bg_category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_9E81C913989D9B62` (`slug`);
 
 --
 -- Index pour la table `bg_category_post`
@@ -3843,6 +4112,7 @@ ALTER TABLE `bg_category_translate`
 --
 ALTER TABLE `bg_post`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_553956DB989D9B62` (`slug`),
   ADD KEY `IDX_553956DBA76ED395` (`user_id`);
 
 --
@@ -3984,7 +4254,8 @@ ALTER TABLE `pm_view`
 -- Index pour la table `sl_category`
 --
 ALTER TABLE `sl_category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_91929EF989D9B62` (`slug`);
 
 --
 -- Index pour la table `sl_category_school`
@@ -4043,7 +4314,8 @@ ALTER TABLE `sl_logo`
 -- Index pour la table `sl_school`
 --
 ALTER TABLE `sl_school`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_35A2BC0C989D9B62` (`slug`);
 
 --
 -- Index pour la table `sl_school_admin`
@@ -4150,22 +4422,22 @@ ALTER TABLE `at_category_translate`
 -- AUTO_INCREMENT pour la table `bg_category`
 --
 ALTER TABLE `bg_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `bg_category_post`
 --
 ALTER TABLE `bg_category_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT pour la table `bg_category_translate`
 --
 ALTER TABLE `bg_category_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT pour la table `bg_post`
 --
 ALTER TABLE `bg_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT pour la table `bg_post_illustration`
 --
@@ -4175,7 +4447,7 @@ ALTER TABLE `bg_post_illustration`
 -- AUTO_INCREMENT pour la table `bg_post_translate`
 --
 ALTER TABLE `bg_post_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT pour la table `et_event`
 --
@@ -4215,7 +4487,7 @@ ALTER TABLE `pm_advert_school`
 -- AUTO_INCREMENT pour la table `pm_comment`
 --
 ALTER TABLE `pm_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT pour la table `pm_contact`
 --
@@ -4245,7 +4517,7 @@ ALTER TABLE `pm_newsletter_mail`
 -- AUTO_INCREMENT pour la table `pm_parameter`
 --
 ALTER TABLE `pm_parameter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `pm_post_school`
 --
@@ -4255,22 +4527,22 @@ ALTER TABLE `pm_post_school`
 -- AUTO_INCREMENT pour la table `pm_view`
 --
 ALTER TABLE `pm_view`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1733;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1808;
 --
 -- AUTO_INCREMENT pour la table `sl_category`
 --
 ALTER TABLE `sl_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT pour la table `sl_category_school`
 --
 ALTER TABLE `sl_category_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 --
 -- AUTO_INCREMENT pour la table `sl_category_translate`
 --
 ALTER TABLE `sl_category_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 --
 -- AUTO_INCREMENT pour la table `sl_cover`
 --
@@ -4280,27 +4552,27 @@ ALTER TABLE `sl_cover`
 -- AUTO_INCREMENT pour la table `sl_evaluation`
 --
 ALTER TABLE `sl_evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT pour la table `sl_field`
 --
 ALTER TABLE `sl_field`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `sl_field_translate`
 --
 ALTER TABLE `sl_field_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT pour la table `sl_logo`
 --
 ALTER TABLE `sl_logo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT pour la table `sl_school`
 --
 ALTER TABLE `sl_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT pour la table `sl_school_admin`
 --
@@ -4320,17 +4592,17 @@ ALTER TABLE `sl_school_contact_translate`
 -- AUTO_INCREMENT pour la table `sl_school_of_the_day`
 --
 ALTER TABLE `sl_school_of_the_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `sl_school_subscription`
 --
 ALTER TABLE `sl_school_subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT pour la table `sl_school_translate`
 --
 ALTER TABLE `sl_school_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
 --
 -- AUTO_INCREMENT pour la table `ur_avatar`
 --

@@ -1,6 +1,9 @@
 com_blog_home:
     path:     /blog
     defaults: { _controller: COMBlogBundle:Blog:index }
+com_blog_load_posts:
+    path:     /blog/load-post/{post_id}
+    defaults: { _controller: COMBlogBundle:Blog:loadPosts }
 com_blog_post_viewbyid:
     path:     /blog/id/{id}
     defaults: { _controller: COMBlogBundle:Blog:viewById }

@@ -48,6 +48,53 @@ $(function() {
     bgContent();
 	
 	/*
+	* load posts
+	*/
+	$('#bg_load_post').on('click', function(){
+        var $this = $(this);
+        var target = $this.attr("data-target");
+		
+		var data = {
+		};
+		$("#bg_load_post_action #bg_load_post").hide();
+		$("#bg_load_post_action .btn_loading").css("display", "block");
+		$.ajax({
+			type: 'POST',
+			url: target,
+			data: data,
+			dataType : 'json',
+			success: function(data){
+				console.log(data.state);
+				if(data.state){
+					var htmlappend = '';
+					for(var i = 0; i <data.posts.length; i++ ){
+						var post = data.posts[i];
+						htmlappend += post.postItem;
+					}
+					$("#bg_list_post").append(htmlappend);
+					if(data.previousPostId > 0){
+						$("#bg_load_post").attr("data-target", data.urlLoadPost);
+						$("#bg_load_post").attr("data-previous-post", data.previousPostId);
+						
+						$("#bg_load_post_action #bg_load_post").css("display", "block");
+						$("#bg_load_post_action .btn_loading").hide();
+					}else{
+						$("#bg_load_post_action").remove();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});	
+    });
+	
+	/*
 	* load commentItem
 	*/
 	$('#load_comment').on('click', function(){

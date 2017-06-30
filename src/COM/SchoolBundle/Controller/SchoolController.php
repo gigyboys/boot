@@ -185,6 +185,7 @@ class SchoolController extends Controller
 				'schools' => $schools,
 				'category' => $category,
 				'currentpage' => $page,
+				'limit' => $limit,
 				'locale' => $locale,
 			));
 			
@@ -213,6 +214,7 @@ class SchoolController extends Controller
 				'allSchools' => $allSchools,
 				'schools' => $schools,
 				'currentpage' => $page,
+				'limit' => $limit,
 				'locale' => $locale,
 				'entityView' => 'school',
 			));
