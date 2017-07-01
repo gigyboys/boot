@@ -190,6 +190,98 @@ class BlogService {
         ));
 		
 		return $comments;
-    }
+    }	
+	
+	public function getPostsLimitByCategory(Category $category, $limit, $order) {
+		$postRepository = $this->em->getRepository('COMBlogBundle:Post');
+		$categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
 
+		$ids = array();
+		$posts = array();
+        $categoryPosts = $categoryPostRepository->findBy(array(
+            'category' => $category,
+        ));
+		
+		foreach($categoryPosts as $categoryPost){
+			$postTmp = $categoryPost->getPost();
+			if($postTmp->getPublished() == true){
+				array_push($ids, $postTmp->getId());
+			}
+		}
+		rsort($ids);
+		
+		$offset = 0;
+		$start = $offset;
+		if(count($ids) < $offset+$limit){
+			$end = count($ids);
+		}else{
+			$end = $offset+$limit;
+		}
+		
+		for ($i=$start; $i<$end; $i++) {
+			$post = $postRepository->find($ids[$i]);
+			array_push($posts, $post);
+		}
+		
+		return $posts;
+    }
+		
+	public function getSincePostByCategory(Category $category, $post) {
+		$postRepository = $this->em->getRepository('COMBlogBundle:Post');
+		$categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
+
+		$ids = array();
+		$posts = array();
+        $categoryPosts = $categoryPostRepository->findBy(array(
+            'category' => $category,
+        ));
+		
+		foreach($categoryPosts as $categoryPost){
+			$postTmp = $categoryPost->getPost();
+			if($postTmp->getPublished() == true  && $postTmp->getId() < $post->getId()){
+				array_push($ids, $postTmp->getId());
+			}
+		}
+		rsort($ids);
+		
+		$post = null;
+		if(count($ids)){
+			$post = $postRepository->find($ids[0]);
+		}
+		
+		return $post;
+    }
+	
+	public function getPostsSinceByCategory(Category $category, $post, $limit, $order) {
+		$postRepository = $this->em->getRepository('COMBlogBundle:Post');
+		$categoryPostRepository = $this->em->getRepository('COMBlogBundle:CategoryPost');
+
+		$ids = array();
+		$posts = array();
+        $categoryPosts = $categoryPostRepository->findBy(array(
+            'category' => $category,
+        ));
+		
+		foreach($categoryPosts as $categoryPost){
+			$postTmp = $categoryPost->getPost();
+			if($postTmp->getPublished() == true && $postTmp->getId() <= $post->getId()){
+				array_push($ids, $postTmp->getId());
+			}
+		}
+		rsort($ids);
+		
+		$start = 0;
+		if(count($ids) < $start+$limit){
+			$end = count($ids);
+		}else{
+			$end = $start+$limit;
+		}
+		
+		for ($i=$start; $i<$end; $i++) {
+			$post = $postRepository->find($ids[$i]);
+			array_push($posts, $post);
+		}
+		
+		return $posts;
+    }
 }

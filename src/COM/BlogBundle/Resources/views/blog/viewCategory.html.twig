@@ -10,15 +10,22 @@
 		<div class="ct">
 			<div id="bg_list" style="overflow:hidden">
 				<div class="bgl">
-					
 					<div style="padding: 10px 10px; font-weight:bold; background:#eee;margin-bottom:10px;border-bottom:3px solid #ddd;">
 						Les articles de la catégorie {{ category.defaultName }}
 					</div>
-					<div>
+					<div id="bg_list_post">
 						{% for post in posts %}
 							{{ include("COMBlogBundle:blog:include/post_item.html.twig") }}
 						{% endfor %}
 					</div>
+					{% if previousPost %}
+						<div id="bg_load_post_action" class="mg_b10">
+							<div id="bg_load_post" data-target="{{ path('com_blog_category_view_load_posts', {'slug': category.slug, 'post_id': previousPost.id}) }}" data-previous-post="{{ previousPost.id }}" class="mg_h10" style="text-align:center; cursor:pointer">
+								Load posts
+							</div>
+							<div class="btn_loading" style="text-align:center;display:none;">Chargement...</div>
+						</div>
+					{% endif %}
 				</div>
 				<div class="bgr" style="">
 					<div style="min-height:400px; margin:10px; width:auto; background:#fff">

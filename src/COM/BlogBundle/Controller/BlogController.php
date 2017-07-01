@@ -163,6 +163,7 @@ class BlogController extends Controller
 		$postRepository = $em->getRepository('COMBlogBundle:Post');
 		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
 		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
@@ -174,26 +175,114 @@ class BlogController extends Controller
 			'slug' => $slug,
 		));
 		if($category){
-			/*$posts = $postRepository->findBy(array(
-				'published' => true,
-				'published' => true,
-			));*/
+			
+			$limit = $parameterRepository->findOneBy(array(
+				'parameter' => 'posts_by_page',
+			))->getValue();
 			
 			$blogService = $this->container->get('com_blog.blog_service');
-			$posts = $blogService->getPublishedPostsByCategory($category);
+			//$posts = $blogService->getPublishedPostsByCategory($category);
+			$order = "DESC";
+			$posts = $blogService->getPostsLimitByCategory($category, $limit, $order);
 			
 			foreach($posts as $post){
 				$blogService->hydratePostLang($post, $locale);
 			}
 			
+			$previousPost = null;
+			if(count($posts)){
+				$index = count($posts)-1;
+				$firstPost = $posts[$index];
+				$previousPost = $blogService->getSincePostByCategory($category, $firstPost);
+			}
+			
 			return $this->render('COMBlogBundle:blog:viewCategory.html.twig', array(
 				'posts' => $posts,
 				'category' => $category,
+				'previousPost' => $previousPost,
 				'entityView' => 'blog',
 			));
 		}else{
 			
 		}
+    }
+	
+	public function loadPostsCategoryAction($slug, $post_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		$categoryRepository = $em->getRepository('COMBlogBundle:Category');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+        
+		$lastPost = $postRepository->find($post_id);
+		$category = $categoryRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		
+        $response = new Response();
+		if($lastPost && $category){		
+			$limit = $parameterRepository->findOneBy(array(
+				'parameter' => 'posts_by_page',
+			))->getValue();
+			
+			
+			$blogService = $this->container->get('com_blog.blog_service');		
+			
+			$order = "ASC";
+			$posts = $blogService->getPostsSinceByCategory($category, $lastPost, $limit, $order);
+			foreach($posts as $post){
+				$blogService->hydratePostLang($post, $locale);
+			}
+			
+			$listPosts = array();
+			foreach($posts as $post){
+				$postItem = $this->renderView('COMBlogBundle:blog:include/post_item.html.twig', array(
+				  'post' => $post
+				));
+				array_push($listPosts, array(
+					"id" 			=> $post->getId(),
+					"postItem" 		=> $postItem,
+				));
+			}
+		
+			$previousPost = null;
+			$previousPostId = 0;
+			$urlLoadPost = null;
+			
+			if(count($posts)){
+				$index = count($posts)-1;
+				$firstPost = $posts[$index];
+				$previousPost = $blogService->getSincePostByCategory($category, $firstPost);
+			}
+			if ($previousPost){
+				$previousPostId = $previousPost->getId();
+				$urlLoadPost = $this->get('router')->generate('com_blog_category_view_load_posts', array(
+					'slug' => $category->getSlug(),
+					'post_id' => $previousPostId,
+				));
+			}
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'posts' => $listPosts,
+				'previousPostId' => $previousPostId,
+				'urlLoadPost' => $urlLoadPost,
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
     }
 	
     public function viewAction($slug)

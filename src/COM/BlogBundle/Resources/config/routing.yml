@@ -22,6 +22,9 @@ com_blog_category:
 com_blog_category_view:
     path:     /blog/category/{slug}
     defaults: { _controller: COMBlogBundle:Blog:viewCategory }
+com_blog_category_view_load_posts:
+    path:     /blog/category/{slug}/load-post/{post_id}
+    defaults: { _controller: COMBlogBundle:Blog:loadPostsCategory }
 com_blog_view:
     path:     /blog/{slug}
     defaults: { _controller: COMBlogBundle:Blog:view }
