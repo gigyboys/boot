@@ -35,6 +35,8 @@ class SchoolExtension extends \Twig_Extension {
             'isCategorySchool' => new \Twig_Function_Method($this, 'isCategorySchoolFunction'),
             'getCurrentSchoolByCategory' => new \Twig_Function_Method($this, 'getCurrentSchoolByCategoryFunction'),
             'getSchoolOfTheDay' => new \Twig_Function_Method($this, 'getSchoolOfTheDayFunction'),
+            'getCategoriesWithPublishedSchool' => new \Twig_Function_Method($this, 'getCategoriesWithPublishedSchoolFunction'),
+            'getAllSchoolByCategory' => new \Twig_Function_Method($this, 'getAllSchoolByCategoryFunction'),
         );
     }
 
@@ -92,6 +94,14 @@ class SchoolExtension extends \Twig_Extension {
 
     public function getSchoolOfTheDayFunction() {
         return $this->schoolService->getSchoolOfTheDay();
+    }
+
+    public function getCategoriesWithPublishedSchoolFunction($limit) {
+        return $this->schoolService->getCategoriesWithPublishedSchool($limit);
+    }
+
+    public function getAllSchoolByCategoryFunction(Category $category, $publishState) {
+        return $this->schoolService->getAllSchoolByCategory($category, $publishState);
     }
 
     public function getName() {

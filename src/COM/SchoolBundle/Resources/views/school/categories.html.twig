@@ -11,40 +11,7 @@
 			<div style="margin:30px 0px;">
 				<div class="fm_list_topic">
 					{% for category in categories %}
-						<div style="box-sizing : border-box; float:left; width: 300px; padding: 10px">
-							<div style="border:1px solid #ddd; text-align:center; border-radius:3px; background: #f8f8f8">
-								<div style="">
-									<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="display:block; padding: 10px 0;">
-										{{ category.defaultName }}
-									</a>
-								</div>
-								<div class="mg_5">
-									<div class="sp"></div>
-								</div>
-								{% set school = getCurrentSchoolByCategory(category) %}
-								<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}" style="display:block">
-									<span style="height:52px;display:block">
-										<span style="width: 40px; height:40px; float:left;display:block">
-											{# twig extension #}
-											{% set logo=schoolLogo(school) %}
-											{% if logo != "default.jpeg" %}
-												{% set pathtologo='uploads/images/school/logo/'~logo %}
-											{% else %}
-												{% set pathtologo='default/images/school/logo/'~logo %}
-											{% endif %}
-											<img style="width:40px; height:40px; margin:5px;border: 1px solid #ddd; display:inline-block " src="{{ pathtologo | imagine_filter('40x40') }}" />
-										</span>
-										<span style="margin-left: 52px; margin-right: 5px; text-align:left;display:block">
-											{% if school.shortName | trim != "" %}
-												<span style="padding-top: 4px; font-weight:bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;;display:block">{{ school.shortName }}</span>
-											{% endif %}
-											<span style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;;display:block" title="{{ school.name }}">{{ school.name }}</span>
-										</span>
-										<span class="both"></span>
-									</span>
-								</a>
-							</div>
-						</div>
+						{{ include("COMSchoolBundle:school:include/school_category_item.html.twig") }}
 					{% endfor %}
 					<div class="both"></div>
 				</div>

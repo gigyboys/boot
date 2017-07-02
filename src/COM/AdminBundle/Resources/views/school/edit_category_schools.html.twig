@@ -103,9 +103,9 @@
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
 					<th class="" style="width: 36px" >logo</th>
-					<th>Name</th>
-					<th>Short name</th>
-					<th>Published</th>
+					<th class="taleft">Name</th>
+					<th class="taleft">Short name</th>
+					<th class="taleft">Published</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for categorySchool in categorySchools %}
@@ -136,9 +136,13 @@
 								<div href="#" class="dd_src" style="display:inline-block;cursor:pointer">
 									action
 								</div>
-								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; border: 1px solid #aaa; border-radius: 4px;">
-									<div data-target="{{ path('com_admin_school_category_edit_setdefaultschool', {'id': category.id, 'school_id': school.id,}) }}" class="cat_sl_item" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px;cursor:pointer">Set default school</div>
-									<div class="remove_sl_cat" data-sl-id="{{ school.id }}" data-cat-id="{{ category.id }}" data-target="{{ path('com_admin_school_category_edit_removeschool', {'id': category.id, 'school_id': school.id}) }}" data-sl-name="{{ school.name }}" data-cat-name="{{ category.defaultName }}" style="cursor:pointer; white-space: nowrap;padding:5px;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Remove from list</div>
+								<div class="dd_target dd_tdfault">
+									<div data-target="{{ path('com_admin_school_category_edit_setdefaultschool', {'id': category.id, 'school_id': school.id,}) }}" class="cat_sl_item dd_item">
+										<span class="icon"><img src="{{ asset('assets/image/default_icon.png') }}" /></span><span class="label">Set default school</span>
+									</div>
+									<div class="remove_sl_cat dd_item" data-sl-id="{{ school.id }}" data-cat-id="{{ category.id }}" data-target="{{ path('com_admin_school_category_edit_removeschool', {'id': category.id, 'school_id': school.id}) }}" data-sl-name="{{ school.name }}" data-cat-name="{{ category.defaultName }}">
+										<span class="icon"><img src="{{ asset('assets/image/delete_icon.png') }}" /></span><span class="label">Remove from list</span>
+									</div>
 								</div>
 							</div>
 						</td>

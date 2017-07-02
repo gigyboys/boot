@@ -23,17 +23,7 @@
 				<span href="#" class="dd_src" style="cursor:pointer">
 					Autres actions
 				</span>
-				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
-					<div style="margin:5px">
-						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
-						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
-						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
-						<a class="link" href="{{ path('com_admin_school_categories', {'school_id': school.id}) }}">Categories</a><br />
-						<a class="link" href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}">Contact</a><br />
-						<a class="link" href="{{ path('com_admin_school_subscriber', {'school_id': school.id}) }}">Subscription</a><br />
-						<a class="link" href="">evaluations</a>
-					</div>
-				</div>
+				{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
 			</span> 
 		</div>
 	</div>

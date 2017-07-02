@@ -5,8 +5,11 @@
 .left{
 	float:left;
 }
-.left{
-	right:right;
+.right{
+	float:right;
+}
+.taleft{
+	text-align:left;
 }
 .ct10{
 	margin-left:10px;

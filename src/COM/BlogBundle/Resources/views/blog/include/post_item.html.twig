@@ -13,7 +13,7 @@
 		
 		{% set category = getCategoryByPost(post) %}
 		{% if category %}
-			<div class="tag_info"><a href="#" rel="category tag">{{ category.defaultName }}</a></div>
+			<div class="tag_info"><a href="{{ path('com_blog_category_view', {'slug': category.slug}) }}" rel="category tag">{{ category.defaultName }}</a></div>
 		{% endif %}
 		
 		{% set comments = getCommentsByPost(post) %}

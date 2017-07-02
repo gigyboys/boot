@@ -20,11 +20,7 @@
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
 			</span>
-			<div class="dd_target">
-				<span class="bc2"><a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a></span>
-				<span class="bc2"><a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a></span>
-				<span class="bc2"><a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a></span>
-			</div>
+			{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
 		</span> 
 		<span class="bc1"><a href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}"><span>{{ 'Contact' | trans }}</span></a> </span>
 	</div>
@@ -34,15 +30,7 @@
 				<span href="#" class="dd_src" style="cursor:pointer">
 					Autres actions
 				</span>
-				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
-					<div style="margin:5px">
-						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
-						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
-						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
-						<a class="link" href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}">Admin</a><br />
-						<a class="link" href="">evaluations</a>
-					</div>
-				</div>
+				{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
 			</span> 
 		</div>
 	</div>
@@ -103,7 +91,7 @@
 			<table class="a_table">
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
-					<th>Address</th>
+					<th class="taleft">Address</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for contact in contacts %}

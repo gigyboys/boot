@@ -41,10 +41,32 @@
 										Add to ...
 									</span>
 									<div class="dd_target" style="margin-top: 3px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#fff;box-shadow: 1px 1px 5px #ccc;">
-										<div style="margin:5px">
-												{% for school in schools %}
-													<div style="cursor:pointer" data-schoolId="{{ school.id }}" data-target="{{ path('com_blog_post_set_post_school', {'post_id': post.id, 'school_id': school.id}) }}" class="not_school_post">{{ school.shortName }} - {{ school.name }}</div>
-												{% endfor %}
+										<div style="padding:5px">
+											<input type="text" style="display:block;width:100%;border-radius:3px; border:1px solid #ccc; box-sizing:border-box;padding:4px"/>
+										</div>
+										<div class="sp"></div>
+										<div style="padding:5px; max-height:200px; overflow:auto">
+											{% for school in schools %}
+												<div style="cursor:pointer;margin:4px 0px" data-schoolId="{{ school.id }}" data-target="{{ path('com_blog_post_set_post_school', {'post_id': post.id, 'school_id': school.id}) }}" class="not_school_post">
+													<div style="width:40px; height:40px; float:left;">
+														{# twig extension #}
+														{% set logo=schoolLogo(school) %}
+														{% if logo != "default.jpeg" %}
+															{% set pathtologo='uploads/images/school/logo/'~logo %}
+														{% else %}
+															{% set pathtologo='default/images/school/logo/'~logo %}
+														{% endif %}
+														<img style="display:inline-block; width:40px; height:40px; border-radius: 0px; border: 1px solid #ccc" src="{{ pathtologo | imagine_filter('40x40') }}" alt="IMG" />
+													</div>
+													<div style="margin-left:45px">
+														{% if school.shortName | trim != "" %}
+															<div class="bold" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ school.shortName }}</div>
+														{% endif %}
+														<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ school.name }}</div>
+													</div>
+													<div class="both"></div>
+												</div>
+											{% endfor %}
 										</div>
 									</div>
 								</span> 
