@@ -154,5 +154,19 @@
 				</div>
 			</div>
 		</div>
+		<div class="cr">
+			<div class="ct">
+				<div style="margin:10px;font-weight:bold; background:#eee; border:1px solid #ddd; padding:5px">
+					See also...
+				</div>
+				<div class="sl_related" style="text-align:center;"><!--
+					{# twig extension #}
+					{% set relatedSchools=getRelatedSchools(school, 5) %}
+					{% for school in relatedSchools %}
+						-->{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}<!--
+					{% endfor %}
+				--></div>
+			</div>
+		</div>
 	</div>
 {% endblock %}

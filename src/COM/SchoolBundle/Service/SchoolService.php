@@ -440,4 +440,78 @@ class SchoolService {
 			return $categoriesLimit;
 		}
     }
+	
+	public function getRelatedSchools(School $school, $limit) {
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+        $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+
+		$schoolIds = array();
+		$schools = array();
+		$categories = array();
+        $categorySchools = $categorySchoolRepository->findBy(array(
+			'school' => $school,
+		));
+		
+		foreach($categorySchools as $categorySchool){
+			$category = $categorySchool->getCategory();
+			array_push($categories, $category);
+			$schoolTemps = $this->getAllSchoolByCategory($category, true);
+			foreach($schoolTemps as $schoolTemp){			
+				if (!in_array($schoolTemp->getId(), $schoolIds) && $schoolTemp->getId() != $school->getId()) {
+					array_push($schoolIds, $schoolTemp->getId());
+				}	
+			}
+		}
+		
+		shuffle($schoolIds);
+		$start = 0;
+		if(count($schoolIds) < $start+$limit){
+			$end = count($schoolIds);
+		}else{
+			$end = $start+$limit;
+		}
+		
+		for ($i=$start; $i<$end; $i++) {
+			$school = $schoolRepository->find($schoolIds[$i]);
+			array_push($schools, $school);
+		}
+        
+		return $schools;
+    }
+	
+	public function getCategoriesBySchool(School $school, $limit, $shuffle) {
+		$categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
+		
+        $categories = array();
+        $categorySchools = $categorySchoolRepository->findBy(array(
+			'school' => $school,
+		));
+		
+		foreach($categorySchools as $categorySchool){
+			$category = $categorySchool->getCategory();
+			array_push($categories, $category);
+		}
+		
+		if($shuffle){
+			shuffle($categories);
+		}
+		
+		if($limit == 0){
+			return $categories;
+		}else{			
+			$categoriesLimit = array();
+			if(count($categories) < $limit){
+				$end = count($categories);
+			}else{
+				$end = $limit;
+			}
+			
+			for ($i=0; $i<$end; $i++) {
+				array_push($categoriesLimit, $categories[$i]);
+			}
+			
+			return $categoriesLimit;
+		}
+    }
+	
 }

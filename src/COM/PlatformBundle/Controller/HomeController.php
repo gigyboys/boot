@@ -28,7 +28,23 @@ class HomeController extends Controller
 		$schoolService = $this->container->get('com_school.school_service');
 		
 		//$categories = $categoryRepository->findAll();
-		$categories = $schoolService->getCategoriesWithPublishedSchool($limit);
+		$categories = $schoolService->getCategoriesWithPublishedSchool(0);
+		shuffle($categories);
+		
+		if($limit > 0){		
+			$categoriesLimit = array();
+			if(count($categories) < $limit){
+				$end = count($categories);
+			}else{
+				$end = $limit;
+			}
+			
+			for ($i=0; $i<$end; $i++) {
+				array_push($categoriesLimit, $categories[$i]);
+			}
+			
+			$categories = $categoriesLimit;
+		}
 		
 		
         return $this->render('COMPlatformBundle:home:home.html.twig', array(

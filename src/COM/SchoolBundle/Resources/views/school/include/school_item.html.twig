@@ -1,12 +1,11 @@
-{# twig extension #}
-{% set logo=schoolLogo(school) %}
-{% if logo != "default.jpeg" %}
-	{% set pathtologo='uploads/images/school/logo/'~logo %}
-{% else %}
-	{% set pathtologo='default/images/school/logo/'~logo %}
-{% endif %}
-
 <div class="sl_item" style="">
+	{# twig extension #}
+	{% set logo=schoolLogo(school) %}
+	{% if logo != "default.jpeg" %}
+		{% set pathtologo='uploads/images/school/logo/'~logo %}
+	{% else %}
+		{% set pathtologo='default/images/school/logo/'~logo %}
+	{% endif %}
 	<div class="sl_header">
 		<div class="sl_logo">
 			{#<img style="" src="{{ pathtologo | imagine_filter('140x140') }}" alt="img sl" />#}
@@ -20,6 +19,13 @@
 			{% endif %}
 
 			<img style="" src="{{ pathtocover | imagine_filter('218x140') }}" alt="img sl" />
+		</div>
+		<div class="sl_category" style="height: 140px;position: absolute;text-align: center;width: 218px;z-index: 4;background:rgba(255,255,255,0.25)">			
+			{# twig extension #}
+			{% set categories=getCategoriesBySchool(school, 6, true) %}
+			{% for category in categories %}
+				<div style="width:100%; text-align:right; color:#000;text-shadow: 1px 1px 2px #fff;box-sizing:border-box; padding:0 4px; margin-bottom:1px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ category.defaultName }}</div>
+			{% endfor %}
 		</div>
 		<div class="sl_short_description">
 			{% set schoolTranslate = getSchoolTranslate(school, locale) %}
