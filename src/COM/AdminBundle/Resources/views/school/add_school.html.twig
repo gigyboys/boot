@@ -11,11 +11,12 @@
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
 			</span>
+			{{ include("COMAdminBundle:school:include/school_principal_action.html.twig") }}
 		</span> 
 		<span class="bc1"><a href="{{ path('com_admin_school_add') }}">add School</a></span>
 	</div>
 	<div style="padding:8px;float:right">
-		<span><a href="{{ path('com_admin_school_add') }}">New school</a></td></span> 
+		<span><a href="{{ path('com_admin_school_add') }}"><img src="{{ asset('assets/image/add_icon.png') }}" /> <span>New school</span></a></td></span> 
 	</div>
 {% endblock %}
 

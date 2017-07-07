@@ -52,21 +52,21 @@ header{
 	float:right
 }
 /* locale */
-#nav_right #locale{
+#locale{
 	display: block; 
 	margin-top: 4px; 
 	float:left
 }
-#nav_right #locale .dd{
+#locale .dd{
 	display:inline-block;
 }
-#nav_right #locale .dd_src{
+#locale .dd_src{
 	height: 20px;
 }
-#nav_right #locale .dd_src span{
+#locale .dd_src span{
 	display:inline-block;
 }
-#nav_right #locale .dd_target{
+#locale .dd_target{
 	text-align: left; 
 	margin-top: 4px; 
 	position: absolute; 
@@ -76,17 +76,36 @@ header{
 	border: 1px solid #aaa; 
 	border-radius: 0 0 3px 3px;
 }
-#nav_right #locale .local_item .local_icon{
+
+#locale .current_locale{
+	display:inline-block;
+	vertical-align: middle;
+}
+
+#locale .current_locale .label{
+	display:inline-block;
+	margin-top:-6px;
+	vertical-align: middle;
+}
+
+#locale .current_locale .flag{
+	display:inline-block;
+	vertical-align: middle; 
+	width:26px;
+	text-align:center
+}
+
+#locale .local_item .local_icon{
 	display:block;
 	height:24px; 
 	width:28px; 
 	text-align:center;
 }
-#nav_right #locale .local_item .local_label{
+#locale .local_item .local_label{
 	display:inline-block;
 	padding-right:4px
 }
-#nav_right #locale .local_item .local_state{
+#locale .local_item .local_state{
 	display:block; 
 	background:#4d4; 
 	width:12px; 
@@ -241,7 +260,7 @@ header{
 
 #search_header{
 	width: auto;
-	height: 80px;
+	height: 100px;
 	background: transparent
 }
 
@@ -261,7 +280,7 @@ header{
 
 #search_footer{
 	width: auto;
-	height: 80px;
+	height: 100px;
 	background: transparent
 }
 
@@ -410,5 +429,12 @@ header{
 {
 	.user_name{
 		display:none
+	}
+}
+
+@media screen and (max-width: 400px)
+{
+	#locale .current_locale .label{
+		display:none;
 	}
 }

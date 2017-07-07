@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 30 Juin 2017 à 15:51
+-- Généré le :  Ven 07 Juillet 2017 à 08:57
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -297,7 +297,24 @@ INSERT INTO `bg_category_post` (`id`, `post_id`, `category_id`) VALUES
 (16, 1, 2),
 (17, 14, 5),
 (18, 15, 7),
-(21, 17, 2);
+(21, 17, 2),
+(22, 18, 1),
+(23, 19, 1),
+(24, 20, 1),
+(25, 21, 1),
+(26, 22, 1),
+(27, 23, 1),
+(28, 24, 1),
+(29, 25, 1),
+(30, 26, 1),
+(31, 27, 1),
+(32, 28, 1),
+(33, 29, 2),
+(34, 30, 1),
+(38, 33, 2),
+(39, 32, 2),
+(40, 31, 2),
+(41, 34, 2);
 
 -- --------------------------------------------------------
 
@@ -423,7 +440,24 @@ INSERT INTO `bg_post` (`id`, `user_id`, `default_title`, `slug`, `date`, `view_n
 (14, 2, 'llis ultricies. Nam', 'llis-ultricies-nam', '2017-06-12 08:13:01', 0, 1, 1),
 (15, 2, 'Ouverture de la formation : economie et developpement', 'ouverture-de-la-formation-economie-et-developpement', '2017-06-27 07:14:42', 0, 1, 0),
 (16, 1, 'category', 'category-3', '2017-06-28 15:07:43', 0, 0, 1),
-(17, 1, 'ceci-dfj-klfjqkls-fjlkqdsjfljslf', 'pt-2', '2017-06-28 15:07:55', 0, 0, 1);
+(17, 1, 'ceci-dfj-klfjqkls-fjlkqdsjfljslf', 'pt-2', '2017-06-28 15:07:55', 0, 0, 1),
+(18, 1, 'rabitur laoreet varius malesuada.', 'rabitur-laoreet-varius-malesuada-n', '2017-07-01 12:03:12', 0, 1, 1),
+(19, 1, 'varius malesuada. Nullam la', 'varius-malesuada-nullam-la', '2017-07-01 12:04:09', 0, 0, 1),
+(20, 1, 'Nam ultrices nibh sa', 'nam-ultrices-nibh-sa', '2017-07-01 12:05:37', 0, 1, 1),
+(21, 1, 'Nam ultrices nibh sa 2', 'nam-ultrices-nibh-sa-2', '2017-07-01 12:05:50', 0, 1, 1),
+(22, 1, 'Nam ultrices nibh sa 3', 'nam-ultrices-nibh-sa-3', '2017-07-01 12:06:11', 0, 1, 1),
+(23, 1, 'Nam ultrices nibh sa 4', 'nam-ultrices-nibh-sa-4', '2017-07-01 12:06:25', 0, 1, 1),
+(24, 1, 'Nam ultrices nibh sa 5', 'nam-ultrices-nibh-sa-5', '2017-07-01 12:06:38', 0, 1, 1),
+(25, 1, 'Nam ultrices nibh sa 6', 'nam-ultrices-nibh-sa-6', '2017-07-01 12:06:53', 0, 1, 1),
+(26, 1, 'Nam ultrices nibh sa 6', 'nam-ultrices-nibh-sa-6-2', '2017-07-01 12:07:03', 0, 1, 1),
+(27, 1, 'Nam ultrices nibh sa 7', 'nam-ultrices-nibh-sa-7', '2017-07-01 12:07:23', 0, 1, 1),
+(28, 1, 'Nam ultrices nibh sa 8', 'nam-ultrices-nibh-sa-8', '2017-07-01 12:07:36', 0, 1, 1),
+(29, 1, 'Nam ultrices nibh sa 9', 'nam-ultrices-nibh-sa-9', '2017-07-01 12:07:51', 0, 1, 1),
+(30, 1, 'Nam ultrices nibh sa 9', 'nam-ultrices-nibh-sa-9-2', '2017-07-01 12:08:04', 0, 1, 1),
+(31, 1, 'Nam ultrices nibh sa 10', 'nam-ultrices-nibh-sa-10', '2017-07-01 12:08:17', 0, 1, 1),
+(32, 1, 'Nam ultrices nibh sa 11', 'nam-ultrices-nibh-sa-11', '2017-07-01 12:08:27', 0, 1, 1),
+(33, 1, 'Nam ultrices nibh sa 12', 'nam-ultrices-nibh-sa-12', '2017-07-01 12:08:37', 0, 1, 1),
+(34, 4, 'urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'urabitur-laoreet-varius-malesuada-nullam-lacinia-felis-nisi-ut-varius-ipsum-luctus-non-pellentesque-ex-magna', '2017-07-01 18:23:18', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -485,7 +519,8 @@ INSERT INTO `bg_post_illustration` (`id`, `post_id`, `name`, `path`, `originalna
 (38, 12, 'land7.jpg', '2b135b115984e855a6ba2fd20c9313c7d886eee0.jpeg', 'land7.jpg', 1),
 (39, 13, 'land99.jpg', 'd9614865eed5a550a231c0d6cae268dd1705a1b4.jpeg', 'land99.jpg', 1),
 (40, 3, 'land93.jpg', 'c1fc613e4fd50df3afa416840d662b2ac0e9b808.jpeg', 'land93.jpg', 1),
-(41, 8, 'landesm.jpg', 'ce89c5f69d380cf4efce342c364c9b60bb1564f3.jpeg', 'landesm.jpg', 1);
+(41, 8, 'landesm.jpg', 'ce89c5f69d380cf4efce342c364c9b60bb1564f3.jpeg', 'landesm.jpg', 1),
+(42, 25, 'ssss.jpg', '817ebb43fa3f38d593a32c154e9d4bb18227365a.jpeg', 'ssss.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -573,8 +608,8 @@ INSERT INTO `bg_post_translate` (`id`, `post_id`, `locale_id`, `title`, `descrip
 (64, 11, 4, 'it gdgd', 'it. Description .gdgd', 'it. Content .gdgd'),
 (65, 11, 5, 'es gdgd', 'es. Description .gdgd', 'es. Content .gdgd'),
 (66, 11, 6, 'de gdgd', 'de. Description .gdgd', 'de. Content .gdgd'),
-(67, 12, 1, '3 ingrédients d''une photo de paysage réussie', 'Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?', '<p>Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?</p>'),
-(68, 12, 2, '3 ingrédients d''une photo de paysage réussie', 'Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?', '<p>Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?</p>'),
+(67, 12, 1, '3 ingrédients d''une photo de paysage réussie', 'Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?', '<p style="text-align: justify;">Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat.</p>\n<p style="text-align: justify;">Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?</p>'),
+(68, 12, 2, '3 ingrédients d''une photo de paysage réussie', 'Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?', '<p style="text-align: justify;">Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat.</p>\n<p style="text-align: justify;">Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat, quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?</p>'),
 (69, 12, 3, 'mg gdfg dfgd', 'mg. Description .gdfg dfgd', 'mg. Content .gdfg dfgd'),
 (70, 12, 4, 'it gdfg dfgd', 'it. Description .gdfg dfgd', 'it. Content .gdfg dfgd'),
 (71, 12, 5, 'es gdfg dfgd', 'es. Description .gdfg dfgd', 'es. Content .gdfg dfgd'),
@@ -609,7 +644,109 @@ INSERT INTO `bg_post_translate` (`id`, `post_id`, `locale_id`, `title`, `descrip
 (99, 17, 3, 'mg pt', 'mg. Description .pt', 'mg. Content .pt'),
 (100, 17, 4, 'it pt', 'it. Description .pt', 'it. Content .pt'),
 (101, 17, 5, 'es pt', 'es. Description .pt', 'es. Content .pt'),
-(102, 17, 6, 'de pt', 'de. Description .pt', 'de. Content .pt');
+(102, 17, 6, 'de pt', 'de. Description .pt', 'de. Content .pt'),
+(103, 18, 1, 'fr rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'fr. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'fr. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(104, 18, 2, 'en rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'en. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'en. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(105, 18, 3, 'mg rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'mg. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'mg. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(106, 18, 4, 'it rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'it. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'it. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(107, 18, 5, 'es rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'es. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'es. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(108, 18, 6, 'de rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'de. Description .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus', 'de. Content .rabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus'),
+(109, 19, 1, 'fr varius malesuada. Nullam la', 'fr. Description .varius malesuada. Nullam la', 'fr. Content .varius malesuada. Nullam la'),
+(110, 19, 2, 'en varius malesuada. Nullam la', 'en. Description .varius malesuada. Nullam la', 'en. Content .varius malesuada. Nullam la'),
+(111, 19, 3, 'mg varius malesuada. Nullam la', 'mg. Description .varius malesuada. Nullam la', 'mg. Content .varius malesuada. Nullam la'),
+(112, 19, 4, 'it varius malesuada. Nullam la', 'it. Description .varius malesuada. Nullam la', 'it. Content .varius malesuada. Nullam la'),
+(113, 19, 5, 'es varius malesuada. Nullam la', 'es. Description .varius malesuada. Nullam la', 'es. Content .varius malesuada. Nullam la'),
+(114, 19, 6, 'de varius malesuada. Nullam la', 'de. Description .varius malesuada. Nullam la', 'de. Content .varius malesuada. Nullam la'),
+(115, 20, 1, 'fr Nam ultrices nibh sa', 'fr. Description .Nam ultrices nibh sa', 'fr. Content .Nam ultrices nibh sa'),
+(116, 20, 2, 'en Nam ultrices nibh sa', 'en. Description .Nam ultrices nibh sa', 'en. Content .Nam ultrices nibh sa'),
+(117, 20, 3, 'mg Nam ultrices nibh sa', 'mg. Description .Nam ultrices nibh sa', 'mg. Content .Nam ultrices nibh sa'),
+(118, 20, 4, 'it Nam ultrices nibh sa', 'it. Description .Nam ultrices nibh sa', 'it. Content .Nam ultrices nibh sa'),
+(119, 20, 5, 'es Nam ultrices nibh sa', 'es. Description .Nam ultrices nibh sa', 'es. Content .Nam ultrices nibh sa'),
+(120, 20, 6, 'de Nam ultrices nibh sa', 'de. Description .Nam ultrices nibh sa', 'de. Content .Nam ultrices nibh sa'),
+(121, 21, 1, 'fr Nam ultrices nibh sa 2', 'fr. Description .Nam ultrices nibh sa 2', 'fr. Content .Nam ultrices nibh sa 2'),
+(122, 21, 2, 'en Nam ultrices nibh sa 2', 'en. Description .Nam ultrices nibh sa 2', 'en. Content .Nam ultrices nibh sa 2'),
+(123, 21, 3, 'mg Nam ultrices nibh sa 2', 'mg. Description .Nam ultrices nibh sa 2', 'mg. Content .Nam ultrices nibh sa 2'),
+(124, 21, 4, 'it Nam ultrices nibh sa 2', 'it. Description .Nam ultrices nibh sa 2', 'it. Content .Nam ultrices nibh sa 2'),
+(125, 21, 5, 'es Nam ultrices nibh sa 2', 'es. Description .Nam ultrices nibh sa 2', 'es. Content .Nam ultrices nibh sa 2'),
+(126, 21, 6, 'de Nam ultrices nibh sa 2', 'de. Description .Nam ultrices nibh sa 2', 'de. Content .Nam ultrices nibh sa 2'),
+(127, 22, 1, 'fr Nam ultrices nibh sa 3', 'fr. Description .Nam ultrices nibh sa 3', 'fr. Content .Nam ultrices nibh sa 3'),
+(128, 22, 2, 'en Nam ultrices nibh sa 3', 'en. Description .Nam ultrices nibh sa 3', 'en. Content .Nam ultrices nibh sa 3'),
+(129, 22, 3, 'mg Nam ultrices nibh sa 3', 'mg. Description .Nam ultrices nibh sa 3', 'mg. Content .Nam ultrices nibh sa 3'),
+(130, 22, 4, 'it Nam ultrices nibh sa 3', 'it. Description .Nam ultrices nibh sa 3', 'it. Content .Nam ultrices nibh sa 3'),
+(131, 22, 5, 'es Nam ultrices nibh sa 3', 'es. Description .Nam ultrices nibh sa 3', 'es. Content .Nam ultrices nibh sa 3'),
+(132, 22, 6, 'de Nam ultrices nibh sa 3', 'de. Description .Nam ultrices nibh sa 3', 'de. Content .Nam ultrices nibh sa 3'),
+(133, 23, 1, 'fr Nam ultrices nibh sa 4', 'fr. Description .Nam ultrices nibh sa 4', 'fr. Content .Nam ultrices nibh sa 4'),
+(134, 23, 2, 'en Nam ultrices nibh sa 4', 'en. Description .Nam ultrices nibh sa 4', 'en. Content .Nam ultrices nibh sa 4'),
+(135, 23, 3, 'mg Nam ultrices nibh sa 4', 'mg. Description .Nam ultrices nibh sa 4', 'mg. Content .Nam ultrices nibh sa 4'),
+(136, 23, 4, 'it Nam ultrices nibh sa 4', 'it. Description .Nam ultrices nibh sa 4', 'it. Content .Nam ultrices nibh sa 4'),
+(137, 23, 5, 'es Nam ultrices nibh sa 4', 'es. Description .Nam ultrices nibh sa 4', 'es. Content .Nam ultrices nibh sa 4'),
+(138, 23, 6, 'de Nam ultrices nibh sa 4', 'de. Description .Nam ultrices nibh sa 4', 'de. Content .Nam ultrices nibh sa 4'),
+(139, 24, 1, 'fr Nam ultrices nibh sa 5', 'fr. Description .Nam ultrices nibh sa 5', 'fr. Content .Nam ultrices nibh sa 5'),
+(140, 24, 2, 'en Nam ultrices nibh sa 5', 'en. Description .Nam ultrices nibh sa 5', 'en. Content .Nam ultrices nibh sa 5'),
+(141, 24, 3, 'mg Nam ultrices nibh sa 5', 'mg. Description .Nam ultrices nibh sa 5', 'mg. Content .Nam ultrices nibh sa 5'),
+(142, 24, 4, 'it Nam ultrices nibh sa 5', 'it. Description .Nam ultrices nibh sa 5', 'it. Content .Nam ultrices nibh sa 5'),
+(143, 24, 5, 'es Nam ultrices nibh sa 5', 'es. Description .Nam ultrices nibh sa 5', 'es. Content .Nam ultrices nibh sa 5'),
+(144, 24, 6, 'de Nam ultrices nibh sa 5', 'de. Description .Nam ultrices nibh sa 5', 'de. Content .Nam ultrices nibh sa 5'),
+(145, 25, 1, 'fr Nam ultrices nibh sa 6', 'fr. Description .Nam ultrices nibh sa 6', 'fr. Content .Nam ultrices nibh sa 6'),
+(146, 25, 2, 'en Nam ultrices nibh sa 6', 'en. Description .Nam ultrices nibh sa 6', 'en. Content .Nam ultrices nibh sa 6'),
+(147, 25, 3, 'mg Nam ultrices nibh sa 6', 'mg. Description .Nam ultrices nibh sa 6', 'mg. Content .Nam ultrices nibh sa 6'),
+(148, 25, 4, 'it Nam ultrices nibh sa 6', 'it. Description .Nam ultrices nibh sa 6', 'it. Content .Nam ultrices nibh sa 6'),
+(149, 25, 5, 'es Nam ultrices nibh sa 6', 'es. Description .Nam ultrices nibh sa 6', 'es. Content .Nam ultrices nibh sa 6'),
+(150, 25, 6, 'de Nam ultrices nibh sa 6', 'de. Description .Nam ultrices nibh sa 6', 'de. Content .Nam ultrices nibh sa 6'),
+(151, 26, 1, 'fr Nam ultrices nibh sa 6', 'fr. Description .Nam ultrices nibh sa 6', 'fr. Content .Nam ultrices nibh sa 6'),
+(152, 26, 2, 'en Nam ultrices nibh sa 6', 'en. Description .Nam ultrices nibh sa 6', 'en. Content .Nam ultrices nibh sa 6'),
+(153, 26, 3, 'mg Nam ultrices nibh sa 6', 'mg. Description .Nam ultrices nibh sa 6', 'mg. Content .Nam ultrices nibh sa 6'),
+(154, 26, 4, 'it Nam ultrices nibh sa 6', 'it. Description .Nam ultrices nibh sa 6', 'it. Content .Nam ultrices nibh sa 6'),
+(155, 26, 5, 'es Nam ultrices nibh sa 6', 'es. Description .Nam ultrices nibh sa 6', 'es. Content .Nam ultrices nibh sa 6'),
+(156, 26, 6, 'de Nam ultrices nibh sa 6', 'de. Description .Nam ultrices nibh sa 6', 'de. Content .Nam ultrices nibh sa 6'),
+(157, 27, 1, 'fr Nam ultrices nibh sa 7', 'fr. Description .Nam ultrices nibh sa 7', 'fr. Content .Nam ultrices nibh sa 7'),
+(158, 27, 2, 'en Nam ultrices nibh sa 7', 'en. Description .Nam ultrices nibh sa 7', 'en. Content .Nam ultrices nibh sa 7'),
+(159, 27, 3, 'mg Nam ultrices nibh sa 7', 'mg. Description .Nam ultrices nibh sa 7', 'mg. Content .Nam ultrices nibh sa 7'),
+(160, 27, 4, 'it Nam ultrices nibh sa 7', 'it. Description .Nam ultrices nibh sa 7', 'it. Content .Nam ultrices nibh sa 7'),
+(161, 27, 5, 'es Nam ultrices nibh sa 7', 'es. Description .Nam ultrices nibh sa 7', 'es. Content .Nam ultrices nibh sa 7'),
+(162, 27, 6, 'de Nam ultrices nibh sa 7', 'de. Description .Nam ultrices nibh sa 7', 'de. Content .Nam ultrices nibh sa 7'),
+(163, 28, 1, 'fr Nam ultrices nibh sa 8', 'fr. Description .Nam ultrices nibh sa 8', 'fr. Content .Nam ultrices nibh sa 8'),
+(164, 28, 2, 'en Nam ultrices nibh sa 8', 'en. Description .Nam ultrices nibh sa 8', 'en. Content .Nam ultrices nibh sa 8'),
+(165, 28, 3, 'mg Nam ultrices nibh sa 8', 'mg. Description .Nam ultrices nibh sa 8', 'mg. Content .Nam ultrices nibh sa 8'),
+(166, 28, 4, 'it Nam ultrices nibh sa 8', 'it. Description .Nam ultrices nibh sa 8', 'it. Content .Nam ultrices nibh sa 8'),
+(167, 28, 5, 'es Nam ultrices nibh sa 8', 'es. Description .Nam ultrices nibh sa 8', 'es. Content .Nam ultrices nibh sa 8'),
+(168, 28, 6, 'de Nam ultrices nibh sa 8', 'de. Description .Nam ultrices nibh sa 8', 'de. Content .Nam ultrices nibh sa 8'),
+(169, 29, 1, 'fr Nam ultrices nibh sa 9', 'fr. Description .Nam ultrices nibh sa 9', 'fr. Content .Nam ultrices nibh sa 9'),
+(170, 29, 2, 'en Nam ultrices nibh sa 9', 'en. Description .Nam ultrices nibh sa 9', 'en. Content .Nam ultrices nibh sa 9'),
+(171, 29, 3, 'mg Nam ultrices nibh sa 9', 'mg. Description .Nam ultrices nibh sa 9', 'mg. Content .Nam ultrices nibh sa 9'),
+(172, 29, 4, 'it Nam ultrices nibh sa 9', 'it. Description .Nam ultrices nibh sa 9', 'it. Content .Nam ultrices nibh sa 9'),
+(173, 29, 5, 'es Nam ultrices nibh sa 9', 'es. Description .Nam ultrices nibh sa 9', 'es. Content .Nam ultrices nibh sa 9'),
+(174, 29, 6, 'de Nam ultrices nibh sa 9', 'de. Description .Nam ultrices nibh sa 9', 'de. Content .Nam ultrices nibh sa 9'),
+(175, 30, 1, 'fr Nam ultrices nibh sa 9', 'fr. Description .Nam ultrices nibh sa 9', 'fr. Content .Nam ultrices nibh sa 9'),
+(176, 30, 2, 'en Nam ultrices nibh sa 9', 'en. Description .Nam ultrices nibh sa 9', 'en. Content .Nam ultrices nibh sa 9'),
+(177, 30, 3, 'mg Nam ultrices nibh sa 9', 'mg. Description .Nam ultrices nibh sa 9', 'mg. Content .Nam ultrices nibh sa 9'),
+(178, 30, 4, 'it Nam ultrices nibh sa 9', 'it. Description .Nam ultrices nibh sa 9', 'it. Content .Nam ultrices nibh sa 9'),
+(179, 30, 5, 'es Nam ultrices nibh sa 9', 'es. Description .Nam ultrices nibh sa 9', 'es. Content .Nam ultrices nibh sa 9'),
+(180, 30, 6, 'de Nam ultrices nibh sa 9', 'de. Description .Nam ultrices nibh sa 9', 'de. Content .Nam ultrices nibh sa 9'),
+(181, 31, 1, 'fr Nam ultrices nibh sa 10', 'fr. Description .Nam ultrices nibh sa 10', 'fr. Content .Nam ultrices nibh sa 10'),
+(182, 31, 2, 'en Nam ultrices nibh sa 10', 'en. Description .Nam ultrices nibh sa 10', 'en. Content .Nam ultrices nibh sa 10'),
+(183, 31, 3, 'mg Nam ultrices nibh sa 10', 'mg. Description .Nam ultrices nibh sa 10', 'mg. Content .Nam ultrices nibh sa 10'),
+(184, 31, 4, 'it Nam ultrices nibh sa 10', 'it. Description .Nam ultrices nibh sa 10', 'it. Content .Nam ultrices nibh sa 10'),
+(185, 31, 5, 'es Nam ultrices nibh sa 10', 'es. Description .Nam ultrices nibh sa 10', 'es. Content .Nam ultrices nibh sa 10'),
+(186, 31, 6, 'de Nam ultrices nibh sa 10', 'de. Description .Nam ultrices nibh sa 10', 'de. Content .Nam ultrices nibh sa 10'),
+(187, 32, 1, 'fr Nam ultrices nibh sa 11', 'fr. Description .Nam ultrices nibh sa 11', 'fr. Content .Nam ultrices nibh sa 11'),
+(188, 32, 2, 'en Nam ultrices nibh sa 11', 'en. Description .Nam ultrices nibh sa 11', 'en. Content .Nam ultrices nibh sa 11'),
+(189, 32, 3, 'mg Nam ultrices nibh sa 11', 'mg. Description .Nam ultrices nibh sa 11', 'mg. Content .Nam ultrices nibh sa 11'),
+(190, 32, 4, 'it Nam ultrices nibh sa 11', 'it. Description .Nam ultrices nibh sa 11', 'it. Content .Nam ultrices nibh sa 11'),
+(191, 32, 5, 'es Nam ultrices nibh sa 11', 'es. Description .Nam ultrices nibh sa 11', 'es. Content .Nam ultrices nibh sa 11'),
+(192, 32, 6, 'de Nam ultrices nibh sa 11', 'de. Description .Nam ultrices nibh sa 11', 'de. Content .Nam ultrices nibh sa 11'),
+(193, 33, 1, 'fr Nam ultrices nibh sa 12', 'fr. Description .Nam ultrices nibh sa 12', 'fr. Content .Nam ultrices nibh sa 12'),
+(194, 33, 2, 'en Nam ultrices nibh sa 12', 'en. Description .Nam ultrices nibh sa 12', 'en. Content .Nam ultrices nibh sa 12'),
+(195, 33, 3, 'mg Nam ultrices nibh sa 12', 'mg. Description .Nam ultrices nibh sa 12', 'mg. Content .Nam ultrices nibh sa 12'),
+(196, 33, 4, 'it Nam ultrices nibh sa 12', 'it. Description .Nam ultrices nibh sa 12', 'it. Content .Nam ultrices nibh sa 12'),
+(197, 33, 5, 'es Nam ultrices nibh sa 12', 'es. Description .Nam ultrices nibh sa 12', 'es. Content .Nam ultrices nibh sa 12'),
+(198, 33, 6, 'de Nam ultrices nibh sa 12', 'de. Description .Nam ultrices nibh sa 12', 'de. Content .Nam ultrices nibh sa 12'),
+(199, 34, 1, 'fr urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'fr. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'fr. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna'),
+(200, 34, 2, 'en urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'en. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'en. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna'),
+(201, 34, 3, 'mg urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'mg. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'mg. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna'),
+(202, 34, 4, 'it urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'it. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'it. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna'),
+(203, 34, 5, 'es urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'es. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'es. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna'),
+(204, 34, 6, 'de urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'de. Description .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna', 'de. Content .urabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna');
 
 -- --------------------------------------------------------
 
@@ -678,7 +815,8 @@ INSERT INTO `fm_message` (`id`, `message`, `subject_id`, `user_id`, `date`) VALU
 (53, 'fsdfsdf', 9, 2, '2017-05-29 14:26:12'),
 (54, 'dsfsdf', 9, 2, '2017-05-29 14:26:38'),
 (55, 'dfgdfg', 9, 2, '2017-05-29 14:27:45'),
-(56, 'sdfsdf', 23, 2, '2017-06-09 10:18:23');
+(56, 'sdfsdf', 23, 2, '2017-06-09 10:18:23'),
+(57, 'http://localhost/boot/web/app_dev.php/en/forum/subject/pellentesque-justo-aenean-dignissim-mollis-tellus-non-aliquam', 24, 1, '2017-07-04 22:42:04');
 
 -- --------------------------------------------------------
 
@@ -714,7 +852,8 @@ INSERT INTO `fm_subject` (`id`, `title`, `slug`, `topic_id`, `user_id`, `date`) 
 (20, 'sdfsdf', 'sdfsdf', 1, 1, '2017-05-19 09:30:30'),
 (21, ', sed mattis ligula bibendum sed, sed mattis ligula bibendum sed', 'sed-mattis-ligula-bibendum-sed-sed-mattis-ligula-bibendum-sed', 6, 1, '2017-05-19 09:31:25'),
 (22, 'cursus loream aleator ixusis dolisaum', 'cursus-loream-aleator-ixusis-dolisaum', 1, 4, '2017-05-24 07:04:31'),
-(23, 'sdfsdf', 'sdfsdf', 1, 2, '2017-06-09 10:18:23');
+(23, 'sdfsdf', 'sdfsdf', 1, 2, '2017-06-09 10:18:23'),
+(24, 'http://localhost/boot/web/app_dev.php/en/forum/subject/pellentesque-justo-aenean-dignissim-mollis-tellus-non-aliquam', 'http-localhost-boot-web-app-dev-php-en-forum-subject-pellentesque-justo-aenean-dignissim-mollis-tellus-non-aliquam', 4, 1, '2017-07-04 22:42:04');
 
 -- --------------------------------------------------------
 
@@ -994,7 +1133,9 @@ INSERT INTO `pm_comment` (`id`, `post_id`, `message`, `user_id`, `date`, `advert
 (128, 3, 'fghfh fgh\ndfgdfg\n\ndfgdfg dfgdfgd', 1, '2017-06-29 12:45:13', NULL),
 (129, 3, 'gdfgd d dg dfg', 1, '2017-06-29 12:45:17', NULL),
 (130, 1, 'djlfjgfdl jdlkfjglkdfj ldjf djfkgl djfgkl djfklgdf', 1, '2017-06-29 12:51:01', NULL),
-(131, 3, 'fsdf sdf sdfs sdf', 2, '2017-06-30 07:44:27', NULL);
+(131, 3, 'fsdf sdf sdfs sdf', 2, '2017-06-30 07:44:27', NULL),
+(132, 33, 'Ceci est un commentaire', 1, '2017-07-03 19:21:58', NULL),
+(133, 29, 'mombamomba ekipa mentions légales fifandraisana newsletter \n\nEconomy Engineering Sciences naturelles Technologies Sciences humaines Arts Gestion Commerce & Marketing Paramedical Science sociale Informatique Droit Humans resources Tourisme Teleco', 1, '2017-07-04 22:34:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -1026,7 +1167,8 @@ INSERT INTO `pm_contact` (`id`, `name`, `date`, `email`, `website`, `content`, `
 (7, 'Ut laoreet malesuada', '2017-04-24 12:51:24', 'randria@gamil.fom', NULL, 'et turpis ut, blandit egestas eros. Aliquam non nisi a felis sodales rutrum. Vivamus eget scelerisque nibh.\r\nNulla pulvinar a velit sit amet al', 1),
 (8, 'Ut laoreet malesuada', '2017-04-24 13:27:02', 'randria@gamil.fom', NULL, 'dfsdf', NULL),
 (9, 'dfgd', '2017-04-24 13:30:52', 'user12@test.fr', NULL, 'et convallis felis et convallis felis et convallis felis et convallis felis et convallis felis', NULL),
-(10, 'nom', '2017-06-12 07:35:42', 'sfsdf@df.dfd', NULL, 'uam erat volutpat. Suspendisse molestie rhoncus velit a elementum. Maecenas eleifend, lectus sit amet cursus porttitor, metus turpis luctus mauris, sit amet convallis felis turpis eget nequam erat volutpat. Suspendisse molestie rhoncus velit a elementum. Maecenas eleifend, lectus sit amet cursus porttitor, metus turpis luctus mauris, sit amet convallis felis turpis eget neq', NULL);
+(10, 'nom', '2017-06-12 07:35:42', 'sfsdf@df.dfd', NULL, 'uam erat volutpat. Suspendisse molestie rhoncus velit a elementum. Maecenas eleifend, lectus sit amet cursus porttitor, metus turpis luctus mauris, sit amet convallis felis turpis eget nequam erat volutpat. Suspendisse molestie rhoncus velit a elementum. Maecenas eleifend, lectus sit amet cursus porttitor, metus turpis luctus mauris, sit amet convallis felis turpis eget neq', NULL),
+(11, 'Suspendisse moles', '2017-07-04 22:50:42', 'Suspendisse@jj.jj', NULL, 'Suspendisse moles', 1);
 
 -- --------------------------------------------------------
 
@@ -1116,7 +1258,8 @@ INSERT INTO `pm_newsletter_mail` (`id`, `email`, `date`, `is_active`) VALUES
 (18, 'randria@gamil.fom', '2017-04-24 12:22:14', 0),
 (19, 'gigy.idbooster@gmail.com', '2017-04-24 12:23:07', 0),
 (20, 'tset@dfd.fr', '2017-06-08 07:18:07', 0),
-(21, 'sfsdf@df.dfd', '2017-06-12 07:35:43', 0);
+(21, 'sfsdf@df.dfd', '2017-06-12 07:35:43', 0),
+(22, 'Suspendisse@jj.jj', '2017-07-04 22:50:42', 0);
 
 -- --------------------------------------------------------
 
@@ -1138,7 +1281,7 @@ INSERT INTO `pm_parameter` (`id`, `parameter`, `value`) VALUES
 (1, 'populate', '1'),
 (2, 'schools_by_page', '12'),
 (3, 'categories_index', '12'),
-(4, 'posts_by_page', '5');
+(4, 'posts_by_page', '4');
 
 -- --------------------------------------------------------
 
@@ -1186,7 +1329,14 @@ INSERT INTO `pm_post_school` (`id`, `post_id`, `school_id`, `user_id`, `user_con
 (49, 13, 6, 1, 1, '2017-06-20 15:08:26', 1, '2017-06-20 15:08:26', 1),
 (50, 15, 18, 2, 2, '2017-06-27 07:24:09', 1, '2017-06-27 07:24:09', 1),
 (51, 15, 46, 2, 2, '2017-06-30 09:01:44', 1, '2017-06-30 09:01:44', 1),
-(52, 13, 46, 2, 2, '2017-06-30 09:02:20', 1, '2017-06-30 09:02:20', 1);
+(52, 13, 46, 2, 2, '2017-06-30 09:02:20', 1, '2017-06-30 09:02:20', 1),
+(53, 33, 6, 1, 1, '2017-07-02 22:52:15', 1, '2017-07-02 22:52:15', 1),
+(54, 33, 3, 1, 1, '2017-07-02 22:52:18', 1, '2017-07-02 22:52:18', 1),
+(55, 33, 8, 1, 1, '2017-07-02 22:52:21', 1, '2017-07-02 22:52:21', 1),
+(56, 25, 4, 1, 1, '2017-07-03 19:19:20', 1, '2017-07-03 19:19:20', 1),
+(57, 25, 8, 1, 1, '2017-07-03 19:19:33', 1, '2017-07-03 19:19:33', 1),
+(58, 33, 4, 1, 1, '2017-07-03 19:23:05', 1, '2017-07-03 19:23:05', 1),
+(59, 30, 4, 1, 1, '2017-07-06 20:01:46', 1, '2017-07-06 20:01:46', 1);
 
 -- --------------------------------------------------------
 
@@ -2602,7 +2752,167 @@ INSERT INTO `pm_view` (`id`, `school_id`, `post_id`, `advert_id`, `user_id`, `da
 (1818, NULL, NULL, 4, 2, '2017-06-30 09:02:32', '::1'),
 (1819, 46, NULL, NULL, 2, '2017-06-30 09:03:03', '::1'),
 (1820, 46, NULL, NULL, 2, '2017-06-30 09:49:56', '::1'),
-(1821, 47, NULL, NULL, 2, '2017-06-30 09:56:20', '::1');
+(1821, 47, NULL, NULL, 2, '2017-06-30 09:56:20', '::1'),
+(1822, 46, NULL, NULL, 1, '2017-07-01 14:38:28', '127.0.0.1'),
+(1823, NULL, 25, NULL, NULL, '2017-07-01 17:52:54', '::1'),
+(1824, 4, NULL, NULL, 4, '2017-07-01 17:54:19', '::1'),
+(1825, 4, NULL, NULL, 4, '2017-07-01 17:54:40', '::1'),
+(1826, 25, NULL, NULL, 4, '2017-07-01 18:01:36', '::1'),
+(1827, 2, NULL, NULL, 4, '2017-07-01 19:14:34', '::1'),
+(1828, 2, NULL, NULL, 4, '2017-07-01 19:27:32', '::1'),
+(1829, 4, NULL, NULL, 4, '2017-07-01 19:58:28', '::1'),
+(1830, 29, NULL, NULL, NULL, '2017-07-02 13:13:36', '::1'),
+(1831, NULL, 29, NULL, NULL, '2017-07-02 13:13:53', '::1'),
+(1832, 5, NULL, NULL, NULL, '2017-07-02 13:14:07', '::1'),
+(1833, NULL, 4, NULL, NULL, '2017-07-02 13:14:15', '::1'),
+(1834, 29, NULL, NULL, NULL, '2017-07-02 18:57:06', '::1'),
+(1835, NULL, 15, NULL, NULL, '2017-07-02 18:59:12', '::1'),
+(1836, 47, NULL, NULL, 1, '2017-07-02 19:10:09', '::1'),
+(1837, 29, NULL, NULL, NULL, '2017-07-02 20:31:03', '::1'),
+(1838, 29, NULL, NULL, 1, '2017-07-02 21:17:08', '::1'),
+(1839, NULL, 28, NULL, 1, '2017-07-02 22:21:04', '::1'),
+(1840, NULL, 33, NULL, 1, '2017-07-02 22:23:15', '::1'),
+(1841, NULL, 33, NULL, 1, '2017-07-02 22:25:04', '::1'),
+(1842, NULL, 33, NULL, 1, '2017-07-02 22:27:48', '::1'),
+(1843, NULL, 33, NULL, 1, '2017-07-02 22:28:42', '::1'),
+(1844, NULL, 33, NULL, 1, '2017-07-02 22:33:34', '::1'),
+(1845, NULL, 33, NULL, 1, '2017-07-02 22:34:19', '::1'),
+(1846, NULL, 33, NULL, 1, '2017-07-02 22:36:37', '::1'),
+(1847, NULL, 33, NULL, 1, '2017-07-02 22:38:22', '::1'),
+(1848, NULL, 33, NULL, 1, '2017-07-02 22:39:14', '::1'),
+(1849, NULL, 33, NULL, 1, '2017-07-02 22:39:53', '::1'),
+(1850, NULL, 33, NULL, 1, '2017-07-02 22:40:30', '::1'),
+(1851, NULL, 33, NULL, 1, '2017-07-02 22:41:17', '::1'),
+(1852, NULL, 33, NULL, 1, '2017-07-02 22:41:52', '::1'),
+(1853, NULL, 33, NULL, 1, '2017-07-02 22:44:08', '::1'),
+(1854, NULL, 33, NULL, 1, '2017-07-02 22:46:19', '::1'),
+(1855, NULL, 33, NULL, 1, '2017-07-02 22:46:42', '::1'),
+(1856, NULL, 33, NULL, 1, '2017-07-02 22:48:20', '::1'),
+(1857, NULL, 15, NULL, 1, '2017-07-02 22:56:48', '::1'),
+(1858, NULL, 15, NULL, 1, '2017-07-02 22:57:49', '::1'),
+(1859, 18, NULL, NULL, 1, '2017-07-02 22:58:29', '::1'),
+(1860, 6, NULL, NULL, 1, '2017-07-02 23:31:47', '::1'),
+(1861, 29, NULL, NULL, 1, '2017-07-02 23:32:58', '::1'),
+(1862, 3, NULL, NULL, 1, '2017-07-02 23:33:13', '::1'),
+(1863, NULL, 25, NULL, 1, '2017-07-02 23:46:23', '::1'),
+(1864, 34, NULL, NULL, 1, '2017-07-02 23:49:46', '::1'),
+(1865, NULL, 25, NULL, 1, '2017-07-03 19:18:59', '::1'),
+(1866, NULL, 33, NULL, 1, '2017-07-03 19:21:38', '::1'),
+(1867, 50, NULL, NULL, 1, '2017-07-03 19:25:32', '::1'),
+(1868, 37, NULL, NULL, 1, '2017-07-03 19:30:37', '::1'),
+(1869, 30, NULL, NULL, 1, '2017-07-03 19:31:42', '::1'),
+(1870, 24, NULL, NULL, 1, '2017-07-03 19:32:11', '::1'),
+(1871, 43, NULL, NULL, 1, '2017-07-03 19:33:48', '::1'),
+(1872, 9, NULL, NULL, NULL, '2017-07-03 19:48:45', '::1'),
+(1873, 32, NULL, NULL, NULL, '2017-07-03 20:22:16', '::1'),
+(1874, 32, NULL, NULL, NULL, '2017-07-03 20:22:55', '::1'),
+(1875, 32, NULL, NULL, NULL, '2017-07-03 20:23:43', '::1'),
+(1876, 32, NULL, NULL, NULL, '2017-07-03 20:23:51', '::1'),
+(1877, 32, NULL, NULL, NULL, '2017-07-03 20:25:12', '::1'),
+(1878, 32, NULL, NULL, NULL, '2017-07-03 20:25:45', '::1'),
+(1879, 33, NULL, NULL, NULL, '2017-07-03 20:26:01', '::1'),
+(1880, 2, NULL, NULL, NULL, '2017-07-03 20:26:15', '::1'),
+(1881, 2, NULL, NULL, NULL, '2017-07-03 20:37:15', '::1'),
+(1882, 2, NULL, NULL, NULL, '2017-07-03 20:39:47', '::1'),
+(1883, 2, NULL, NULL, NULL, '2017-07-03 20:41:49', '::1'),
+(1884, 2, NULL, NULL, NULL, '2017-07-03 20:41:54', '::1'),
+(1885, 2, NULL, NULL, NULL, '2017-07-03 20:43:10', '::1'),
+(1886, 2, NULL, NULL, NULL, '2017-07-03 20:45:52', '::1'),
+(1887, 49, NULL, NULL, NULL, '2017-07-03 20:47:07', '::1'),
+(1888, 31, NULL, NULL, NULL, '2017-07-03 20:47:40', '::1'),
+(1889, 31, NULL, NULL, NULL, '2017-07-03 20:47:51', '::1'),
+(1890, 31, NULL, NULL, NULL, '2017-07-03 20:49:08', '::1'),
+(1891, 31, NULL, NULL, NULL, '2017-07-03 20:49:16', '::1'),
+(1892, 31, NULL, NULL, NULL, '2017-07-03 20:49:22', '::1'),
+(1893, 31, NULL, NULL, NULL, '2017-07-03 20:49:30', '::1'),
+(1894, 37, NULL, NULL, NULL, '2017-07-03 20:49:37', '::1'),
+(1895, 37, NULL, NULL, 1, '2017-07-03 20:50:44', '::1'),
+(1896, 37, NULL, NULL, 1, '2017-07-03 20:52:05', '::1'),
+(1897, 37, NULL, NULL, 1, '2017-07-03 20:52:50', '::1'),
+(1898, 18, NULL, NULL, 1, '2017-07-03 20:53:08', '::1'),
+(1899, 24, NULL, NULL, 1, '2017-07-03 20:53:31', '::1'),
+(1900, 38, NULL, NULL, 1, '2017-07-03 20:54:09', '::1'),
+(1901, 38, NULL, NULL, 1, '2017-07-03 20:57:06', '::1'),
+(1902, 32, NULL, NULL, NULL, '2017-07-03 22:49:45', '::1'),
+(1903, 43, NULL, NULL, NULL, '2017-07-03 22:50:06', '::1'),
+(1904, 1, NULL, NULL, NULL, '2017-07-03 22:50:18', '::1'),
+(1905, 7, NULL, NULL, NULL, '2017-07-03 22:52:41', '::1'),
+(1906, 11, NULL, NULL, NULL, '2017-07-03 22:53:00', '::1'),
+(1907, 46, NULL, NULL, NULL, '2017-07-04 12:53:26', '::1'),
+(1908, 11, NULL, NULL, NULL, '2017-07-04 13:00:36', '::1'),
+(1909, 46, NULL, NULL, NULL, '2017-07-04 13:01:01', '::1'),
+(1910, 14, NULL, NULL, NULL, '2017-07-04 13:19:36', '::1'),
+(1911, 14, NULL, NULL, NULL, '2017-07-04 13:22:34', '::1'),
+(1912, 1, NULL, NULL, NULL, '2017-07-04 13:34:45', '::1'),
+(1913, 16, NULL, NULL, NULL, '2017-07-04 13:47:31', '::1'),
+(1914, 1, NULL, NULL, NULL, '2017-07-04 13:48:18', '::1'),
+(1915, 2, NULL, NULL, NULL, '2017-07-04 13:53:24', '::1'),
+(1916, 16, NULL, NULL, NULL, '2017-07-04 13:53:47', '::1'),
+(1917, 12, NULL, NULL, NULL, '2017-07-04 13:54:31', '::1'),
+(1918, 33, NULL, NULL, NULL, '2017-07-04 13:55:31', '::1'),
+(1919, 31, NULL, NULL, NULL, '2017-07-04 13:56:00', '::1'),
+(1920, 51, NULL, NULL, NULL, '2017-07-04 13:58:01', '::1'),
+(1921, 1, NULL, NULL, NULL, '2017-07-04 14:24:27', '::1'),
+(1922, 2, NULL, NULL, NULL, '2017-07-04 14:25:55', '::1'),
+(1923, 14, NULL, NULL, NULL, '2017-07-04 14:26:59', '::1'),
+(1924, 14, NULL, NULL, 1, '2017-07-04 14:27:18', '::1'),
+(1925, 40, NULL, NULL, 1, '2017-07-04 14:48:13', '::1'),
+(1926, 2, NULL, NULL, 1, '2017-07-04 19:01:42', '::1'),
+(1927, 29, NULL, NULL, 1, '2017-07-04 19:02:12', '::1'),
+(1928, 8, NULL, NULL, 1, '2017-07-04 19:12:57', '::1'),
+(1929, 1, NULL, NULL, 1, '2017-07-04 19:13:32', '::1'),
+(1930, 1, NULL, NULL, 1, '2017-07-04 19:14:58', '::1'),
+(1931, 1, NULL, NULL, 1, '2017-07-04 19:15:08', '::1'),
+(1932, 34, NULL, NULL, 1, '2017-07-04 19:16:23', '::1'),
+(1933, 34, NULL, NULL, 1, '2017-07-04 19:16:28', '::1'),
+(1934, 1, NULL, NULL, 1, '2017-07-04 19:31:59', '::1'),
+(1935, 14, NULL, NULL, 1, '2017-07-04 19:32:42', '::1'),
+(1936, 14, NULL, NULL, 1, '2017-07-04 19:33:33', '::1'),
+(1937, 46, NULL, NULL, 1, '2017-07-04 19:50:20', '::1'),
+(1938, 36, NULL, NULL, 1, '2017-07-04 19:50:56', '::1'),
+(1939, 3, NULL, NULL, 1, '2017-07-04 19:51:09', '::1'),
+(1940, 5, NULL, NULL, 1, '2017-07-04 19:51:21', '::1'),
+(1941, 35, NULL, NULL, 1, '2017-07-04 19:51:31', '::1'),
+(1942, 31, NULL, NULL, 1, '2017-07-04 19:52:34', '::1'),
+(1943, 31, NULL, NULL, 1, '2017-07-04 19:53:57', '::1'),
+(1944, 3, NULL, NULL, NULL, '2017-07-04 22:09:20', '::1'),
+(1945, 3, NULL, NULL, NULL, '2017-07-04 22:09:33', '::1'),
+(1946, NULL, 18, NULL, 1, '2017-07-04 22:31:19', '::1'),
+(1947, 48, NULL, NULL, 1, '2017-07-04 22:31:59', '::1'),
+(1948, NULL, 29, NULL, 1, '2017-07-04 22:33:43', '::1'),
+(1949, NULL, 29, NULL, 1, '2017-07-04 22:34:18', '::1'),
+(1950, 40, NULL, NULL, 1, '2017-07-04 22:34:28', '::1'),
+(1951, 4, NULL, NULL, 1, '2017-07-04 22:46:26', '::1'),
+(1952, 5, NULL, NULL, 1, '2017-07-04 23:34:27', '::1'),
+(1953, 5, NULL, NULL, 1, '2017-07-04 23:36:04', '::1'),
+(1954, 39, NULL, NULL, NULL, '2017-07-05 09:41:39', '::1'),
+(1955, 6, NULL, NULL, NULL, '2017-07-05 09:42:11', '::1'),
+(1956, 15, NULL, NULL, NULL, '2017-07-05 09:42:30', '::1'),
+(1957, 25, NULL, NULL, NULL, '2017-07-05 09:52:40', '::1'),
+(1958, 4, NULL, NULL, NULL, '2017-07-05 09:54:24', '::1'),
+(1959, 2, NULL, NULL, NULL, '2017-07-05 09:59:56', '::1'),
+(1960, NULL, 4, NULL, NULL, '2017-07-05 10:00:17', '::1'),
+(1961, 12, NULL, NULL, NULL, '2017-07-05 10:05:21', '::1'),
+(1962, 2, NULL, NULL, NULL, '2017-07-05 10:37:09', '::1'),
+(1963, 51, NULL, NULL, NULL, '2017-07-05 10:37:26', '::1'),
+(1964, NULL, 12, NULL, 1, '2017-07-06 19:35:45', '::1'),
+(1965, NULL, 12, NULL, 1, '2017-07-06 19:36:07', '::1'),
+(1966, NULL, 12, NULL, 1, '2017-07-06 19:36:34', '::1'),
+(1967, NULL, 12, NULL, NULL, '2017-07-06 19:37:00', '::1'),
+(1968, 16, NULL, NULL, NULL, '2017-07-06 19:37:54', '::1'),
+(1969, NULL, 18, NULL, NULL, '2017-07-06 19:39:27', '::1'),
+(1970, NULL, 18, NULL, NULL, '2017-07-06 19:56:51', '::1'),
+(1971, 2, NULL, NULL, 1, '2017-07-06 20:01:10', '::1'),
+(1972, NULL, 30, NULL, 1, '2017-07-06 20:01:31', '::1'),
+(1973, 68, NULL, NULL, 1, '2017-07-06 21:44:24', '::1'),
+(1974, 79, NULL, NULL, 1, '2017-07-06 21:51:28', '::1'),
+(1975, 2, NULL, NULL, 1, '2017-07-06 21:52:42', '::1'),
+(1976, 89, NULL, NULL, 1, '2017-07-06 22:07:14', '::1'),
+(1977, 47, NULL, NULL, 1, '2017-07-06 22:08:34', '::1'),
+(1978, 79, NULL, NULL, 1, '2017-07-06 22:08:45', '::1'),
+(1979, 68, NULL, NULL, 1, '2017-07-06 22:09:22', '::1'),
+(1980, 90, NULL, NULL, 1, '2017-07-06 22:10:39', '::1'),
+(1981, 88, NULL, NULL, 1, '2017-07-06 22:10:56', '::1');
 
 -- --------------------------------------------------------
 
@@ -2628,7 +2938,7 @@ INSERT INTO `sl_category` (`id`, `default_name`, `slug`) VALUES
 (5, 'Sciences humaines', 'sciences-humaines'),
 (6, 'Arts', 'arts'),
 (7, 'Gestion', 'gestion'),
-(8, 'Etude de commerce', 'etude-de-commerce'),
+(8, 'Commerce & Marketing', 'commerce-marketing'),
 (9, 'Paramedical', 'paramedical'),
 (10, 'Science sociale', 'science-sociale'),
 (11, 'Informatique', 'informatique'),
@@ -2643,9 +2953,24 @@ INSERT INTO `sl_category` (`id`, `default_name`, `slug`) VALUES
 (20, 'administration', 'administration'),
 (21, 'électronique', 'electronique'),
 (22, 'Bâtiments & Travaux Publics', 'batiments-travaux-publics'),
-(23, 'environnements', 'environnements'),
 (24, 'agriculture', 'agriculture'),
-(25, 'Finances', 'finances');
+(25, 'Finances', 'finances'),
+(26, 'Geologie', 'geologie'),
+(27, 'Multimedia', 'multimedia'),
+(28, 'Lettres', 'lettres'),
+(29, 'Langues étrangères', 'langues-etrangeres'),
+(30, 'Politique', 'politique'),
+(31, 'Diplomatie', 'diplomatie'),
+(32, 'Météorologie', 'meteorologie'),
+(33, 'Environnement', 'environnement'),
+(34, 'Sociologie', 'sociologie'),
+(35, 'Elevage', 'elevage'),
+(36, 'Education', 'education'),
+(37, 'Mécanique', 'mecanique'),
+(38, 'Génie industriel', 'genie-industriel'),
+(39, 'Développement', 'developpement'),
+(40, 'Philosophie', 'philosophie'),
+(41, 'Pédagogie', 'pedagogie');
 
 -- --------------------------------------------------------
 
@@ -2665,9 +2990,9 @@ CREATE TABLE `sl_category_school` (
 --
 
 INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) VALUES
-(1, 1, 1, 0),
+(1, 1, 1, 1),
 (6, 2, 2, 0),
-(7, 2, 4, 0),
+(7, 2, 4, 1),
 (8, 2, 6, 0),
 (11, 1, 7, 0),
 (12, 1, 8, 0),
@@ -2676,7 +3001,6 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (16, 5, 2, 0),
 (17, 5, 4, 0),
 (19, 6, 3, 0),
-(20, 6, 4, 0),
 (21, 6, 5, 0),
 (22, 6, 7, 0),
 (23, 6, 8, 0),
@@ -2685,29 +3009,23 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (26, 7, 8, 0),
 (27, 8, 8, 0),
 (28, 8, 7, 0),
-(29, 8, 6, 0),
 (30, 8, 1, 0),
 (31, 9, 1, 0),
 (32, 9, 2, 0),
-(33, 9, 4, 0),
 (34, 9, 7, 0),
 (35, 9, 8, 0),
 (36, 11, 2, 0),
 (37, 11, 3, 0),
 (38, 11, 7, 0),
 (39, 12, 5, 0),
-(40, 13, 5, 0),
 (41, 13, 3, 0),
 (42, 14, 3, 1),
 (43, 14, 4, 0),
-(44, 14, 2, 0),
 (45, 15, 3, 0),
 (46, 16, 1, 0),
 (47, 16, 2, 0),
 (48, 16, 3, 0),
-(49, 16, 4, 0),
 (50, 16, 5, 0),
-(51, 16, 6, 0),
 (52, 16, 7, 0),
 (53, 16, 8, 0),
 (55, 17, 7, 0),
@@ -2716,7 +3034,6 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (64, 19, 2, 0),
 (65, 19, 7, 0),
 (66, 19, 4, 0),
-(67, 20, 4, 0),
 (68, 21, 2, 0),
 (69, 21, 4, 0),
 (71, 22, 7, 0),
@@ -2735,7 +3052,6 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (84, 29, 4, 0),
 (85, 29, 2, 0),
 (86, 31, 6, 0),
-(87, 30, 5, 0),
 (89, 23, 1, 0),
 (90, 32, 10, 1),
 (91, 32, 9, 0),
@@ -2743,15 +3059,13 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (93, 5, 11, 0),
 (94, 29, 11, 0),
 (95, 10, 12, 1),
-(96, 10, 1, 1),
+(96, 10, 1, 0),
 (97, 10, 8, 1),
 (98, 10, 10, 1),
 (99, 10, 5, 1),
 (100, 33, 12, 1),
 (102, 33, 6, 1),
-(103, 33, 4, 1),
 (104, 33, 9, 0),
-(105, 33, 11, 0),
 (106, 34, 13, 0),
 (107, 35, 7, 0),
 (108, 35, 8, 0),
@@ -2765,7 +3079,6 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (116, 36, 11, 0),
 (117, 4, 15, 0),
 (118, 3, 15, 0),
-(119, 37, 8, 0),
 (120, 37, 4, 0),
 (121, 37, 6, 0),
 (122, 37, 16, 0),
@@ -2795,8 +3108,125 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (147, 43, 16, 0),
 (148, 44, 19, 0),
 (149, 45, 12, 0),
-(150, 46, 11, 1),
-(151, 36, 21, 0);
+(150, 46, 11, 0),
+(151, 36, 21, 0),
+(152, 47, 11, 0),
+(153, 4, 26, 0),
+(154, 21, 27, 0),
+(155, 37, 27, 0),
+(156, 12, 28, 0),
+(157, 12, 29, 0),
+(158, 27, 30, 0),
+(159, 30, 30, 0),
+(160, 4, 32, 0),
+(161, 10, 34, 0),
+(162, 48, 33, 0),
+(163, 48, 7, 0),
+(164, 49, 14, 0),
+(165, 50, 17, 0),
+(166, 50, 24, 0),
+(167, 50, 35, 0),
+(168, 51, 6, 0),
+(169, 51, 18, 0),
+(170, 40, 4, 0),
+(171, 20, 11, 1),
+(172, 52, 12, 0),
+(173, 52, 7, 0),
+(174, 53, 7, 0),
+(175, 53, 11, 0),
+(176, 54, 7, 0),
+(177, 55, 19, 0),
+(178, 55, 14, 0),
+(179, 56, 9, 0),
+(180, 57, 11, 0),
+(181, 58, 7, 0),
+(182, 58, 33, 0),
+(183, 59, 7, 0),
+(184, 59, 25, 0),
+(185, 59, 8, 0),
+(186, 60, 7, 0),
+(187, 60, 8, 0),
+(188, 61, 24, 0),
+(189, 62, 7, 0),
+(190, 63, 13, 0),
+(191, 64, 7, 0),
+(192, 65, 17, 0),
+(193, 65, 1, 0),
+(194, 65, 14, 0),
+(195, 66, 16, 0),
+(196, 66, 7, 0),
+(197, 67, 12, 0),
+(198, 67, 7, 0),
+(199, 67, 25, 0),
+(200, 68, 17, 0),
+(201, 69, 22, 0),
+(202, 30, 12, 0),
+(203, 70, 10, 0),
+(204, 70, 7, 0),
+(205, 70, 1, 0),
+(206, 71, 12, 0),
+(207, 71, 30, 0),
+(208, 72, 9, 0),
+(209, 73, 9, 0),
+(210, 74, 9, 0),
+(211, 75, 7, 0),
+(212, 75, 12, 0),
+(213, 75, 11, 0),
+(214, 75, 14, 0),
+(215, 75, 19, 0),
+(216, 76, 9, 0),
+(217, 77, 9, 0),
+(218, 78, 22, 0),
+(219, 79, 11, 0),
+(220, 79, 16, 0),
+(221, 80, 9, 0),
+(222, 81, 11, 0),
+(223, 81, 7, 0),
+(224, 82, 9, 0),
+(225, 83, 8, 0),
+(226, 83, 7, 0),
+(227, 84, 16, 0),
+(228, 84, 14, 0),
+(229, 84, 19, 0),
+(230, 84, 7, 0),
+(231, 84, 36, 0),
+(232, 85, 11, 0),
+(233, 85, 7, 0),
+(234, 13, 36, 0),
+(235, 86, 11, 0),
+(236, 87, 7, 0),
+(237, 87, 12, 0),
+(238, 87, 30, 0),
+(239, 87, 11, 0),
+(240, 87, 14, 0),
+(241, 87, 33, 0),
+(242, 87, 8, 0),
+(243, 87, 31, 0),
+(244, 88, 20, 0),
+(245, 88, 22, 0),
+(246, 88, 37, 0),
+(247, 88, 14, 0),
+(248, 88, 8, 0),
+(249, 89, 7, 0),
+(250, 89, 11, 0),
+(251, 90, 37, 0),
+(252, 90, 38, 0),
+(253, 4, 38, 0),
+(254, 91, 39, 0),
+(255, 92, 40, 0),
+(256, 93, 7, 0),
+(257, 93, 14, 0),
+(258, 93, 17, 0),
+(259, 93, 11, 0),
+(260, 94, 14, 0),
+(261, 95, 15, 0),
+(262, 95, 11, 0),
+(263, 95, 21, 0),
+(264, 95, 22, 0),
+(265, 95, 1, 0),
+(266, 95, 7, 0),
+(267, 96, 29, 0),
+(268, 97, 41, 0);
 
 -- --------------------------------------------------------
 
@@ -2847,8 +3277,8 @@ INSERT INTO `sl_category_translate` (`id`, `category_id`, `locale_id`, `name`, `
 (28, 7, 4, 'it Gestion', 'it. Description .Gestion'),
 (29, 7, 5, 'es Gestion', 'es. Description .Gestion'),
 (30, 7, 6, 'de Gestion', 'de. Description .Gestion'),
-(31, 8, 1, 'fr Etude de commerce', 'fr. Description .Etude de commerce'),
-(32, 8, 2, 'en Etude de commerce', 'en. Description .Etude de commerce'),
+(31, 8, 1, 'Commerce & Marketing', 'fr. Description .Etude de commerce'),
+(32, 8, 2, 'Commerce & Marketing', 'en. Description .Etude de commerce'),
 (33, 8, 3, 'mg Etude de commerce', 'mg. Description .Etude de commerce'),
 (34, 8, 4, 'it Etude de commerce', 'it. Description .Etude de commerce'),
 (35, 8, 5, 'es Etude de commerce', 'es. Description .Etude de commerce'),
@@ -2937,12 +3367,6 @@ INSERT INTO `sl_category_translate` (`id`, `category_id`, `locale_id`, `name`, `
 (118, 22, 4, 'it category-3', 'it. Description .category-3'),
 (119, 22, 5, 'es category-3', 'es. Description .category-3'),
 (120, 22, 6, 'de category-3', 'de. Description .category-3'),
-(121, 23, 1, 'Environnements', 'Environnements'),
-(122, 23, 2, 'Environnements', 'Environnements'),
-(123, 23, 3, 'mg craft', 'mg. Description .craft'),
-(124, 23, 4, 'it craft', 'it. Description .craft'),
-(125, 23, 5, 'es craft', 'es. Description .craft'),
-(126, 23, 6, 'de craft', 'de. Description .craft'),
 (127, 24, 1, 'fr category', 'fr. Description .category'),
 (128, 24, 2, 'en category', 'en. Description .category'),
 (129, 24, 3, 'mg category', 'mg. Description .category'),
@@ -2954,7 +3378,103 @@ INSERT INTO `sl_category_translate` (`id`, `category_id`, `locale_id`, `name`, `
 (135, 25, 3, 'mg Finances', 'mg. Description .Finances'),
 (136, 25, 4, 'it Finances', 'it. Description .Finances'),
 (137, 25, 5, 'es Finances', 'es. Description .Finances'),
-(138, 25, 6, 'de Finances', 'de. Description .Finances');
+(138, 25, 6, 'de Finances', 'de. Description .Finances'),
+(139, 26, 1, 'fr Geologie', 'fr. Description .Geologie'),
+(140, 26, 2, 'en Geologie', 'en. Description .Geologie'),
+(141, 26, 3, 'mg Geologie', 'mg. Description .Geologie'),
+(142, 26, 4, 'it Geologie', 'it. Description .Geologie'),
+(143, 26, 5, 'es Geologie', 'es. Description .Geologie'),
+(144, 26, 6, 'de Geologie', 'de. Description .Geologie'),
+(145, 27, 1, 'fr Multimedia', 'fr. Description .Multimedia'),
+(146, 27, 2, 'en Multimedia', 'en. Description .Multimedia'),
+(147, 27, 3, 'mg Multimedia', 'mg. Description .Multimedia'),
+(148, 27, 4, 'it Multimedia', 'it. Description .Multimedia'),
+(149, 27, 5, 'es Multimedia', 'es. Description .Multimedia'),
+(150, 27, 6, 'de Multimedia', 'de. Description .Multimedia'),
+(151, 28, 1, 'fr Lettres', 'fr. Description .Lettres'),
+(152, 28, 2, 'en Lettres', 'en. Description .Lettres'),
+(153, 28, 3, 'mg Lettres', 'mg. Description .Lettres'),
+(154, 28, 4, 'it Lettres', 'it. Description .Lettres'),
+(155, 28, 5, 'es Lettres', 'es. Description .Lettres'),
+(156, 28, 6, 'de Lettres', 'de. Description .Lettres'),
+(157, 29, 1, 'fr Langues étrangères', 'fr. Description .Langues étrangères'),
+(158, 29, 2, 'en Langues étrangères', 'en. Description .Langues étrangères'),
+(159, 29, 3, 'mg Langues étrangères', 'mg. Description .Langues étrangères'),
+(160, 29, 4, 'it Langues étrangères', 'it. Description .Langues étrangères'),
+(161, 29, 5, 'es Langues étrangères', 'es. Description .Langues étrangères'),
+(162, 29, 6, 'de Langues étrangères', 'de. Description .Langues étrangères'),
+(163, 30, 1, 'Politique', 'fr. Description .Poli'),
+(164, 30, 2, 'Politique', 'en. Description .Poli'),
+(165, 30, 3, 'mg Poli', 'mg. Description .Poli'),
+(166, 30, 4, 'it Poli', 'it. Description .Poli'),
+(167, 30, 5, 'es Poli', 'es. Description .Poli'),
+(168, 30, 6, 'de Poli', 'de. Description .Poli'),
+(169, 31, 1, 'fr Diplomatie', 'fr. Description .Diplomatie'),
+(170, 31, 2, 'en Diplomatie', 'en. Description .Diplomatie'),
+(171, 31, 3, 'mg Diplomatie', 'mg. Description .Diplomatie'),
+(172, 31, 4, 'it Diplomatie', 'it. Description .Diplomatie'),
+(173, 31, 5, 'es Diplomatie', 'es. Description .Diplomatie'),
+(174, 31, 6, 'de Diplomatie', 'de. Description .Diplomatie'),
+(175, 32, 1, 'fr Météorologie', 'fr. Description .Météorologie'),
+(176, 32, 2, 'en Météorologie', 'en. Description .Météorologie'),
+(177, 32, 3, 'mg Météorologie', 'mg. Description .Météorologie'),
+(178, 32, 4, 'it Météorologie', 'it. Description .Météorologie'),
+(179, 32, 5, 'es Météorologie', 'es. Description .Météorologie'),
+(180, 32, 6, 'de Météorologie', 'de. Description .Météorologie'),
+(181, 33, 1, 'fr Environnement', 'fr. Description .Environnement'),
+(182, 33, 2, 'en Environnement', 'en. Description .Environnement'),
+(183, 33, 3, 'mg Environnement', 'mg. Description .Environnement'),
+(184, 33, 4, 'it Environnement', 'it. Description .Environnement'),
+(185, 33, 5, 'es Environnement', 'es. Description .Environnement'),
+(186, 33, 6, 'de Environnement', 'de. Description .Environnement'),
+(187, 34, 1, 'fr Sociologie', 'fr. Description .Sociologie'),
+(188, 34, 2, 'en Sociologie', 'en. Description .Sociologie'),
+(189, 34, 3, 'mg Sociologie', 'mg. Description .Sociologie'),
+(190, 34, 4, 'it Sociologie', 'it. Description .Sociologie'),
+(191, 34, 5, 'es Sociologie', 'es. Description .Sociologie'),
+(192, 34, 6, 'de Sociologie', 'de. Description .Sociologie'),
+(193, 35, 1, 'fr Elevage', 'fr. Description .Elevage'),
+(194, 35, 2, 'en Elevage', 'en. Description .Elevage'),
+(195, 35, 3, 'mg Elevage', 'mg. Description .Elevage'),
+(196, 35, 4, 'it Elevage', 'it. Description .Elevage'),
+(197, 35, 5, 'es Elevage', 'es. Description .Elevage'),
+(198, 35, 6, 'de Elevage', 'de. Description .Elevage'),
+(199, 36, 1, 'fr Education', 'fr. Description .Education'),
+(200, 36, 2, 'en Education', 'en. Description .Education'),
+(201, 36, 3, 'mg Education', 'mg. Description .Education'),
+(202, 36, 4, 'it Education', 'it. Description .Education'),
+(203, 36, 5, 'es Education', 'es. Description .Education'),
+(204, 36, 6, 'de Education', 'de. Description .Education'),
+(205, 37, 1, 'fr Mécanique', 'fr. Description .Mécanique'),
+(206, 37, 2, 'en Mécanique', 'en. Description .Mécanique'),
+(207, 37, 3, 'mg Mécanique', 'mg. Description .Mécanique'),
+(208, 37, 4, 'it Mécanique', 'it. Description .Mécanique'),
+(209, 37, 5, 'es Mécanique', 'es. Description .Mécanique'),
+(210, 37, 6, 'de Mécanique', 'de. Description .Mécanique'),
+(211, 38, 1, 'fr Génie industriel', 'fr. Description .Génie industriel'),
+(212, 38, 2, 'en Génie industriel', 'en. Description .Génie industriel'),
+(213, 38, 3, 'mg Génie industriel', 'mg. Description .Génie industriel'),
+(214, 38, 4, 'it Génie industriel', 'it. Description .Génie industriel'),
+(215, 38, 5, 'es Génie industriel', 'es. Description .Génie industriel'),
+(216, 38, 6, 'de Génie industriel', 'de. Description .Génie industriel'),
+(217, 39, 1, 'fr Développement', 'fr. Description .Développement'),
+(218, 39, 2, 'en Développement', 'en. Description .Développement'),
+(219, 39, 3, 'mg Développement', 'mg. Description .Développement'),
+(220, 39, 4, 'it Développement', 'it. Description .Développement'),
+(221, 39, 5, 'es Développement', 'es. Description .Développement'),
+(222, 39, 6, 'de Développement', 'de. Description .Développement'),
+(223, 40, 1, 'fr Philosophie', 'fr. Description .Philosophie'),
+(224, 40, 2, 'en Philosophie', 'en. Description .Philosophie'),
+(225, 40, 3, 'mg Philosophie', 'mg. Description .Philosophie'),
+(226, 40, 4, 'it Philosophie', 'it. Description .Philosophie'),
+(227, 40, 5, 'es Philosophie', 'es. Description .Philosophie'),
+(228, 40, 6, 'de Philosophie', 'de. Description .Philosophie'),
+(229, 41, 1, 'fr Pédagogie', 'fr. Description .Pédagogie'),
+(230, 41, 2, 'en Pédagogie', 'en. Description .Pédagogie'),
+(231, 41, 3, 'mg Pédagogie', 'mg. Description .Pédagogie'),
+(232, 41, 4, 'it Pédagogie', 'it. Description .Pédagogie'),
+(233, 41, 5, 'es Pédagogie', 'es. Description .Pédagogie'),
+(234, 41, 6, 'de Pédagogie', 'de. Description .Pédagogie');
 
 -- --------------------------------------------------------
 
@@ -3032,7 +3552,8 @@ INSERT INTO `sl_cover` (`id`, `school_id`, `name`, `path`, `originalname`, `curr
 (67, 26, 'esmia.jpg', '50456c5117164212c171a325951771a2381e4886.jpeg', 'esmia.jpg', 0),
 (68, 26, 'esmia.jpg', '4193f94750e0d6213c6ca1691253ca48dbb8e7cf.jpeg', 'esmia.jpg', 1),
 (69, 32, 'isfps.jpg', '95316f1dfc2f87c5ee81b899a369a864daecd54d.jpeg', 'isfps.jpg', 1),
-(70, 35, 'ism.jpg', 'f1ce0df2bacad1f647998b59083d93f30085bdf5.jpeg', 'ism.jpg', 1);
+(70, 35, 'ism.jpg', 'f1ce0df2bacad1f647998b59083d93f30085bdf5.jpeg', 'ism.jpg', 1),
+(71, 46, 'ssss.jpg', 'faade4b461b64eb19fe352a9d73df9342aec261c.jpeg', 'ssss.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -3120,7 +3641,9 @@ INSERT INTO `sl_evaluation` (`id`, `school_id`, `user_id`, `mark`, `comment`, `d
 (92, 1, 1, 60, 'dfsd sdf sdf', '2017-06-16 07:13:55'),
 (93, 4, 1, 80, 'dfds sdf sdf', '2017-06-21 15:39:02'),
 (94, 11, 1, 100, 'et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.', '2017-06-29 14:51:28'),
-(95, 46, 2, 100, 'nsternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egress', '2017-06-30 09:01:05');
+(95, 46, 2, 100, 'nsternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt. Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egress', '2017-06-30 09:01:05'),
+(96, 25, 4, 80, 'hkh hhkjhjk', '2017-07-01 18:01:52'),
+(97, 37, 1, 40, 'mofsd ljsdlf jsdlfjslkdf', '2017-07-03 19:30:56');
 
 -- --------------------------------------------------------
 
@@ -3407,7 +3930,10 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (76, 45, 'enmglogo.jpg', '272bdb9598285740b49427281e35d472455272a3.jpeg', 'enmglogo.jpg', 1),
 (77, 46, 'oiologo.png', '8630277ee5b914fad7a3825ad008458b77a8d834.png', 'oiologo.png', 0),
 (78, 46, 'oiologo2.png', 'e909bf06a8599a024a44edcf894cc65bbf5dd6d3.png', 'oiologo2.png', 1),
-(79, 47, 'isstparamedlogo.jpg', '25555501601ead19767f7e2a2f4996a447c5f3bf.jpeg', 'isstparamedlogo.jpg', 1);
+(79, 47, 'isstparamedlogo.jpg', '25555501601ead19767f7e2a2f4996a447c5f3bf.jpeg', 'isstparamedlogo.jpg', 1),
+(80, 48, 'ISSEG.jpg', 'fb29373e238f593fae1517cce2bc95c1d2a04a9d.jpeg', 'ISSEG.jpg', 1),
+(81, 49, 'INFOTOUR.jpg', 'e6b66d8dd39f11532fd9717752cf68e170813d71.jpeg', 'INFOTOUR.jpg', 1),
+(82, 50, 'ISPPM.jpg', 'e02668b4df8975f4f2c6de6bb0421f0dca57de55.jpeg', 'ISPPM.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -3473,7 +3999,57 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (44, 'Institut Supérieur Prive Madagascar Développement Formation', 'ISP-MDF', 'isp-mdf', 1),
 (45, 'Ecole Nationale de la Magistrature et des Greffes', 'ENMG', 'enmg', 1),
 (46, 'Oio School', 'OIOS', 'oio', 1),
-(47, 'Institut Superieur des Sciences Technologiques', 'ISST', 'institut-superieur-des-sciences-technologiques', 1);
+(47, 'Institut Superieur des Sciences Technologiques', 'ISST', 'institut-superieur-des-sciences-technologiques', 1),
+(48, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'ISSEG', 'institut-superieur-en-sciences-de-l-environnement-et-de-gestion', 1),
+(49, 'Institut de Formation en Tourisme', 'INFOTOUR', 'institut-de-formation-en-tourisme', 1),
+(50, 'Institut Superieur Protestant Paul Minault', 'ISPPM', 'institut-superieur-protestant-paul-minault', 1),
+(51, 'Ecole de Coupe et Couture Volana Antananarivo', 'ECCOVA', 'ecole-de-coupe-et-couture-volana-antananarivo', 1),
+(52, 'ACADEMIE RAKETAMANGA', 'ACADEMIE RAKETAMANGA', 'academie-raketamanga', 1),
+(53, 'AFACO', 'Institut Professionnel AFACO', 'afaco', 1),
+(54, 'Atlas University', 'ATLAS', 'atlas', 1),
+(55, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'ISATTM', 'institut-superieur-atout-tourisme-madagascar', 1),
+(56, 'Boeny Institut Paramédical', 'BIP', 'boeny-institut-paramedical', 1),
+(57, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'CEITOP', 'centre-d-rsquo-etudes-de-l-rsquo-information-et-des-technologies-oriente-professionnel', 1),
+(58, 'Centre Ecologique de Libanona', 'CEL', 'centre-ecologique-de-libanona', 1),
+(59, 'Conseils - Etudes - Réalisation - Formation ARMI', 'CERF ARMI', 'conseils-etudes-realisation-formation-armi', 1),
+(60, 'Centre de Formation à des Activités du Commerce', 'CFAC', 'centre-de-formation-a-des-activites-du-commerce', 1),
+(61, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'CFAMA', 'centre-de-formation-et-d-rsquo-application-du-machinisme-agricole-antsirabe', 1),
+(62, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'IAE - COGEFE - FORMATION', 'institut-d-rsquo-administration-des-entreprises-ndash-cogefe-formation', 1),
+(63, 'Conseil de Recherche - Action en Développement Communautaire', 'CRADEC', 'conseil-de-recherche-action-en-developpement-communautaire', 1),
+(64, 'E cole de Comptabilité et d’Administration Taratra', 'ECAT - TARATRA', 'e-cole-de-comptabilite-et-d-rsquo-administration-taratra', 1),
+(65, 'ELI - Laulanie Green University', 'ELGU', 'eli-laulanie-green-university', 1),
+(66, 'Ecole Professionnelle de Commerce et Technique', 'EPCT', 'ecole-professionnelle-de-commerce-et-technique', 1),
+(67, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'EPSL', 'etablissement-prive-d-rsquo-enseignement-superieur-lumiere', 1),
+(68, 'Ecole Professionnelle Supérieure Agricole', 'EPSA', 'ecole-professionnelle-superieure-agricole', 1),
+(69, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'ESBTPB', 'ecole-superieure-de-batiment-et-travaux-publics-bevalala', 1),
+(70, 'Ecole Supérieure de Développement Economique et Social', 'ESDES', 'ecole-superieure-de-developpement-economique-et-social', 1),
+(71, 'Ecole Supérieure de Droit et de Sciences Politiques', 'ESDSP', 'ecole-superieure-de-droit-et-de-sciences-politiques', 1),
+(72, 'Ecole Supérieure de Formation des Infirmiers', 'ESFI', 'ecole-superieure-de-formation-des-infirmiers', 1),
+(73, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'ESFPB', 'ecole-superieure-de-formation-paramedicale-de-bongolava', 1),
+(74, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'ESIF', 'ecole-des-sage-femme-et-infirmier-de-fianarantsoa', 1),
+(75, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'ESIGE', 'ecole-superieure-d-rsquo-informatique-et-de-gestion-des-entreprises', 1),
+(76, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'ESISJP II', 'ecole-superieure-d-rsquo-infirmier-et-sage-femme-jean-paul-ii', 1),
+(77, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'ESISSFA', 'ecole-superieure-d-rsquo-infirmiere-et-de-sage-femme-saint-francois-d-rsquo-assise', 1),
+(78, 'Ecole Supérieure des Métiers et Arts Plastiques', 'ESMAP', 'ecole-superieure-des-metiers-et-arts-plastiques', 1),
+(79, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'ESPBIG', 'etablissement-superieur-professionnel-bureautique-informatique-et-gestion', 1),
+(80, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'ESPA', 'ecole-superieure-paramedicale-alaotra-mangoro', 1),
+(81, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'ESPIC', 'ecole-superieure-professionnelle-en-informatique-et-commerce', 1),
+(82, 'Ecole Supérieure Paramédicale de Madagascar', 'ESPMA', 'ecole-superieure-paramedicale-de-madagascar', 1),
+(83, 'Ecole Supérieure Saint Gabriel Mahajanga', 'ESSGAM', 'ecole-superieure-saint-gabriel-mahajanga', 1),
+(84, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'ESSVA', 'ecole-superieure-specialisee-de-vakinakaratra', 1),
+(85, 'Ecole Supérieure de Technologie', 'EST', 'ecole-superieure-de-technologie', 1),
+(86, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'ESTI', 'ecole-superieure-des-technologies-de-l-rsquo-information-antanimena', 1),
+(87, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'ESTIIM', 'engineering-school-of-tourism-informatics-interpreter-ship-and-management', 1),
+(88, 'Education in Training, Employment and Communication', 'ETEC', 'education-in-training-employment-and-communication', 1),
+(89, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'ETFPS RLG', 'etablissement-technique-de-formation-professionnelle-superieure-rlg', 1),
+(90, 'Etablissement Technique Supérieur', 'ETS', 'etablissement-technique-superieur', 1),
+(91, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'FFFMM IMD', 'fifampiofanana-fanabeazana-fikolokoloana-ho-malagasy-mahomby', 1),
+(92, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'GSSPA', 'grand-seminaire-saint-paul-ap-otre-cycle-philosophique-manantenasoa-antsirabe', 1),
+(93, 'Gate University Ambohidratrimo', 'GUA', 'gate-university-ambohidratrimo', 1),
+(94, 'Global University of Madagascar', 'GUM', 'global-university-of-madagascar', 1),
+(95, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'HECMMA', 'hautes-etudes-chretiennes-de-management-et-de-mathematiques-appliquees', 1),
+(96, 'Institut Catholique Notre Dame', 'ICND', 'institut-catholique-notre-dame', 1),
+(97, 'Institut Catholique de Pédagogie', 'ICP', 'institut-catholique-de-pedagogie', 1);
 
 -- --------------------------------------------------------
 
@@ -3525,7 +4101,9 @@ INSERT INTO `sl_school_admin` (`id`, `school_id`, `user_id`, `date`, `active`) V
 (29, 3, 1, '2017-05-17 07:49:49', 1),
 (30, 1, 7, '2017-06-12 13:07:21', 1),
 (31, 18, 2, '2017-06-27 07:24:02', 1),
-(32, 46, 2, '2017-06-30 09:01:27', 1);
+(32, 46, 2, '2017-06-30 09:01:27', 1),
+(33, 18, 1, '2017-07-02 22:57:44', 1),
+(34, 18, 3, '2017-07-02 23:07:28', 0);
 
 -- --------------------------------------------------------
 
@@ -3620,7 +4198,13 @@ INSERT INTO `sl_school_of_the_day` (`id`, `school_id`, `date`, `current`, `day`)
 (11, 43, '2017-06-29 10:49:03', 1, '2017-06-29'),
 (12, 39, '2017-06-30 07:35:51', 0, '2017-06-30'),
 (13, 15, '2017-06-30 08:33:43', 0, '2017-06-30'),
-(14, 46, '2017-06-30 08:34:10', 1, '2017-06-30');
+(14, 46, '2017-06-30 08:34:10', 1, '2017-06-30'),
+(15, 45, '2017-07-01 11:59:33', 1, '2017-07-01'),
+(16, 29, '2017-07-02 13:12:53', 1, '2017-07-02'),
+(17, 30, '2017-07-03 19:17:46', 1, '2017-07-03'),
+(18, 40, '2017-07-04 12:53:08', 1, '2017-07-04'),
+(19, 39, '2017-07-05 09:40:01', 1, '2017-07-05'),
+(20, 2, '2017-07-06 19:34:24', 1, '2017-07-06');
 
 -- --------------------------------------------------------
 
@@ -3645,7 +4229,7 @@ INSERT INTO `sl_school_subscription` (`id`, `school_id`, `user_id`, `date`, `act
 (2, 1, 3, '2017-04-28 00:59:00', 0),
 (3, 2, 3, '2017-04-28 14:14:34', 1),
 (4, 1, 4, '2017-05-02 07:04:20', 1),
-(5, 4, 4, '2017-05-02 07:22:08', 1),
+(5, 4, 4, '2017-05-02 07:22:08', 0),
 (6, 3, 4, '2017-05-02 07:51:24', 1),
 (7, 3, 2, '2017-05-02 07:52:22', 1),
 (8, 5, 1, '2017-05-02 11:00:02', 1),
@@ -3968,7 +4552,309 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (274, 47, 3, 'Institut Superieur des Sciences Technologiques', 'mg. Short description .Institut Superieur des Sciences Technologiques', 'mg. Description .Institut Superieur des Sciences Technologiques'),
 (275, 47, 4, 'Institut Superieur des Sciences Technologiques', 'it. Short description .Institut Superieur des Sciences Technologiques', 'it. Description .Institut Superieur des Sciences Technologiques'),
 (276, 47, 5, 'Institut Superieur des Sciences Technologiques', 'es. Short description .Institut Superieur des Sciences Technologiques', 'es. Description .Institut Superieur des Sciences Technologiques'),
-(277, 47, 6, 'Institut Superieur des Sciences Technologiques', 'de. Short description .Institut Superieur des Sciences Technologiques', 'de. Description .Institut Superieur des Sciences Technologiques');
+(277, 47, 6, 'Institut Superieur des Sciences Technologiques', 'de. Short description .Institut Superieur des Sciences Technologiques', 'de. Description .Institut Superieur des Sciences Technologiques'),
+(278, 48, 1, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'fr. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'fr. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(279, 48, 2, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'en. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'en. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(280, 48, 3, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'mg. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'mg. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(281, 48, 4, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'it. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'it. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(282, 48, 5, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'es. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'es. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(283, 48, 6, 'Institut Supérieur en Sciences de l''environnement et de gestion', 'de. Short description .Institut Supérieur en Sciences de l''environnement et de gestion', 'de. Description .Institut Supérieur en Sciences de l''environnement et de gestion'),
+(284, 49, 1, 'Institut de Formation en Tourisme', 'fr. Short description .Institut de Formation en Tourisme', 'fr. Description .Institut de Formation en Tourisme'),
+(285, 49, 2, 'Institut de Formation en Tourisme', 'en. Short description .Institut de Formation en Tourisme', 'en. Description .Institut de Formation en Tourisme'),
+(286, 49, 3, 'Institut de Formation en Tourisme', 'mg. Short description .Institut de Formation en Tourisme', 'mg. Description .Institut de Formation en Tourisme'),
+(287, 49, 4, 'Institut de Formation en Tourisme', 'it. Short description .Institut de Formation en Tourisme', 'it. Description .Institut de Formation en Tourisme'),
+(288, 49, 5, 'Institut de Formation en Tourisme', 'es. Short description .Institut de Formation en Tourisme', 'es. Description .Institut de Formation en Tourisme'),
+(289, 49, 6, 'Institut de Formation en Tourisme', 'de. Short description .Institut de Formation en Tourisme', 'de. Description .Institut de Formation en Tourisme'),
+(290, 50, 1, 'Institut Superieur Protestant Paul Minault', 'fr. Short description .Institut Superieur Protestant Paul Minault', 'fr. Description .Institut Superieur Protestant Paul Minault'),
+(291, 50, 2, 'Institut Superieur Protestant Paul Minault', 'en. Short description .Institut Superieur Protestant Paul Minault', 'en. Description .Institut Superieur Protestant Paul Minault'),
+(292, 50, 3, 'Institut Superieur Protestant Paul Minault', 'mg. Short description .Institut Superieur Protestant Paul Minault', 'mg. Description .Institut Superieur Protestant Paul Minault'),
+(293, 50, 4, 'Institut Superieur Protestant Paul Minault', 'it. Short description .Institut Superieur Protestant Paul Minault', 'it. Description .Institut Superieur Protestant Paul Minault'),
+(294, 50, 5, 'Institut Superieur Protestant Paul Minault', 'es. Short description .Institut Superieur Protestant Paul Minault', 'es. Description .Institut Superieur Protestant Paul Minault'),
+(295, 50, 6, 'Institut Superieur Protestant Paul Minault', 'de. Short description .Institut Superieur Protestant Paul Minault', 'de. Description .Institut Superieur Protestant Paul Minault'),
+(296, 51, 1, 'Ecole de Coupe et Couture Volana Antananarivo', 'fr. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'fr. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(297, 51, 2, 'Ecole de Coupe et Couture Volana Antananarivo', 'en. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'en. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(298, 51, 3, 'Ecole de Coupe et Couture Volana Antananarivo', 'mg. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'mg. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(299, 51, 4, 'Ecole de Coupe et Couture Volana Antananarivo', 'it. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'it. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(300, 51, 5, 'Ecole de Coupe et Couture Volana Antananarivo', 'es. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'es. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(301, 51, 6, 'Ecole de Coupe et Couture Volana Antananarivo', 'de. Short description .Ecole de Coupe et Couture Volana Antananarivo', 'de. Description .Ecole de Coupe et Couture Volana Antananarivo'),
+(302, 52, 1, 'ACADEMIE RAKETAMANGA', 'fr. Short description .ACADEMIE RAKETAMANGA', 'fr. Description .ACADEMIE RAKETAMANGA'),
+(303, 52, 2, 'ACADEMIE RAKETAMANGA', 'en. Short description .ACADEMIE RAKETAMANGA', 'en. Description .ACADEMIE RAKETAMANGA'),
+(304, 52, 3, 'ACADEMIE RAKETAMANGA', 'mg. Short description .ACADEMIE RAKETAMANGA', 'mg. Description .ACADEMIE RAKETAMANGA'),
+(305, 52, 4, 'ACADEMIE RAKETAMANGA', 'it. Short description .ACADEMIE RAKETAMANGA', 'it. Description .ACADEMIE RAKETAMANGA'),
+(306, 52, 5, 'ACADEMIE RAKETAMANGA', 'es. Short description .ACADEMIE RAKETAMANGA', 'es. Description .ACADEMIE RAKETAMANGA'),
+(307, 52, 6, 'ACADEMIE RAKETAMANGA', 'de. Short description .ACADEMIE RAKETAMANGA', 'de. Description .ACADEMIE RAKETAMANGA'),
+(308, 53, 1, 'AFACO', 'fr. Short description .AFACO', 'fr. Description .AFACO'),
+(309, 53, 2, 'AFACO', 'en. Short description .AFACO', 'en. Description .AFACO'),
+(310, 53, 3, 'AFACO', 'mg. Short description .AFACO', 'mg. Description .AFACO'),
+(311, 53, 4, 'AFACO', 'it. Short description .AFACO', 'it. Description .AFACO'),
+(312, 53, 5, 'AFACO', 'es. Short description .AFACO', 'es. Description .AFACO'),
+(313, 53, 6, 'AFACO', 'de. Short description .AFACO', 'de. Description .AFACO'),
+(314, 54, 1, 'ATLAS', 'fr. Short description .ATLAS', 'fr. Description .ATLAS'),
+(315, 54, 2, 'ATLAS', 'en. Short description .ATLAS', 'en. Description .ATLAS'),
+(316, 54, 3, 'ATLAS', 'mg. Short description .ATLAS', 'mg. Description .ATLAS'),
+(317, 54, 4, 'ATLAS', 'it. Short description .ATLAS', 'it. Description .ATLAS'),
+(318, 54, 5, 'ATLAS', 'es. Short description .ATLAS', 'es. Description .ATLAS'),
+(319, 54, 6, 'ATLAS', 'de. Short description .ATLAS', 'de. Description .ATLAS'),
+(320, 55, 1, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'fr. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'fr. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(321, 55, 2, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'en. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'en. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(322, 55, 3, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'mg. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'mg. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(323, 55, 4, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'it. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'it. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(324, 55, 5, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'es. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'es. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(325, 55, 6, 'Institut Supérieur ATOUT TOURISME MADAGASCAR', 'de. Short description .Institut Supérieur ATOUT TOURISME MADAGASCAR', 'de. Description .Institut Supérieur ATOUT TOURISME MADAGASCAR'),
+(326, 56, 1, 'Boeny Institut Paramédical', 'fr. Short description .Boeny Institut Paramédical', 'fr. Description .Boeny Institut Paramédical'),
+(327, 56, 2, 'Boeny Institut Paramédical', 'en. Short description .Boeny Institut Paramédical', 'en. Description .Boeny Institut Paramédical'),
+(328, 56, 3, 'Boeny Institut Paramédical', 'mg. Short description .Boeny Institut Paramédical', 'mg. Description .Boeny Institut Paramédical'),
+(329, 56, 4, 'Boeny Institut Paramédical', 'it. Short description .Boeny Institut Paramédical', 'it. Description .Boeny Institut Paramédical'),
+(330, 56, 5, 'Boeny Institut Paramédical', 'es. Short description .Boeny Institut Paramédical', 'es. Description .Boeny Institut Paramédical'),
+(331, 56, 6, 'Boeny Institut Paramédical', 'de. Short description .Boeny Institut Paramédical', 'de. Description .Boeny Institut Paramédical');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
+(332, 57, 1, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'fr. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'fr. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(333, 57, 2, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'en. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'en. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(334, 57, 3, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'mg. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'mg. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(335, 57, 4, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'it. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'it. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(336, 57, 5, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'es. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'es. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(337, 57, 6, 'Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'de. Short description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel', 'de. Description .Centre d’Etudes, de l’Information et des Technologies, Orienté Professionnel'),
+(338, 58, 1, 'Centre Ecologique de Libanona .', 'fr. Short description .Centre Ecologique de Libanona .', 'fr. Description .Centre Ecologique de Libanona .'),
+(339, 58, 2, 'Centre Ecologique de Libanona .', 'en. Short description .Centre Ecologique de Libanona .', 'en. Description .Centre Ecologique de Libanona .'),
+(340, 58, 3, 'Centre Ecologique de Libanona .', 'mg. Short description .Centre Ecologique de Libanona .', 'mg. Description .Centre Ecologique de Libanona .'),
+(341, 58, 4, 'Centre Ecologique de Libanona .', 'it. Short description .Centre Ecologique de Libanona .', 'it. Description .Centre Ecologique de Libanona .'),
+(342, 58, 5, 'Centre Ecologique de Libanona .', 'es. Short description .Centre Ecologique de Libanona .', 'es. Description .Centre Ecologique de Libanona .'),
+(343, 58, 6, 'Centre Ecologique de Libanona .', 'de. Short description .Centre Ecologique de Libanona .', 'de. Description .Centre Ecologique de Libanona .'),
+(344, 59, 1, 'Conseils - Etudes - Réalisation - Formation ARMI', 'fr. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'fr. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(345, 59, 2, 'Conseils - Etudes - Réalisation - Formation ARMI', 'en. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'en. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(346, 59, 3, 'Conseils - Etudes - Réalisation - Formation ARMI', 'mg. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'mg. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(347, 59, 4, 'Conseils - Etudes - Réalisation - Formation ARMI', 'it. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'it. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(348, 59, 5, 'Conseils - Etudes - Réalisation - Formation ARMI', 'es. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'es. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(349, 59, 6, 'Conseils - Etudes - Réalisation - Formation ARMI', 'de. Short description .Conseils - Etudes - Réalisation - Formation ARMI', 'de. Description .Conseils - Etudes - Réalisation - Formation ARMI'),
+(350, 60, 1, 'Centre de Formation à des Activités du Commerce', 'fr. Short description .Centre de Formation à des Activités du Commerce', 'fr. Description .Centre de Formation à des Activités du Commerce'),
+(351, 60, 2, 'Centre de Formation à des Activités du Commerce', 'en. Short description .Centre de Formation à des Activités du Commerce', 'en. Description .Centre de Formation à des Activités du Commerce'),
+(352, 60, 3, 'Centre de Formation à des Activités du Commerce', 'mg. Short description .Centre de Formation à des Activités du Commerce', 'mg. Description .Centre de Formation à des Activités du Commerce'),
+(353, 60, 4, 'Centre de Formation à des Activités du Commerce', 'it. Short description .Centre de Formation à des Activités du Commerce', 'it. Description .Centre de Formation à des Activités du Commerce'),
+(354, 60, 5, 'Centre de Formation à des Activités du Commerce', 'es. Short description .Centre de Formation à des Activités du Commerce', 'es. Description .Centre de Formation à des Activités du Commerce'),
+(355, 60, 6, 'Centre de Formation à des Activités du Commerce', 'de. Short description .Centre de Formation à des Activités du Commerce', 'de. Description .Centre de Formation à des Activités du Commerce'),
+(356, 61, 1, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'fr. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'fr. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(357, 61, 2, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'en. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'en. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(358, 61, 3, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'mg. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'mg. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(359, 61, 4, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'it. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'it. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(360, 61, 5, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'es. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'es. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(361, 61, 6, 'Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'de. Short description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe', 'de. Description .Centre de Formation et d’Application du Machinisme Agricole Antsirabe'),
+(362, 62, 1, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'fr. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'fr. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(363, 62, 2, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'en. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'en. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(364, 62, 3, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'mg. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'mg. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(365, 62, 4, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'it. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'it. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(366, 62, 5, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'es. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'es. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(367, 62, 6, 'Institut d’Administration des Entreprises – COGEFE - FORMATION', 'de. Short description .Institut d’Administration des Entreprises – COGEFE - FORMATION', 'de. Description .Institut d’Administration des Entreprises – COGEFE - FORMATION'),
+(368, 63, 1, 'Conseil de Recherche - Action en Développement Communautaire', 'fr. Short description .Conseil de Recherche - Action en Développement Communautaire', 'fr. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(369, 63, 2, 'Conseil de Recherche - Action en Développement Communautaire', 'en. Short description .Conseil de Recherche - Action en Développement Communautaire', 'en. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(370, 63, 3, 'Conseil de Recherche - Action en Développement Communautaire', 'mg. Short description .Conseil de Recherche - Action en Développement Communautaire', 'mg. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(371, 63, 4, 'Conseil de Recherche - Action en Développement Communautaire', 'it. Short description .Conseil de Recherche - Action en Développement Communautaire', 'it. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(372, 63, 5, 'Conseil de Recherche - Action en Développement Communautaire', 'es. Short description .Conseil de Recherche - Action en Développement Communautaire', 'es. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(373, 63, 6, 'Conseil de Recherche - Action en Développement Communautaire', 'de. Short description .Conseil de Recherche - Action en Développement Communautaire', 'de. Description .Conseil de Recherche - Action en Développement Communautaire'),
+(374, 64, 1, 'E cole de Comptabilité et d’Administration Taratra', 'fr. Short description .E cole de Comptabilité et d’Administration Taratra', 'fr. Description .E cole de Comptabilité et d’Administration Taratra'),
+(375, 64, 2, 'E cole de Comptabilité et d’Administration Taratra', 'en. Short description .E cole de Comptabilité et d’Administration Taratra', 'en. Description .E cole de Comptabilité et d’Administration Taratra'),
+(376, 64, 3, 'E cole de Comptabilité et d’Administration Taratra', 'mg. Short description .E cole de Comptabilité et d’Administration Taratra', 'mg. Description .E cole de Comptabilité et d’Administration Taratra'),
+(377, 64, 4, 'E cole de Comptabilité et d’Administration Taratra', 'it. Short description .E cole de Comptabilité et d’Administration Taratra', 'it. Description .E cole de Comptabilité et d’Administration Taratra'),
+(378, 64, 5, 'E cole de Comptabilité et d’Administration Taratra', 'es. Short description .E cole de Comptabilité et d’Administration Taratra', 'es. Description .E cole de Comptabilité et d’Administration Taratra'),
+(379, 64, 6, 'E cole de Comptabilité et d’Administration Taratra', 'de. Short description .E cole de Comptabilité et d’Administration Taratra', 'de. Description .E cole de Comptabilité et d’Administration Taratra'),
+(380, 65, 1, 'ELI - Laulanie Green University', 'fr. Short description .ELI - Laulanie Green University', 'fr. Description .ELI - Laulanie Green University'),
+(381, 65, 2, 'ELI - Laulanie Green University', 'en. Short description .ELI - Laulanie Green University', 'en. Description .ELI - Laulanie Green University'),
+(382, 65, 3, 'ELI - Laulanie Green University', 'mg. Short description .ELI - Laulanie Green University', 'mg. Description .ELI - Laulanie Green University'),
+(383, 65, 4, 'ELI - Laulanie Green University', 'it. Short description .ELI - Laulanie Green University', 'it. Description .ELI - Laulanie Green University'),
+(384, 65, 5, 'ELI - Laulanie Green University', 'es. Short description .ELI - Laulanie Green University', 'es. Description .ELI - Laulanie Green University'),
+(385, 65, 6, 'ELI - Laulanie Green University', 'de. Short description .ELI - Laulanie Green University', 'de. Description .ELI - Laulanie Green University'),
+(386, 66, 1, 'Ecole Professionnelle de Commerce et Technique', 'fr. Short description .Ecole Professionnelle de Commerce et Technique', 'fr. Description .Ecole Professionnelle de Commerce et Technique'),
+(387, 66, 2, 'Ecole Professionnelle de Commerce et Technique', 'en. Short description .Ecole Professionnelle de Commerce et Technique', 'en. Description .Ecole Professionnelle de Commerce et Technique'),
+(388, 66, 3, 'Ecole Professionnelle de Commerce et Technique', 'mg. Short description .Ecole Professionnelle de Commerce et Technique', 'mg. Description .Ecole Professionnelle de Commerce et Technique'),
+(389, 66, 4, 'Ecole Professionnelle de Commerce et Technique', 'it. Short description .Ecole Professionnelle de Commerce et Technique', 'it. Description .Ecole Professionnelle de Commerce et Technique'),
+(390, 66, 5, 'Ecole Professionnelle de Commerce et Technique', 'es. Short description .Ecole Professionnelle de Commerce et Technique', 'es. Description .Ecole Professionnelle de Commerce et Technique'),
+(391, 66, 6, 'Ecole Professionnelle de Commerce et Technique', 'de. Short description .Ecole Professionnelle de Commerce et Technique', 'de. Description .Ecole Professionnelle de Commerce et Technique'),
+(392, 67, 1, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'fr. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'fr. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(393, 67, 2, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'en. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'en. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(394, 67, 3, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'mg. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'mg. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(395, 67, 4, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'it. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'it. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(396, 67, 5, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'es. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'es. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(397, 67, 6, 'Etablissement Privé d’Enseignement Supérieur Lumière', 'de. Short description .Etablissement Privé d’Enseignement Supérieur Lumière', 'de. Description .Etablissement Privé d’Enseignement Supérieur Lumière'),
+(398, 68, 1, 'Ecole Professionnelle Supérieure Agricole', 'fr. Short description .Ecole Professionnelle Supérieure Agricole', 'fr. Description .Ecole Professionnelle Supérieure Agricole'),
+(399, 68, 2, 'Ecole Professionnelle Supérieure Agricole', 'en. Short description .Ecole Professionnelle Supérieure Agricole', 'en. Description .Ecole Professionnelle Supérieure Agricole'),
+(400, 68, 3, 'Ecole Professionnelle Supérieure Agricole', 'mg. Short description .Ecole Professionnelle Supérieure Agricole', 'mg. Description .Ecole Professionnelle Supérieure Agricole'),
+(401, 68, 4, 'Ecole Professionnelle Supérieure Agricole', 'it. Short description .Ecole Professionnelle Supérieure Agricole', 'it. Description .Ecole Professionnelle Supérieure Agricole'),
+(402, 68, 5, 'Ecole Professionnelle Supérieure Agricole', 'es. Short description .Ecole Professionnelle Supérieure Agricole', 'es. Description .Ecole Professionnelle Supérieure Agricole'),
+(403, 68, 6, 'Ecole Professionnelle Supérieure Agricole', 'de. Short description .Ecole Professionnelle Supérieure Agricole', 'de. Description .Ecole Professionnelle Supérieure Agricole'),
+(404, 69, 1, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'fr. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'fr. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(405, 69, 2, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'en. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'en. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(406, 69, 3, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'mg. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'mg. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(407, 69, 4, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'it. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'it. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(408, 69, 5, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'es. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'es. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(409, 69, 6, 'Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'de. Short description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala', 'de. Description .Ecole Supérieure de Bâtiment et Travaux Publics Bevalala'),
+(410, 70, 1, 'Ecole Supérieure de Développement Economique et Social', 'fr. Short description .Ecole Supérieure de Développement Economique et Social', 'fr. Description .Ecole Supérieure de Développement Economique et Social'),
+(411, 70, 2, 'Ecole Supérieure de Développement Economique et Social', 'en. Short description .Ecole Supérieure de Développement Economique et Social', 'en. Description .Ecole Supérieure de Développement Economique et Social'),
+(412, 70, 3, 'Ecole Supérieure de Développement Economique et Social', 'mg. Short description .Ecole Supérieure de Développement Economique et Social', 'mg. Description .Ecole Supérieure de Développement Economique et Social'),
+(413, 70, 4, 'Ecole Supérieure de Développement Economique et Social', 'it. Short description .Ecole Supérieure de Développement Economique et Social', 'it. Description .Ecole Supérieure de Développement Economique et Social'),
+(414, 70, 5, 'Ecole Supérieure de Développement Economique et Social', 'es. Short description .Ecole Supérieure de Développement Economique et Social', 'es. Description .Ecole Supérieure de Développement Economique et Social'),
+(415, 70, 6, 'Ecole Supérieure de Développement Economique et Social', 'de. Short description .Ecole Supérieure de Développement Economique et Social', 'de. Description .Ecole Supérieure de Développement Economique et Social'),
+(416, 71, 1, 'Ecole Supérieure de Droit et de Sciences Politiques', 'fr. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'fr. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(417, 71, 2, 'Ecole Supérieure de Droit et de Sciences Politiques', 'en. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'en. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(418, 71, 3, 'Ecole Supérieure de Droit et de Sciences Politiques', 'mg. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'mg. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(419, 71, 4, 'Ecole Supérieure de Droit et de Sciences Politiques', 'it. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'it. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(420, 71, 5, 'Ecole Supérieure de Droit et de Sciences Politiques', 'es. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'es. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(421, 71, 6, 'Ecole Supérieure de Droit et de Sciences Politiques', 'de. Short description .Ecole Supérieure de Droit et de Sciences Politiques', 'de. Description .Ecole Supérieure de Droit et de Sciences Politiques'),
+(422, 72, 1, 'Ecole Supérieure de Formation des Infirmiers', 'fr. Short description .Ecole Supérieure de Formation des Infirmiers', 'fr. Description .Ecole Supérieure de Formation des Infirmiers'),
+(423, 72, 2, 'Ecole Supérieure de Formation des Infirmiers', 'en. Short description .Ecole Supérieure de Formation des Infirmiers', 'en. Description .Ecole Supérieure de Formation des Infirmiers'),
+(424, 72, 3, 'Ecole Supérieure de Formation des Infirmiers', 'mg. Short description .Ecole Supérieure de Formation des Infirmiers', 'mg. Description .Ecole Supérieure de Formation des Infirmiers'),
+(425, 72, 4, 'Ecole Supérieure de Formation des Infirmiers', 'it. Short description .Ecole Supérieure de Formation des Infirmiers', 'it. Description .Ecole Supérieure de Formation des Infirmiers'),
+(426, 72, 5, 'Ecole Supérieure de Formation des Infirmiers', 'es. Short description .Ecole Supérieure de Formation des Infirmiers', 'es. Description .Ecole Supérieure de Formation des Infirmiers'),
+(427, 72, 6, 'Ecole Supérieure de Formation des Infirmiers', 'de. Short description .Ecole Supérieure de Formation des Infirmiers', 'de. Description .Ecole Supérieure de Formation des Infirmiers'),
+(428, 73, 1, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'fr. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'fr. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(429, 73, 2, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'en. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'en. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(430, 73, 3, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'mg. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'mg. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(431, 73, 4, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'it. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'it. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(432, 73, 5, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'es. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'es. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(433, 73, 6, 'Ecole Supérieure de Formation Paramédicale de Bongolava', 'de. Short description .Ecole Supérieure de Formation Paramédicale de Bongolava', 'de. Description .Ecole Supérieure de Formation Paramédicale de Bongolava'),
+(434, 74, 1, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'fr. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'fr. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(435, 74, 2, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'en. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'en. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(436, 74, 3, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'mg. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'mg. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(437, 74, 4, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'it. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'it. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(438, 74, 5, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'es. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'es. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(439, 74, 6, 'Ecole des Sage - femme et Infirmier de Fianarantsoa', 'de. Short description .Ecole des Sage - femme et Infirmier de Fianarantsoa', 'de. Description .Ecole des Sage - femme et Infirmier de Fianarantsoa'),
+(440, 75, 1, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'fr. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'fr. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(441, 75, 2, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'en. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'en. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(442, 75, 3, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'mg. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'mg. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(443, 75, 4, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'it. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'it. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(444, 75, 5, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'es. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'es. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(445, 75, 6, 'Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'de. Short description .Ecole Supérieure d’Informatique et de Gestion des Entreprises', 'de. Description .Ecole Supérieure d’Informatique et de Gestion des Entreprises'),
+(446, 76, 1, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'fr. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'fr. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(447, 76, 2, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'en. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'en. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(448, 76, 3, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'mg. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'mg. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(449, 76, 4, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'it. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'it. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(450, 76, 5, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'es. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'es. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(451, 76, 6, 'Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'de. Short description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II', 'de. Description .Ecole Supérieure d’Infirmier et  Sage - femme Jean Paul II'),
+(452, 77, 1, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'fr. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'fr. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(453, 77, 2, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'en. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'en. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(454, 77, 3, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'mg. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'mg. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(455, 77, 4, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'it. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'it. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(456, 77, 5, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'es. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'es. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(457, 77, 6, 'Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'de. Short description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise', 'de. Description .Ecole Supérieure d’Infirmière et de Sage - femme Saint François d’Assise'),
+(458, 78, 1, 'Ecole Supérieure des Métiers et Arts Plastiques', 'fr. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'fr. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(459, 78, 2, 'Ecole Supérieure des Métiers et Arts Plastiques', 'en. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'en. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(460, 78, 3, 'Ecole Supérieure des Métiers et Arts Plastiques', 'mg. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'mg. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(461, 78, 4, 'Ecole Supérieure des Métiers et Arts Plastiques', 'it. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'it. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(462, 78, 5, 'Ecole Supérieure des Métiers et Arts Plastiques', 'es. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'es. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(463, 78, 6, 'Ecole Supérieure des Métiers et Arts Plastiques', 'de. Short description .Ecole Supérieure des Métiers et Arts Plastiques', 'de. Description .Ecole Supérieure des Métiers et Arts Plastiques'),
+(464, 79, 1, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'fr. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'fr. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(465, 79, 2, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'en. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'en. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(466, 79, 3, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'mg. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'mg. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(467, 79, 4, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'it. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'it. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(468, 79, 5, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'es. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'es. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(469, 79, 6, 'Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'de. Short description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion', 'de. Description .Etablissement Supérieur Professionnel Bureautique, Informatique et Gestion'),
+(470, 80, 1, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'fr. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'fr. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(471, 80, 2, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'en. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'en. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(472, 80, 3, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'mg. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'mg. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(473, 80, 4, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'it. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'it. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(474, 80, 5, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'es. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'es. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(475, 80, 6, 'Ecole Supérieure Paramédicale Alaotra Mangoro', 'de. Short description .Ecole Supérieure Paramédicale Alaotra Mangoro', 'de. Description .Ecole Supérieure Paramédicale Alaotra Mangoro'),
+(476, 81, 1, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'fr. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'fr. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(477, 81, 2, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'en. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'en. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(478, 81, 3, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'mg. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'mg. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(479, 81, 4, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'it. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'it. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(480, 81, 5, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'es. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'es. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(481, 81, 6, 'Ecole Supérieure Professionnelle en Informatique et Commerce', 'de. Short description .Ecole Supérieure Professionnelle en Informatique et Commerce', 'de. Description .Ecole Supérieure Professionnelle en Informatique et Commerce'),
+(482, 82, 1, 'Ecole Supérieure Paramédicale de Madagascar', 'fr. Short description .Ecole Supérieure Paramédicale de Madagascar', 'fr. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(483, 82, 2, 'Ecole Supérieure Paramédicale de Madagascar', 'en. Short description .Ecole Supérieure Paramédicale de Madagascar', 'en. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(484, 82, 3, 'Ecole Supérieure Paramédicale de Madagascar', 'mg. Short description .Ecole Supérieure Paramédicale de Madagascar', 'mg. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(485, 82, 4, 'Ecole Supérieure Paramédicale de Madagascar', 'it. Short description .Ecole Supérieure Paramédicale de Madagascar', 'it. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(486, 82, 5, 'Ecole Supérieure Paramédicale de Madagascar', 'es. Short description .Ecole Supérieure Paramédicale de Madagascar', 'es. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(487, 82, 6, 'Ecole Supérieure Paramédicale de Madagascar', 'de. Short description .Ecole Supérieure Paramédicale de Madagascar', 'de. Description .Ecole Supérieure Paramédicale de Madagascar'),
+(488, 83, 1, 'Ecole Supérieure Saint Gabriel Mahajanga', 'fr. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'fr. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(489, 83, 2, 'Ecole Supérieure Saint Gabriel Mahajanga', 'en. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'en. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(490, 83, 3, 'Ecole Supérieure Saint Gabriel Mahajanga', 'mg. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'mg. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(491, 83, 4, 'Ecole Supérieure Saint Gabriel Mahajanga', 'it. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'it. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(492, 83, 5, 'Ecole Supérieure Saint Gabriel Mahajanga', 'es. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'es. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(493, 83, 6, 'Ecole Supérieure Saint Gabriel Mahajanga', 'de. Short description .Ecole Supérieure Saint Gabriel Mahajanga', 'de. Description .Ecole Supérieure Saint Gabriel Mahajanga'),
+(494, 84, 1, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'fr. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'fr. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(495, 84, 2, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'en. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'en. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(496, 84, 3, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'mg. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'mg. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(497, 84, 4, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'it. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'it. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(498, 84, 5, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'es. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'es. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(499, 84, 6, 'Ecole Supérieure Spécialisée de Vakinakaratra', 'de. Short description .Ecole Supérieure Spécialisée de Vakinakaratra', 'de. Description .Ecole Supérieure Spécialisée de Vakinakaratra'),
+(500, 85, 1, 'Ecole Supérieure de Technologie', 'fr. Short description .Ecole Supérieure de Technologie', 'fr. Description .Ecole Supérieure de Technologie'),
+(501, 85, 2, 'Ecole Supérieure de Technologie', 'en. Short description .Ecole Supérieure de Technologie', 'en. Description .Ecole Supérieure de Technologie'),
+(502, 85, 3, 'Ecole Supérieure de Technologie', 'mg. Short description .Ecole Supérieure de Technologie', 'mg. Description .Ecole Supérieure de Technologie'),
+(503, 85, 4, 'Ecole Supérieure de Technologie', 'it. Short description .Ecole Supérieure de Technologie', 'it. Description .Ecole Supérieure de Technologie'),
+(504, 85, 5, 'Ecole Supérieure de Technologie', 'es. Short description .Ecole Supérieure de Technologie', 'es. Description .Ecole Supérieure de Technologie'),
+(505, 85, 6, 'Ecole Supérieure de Technologie', 'de. Short description .Ecole Supérieure de Technologie', 'de. Description .Ecole Supérieure de Technologie'),
+(506, 86, 1, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'fr. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'fr. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(507, 86, 2, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'en. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'en. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(508, 86, 3, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'mg. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'mg. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(509, 86, 4, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'it. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'it. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(510, 86, 5, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'es. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'es. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(511, 86, 6, 'Ecole Supérieure des Technologies de l’Information Antanimena', 'de. Short description .Ecole Supérieure des Technologies de l’Information Antanimena', 'de. Description .Ecole Supérieure des Technologies de l’Information Antanimena'),
+(512, 87, 1, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'fr. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'fr. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(513, 87, 2, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'en. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'en. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(514, 87, 3, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'mg. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'mg. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(515, 87, 4, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'it. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'it. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(516, 87, 5, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'es. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'es. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(517, 87, 6, 'Engineering School of Tourism, Informatics, Interpreter ship and Management', 'de. Short description .Engineering School of Tourism, Informatics, Interpreter ship and Management', 'de. Description .Engineering School of Tourism, Informatics, Interpreter ship and Management'),
+(518, 88, 1, 'Education in Training, Employment and Communication', 'fr. Short description .Education in Training, Employment and Communication', 'fr. Description .Education in Training, Employment and Communication'),
+(519, 88, 2, 'Education in Training, Employment and Communication', 'en. Short description .Education in Training, Employment and Communication', 'en. Description .Education in Training, Employment and Communication'),
+(520, 88, 3, 'Education in Training, Employment and Communication', 'mg. Short description .Education in Training, Employment and Communication', 'mg. Description .Education in Training, Employment and Communication'),
+(521, 88, 4, 'Education in Training, Employment and Communication', 'it. Short description .Education in Training, Employment and Communication', 'it. Description .Education in Training, Employment and Communication'),
+(522, 88, 5, 'Education in Training, Employment and Communication', 'es. Short description .Education in Training, Employment and Communication', 'es. Description .Education in Training, Employment and Communication'),
+(523, 88, 6, 'Education in Training, Employment and Communication', 'de. Short description .Education in Training, Employment and Communication', 'de. Description .Education in Training, Employment and Communication'),
+(524, 89, 1, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'fr. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'fr. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(525, 89, 2, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'en. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'en. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(526, 89, 3, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'mg. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'mg. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(527, 89, 4, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'it. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'it. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(528, 89, 5, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'es. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'es. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(529, 89, 6, 'Etablissement Technique de Formation Professionnelle Supérieure RLG', 'de. Short description .Etablissement Technique de Formation Professionnelle Supérieure RLG', 'de. Description .Etablissement Technique de Formation Professionnelle Supérieure RLG'),
+(530, 90, 1, 'Etablissement Technique Supérieur', 'fr. Short description .Etablissement Technique Supérieur', 'fr. Description .Etablissement Technique Supérieur'),
+(531, 90, 2, 'Etablissement Technique Supérieur', 'en. Short description .Etablissement Technique Supérieur', 'en. Description .Etablissement Technique Supérieur'),
+(532, 90, 3, 'Etablissement Technique Supérieur', 'mg. Short description .Etablissement Technique Supérieur', 'mg. Description .Etablissement Technique Supérieur'),
+(533, 90, 4, 'Etablissement Technique Supérieur', 'it. Short description .Etablissement Technique Supérieur', 'it. Description .Etablissement Technique Supérieur'),
+(534, 90, 5, 'Etablissement Technique Supérieur', 'es. Short description .Etablissement Technique Supérieur', 'es. Description .Etablissement Technique Supérieur'),
+(535, 90, 6, 'Etablissement Technique Supérieur', 'de. Short description .Etablissement Technique Supérieur', 'de. Description .Etablissement Technique Supérieur'),
+(536, 91, 1, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'fr. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'fr. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(537, 91, 2, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'en. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'en. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(538, 91, 3, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'mg. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'mg. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(539, 91, 4, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'it. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'it. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(540, 91, 5, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'es. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'es. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(541, 91, 6, 'Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'de. Short description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby', 'de. Description .Fifampiofanana Fanabeazana Fikolokoloana ho Malagasy Mahomby'),
+(542, 92, 1, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'fr. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'fr. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(543, 92, 2, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'en. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'en. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(544, 92, 3, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'mg. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'mg. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(545, 92, 4, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'it. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'it. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(546, 92, 5, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'es. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'es. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(547, 92, 6, 'Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'de. Short description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe', 'de. Description .Grand Seminaire Saint Paul Ap ôtre Cycle Philosophique Manantenasoa  Antsirabe'),
+(548, 93, 1, 'Gate University Ambohidratrimo', 'fr. Short description .Gate University Ambohidratrimo', 'fr. Description .Gate University Ambohidratrimo'),
+(549, 93, 2, 'Gate University Ambohidratrimo', 'en. Short description .Gate University Ambohidratrimo', 'en. Description .Gate University Ambohidratrimo'),
+(550, 93, 3, 'Gate University Ambohidratrimo', 'mg. Short description .Gate University Ambohidratrimo', 'mg. Description .Gate University Ambohidratrimo'),
+(551, 93, 4, 'Gate University Ambohidratrimo', 'it. Short description .Gate University Ambohidratrimo', 'it. Description .Gate University Ambohidratrimo'),
+(552, 93, 5, 'Gate University Ambohidratrimo', 'es. Short description .Gate University Ambohidratrimo', 'es. Description .Gate University Ambohidratrimo'),
+(553, 93, 6, 'Gate University Ambohidratrimo', 'de. Short description .Gate University Ambohidratrimo', 'de. Description .Gate University Ambohidratrimo'),
+(554, 94, 1, 'Global University of Madagascar', 'fr. Short description .Global University of Madagascar', 'fr. Description .Global University of Madagascar'),
+(555, 94, 2, 'Global University of Madagascar', 'en. Short description .Global University of Madagascar', 'en. Description .Global University of Madagascar'),
+(556, 94, 3, 'Global University of Madagascar', 'mg. Short description .Global University of Madagascar', 'mg. Description .Global University of Madagascar');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
+(557, 94, 4, 'Global University of Madagascar', 'it. Short description .Global University of Madagascar', 'it. Description .Global University of Madagascar'),
+(558, 94, 5, 'Global University of Madagascar', 'es. Short description .Global University of Madagascar', 'es. Description .Global University of Madagascar'),
+(559, 94, 6, 'Global University of Madagascar', 'de. Short description .Global University of Madagascar', 'de. Description .Global University of Madagascar'),
+(560, 95, 1, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'fr. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'fr. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(561, 95, 2, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'en. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'en. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(562, 95, 3, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'mg. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'mg. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(563, 95, 4, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'it. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'it. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(564, 95, 5, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'es. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'es. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(565, 95, 6, 'Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'de. Short description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées', 'de. Description .Hautes Etudes Chrétiennes de Management et de Mathématiques Appliquées'),
+(566, 96, 1, 'Institut Catholique Notre Dame', 'fr. Short description .Institut Catholique Notre Dame', 'fr. Description .Institut Catholique Notre Dame'),
+(567, 96, 2, 'Institut Catholique Notre Dame', 'en. Short description .Institut Catholique Notre Dame', 'en. Description .Institut Catholique Notre Dame'),
+(568, 96, 3, 'Institut Catholique Notre Dame', 'mg. Short description .Institut Catholique Notre Dame', 'mg. Description .Institut Catholique Notre Dame'),
+(569, 96, 4, 'Institut Catholique Notre Dame', 'it. Short description .Institut Catholique Notre Dame', 'it. Description .Institut Catholique Notre Dame'),
+(570, 96, 5, 'Institut Catholique Notre Dame', 'es. Short description .Institut Catholique Notre Dame', 'es. Description .Institut Catholique Notre Dame'),
+(571, 96, 6, 'Institut Catholique Notre Dame', 'de. Short description .Institut Catholique Notre Dame', 'de. Description .Institut Catholique Notre Dame'),
+(572, 97, 1, 'Institut Catholique de Pédagogie', 'fr. Short description .Institut Catholique de Pédagogie', 'fr. Description .Institut Catholique de Pédagogie'),
+(573, 97, 2, 'Institut Catholique de Pédagogie', 'en. Short description .Institut Catholique de Pédagogie', 'en. Description .Institut Catholique de Pédagogie'),
+(574, 97, 3, 'Institut Catholique de Pédagogie', 'mg. Short description .Institut Catholique de Pédagogie', 'mg. Description .Institut Catholique de Pédagogie'),
+(575, 97, 4, 'Institut Catholique de Pédagogie', 'it. Short description .Institut Catholique de Pédagogie', 'it. Description .Institut Catholique de Pédagogie'),
+(576, 97, 5, 'Institut Catholique de Pédagogie', 'es. Short description .Institut Catholique de Pédagogie', 'es. Description .Institut Catholique de Pédagogie'),
+(577, 97, 6, 'Institut Catholique de Pédagogie', 'de. Short description .Institut Catholique de Pédagogie', 'de. Description .Institut Catholique de Pédagogie');
 
 -- --------------------------------------------------------
 
@@ -4046,7 +4932,7 @@ CREATE TABLE `ur_user` (
 --
 
 INSERT INTO `ur_user` (`id`, `locale_id`, `username`, `email`, `password`, `salt`, `roles`, `location`, `name`, `biography`, `sex`) VALUES
-(1, 1, 'user1', 'rchr@boot.com', 'Rm5EXn+/rs1DcjgIZk5AFf5+Lzpv//JwBjmn9rFjEqBnGQQEt/gL2KZnpD2dUX+ku1VVAlThH/DqKjdZeE823w==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Barcelone', 'Rakotoarison Christiana', 'Milay be le mot latin. Tiako!!! Sady milay kely le script en latin. Aleo tonga de tsy ovaina tsony. paozinao hoatran''ny mot latin', 1),
+(1, 1, 'user1', 'rchr@boot.com', 'Rm5EXn+/rs1DcjgIZk5AFf5+Lzpv//JwBjmn9rFjEqBnGQQEt/gL2KZnpD2dUX+ku1VVAlThH/DqKjdZeE823w==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Antananarivo', 'Rakotoarison Christiana iris', 'Milay be le mot latin. Tiako!!! Sady milay kely le script en latin. Aleo tonga de tsy ovaina tsony. paozinao hoatran''ny mot latin', 1),
 (2, 2, 'user2', 'user2.fortunat@boot.com', 'LcI4TKVPhbdheLgGK7jygbUhMZcHpg1cRZSazjEq1CogQlx/E+iBwqNwBNLWCqV0CDeSJ3OW2uvXF+zAPaPPqw==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'location', 'scelerisque quis eget felis', 'An API endpoint "defines the address or connection point to a Web service. It is typically represented by a simple HTTP URL string". So basically, the endpoint URL is the URL of the web service that are you attempting to interact with.', 1),
 (3, 1, 'user3', 'user3@boot.comk', 'wPscR9RyDzUt/1RawB/8cOdGt7CmIABQBSGcZG+et3V7jMXlywRMtMqBQ0djPX3FvcsZ+YTzgL8JXi5lGknWWA==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Paris, France', 'Phasellus finibus volutpat', 'J''ai un fichier css qui ne fonctionne qu''à moitier. ... Float, fonctionne parfaitement mais font-style-type pas. .... d''aide concernant le code par MP ni par mail, le forum est là pour çaJ''ai un fichier css qui ne fonctionne qu''à moitier. ... Float, fonctionne parfaitement mais font-style-type pas. .... d''aide concernant le code par MP ni par mail, le forum est là pour ça', 1),
 (4, 1, 'user4', 'user4@boot.com', 'SMoyWgVxVImkEm2gOSOX9q8Ep4bdvZ0ppFP5cTviqeaWA8CAuOCnwN56Qr4VYM7MDc+Wb0TaG8Rz5sMUXPyrmg==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Ambatondrazaka', 'Jean Ranaivoarisoa', 'Vestibulum vitae accumsan turpis, ut sollicitudin ex. Cras bibendum bibendum pharetra. Vestibulum sed venenatis justo, sit amet feugiat lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed in iaculis leo. Integer vel diam iaculis, tincidunt nibh vitae, maximus nulla. Suspendisse at tincidunt elit. Maecenas mattis neque vehicula justo ornare dictum a vel risus.', 1),
@@ -4458,7 +5344,7 @@ ALTER TABLE `bg_category`
 -- AUTO_INCREMENT pour la table `bg_category_post`
 --
 ALTER TABLE `bg_category_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT pour la table `bg_category_translate`
 --
@@ -4468,17 +5354,17 @@ ALTER TABLE `bg_category_translate`
 -- AUTO_INCREMENT pour la table `bg_post`
 --
 ALTER TABLE `bg_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT pour la table `bg_post_illustration`
 --
 ALTER TABLE `bg_post_illustration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT pour la table `bg_post_translate`
 --
 ALTER TABLE `bg_post_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 --
 -- AUTO_INCREMENT pour la table `et_event`
 --
@@ -4488,12 +5374,12 @@ ALTER TABLE `et_event`
 -- AUTO_INCREMENT pour la table `fm_message`
 --
 ALTER TABLE `fm_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT pour la table `fm_subject`
 --
 ALTER TABLE `fm_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT pour la table `fm_topic`
 --
@@ -4518,12 +5404,12 @@ ALTER TABLE `pm_advert_school`
 -- AUTO_INCREMENT pour la table `pm_comment`
 --
 ALTER TABLE `pm_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 --
 -- AUTO_INCREMENT pour la table `pm_contact`
 --
 ALTER TABLE `pm_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `pm_hashtag`
 --
@@ -4543,7 +5429,7 @@ ALTER TABLE `pm_newsletter`
 -- AUTO_INCREMENT pour la table `pm_newsletter_mail`
 --
 ALTER TABLE `pm_newsletter_mail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT pour la table `pm_parameter`
 --
@@ -4553,37 +5439,37 @@ ALTER TABLE `pm_parameter`
 -- AUTO_INCREMENT pour la table `pm_post_school`
 --
 ALTER TABLE `pm_post_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT pour la table `pm_view`
 --
 ALTER TABLE `pm_view`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1822;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1982;
 --
 -- AUTO_INCREMENT pour la table `sl_category`
 --
 ALTER TABLE `sl_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT pour la table `sl_category_school`
 --
 ALTER TABLE `sl_category_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 --
 -- AUTO_INCREMENT pour la table `sl_category_translate`
 --
 ALTER TABLE `sl_category_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 --
 -- AUTO_INCREMENT pour la table `sl_cover`
 --
 ALTER TABLE `sl_cover`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT pour la table `sl_evaluation`
 --
 ALTER TABLE `sl_evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 --
 -- AUTO_INCREMENT pour la table `sl_field`
 --
@@ -4598,17 +5484,17 @@ ALTER TABLE `sl_field_translate`
 -- AUTO_INCREMENT pour la table `sl_logo`
 --
 ALTER TABLE `sl_logo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT pour la table `sl_school`
 --
 ALTER TABLE `sl_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 --
 -- AUTO_INCREMENT pour la table `sl_school_admin`
 --
 ALTER TABLE `sl_school_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT pour la table `sl_school_contact`
 --
@@ -4623,7 +5509,7 @@ ALTER TABLE `sl_school_contact_translate`
 -- AUTO_INCREMENT pour la table `sl_school_of_the_day`
 --
 ALTER TABLE `sl_school_of_the_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `sl_school_subscription`
 --
@@ -4633,7 +5519,7 @@ ALTER TABLE `sl_school_subscription`
 -- AUTO_INCREMENT pour la table `sl_school_translate`
 --
 ALTER TABLE `sl_school_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=578;
 --
 -- AUTO_INCREMENT pour la table `ur_avatar`
 --

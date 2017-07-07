@@ -133,6 +133,7 @@
 	width:40px;padding:6px 0; 
 	text-align:center;
 	border : 1px solid #ddd; 
+	margin-bottom: 3px;
 }
 .sll_pagination_item:hover{
 	border : 1px solid #aaa; 

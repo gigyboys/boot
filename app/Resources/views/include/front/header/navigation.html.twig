@@ -69,10 +69,10 @@
 				<div id="locale">
 					<div class="dd">
 						<a href="#" class="dd_src standar_button">
-							<span class="current_locale" style="display:inline-block;vertical-align: middle;">
+							<span class="current_locale">
 								{% set currentLocale = getLocale(app.request.getLocale()) %}
-								<span style="display:inline-block;margin-top:-6px;vertical-align: middle;">{{ currentLocale.label | trans }}</span> 
-								<span style="display:inline-block;vertical-align: middle; width:26px;text-align:center">
+								<span class="label">{{ currentLocale.label | trans }}</span> 
+								<span class="flag">
 									<img src="{{ asset('assets/image/flag/' ~ app.request.getLocale() ~ '.svg')  }}" alt="{{ app.request.getLocale() }}" height="20px" width="20px" />
 								</span>
 							</span>
