@@ -96,64 +96,71 @@
 		</div>
 	</div>
 	<div id="sl_dl">
-		<div id="sl_onglet_head" style="">
-			<div class="cr">
-				<div class="ct">
-					<div class="mg_h10">
-						<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom; width:19px; height:19px; border-radius: 50% 50%; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /> A propos</span>
-						</span>  
-						<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /> Actualités</span>
-						</span>  
-						<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /> Annonces</span>
-						</span>  
-						<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /> Evaluations</span>
-						</span>
-						<span class="tab_sl_item{% if type == 'contact' %} selected{% endif %}" id="tab_sl_contact" data-title="{{ school.name }} - contacts" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">
-							<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /> Contacts</span>
-						</span>
+		<div>
+			<div id="sl_onglet_head" style="">
+				<div class="cr">
+					<div class="ct">
+						<div class="mg_h10">
+							<span class="tab_sl_item{% if type == 'about' %} selected{% endif %}" id="tab_sl_about" data-title="{{ school.name }} - about" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}" >
+								<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom; width:19px; height:19px; border-radius: 50% 50%; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /> A propos</span>
+							</span>  
+							<span class="tab_sl_item{% if type == 'post' %} selected{% endif %}" id="tab_sl_new" data-title="{{ school.name }} - post" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}" >
+								<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /> Actualités</span>
+							</span>  
+							<span class="tab_sl_item{% if type == 'advert' %} selected{% endif %}" id="tab_sl_advert" data-title="{{ school.name }} - advert" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">
+								<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /> Annonces</span>
+							</span>  
+							<span class="tab_sl_item{% if type == 'evaluation' %} selected{% endif %}" id="tab_sl_evaluation" data-title="{{ school.name }} - evaluations" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">
+								<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_star_icon.png') }}" alt="BG" /> Evaluations</span>
+							</span>
+							{#
+							<span class="tab_sl_item{% if type == 'contact' %} selected{% endif %}" id="tab_sl_contact" data-title="{{ school.name }} - contacts" data-link="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">
+								<span style="display:inline-block;vertical-align:middle;"><img style="display:inline-block;vertical-align:bottom;" src="{{ asset('assets/image/sl_contact_icon.png') }}" alt="CT" /> Contacts</span>
+							</span>
+							#}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_about" style = "{% if type != 'about' %}display:none{% endif %}">
-			<div class="cr">
-				<div class="ct">
-					{{ include("COMSchoolBundle:school:include/about.html.twig") }}
+			<div class="content_tab_sl_item" id="content_tab_sl_about" style = "{% if type != 'about' %}display:none{% endif %}">
+				<div class="cr">
+					<div class="ct">
+						{{ include("COMSchoolBundle:school:include/about.html.twig") }}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_new" style = "{% if type != 'post' %}display:none{% endif %}">
-			<div class="cr">
-				<div class="ct">
-					{{ include("COMSchoolBundle:school:include/new.html.twig") }}
+			<div class="content_tab_sl_item" id="content_tab_sl_new" style = "{% if type != 'post' %}display:none{% endif %}">
+				<div class="cr">
+					<div class="ct">
+						{{ include("COMSchoolBundle:school:include/new.html.twig") }}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_advert" style = "{% if type != 'advert' %}display:none{% endif %}">
-			<div class="cr">
-				<div class="ct">
-					{{ include("COMSchoolBundle:school:include/advert.html.twig") }}
+			<div class="content_tab_sl_item" id="content_tab_sl_advert" style = "{% if type != 'advert' %}display:none{% endif %}">
+				<div class="cr">
+					<div class="ct">
+						{{ include("COMSchoolBundle:school:include/advert.html.twig") }}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "{% if type != 'evaluation' %}display:none{% endif %}">
-			<div class="cr">
-				<div class="ct">
-					{{ include("COMSchoolBundle:school:include/evaluation.html.twig") }}
+			<div class="content_tab_sl_item" id="content_tab_sl_evaluation" style = "{% if type != 'evaluation' %}display:none{% endif %}">
+				<div class="cr">
+					<div class="ct">
+						{{ include("COMSchoolBundle:school:include/evaluation.html.twig") }}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content_tab_sl_item" id="content_tab_sl_contact" style = "{% if type != 'contact' %}display:none{% endif %}">
-			<div class="cr">
-				<div class="ct">
-					{{ include("COMSchoolBundle:school:include/contact.html.twig") }}
+			{#
+			<div class="content_tab_sl_item" id="content_tab_sl_contact" style = "{% if type != 'contact' %}display:none{% endif %}">
+				<div class="cr">
+					<div class="ct">
+						{{ include("COMSchoolBundle:school:include/contact.html.twig") }}
+					</div>
 				</div>
 			</div>
+			#}
 		</div>
+		{#related schools#}
 		<div class="cr">
 			<div class="ct">
 				<div style="margin:10px;font-weight:bold; background:#eee; border:1px solid #ddd; padding:5px">

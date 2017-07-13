@@ -1,10 +1,12 @@
-<div style="padding:5px; min-height:100px">
+<div style="min-height:100px" class="mg_10">
 	{% if posts|length == 0 %}
 		Aucune actualité à afficher
 	{% endif %}
 	<div>
 	{% for post in posts %}
-		<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
+		{{ include("COMBlogBundle:blog:include/post_item.html.twig") }}
+		
+		<!--<div style="border: 1px solid #eee; margin:10px 0;padding:5px">
 			<div>
 				<span><a style="font-weight:bold;color:#666" href="{{ path('com_blog_view', {'slug': post.slug}) }}">{{ post.title }}</a></span>
 			</div>
@@ -20,6 +22,7 @@
 				  on {{ post.date | date('Y-m-d H:i:s') }}
 			</div>
 		</div>
+		-->
 	{% endfor %}
 	</div>
 </div>

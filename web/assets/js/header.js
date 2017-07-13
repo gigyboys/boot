@@ -19,6 +19,14 @@ $(function() {
 		$('#search_submit_button_go').trigger('click');
 	});
 	
+	$( ".search_cat_sl_item" ).click(function() {
+		$("#search_sl_cat_name").html($(this).attr("data-name"));
+		$("#cat_sl_input_id").attr("data-slug",$(this).attr("data-slug"));
+		$("#cat_sl_input_id").val($(this).attr("data-category-id"));
+		$(".dd_target").hide();
+		
+	});
+	
 	$( "#search_submit_button_go" ).click(function() {
 		var target = $(this).data("target");
 		var critere = "";

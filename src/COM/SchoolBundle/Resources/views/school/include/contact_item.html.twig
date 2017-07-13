@@ -1,6 +1,6 @@
 <div class="contact_item mg_b10">
-	<div class="sp mg_v10"></div>
-	<div class="mg_h10">
+	<div class="sp mg_v5"></div>
+	<div class="">
 		<div class="mg_b5">
 			{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
 				<div id="map_contact_{{ schoolContact.id }}" style="background:#eee; margin-bottom:10px;height:250px"></div>
@@ -20,8 +20,7 @@
 				{% endif %}
 				
 				{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
-					<div>longitude : {{ schoolContact.longitude }}</div>
-					<div>latitude : {{ schoolContact.latitude }}</div>
+					<div>longitude : {{ schoolContact.longitude }} latitude : {{ schoolContact.latitude }}</div>
 				{% endif %}
 				
 				{# twig extension #}
@@ -29,7 +28,7 @@
 				
 				{% if schoolContactTranslate %}
 					{% if schoolContactTranslate.description | trim != "" %}
-						<div class="pd_5 mg_t5" style="border:1px solid #eee; background:#f7f7f7; border-radius:3px">{{ schoolContactTranslate.description }}</div>
+						<div class="pd_5 mg_t5" style="border:1px solid #eee; background:#d7e7fe; border-radius:3px">{{ schoolContactTranslate.description }}</div>
 					{% endif %}
 				{% endif %}
 			</div>

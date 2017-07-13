@@ -1,23 +1,50 @@
-<div style="padding:5px; min-height:100px">
-	<div>
-		{{ school.description | raw}}
-	</div>
-	<div>
-		{# fields #}
-		{% if fields %}
-			<div class="sep"></div>
-			<div style="font-weight:bold">
-				Fields
+<div style="min-height:100px" class="mg_v5 mg_10">	
+	<div id="content_tab">
+		<div class="content_tab_header">
+			<div class="content_tab_header_content">
+				<div class="content_tab_header_item selected" id="tab_about">
+					<div class="content_tab_header_item_text">
+						About
+					</div>
+				</div>
+				<div class="content_tab_header_item" id="tab_field">
+					<div class="content_tab_header_item_text">
+						Field
+					</div>
+				</div>
+				<div class="content_tab_header_item" id="tab_contact">
+					<div class="content_tab_header_item_text">
+						Contact
+					</div>
+				</div>
 			</div>
-			<div class="sep"></div>
-			{% for field in fields %}
-				<div class="bold">
-					{{ field.defaultName }}
+			<div class="content_tab_header_sep">
+				<div class="content_tab_header_sep_slide">
 				</div>
-				<div>
-					{{ field.description | raw }}
+			</div>
+		</div>
+		<div class="content_tab_content">
+			<div class="mg_v10" style="">
+				<div class="content_tab_content_item selected" id="content_tab_about" style="">
+					{{ school.description | raw}}
 				</div>
-			{% endfor %}
-		{% endif %}
+			</div>
+			<div class="content_tab_content_item" id="content_tab_field" style="">
+				{# fields #}
+				{% if fields %}
+					{% for field in fields %}
+						<div>
+							{{ field.defaultName }}
+						</div>
+						<div style="display:none">
+							{{ field.description | raw }}
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="content_tab_content_item" id="content_tab_contact" style="">
+				{{ include("COMSchoolBundle:school:include/contact.html.twig") }}
+			</div>
+		</div>
 	</div>
 </div>

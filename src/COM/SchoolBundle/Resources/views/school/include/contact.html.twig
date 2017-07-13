@@ -1,11 +1,11 @@
-<div style="padding:5px 0; min-height:100px">
+<div style="">
 	{% if schoolContacts|length == 0 %}
 		<div id="" class="mg_10">
 			Aucun contact à afficher
 		</div>
 	{% else %}
 		<div id="" class="mg_10">
-			Contact
+			{{ schoolContacts|length }} Contact(s)
 		</div>
 		<div id="contact_list">
 			{% for schoolContact in schoolContacts %}
