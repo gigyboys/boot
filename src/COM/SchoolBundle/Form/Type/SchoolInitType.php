@@ -12,6 +12,7 @@ class SchoolInitType extends AbstractType
     {
         $builder->add('name', 'text')
                 ->add('shortName', 'text')
+                ->add('typeId', 'text')
                 ->add('ajouter', 'submit')
         ;
     }
@@ -22,7 +23,7 @@ class SchoolInitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COM\SchoolBundle\Entity\School',
+            'data_class' => 'COM\SchoolBundle\Entity\SchoolInit',
             'csrf_protection' => false,
         ));
 		//$this->configureOptions($resolver);

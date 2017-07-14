@@ -39,6 +39,7 @@ class SchoolExtension extends \Twig_Extension {
             'getAllSchoolByCategory' => new \Twig_Function_Method($this, 'getAllSchoolByCategoryFunction'),
             'getRelatedSchools' => new \Twig_Function_Method($this, 'getRelatedSchoolsFunction'),
             'getCategoriesBySchool' => new \Twig_Function_Method($this, 'getCategoriesBySchoolFunction'),
+            'getType' => new \Twig_Function_Method($this, 'getTypeFunction'),
         );
     }
 
@@ -112,6 +113,10 @@ class SchoolExtension extends \Twig_Extension {
 
     public function getCategoriesBySchoolFunction(School $school, $limit, $shuffle) {
         return $this->schoolService->getCategoriesBySchool($school, $limit, $shuffle);
+    }
+
+    public function getTypeFunction(School $school) {
+        return $this->schoolService->getType($school);
     }
 
     public function getName() {

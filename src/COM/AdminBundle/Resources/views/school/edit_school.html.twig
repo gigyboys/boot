@@ -97,6 +97,20 @@
 							<td>:</td>
 							<td style="padding:5px"><span id="sl_view_slug">{{ school.slug }}</span></td>
 						</tr>
+						<tr>
+							{% set type=getType(school) %}
+							<td>Type</td>
+							<td>:</td>
+							<td style="padding:5px">
+								<span id="sl_view_type">
+									{% if type is not null and type.id == 1 %}
+										Publique
+									{% else %}
+										Privé
+									{% endif %}
+								</span>
+							</td>
+						</tr>
 					</table>
 				</div>
 				<div class="bloc_edit" style="display:none">
@@ -115,6 +129,31 @@
 							<td>Slug</td>
 							<td>:</td>
 							<td style="padding:5px"><input type="text" id="sl_input_slug" class="default_input" value="{{ school.slug }}" /></td>
+						</tr>
+						<tr>
+							<td>Type</td>
+							<td>:</td>
+							<td style="padding:5px">
+								{% if type is not null and type.id == 1 %}
+									<span>
+										<input id="typepublic" name="typeId" value="1" type="radio" checked>
+										<label class="" for="typepublic">Publique</label>
+									</span>
+									<span>
+										<input id="typeprivate" name="typeId" value="2" type="radio">
+										<label class="" for="typeprivate">Privé</label>
+										</span>
+								{% else %}
+									<span>
+										<input id="typepublic" name="typeId" value="1" type="radio">
+										<label class="" for="typepublic">Publique</label>
+									</span>
+									<span>
+										<input id="typeprivate" name="typeId" value="2" type="radio" checked>
+										<label class="" for="typeprivate">Privé</label>
+									</span>
+								{% endif %}
+							</td>
 						</tr>
 					</table>
 				</div>

@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use COM\PlatformBundle\Entity\Locale;
 use COM\UserBundle\Entity\User;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Type;
+use COM\SchoolBundle\Entity\TypeSchool;
+use COM\SchoolBundle\Entity\SchoolInit;
 use COM\SchoolBundle\Entity\Logo;
 use COM\SchoolBundle\Entity\Cover;
 use COM\SchoolBundle\Form\Type\LogoType;
@@ -54,12 +57,19 @@ class SchoolController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$typeRepository = $em->getRepository('COMSchoolBundle:Type');
+		$typeSchoolRepository = $em->getRepository('COMSchoolBundle:TypeSchool');
 		
-		$school = new School();
-		$formInitSchool = $this->get('form.factory')->create(new SchoolInitType(), $school);
+		$schoolInit = new SchoolInit();
+		$formInitSchool = $this->get('form.factory')->create(new SchoolInitType(), $schoolInit);
 		
 		if ($formInitSchool->handleRequest($request)->isValid()) {
 			$platformService = $this->container->get('com_platform.platform_service');
+			
+			$school = new School();
+			$school->setName($schoolInit->getName());
+			$school->setShortName($schoolInit->getShortName());
+			
 			$slug = $platformService->sluggify($school->getName());
 			
 			$slugtmp = $slug;
@@ -114,6 +124,16 @@ class SchoolController extends Controller
 			}
 			
 			$em->persist($school);
+			//typeschool
+			if($schoolInit->getTypeId() == 1 || $schoolInit->getTypeId() == 2){
+				$type = $typeRepository->find($schoolInit->getTypeId());
+				$typeSchool = new TypeSchool();
+				$typeSchool->setSchool($school);
+				$typeSchool->setType($type);
+				
+				$em->persist($typeSchool);
+			}
+			
 			$em->flush();
 			
 			$url = $this->get('router')->generate('com_admin_school_edit', array('id' => $school->getId()));
@@ -273,10 +293,12 @@ class SchoolController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
 		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$typeRepository = $em->getRepository('COMSchoolBundle:Type');
+		$typeSchoolRepository = $em->getRepository('COMSchoolBundle:TypeSchool');
         
         $school = $schoolRepository->find($id);
         
-		$schoolTemp = new School();
+		$schoolTemp = new SchoolInit();
 		$formSchoolGeneral = $this->get('form.factory')->create(new SchoolGeneralType(), $schoolTemp);
 		
         $response = new Response();
@@ -328,6 +350,27 @@ class SchoolController extends Controller
 			$school->setSlug($slug);
             
 			$em->persist($school);
+			
+			//schooltype
+			$type = $typeRepository->find($schoolTemp->getTypeId());
+			if(!$type){
+				//set private default
+				$type = $typeRepository->find(2);
+			}
+			
+			$schoolType = $typeSchoolRepository->findOneBy(array(
+				'school' => $school,
+			));
+			if($schoolType){
+				$em->remove($schoolType);
+			}
+			
+			$typeSchoolNew = new TypeSchool();
+			$typeSchoolNew->setSchool($school);
+			$typeSchoolNew->setType($type);
+			
+			$em->persist($typeSchoolNew);
+			
             $em->flush();
 
             $response->setContent(json_encode(array(
@@ -335,6 +378,7 @@ class SchoolController extends Controller
                 'name' => $school->getName(),
                 'shortName' => $school->getShortName(),
                 'slug' => $school->getSlug(),
+                'typeId' => $type->getId(),
             )));
 		}else{
             $response->setContent(json_encode(array(

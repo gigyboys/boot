@@ -4,6 +4,8 @@ namespace COM\SchoolBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use COM\SchoolBundle\Entity\School;
+use COM\SchoolBundle\Entity\Type;
+use COM\SchoolBundle\Entity\TypeSchool;
 use COM\SchoolBundle\Entity\Category;
 use COM\SchoolBundle\Entity\Field;
 use COM\SchoolBundle\Entity\SchoolContact;
@@ -511,6 +513,20 @@ class SchoolService {
 			}
 			
 			return $categoriesLimit;
+		}
+    }
+	
+	public function getType($school) {
+        $typeRepository = $this->em->getRepository('COMSchoolBundle:Type');
+        $typeSchoolRepository = $this->em->getRepository('COMSchoolBundle:TypeSchool');
+
+        $typeSchool = $typeSchoolRepository->findOneBy(array(
+            'school' => $school,
+        ));
+        if ($typeSchool){
+			return $typeSchool->getType();
+		}else{
+			return null;
 		}
     }
 	

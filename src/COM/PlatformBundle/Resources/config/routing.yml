@@ -24,5 +24,7 @@ cf_platform_newsletter:
     defaults: { _controller: COMPlatformBundle:Newsletter:index}
 
 cf_platform_search:
-    path:     /search
-    defaults: { _controller: COMPlatformBundle:Search:index}
+    path:     /search/{page}
+    defaults:
+        _controller: COMPlatformBundle:Search:index
+        page: 1

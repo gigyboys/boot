@@ -41,6 +41,19 @@
 				<div><label for="shortName" class="required">Short name : </label></div>
 				<div><input type="text" id="shortName" name="shortName" required="required" class="default_input"  /></div>
 			</div>
+			<div>
+				<div><label class="required" for="password_first">Type de l'établissement :</label></div>
+				<div>
+					<span>
+						<input id="typepublic" name="typeId" value="1" type="radio">
+						<label class="" for="typepublic">Publique</label>
+					</span>
+					<span>
+						<input id="typeprivate" name="typeId" value="2" type="radio" checked>
+						<label class="" for="typeprivate">Privé</label>
+					</span>
+				</div>
+			</div>
 			
 			<div style="padding:10px 0">
 				<button type="submit" id="ajouter" name="ajouter" class="standar_button">{{ 'Ajouter' | trans }}</button>

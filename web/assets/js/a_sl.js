@@ -105,7 +105,8 @@ $(function() {
 		var data = {
 			name : bloc_editable.find("#sl_input_name").val(), 
 			shortName : bloc_editable.find("#sl_input_shortname").val(), 
-			slug : bloc_editable.find("#sl_input_slug").val()
+			slug : bloc_editable.find("#sl_input_slug").val(),
+			typeId : bloc_editable.find("input[name=typeId]:checked").val()
 		};
 		loadBlocEdit(bloc_editable);
         $.ajax({
@@ -119,6 +120,11 @@ $(function() {
 					bloc_editable.find("#sl_view_name").text(data.name);
 					bloc_editable.find("#sl_view_shortname").text(data.shortName);
 					bloc_editable.find("#sl_view_slug").text(data.slug);
+					if(data.typeId == 1){
+						bloc_editable.find("#sl_view_type").text("publique");
+					}else{
+						bloc_editable.find("#sl_view_type").text("privé");
+					}
 					resetBlocEdit(bloc_editable);
 				}
 				else{

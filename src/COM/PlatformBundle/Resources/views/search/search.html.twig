@@ -28,21 +28,25 @@
 							<div class="both"></div>
 						</div>
 						<div class="sll_pagination">
-							{#{ include("COMSchoolBundle:school:include/pagination_list_school.html.twig") }#}
+							{{ include("COMSchoolBundle:school:include/pagination_list_school_search.html.twig") }}
 						</div>
 					</div>
 					<div class="slr" style="">
 						<div id="sl_oftheday_right">
 							{# twig extension #}
-							{% set school = getSchoolById(2) %}
+							
+							{#{% set school = getSchoolById(1) %}#}
+							{% set school = getSchoolOfTheDay() %}
 							<div class="title">
-								<span>The school <br />of the day</span>
+								<span>{{ 'the.school.of.the.day' | trans }}</span>
 							</div>
 							<div style="">
 							{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}
 							</div>
 							{% set schoolTranslate = getSchoolTranslate(school, locale) %}
-							<div class="sl_desc">{{ schoolTranslate.shortDescription }}</div>
+							<div class="sl_desc" style="text-align:justify">
+								{{ substrSpace(schoolTranslate.shortDescription, 165) }}
+							</div>
 						</div>
 					</div>
 					<div class="both"></div>

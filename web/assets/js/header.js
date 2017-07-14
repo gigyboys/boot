@@ -27,6 +27,14 @@ $(function() {
 		
 	});
 	
+	$( ".search_type_sl_item" ).click(function() {
+		$("#search_sl_type_name").html($(this).attr("data-name"));
+		$("#type_sl_input_id").attr("data-slug",$(this).attr("data-slug"));
+		$("#type_sl_input_id").val($(this).attr("data-type-id"));
+		$(".dd_target").hide();
+		
+	});
+	
 	$( "#search_submit_button_go" ).click(function() {
 		var target = $(this).data("target");
 		var critere = "";
@@ -51,6 +59,13 @@ $(function() {
 			q = encodeURIComponent(q.trim());
 			var q2 = q.replace(/\s/g,"%20");
 			critere = critere+"&q="+q2;
+			
+			switch (entity) {
+				case "sl":
+					critere = critere+"&category="+$("#cat_sl_input_id").attr("data-slug");
+					critere = critere+"&type="+$("#type_sl_input_id").attr("data-slug");
+					break;
+			}
 			window.location=target+"?"+critere;
 		}
 	});
