@@ -28,3 +28,7 @@ cf_platform_search:
     defaults:
         _controller: COMPlatformBundle:Search:index
         page: 1
+cf_platform_search_single_school:
+    path:     /search-single-school
+    defaults:
+        _controller: COMPlatformBundle:Search:getSingleSchool

@@ -9,10 +9,11 @@
 		<div class="ct">
 			<div id="sl_list">
 				<div class="sll">
+					<div id="sll_load_list" style="display:none;">chargement ...</div>
 					<div class="mg_h10" style="border: 1px solid #ddd; background: #eee;padding: 10px; font-weight: bold; margin-top: 10px">
 					{{ category.defaultName }}
 					</div>
-					<div id="sll_load_list" style="display:none;">chargement ...</div>
+					
 					<div class="sll_ct" style="">
 						{% for school in schools %}
 							{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}

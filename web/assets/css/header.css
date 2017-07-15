@@ -354,7 +354,7 @@ header{
 	margin: 0px 10px;
 }
 
-#search_single_result{
+#search_single_result, #search_single_result_sl, #search_single_result_bg, #search_single_result_at{
 	float: left;
 	padding-top: 7px
 }

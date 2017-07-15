@@ -192,4 +192,100 @@ class SearchController extends Controller
 			break ;
 		}
     }
+	
+    public function getSingleSchoolAction(Request $request){
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');;
+		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
+		$typeRepository = $em->getRepository('COMSchoolBundle:Type');
+		$typeSchoolRepository = $em->getRepository('COMSchoolBundle:TypeSchool');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$advertRepository = $em->getRepository('COMAdvertBundle:Advert');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$request = $this->get('request');
+		$entity = $request->query->get('entity');
+		$q = $request->query->get('q');
+		
+		$resultList = array();
+		$entityView = "";
+
+		$publishState = 1; // published == true
+		$schools = $schoolRepository->getSchoolSearch($q, $publishState);
+		
+		$schoolsArray = array();
+		$schoolsArrayTmp = array();
+		
+		$catSlug = $request->query->get('category');
+		if($catSlug != "all"){
+			$category =  $categoryRepository->findOneBy(array(
+				'slug' => $catSlug
+			));
+			foreach ($schools as $school) {						
+				$categorySchool =  $categorySchoolRepository->findOneBy(array(
+					'school' => $school,
+					'category' => $category
+				));
+				if($categorySchool){
+					array_push($schoolsArrayTmp, $school);
+				}
+			}
+			$schoolsArray = $schoolsArrayTmp;
+		}else{
+			$schoolsArray = $schools;
+		}
+		
+		$schoolsArrayTmp = array();
+		$typeSlug = $request->query->get('type');
+		if($typeSlug != "all"){
+			$type =  $typeRepository->findOneBy(array(
+				'slug' => $typeSlug
+			));
+			foreach ($schoolsArray as $school) {						
+				$typeSchool =  $typeSchoolRepository->findOneBy(array(
+					'school' => $school,
+					'type' => $type
+				));
+				if($typeSchool){
+					array_push($schoolsArrayTmp, $school);
+				}
+			}
+			$schoolsArray = $schoolsArrayTmp;
+		}
+
+		$response = new Response();
+		if($schoolsArray){
+			$entityView = "school";
+			
+			//get random school
+			$randomIndex = rand(0, count($schoolsArray)-1);
+
+			$school = $schoolsArray[$randomIndex];
+			$school_view = $this->renderView('COMSchoolBundle:school:include/school_single_result.html.twig', array(
+				'school' => $school,
+				'locale' => $locale,
+			));
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'schoolid' => $school->getId(),
+				'schoolname' => $school->getName(),
+				'school_view' => $school_view,
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+		return $response;
+    }
 }

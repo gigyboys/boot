@@ -98,7 +98,7 @@
 							</div>
 						</div>
 						<div style="margin-right: 476px;">
-							<input type="text" id="q_sl" placeholder="Tapez ce que vous voulez recherchez.school" value="{{ querySchool }}" />
+							<input type="text"  autocomplete="off" id="q_sl" data-target="{{ path('cf_platform_search_single_school') }}" placeholder="Tapez ce que vous voulez recherchez.school" value="{{ querySchool }}" />
 						</div>
 					</div>
 					<div class="search_entity_content" id="search_critere_bg" style="display:{{ displayBlog }}">
@@ -109,8 +109,14 @@
 					</div>
 				</div>
 				<div id="search_submit">
-					<div id="search_single_result">
-						Qu'est-ce que vous voulez recherchez?
+					<div id="search_single_result_sl" class="search_single_result" style="display:{{ displaySchool }}">
+						Qu'est-ce que vous voulez recherchez? school
+					</div>
+					<div id="search_single_result_bg" class="search_single_result" style="display:{{ displayBlog }}">
+						Qu'est-ce que vous voulez recherchez? post
+					</div>
+					<div id="search_single_result_at" class="search_single_result" style="display:{{ displayAdvert }}">
+						Qu'est-ce que vous voulez recherchez? advert
 					</div>
 					<div id="search_submit_button">
 						<div id="search_submit_button_go" data-target="{{ path('cf_platform_search') }}">Rechercher</div>
