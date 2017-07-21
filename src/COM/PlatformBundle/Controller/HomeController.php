@@ -13,6 +13,7 @@ class HomeController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
 		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		
 		$shortLocale = $request->getLocale();
@@ -27,20 +28,31 @@ class HomeController extends Controller
 		
 		$schoolService = $this->container->get('com_school.school_service');
 		
-		//$categories = $categoryRepository->findAll();
-		$categories = $schoolService->getCategoriesWithPublishedSchool(0);
-		shuffle($categories);
+		//school
+		$allSchools = $schoolRepository->findBy(array(
+			'published' => true,
+		));
+		
+		//$evaluated Schools
+		$evaluatedSchools = $schoolService->getEvaluatedSchools(0);
+		
+		//all published evaluations in published school
+		$allEvaluations = $schoolService->getAllEvaluations();
+		
+		//$categories
+		$allCategories = $schoolService->getCategoriesWithPublishedSchool(0);
+		shuffle($allCategories);
 		
 		if($limit > 0){		
 			$categoriesLimit = array();
-			if(count($categories) < $limit){
-				$end = count($categories);
+			if(count($allCategories) < $limit){
+				$end = count($allCategories);
 			}else{
 				$end = $limit;
 			}
 			
 			for ($i=0; $i<$end; $i++) {
-				array_push($categoriesLimit, $categories[$i]);
+				array_push($categoriesLimit, $allCategories[$i]);
 			}
 			
 			$categories = $categoriesLimit;
@@ -50,6 +62,10 @@ class HomeController extends Controller
         return $this->render('COMPlatformBundle:home:home.html.twig', array(
 			'locale' => $locale,
 			'categories' => $categories,
+			'allSchools' => $allSchools,
+			'allCategories' => $allCategories,
+			'evaluatedSchools' => $evaluatedSchools,
+			'allEvaluations' => $allEvaluations,
 		));
     }
 }

@@ -542,5 +542,59 @@ class SchoolService {
         
 		return $schools;
     }
+    
+    public function getEvaluatedSchools($limit) {
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+        $evaluationRepository = $this->em->getRepository('COMSchoolBundle:Evaluation');
+
+		$schools = array();
+        $schoolTemps = $schoolRepository->findBy(array(
+			'published' => true,
+		));
+		
+		foreach($schoolTemps as $school){
+			
+			$evaluations = $evaluationRepository->findBy(array(
+				'school' => $school,
+			));
+			if($evaluations){
+				array_push($schools, $school);
+			}
+		}
+		
+		if($limit == 0){
+			return $schools;
+		}else{			
+			$schoolsLimit = array();
+			if(count($schools) < $limit){
+				$end = count($schools);
+			}else{
+				$end = $limit;
+			}
+			
+			for ($i=0; $i<$end; $i++) {
+				array_push($schoolsLimit, $schools[$i]);
+			}
+			
+			return $schoolsLimit;
+		}
+    }
+    
+    public function getAllEvaluations() {
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+        $evaluationRepository = $this->em->getRepository('COMSchoolBundle:Evaluation');
+
+		$evaluations = array();
+        $evaluationTemps = $evaluationRepository->findAll();
+		
+		foreach($evaluationTemps as $evaluation){
+			if($evaluation->getSchool()->getPublished()){
+				array_push($evaluations, $evaluation);
+			}
+		}
+		
+		return $evaluations;
+    }
+	
 	
 }
