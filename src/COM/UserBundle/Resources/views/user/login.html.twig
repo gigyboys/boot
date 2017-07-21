@@ -8,31 +8,45 @@
 {% block user_body %}
 	<div class="cr">
 		<div class="ct">
-			{{ error | raw }}
-			<div>
-				Connexion.
-			</div>
-			<div>
-				Remplissez avec vos coordonnées.
-			</div>
-			<div style="margin:10px 0">
-				<form name="" method="post" action="{{ path('login_check') }}" id="form-inscription">
-					<div>
-						<div>                
-							<div><label for="username" class="required">{{ 'username' | trans }} :</label></div>
-							<div><input type="text" id="username" name="_username" required="required" value="{{ last_username }}" class="default_input" /></div>
-						</div>
-						
-						<div>                
-							<div><label for="password" class="required">{{ 'password' | trans }} :</label></div>
-							<div><input type="password" id="password" name="_password" required="required" class="default_input" /></div>
-						</div>
-						
-						<div style="margin-top : 10px">
-							<button type="submit" id="Inscription" name="Inscription" class="standar_button">{{ 'connexion' | trans }}</button>
-						</div>
+			<div class="mg_h10">
+				<div style="border: 1px solid #ddd; background:#f8f8f8; padding: 5px; margin:10px 0">
+					<span style="font-weight:bold">Connexion.</span> <a href="{{ path('com_user_register') }}">Vous n'êtes pas encore inscrit?</a>
+				</div>
+				<div style=" float:left; width:370px">
+					<div style="margin:10px 0">
+						<form name="" method="post" action="{{ path('login_check') }}" id="form-inscription">
+							<div>
+								<div>                
+									<div><label for="username" class="required">{{ 'email' | trans }} :</label></div>
+									<div><input type="text" id="username" name="_username" required="required" value="{{ last_username }}" class="default_input" /></div>
+								</div>
+								
+								<div>                
+									<div><label for="password" class="required">{{ 'password' | trans }} :</label></div>
+									<div><input type="password" id="password" name="_password" required="required" class="default_input" /></div>
+								</div>
+								
+								<div style="margin-top : 10px">
+									<button type="submit" id="Inscription" name="Inscription" class="standar_button">{{ 'connexion' | trans }}</button>
+								</div>
+							</div>
+							{% if error %}
+								{#{ error | raw }#}
+								<div style="color:#d55;font-weight:bold;margin:10px 0">Verifiez bien votre email ou mot de passe.</div>
+							{% endif %}
+						</form>
 					</div>
-				</form>
+				</div>
+				<div style="margin-left:380px">
+					<h1 style="font-size:16px;font-weight:bold;margin-bottom:10px">
+						Duplexque isdem diebus acciderat malum lorem ipsum?
+					</h1>
+					<div style="">
+						<p>Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.</p>
+						<p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
+					</div>
+				</div>
+				<div class="both"></div>
 			</div>
 		</div>
 	</div>

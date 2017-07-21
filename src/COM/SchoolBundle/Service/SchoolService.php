@@ -530,4 +530,17 @@ class SchoolService {
 		}
     }
 	
+	public function getLastAddedSchools($limit) {
+        $schoolRepository = $this->em->getRepository('COMSchoolBundle:School');
+        
+		$schoolTemps = $schoolRepository->getLastAddedSchools($limit);
+		$schools = array();
+			
+		for ($i=count($schoolTemps)-1; $i>=0; $i--) {
+			array_push($schools, $schoolTemps[$i]);
+		}
+        
+		return $schools;
+    }
+	
 }

@@ -50,23 +50,19 @@
 					<img id="sl_view_logo" src="{{ pathtologo | imagine_filter('100x100') }}" alt="img sl" />
 				</div>
 				<div style="min-height:110px">
-					<div id="sl_view_name">
-						<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
-							{{ school.name }} 
-							{% if school.shortName | trim != "" %}
-								({{ school.shortName }}) 
-							{% endif %}
-							
-							({{ school.views | length }} vues)
-						</a>
-					</div>
-					<div id="sl_view_description">
-						<div>
-							{{ school.shortDescription }}
+					<div id="sl_view_name_category">
+						<div id="sl_view_name">
+							<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
+								{{ school.name }} 
+								{% if school.shortName | trim != "" %}
+									({{ school.shortName }}) 
+								{% endif %}
+								
+								({{ school.views | length }} vues)
+							</a>
 						</div>
-						
 						{% if categories | length != 0 %}
-							<div id="sl_view_categories" style="margin-top:10px">
+							<div id="sl_view_categories" style="margin:5px 0;margin-left: 120px;">
 								{% for category in categories %}
 									<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="">
 										{{ category.defaultName }}
@@ -74,6 +70,11 @@
 								{% endfor %}
 							</div> 
 						{% endif %}
+					</div> 
+					<div id="sl_view_description">
+						<div>
+							{{ school.shortDescription }}
+						</div>
 					</div>
 					<div id="sl_view_action">
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
@@ -161,19 +162,21 @@
 			#}
 		</div>
 		{#related schools#}
-		<div class="cr">
-			<div class="ct">
-				<div style="margin:10px;font-weight:bold; background:#eee; border:1px solid #ddd; padding:5px">
-					See also...
+		{# twig extension #}
+		{% set relatedSchools=getRelatedSchools(school, 5) %}
+		{% if relatedSchools %}
+			<div class="cr">
+				<div class="ct">
+					<div style="margin:10px;font-weight:bold; background:#eee; border:1px solid #ddd; padding:5px">
+						See also...
+					</div>
+					<div class="sl_related" style="text-align:center;"><!--
+						{% for school in relatedSchools %}
+							-->{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}<!--
+						{% endfor %}
+					--></div>
 				</div>
-				<div class="sl_related" style="text-align:center;"><!--
-					{# twig extension #}
-					{% set relatedSchools=getRelatedSchools(school, 5) %}
-					{% for school in relatedSchools %}
-						-->{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}<!--
-					{% endfor %}
-				--></div>
 			</div>
-		</div>
+		{% endif %}
 	</div>
 {% endblock %}

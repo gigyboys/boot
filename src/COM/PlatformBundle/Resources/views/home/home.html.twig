@@ -58,4 +58,22 @@
 			</div>
 		</div>
 	</div>
+
+	{#last added schools#}
+	{# twig extension #}
+	{% set lastAddedSchools=getLastAddedSchools(5) %}
+	{% if lastAddedSchools %}
+		<div class="cr">
+			<div class="ct">
+				<div style="margin:10px;font-weight:bold; background:#eee; border:1px solid #ddd; padding:5px">
+					last added schools
+				</div>
+				<div class="sl_related" style="text-align:center;"><!--
+					{% for school in lastAddedSchools %}
+						-->{{ include("COMSchoolBundle:school:include/school_item.html.twig") }}<!--
+					{% endfor %}
+				--></div>
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}

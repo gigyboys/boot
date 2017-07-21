@@ -64,7 +64,24 @@ class SchoolRepository extends EntityRepository
 		->setMaxResults($limit)
 		;
 		
-        $users = $qb->getQuery()->getResult();
-		return $users;
+        $schools = $qb->getQuery()->getResult();
+		return $schools;
+    }
+	
+	public function getLastAddedSchools($limit) {
+		
+		$qb = $this->createQueryBuilder('school');
+
+		$qb
+		->where('school.published = :published')
+		->setParameter('published', true)
+		->orderBy('school.id', 'DESC');;
+
+		$qb
+		->setMaxResults($limit)
+		;
+		
+        $schools = $qb->getQuery()->getResult();
+		return $schools;
     }
 }

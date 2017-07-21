@@ -28,6 +28,7 @@ class UserController extends Controller
 		
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$userRepository = $em->getRepository('COMUserBundle:User');
 		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
@@ -45,6 +46,48 @@ class UserController extends Controller
 			$user->setSalt(md5(time()));
 			$pass = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 			$user->setPassword($pass);
+			
+			$platformService = $this->container->get('com_platform.platform_service');
+			
+			$slug = $platformService->sluggify($user->getName());
+			
+			$slugtmp = $slug;
+			$notSlugs = array(
+				"school", 
+				"blog", 
+				"advert", 
+				"forum", 
+				"about", 
+				"team", 
+				"legal-notice", 
+				"contact", 
+				"newsletter",
+				"categories", 
+				"category", 
+				"user", 
+				"admin", 
+				"logout", 
+				"login", 
+				"register",
+			);
+            $isSluggable = true;
+            $i = 2;
+            do {
+                $usertmp = $userRepository->findOneBy(array(
+					'username' => $slugtmp
+				));
+				if($usertmp || in_array($slugtmp, $notSlugs)){
+					$slugtmp = $slug."-".$i;
+					$i++;
+				}
+				else{
+					$isSluggable = false;
+				}
+            } 
+            while ($isSluggable);
+            $slug = $slugtmp;
+			
+			$user->setUsername($slug);
 			
 			//sex
 			if($user->getSex() == 1 || $user->getSex() == 2){
@@ -64,11 +107,13 @@ class UserController extends Controller
 			$this->get('security.context')->setToken($token);
 			$this->get('session')->set('_security_main',serialize($token));
 			
-			$type = 'profile';
+			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+			return new RedirectResponse($url);
+			/*$type = 'profile';
 			return $this->render('COMUserBundle:user:profile.html.twig', array(
 				'user' => $user,
 				'type' => $type,
-			));
+			));*/
 		}
 
 		/*return $this->render('OCPlatformBundle:Advert:add.html.twig', array(
@@ -134,6 +179,8 @@ class UserController extends Controller
 		$userRepository = $em->getRepository('COMUserBundle:User');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		
+		$schoolSubscriptionRepository = $em->getRepository('COMSchoolBundle:SchoolSubscription');
+		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
 		$locale = $localeRepository->findOneBy(array(
@@ -144,12 +191,17 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
+		$schoolSubscriptions = $schoolSubscriptionRepository->findBy(array(
+			'user' => $user,
+		));
+		
 		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') &&  $this->getUser()->getId() == $user->getId()) {
 			$type = 'setting';
 			return $this->render('COMUserBundle:user:profile.html.twig', array(
 				'user' => $user,
 				'locale' => $locale,
 				'type' => $type,
+				'schoolSubscriptions' => $schoolSubscriptions,
 			));
         }else{
 			$url = $this->get('router')->generate('com_user_profile', array('username' => $username));

@@ -329,10 +329,10 @@
 @media screen and (max-width: 700px)
 {
 	#sl_view_logo{
-		margin-top:-60px;
+		margin-top:-50px;
 	}
-	#sl_view_name{
-		min-height:50px
+	#sl_view_name_category{
+		min-height:70px
 	}
 	#sl_view_description{
 		margin-left: 0px;

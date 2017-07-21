@@ -50,7 +50,7 @@
 			{% else %}
 				{% set pathtologo='default/images/school/logo/'~logo %}
 			{% endif %}
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}"><img style="display:inline-block; width:20px; height:20px; border-radius: 4px 4px; border: 1px solid #888" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /></a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}"><img style="display:inline-block; width:20px; height:20px; border-radius: 3px; border: 1px solid #bbb" src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /></a>
 		</div>
 		<div class="sl_action_bg">
 			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}"><img src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /></a>
