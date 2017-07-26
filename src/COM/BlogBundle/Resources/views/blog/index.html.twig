@@ -25,6 +25,22 @@
 					{% endif %}
 				</div>
 				<div class="bgr" style="">
+					<div style="margin:10px; width:auto; background:#fff">
+						
+						<div style="padding: 10px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
+							<a href="{{ path('com_blog_category') }}" style="display:block;">
+								Calendar
+							</a>
+						</div>
+
+						<div id="bg_calendar">
+							<div id="bg_load_calendar" style="display:none; position:absolute;background:rgba(255,255,255,0.8);text-align:center;box-sizing:border-box">chargement ...</div>
+							{% set month = "now" %}
+							<div id="bg_calendar_ct">
+							{{ include("COMBlogBundle:blog:include/calendar.html.twig") }}
+							</div>
+						</div>
+					</div>
 					<div style="min-height:400px; margin:10px; width:auto; background:#fff">
 						
 						<div style="padding: 10px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
@@ -55,7 +71,7 @@
 											{% set path='default/images/post/illustration/'~illustration %}
 										{% endif %}
 										<a href="{{ path('com_blog_view', {'slug': lastPost.slug}) }}" style="display:block; padding-bottom:5px;min-height: 27px">
-											<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
+											<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block;margin-top: 4px" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
 											<span style="display:block;margin-left:36px;">{{ lastPost.defaultTitle }}</span>
 											<span style="clear:both"></span>
 										</a>

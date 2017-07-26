@@ -21,18 +21,18 @@
 					
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 						<label for="avatarfile">
-						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
-						</div>
-						</labe>
+							<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -40px">
+								<img id="user_avatar" style="width: 116px; height: 116px" src="{{ pathtoavatar | imagine_filter('116x116') }}" alt="img ur" />
+							</div>
+						</label>
 						<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
 					{% else %}
-						<div style="width:80px; height:80px; overflow:hidden; border-radius: 50% 50%; border: 4px solid #fff">
-							<img id="user_avatar" style="width: 80px; height: 80px" src="{{ pathtoavatar | imagine_filter('80x80') }}" alt="img ur" />
+						<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -40px">
+							<img id="user_avatar" style="width: 116px; height: 116px" src="{{ pathtoavatar | imagine_filter('116x116') }}" alt="img ur" />
 						</div>
 					{% endif %}
 				</div>
-				<div style="margin-left: 100px; min-height:70px; margin-top: 4px; padding:1px 0">
+				<div style="margin-left: 130px; min-height:70px; margin-top: 4px; padding:1px 0">
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 						<div class="bloc_editable" style="margin-bottom:1px">
 							<div class="bloc_view">
@@ -49,16 +49,20 @@
 							</div>
 							<div class="bloc_edit" style="display:none">
 								<form action="" name="form_ur_common" method="post" id="form_ur_common">
-									<div style="margin-bottom:5px">
-										<input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" />
+									<div style="margin-bottom:2px">
+										<div><label for="ur_input_name" class="required">{{ 'full name' | trans }} * : <span id="ur_input_name_error"></span></label></div>
+										<div><input type="text" id="ur_input_name" class="default_input" value="{{ user.name }}" /></div>
 									</div>
-									<div style="margin-bottom:5px">
-										<input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" />
+									<div style="margin-bottom:2px">
+										<div><label for="ur_input_username" class="required">{{ 'username' | trans }} * : <span id="ur_input_username_error"></span></label></div>
+										<div><input type="text" id="ur_input_username" class="default_input" value="{{ user.username }}" /></div>
 									</div>
-									<div style="margin-bottom:5px">
-										<input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" />
+									<div style="margin-bottom:2px">
+										<div><label for="ur_input_location">{{ 'location' | trans }} : <span id="ur_input_location_error"></span></label></div>
+										<div><input type="text" id="ur_input_location" class="default_input" value="{{ user.location }}" /></div>
 									</div>
-									<div style="margin-bottom:5px">
+									<div style="margin-bottom:2px">
+										<div><label for="ur_input_email" class="required">{{ 'email' | trans }} * : <span id="ur_input_email_error"></span></label></div>
 										<input type="text" id="ur_input_email" class="default_input" value="{{ user.email }}" />
 									</div>
 									<input type="submit" style="display:none" value="Enregistrer" />
@@ -66,7 +70,7 @@
 							</div>
 							<div class="bloc_action" style="margin-top:5px; border:1px solid transparent">
 								<span class="btn_edit standar_button">Modifier</span> 
-								<span class="btn_save standar_button" id="btn_save_ur_common" data-target="{{ path('com_user_modify_common', {'user_id': user.id}) }}" style="display:none">Enregistrer</span>
+								<span class="btn_save standar_button" id="btn_save_ur_common" data-target="{{ path('com_user_modify_common') }}" style="display:none">Enregistrer</span>
 								<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 								<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span> 
 							</div>

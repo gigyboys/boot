@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+	//search
+    public function findAllOrderByName($order)
+    {
+        $qb = $this->createQueryBuilder('category');
+		
+		$qb
+        ->orderBy('category.defaultName', $order)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

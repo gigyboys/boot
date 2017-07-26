@@ -19,6 +19,8 @@ class ContactController extends Controller
 		$contact = new Contact();
 		if($user){
 			$contact->setUser($user);
+			$contact->setName($user->getName());
+			$contact->setEmail($user->getEmail());
 		}
 		
 		$msg = "";
@@ -34,6 +36,11 @@ class ContactController extends Controller
 			if(trim($contact->getEmail()) == ""){
 				$error = true;
 				$msg .= "<div>Le champ email est obligatoire.</div>";
+			}
+			
+			if(trim($contact->getPhone()) == ""){
+				$error = true;
+				$msg .= "<div>Le champ téléphone est obligatoire.</div>";
 			}
 			
 			if(trim($contact->getContent()) == ""){

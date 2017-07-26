@@ -1,19 +1,17 @@
 <?php
-namespace COM\PlatformBundle\Form\Type;
+namespace COM\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class ContactType extends AbstractType
+class UserSetNewPasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text')
-                ->add('email', 'email')
-                ->add('phone', 'text')
-                ->add('content', 'textarea')
-                ->add('Envoyer', 'submit')
+        $builder->add('email', 'email')
+                ->add('setNewPassword', 'submit')
         ;
     }
     
@@ -23,10 +21,9 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COM\PlatformBundle\Entity\Contact',
+            'data_class' => 'COM\UserBundle\Entity\User',
             'csrf_protection' => false,
         ));
-		//$this->configureOptions($resolver);
     }
 
     /**

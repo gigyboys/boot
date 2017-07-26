@@ -284,4 +284,15 @@ class BlogService {
 		
 		return $posts;
     }
+    
+    public function getPostsByDay($dateFormat) {
+		$postRepository = $this->em->getRepository('COMBlogBundle:Post');
+		
+		$datetime = new \DateTime();
+		$date = $datetime->createFromFormat('d-m-Y', $dateFormat);
+		
+        $posts = $postRepository->findByDate($date);
+		
+		return $posts;
+    }
 }

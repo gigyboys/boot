@@ -113,4 +113,25 @@ class PostRepository extends EntityRepository
 		
 		return $posts;
     }
+	
+	public function findByDate($date) {
+		
+		$qb = $this->createQueryBuilder('post');
+
+		$qb
+		->where('post.published = :published')
+        ->setParameter('published', true);
+		
+		$begin = new \DateTime($date->format("Y-m-d")." 00:00:00");
+		$end   = new \DateTime($date->format("Y-m-d")." 23:59:59");
+
+		$qb
+		->andWhere('post.date BETWEEN :begin AND :end')
+		->setParameter('begin', $begin )
+		->setParameter('end', $end);
+		
+		$result = $qb->getQuery()->getResult();
+
+		return $result;
+    }
 }

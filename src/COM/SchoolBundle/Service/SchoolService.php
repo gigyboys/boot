@@ -406,7 +406,7 @@ class SchoolService {
         $categorySchoolRepository = $this->em->getRepository('COMSchoolBundle:CategorySchool');
 
 		$categoryArray = array();
-        $categories = $categoryRepository->findAll();
+        $categories = $categoryRepository->findAllOrderByName("ASC");
 		
 		foreach($categories as $category){
 			

@@ -43,36 +43,56 @@ $(function() {
             data: data,
             dataType : 'json',
             success: function(data){
-                console.log(data.state);
-				if(data.state){
-					//name
-					bloc_editable.find("#ur_view_name").text(data.name);
-					$("#nav_src_ur_name").text(data.name);
-					$("#nav_target_ur_name").text(data.name);
-					
-					//username
-					bloc_editable.find("#ur_view_username").text(data.username);
-					$("#nav_target_ur_username").text(data.username);
-					
-					//location
-					bloc_editable.find("#ur_view_location").text(data.location);
-					
-					//email
-					bloc_editable.find("#ur_view_email").text(data.email);
-					$("#nav_target_ur_email").text(data.email);
-					
-					resetBlocEdit(bloc_editable);
-					document.title = data.title;
-					history.pushState('', 'Profile '+data.username, data.url);
-					
-					$("#ur_profil_link").attr("href", data.url);
-					$("#tab_ur_about").attr("data-link", data.url);
-					$("#ur_setting_link").attr("href", data.urlSetting);
-					$("#tab_ur_setting").attr("data-link", data.urlSetting);
-				}
-				else{
-					editBlocEdit(bloc_editable);
-					alert(data.message);
+				switch(data.state) {
+					case 0:
+						alert(data.message);
+						break;
+					case 1:
+						//name
+						$("#ur_view_name").text(data.name);
+						$("#ur_input_name").val(data.name);
+						$("#ur_input_name_error").html("");
+						$("#nav_src_ur_name").text(data.name);
+						$("#nav_target_ur_name").text(data.name);
+						
+						//username
+						$("#ur_view_username").text(data.username);
+						$("#ur_input_username").val(data.username);
+						$("#ur_input_username_error").html("");
+						$("#nav_target_ur_username").text(data.username);
+						
+						//location
+						$("#ur_view_location").text(data.location);
+						$("#ur_input_location").val(data.location);
+						$("#ur_input_location_error").html("");
+						
+						//email
+						$("#ur_view_email").text(data.email);
+						$("#ur_input_email").val(data.email);
+						$("#ur_input_email_error").html("");
+						$("#nav_target_ur_email").text(data.email);
+						
+						resetBlocEdit(bloc_editable);
+						document.title = data.title;
+						history.pushState('', 'Profile '+data.username, data.url);
+						
+						$("#ur_profil_link").attr("href", data.url);
+						$("#tab_ur_about").attr("data-link", data.url);
+						$("#ur_setting_link").attr("href", data.urlSetting);
+						$("#tab_ur_setting").attr("data-link", data.urlSetting);
+						break;
+					case 2:
+						$("#ur_input_name_error").html(data.error.errorName);
+						$("#ur_input_username_error").html(data.error.errorUsername);
+						$("#ur_input_email_error").html(data.error.errorEmail);
+						editBlocEdit(bloc_editable);
+						//alert(data.message);
+						break;
+					case 3:
+						window.location = data.urlLogin;
+						break;
+					default:
+						alert("Une erreur est survenue");
 				}
 				bloc_editable.find(".btn_loading").hide();
             },
@@ -106,10 +126,9 @@ $(function() {
             processData: false,
             dataType : 'json',
             success: function(data){
-                console.log(data.avatar32x32);
-                console.log(data.avatar80x80);
 				$("#avatar_banner").attr("src", data.avatar32x32);
-				$("#user_avatar").attr("src", data.avatar80x80);
+				$("#user_avatar").attr("src", data.avatar116x116);
+				$("#avatar_banner_target").attr("src", data.avatar50x50);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);

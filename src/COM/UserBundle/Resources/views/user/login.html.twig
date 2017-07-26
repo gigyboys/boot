@@ -18,7 +18,7 @@
 							<div>
 								<div>                
 									<div><label for="username" class="required">{{ 'email' | trans }} :</label></div>
-									<div><input type="text" id="username" name="_username" required="required" value="{{ last_username }}" class="default_input" /></div>
+									<div><input type="email" id="username" name="_username" required="required" value="{{ last_username }}" class="default_input" /></div>
 								</div>
 								
 								<div>                
@@ -35,6 +35,9 @@
 								<div style="color:#d55;font-weight:bold;margin:10px 0">Verifiez bien votre email ou mot de passe.</div>
 							{% endif %}
 						</form>
+					</div>
+					<div>
+						 <a href="{{ path('com_user_set_new_password') }}">Vous avez oubliez votre mot de passe?</a>
 					</div>
 				</div>
 				<div style="margin-left:380px">

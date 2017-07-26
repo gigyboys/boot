@@ -7,11 +7,17 @@ com_user_register:
 com_user_login:
     path:     /login
     defaults: { _controller: COMUserBundle:User:login }
+com_user_set_new_password:
+    path:     /set-new-password
+    defaults: { _controller: COMUserBundle:User:setNewPassword }
+com_user_set_new_password_token:
+    path:     /set-new-password/{user_id}/{token}
+    defaults: { _controller: COMUserBundle:User:sendNewPassword }
 com_user_modify_avatar:
     path:     /user/modify-avatar
     defaults: { _controller: COMUserBundle:User:modifyAvatar }
 com_user_modify_common:
-    path:     /user/modify-common/{user_id}
+    path:     /user/modify-common
     defaults: { _controller: COMUserBundle:User:editUserCommon }
 com_user_modify_biography:
     path:     /user/modify-biography

@@ -1,0 +1,171 @@
+
+{#
+ time can be any string acceptable by http://www.php.net/strtotime, the
+ template will output that time's month.
+ If you don't want to pass in a date you can set time like this:
+ {% set time = "now"|date("U") %}
+ {% set time = "December 2012"|date("U") %}
+ How ever you want to output items onto the calendar is a different issue,
+ but I'd assume pushing everything into an array numerically indexed by that day:
+ $days = array(1=>array('Something on the first'),31=>array('Halloween'));
+#}
+{% set time = month|date("U") %}
+
+{# previous month #}
+{% if time|date('m') == 1 %}
+	{% set monthPrevious = 12 %}
+	{% set yearPrevious = time|date('Y')-1 %}
+{% else %}
+	{% set monthPrevious = time|date('m')-1 %}
+	{% set yearPrevious = time|date('Y') %}
+{% endif %}
+
+{% if monthPrevious == 1 %}
+	{% set monthPreviousLabel = "January" %}
+{% endif %}
+{% if monthPrevious == 2 %}
+	{% set monthPreviousLabel = "February" %}
+{% endif %}
+{% if monthPrevious == 3 %}
+	{% set monthPreviousLabel = "March" %}
+{% endif %}
+{% if monthPrevious == 4 %}
+	{% set monthPreviousLabel = "April" %}
+{% endif %}
+{% if monthPrevious == 5 %}
+	{% set monthPreviousLabel = "May" %}
+{% endif %}
+{% if monthPrevious == 6 %}
+	{% set monthPreviousLabel = "June" %}
+{% endif %}
+{% if monthPrevious == 7 %}
+	{% set monthPreviousLabel = "July" %}
+{% endif %}
+{% if monthPrevious == 8 %}
+	{% set monthPreviousLabel = "August" %}
+{% endif %}
+{% if monthPrevious == 9 %}
+	{% set monthPreviousLabel = "September" %}
+{% endif %}
+{% if monthPrevious == 10 %}
+	{% set monthPreviousLabel = "October" %}
+{% endif %}
+{% if monthPrevious == 11 %}
+	{% set monthPreviousLabel = "November" %}
+{% endif %}
+{% if monthPrevious == 12 %}
+	{% set monthPreviousLabel = "December" %}
+{% endif %}
+
+{# next month #}
+{% if time|date('m') == 12 %}
+	{% set monthNext = 1 %}
+	{% set yearNext = time|date('Y')+1 %}
+{% else %}
+	{% set monthNext = time|date('m')+1 %}
+	{% set yearNext = time|date('Y') %}
+{% endif %}
+
+{% if monthNext == 1 %}
+	{% set monthNextLabel = "January" %}
+{% endif %}
+{% if monthNext == 2 %}
+	{% set monthNextLabel = "February" %}
+{% endif %}
+{% if monthNext == 3 %}
+	{% set monthNextLabel = "March" %}
+{% endif %}
+{% if monthNext == 4 %}
+	{% set monthNextLabel = "April" %}
+{% endif %}
+{% if monthNext == 5 %}
+	{% set monthNextLabel = "May" %}
+{% endif %}
+{% if monthNext == 6 %}
+	{% set monthNextLabel = "June" %}
+{% endif %}
+{% if monthNext == 7 %}
+	{% set monthNextLabel = "July" %}
+{% endif %}
+{% if monthNext == 8 %}
+	{% set monthNextLabel = "August" %}
+{% endif %}
+{% if monthNext == 9 %}
+	{% set monthNextLabel = "September" %}
+{% endif %}
+{% if monthNext == 10 %}
+	{% set monthNextLabel = "October" %}
+{% endif %}
+{% if monthNext == 11 %}
+	{% set monthNextLabel = "November" %}
+{% endif %}
+{% if monthNext == 12 %}
+	{% set monthNextLabel = "December" %}
+{% endif %}
+
+<table style="width:100%">
+	<thead>
+		<tr>
+			<th class="center">
+				<span id="bg_calendar_previous" class="bg_month_btn" data-target="{{ path('com_blog_load_calendar', {'month': monthPreviousLabel~'-'~yearPrevious}) }}" title="{{monthPreviousLabel}}-{{yearPrevious}}" style="cursor:pointer"><</span>
+			</th>
+			<th colspan="5" class="center">
+				<div style="padding:10px">
+					{{ time|date('F') }} 
+					{{ time|date('Y') }}
+				</div>
+			</th>
+			<th class="center">
+				<span id="bg_calendar_next" class="bg_month_btn" data-target="{{ path('com_blog_load_calendar', {'month': monthNextLabel~'-'~yearNext}) }}" title="{{monthNextLabel}}-{{yearNext}}" style="cursor:pointer">></span>
+			</th>
+		</tr>
+		<tr>
+			<th width="15%">Sun</th>
+			<th width="14%">Mon</th>
+			<th width="14%">Tue</th>
+			<th width="14%">Wed</th>
+			<th width="14%">Thu</th>
+			<th width="14%">Fri</th>
+			<th width="15%">Sat</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		{% set daysInMonth = time|date('t') %}
+		{% set startDow = time|date('F 1\\s\\t Y')|date('w') %}
+		{% set dow = startDow %}
+		{% for day in range(1,daysInMonth) %}
+			{% set dayFormat = day %}
+			{% if day < 10 %}
+				{% set dayFormat = '0'~day %}
+			{% endif %}
+			{% if loop.first and startDow != 0 %}
+				<td colspan="{{ startDow }}"></td>
+			{% endif %}
+			{% set dateday = dayFormat~'-'~time|date('m')~'-'~time|date('Y') %}
+			{% set posts = getPostsByDay(dateday) %}
+			
+			<td style="text-align:center{% if posts %};background:#ddd;cursor:pointer{% endif %}" data-date="{{ dateday }}" title="{% if posts %}{{ posts | length }} post(s){% endif %}">
+				<div>
+					<div>{{ day }}</div>
+					{#<div>
+						{% for post in posts %}
+							{{ post.id }}
+						{% endfor %}
+					</div>#}
+				</div>
+			</td>
+			{% if loop.last and dow != 6 %}
+				<td colspan="{{ 6 - dow }}">&nbsp;</td>
+			{% endif %}
+			{% if dow == 6 %}
+				{% set dow = 0 %}
+			</tr>
+			<tr>
+			{% else %}
+				{% set dow = dow + 1 %}
+			{% endif %}
+		{% endfor %}
+		</tr>
+	</tbody>
+</table>

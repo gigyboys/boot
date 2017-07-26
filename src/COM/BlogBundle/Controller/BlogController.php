@@ -524,4 +524,43 @@ class BlogController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+	
+	/*
+	*load calendar
+	*/
+	public function loadCalendarAction($month, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$postRepository = $em->getRepository('COMBlogBundle:Post');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$parameterRepository = $em->getRepository('COMPlatformBundle:Parameter');
+		
+		$request = $this->get('request');
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+        
+		$month = str_replace("-"," ",$month);
+		
+        $response = new Response();
+		
+		if($month){
+				$calendar = $this->renderView('COMBlogBundle:blog:include/calendar.html.twig', array(
+				  'month' => $month
+				));
+			
+			$response->setContent(json_encode(array(
+				'state' => 1,
+				'calendar' => $calendar
+			)));
+		}else{
+			$response->setContent(json_encode(array(
+				'state' => 0,
+			)));
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
 }

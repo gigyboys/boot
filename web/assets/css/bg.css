@@ -1,15 +1,15 @@
 /**************liste school***************/
 .bgl{
 	float:left;
-	width:960px;
+	width:900px;
 	margin-top:10px;
 	box-sizing:border-box;
 	padding:0 10px;
 }
 .bgr{
-	margin-left:960px;
+	margin-left:900px;
 	border-top:1px solid transparent;
-	width:240px
+	width:300px
 }
 .post_item{
 	margin-bottom:20px

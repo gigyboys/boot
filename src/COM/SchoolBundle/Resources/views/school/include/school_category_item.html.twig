@@ -8,7 +8,7 @@
 				{% if schoolslength < 2 %}
 					{% set schoollabel = 'school' | trans %}
 				{% endif %}
-				{{ category.defaultName }} ({{ schoolslength }} {{ schoollabel }})
+				{{ category.defaultName | capitalize }} ({{ schoolslength }} {{ schoollabel }})
 			</a>
 		</div>
 		<div class="mg_5">

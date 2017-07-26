@@ -7,11 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\RedirectResponse; 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use COM\UserBundle\Entity\User;
 use COM\UserBundle\Entity\UserPassword;
 use COM\UserBundle\Form\Type\UserType;
 use COM\UserBundle\Form\Type\UserPasswordType;
+use COM\UserBundle\Form\Type\UserSetNewPasswordType;
 use COM\UserBundle\Form\Type\UserCommonType;
 use COM\UserBundle\Form\Type\UserBiographyType;
 use COM\UserBundle\Entity\Avatar;
@@ -116,9 +118,6 @@ class UserController extends Controller
 			));*/
 		}
 
-		/*return $this->render('OCPlatformBundle:Advert:add.html.twig', array(
-		  'form' => $form->createView(),
-		));*/
         return $this->render('COMUserBundle:user:register.html.twig', array(
 		  'formRegister' => $form->createView(),
 		  'msg' => $msg,
@@ -140,6 +139,106 @@ class UserController extends Controller
 		return $this->render('COMUserBundle:user:login.html.twig', array(
 			'last_username' => $authenticationUtils->getLastUsername(),
 			'error'         => $authenticationUtils->getLastAuthenticationError(),
+		));
+	}
+	
+	public function setNewPasswordAction(Request $request)
+	{
+		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+			return $this->redirectToRoute('com_platform_home');
+		}
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$userRepository = $em->getRepository('COMUserBundle:User');
+		$platformService = $this->container->get('com_platform.platform_service');
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$userTemp = new User();
+		$form = $this->get('form.factory')->create(new userSetNewPasswordType(), $userTemp);
+		$error = "";
+		if ($form->handleRequest($request)->isValid()) {
+			$user = $userRepository->findOneBy(array(
+				"email" => $userTemp->getEmail(),
+			));
+			if($user){
+				$token = $platformService->generateRandomString(64);
+				$user->setToken($token);
+				$em->persist($user);
+				$em->flush();
+				
+				$urlToken = $this->get('router')->generate('com_user_set_new_password_token', array('user_id' => $user->getId(), 'token' => $user->getToken() ));
+				
+				/*
+				*@todo sending mail here
+				*/
+				
+				return $this->render('COMUserBundle:user:set_new_password_step2.html.twig', array(
+					"email" => $userTemp->getEmail(),
+					"urlToken" => $urlToken,
+				));
+			}else{
+				$error = "Cette adresse n'est pas lié à un utilisateur";
+			}
+		}
+
+		return $this->render('COMUserBundle:user:set_new_password.html.twig', array(
+			'formSetNewPassword' => $form->createView(),
+			'error' => $error,
+		));
+	}
+	
+	public function sendNewPasswordAction($user_id, $token, Request $request)
+	{
+		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+			return $this->redirectToRoute('com_platform_home');
+		}
+		$em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$userRepository = $em->getRepository('COMUserBundle:User');
+		$platformService = $this->container->get('com_platform.platform_service');
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$user = $userRepository->findOneBy(array(
+			"id" => $user_id,
+			"token" => $token,
+		));
+		
+		$error = "";
+		if ($user) {
+			$passwordLenght = rand(8,12);
+			//$plainpassword = "0000";
+			$plainpassword = $platformService->generateRandomString($passwordLenght);;
+			$encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+			$encodedPassword = $encoder->encodePassword($plainpassword, $user->getSalt());
+			$user->setPassword($encodedPassword);
+			$em->persist($user);
+			$em->flush();
+			
+			/*
+			*@todo sending mail here
+			*/
+				
+			/*$urlLogin = $this->get('router')->generate('com_user_login');
+			return new RedirectResponse($urlLogin);*/
+			
+			return $this->render('COMUserBundle:user:set_new_password_step3.html.twig', array(
+				"email" => $user->getEmail(),
+				"password" => $plainpassword,
+			));
+		}else{
+			$error = "Une erreur est survenue. Veuillez renvoyer votre email.";
+		}
+
+		return $this->render('COMUserBundle:user:set_new_password.html.twig', array(
+			'error' => $error,
 		));
 	}
 	
@@ -241,7 +340,11 @@ class UserController extends Controller
 			  'avatarPath' => $avatar->getWebPath()
 			));
 			
-            $avatar80x80 = $this->renderView('COMUserBundle:user:include/avatar80x80.html.twig', array(
+            $avatar116x116 = $this->renderView('COMUserBundle:user:include/avatar116x116.html.twig', array(
+			  'avatarPath' => $avatar->getWebPath()
+			));
+			
+            $avatar50x50 = $this->renderView('COMUserBundle:user:include/avatar50x50.html.twig', array(
 			  'avatarPath' => $avatar->getWebPath()
 			));
 			
@@ -249,7 +352,8 @@ class UserController extends Controller
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'avatar32x32' => $avatar32x32,
-                'avatar80x80' => $avatar80x80,
+                'avatar116x116' => $avatar116x116,
+                'avatar50x50' => $avatar50x50,
             )));
             $response->headers->set('Content-Type', 'application/json');
             
@@ -265,87 +369,132 @@ class UserController extends Controller
 		return $response;
     }
 	
-    public function editUserCommonAction($user_id, Request $request)
+    public function editUserCommonAction(Request $request)
     {
 		if ($request->isXmlHttpRequest()){
-			$em = $this->getDoctrine()->getManager();
-			
 			$user = $this->getUser();
-			
-			$userTemp = new User();
-			$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
-			
 			$response = new Response();
-			
-			if ($formUserCommon->handleRequest($request)->isValid()) {
-				//username
-				$platformService = $this->container->get('com_platform.platform_service');
-				$username = $platformService->sluggify($userTemp->getUsername());
+			if($user){
+				$em = $this->getDoctrine()->getManager();
 				
-				$userService = $this->container->get('com_user.user_service');
-				/*vérification username à ajouter*/
-				$hasDoublon = $userService->checkHasDoublon($username, $user->getId());
-				if($hasDoublon){
+				$userTemp = new User();
+				$formUserCommon = $this->get('form.factory')->create(new UserCommonType(), $userTemp);
+				
+				if ($formUserCommon->handleRequest($request)->isValid()) {
+					$userService = $this->container->get('com_user.user_service');
+					$error = false;
+					$errorUsername = "";
+					$errorEmail = "";
+					$errorName = "";
+					$listErrors = array();
+					
+					//username
+					$platformService = $this->container->get('com_platform.platform_service');
+					$username = $platformService->sluggify($userTemp->getUsername());
+					
+					if($username == ""){
+						$error = true;
+						$errorUsername = "Vous devez fournir votre nom d'utilisateur";
+					}
+
+					if($errorUsername == ""){
+						$hasDoublon = $userService->checkHasDoublon($username, $user->getId());
+						if($hasDoublon){
+							$error = true;
+							$errorUsername = "Choisissez un autre nom d'utilisateur";	
+						}
+					}
+					
+					//email
+					$email = trim($userTemp->getEmail());
+					if($email == ""){
+						$error = true;
+						$errorEmail = "Vous devez fournir votre adresse email";
+					}
+					
+					if($errorEmail == ""){
+						if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+							$error = true;
+							$errorEmail = "Vous devez fournir une adresse mail valide";
+						}
+					}
+					
+					if($errorEmail == ""){
+						$hasEmailDoublon = $userService->checkHasEmailDoublon($email, $user->getId());
+						if($hasEmailDoublon){
+							$error = true;
+							$errorEmail = "Choisissez une autre adresse email";	
+						}
+					}
+					
+					//name
+					$name = trim($userTemp->getName());
+					if($name == ""){
+						$error = true;
+						$errorName = "Vous devez fournir votre nom complet";
+					}
+					
+					//location
+					$location = trim($userTemp->getLocation());
+					
+					if($error){
+						$listErrors["errorUsername"]= $errorUsername;
+						$listErrors["errorEmail"]= $errorEmail;
+						$listErrors["errorName"]= $errorName;
+						$response->setContent(json_encode(array(
+							'state' => 2,
+							'error' => $listErrors,
+						)));
+						return $response;
+					}
+					
+					$user->setName($name);
+					$user->setUsername($username);
+					$user->setLocation($location);
+					$user->setEmail($email);
+					
+					$em->persist($user);
+					$em->flush();
+					
+					$oldToken = $this->container->get('security.context')->getToken();
+					$token = new UsernamePasswordToken(
+						$user,
+						null,
+						$oldToken->getProviderKey(),
+						$user->getRoles()
+					);
+					$this->container->get('security.context')->setToken($token);
+					
+					$location = $user->getLocation();
+					if($location == null || $location == ""){
+						$location = "";
+					}
+					$title = 'Profile '.$user->getUsername();
+					
+					$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+					$urlSetting = $this->get('router')->generate('com_user_profile_setting', array('username' => $user->getUsername()));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'name' => $user->getName(),
+						'username' => $user->getUsername(),
+						'location' => $location,
+						'email' => $user->getEmail(),
+						'title' => $title,
+						'url' => $url,
+						'urlSetting' => $urlSetting,
+					)));
+				}else{
 					$response->setContent(json_encode(array(
 						'state' => 0,
-						'message' => 'Choisissez un autre username',
+						'message' => 'serveur message : une erreur est survenue',
 					)));
-					return $response;
 				}
-				/*fin vérification username à ajouter*/
-				
-				/*vérification email à ajouter*/
-				$hasEmailDoublon = $userService->checkHasEmailDoublon($userTemp->getEmail(), $user->getId());
-				if($hasEmailDoublon){
-					$response->setContent(json_encode(array(
-						'state' => 0,
-						'message' => 'Choisissez un autre adresse email',
-					)));
-					return $response;
-				}
-				/*fin vérification email à ajouter*/
-				
-				//name
-				$user->setName($userTemp->getName());
-				$user->setUsername($username);
-				$user->setLocation($userTemp->getLocation());
-				$user->setEmail($userTemp->getEmail());
-				
-				$em->persist($user);
-				$em->flush();
-				
-				$oldToken = $this->container->get('security.context')->getToken();
-				$token = new UsernamePasswordToken(
-					$user,
-					null,
-					$oldToken->getProviderKey(),
-					$user->getRoles()
-				);
-				$this->container->get('security.context')->setToken($token);
-				
-				$location = $user->getLocation();
-				if($location == null || $location == ""){
-					$location = "";
-				}
-				$title = 'Profile '.$user->getUsername();
-				
-				$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
-				$urlSetting = $this->get('router')->generate('com_user_profile_setting', array('username' => $user->getUsername()));
-				
-				$response->setContent(json_encode(array(
-					'state' => 1,
-					'name' => $user->getName(),
-					'username' => $user->getUsername(),
-					'location' => $location,
-					'email' => $user->getEmail(),
-					'title' => $title,
-					'url' => $url,
-					'urlSetting' => $urlSetting,
-				)));
 			}else{
+				$urlLogin = $this->get('router')->generate('com_user_login');
 				$response->setContent(json_encode(array(
-					'state' => 0,
-					'message' => 'serveur message : une erreur est survenue',
+					'state' => 3,
+					'urlLogin' => $urlLogin,
 				)));
 			}
 			$response->headers->set('Content-Type', 'application/json');

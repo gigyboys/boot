@@ -24,6 +24,7 @@ class BlogExtension extends \Twig_Extension {
             'getCommentsByPost' => new \Twig_Function_Method($this, 'getCommentsByPostFunction'),
             'getCategoryWithPublishedPost' => new \Twig_Function_Method($this, 'getCategoryWithPublishedPostFunction'),
             'getPublishedPostsByCategory' => new \Twig_Function_Method($this, 'getPublishedPostsByCategoryFunction'),
+            'getPostsByDay' => new \Twig_Function_Method($this, 'getPostsByDayFunction'),
         );
     }
 
@@ -57,6 +58,10 @@ class BlogExtension extends \Twig_Extension {
 
     public function getPublishedPostsByCategoryFunction(Category $category) {
         return $this->blogService->getPublishedPostsByCategory($category);
+    }
+
+    public function getPostsByDayFunction($dateFormat) {
+        return $this->blogService->getPostsByDay($dateFormat);
     }
 
     public function getName() {

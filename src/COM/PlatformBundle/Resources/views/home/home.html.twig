@@ -9,15 +9,15 @@
 	
 	<div class="cr">
 		<div class="ct">
-			<div style="margin: 30px 0">
-				<div style="width:50%;float:left">
+			<div style="margin: 20px 0">
+				<div style="width:33%;float:left">
 					<div style="margin:10px;border:1px solid #ddd; background:#f5f5f5;min-height:160px;text-align:center">
 						<div style="margin:10px">
 							<div style="font-weight:bold">
-								<img src="{{ asset('assets/image/logo_sl.png')  }}" style="width:70px; height:70px;" />
+								<a class="link" href="{{ path('com_school_home') }}"><img src="{{ asset('assets/image/logo_sl.png')  }}" style="width:70px; height:70px;" /></a>
 							</div>
 							<div style="">
-								{{ allSchools | length }} écoles reparties sur {{ allCategories | length }} catégories
+								<a class="link" href="{{ path('com_school_home') }}">{{ allSchools | length }} écoles</a> reparties sur <a href="{{ path('com_school_categories') }}">{{ allCategories | length }} catégories</a>
 							</div>
 							<div style="">
 								{{ evaluatedSchools | length }} écoles évaluées - {{ allEvaluations | length }} evaluations
@@ -25,7 +25,22 @@
 						</div>
 					</div>
 				</div><!--
-				--><div style="width:50%;float:left">
+				--><div style="width:34%;float:left">
+					<div style="margin:10px;border:1px solid #ddd; background:#f5f5f5;min-height:160px;text-align:center">
+						<div style="margin:10px">
+							<div style="font-weight:bold">
+								<img src="{{ asset('assets/image/icon_gl.png')  }}" style="width:70px; height:70px;" />
+							</div>
+							<div style="">
+								Tantum autem cuique tribuendum
+							</div>
+							<div style="">
+								Erat autem diritatis eius hoc quoque
+							</div>
+						</div>
+					</div>
+				</div><!--
+				--><div style="width:33%;float:left">
 					<div style="margin:10px;border:1px solid #ddd; background:#f5f5f5;min-height:160px;text-align:center">
 						<div style="margin:10px">
 							<div style="font-weight:bold">
@@ -47,7 +62,7 @@
 	
 	<div class="cr">
 		<div class="ct">
-			<div style="margin:30px 10px; font-size:16px;text-align:justify">
+			<div style="margin:20px 10px; font-size:16px;text-align:justify">
 				Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.
 			</div>
 		</div>
@@ -75,7 +90,7 @@
 	
 	<div class="cr">
 		<div class="ct">
-			<div style="margin:30px 10px; font-size:16px;text-align:justify">
+			<div style="margin:20px 10px; font-size:16px;text-align:justify">
 				Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.
 			</div>
 		</div>
@@ -83,7 +98,7 @@
 	
 	<div class="cr">
 		<div class="ct">
-			<div style="margin:30px 0px;">
+			<div style="margin:20px 0px;">
 				<div class="fm_list_topic">
 					{% for category in categories %}
 						{{ include("COMSchoolBundle:school:include/school_category_item.html.twig") }}

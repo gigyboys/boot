@@ -10,6 +10,9 @@ com_blog_post_viewbyid:
 com_blog_post_new_comment:
     path:     /blog-post/new-comment/{post_id}
     defaults: { _controller: COMBlogBundle:Blog:newComment }
+com_blog_load_calendar:
+    path:     /blog/load-calendar/{month}
+    defaults: { _controller: COMBlogBundle:Blog:loadCalendar }
 com_blog_post_load_comment:
     path:     /blog-post/load-comment/{post_id}/{comment_id}
     defaults: { _controller: COMBlogBundle:Blog:loadComments }

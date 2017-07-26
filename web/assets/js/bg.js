@@ -4,8 +4,10 @@ $(function() {
 	
 	var row 	= 60; 		//60
     var row4 	= row*4; 	//
+    var row5 	= row*5; 	//
     var row8 	= row*8; 	//
     var row12 	= row*12; 	//
+    var row15 	= row*15; 	//900
     var row16 	= row*16; 	//960
     var row20 	= row*20; 	//1200
 	
@@ -18,9 +20,9 @@ $(function() {
         if(largeur_window<row20){
             if(largeur_window>row12){
 				bgr.css('display', 'block');
-                widthBloc = bg_list.width()-row4;
+                widthBloc = bg_list.width()-row5;
                 bgl.css('width', widthBloc);
-                bgr.css('width', row4);
+                bgr.css('width', row5);
                 bgl.css('float', 'left');
                 bgr.css('margin-left', widthBloc);
             }
@@ -32,11 +34,11 @@ $(function() {
             }
         }
         else {
-            bgl.css('width', row16);
+            bgl.css('width', row15);
 			bgr.css('display', 'block');
-            bgr.css('width', row4);
+            bgr.css('width', row5);
             bgl.css('float', 'left');
-			bgr.css('margin-left', row16);
+			bgr.css('margin-left', row15);
         }
 		
     }
@@ -199,6 +201,46 @@ $(function() {
 					if($("#btn_add_to_sl .not_school_post").length == 0){
 						$("#btn_add_to_sl").remove();
 					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });	
+    });
+	
+	/*
+	*load calendar
+	*/
+	$('.bg_month_btn').live('click', function(e){
+		var $this = $(this);
+        var target = $this.data('target');
+		var data = {
+		};
+		
+		
+		var bg_calendar_height = $("#bg_calendar_ct").height();
+		var bg_calendar_width = $("#bg_calendar_ct").width();
+		$("#bg_load_calendar").css("height",bg_calendar_height);
+		$("#bg_load_calendar").css("width",bg_calendar_width);
+		$("#bg_load_calendar").css("display","block");
+		$("#bg_load_calendar").css("padding-top",(bg_calendar_height/2) );
+		
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					$("#bg_load_calendar").css("display","none");
+					$("#bg_calendar_ct").html(data.calendar);
 				}
 				else{
 					alert("une erreur est survenue");
