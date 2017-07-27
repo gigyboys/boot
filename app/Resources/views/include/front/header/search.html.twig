@@ -69,36 +69,38 @@
 				</div>
 				<div id="search_critere">
 					<div class="search_entity_content" id="search_critere_sl" style="display:{{ displaySchool }}">
-						<div style="float:right; width: 230px; height: 38px;" class="dd">
-							<div style="width: 230px; background:rgba(255,255,255,0.5);border-radius:3px; border:1px solid #bbb; height: 38px; cursor:pointer; box-sizing:border-box;padding:6px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" class="dd_src">
-								<span id="search_sl_type_name">publique & privé</span>
-								<input type="hidden" name="type" id="type_sl_input_id" value="0" data-slug="all"  />
-							</div>
-							<div class="dd_target search_sl_type_list" data-display="block" style="background: #fff; border: 1px solid #aaa;display:none;position:absolute;margin-top:5px; border-radius:3px; width: 228px;z-index:20">
-								<div style="margin:5px">
-									<span style="display:block;cursor:pointer;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" data-type-id="0" title="publique & privé" data-slug="all" class="search_type_sl_item" data-name="publique & privé">publique & privé</span>
-									<span style="display:block;cursor:pointer;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" data-type-id="1" title="publique" data-slug="public" class="search_type_sl_item" data-name="publique">publique</span>
-									<span style="display:block;cursor:pointer;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" data-type-id="2" title="privé" data-slug="private" class="search_type_sl_item" data-name="privé">privé</span>
-								</div>
-							</div>
+						<div class="sl_bloc_query">
+							<input type="text"  autocomplete="off" id="q_sl" data-target="{{ path('cf_platform_search_single_school') }}" placeholder="Tapez ce que vous voulez recherchez.school" value="{{ querySchool }}" />
 						</div>
-						<div style="float:right; width: 230px; height: 38px; margin-right:8px;" class="dd">
-							<div style="width: 230px; background:rgba(255,255,255,0.5);border-radius:3px; border:1px solid #bbb; height: 38px; cursor:pointer; box-sizing:border-box;padding:6px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" class="dd_src">
+						<div class="sl_bloc_cat dd">
+							<div class="dd_src">
 								<span id="search_sl_cat_name">All categories</span>
 								<input type="hidden" name="category" id="cat_sl_input_id" value="0" data-slug="all"  />
 							</div>
-							<div class="dd_target search_sl_cat_list" data-display="block" style="background: #fff; border: 1px solid #aaa;display:none;position:absolute;margin-top:5px; border-radius:3px; width: 468px;z-index:20">
+							<div class="dd_target search_sl_cat_list" data-display="block">
 								<div style="margin:5px">
-									<span style="display:inline-block;cursor:pointer;width:25%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" data-category-id="0" title="All categories" data-name="All categories" data-slug="all" class="search_cat_sl_item">All categories</span><!--  
+									<span data-category-id="0" title="All categories" data-name="All categories" data-slug="all" class="search_cat_sl_item">All categories</span><!--  
 									{% set categories = getCategoriesWithPublishedSchool(0) %}
 									{% for category in categories %}
-										--><span style="display:inline-block;cursor:pointer;width:25%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" data-category-id="{{ category.id }}" data-slug="{{ category.slug }}" title="{{ category.defaultName | capitalize }}" data-name="{{ category.defaultName | capitalize }}" class="search_cat_sl_item">{{ category.defaultName | capitalize }}</span><!-- 
+										--><span data-category-id="{{ category.id }}" data-slug="{{ category.slug }}" title="{{ category.defaultName | capitalize }}" data-name="{{ category.defaultName | capitalize }}" class="search_cat_sl_item">{{ category.defaultName | capitalize }}</span><!-- 
 									{% endfor %}
 								--></div>
 							</div>
 						</div>
-						<div style="margin-right: 476px;">
-							<input type="text"  autocomplete="off" id="q_sl" data-target="{{ path('cf_platform_search_single_school') }}" placeholder="Tapez ce que vous voulez recherchez.school" value="{{ querySchool }}" />
+						<div class="sl_bloc_type dd">
+							<div class="dd_src">
+								<span id="search_sl_type_name">publique & privé</span>
+								<input type="hidden" name="type" id="type_sl_input_id" value="0" data-slug="all"  />
+							</div>
+							<div class="dd_target search_sl_type_list" data-display="block" style="display:none;">
+								<div style="margin:5px">
+									<span data-type-id="0" title="publique & privé" data-slug="all" class="search_type_sl_item" data-name="publique & privé">publique & privé</span>
+									<span data-type-id="1" title="publique" data-slug="public" class="search_type_sl_item" data-name="publique">publique</span>
+									<span data-type-id="2" title="privé" data-slug="private" class="search_type_sl_item" data-name="privé">privé</span>
+								</div>
+							</div>
+						</div>
+						<div class="both"> 
 						</div>
 					</div>
 					<div class="search_entity_content" id="search_critere_bg" style="display:{{ displayBlog }}">

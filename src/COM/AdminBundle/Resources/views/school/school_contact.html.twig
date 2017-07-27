@@ -11,9 +11,7 @@
 			<span href="#" class="dd_src">
 				<span class="bcdd"></span>
 			</span>
-			<div class="dd_target">
-				<span class="bc2"><a class="link" href="{{ path('com_admin_school_add') }}">add School</a></span>
-			</div>
+			{{ include("COMAdminBundle:school:include/school_principal_action.html.twig") }}
 		</span> 
 		<span class="bc1"><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></span>
 		<span class="dd">
@@ -22,7 +20,7 @@
 			</span>
 			{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
 		</span> 
-		<span class="bc1"><a href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}"><span>{{ 'Contact' | trans }}</span></a> </span>
+		<span class="bc1"><a href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}"><span>{{ 'Contacts' | trans }}</span></a> </span>
 	</div>
 	<div style="padding:8px; float:right">
 		<div style="float:left">

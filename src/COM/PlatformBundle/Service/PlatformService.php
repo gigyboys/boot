@@ -74,6 +74,8 @@ class PlatformService {
 
         $after = '-';
         
+		$str = str_replace("’", "-", $str);
+		$str = str_replace("–", "-", $str);
         $str = preg_replace($before[2], $after, $str);
         $str = htmlentities($str, ENT_NOQUOTES, 'utf-8');
     

@@ -5,25 +5,28 @@
 {% endblock %}
 
 {% block body_header %}
-	<div style="padding:8px; float:left">
-		<img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>School </span> 
-		<span class="dd" style="display:inline-block;">
-			<span href="#" class="dd_src" style="cursor:pointer">
-				<span style="
-					display:inline-block; 
-					border-left: 8px solid #444;
-					border-top: 5px solid transparent;
-					border-bottom: 5px solid transparent;
-					border-right: 0px solid transparent;
-					">
-				</span>
+	<div class="bc">
+		<span class="bc1"><a href="{{ path('com_admin_school') }}"><img src="{{ asset('assets/image/sl_icon.png') }}" style="width:14px; height:auto" /> <span>{{ 'Schools' | trans }}</span></a> </span> 
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
 			</span>
-			<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-				<a class="link" href="test.html">menu 1</a><br />
-				<a class="link" href="test.html">menu 2 </a>
-			</div>
+			{{ include("COMAdminBundle:school:include/school_principal_action.html.twig") }}
 		</span> 
-		<span>Contact </span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+			{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_contact', {'school_id': school.id}) }}"><span>{{ 'Contacts' | trans }}</span></a> </span>
+		<span class="dd">
+			<span href="#" class="dd_src">
+				<span class="bcdd"></span>
+			</span>
+		</span> 
+		<span class="bc1"><a href="{{ path('com_admin_school_contact_add', {'school_id': school.id}) }}">{{ 'new contact' | trans }}</a></span>
 	</div>
 	<div style="padding:8px; float:right">
 		<div style="float:left">
@@ -31,14 +34,7 @@
 				<span href="#" class="dd_src" style="cursor:pointer">
 					Autres actions
 				</span>
-				<div class="dd_target" style="margin-top: 4px; position: absolute; display: none; border: 1px solid rgb(170, 170, 170); border-radius: 4px;background:#eee">
-					<div style="margin:5px">
-						<a class="link" target="_blank" href="{{ path('com_school_viewbyid', {'id': school.id}) }}">View</a><br />
-						<a class="link" href="{{ path('com_admin_school_field', {'school_id': school.id}) }}">Fields</a><br />
-						<a class="link" href="{{ path('com_admin_school_admin', {'school_id': school.id}) }}">Admin</a><br />
-						<a class="link" href="">evaluations</a>
-					</div>
-				</div>
+				{{ include("COMAdminBundle:school:include/school_other_action.html.twig") }}
 			</span> 
 		</div>
 	</div>
