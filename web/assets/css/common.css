@@ -68,6 +68,30 @@
 .mg_l10{
 	margin-left:10px;
 }
+/*margin 20*/
+.mg_20{
+	margin:20px;
+}
+.mg_h20{
+	margin-left:20px;
+	margin-right:20px
+}
+.mg_v20{
+	margin-top:20px;
+	margin-bottom:20px
+}
+.mg_t20{
+	margin-top:20px;
+}
+.mg_b20{
+	margin-bottom:20px;
+}
+.mg_r20{
+	margin-right:20px;
+}
+.mg_l20{
+	margin-left:20px;
+}
 /* padding 5 */
 .pd_5{
 	padding:5px;

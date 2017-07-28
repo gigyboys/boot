@@ -57,13 +57,13 @@
 					{% endif %}
 					
 					<div class="search_entity_item {{ selectedSchool }}" data-entity="sl">
-						School
+						{{ 'school' | trans }}
 					</div>
 					<div class="search_entity_item {{ selectedBlog }}" data-entity="bg">
-						Actualités
+						{{ 'blog' | trans }}
 					</div>
 					<div class="search_entity_item {{ selectedAdvert }}" data-entity="at">
-						Annonces
+						{{ 'advert' | trans }}
 					</div>
 					<div class="both"></div>
 				</div>
@@ -112,7 +112,7 @@
 				</div>
 				<div id="search_submit">
 					<div id="search_single_result_sl" class="search_single_result" style="display:{{ displaySchool }}">
-						Qu'est-ce que vous voulez recherchez? school
+						Tapez le sigle ou l'appelation de l'établissement
 					</div>
 					<div id="search_single_result_bg" class="search_single_result" style="display:{{ displayBlog }}">
 						Qu'est-ce que vous voulez recherchez? post
@@ -121,8 +121,8 @@
 						Qu'est-ce que vous voulez recherchez? advert
 					</div>
 					<div id="search_submit_button">
-						<div id="search_submit_button_go" data-target="{{ path('cf_platform_search') }}">Rechercher</div>
-						<input type="submit" style="display:none" value="Rechercher" />
+						<div id="search_submit_button_go" data-target="{{ path('cf_platform_search') }}">{{ 'search' | trans }}</div>
+						<input type="submit" style="display:none" value="search" />
 					</div>
 					<div class="both"></div>
 				</div>

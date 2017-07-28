@@ -225,20 +225,25 @@
 	box-sizing:border-box; 
 	padding:0 6px
 }
-.sl_oftheday  .link_item{
+.sl_oftheday .link_item{
 	height:32px;
 	margin-left:4px;
 	margin-top:4px;
 	box-sizing:border-box; 
-	background:#eee; 
-	border:1px solid #999; 
+	background:#fff; 
+	border:1px solid #bbb;
 	display:inline-block;
+	overflow:hidden
 }
-.sl_oftheday  .link_item a{
+.sl_oftheday .link_item a{
 	display:block;
-	padding:5px 10px
+	padding:5px 10px;
+	
 }
-.sl_oftheday  .under{
+.sl_oftheday .link_item a:hover{
+	background:#eee;
+}
+.sl_oftheday .under{
 	border-left:1px solid #ddd;
 	border-right:1px solid #ddd;
 	border-bottom:1px solid #ddd; 

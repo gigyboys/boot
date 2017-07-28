@@ -33,19 +33,16 @@
 	</div>
 	<div class="link_box">
 		<span class="link_item">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}">About</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'about'}) }}"><img src="{{ pathtologo | imagine_filter('20x20') }}" alt="AU" /></a>
 		</span><!--
 		--><span class="link_item">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}">News</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'post'}) }}"><img src="{{ asset('assets/image/sl_bg_icon.png') }}" alt="BG" /></a>
 		</span><!--
 		--><span class="link_item">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}">Adverts</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'advert'}) }}"><img src="{{ asset('assets/image/sl_at_icon.png') }}" alt="AT" /></a>
 		</span><!--
 		--><span class="link_item">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}">Evaluations</a>
-		</span><!--
-		--><span class="link_item">
-			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'contact'}) }}">Contact</a>
+			<a href="{{ path('com_school_view', {'slug': school.slug, 'type': 'evaluation'}) }}"><img src="{{ asset('assets/image/sl_star_icon.png') }}" alt="EV" /></a>
 		</span>
 	</div>
 	<div class="both"></div>

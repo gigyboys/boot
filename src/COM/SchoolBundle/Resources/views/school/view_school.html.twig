@@ -36,7 +36,7 @@
 				</div>
 				<div style="margin-left:44px; padding-top:8px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
 					{% if school.shortName | trim != "" %}
-						({{ school.shortName }}) 
+						{{ school.shortName }} - 
 					{% endif %} 
 					{{ school.name }} 
 				</div>
@@ -53,10 +53,10 @@
 					<div id="sl_view_name_category">
 						<div id="sl_view_name">
 							<a href="{{ path('com_school_view', {'slug': school.slug}) }}">
-								{{ school.name }} 
 								{% if school.shortName | trim != "" %}
-									({{ school.shortName }}) 
+									{{ school.shortName }} - 
 								{% endif %}
+								{{ school.name }} 
 								
 								({{ school.views | length }} vues)
 							</a>

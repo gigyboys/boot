@@ -1,7 +1,7 @@
 home: inicio
 school: escuela
 blog: blog
-advert: annonce
+advert: anuncio
 forum: foro
 contact.us: contacto
 
@@ -23,3 +23,5 @@ sign.up: Regístrate
 the.school.of.the.day : la escuela del día
 
 full.name: nombre completo
+
+search: buscar
