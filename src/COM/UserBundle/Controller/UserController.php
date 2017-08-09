@@ -31,6 +31,8 @@ class UserController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$userRepository = $em->getRepository('COMUserBundle:User');
+		$userService = $this->container->get('com_user.user_service');
+		$platformService = $this->container->get('com_platform.platform_service');
 		
 		$request = $this->get('request');
 		$shortLocale = $request->getLocale();
@@ -41,87 +43,132 @@ class UserController extends Controller
 		$user = new User();
 		$msg = "";
 		$form = $this->get('form.factory')->create(new userType(), $user);
+		
+		$error = false;
+		$errorEmail = "";
+		$errorName = "";
+		$errorPassword = "";
 
 		if ($form->handleRequest($request)->isValid()) {
-			$factory = $this->get('security.encoder_factory');
-			$encoder = $factory->getEncoder($user);
-			$user->setSalt(md5(time()));
-			$pass = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-			$user->setPassword($pass);
 			
-			$platformService = $this->container->get('com_platform.platform_service');
-			
-			$slug = $platformService->sluggify($user->getName());
-			
-			$slugtmp = $slug;
-			$notSlugs = array(
-				"school", 
-				"blog", 
-				"advert", 
-				"forum", 
-				"about", 
-				"team", 
-				"legal-notice", 
-				"contact", 
-				"newsletter",
-				"categories", 
-				"category", 
-				"user", 
-				"admin", 
-				"logout", 
-				"login", 
-				"register",
-			);
-            $isSluggable = true;
-            $i = 2;
-            do {
-                $usertmp = $userRepository->findOneBy(array(
-					'username' => $slugtmp
-				));
-				if($usertmp || in_array($slugtmp, $notSlugs)){
-					$slugtmp = $slug."-".$i;
-					$i++;
-				}
-				else{
-					$isSluggable = false;
-				}
-            } 
-            while ($isSluggable);
-            $slug = $slugtmp;
-			
-			$user->setUsername($slug);
-			
-			//sex
-			if($user->getSex() == 1 || $user->getSex() == 2){
-			}else{
-				$user->setSex(3);
+			//name
+			$user->setName(trim($user->getName()));
+			if($user->getName() == ""){
+				$error = true;
+				$errorName = "Vous devez fournir votre nom complet";
 			}
-			$user->setLocale($locale);
-			$em->persist($user);
-			$em->flush();
-						
-			//add email to newsletter with isActive = false
-			$email = $user->getEmail();
-			$newsletterService = $this->container->get('com_platform.newsletter_service');
-			$newsletterService->addEmail($email);
-				
-			$token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-			$this->get('security.context')->setToken($token);
-			$this->get('session')->set('_security_main',serialize($token));
 			
-			$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
-			return new RedirectResponse($url);
-			/*$type = 'profile';
-			return $this->render('COMUserBundle:user:profile.html.twig', array(
+			//email
+			$user->setEmail(trim($user->getEmail()));
+			if($user->getEmail() == ""){
+				$error = true;
+				$errorEmail = "Vous devez fournir votre adresse email";
+			}
+			if($errorEmail == ""){
+				if (!filter_var($user->getEmail(), FILTER_VALIDATE_EMAIL)) {
+					$error = true;
+					$errorEmail = "Vous devez fournir une adresse mail valide";
+				}
+			}
+			if($errorEmail == ""){
+				$hasEmailDoublon = $userService->checkHasEmailDoublon($user->getEmail(), $user->getId());
+				if($hasEmailDoublon){
+					$error = true;
+					$errorEmail = "Choisissez une autre adresse email";	
+				}
+			}
+			
+			//password
+			if(strlen($user->getPassword())<8){
+				$error = true;
+				$errorPassword = "ne doit pas être moins de 8 caractères";
+			}
+			
+			if($error){
+				return $this->render('COMUserBundle:user:register.html.twig', array(
+					'formRegister' => $form->createView(),
+					'user' => $user,
+					'errorEmail' => $errorEmail,
+					'errorName' => $errorName,
+					'errorPassword' => $errorPassword,
+					'msg' => $msg,
+				));
+			}else{
+				$user->setDate(new \DateTime());
+				$factory = $this->get('security.encoder_factory');
+				$encoder = $factory->getEncoder($user);
+				$user->setSalt(md5(time()));
+				$pass = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+				$user->setPassword($pass);
+				
+				$slug = $platformService->sluggify($user->getName());
+				
+				$slugtmp = $slug;
+				$notSlugs = array(
+					"school", 
+					"blog", 
+					"advert", 
+					"forum", 
+					"about", 
+					"team", 
+					"legal-notice", 
+					"contact", 
+					"newsletter",
+					"categories", 
+					"category", 
+					"user", 
+					"admin", 
+					"logout", 
+					"login", 
+					"register",
+				);
+				$isSluggable = true;
+				$i = 2;
+				do {
+					$usertmp = $userRepository->findOneBy(array(
+						'username' => $slugtmp
+					));
+					if($usertmp || in_array($slugtmp, $notSlugs)){
+						$slugtmp = $slug."-".$i;
+						$i++;
+					}
+					else{
+						$isSluggable = false;
+					}
+				} 
+				while ($isSluggable);
+				$slug = $slugtmp;
+				
+				$user->setUsername($slug);
+				
+				$user->setSex(0);
+				
+				$user->setLocale($locale);
+				$em->persist($user);
+				$em->flush();
+							
+				//add email to newsletter with isActive = false
+				$email = $user->getEmail();
+				$newsletterService = $this->container->get('com_platform.newsletter_service');
+				$newsletterService->addEmail($email);
+					
+				$token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+				$this->get('security.context')->setToken($token);
+				$this->get('session')->set('_security_main',serialize($token));
+				
+				$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
+				return new RedirectResponse($url);
+			}
+		}else{
+			return $this->render('COMUserBundle:user:register.html.twig', array(
+				'formRegister' => $form->createView(),
 				'user' => $user,
-				'type' => $type,
-			));*/
+				'errorEmail' => $errorEmail,
+				'errorName' => $errorName,
+				'errorPassword' => $errorPassword,
+				'msg' => $msg,
+			));
 		}
-
-        return $this->render('COMUserBundle:user:register.html.twig', array(
-		  'formRegister' => $form->createView(),
-		  'msg' => $msg,
-		));
     }
 	
 	public function loginAction(Request $request)
@@ -170,14 +217,25 @@ class UserController extends Controller
 				$em->persist($user);
 				$em->flush();
 				
-				$urlToken = $this->get('router')->generate('com_user_set_new_password_token', array('user_id' => $user->getId(), 'token' => $user->getToken() ));
+				$urlToken = $this->get('router')->generate('com_user_set_new_password_token', array('user_id' => $user->getId(), 'token' => $user->getToken()), true);
 				
 				/*
 				*@todo sending mail here
 				*/
+						
+				$content = "Voici le lien qui permet de reinitialiser votre mot de passe : <a href=".$urlToken.">".$urlToken."</a>";
+				$message = (new \Swift_Message('Password recuperation'))
+					->setFrom('notification@gmail.com')
+					->setTo($user->getEmail())
+					->setBody(
+						$content,
+						'text/html'
+					)
+				;
+				$this->get('mailer')->send($message);
 				
 				return $this->render('COMUserBundle:user:set_new_password_step2.html.twig', array(
-					"email" => $userTemp->getEmail(),
+					"user" => $user,
 					"urlToken" => $urlToken,
 				));
 			}else{
@@ -225,13 +283,20 @@ class UserController extends Controller
 			/*
 			*@todo sending mail here
 			*/
-				
-			/*$urlLogin = $this->get('router')->generate('com_user_login');
-			return new RedirectResponse($urlLogin);*/
+			$content = "Vous pouvez vous connecter sur le site avec votre nouveaul identifiant : <span> email : ".$user->getEmail()."</span> - <span> password : ".$plainpassword."</span>";
+			$message = (new \Swift_Message('Password recuperation'))
+				->setFrom('notification@gmail.com')
+				->setTo($user->getEmail())
+				->setBody(
+					$content,
+					'text/html'
+				)
+			;
+			$this->get('mailer')->send($message);			
 			
 			return $this->render('COMUserBundle:user:set_new_password_step3.html.twig', array(
-				"email" => $user->getEmail(),
-				"password" => $plainpassword,
+				"user" => $user,
+				//"password" => $plainpassword,
 			));
 		}else{
 			$error = "Une erreur est survenue. Veuillez renvoyer votre email.";

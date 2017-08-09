@@ -1,55 +1,24 @@
 <div class="mg_10">
 	<div>
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			<div>
-				<form action="" name="" method="post" id="">
-					<div class="mg_b5">
-					{{ app.user.name }} :
-					</div>
-					<div style="width:50px;float:left">
-						{% set avatar=userAvatar(app.user) %}
-						{% if avatar != "default.jpeg" %}
-							{% set pathtoavatar='uploads/images/user/avatar/'~avatar %}
-						{% else %}
-							{% set pathtoavatar='default/images/user/avatar/'~avatar %}
-						{% endif %}
-						<span style="display:block;float:left;width:32px"><img id="avatar_banner" style="width:50px; height: 50px" src="{{ pathtoavatar | imagine_filter('50x50') }}" alt="{{ app.user.username }}" /></span>
-					</div>
-					<div style="margin-left:60px">
-						<div class="pd_v5">
-							<div style="float:left; padding-top:2px">Mark : </div>
-							<div class="left pd_5"><div class="eval_star_item selected" data-value="20"></div></div>
-							<div class="left pd_5"><div class="eval_star_item selected" data-value="40"></div></div>
-							<div class="left pd_5"><div class="eval_star_item selected" data-value="60"></div></div>
-							<div class="left pd_5"><div class="eval_star_item selected" data-value="80"></div></div>
-							<div class="left pd_5"><div class="eval_star_item" data-value="100"></div></div>
-							<input type="hidden" id="sl_evaluation_mark" class="" value="80" />
-						</div>
-						<textarea class="default_textarea" id="sl_evaluation_comment" style="min-height:60px"></textarea>
-						<div id="add_evaluation_error"></div>
-						<div id="add_evaluation_action" class="mg_t10">
-							<span class="btn_save standar_button" id="btn_eval_sl" data-target="{{ path('com_school_add_evaluation', {'id': school.id}) }}">Evaluer</span>
-							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;">Chargement...</span>
-						</div>
-					</div>
-					<div class="both"></div>
-				</form>
+			<div id="my_evaluation">
+				{{ include("COMSchoolBundle:school:include/my_evaluation.html.twig") }}
 			</div>
 		{% else %}
-			<div class="pd_t5">
+			<div id="my_evaluation" class="pd_t5">
 				<a class="link" href="{{ path('com_user_login') }}">Connectez-vous pour pouvoir partager votre évaluation</a>
 			</div>
 		{% endif %}
 	</div>
-	{% if school.evaluations|length == 0 %}
+	{% if evaluations|length == 0 and myEvaluation is null %}
 		<div id="evaluation_list" class="mg_v10">
 		</div>
 		<div id="evaluation_empty" class="mg_v10">
-			Aucune évaluation à propos de {{ school.name }}
+			Aucune évaluation à sur l'établissement : {{ school.name }}
 		</div>
 	{% else %}
 		<div id="evaluation_list">
-			{% for evaluation in school.evaluations %}
+			{% for evaluation in evaluations %}
 				{{ include("COMSchoolBundle:school:include/evaluation_item.html.twig") }}
 			{% endfor %}
 		</div>

@@ -16,9 +16,12 @@
 	</div>
 
 	<div style="margin-bottom:2px">
-		{{ user.username }} {{ user.location }}
+		<span style="display:inline-block"><img src="{{ asset('assets/image/ur_icon.png')  }}" style="width:12px; height:12px;" /> {{ user.username }}</span> 
+		{% if user.location and user.location | trim != "" %}
+			<span style="display:inline-block"><img src="{{ asset('assets/image/location_icon.png')  }}" style="width:12px; height:12px;" /> {{ user.location }}</span>
+		{% endif %}
 	</div>
-
+	{#
 	<div style="margin-bottom:2px">
 		{% if user.sex == 1 %}
 			Homme
@@ -28,9 +31,12 @@
 			Sexe indeterminé
 		{% endif %}
 	</div>
-
+	#}
 	<div>
 		{{ user.email }}
+	</div>
+	<div>
+		Since {{ user.date | date('Y-m-d') }}
 	</div>
 </div>
 <div class="both"></div>

@@ -1,6 +1,5 @@
 
 $(function() {
-	console.log("inittabuser");
 	var tab_ur_item = $('.tab_ur_item');
 	var content_tab_ur_item = $('.content_tab_ur_item');
 	var timeOutIdEnterArray = []; 
@@ -62,6 +61,11 @@ $(function() {
 						$("#nav_target_ur_username").text(data.username);
 						
 						//location
+						if(data.location.trim() == ""){
+							$("#ur_view_location_wrap").css("display","none");
+						}else{
+							$("#ur_view_location_wrap").css("display","inline");
+						}
 						$("#ur_view_location").text(data.location);
 						$("#ur_input_location").val(data.location);
 						$("#ur_input_location_error").html("");
@@ -230,7 +234,7 @@ $(function() {
 		if($this.find(".popup_user_info").length == 0){
 			clearTimeout(timeOutIdLeaveArray[userinfoid]);
 			timeOutIdEnterArray[userinfoid] = setTimeout(function(){
-				var htmlprepend = '<div data-userinfoid="'+ userinfoid +'" data-userid="'+ userid +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:10px 10px; width:320px; z-index:10">';
+				var htmlprepend = '<div data-userinfoid="'+ userinfoid +'" data-userid="'+ userid +'" class="popup_user_info" style="box-shadow: 1px 1px 5px #999;position:absolute; margin-top:20px; border-radius:3px; border:1px solid #eee; background:#fff; padding:10px 10px; width:360px; z-index:10">';
 				htmlprepend += 'Informations sur '+ name;
 				htmlprepend += '</div>';
 				$this.prepend(htmlprepend);

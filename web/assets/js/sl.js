@@ -1,14 +1,11 @@
 
 $(function() {
-	console.log("inittabschool");
-	var tab_sl_item = $('.tab_sl_item');
-	var content_tab_sl_item = $('.content_tab_sl_item');
-	
-	tab_sl_item.live('click', function(e) {
-        tab_sl_item.removeClass('selected');
+	$('body').on('click','.tab_sl_item',function(){
+        $('.tab_sl_item').removeClass('selected');
         $(this).addClass('selected');
 		var this_id = $(this).attr('id');
 		var content = $("#content_"+this_id);
+		var content_tab_sl_item = $('.content_tab_sl_item');
 		content_tab_sl_item.removeClass('selected').css('display','none');
 		
 		content.addClass('selected').css('display','block');
@@ -115,14 +112,14 @@ $(function() {
 	/*
 	* toogle school of the day description
 	*/
-    $('#sl_oftheday_title').on('click', function(){
+	$('body').on('click','#sl_oftheday_title',function(){
         $('#sl_oftheday_desc').toggle();
     });
 	
 	/*
 	* on click button evaluate
 	*/
-    $('#btn_eval_sl').on('click', function(){
+	$('body').on('click','#btn_eval_sl',function(){
         var $this = $(this);
         var target = $this.data('target');
 		if($.trim($("#sl_evaluation_comment").val()) != ""){
@@ -131,8 +128,10 @@ $(function() {
 				mark : $("#sl_evaluation_mark").val()
 			};
 			$("#add_evaluation_error").html("");
-			$("#add_evaluation_action .btn_save").hide();
-			$("#add_evaluation_action .btn_loading").css("display", "inline-block");
+			//$("#add_evaluation_action .btn_save").hide();
+			//$("#add_evaluation_action .btn_loading").css("display", "inline-block");
+			var bloc_editable = $this.closest(".bloc_editable");
+			loadBlocEdit(bloc_editable);
 			$.ajax({
 				type: 'POST',
 				url: target,
@@ -140,11 +139,13 @@ $(function() {
 				dataType : 'json',
 				success: function(data){
 					if(data.state){
-						$("#evaluation_list").prepend(data.evaluationItem);
+						$("#my_evaluation").html(data.myEvaluationItem);
+						$("#evaluation_empty").remove();
+						/*$("#evaluation_list").prepend(data.evaluationItem);
 						$("#sl_evaluation_comment").val(""), 
 						$("#evaluation_empty").remove();
 						$("#add_evaluation_action .btn_save").css("display", "inline-block");
-						$("#add_evaluation_action .btn_loading").hide();
+						$("#add_evaluation_action .btn_loading").hide();*/
 					}
 					else{
 						alert("une erreur est survenue");
@@ -165,7 +166,7 @@ $(function() {
 	/*
 	* click on evaluation star
 	*/
-    $('.eval_star_item').on('click', function(){
+	$('body').on('click','.eval_star_item',function(){
         var $this = $(this);
 		$(".eval_star_item").each(function() {
 			var item = $(this);
@@ -179,7 +180,7 @@ $(function() {
     });
 	
 	//toogleSubscription school
-    $('#toggle_subscription').on('click', function(){
+	$('body').on('click','#toggle_subscription',function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -211,7 +212,7 @@ $(function() {
 	/*
 	* Navigation pagination ajax
 	*/
-    $('.sll_pagination_item').live('click', function(e){
+	$('body').on('click','.sll_pagination_item',function(e){
         e.preventDefault(true);
 		var $this = $(this);
 		//alert($this.attr("href"));

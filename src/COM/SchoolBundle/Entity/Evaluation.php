@@ -53,6 +53,14 @@ class Evaluation
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+	
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="current", type="boolean")
+     */
+    private $current;
 
 
     /**
@@ -178,5 +186,29 @@ class Evaluation
     public function getUser()
     {
         return $this->user;
+    }
+	
+    /**
+     * Set current
+     *
+     * @param boolean $current
+     *
+     * @return Evaluation
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * Get current
+     *
+     * @return boolean
+     */
+    public function getCurrent()
+    {
+        return $this->current;
     }
 }

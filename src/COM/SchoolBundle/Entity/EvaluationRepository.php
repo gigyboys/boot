@@ -12,4 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class EvaluationRepository extends EntityRepository
 {
+	public function findBySchoolNotUser($school, $user)
+    {
+        $qb = $this->createQueryBuilder('evaluation');
+
+        $qb
+        ->where('evaluation.school = :school')
+        ->setParameter('school', $school)
+		->andWhere('evaluation.user != :user')
+		->setParameter('user', $user)
+		->andWhere('evaluation.current = :current')
+		->setParameter('current', true);
+
+		
+		$qb
+        ->orderBy('evaluation.date', 'DESC')
+        ;
+
+        return $qb
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

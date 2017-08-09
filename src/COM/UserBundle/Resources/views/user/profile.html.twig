@@ -21,18 +21,18 @@
 					
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 						<label for="avatarfile">
-							<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -40px">
+							<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -35px">
 								<img id="user_avatar" style="width: 116px; height: 116px" src="{{ pathtoavatar | imagine_filter('116x116') }}" alt="img ur" />
 							</div>
 						</label>
 						<input style="display: none" id="avatarfile" name="file" class="ajax_user_avatar" type="file" accept="image/*" data-target="{{ path('com_user_modify_avatar') }}" /> 
 					{% else %}
-						<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -40px">
+						<div style="width:116px; height:116px; overflow:hidden; border-radius: 50% 50%; border: 3px solid #ddd;background:#ddd;margin-top: -35px">
 							<img id="user_avatar" style="width: 116px; height: 116px" src="{{ pathtoavatar | imagine_filter('116x116') }}" alt="img ur" />
 						</div>
 					{% endif %}
 				</div>
-				<div style="margin-left: 130px; min-height:70px; margin-top: 4px; padding:1px 0">
+				<div style="margin-left: 130px; min-height:70px; margin-top: 0px; padding:1px 0">
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 						<div class="bloc_editable" style="margin-bottom:1px">
 							<div class="bloc_view">
@@ -40,8 +40,13 @@
 									<span id="ur_view_name">{{ user.name }}</span>
 								</div>
 								<div>
-									<span id="ur_view_username">{{ user.username }}</span>&nbsp;
-									<span id="ur_view_location">{{ user.location }}</span> 
+									<span><img src="{{ asset('assets/image/ur_icon.png')  }}" style="width:12px; height:12px;" /> <span id="ur_view_username">{{ user.username }}</span></span>
+									{% if user.location and user.location | trim != "" %}
+										 {% set displayLocation = "inline" %}
+									{% else %}
+										 {% set displayLocation = "none" %}
+									{% endif %}
+									<span style="display: {{ displayLocation }}" id="ur_view_location_wrap"><img src="{{ asset('assets/image/location_icon.png')  }}" style="width:12px; height:12px;" /><span id="ur_view_location">{{ user.location }}</span></span>
 								</div>
 								<div>
 									<span id="ur_view_email">{{ user.email }}</span>
@@ -78,10 +83,16 @@
 					{% else %}
 						<div>
 							<div>
-								<span id="ur_view_name">{{ user.name }}</span>
+								<span id="ur_view_name" style="font-weight:bold">{{ user.name }}</span>
 							</div>
 							<div>
-								<span><span id="ur_view_username">{{ user.username }}</span><span id="ur_view_location"> {{ user.location }}</span></span>
+								<span><img src="{{ asset('assets/image/ur_icon.png')  }}" style="width:12px; height:12px;" /> <span id="ur_view_username">{{ user.username }}</span></span>
+								{% if user.location and user.location | trim != "" %}
+									 {% set displayLocation = "inline" %}
+								{% else %}
+									 {% set displayLocation = "none" %}
+								{% endif %}
+								<span style="display: {{ displayLocation }}" id="ur_view_location_wrap"><img src="{{ asset('assets/image/location_icon.png')  }}" style="width:12px; height:12px;" /><span id="ur_view_location">{{ user.location }}</span></span>
 							</div>
 							<div>
 								<span id="ur_view_email">{{ user.email }}</span>

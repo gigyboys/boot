@@ -65,7 +65,7 @@
 					</label>
 					<input style="display:none" id="coverfile" name="file" class="ajax_school_cover" type="file" accept="image/*" data-target="{{ path('com_admin_school_add_cover', {'school_id': school.id}) }}" /> 
 				</div>
-				<div id="cover_box_wrap" style="border-bottom:1px solid #ccc;padding:5px;min-height:100px">
+				<div id="cover_box_wrap" style="border-bottom:1px solid #ccc;padding:5px 0;min-height:100px">
 					<div id="cover_box" style="width:300px; height:100px">
 						{# twig extension #}
 						{% set cover=schoolCover(school) %}

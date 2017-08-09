@@ -231,6 +231,7 @@ class SchoolController extends Controller
 		$schoolContactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
 		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
 		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
+		$evaluationRepository = $em->getRepository('COMSchoolBundle:Evaluation');
 		$categoryRepository = $em->getRepository('COMSchoolBundle:Category');
 		$categorySchoolRepository = $em->getRepository('COMSchoolBundle:CategorySchool');
 		
@@ -272,6 +273,23 @@ class SchoolController extends Controller
 			$advertService->hydrateAdvertLang($advert, $locale);
 		}
 		
+		//evaluations
+		$evaluations = null;
+		$myEvaluation = null;
+		if(!$user){
+			$evaluations = $evaluationRepository->findBy(array(
+				'school' => $school,
+				'current' => true,
+			));
+		}else{
+			$evaluations = $evaluationRepository->findBySchoolNotUser($school, $user);
+			$myEvaluation = $evaluationRepository->findOneBy(array(
+				'school' => $school,
+				'current' => true,
+				'user' => $user,
+			));
+		}
+		
 		$schoolContacts = $schoolContactRepository->findBy(array(
 			'school' => $school,
 		));
@@ -291,16 +309,18 @@ class SchoolController extends Controller
 			$type = "about";
 		}
         return $this->render('COMSchoolBundle:school:view_school.html.twig', array(
-			'school' => $school,
-			'categories' => $categories,
-			'adverts' => $adverts,
-			'posts' => $posts,
-			'schoolContacts' => $schoolContacts,
-			'locale' => $locale,
-			'fields' => $fields,
-			'entityView' => 'school',
-			'viewSchool' => true,
-			'type' => $type,
+			'school' 			=> $school,
+			'categories' 		=> $categories,
+			'adverts' 			=> $adverts,
+			'posts' 			=> $posts,
+			'evaluations' 		=> $evaluations,
+			'myEvaluation' 		=> $myEvaluation,
+			'schoolContacts'	=> $schoolContacts,
+			'locale' 			=> $locale,
+			'fields' 			=> $fields,
+			'entityView' 		=> 'school',
+			'viewSchool' 		=> true,
+			'type' 				=> $type,
 		));
     }
 	
@@ -319,6 +339,7 @@ class SchoolController extends Controller
 		if ($request->isXmlHttpRequest()){
 			$em = $this->getDoctrine()->getManager();
 			$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+			$evaluationRepository = $em->getRepository('COMSchoolBundle:Evaluation');
 			
 			$user = $this->getUser();
 			
@@ -332,15 +353,27 @@ class SchoolController extends Controller
 				
 				if ($formEvaluation->handleRequest($request)->isValid()) {
 					
+					$evaluations = $evaluationRepository->findBy(array(
+						'user' => $user,
+						'school' => $school,
+					));
+            
+					foreach ($evaluations as $userEvaluation) {
+						$userEvaluation->setCurrent(false);
+						$em->persist($userEvaluation);
+					}
+					
 					$evaluation->setUser($user);
 					$evaluation->setSchool($school);
 					$evaluation->setDate(new \DateTime());
+					$evaluation->setCurrent(true);
 					
 					$em->persist($evaluation);
 					$em->flush();
 					
-					$evaluationItem = $this->renderView('COMSchoolBundle:school:include/evaluation_item.html.twig', array(
-					  'evaluation' => $evaluation
+					$myEvaluationItem = $this->renderView('COMSchoolBundle:school:include/my_evaluation.html.twig', array(
+					  'myEvaluation' => $evaluation,
+					  'school' => $school,
 					));
 					$response->setContent(json_encode(array(
 						'state' => 1,
@@ -349,7 +382,7 @@ class SchoolController extends Controller
 						'evaluationMark' => $evaluation->getMark(),
 						'evaluationComment' => $evaluation->getComment(),
 						'userId' => $user->getId(),
-						'evaluationItem' => $evaluationItem,
+						'myEvaluationItem' => $myEvaluationItem,
 					)));
 				}else{
 					$response->setContent(json_encode(array(

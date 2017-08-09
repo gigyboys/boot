@@ -107,6 +107,13 @@ class User implements UserInterface
      */
     private $biography;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
 
     /**
      * Get id
@@ -478,5 +485,28 @@ class User implements UserInterface
     public function getBiography()
     {
         return $this->biography;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return User
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

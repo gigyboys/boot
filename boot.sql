@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 28 Juillet 2017 à 16:40
+-- Généré le :  Lun 31 Juillet 2017 à 18:14
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -3282,7 +3282,14 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (86, 166, 'ISM ADVANCEA.jpg', 'e329a8a0233a35cbcda8d26453dc29bcd2f2a5f2.jpeg', 'ISM ADVANCEA.jpg', 0),
 (87, 166, 'ission.png', 'b43b6332394c7ed716447c9db510699ecfb1f05c.png', 'ission.png', 1),
 (88, 173, 'istam.png', '1c20fbce1aab65905df3addb6fd98ba8219e14a2.png', 'istam.png', 1),
-(89, 183, 'EGM.jpg', '1a0b2287579db244fcfd8a990ca3b38b6d009fd7.jpeg', 'EGM.jpg', 1);
+(89, 183, 'EGM.jpg', '1a0b2287579db244fcfd8a990ca3b38b6d009fd7.jpeg', 'EGM.jpg', 1),
+(90, 127, 'IMT.jpg', '106a2afe452a1243ab38a086fcb435393359422b.jpeg', 'IMT.jpg', 1),
+(91, 55, 'atouttourisme.jpg', '5f485805df1808f35842c8afac955861eb9c8d48.jpeg', 'atouttourisme.jpg', 1),
+(92, 176, 'IUM.jpg', '76c381d22fbe1d063a97924da75b02efdbc48c94.jpeg', 'IUM.jpg', 1),
+(93, 95, 'HECMMA.jpg', 'eac025d610570c6014a0475992e15d1500e8e5d6.jpeg', 'HECMMA.jpg', 1),
+(94, 179, 'jau.jpg', '911f870c4c36216322d68a8d641d161845e56315.jpeg', 'jau.jpg', 1),
+(95, 85, 'EST.jpg', '4cc0e7d8a9098aa6c9f22f7df1d3a846b7f3dc71.jpeg', 'EST.jpg', 1),
+(96, 172, 'ISSUP.jpg', '3342f01799247ae01e7f2c5ebf3f2924bd992a40.jpeg', 'ISSUP.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -3424,7 +3431,7 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (120, 'Institut de Gemmologie d’Antananarivo', 'IGA', 'institut-de-gemmologie-d-rsquo-antananarivo', 1),
 (121, 'Institut de Génie Civil et Architecture de Madagasikara', 'IGCAM', 'institut-de-genie-civil-et-architecture-de-madagasikara', 1),
 (122, 'Institut de Gemmologie de Madagascar', 'IGM', 'institut-de-gemmologie-de-madagascar', 1),
-(123, 'Inst itut International de Sciences Sociales', 'IISS', 'inst-itut-international-de-sciences-sociales', 1),
+(123, 'Institut International de Sciences Sociales', 'IISS', 'institut-international-de-sciences-sociales', 1),
 (124, 'Institut de Leadership Chrétien', 'ILC', 'institut-de-leadership-chretien', 1),
 (125, 'Institut de Management et de Gestion Appliqués', 'IMAGE APPLI', 'institut-de-management-et-de-gestion-appliques', 1),
 (126, 'Institut de Management Administration, Gestion d’En treprise et Droit des Affaires', 'IMAGEDA', 'institut-de-management-administration-gestion-d-rsquo-en-treprise-et-droit-des-affaires', 1),
@@ -3484,7 +3491,7 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (180, 'Lutheran Institute of Management  and Entrepreneurship Fianarantsoa', 'LIME', 'lutheran-institute-of-management-and-entrepreneurship-fianarantsoa', 1),
 (181, 'Leadership Management Business University', 'LMBU', 'leadership-management-business-university', 1),
 (182, 'Miasa Initiative and Business Consulting – Institute Formation et Création', 'MIBC INSTITUTE', 'miasa-initiative-and-business-consulting-institute-formation-et-creation', 1),
-(183, 'Ecole de Guitare de Madagascar', 'EGM', 'ecole-de-guitare-de-madagascar', 1);
+(183, 'Ecole de Guitare de Madagascar', 'EGM', 'egm', 1);
 
 -- --------------------------------------------------------
 
@@ -3692,7 +3699,9 @@ INSERT INTO `sl_school_of_the_day` (`id`, `school_id`, `date`, `current`, `day`)
 (39, 69, '2017-07-25 08:45:40', 1, '2017-07-25'),
 (40, 108, '2017-07-26 09:14:43', 1, '2017-07-26'),
 (41, 146, '2017-07-27 09:23:35', 1, '2017-07-27'),
-(42, 173, '2017-07-28 09:20:22', 1, '2017-07-28');
+(42, 173, '2017-07-28 09:20:22', 1, '2017-07-28'),
+(43, 84, '2017-07-30 14:49:24', 1, '2017-07-30'),
+(44, 27, '2017-07-31 08:34:30', 1, '2017-07-31');
 
 -- --------------------------------------------------------
 
@@ -4495,12 +4504,12 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (725, 122, 4, 'Institut de Gemmologie de Madagascar', 'it. Short description .Institut de Gemmologie de Madagascar', 'it. Description .Institut de Gemmologie de Madagascar'),
 (726, 122, 5, 'Institut de Gemmologie de Madagascar', 'es. Short description .Institut de Gemmologie de Madagascar', 'es. Description .Institut de Gemmologie de Madagascar'),
 (727, 122, 6, 'Institut de Gemmologie de Madagascar', 'de. Short description .Institut de Gemmologie de Madagascar', 'de. Description .Institut de Gemmologie de Madagascar'),
-(728, 123, 1, 'Inst itut International de Sciences Sociales', 'fr. Short description .Inst itut International de Sciences Sociales', 'fr. Description .Inst itut International de Sciences Sociales'),
-(729, 123, 2, 'Inst itut International de Sciences Sociales', 'en. Short description .Inst itut International de Sciences Sociales', 'en. Description .Inst itut International de Sciences Sociales'),
-(730, 123, 3, 'Inst itut International de Sciences Sociales', 'mg. Short description .Inst itut International de Sciences Sociales', 'mg. Description .Inst itut International de Sciences Sociales'),
-(731, 123, 4, 'Inst itut International de Sciences Sociales', 'it. Short description .Inst itut International de Sciences Sociales', 'it. Description .Inst itut International de Sciences Sociales'),
-(732, 123, 5, 'Inst itut International de Sciences Sociales', 'es. Short description .Inst itut International de Sciences Sociales', 'es. Description .Inst itut International de Sciences Sociales'),
-(733, 123, 6, 'Inst itut International de Sciences Sociales', 'de. Short description .Inst itut International de Sciences Sociales', 'de. Description .Inst itut International de Sciences Sociales'),
+(728, 123, 1, 'Institut International de Sciences Sociales', 'fr. Short description .Inst itut International de Sciences Sociales', '<p>fr. Description .Inst itut International de Sciences Sociales</p>'),
+(729, 123, 2, 'Institut International de Sciences Sociales', 'en. Short description .Inst itut International de Sciences Sociales', '<p>en. Description .Inst itut International de Sciences Sociales</p>'),
+(730, 123, 3, 'Institut International de Sciences Sociales', 'mg. Short description .Inst itut International de Sciences Sociales', '<p>mg. Description .Inst itut International de Sciences Sociales</p>'),
+(731, 123, 4, 'Institut International de Sciences Sociales', 'it. Short description .Inst itut International de Sciences Sociales', '<p>it. Description .Inst itut International de Sciences Sociales</p>'),
+(732, 123, 5, 'Institut International de Sciences Sociales', 'es. Short description .Inst itut International de Sciences Sociales', '<p>es. Description .Inst itut International de Sciences Sociales</p>'),
+(733, 123, 6, 'Institut International de Sciences Sociales', 'de. Short description .Inst itut International de Sciences Sociales', '<p>de. Description .Inst itut International de Sciences Sociales</p>'),
 (734, 124, 1, 'Institut de Leadership Chrétien', 'fr. Short description .Institut de Leadership Chrétien', 'fr. Description .Institut de Leadership Chrétien'),
 (735, 124, 2, 'Institut de Leadership Chrétien', 'en. Short description .Institut de Leadership Chrétien', 'en. Description .Institut de Leadership Chrétien'),
 (736, 124, 3, 'Institut de Leadership Chrétien', 'mg. Short description .Institut de Leadership Chrétien', 'mg. Description .Institut de Leadership Chrétien'),
@@ -5020,7 +5029,6 @@ INSERT INTO `sl_type_school` (`id`, `school_id`, `type_id`) VALUES
 (127, 120, 2),
 (128, 121, 2),
 (129, 122, 2),
-(130, 123, 2),
 (131, 124, 2),
 (132, 125, 2),
 (133, 126, 2),
@@ -5082,7 +5090,8 @@ INSERT INTO `sl_type_school` (`id`, `school_id`, `type_id`) VALUES
 (202, 181, 2),
 (205, 182, 2),
 (206, 146, 2),
-(207, 183, 2);
+(208, 123, 2),
+(209, 183, 2);
 
 -- --------------------------------------------------------
 
@@ -5712,7 +5721,7 @@ ALTER TABLE `pm_post_school`
 -- AUTO_INCREMENT pour la table `pm_view`
 --
 ALTER TABLE `pm_view`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=490;
 --
 -- AUTO_INCREMENT pour la table `sl_category`
 --
@@ -5752,7 +5761,7 @@ ALTER TABLE `sl_field_translate`
 -- AUTO_INCREMENT pour la table `sl_logo`
 --
 ALTER TABLE `sl_logo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT pour la table `sl_school`
 --
@@ -5777,7 +5786,7 @@ ALTER TABLE `sl_school_contact_translate`
 -- AUTO_INCREMENT pour la table `sl_school_of_the_day`
 --
 ALTER TABLE `sl_school_of_the_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT pour la table `sl_school_subscription`
 --
@@ -5797,7 +5806,7 @@ ALTER TABLE `sl_type`
 -- AUTO_INCREMENT pour la table `sl_type_school`
 --
 ALTER TABLE `sl_type_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 --
 -- AUTO_INCREMENT pour la table `ur_avatar`
 --

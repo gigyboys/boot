@@ -20,56 +20,18 @@
 						<form name="" method="post" action="" id="form-inscription">
 							<div class="pm_form_wrap">
 								<div>                
-									<div><label for="name" class="required">{{ 'full.name' | trans }} :</label></div>
-									<div><input type="text" id="name" name="name" required="required" class="default_input" /></div>
+									<div><label for="name" class="required">{{ 'full.name' | trans }} * : <span id="ur_register_input_name_error">{{ errorName }}</span></label></div>
+									<div><input type="text" id="name" name="name" required="required" class="default_input" value="{{ user.name }}"/></div>
 								</div>
-								{#
-								<div>
-									<div><label for="username" class="required">{{ 'username' | trans }} :</label></div>
-									<div><input type="text" id="username" name="username" required="required" class="default_input" /></div>
-								</div>
-								#}
 								<div>                
-									<div><label for="email" class="required">{{ 'email' | trans }} :</label></div>
-									<div><input type="email" id="email" name="email" required="required" class="default_input" /></div>
+									<div><label for="email" class="required">{{ 'email' | trans }} * : <span id="ur_register_input_email_error">{{ errorEmail }}</span></label></div>
+									<div><input type="email" id="email" name="email" required="required" class="default_input" value="{{ user.email }}" /></div>
 								</div>
 								
 								<div>                
-									<div><label for="password" class="required">{{ 'password' | trans }} :</label></div>
-									<div><input type="password" id="password" name="password" required="required" class="default_input" /></div>
+									<div><label for="password" class="required">{{ 'password' | trans }} * : <span id="ur_register_input_password_error">{{ errorPassword }}</span></label></div>
+									<div><input type="password" id="password" name="password" required="required" class="default_input" value="{{ user.password }}" /></div>
 								</div>
-								
-								{#
-								<div>
-									<div><label class="required" for="password_first">{{ 'Password' | trans }} :</label></div>
-									<div><input id="password_first" name="password[first]" required="required" type="password" class="default_input" /></div>
-								</div>
-								
-								<div>
-									<div><label class="required" for="password_second">{{ 'Repeat Password' | trans }} :</label></div>
-									<div><input id="password_second" name="password[second]" required="required" type="password" class="default_input" /></div>
-								</div>
-								#}
-								<div>
-									<div><label class="required" for="password_first">{{ 'Sex' | trans }} :</label></div>
-									<div>
-										<span class="sex_item">
-											<input id="sexM" name="sex" value="1" type="radio" checked>
-											<label class="" for="sexM">Homme</label>
-										</span>
-										<span class="sex_item">
-											<input id="sexF" name="sex" value="2" type="radio">
-											<label class="" for="sexF">Femme</label>
-										</span>
-										{#
-										<span>
-											<input id="sexO" name="sex" value="3" type="radio">
-											<label class="" for="sexO">Other</label>
-										</span>
-										#}
-									</div>
-								</div>
-								
 								<div style="margin-top : 10px">
 									<button type="submit" id="register" name="register" class="standar_button">{{ 'register' | trans }}</button>
 								</div>
@@ -82,7 +44,6 @@
 						</h1>
 						<p>Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.</p>
 						<p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
-						<p>Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
 					</div>
 				</div>
 				<div class="both"></div>

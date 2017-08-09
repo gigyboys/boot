@@ -104,14 +104,21 @@
 	display:block;
 	padding-top:4px
 }
-.sl_action_about a img, .sl_action_bg a img, .sl_action_at a img, .sl_action_evaluation a img, .sl_action_contact a img{
+.sl_action_bg a img, .sl_action_at a img, .sl_action_evaluation a img, .sl_action_contact a img{
 	filter: brightness(100%);
 	-webkit-filter: brightness(100%);
 	-moz-filter: brightness(100%);
 	-o-filter: brightness(100%);
 	-ms-filter: brightness(100%);
 }
-.sl_action_about a:hover img, .sl_action_bg a:hover img, .sl_action_at a:hover img, .sl_action_evaluation a:hover img, .sl_action_contact a:hover img{
+.sl_action_about a:hover img{
+	filter: brightness(80%);
+	-webkit-filter: brightness(80%);
+	-moz-filter: brightness(80%);
+	-o-filter: brightness(80%);
+	-ms-filter: brightness(80%);
+}
+.sl_action_bg a:hover img, .sl_action_at a:hover img, .sl_action_evaluation a:hover img, .sl_action_contact a:hover img{
 	filter: brightness(50%);
 	-webkit-filter: brightness(50%);
 	-moz-filter: brightness(50%);

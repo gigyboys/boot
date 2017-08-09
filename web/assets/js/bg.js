@@ -1,7 +1,5 @@
 
-$(function() {
-	console.log("bg.css");
-	
+$(function() {	
 	var row 	= 60; 		//60
     var row4 	= row*4; 	//
     var row5 	= row*5; 	//

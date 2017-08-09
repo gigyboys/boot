@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("at.js");
-	
 	/*
 	* load commentItem
 	*/

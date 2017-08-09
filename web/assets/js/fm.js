@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("fm.js");
-	
 	$('#btn_new_subject').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");

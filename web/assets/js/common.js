@@ -44,23 +44,15 @@ function loadBlocEdit(bloc_editable){
 }
 
 $(function() {
-	console.log("common.js");
-	
-	var btn_edit = $('.btn_edit');
-	var btn_reset = $('.btn_reset');
-    
-    btn_edit.click (function (event){
-		//console.log("edit bloc editable");
+	$('body').on('click','.btn_edit',function(event){
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
 		editBlocEdit(bloc_editable);
     });
     
-    btn_reset.click (function (event){
-		//console.log("reset edit bloc editable");
+	$('body').on('click','.btn_reset',function(event){
         var $this = $(this);
         var bloc_editable = $this.closest(".bloc_editable");
 		resetBlocEdit(bloc_editable);
     });
-	
 });

@@ -15,6 +15,10 @@ cf_platform_about_notice:
     path:     /legal-notice
     defaults: { _controller: COMPlatformBundle:About:notice}
 
+cf_platform_test_send_mail:
+    path:     /test-send-mail/{name}
+    defaults: { _controller: COMPlatformBundle:About:testSendMail}
+
 cf_platform_contact:
     path:     /contact
     defaults: { _controller: COMPlatformBundle:Contact:index}

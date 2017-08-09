@@ -1,6 +1,4 @@
 $(function() {
-	console.log('header');
-	
 	var timeOutId = 0;
 	
 	var search_entity_item = $('.search_entity_item');
