@@ -553,9 +553,9 @@ class SchoolService {
 		));
 		
 		foreach($schoolTemps as $school){
-			
 			$evaluations = $evaluationRepository->findBy(array(
 				'school' => $school,
+				'current' => true,
 			));
 			if($evaluations){
 				array_push($schools, $school);
@@ -585,7 +585,9 @@ class SchoolService {
         $evaluationRepository = $this->em->getRepository('COMSchoolBundle:Evaluation');
 
 		$evaluations = array();
-        $evaluationTemps = $evaluationRepository->findAll();
+        $evaluationTemps = $evaluationRepository->findBy(array(
+			'current' => true,
+		));
 		
 		foreach($evaluationTemps as $evaluation){
 			if($evaluation->getSchool()->getPublished()){

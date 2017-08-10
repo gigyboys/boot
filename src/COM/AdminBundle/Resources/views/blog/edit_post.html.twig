@@ -64,7 +64,7 @@
 			<label for="illustrationfile">
 				<img id="post_illustration" style="width: 116px; height: 116px" src="{{ path | imagine_filter('116x116') }}" alt="img post" />
 			</labe>
-			<input style="display:none" id="illustrationfile" name="file" class="ajax_post_illustration" type="file" accept="image/*" data-target="{{ path('com_admin_blog_post_change_illustration', {'id': post.id}) }}" /> 
+			<input style="display:none" id="illustrationfile" name="file" class="ajax_post_illustration" type="file" accept="image/*" data-target="{{ path('com_blog_manager_post_change_illustration', {'id': post.id}) }}" /> 
 		</div>
 		<div style="margin-left: 136px;">
 		
@@ -135,7 +135,7 @@
 				<div class="separator"></div>
 				<div class="bloc_action" style="margin:5px">
 					<span class="btn_edit standar_button">Modifier</span> 
-					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_admin_blog_post_edit_common', {'id': post.id}) }}" style="display:none">Enregistrer</span>
+					<span class="btn_save standar_button" id="btn_save_bg_common" data-target="{{ path('com_blog_manager_post_edit_common', {'id': post.id}) }}" style="display:none">Enregistrer</span>
 					<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 					<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 				</div>
@@ -227,7 +227,7 @@
 						<div class="separator"></div>
 						<div class="bloc_action" style="margin:5px">
 							<span class="btn_edit standar_button">Modifier</span> 
-							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_admin_blog_post_edit_translate', {'id': post.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
+							<span class="btn_save_bg_trans btn_save standar_button" id="" data-target="{{ path('com_blog_manager_post_edit_translate', {'id': post.id, 'locale':locale.locale}) }}" style="display:none">Enregistrer</span>
 							<span class="btn_reset standar_button" style="display:none">Annuler</span> 
 							<span class="btn_loading" style="display:none;padding:5px;border:1px solid transparent;margin: 0px 5px 0px 0px;"><img src="{{ asset('assets/image/load.gif') }}" />Chargement...</span> 
 						</div>
@@ -239,7 +239,7 @@
 {% endblock %}
 
 {% block body_footer %}
-	<span id="toggle_publishState_post" data-target="{{ path('com_admin_blog_post_toogle_publication', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+	<span id="toggle_publishState_post" data-target="{{ path('com_blog_manager_post_toogle_publication', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
 		{% if post.published %}
 			<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
 			<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
@@ -248,7 +248,7 @@
 			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
 		{% endif %}
 	</span>
-	<span id="toggle_showAuthorState_post" data-target="{{ path('com_admin_blog_post_toogle_show_author', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+	<span id="toggle_showAuthorState_post" data-target="{{ path('com_blog_manager_post_toogle_show_author', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
 		{% if post.showAuthor %}
 			<span class="show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
 			<span class="not_show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
@@ -256,6 +256,25 @@
 			<span class="show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
 			<span class="not_show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
 		{% endif %}
-	</span>
+	</span> 
+	| 
+	<span id="toggle_validState_post" data-target="{{ path('com_blog_manager_post_toogle_validation', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if post.valid %}
+			<span class="valid_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>validate</span></span>
+			<span class="not_valid_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't validate</span></span>
+		{% else %}
+			<span class="valid_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>validate</span></span>
+			<span class="not_valid_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't validate</span></span>
+		{% endif %}
+	</span> 
+	<span id="toggle_deleteState_post" data-target="{{ path('com_blog_manager_post_toogle_deletion', {'post_id': post.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
+		{% if post.deleted %}
+			<span class="delete_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>delete</span></span>
+			<span class="not_delete_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't delete</span></span>
+		{% else %}
+			<span class="delete_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>delete</span></span>
+			<span class="not_delete_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't delete</span></span>
+		{% endif %}
+	</span> 
 {% endblock %}
 

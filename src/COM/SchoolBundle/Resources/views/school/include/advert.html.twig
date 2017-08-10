@@ -1,6 +1,8 @@
-<div style="padding:5px; min-height:100px">
+<div style="min-height:100px">
 	{% if adverts|length == 0 %}
-		Aucune annonce à afficher
+		<div style="margin:auto; padding-top: 30px; text-align:center; font-weight:bold">
+			Aucune annonce à afficher
+		</div>
 	{% endif %}
 	{% for advert in adverts %}
 		<div style="border: 1px solid #eee; margin:10px 0;padding:5px">

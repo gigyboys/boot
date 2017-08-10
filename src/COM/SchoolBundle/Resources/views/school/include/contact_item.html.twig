@@ -2,9 +2,6 @@
 	<div class="sp mg_v5"></div>
 	<div class="">
 		<div class="mg_b5">
-			{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
-				<div id="map_contact_{{ schoolContact.id }}" style="background:#eee; margin-bottom:10px;height:250px"></div>
-			{% endif %}
 			<div style="">
 				{% if schoolContact.address | trim != "" %}
 					<div>address : {{ schoolContact.address }}</div>
@@ -32,11 +29,14 @@
 					{% endif %}
 				{% endif %}
 			</div>
+			{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
+				<div>Show map</div>
+			{% endif %}
 				
 		</div>
 		{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
 			<script type="text/javascript">
-				$(function() {
+				/*$(function() {
 					var map{{ schoolContact.id }};
 					map{{ schoolContact.id }} = new GMaps({
 						el: '#map_contact_{{ schoolContact.id }}',
@@ -52,7 +52,7 @@
 						mapTypeControl: false,
 						overviewMapControl: false
 					});
-				});
+				});*/
 			 </script>
 		{% endif %}
 	</div>

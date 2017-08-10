@@ -32,9 +32,11 @@
 			<table class="a_table" id="list_posts">
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
-					<th>default title</th>
-					<th>author</th>
-					<th>Published</th>
+					<th style="text-align:left">default title</th>
+					<th style="text-align:left">author</th>
+					<th style="text-align:left">Published</th>
+					<th style="text-align:left">Valid</th>
+					<th style="text-align:left">Deleted</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for post in posts %}
@@ -71,18 +73,32 @@
 					<td>
 						<span>
 						{% if post.showAuthor %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span>
 						{% else %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span>
 						{% endif %} 
 						{{ post.user.name }}
 						</span>
 					</td>
 					<td>
 						{% if post.published %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span>
 						{% else %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span>
+						{% endif %}
+					</td>
+					<td>
+						{% if post.valid %}
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span>
+						{% else %}
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span>
+						{% endif %}
+					</td>
+					<td>
+						{% if post.deleted %}
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span>
+						{% else %}
+							<span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span>
 						{% endif %}
 					</td>
 					<td class="a_table_cell_action">action</td>

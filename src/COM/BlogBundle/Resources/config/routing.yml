@@ -28,6 +28,40 @@ com_blog_category_view:
 com_blog_category_view_load_posts:
     path:     /blog/category/{slug}/load-post/{post_id}
     defaults: { _controller: COMBlogBundle:Blog:loadPostsCategory }
+
+
+com_blog_manager_add_post_ajax:
+    path:     /blog-manager/add-post-ajax
+    defaults: { _controller: COMBlogBundle:BlogManager:addPostAjax }
+com_blog_manager_add_post_validation:
+    path:     /blog-manager/add-post-validation
+    defaults: { _controller: COMBlogBundle:BlogManager:addPostValidation }
+com_blog_manager_edit_post:
+    path:     /blog-manager/editPost/{post_id}
+    defaults: { _controller: COMBlogBundle:BlogManager:editPost }
+com_blog_manager_post_change_illustration:
+    path:     /blog-manager/post/change-illustration/{id}
+    defaults: { _controller: COMBlogBundle:BlogManager:changeIllustration }
+com_blog_manager_post_edit_common:
+    path:     /blog-manager/edit-common/{id}
+    defaults: { _controller: COMBlogBundle:BlogManager:editPostCommon }
+com_blog_manager_post_edit_translate:
+    path:     /blog-manager/post/edit-translate/{id}/{locale}
+    defaults: { _controller: COMBlogBundle:BlogManager:editPostTranslate }
+com_blog_manager_post_toogle_publication:
+    path:     /blog-manager/toogle-publication/{post_id}
+    defaults: { _controller: COMBlogBundle:BlogManager:tooglePublication }
+com_blog_manager_post_toogle_show_author:
+    path:     /blog-manager/toogle-show-author/{post_id}
+    defaults: { _controller: COMBlogBundle:BlogManager:toogleShowAuthor }
+com_blog_manager_post_toogle_validation:
+    path:     /blog-manager/toogle-validation/{post_id}
+    defaults: { _controller: COMBlogBundle:BlogManager:toogleValidation }
+com_blog_manager_post_toogle_deletion:
+    path:     /blog-manager/toogle-deletion/{post_id}
+    defaults: { _controller: COMBlogBundle:BlogManager:toogleDeletion }
+
+
 com_blog_view:
     path:     /blog/{slug}
     defaults: { _controller: COMBlogBundle:Blog:view }

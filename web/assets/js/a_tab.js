@@ -1,6 +1,5 @@
 
 $(function() {
-	console.log("inittab");
 	var a_content_tab_header_item = $('.a_content_tab_header_item');
 	var a_content_tab_content_item = $('.a_content_tab_content_item');
 	var a_content_tab_header_content = $('.a_content_tab_header_content');

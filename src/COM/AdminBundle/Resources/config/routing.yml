@@ -122,21 +122,6 @@ com_admin_blog_post_add:
 com_admin_blog_post_edit:
     path:     /blog/edit-post/{id}
     defaults: { _controller: COMAdminBundle:Blog:editPost }
-com_admin_blog_post_toogle_publication:
-    path:     /blog/toogle-publication/{post_id}
-    defaults: { _controller: COMAdminBundle:Blog:tooglePublication }
-com_admin_blog_post_toogle_show_author:
-    path:     /blog/toogle-show-author/{post_id}
-    defaults: { _controller: COMAdminBundle:Blog:toogleShowAuthor }
-com_admin_blog_post_change_illustration:
-    path:     /blog/post/change-illustration/{id}
-    defaults: { _controller: COMAdminBundle:Blog:changeIllustration }
-com_admin_blog_post_edit_common:
-    path:     /blog/edit-common/{id}
-    defaults: { _controller: COMAdminBundle:Blog:editPostCommon }
-com_admin_blog_post_edit_translate:
-    path:     /blog/post/edit-translate/{id}/{locale}
-    defaults: { _controller: COMAdminBundle:Blog:editPostTranslate }
 com_admin_blog_category:
     path:     /blog/category
     defaults: { _controller: COMAdminBundle:Blog:category }

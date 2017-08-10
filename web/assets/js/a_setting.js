@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("a_setting.js");
-	
     $('#btn_save_accessibility').on('click', function(){
         var $this = $(this);
 		var bloc_editable = $this.closest(".bloc_editable");

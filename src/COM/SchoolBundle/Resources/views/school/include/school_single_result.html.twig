@@ -9,7 +9,7 @@
 	{#
 	<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}" style="display:inline-block; width: 100%;overflow: hidden; padding-top: 7px; text-overflow: ellipsis;white-space: nowrap;">
 		<span style="display:inline-block; vertical-align: top; ">
-			<img style="" src="{{ pathtologo | imagine_filter('22x22') }}" alt="img sl" />
+			<img style="" src="{{ pathtologo | imagine_filter('22x22') }}" alt="" />
 		</span>
 		<span style="display:inline-block;vertical-align: top; ">	
 			<span>{{ school.name }}</span> 
@@ -21,7 +21,7 @@
 	#}
 	
 	<a title="{{ school.name }}" href="{{ path('com_school_view', {'slug': school.slug}) }}" style="display:inline-block; width: 100%;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">
-		<img src="{{ pathtologo | imagine_filter('22x22') }}" alt="img sl" style="vertical-align: top; "/> 
+		<img src="{{ pathtologo | imagine_filter('22x22') }}" alt="" style="vertical-align: top; "/> 
 		{% if school.shortName | trim != "" %}
 		{{ school.shortName }} - 
 		{% endif %}

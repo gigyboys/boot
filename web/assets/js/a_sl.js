@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("a_sl.js");
-	
 	var timeOutIdQuery = 0; 
     /*
     *upload logo for school

@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("a_at.js");
-	
     /*
     *upload illustration for advert
     */

@@ -15,25 +15,25 @@
 	margin-bottom:20px
 }
 .post_item .post_title{
-	background: #fafafa;
-    border: 1px solid #eee;
     font-size: 17px;
     margin: 0 0 8px;
-    padding: 5px;
+	border: 1px solid #ddd; 
+	background:#f8f8f8; 
+	padding: 8px;
 }
 .post_item .post_title a{
 	display:block
 }
 .post_item .meta_info{
     min-height: 14px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 .post_item .meta_info .date_info, .post_item .meta_info .tag_info, .post_item .meta_info .comment_info {
     display:inline-block;
 	padding-right: 20px;
 }
 .post_item .post_image{
-	margin-bottom: 12px;
+	margin-bottom: 10px;
 }
 .post_item .post_action{
 	margin-bottom: 16px;

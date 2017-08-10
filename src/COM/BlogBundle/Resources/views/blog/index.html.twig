@@ -27,8 +27,8 @@
 				<div class="bgr" style="">
 					<div style="margin:10px; width:auto; background:#fff">
 						
-						<div style="padding: 10px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
-							<a href="{{ path('com_blog_category') }}" style="display:block;">
+						<div style="padding: 8px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
+							<a href="" style="display:block;">
 								Calendar
 							</a>
 						</div>
@@ -41,9 +41,18 @@
 							</div>
 						</div>
 					</div>
+					
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<div style="margin:8px; width:auto; background:#fff">
+							<div id="btn_create_post" data-target="{{ path('com_blog_manager_add_post_ajax')}}" style="padding: 8px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;cursor:pointer">
+								<span><img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" /> Creer mon propre article</span>
+							</div>
+						</div>
+					{% endif %}
+					
 					<div style="min-height:400px; margin:10px; width:auto; background:#fff">
 						
-						<div style="padding: 10px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
+						<div style="padding: 8px 0px; font-weight:bold; background:#eee;margin-bottom:5px;border-bottom:3px solid #ddd; text-align:center;">
 							<a href="{{ path('com_blog_category') }}" style="display:block;">
 								Categories
 							</a>
@@ -58,7 +67,7 @@
 										<span style="font-weight:bold">{{ category.defaultName }}</span> <span>({{ posts | length }})</span>
 									</a>
 								</div>
-								<div class="sp mg_v10"></div>
+								<div class="sp mg_v5"></div>
 								<div>
 									{% set lastPost = posts[posts | length - 1] %} 
 									<div>{{ lastPost.date | date('Y-m-d H:i:s') }} </div>
@@ -70,9 +79,9 @@
 										{% else %}
 											{% set path='default/images/post/illustration/'~illustration %}
 										{% endif %}
-										<a href="{{ path('com_blog_view', {'slug': lastPost.slug}) }}" style="display:block; padding-bottom:5px;min-height: 27px">
-											<span style="display:block;float:left;width:32px"><img id="post_illustration" style="width: 32px; height: 32px;display:block;margin-top: 4px" src="{{ path | imagine_filter('32x32') }}" alt="img post" /></span>
-											<span style="display:block;margin-left:36px;">{{ lastPost.defaultTitle }}</span>
+										<a href="{{ path('com_blog_view', {'slug': lastPost.slug}) }}" style="display:block; padding-bottom:0px;min-height: 40px">
+											<span style="display:block;float:left;width:36px"><img id="post_illustration" style="width: 36px; height: 36px;display:block;margin-top: 4px" src="{{ path | imagine_filter('36x36') }}" alt="img post" /></span>
+											<span style="display:block;margin-left:44px;">{{ lastPost.defaultTitle }}</span>
 											<span style="clear:both"></span>
 										</a>
 									</div>

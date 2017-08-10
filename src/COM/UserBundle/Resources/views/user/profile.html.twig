@@ -122,7 +122,7 @@
 		<div class="content_tab_ur_item" id="content_tab_ur_about" style = "{% if type != 'profile' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
-					<div style="padding:5px; min-height:100px">
+					<div class="pd_10" style="min-height:100px">
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 							<div>Biography <span id="msg_biography"></span></div>
 							
@@ -155,7 +155,7 @@
 		<div class="content_tab_ur_item" id="content_tab_ur_school" style = "display:none">
 			<div class="cr">
 				<div class="ct">
-					<div style="padding:5px; min-height:80px">
+					<div class="pd_10"  style="min-height:80px">
 						<div style="">
 						Ecoles suivies
 						</div>
@@ -224,8 +224,8 @@
 			<div class="content_tab_ur_item" id="content_tab_ur_setting" style = "{% if type != 'setting' %}display:none{% endif %}">
 				<div class="cr">
 					<div class="ct">
-						<div style="padding:5px; min-height:100px">
-							<div style="margin:5px;">
+						<div class="pd_10" style="min-height:100px">
+							<div>
 								Password <span id="msg_password"></span>
 							</div>
 							
@@ -233,7 +233,7 @@
 								<div class="bloc_view">
 									
 								</div>
-								<div class="bloc_edit" style="display:none;margin:5px;">
+								<div class="bloc_edit" style="display:none;">
 									<form action="" name="form_ur_password" method="post" id="password">
 										<div>                
 											<div><label for="name" class="required">Actual password :</label></div>
@@ -250,7 +250,7 @@
 										<input type="submit" style="display:none" value="Enregistrer" />
 									</form>
 								</div>
-								<div class="bloc_action" style="margin:5px; border:1px solid transparent">
+								<div class="bloc_action" style="margin:5px 0; border:1px solid transparent">
 									<span class="btn_edit standar_button">Modifier</span> 
 									<span class="btn_save standar_button" id="btn_save_ur_password" data-target="{{ path('com_user_modify_password') }}" style="display:none">Enregistrer</span>
 									<span class="btn_reset standar_button" style="display:none">Annuler</span> 

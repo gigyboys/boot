@@ -54,6 +54,20 @@ class Post extends Controller
     /**
      * @var boolean
      *
+     * @ORM\Column(name="valid", type="boolean", options={"default"=0})
+     */
+    private $valid;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", options={"default"=0})
+     */
+    private $deleted;
+	
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="show_author", type="boolean")
      */
     private $showAuthor;
@@ -318,6 +332,54 @@ class Post extends Controller
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set valid
+     *
+     * @param boolean $valid
+     *
+     * @return Post
+     */
+    public function setValid($valid)
+    {
+        $this->valid = $valid;
+
+        return $this;
+    }
+
+    /**
+     * Get valid
+     *
+     * @return boolean
+     */
+    public function getValid()
+    {
+        return $this->valid;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Post
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 
     /**

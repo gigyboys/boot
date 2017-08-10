@@ -1,7 +1,5 @@
 
 $(function() {
-	console.log("a_fm.js");
-	
     /*
     *upload illustration for topic
     */
