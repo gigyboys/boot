@@ -263,13 +263,15 @@
 {% endblock %}
 
 {% block body_footer %}
-	<span id="toggle_publishState" data-target="{{ path('com_admin_school_toogle_publication', {'school_id': school.id}) }}" style="cursor:pointer; margin-top:8px; display:inline-block">
-		{% if school.published %}
-			<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-			<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
-		{% else %}
-			<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-			<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
-		{% endif %}
-	</span>
+	<div style="padding-top: 8px">
+		<span class="toggle_publishState" data-target="{{ path('com_admin_school_toogle_publication', {'school_id': school.id}) }}">
+			{% if school.published %}
+				<span class="greenstate" style="display:none"><span class="greenpastille"></span> <span>publish</span></span>
+				<span class="redstate"><span class="redpastille"></span> <span>don't publish</span></span>
+			{% else %}
+				<span class="greenstate"><span class="greenpastille"></span> <span>publish</span></span>
+				<span class="redstate" style="display:none"><span class="redpastille"></span> <span>don't publish</span></span>
+			{% endif %}
+		</span>
+	</div> 
 {% endblock %}

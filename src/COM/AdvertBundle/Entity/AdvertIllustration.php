@@ -57,7 +57,7 @@ class AdvertIllustration
     private $current;
 
     /**
-     * @Assert\File(maxSize="7000000")
+     * @Assert\File(maxSize="2m", maxSizeMessage = "The file is too large ({{ size }})", mimeTypes = {"image/jpg", "image/jpeg", "image/gif", "image/png"}, mimeTypesMessage = "Please upload a valid Image")
      */
     public $file;
     

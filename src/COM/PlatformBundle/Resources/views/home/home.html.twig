@@ -95,22 +95,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="cr">
-		<div class="ct">
-			<div style="margin:20px 0px;">
-				<div class="fm_list_topic">
-					{% for category in categories %}
-						{{ include("COMSchoolBundle:school:include/school_category_item.html.twig") }}
-					{% endfor %}
-					<div class="both"></div>
-					<div style="text-align:center; margin:10px 0">
-						<a href="{{ path('com_school_categories') }}" class="standar_button">Afficher toute les catégories</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	{#last added schools#}
 	{# twig extension #}
@@ -129,4 +113,30 @@
 			</div>
 		</div>
 	{% endif %}
+	
+	
+	
+	<div class="cr">
+		<div class="ct">
+			<div style="margin:20px 10px; font-size:16px;text-align:justify">
+				Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.
+			</div>
+		</div>
+	</div>
+	
+	<div class="cr">
+		<div class="ct">
+			<div style="margin:20px 0px;">
+				<div class="fm_list_topic">
+					{% for category in categories %}
+						{{ include("COMSchoolBundle:school:include/school_category_item.html.twig") }}
+					{% endfor %}
+					<div class="both"></div>
+					<div style="text-align:center; margin:10px 0">
+						<a href="{{ path('com_school_categories') }}" class="standar_button">Afficher toute les catégories</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

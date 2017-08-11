@@ -24,7 +24,7 @@ $(function() {
 				if(data.state == 1){
 					$("#post_illustration").attr("src", data.illustration116x116);
 				}else{
-					alert("Une erreur est survenue");
+					alert("Une erreur est survenue. Veuillez selectionner un fichier image valide de taille inférieure à 2Mo")
 				}
             },
             error: function(jqXHR, textStatus, errorThrown) {

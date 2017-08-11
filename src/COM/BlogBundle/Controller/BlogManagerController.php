@@ -93,6 +93,7 @@ class BlogManagerController extends Controller
 			$post->setDate(new \DateTime());
 			$post->setPublished(false);
 			$post->setValid(false);
+			$post->setDeleted(false);
 			$post->setViewNumber(0);
 			
 			$user = $this->getUser();
@@ -349,6 +350,17 @@ class BlogManagerController extends Controller
 					$response->setContent(json_encode(array(
 						'state' => 1,
 						'illustration116x116' => $illustration116x116,
+					)));
+				}else{
+					 $errors= array();
+
+					   foreach ($formPostIllustration->getErrors() as $key => $error) {
+							$errors[$key] = $error->getMessage();
+					   }   
+
+					$response->setContent(json_encode(array(
+						'state' => 2,
+						'errors' => $errors,
 					)));
 				}
 			}

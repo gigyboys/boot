@@ -171,6 +171,12 @@ class SchoolController extends Controller
         
         $formLogo = $this->get('form.factory')->create(new LogoType, $logo);
         $formLogo->handleRequest($this->getRequest());
+		
+        $response = new Response();
+
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
 
         if ($formLogo->isValid()) {
             $logos = $logoRepository->findBy(array('school' => $school));
@@ -190,22 +196,13 @@ class SchoolController extends Controller
 			  'logoPath' => $logo->getWebPath()
 			));
 			
-			$response = new Response();
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'logo116x116' => $logo116x116,
             )));
-            $response->headers->set('Content-Type', 'application/json');
-            
-            return $response;
         }
-
-        $response = new Response();
-		$response->setContent(json_encode(array(
-			'state' => 0,
-		)));
-		$response->headers->set('Content-Type', 'application/json');
 		
+		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
 

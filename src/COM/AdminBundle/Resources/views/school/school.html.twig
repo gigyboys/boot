@@ -50,16 +50,20 @@
 						{% else %}
 							{% set pathtologo='default/images/school/logo/'~logo %}
 						{% endif %}
-						<img id="" style="width: 32px; height: 32px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
+						<img id="" style="display:block;width: 32px; height: 32px; margin:1px" src="{{ pathtologo | imagine_filter('32x32') }}" alt="img sl" />
 					</td>
 					<td><a href="{{ path('com_admin_school_edit', {'id': school.id}) }}">{{ school.name }}</a></td>
 					<td>{{ school.shortName }}</td>
 					<td>
-						{% if school.published %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
-						{% else %}
-							<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
-						{% endif %}
+						<span class="toggle_publishState" data-target="{{ path('com_admin_school_toogle_publication', {'school_id': school.id}) }}">
+							{% if school.published %}
+								<span class="greenstate" style="display:none"><span class="greenpastille"></span></span>
+								<span class="redstate"><span class="redpastille"></span></span>
+							{% else %}
+								<span class="greenstate"><span class="greenpastille"></span></span>
+								<span class="redstate" style="display:none"><span class="redpastille"></span></span>
+							{% endif %}
+						</span>
 					</td>
 					<td class="a_table_cell_action">action</td>
 				</tr>

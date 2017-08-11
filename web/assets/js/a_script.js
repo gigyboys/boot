@@ -1,5 +1,5 @@
 $(function() {
-	console.log("init");
+	//console.log("init");
 	var body = $('body');
 	var a_header = $('#a_header');
 	var a_nav = $('#a_nav');
@@ -26,7 +26,7 @@ $(function() {
 	
 	function init(){
 		
-		console.log("window : "+ww.width()+"/"+ww.height());
+		//console.log("window : "+ww.width()+"/"+ww.height());
 		//console.log("a_header : "+a_header.width()+"/"+a_header.height());
 		
 		if(ww.width() > width_seuil){
@@ -74,7 +74,7 @@ $(function() {
     init();
 	   
 	a_nav_item.live('click', function(e) {
-        console.log($(this).find('.a_nav_sub_content').html);
+        //console.log($(this).find('.a_nav_sub_content').html);
         $('.a_nav_sub_content').css('display','none');
 		$(this).find('.a_nav_sub_content').css('display','block');
     });

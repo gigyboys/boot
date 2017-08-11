@@ -94,6 +94,7 @@ class BlogController extends Controller
 			$post->setDate(new \DateTime());
 			$post->setPublished(false);
 			$post->setValid(false);
+			$post->setDeleted(false);
 			$post->setViewNumber(0);
 			$user = $this->getUser();
 			$post->setUser($user);

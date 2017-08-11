@@ -82,7 +82,8 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		<span><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Edit field {{ field.id }}</span>
+		<span><img src="{{ asset('assets/image/edit_icon.png') }}" style="width:12px; height:auto" /> Edit field {{ field.id }}</span> | 
+		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer"> <img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" />  Add field</span>
 	</div>
 	
 	<div style="">

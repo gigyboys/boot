@@ -22,8 +22,11 @@ $(function() {
             processData: false,
             dataType : 'json',
             success: function(data){
-                console.log(data.logo116x116);
-				$("#school_logo").attr("src", data.logo116x116);
+				if(data.state == 1){
+					$("#school_logo").attr("src", data.logo116x116);
+				}else{
+					alert("Une erreur est survenue. Veuillez selectionner un fichier image valide de taille inférieure à 2Mo")
+				}
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);
@@ -53,8 +56,11 @@ $(function() {
             processData: false,
             dataType : 'json',
             success: function(data){
-				//$("#cover_box").append(data.cover300x100);
-				$("#cover_box").html(data.cover300x100);
+				if(data.state == 1){
+					$("#cover_box").html(data.cover300x100);
+				}else{
+					alert("Une erreur est survenue. Veuillez selectionner un fichier image valide de taille inférieure à 2Mo")
+				}
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);
@@ -66,7 +72,7 @@ $(function() {
 	
 	
 	//tooglePublishState school
-    $('#toggle_publishState').on('click', function(){
+    $('.toggle_publishState').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -76,11 +82,11 @@ $(function() {
             success: function(data){
 				if(data.state){
 					if(data.published){
-						$(".publish_btn").hide();
-						$(".not_publish_btn").show();
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
 					}else{
-						$(".publish_btn").show();
-						$(".not_publish_btn").hide();
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
 					}
 				}
 				else{
