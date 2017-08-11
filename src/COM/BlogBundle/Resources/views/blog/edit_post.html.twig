@@ -215,23 +215,23 @@
 				
 				<div class="mg_v10" style="background:#f5f5f5; padding: 5px; border:1px solid #ddd;">
 								
-					<span id="toggle_publishState_post" data-target="{{ path('com_blog_manager_post_toogle_publication', {'post_id': post.id}) }}" style="cursor:pointer; display:inline-block">
+					<span class="toggle_publishState_post" data-target="{{ path('com_blog_manager_post_toogle_publication', {'post_id': post.id}) }}">
 						{% if post.published %}
-							<span class="publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-							<span class="not_publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+							<span class="greenstate" style="display:none"><span class="greenpastille"></span> <span>publish</span></span>
+							<span class="redstate"><span class="redpastille"></span> <span>don't publish</span></span>
 						{% else %}
-							<span class="publish_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>publish</span></span>
-							<span class="not_publish_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't publish</span></span>
+							<span class="greenstate"><span class="greenpastille"></span> <span>publish</span></span>
+							<span class="redstate" style="display:none"><span class="redpastille"></span> <span>don't publish</span></span>
 						{% endif %}
 					</span>
 					
-					<span id="toggle_showAuthorState_post" data-target="{{ path('com_blog_manager_post_toogle_show_author', {'post_id': post.id}) }}" style="cursor:pointer;  display:inline-block">
+					<span class="toggle_showAuthorState_post" data-target="{{ path('com_blog_manager_post_toogle_show_author', {'post_id': post.id}) }}">
 						{% if post.showAuthor %}
-							<span class="show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
-							<span class="not_show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
+							<span class="greenstate" style="display:none"><span class="greenpastille"></span> <span>show author</span></span>
+							<span class="redstate"><span class="redpastille"></span> <span>don't show author</span></span>
 						{% else %}
-							<span class="show_author_btn"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#c00"></span> <span>show author</span></span>
-							<span class="not_show_author_btn" style="display:none"><span style="display:inline-block;width:10px;height:10px;border-radius:50% 50%; background:#0c0"></span> <span>don't show author</span></span>
+							<span class="greenstate"><span class="greenpastille"></span> <span>show author</span></span>
+							<span class="redstate" style="display:none"><span class="redpastille"></span> <span>don't show author</span></span>
 						{% endif %}
 					</span>
 				</div>

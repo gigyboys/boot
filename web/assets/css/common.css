@@ -140,3 +140,23 @@
 .pd_l10{
 	padding-left:10px;
 }
+
+/* green and red state */
+.toggle_publishState_post, .toggle_showAuthorState_post, .toggle_validState_post, .toggle_deleteState_post {
+	cursor:pointer; 
+	display:inline-block
+}
+.greenpastille{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	border-radius:50% 50%; 
+	background:#c00
+}
+.redpastille{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	border-radius:50% 50%; 
+	background:#0c0
+}

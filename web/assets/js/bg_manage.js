@@ -106,7 +106,7 @@ $(function() {
 	
 	
 	//tooglePublishState post
-    $('#toggle_publishState_post').on('click', function(){
+    $('.toggle_publishState_post').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -116,11 +116,11 @@ $(function() {
             success: function(data){
 				if(data.state){
 					if(data.published){
-						$this.find(".publish_btn").hide();
-						$this.find(".not_publish_btn").show();
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
 					}else{
-						$this.find(".publish_btn").show();
-						$this.find(".not_publish_btn").hide();
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
 					}
 				}
 				else{
@@ -137,7 +137,7 @@ $(function() {
 	
 	
 	//toogleShowAuthor post
-    $('#toggle_showAuthorState_post').on('click', function(){
+    $('.toggle_showAuthorState_post').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -147,11 +147,11 @@ $(function() {
             success: function(data){
 				if(data.state){
 					if(data.showAuthor){
-						$this.find(".show_author_btn").hide();
-						$this.find(".not_show_author_btn").show();
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
 					}else{
-						$this.find(".show_author_btn").show();
-						$this.find(".not_show_author_btn").hide();
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
 					}
 				}
 				else{

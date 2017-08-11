@@ -1,7 +1,7 @@
 
 $(function() {
 	//toogleValidation post
-    $('#toggle_validState_post').on('click', function(){
+    $('.toggle_validState_post').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -11,11 +11,11 @@ $(function() {
             success: function(data){
 				if(data.state){
 					if(data.valid){
-						$this.find(".valid_btn").hide();
-						$this.find(".not_valid_btn").show();
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
 					}else{
-						$this.find(".valid_btn").show();
-						$this.find(".not_valid_btn").hide();
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
 					}
 				}
 				else{
@@ -31,7 +31,7 @@ $(function() {
     });	
 	
 	//toogleDeletion post
-    $('#toggle_deleteState_post').on('click', function(){
+    $('.toggle_deleteState_post').on('click', function(){
         var $this = $(this);
         var target = $this.data('target');
         $.ajax({
@@ -41,11 +41,11 @@ $(function() {
             success: function(data){
 				if(data.state){
 					if(data.deleted){
-						$this.find(".delete_btn").hide();
-						$this.find(".not_delete_btn").show();
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
 					}else{
-						$this.find(".delete_btn").show();
-						$this.find(".not_delete_btn").hide();
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
 					}
 				}
 				else{
