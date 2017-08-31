@@ -109,39 +109,6 @@ $(function() {
         });
     });
 	
-    /*
-    *upload avatar for user
-    */
-    $('#avatarfile').on('change', function(){
-		/*console.log("change avatar");*/
-        var $this = $(this);
-        var file = $this[0].files[0];
-        var target = $this.data('target');
-        var data = new FormData();
-		console.log(target);
-        data.append('file', file);
-		//console.log(data);
-		
-        $.ajax({
-            type: 'POST',
-            url: target,
-            data: data,
-            contentType: false,
-            processData: false,
-            dataType : 'json',
-            success: function(data){
-				$("#avatar_banner").attr("src", data.avatar32x32);
-				$("#user_avatar").attr("src", data.avatar116x116);
-				$("#avatar_banner_target").attr("src", data.avatar50x50);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-				console.log(jqXHR.status);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-        });
-    });
-	
 	$('#btn_save_ur_biography').on('click', function(){
 		$("#msg_biography").html("");
         var $this = $(this);
@@ -297,4 +264,135 @@ $(function() {
 		clearTimeout(timeOutIdEnterArray[userinfoid]);
 	});
 	
+	
+	//change avatar open popup
+	$('body').on('click','#change_avatar',function(event){
+		var target = $(this).data("target");
+		
+		var content = "<div style='text-align:center;padding:10px; color:#fff'>Chargement ...</div>";
+		popup(content, 560, true);
+		$.ajax({
+			type: 'POST',
+			url: target,
+			dataType : 'json',
+			success: function(data){
+				if(data.state){
+					content = data.content;
+					$(".popup").html(content);
+					centerBloc($('.popup_content'), $('.popup'));
+				}else{
+					
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+			}
+		});
+		
+    });
+	
+	//delete avatar
+	$('body').on('click','.delete_avatar',function(event){
+		var $this = $(this)
+		var target = $this.data("target");
+		createSpinner();
+		$.ajax({
+			type: 'POST',
+			url: target,
+			dataType : 'json',
+			success: function(data){
+				if(data.state){
+					$this.closest(".avatar_item").remove();
+					if(data.isCurrentAvatar){
+						$("#default_avatar").addClass("active");
+						$("#avatar_banner").attr("src", data.avatar32x32);
+						$("#user_avatar").attr("src", data.avatar116x116);
+						$("#avatar_banner_target").attr("src", data.avatar50x50);
+						
+						$("#avatars_wrapper").animate({ scrollTop: 0}, 500);
+					}
+					destroySpinner();
+				}else{
+					alert("Une erreur est survenue");
+					destroySpinner();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				destroySpinner();
+			}
+		});
+		
+    });
+	
+    /*
+    *select avatar
+    */
+    $('body').on('click','.user_avatar_popup',function(event){
+        var $this = $(this);
+        var target = $this.data('target');
+		
+		createSpinner();
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				$(".avatar_item").removeClass("active");
+				$this.closest(".avatar_item").addClass("active");
+				$("#avatar_banner").attr("src", data.avatar32x32);
+				$("#user_avatar").attr("src", data.avatar116x116);
+				$("#avatar_banner_target").attr("src", data.avatar50x50);
+				destroySpinner();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				destroySpinner();
+			}
+        });
+    });
+	
+    /*
+    *upload avatar for user
+    */
+	$('body').on('change','#avatarfile',function(event){
+        var $this = $(this);
+        var file = $this[0].files[0];
+        var target = $this.data('target');
+        var data = new FormData();
+		console.log(target);
+        data.append('file', file);
+		
+		createSpinner();
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$(".avatar_item").removeClass("active");
+					$("#avatars_wrapper").append(data.avatarItemContent);
+					
+					$("#avatar_banner").attr("src", data.avatar32x32);
+					$("#user_avatar").attr("src", data.avatar116x116);
+					$("#avatar_banner_target").attr("src", data.avatar50x50);
+					
+					destroySpinner();
+					$("#avatars_wrapper").animate({ scrollTop: $('#avatars_wrapper').prop("scrollHeight")}, 500);
+				}else{
+					destroySpinner();
+					alert("Une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				destroySpinner();
+			}
+        });
+    });
 });

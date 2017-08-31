@@ -24,3 +24,83 @@
 	color:#000;
 	background:#fff;
 }
+
+#change_avatar{
+	cursor:pointer
+}
+
+#change_avatar:hover #change_avatar_label{
+	display:block;
+}
+
+#change_avatar_label{
+	width:122px; 
+	position:absolute;
+	text-align:center; 
+	margin-top: 80px;
+	display:none;
+}
+
+#change_avatar_label span{
+	display:inline-block; 
+	background:rgba(255,255,255,0.9); 
+	border: 1px solid #aaa; 
+	padding: 4px; 
+	border-radius: 3px
+}
+
+#avatar_wrapper{
+	width:116px; 
+	height:116px; 
+	overflow:hidden; 
+	border-radius: 50% 50%; 
+	border: 3px solid #ddd;
+	background:#ddd;
+	margin-top: -35px
+}
+
+#user_avatar{
+	width: 116px; 
+	height: 116px
+}
+
+#avatars_wrapper{
+	height: 267px; 
+	overflow:auto; 
+	margin: 5px 0; 
+	text-align:center
+}
+
+#avatars_wrapper .avatar_item{
+	display:inline-block; 
+	border: 4px solid #eee; 
+	margin:2px;
+	border-radius:5px
+}
+
+#avatars_wrapper .avatar_item.active{
+	border-color: #666;
+}
+
+#avatars_wrapper .user_avatar_popup{
+	cursor:pointer;
+	display:block;
+	width: 116px; 
+	height: 116px;
+	margin-top:-16px;
+	border-radius:0px
+}
+
+#avatars_wrapper .user_avatar_popup.default{
+	
+	margin-top:0px
+}
+
+#avatars_wrapper .delete_avatar{
+	cursor:pointer; 
+	display:block;
+	position:relative;
+	width:16px; 
+	height:auto; 
+	margin-left:100px
+}

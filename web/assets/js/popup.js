@@ -3,7 +3,7 @@ var button_closable = $('.button_closable');
 var popup_content = $('.popup_content');
 var popup_content_closable = $('.popup_content_closable');
 var popupw = $('.popup');
-var zIndex = 10000;
+var zIndex = 5000;
 
 function popup(content, width, closable = true, background = 'rgba(0,0,0,0.5)'){
 	console.log("create popup");

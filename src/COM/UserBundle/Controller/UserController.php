@@ -374,6 +374,201 @@ class UserController extends Controller
 		
     }
 
+	public function modifyAvatarPopupAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        $avatarRepository = $em->getRepository('COMUserBundle:Avatar');
+		
+		$user = $this->getUser();
+		$avatars = $avatarRepository->findBy(array('user' => $user));
+		$currentAvatar = $avatarRepository->findOneBy(array(
+			'user' => $user,
+			'currentAvatar' => true,
+		));
+		
+        $response = new Response();
+
+		$content = $this->renderView('COMUserBundle:user:modify_avatar_popup.html.twig', array(
+			'avatars' => $avatars,
+			'currentAvatar' => $currentAvatar,
+		));
+			
+		$response->setContent(json_encode(array(
+			'state' => 1,
+			'content' => $content,
+		)));
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function selectAvatarAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        $avatarRepository = $em->getRepository('COMUserBundle:Avatar');
+		
+		$user = $this->getUser();
+		
+		$response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($user){
+			if($id == 0){
+				$avatars = $avatarRepository->findBy(array('user' => $user));
+
+				foreach ($avatars as $userAvatar) {
+					$userAvatar->setCurrentAvatar(false);
+					$em->persist($userAvatar);
+				}
+				$em->flush();
+				
+				$defaultAvatarPath = 'default/images/user/avatar/default.jpeg';
+				$avatar32x32 = $this->renderView('COMUserBundle:user:include/avatar32x32.html.twig', array(
+				  'avatarPath' => $defaultAvatarPath
+				));
+				
+				$avatar116x116 = $this->renderView('COMUserBundle:user:include/avatar116x116.html.twig', array(
+				  'avatarPath' => $defaultAvatarPath
+				));
+				
+				$avatar50x50 = $this->renderView('COMUserBundle:user:include/avatar50x50.html.twig', array(
+				  'avatarPath' => $defaultAvatarPath
+				));
+				
+				
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'avatar32x32' => $avatar32x32,
+					'avatar116x116' => $avatar116x116,
+					'avatar50x50' => $avatar50x50,
+				)));
+			}else{
+				$avatar = $avatarRepository->find($id);
+				
+				if($avatar && $user->getId() == $avatar->getUser()->getId()){
+					$avatars = $avatarRepository->findBy(array('user' => $user));
+					
+					foreach ($avatars as $userAvatar) {
+						$userAvatar->setCurrentAvatar(false);
+						$em->persist($userAvatar);
+					}
+					
+					$avatar->setCurrentAvatar(true);
+					
+					$em->persist($avatar);
+					$em->flush();
+					
+					$avatar32x32 = $this->renderView('COMUserBundle:user:include/avatar32x32.html.twig', array(
+					  'avatarPath' => $avatar->getWebPath()
+					));
+					
+					$avatar116x116 = $this->renderView('COMUserBundle:user:include/avatar116x116.html.twig', array(
+					  'avatarPath' => $avatar->getWebPath()
+					));
+					
+					$avatar50x50 = $this->renderView('COMUserBundle:user:include/avatar50x50.html.twig', array(
+					  'avatarPath' => $avatar->getWebPath()
+					));
+					
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'avatar32x32' => $avatar32x32,
+						'avatar116x116' => $avatar116x116,
+						'avatar50x50' => $avatar50x50,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function deleteAvatarAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+        $avatarRepository = $em->getRepository('COMUserBundle:Avatar');
+		
+		$user = $this->getUser();
+		$avatar = $avatarRepository->find($id);
+		
+        $response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($user && $avatar){
+			if($user->getId() == $avatar->getUser()->getId()){
+				$avatarId = $avatar->getId();
+				$em->remove($avatar);
+				$em->flush();
+				
+				$currentAvatar = $avatarRepository->findOneBy(array(
+					'user' => $user,
+					'currentAvatar' => true,
+				));
+				
+				if($currentAvatar){
+					$avatar32x32 = $this->renderView('COMUserBundle:user:include/avatar32x32.html.twig', array(
+					  'avatarPath' => $currentAvatar->getWebPath()
+					));
+					
+					$avatar116x116 = $this->renderView('COMUserBundle:user:include/avatar116x116.html.twig', array(
+					  'avatarPath' => $currentAvatar->getWebPath()
+					));
+					
+					$avatar50x50 = $this->renderView('COMUserBundle:user:include/avatar50x50.html.twig', array(
+					  'avatarPath' => $currentAvatar->getWebPath()
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'avatarId' => $avatarId,
+						'avatar32x32' => $avatar32x32,
+						'avatar116x116' => $avatar116x116,
+						'avatar50x50' => $avatar50x50,
+						'isCurrentAvatar' => false,
+					)));
+				}else{
+					$defaultAvatarPath = 'default/images/user/avatar/default.jpeg';
+					$avatar32x32 = $this->renderView('COMUserBundle:user:include/avatar32x32.html.twig', array(
+					  'avatarPath' => $defaultAvatarPath
+					));
+					
+					$avatar116x116 = $this->renderView('COMUserBundle:user:include/avatar116x116.html.twig', array(
+					  'avatarPath' => $defaultAvatarPath
+					));
+					
+					$avatar50x50 = $this->renderView('COMUserBundle:user:include/avatar50x50.html.twig', array(
+					  'avatarPath' => $defaultAvatarPath
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'avatarId' => $avatarId,
+						'avatar32x32' => $avatar32x32,
+						'avatar116x116' => $avatar116x116,
+						'avatar50x50' => $avatar50x50,
+						'isCurrentAvatar' => true,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
 	public function modifyAvatarAction()
     {
         
@@ -385,8 +580,13 @@ class UserController extends Controller
         
         $formAvatar = $this->get('form.factory')->create(new AvatarType, $avatar);
         $formAvatar->handleRequest($this->getRequest());
-
-        if ($formAvatar->isValid()) {
+		
+		$response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+        if ($user && $formAvatar->isValid()) {
             $avatars = $avatarRepository->findBy(array('user' => $user));
             
             foreach ($avatars as $userAvatar) {
@@ -413,22 +613,20 @@ class UserController extends Controller
 			  'avatarPath' => $avatar->getWebPath()
 			));
 			
-			$response = new Response();
+            $avatarItemContent = $this->renderView('COMUserBundle:user:include/avatar_item.html.twig', array(
+			  'avatar' => $avatar,
+			  'classActive' => 'active'
+			));
+			
             $response->setContent(json_encode(array(
                 'state' => 1,
-                'avatar32x32' => $avatar32x32,
-                'avatar116x116' => $avatar116x116,
-                'avatar50x50' => $avatar50x50,
+                'avatar32x32' 		=> $avatar32x32,
+                'avatar116x116'	 	=> $avatar116x116,
+                'avatar50x50' 		=> $avatar50x50,
+                'avatarItemContent' => $avatarItemContent,
             )));
-            $response->headers->set('Content-Type', 'application/json');
-            
-            return $response;
         }
 
-        $response = new Response();
-		$response->setContent(json_encode(array(
-			'state' => 0,
-		)));
 		$response->headers->set('Content-Type', 'application/json');
 		
 		return $response;

@@ -62,13 +62,16 @@
 							</a>
 						</div>
 						{% if categories | length != 0 %}
-							<div id="sl_view_categories" style="margin:5px 0;margin-left: 120px;">
+							<div id="sl_view_categories" style="margin-left: 120px;">
+								<a href="{{ path('com_school_categories') }}" style="">
+									<img src="{{ asset('assets/image/category_icon.png')  }}" style="width:22px; height:22px;display: inline-block;margin-right:4px; vertical-align:middle" />
+								</a><!--
 								{% for category in categories %}
-									<a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="">
+									--><a href="{{ path('com_school_category_view', {'slug': category.slug}) }}" style="display: inline-block; background: #bbb; padding: 2px 6px; margin: 4px; border-radius: 6px; vertical-align:middle">
 										{{ category.defaultName }}
-									</a> 
+									</a><!-- 
 								{% endfor %}
-							</div> 
+							--></div> 
 						{% endif %}
 					</div> 
 					<div id="sl_view_description">

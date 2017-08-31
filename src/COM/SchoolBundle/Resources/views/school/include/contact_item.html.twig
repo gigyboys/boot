@@ -13,47 +13,33 @@
 					<div>phone : {{ schoolContact.phone }}</div>
 				{% endif %}
 				{% if schoolContact.website | trim != "" %}
-					<div>website : {{ schoolContact.website }}</div>
+					<div>website : <a target="_blank" href="http://{{ schoolContact.website }}">{{ schoolContact.website }}</a></div>
 				{% endif %}
 				
+				{#
 				{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
 					<div>longitude : {{ schoolContact.longitude }} latitude : {{ schoolContact.latitude }}</div>
 				{% endif %}
+				#}
 				
 				{# twig extension #}
 				{% set schoolContactTranslate = getSchoolContactTranslate(schoolContact, locale) %}
 				
 				{% if schoolContactTranslate %}
 					{% if schoolContactTranslate.description | trim != "" %}
-						<div class="pd_5 mg_t5" style="border:1px solid #eee; background:#d7e7fe; border-radius:3px">{{ schoolContactTranslate.description }}</div>
+						<div class="pd_5 mg_v5" style="border:1px solid #eee; background:#d8e8fe; border-radius:3px">{{ schoolContactTranslate.description }}</div>
 					{% endif %}
 				{% endif %}
 			</div>
 			{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
-				<div>Show map</div>
+				<div class="btn_show_map standar_button" data-latitude="{{ schoolContact.latitude }}" data-longitude="{{ schoolContact.longitude }}" data-label="{{ schoolContact.address }}" style="cursor:pointer; margin: 5px 0" >
+					<img src="{{ asset('assets/image/location_icon.png')  }}" style="width:12px; height:12px;" /> 
+					Show on map
+				</div>
 			{% endif %}
 				
 		</div>
 		{% if schoolContact.longitude | trim != "" or schoolContact.latitude | trim != "" %}
-			<script type="text/javascript">
-				/*$(function() {
-					var map{{ schoolContact.id }};
-					map{{ schoolContact.id }} = new GMaps({
-						el: '#map_contact_{{ schoolContact.id }}',
-						lat: {{ schoolContact.longitude }},
-						lng: {{ schoolContact.latitude }},
-						zoomControl : true,
-						zoomControlOpt: {
-							style : 'SMALL',
-							position: 'TOP_LEFT'
-						},
-						panControl : false,
-						streetViewControl : false,
-						mapTypeControl: false,
-						overviewMapControl: false
-					});
-				});*/
-			 </script>
 		{% endif %}
 	</div>
 </div>

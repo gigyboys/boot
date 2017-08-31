@@ -282,4 +282,36 @@ $(function() {
 	}	
     initTabsl();
 	
+	function initialize(lat, lng, label, bloc) {
+		var mapOptions = {
+			zoom: 15,
+			center: new google.maps.LatLng(lat,lng),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(document.getElementById(bloc), mapOptions);
+		
+		var myLatLng = new google.maps.LatLng(lat,lng);
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			title: label
+		});
+	}
+	
+	$('.btn_show_map').live('click', function() {
+		var latitude = $(this).attr("data-latitude");
+		var longitude = $(this).attr("data-longitude");
+		var label = $(this).attr("data-label");
+		
+		var content = "";
+		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
+			content += '<div id="map_contact" style="height:360px">';
+			content += '</div>';
+		content += '</div>';
+		
+		popup(content, 600, true);
+		initialize(latitude, longitude, label, "map_contact")
+		
+	});
+	
 });

@@ -13,9 +13,18 @@ com_user_set_new_password:
 com_user_set_new_password_token:
     path:     /set-new-password/{user_id}/{token}
     defaults: { _controller: COMUserBundle:User:sendNewPassword }
+com_user_modify_avatar_popup:
+    path:     /user/modify-avatar-popup
+    defaults: { _controller: COMUserBundle:User:modifyAvatarPopup }
 com_user_modify_avatar:
     path:     /user/modify-avatar
     defaults: { _controller: COMUserBundle:User:modifyAvatar }
+com_user_delete_avatar:
+    path:     /user/delete-avatar/{id}
+    defaults: { _controller: COMUserBundle:User:deleteAvatar }
+com_user_select_avatar:
+    path:     /user/select-avatar/{id}
+    defaults: { _controller: COMUserBundle:User:selectAvatar }
 com_user_modify_common:
     path:     /user/modify-common
     defaults: { _controller: COMUserBundle:User:editUserCommon }

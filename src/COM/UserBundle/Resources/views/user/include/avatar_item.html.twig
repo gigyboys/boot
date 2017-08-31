@@ -1,0 +1,4 @@
+<div class="avatar_item {{ classActive }}">
+	<img class="delete_avatar" data-target="{{ path('com_user_delete_avatar', {'id': avatar.id}) }}" src="{{ asset('assets/image/delete_icon.png') }}" alt="x" />
+	<img class="user_avatar_popup" data-target="{{ path('com_user_select_avatar', {'id': avatar.id}) }}" src="{{ avatar.webPath | imagine_filter('116x116') }}" alt="" />
+</div>

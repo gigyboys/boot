@@ -72,6 +72,7 @@ $(function() {
     });
 
     init();
+    init();
 	   
 	a_nav_item.live('click', function(e) {
         //console.log($(this).find('.a_nav_sub_content').html);
