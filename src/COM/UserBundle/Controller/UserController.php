@@ -307,7 +307,7 @@ class UserController extends Controller
 		));
 	}
 	
-    public function profileAction($username)
+    public function profileAction($username, $type)
     {
 		$em = $this->getDoctrine()->getManager();
 		$userRepository = $em->getRepository('COMUserBundle:User');
@@ -324,54 +324,42 @@ class UserController extends Controller
 			'username' => $username,
 		));
 		
-		$schoolSubscriptions = $schoolSubscriptionRepository->findBy(array(
-			'user' => $user,
-		));
-		
-		$type = 'profile';
-        return $this->render('COMUserBundle:user:profile.html.twig', array(
-			'user' => $user,
-			'locale' => $locale,
-			'type' => $type,
-			'schoolSubscriptions' => $schoolSubscriptions,
-		));
-    }
-	
-    public function settingAction($username)
-    {
-		$em = $this->getDoctrine()->getManager();
-		$userRepository = $em->getRepository('COMUserBundle:User');
-		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
-		
-		$schoolSubscriptionRepository = $em->getRepository('COMSchoolBundle:SchoolSubscription');
-		
-		$request = $this->get('request');
-		$shortLocale = $request->getLocale();
-		$locale = $localeRepository->findOneBy(array(
-			'locale' => $shortLocale,
-		));
-		
-		$user = $userRepository->findOneBy(array(
-			'username' => $username,
-		));
-		
-		$schoolSubscriptions = $schoolSubscriptionRepository->findBy(array(
-			'user' => $user,
-		));
-		
-		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') &&  $this->getUser()->getId() == $user->getId()) {
-			$type = 'setting';
-			return $this->render('COMUserBundle:user:profile.html.twig', array(
+		if($user){
+			$schoolSubscriptions = $schoolSubscriptionRepository->findBy(array(
 				'user' => $user,
-				'locale' => $locale,
-				'type' => $type,
-				'schoolSubscriptions' => $schoolSubscriptions,
 			));
-        }else{
-			$url = $this->get('router')->generate('com_user_profile', array('username' => $username));
-			return new RedirectResponse($url);
+			
+			
+			if($type == "profile" || $type == "subscription" || $type == "contribution" ){
+				return $this->render('COMUserBundle:user:profile.html.twig', array(
+					'user' => $user,
+					'locale' => $locale,
+					'type' => $type,
+					'schoolSubscriptions' => $schoolSubscriptions,
+				));
+			}
+			elseif ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') &&  $this->getUser()->getId() == $user->getId()) {
+				$types = array("profile", "setting");
+				if (!in_array($type, $types)) {
+					$type = "profile";
+				}
+				
+				return $this->render('COMUserBundle:user:profile.html.twig', array(
+					'user' => $user,
+					'locale' => $locale,
+					'type' => $type,
+					'schoolSubscriptions' => $schoolSubscriptions,
+				));
+			}else{
+				$url = $this->get('router')->generate('com_user_profile', array(
+					'username' => $username,
+					'type' => 'profile',
+				));
+				return new RedirectResponse($url);
+			}
+		}else{
+			throw new NotFoundHttpException('Page not found');
 		}
-		
     }
 
 	public function modifyAvatarPopupAction()
@@ -735,7 +723,10 @@ class UserController extends Controller
 					$title = 'Profile '.$user->getUsername();
 					
 					$url = $this->get('router')->generate('com_user_profile', array('username' => $user->getUsername()));
-					$urlSetting = $this->get('router')->generate('com_user_profile_setting', array('username' => $user->getUsername()));
+					$urlSetting = $this->get('router')->generate('com_user_profile', array(
+						'username' => $user->getUsername(),
+						'type' => 'setting',
+					));
 					
 					$response->setContent(json_encode(array(
 						'state' => 1,

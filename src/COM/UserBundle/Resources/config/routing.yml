@@ -38,8 +38,7 @@ com_user_info_popup:
     path:     /user/info-popup/{id}
     defaults: { _controller: COMUserBundle:User:infoPopup }
 com_user_profile:
-    path:     /user/{username}
-    defaults: { _controller: COMUserBundle:User:profile }
-com_user_profile_setting:
-    path:     /user/{username}/setting
-    defaults: { _controller: COMUserBundle:User:setting }
+    path:     /user/{username}/{type}
+    defaults:
+        _controller: COMUserBundle:User:profile
+        type: profile

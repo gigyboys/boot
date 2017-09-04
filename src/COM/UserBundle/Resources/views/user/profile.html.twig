@@ -39,7 +39,7 @@
 						<div class="bloc_editable" style="margin-bottom:1px">
 							<div class="bloc_view">
 								<div>
-									<span id="ur_view_name">{{ user.name }}</span>
+									<span id="ur_view_name" style="font-weight:bold">{{ user.name }}</span>
 								</div>
 								<div>
 									<span><img src="{{ asset('assets/image/ur_icon.png')  }}" style="width:12px; height:12px;" /> <span id="ur_view_username">{{ user.username }}</span></span>
@@ -112,10 +112,10 @@
 				<div class="ct">
 					<div style="margin:0 10px">
 						<span class="tab_ur_item{% if type == 'profile' %} selected{% endif %}" id="tab_ur_about" data-title="user profile" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">About</span>  
-						<span class="tab_ur_item" id="tab_ur_school" data-title="schools" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">Schools</span>  
-						<span class="tab_ur_item" id="tab_ur_participation" data-title="participations" data-link="{{ path('com_user_profile', {'username': user.username}) }}" style="">Participations</span>
+						<span class="tab_ur_item{% if type == 'subscription' %} selected{% endif %}" id="tab_ur_school" data-title="schools" data-link="{{ path('com_user_profile', {'username': user.username, 'type' : 'subscription'}) }}" style="">Schools</span>  
+						<span class="tab_ur_item{% if type == 'contribution' %} selected{% endif %}" id="tab_ur_participation" data-title="contribution" data-link="{{ path('com_user_profile', {'username': user.username, 'type' : 'contribution'}) }}" style="">Contributions</span>
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-							<span class="tab_ur_item{% if type == 'setting' %} selected{% endif %}" id="tab_ur_setting" data-title="setting" data-link="{{ path('com_user_profile_setting', {'username': user.username}) }}" style="">Setting</span>
+							<span class="tab_ur_item{% if type == 'setting' %} selected{% endif %}" id="tab_ur_setting" data-title="setting" data-link="{{ path('com_user_profile', {'username': user.username, 'type' : 'setting'}) }}" style="">Setting</span>
 						{% endif %}
 					</div>
 				</div>
@@ -125,7 +125,9 @@
 			<div class="cr">
 				<div class="ct">
 					<div class="pd_10" style="min-height:100px">
+						<div class="pd_v10">Subscription date : {{ user.date | date('Y-m-d') }}</div>
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+							<div class="sp"></div>
 							<div>Biography <span id="msg_biography"></span></div>
 							
 							<div class="bloc_editable" style="margin-bottom:1px">
@@ -146,15 +148,18 @@
 							</div>
 						</div>
 						{% else %}
-							<div>Biography</div>
-							<div>{{ user.biography }}</div>
+							{% if user.biography | trim != "" %}
+								<div class="sp"></div>
+								<div>Biography</div>
+								<div>{{ user.biography }}</div>
+							{% endif %}
 						{% endif %}
 						
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_ur_item" id="content_tab_ur_school" style = "display:none">
+		<div class="content_tab_ur_item" id="content_tab_ur_school" style = "{% if type != 'subscription' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<div class="pd_10"  style="min-height:80px">
@@ -213,7 +218,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_tab_ur_item" id="content_tab_ur_participation" style = "display:none">
+		<div class="content_tab_ur_item" id="content_tab_ur_participation" style = "{% if type != 'contribution' %}display:none{% endif %}">
 			<div class="cr">
 				<div class="ct">
 					<div style="padding:5px; min-height:100px">

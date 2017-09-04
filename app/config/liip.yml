@@ -21,66 +21,6 @@ liip_imagine:
         filter_runtime_action: liip_imagine.controller:filterRuntimeAction
 
     filter_sets:
-        228x152:
-            quality: 100
-            filters:
-                thumbnail: { size: [228, 152], mode: outbound }
-        170x170:
-            quality: 100
-            filters:
-                thumbnail: { size: [170, 170], mode: outbound }
-        263x175:
-            quality: 100
-            filters:
-                thumbnail: { size: [263, 175], mode: outbound }
-        248x165:
-            quality: 100
-            filters:
-                thumbnail: { size: [248, 165], mode: outbound }
-        258x172:
-            quality: 100
-            filters:
-                thumbnail: { size: [258, 172], mode: outbound }
-        100x100:
-            quality: 100
-            filters:
-                thumbnail: { size: [116, 116], mode: outbound }
-        116x116:
-            quality: 100
-            filters:
-                thumbnail: { size: [116, 116], mode: outbound }
-        32x32:
-            quality: 100
-            filters:
-                thumbnail: { size: [32, 32], mode: outbound }
-        36x36:
-            quality: 100
-            filters:
-                thumbnail: { size: [36, 36], mode: outbound }
-        50x50:
-            quality: 100
-            filters:
-                thumbnail: { size: [50, 50], mode: outbound }
-        187x123:
-            quality: 100
-            filters:
-                thumbnail: { size: [187, 123], mode: outbound }
-        765x510:
-            quality: 100
-            filters:
-                thumbnail: { size: [765, 510], mode: outbound }
-        60x60:
-            quality: 100
-            filters:
-                thumbnail: { size: [60, 60], mode: outbound }
-        80x80:
-            quality: 100
-            filters:
-                thumbnail: { size: [80, 80], mode: outbound }
-        140x140:
-            quality: 100
-            filters:
-                thumbnail: { size: [140, 140], mode: outbound }
         20x20:
             quality: 100
             filters:
@@ -89,26 +29,82 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [22, 22], mode: outbound }
+        32x32:
+            quality: 100
+            filters:
+                thumbnail: { size: [32, 32], mode: outbound }
+        36x36:
+            quality: 100
+            filters:
+                thumbnail: { size: [36, 36], mode: outbound }
         40x40:
             quality: 100
             filters:
                 thumbnail: { size: [40, 40], mode: outbound }
+        50x50:
+            quality: 100
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
+        60x60:
+            quality: 100
+            filters:
+                thumbnail: { size: [60, 60], mode: outbound }
+        80x80:
+            quality: 100
+            filters:
+                thumbnail: { size: [80, 80], mode: outbound }
+        100x100:
+            quality: 100
+            filters:
+                thumbnail: { size: [116, 116], mode: outbound }
+        116x116:
+            quality: 100
+            filters:
+                thumbnail: { size: [116, 116], mode: outbound }
+        140x140:
+            quality: 100
+            filters:
+                thumbnail: { size: [140, 140], mode: outbound }
         160x160:
             quality: 100
             filters:
                 thumbnail: { size: [160, 160], mode: outbound }
-        300x100:
+        170x170:
             quality: 100
             filters:
-                thumbnail: { size: [300, 100], mode: outbound }
+                thumbnail: { size: [170, 170], mode: outbound }
+        187x123:
+            quality: 100
+            filters:
+                thumbnail: { size: [187, 123], mode: outbound }
         218x140:
             quality: 100
             filters:
                 thumbnail: { size: [218, 140], mode: outbound }
-        1200x300:
+        228x152:
             quality: 100
             filters:
-                thumbnail: { size: [1200, 300], mode: outbound }
+                thumbnail: { size: [228, 152], mode: outbound }
+        248x165:
+            quality: 100
+            filters:
+                thumbnail: { size: [248, 165], mode: outbound }
+        258x172:
+            quality: 100
+            filters:
+                thumbnail: { size: [258, 172], mode: outbound }
+        263x175:
+            quality: 100
+            filters:
+                thumbnail: { size: [263, 175], mode: outbound }
+        300x100:
+            quality: 100
+            filters:
+                thumbnail: { size: [300, 100], mode: outbound }
+        765x510:
+            quality: 100
+            filters:
+                thumbnail: { size: [765, 510], mode: outbound }
         960x240:
             quality: 100
             filters:
@@ -117,6 +113,10 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [960, 300], mode: outbound }
+        1200x300:
+            quality: 100
+            filters:
+                thumbnail: { size: [1200, 300], mode: outbound }
         # Prototype
         name:
             quality:              100

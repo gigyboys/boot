@@ -150,10 +150,10 @@ class BlogManagerController extends Controller
 					'post' => $post,
 				));
 			}else{
-				throw new NotFoundHttpException('page introuvable');
+				throw new NotFoundHttpException('Page not found');
 			}
 		}else{
-			throw new NotFoundHttpException('page introuvable');
+			throw new NotFoundHttpException('Page not found');
 		}
     }
 	

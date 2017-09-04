@@ -164,7 +164,7 @@
 									<div class="both"></div>
 								</div>
 								<div class="link_wrap">
-									<a class="link" id="ur_setting_link" href="{{ path('com_user_profile_setting', {'username': app.user.username}) }}">
+									<a class="link" id="ur_setting_link" href="{{ path('com_user_profile', {'username': app.user.username, 'type': 'setting'}) }}">
 										<span>{{ 'settings' | trans }}</span>
 									</a>
 								</div>
