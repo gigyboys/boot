@@ -36,7 +36,7 @@
 								{% else %}
 									{% set pathtoavatar='default/images/user/avatar/'~avatar %}
 								{% endif %}
-								<span style="display:block;float:left;"><img id="avatar_banner" style="width:60px; height: 60px" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="{{ app.user.username }}" /></span>
+								<span style="display:block;float:left;"><img style="width:60px; height: 60px; border-radius: 50%" src="{{ pathtoavatar | imagine_filter('60x60') }}" alt="{{ app.user.username }}" /></span>
 							</div>
 							<div style="margin-left:70px">
 								<textarea class="default_textarea" id="fm_message" style="min-height:120px"></textarea>

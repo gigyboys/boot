@@ -276,7 +276,7 @@ $(function() {
     });
 	
 	//delete field
-	$('.delete_field').live('click', function() {
+	$('body').on('click','.delete_field',function(e){
 		var fieldId = $(this).data("id");
 		var fieldDefaultName = $(this).data("defaultname");
 		var fieldTarget = $(this).data("target");
@@ -285,8 +285,8 @@ $(function() {
 		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
 			content += '<div style="text-align:center;padding:10px 0"> Voulez vous effectuer la suppression du fied "'+fieldDefaultName+'"?</div>';
 			content += '<div style="text-align:center">	';
-				content += '<span class="button_closable" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Annuler	</span>';
-				content += '<span class="confirm_delete_field button_closable" data-id="'+fieldId+'" data-target="'+fieldTarget+'" style="background:#888; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Confirmer	</span>	';
+				content += '<span class="button_closable" style="background:#bbb; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Annuler	</span>';
+				content += '<span class="confirm_delete_field button_closable" data-id="'+fieldId+'" data-target="'+fieldTarget+'" style="background:#bbb; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Confirmer	</span>	';
 			content += '</div>';
 		content += '</div>';
         
@@ -464,17 +464,15 @@ $(function() {
     });
 	
 	//confirm delete field
-	$('.confirm_delete_field').live('click', function() {
+	$('body').on('click','.confirm_delete_field',function(e){
 		var $this = $(this);
 		var fieldId = $this.data("id");
         var target = $this.data('target');
 		var data = {
 			id : fieldId
 		};
-		var widthLoadDeleteField = $( "#field_"+data.id ).width()-2;
-		var heightLoadDeleteField = $( "#field_"+data.id ).height()-2;
-		$( "#field_"+data.id ).find(".a_table_cell_id").prepend("<div class=\"load_delete_field\" style=\"position:absolute; text-align:center; height:"+heightLoadDeleteField+"px; width:"+widthLoadDeleteField+"px; background:rgba(255,255,255,0.8)\">Suppression chargement ...</div>");
-        
+
+		createSpinner();
 		$.ajax({
             type: 'POST',
             url: target,
@@ -488,11 +486,13 @@ $(function() {
 				else{
 					alert("une erreur est survenue");
 				}
+				destroySpinner();
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);
 				console.log(textStatus);
 				console.log(errorThrown);
+				destroySpinner();
 			}
         });
     });
@@ -796,5 +796,89 @@ $(function() {
 			}
         });
 		
+    });
+	
+	
+	//tooglePublishState
+	$('body').on('click','.toggle_publishState_field, .toggle_publishState_contact',function(e){
+        var $this = $(this);
+        var target = $this.data('target');
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					if(data.published){
+						$this.find(".greenstate").hide();
+						$this.find(".redstate").show();
+					}else{
+						$this.find(".greenstate").show();
+						$this.find(".redstate").hide();
+					}
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });		
+    });
+	
+	//delete contact
+	$('body').on('click','.delete_school_contact',function(e){
+		var id = $(this).data("id");
+		var defaultname = $(this).data("defaultname");
+		var target = $(this).data("target");
+		
+		var content = "";
+		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
+			content += '<div style="text-align:center;padding:10px 0"> Voulez vous effectuer la suppression du contact "'+defaultname+'"?</div>';
+			content += '<div style="text-align:center">	';
+				content += '<span class="button_closable" style="background:#bbb; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Annuler	</span>';
+				content += '<span class="confirm_delete_school_contact button_closable" data-id="'+id+'" data-target="'+target+'" style="background:#bbb; border-radius: 3px; cursor:pointer; display:inline-block; margin:auto; padding:5px;margin:5px">	Confirmer	</span>	';
+			content += '</div>';
+		content += '</div>';
+        
+		popup(content, 500, true);
+		
+    });
+	
+	//confirm delete contact
+	$('body').on('click','.confirm_delete_school_contact',function(e){
+		var $this = $(this);
+		var id = $this.data("id");
+        var target = $this.data('target');
+		var data = {
+			id : id
+		};
+
+		createSpinner();
+		$.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.state);
+				if(data.state){
+					$( "#contact_"+data.id ).remove();
+				}
+				else{
+					alert("une erreur est survenue");
+				}
+				destroySpinner();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				destroySpinner();
+			}
+        });
     });
 });

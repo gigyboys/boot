@@ -71,9 +71,9 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> Fields list</span> | 
+		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> {{ "Fields list" | trans }}</span> | 
 		{#<span><a href="{{ path('com_admin_school_field_add', {'school_id': school.id}) }}">New field</a></td></span> | #}
-		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer"> <img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" />  Add field</span>
+		<span class="add_field_btn" data-target="{{ path('com_admin_school_field_add_ajax', {'school_id': school.id}) }}" style="cursor:pointer"> <img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" /> {{ "Add field" | trans }}</span>
 	</div>
 	
 	<div class="a_datatable">
@@ -86,7 +86,6 @@
 			</div>
 		</div>
 		
-		
 		<div class="a_datatable_body">
 			<table class="a_table" id="list_fields">
 				<tr class="a_table_head">
@@ -96,7 +95,7 @@
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for field in fields %}
-					<tr class="a_table_line field_item" id="field_{{ field.id }}" data-text="{{ field.defaultName }}" style="display:table-row">
+					<tr class="a_table_line field_item" id="field_{{ field.id }}" data-text="{{ field.defaultName }}" style="display:table-row; position:relative:z-index:0">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">
 							<div>{{ field.id }}</div>
 						</td>
@@ -104,19 +103,25 @@
 							<a href="{{ path('com_admin_school_field_edit', {'field_id': field.id}) }}">{{ field.defaultName }}</a>
 						</td>
 						<td>
-							{% if field.published %}
-								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#0c0"></span>
-							{% else %}
-								<span style="display:inline-block;width:16px;height:16px;border-radius:50% 50%; background:#c00"></span>
-							{% endif %}
+							<span class="toggle_publishState_field" data-target="{{ path('com_admin_school_field_toogle_publication', {'field_id': field.id}) }}">
+								{% if field.published %}
+									<span class="greenstate" style="display:none"><span class="greenpastille"></span></span>
+									<span class="redstate"><span class="redpastille"></span></span>
+								{% else %}
+									<span class="greenstate"><span class="greenpastille"></span></span>
+									<span class="redstate" style="display:none"><span class="redpastille"></span></span>
+								{% endif %}
+							</span>
 						</td>
 						<td class="a_table_cell_action">
-							<span class="dd" style="display:inline-block;">
+							<span class="dd" style="display:inline-block;position:relative">
 								<span href="#" class="dd_src" style="cursor:pointer">
 									action
 								</span>
-								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-									<span class="delete_field" data-id="{{ field.id }}" data-target="{{ path('com_admin_school_field_delete', {'id': field.id}) }}" data-defaultname="{{ field.defaultName }}" style="cursor:pointer; white-space: nowrap;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Supprimer</span>
+								<div class="dd_target" style="z-index:1;text-align: left; margin-top: 0px; position: absolute; display: none; background: #eee; padding: 0px; border: 1px solid #aaa; border-radius: 4px;">
+									<div style="padding: 4px;">
+										<span class="delete_field" data-id="{{ field.id }}" data-target="{{ path('com_admin_school_field_delete', {'id': field.id}) }}" data-defaultname="{{ field.defaultName }}" style="cursor:pointer; white-space: nowrap;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Supprimer</span>
+									</div>
 								</div>
 							</span> 
 						</td>

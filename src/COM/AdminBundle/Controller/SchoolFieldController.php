@@ -65,7 +65,7 @@ class SchoolFieldController extends Controller
 				$fieldTranslate->setField($field);
 				$fieldTranslate->setLocale($locale);
 				$fieldTranslate->setName($field->getDefaultName());
-				$fieldTranslate->setDescription($locale->getLocale().". Description .".$field->getDefaultName());
+				$fieldTranslate->setDescription("");
 				$em->persist($fieldTranslate);
 			}
 			
@@ -239,6 +239,39 @@ class SchoolFieldController extends Controller
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'id' => $id,
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function tooglePublicationFieldAction($field_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$fieldRepository = $em->getRepository('COMSchoolBundle:Field');
+        
+        $field = $fieldRepository->find($field_id);
+		
+        $response = new Response();
+		
+		if ($field) {
+			if($field->getPublished() == true){
+				$field->setPublished(false) ;
+			}else{
+				$field->setPublished(true) ;
+			}
+            
+			$em->persist($field);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'published' => $field->getPublished(),
             )));
 		}else{
             $response->setContent(json_encode(array(

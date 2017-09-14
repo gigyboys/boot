@@ -215,3 +215,18 @@
 		</div>
 	</div>
 {% endblock %}
+
+{% block body_footer %}
+	<div style="padding-top: 8px">
+		<span class="toggle_publishState_field" data-target="{{ path('com_admin_school_field_toogle_publication', {'field_id': field.id}) }}">
+			{% if field.published %}
+				<span class="greenstate" style="display:none"><span class="greenpastille"></span> <span>publish</span></span>
+				<span class="redstate"><span class="redpastille"></span> <span>don't publish</span></span>
+			{% else %}
+				<span class="greenstate"><span class="greenpastille"></span> <span>publish</span></span>
+				<span class="redstate" style="display:none"><span class="redpastille"></span> <span>don't publish</span></span>
+			{% endif %}
+		</span>
+	</div> 
+{% endblock %}
+

@@ -142,7 +142,7 @@
 }
 
 /* green and red state */
-.toggle_publishState_post, .toggle_showAuthorState_post, .toggle_validState_post, .toggle_deleteState_post, .toggle_publishState {
+.toggle_publishState_post, .toggle_showAuthorState_post, .toggle_validState_post, .toggle_deleteState_post, .toggle_publishState, .toggle_publishState_field , .toggle_publishState_contact {
 	cursor:pointer; 
 	display:inline-block
 }

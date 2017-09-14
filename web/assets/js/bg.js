@@ -251,8 +251,7 @@ $(function() {
 			}
         });	
     });
-	
-	
+
 	
 	//add new post
 	$('body').on('click','#btn_create_post',function(event){

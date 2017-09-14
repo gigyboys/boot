@@ -9,6 +9,9 @@ com_school_home:
 com_school_add_evaluation:
     path:     /add-evaluation/{id}
     defaults: { _controller: COMSchoolBundle:School:addEvaluation }
+com_school_get_map_coordonnees:
+    path:     /{slug}/get-map-coordonnees
+    defaults: { _controller: COMSchoolBundle:School:getMapCoordonnees }
 com_school_toggle_subscription:
     path:     /school/{school_id}/toggle-subscription
     defaults: { _controller: COMSchoolBundle:School:toogleSubscription }

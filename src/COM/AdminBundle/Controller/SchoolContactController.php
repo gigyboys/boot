@@ -65,6 +65,7 @@ class SchoolContactController extends Controller
 			$schoolContact->setLongitude("");
 			$schoolContact->setLatitude("");
 			$schoolContact->setShowmap(true);
+			$schoolContact->setPublished(false);
 			
 			$em->persist($schoolContact);
 			$em->flush();
@@ -177,6 +178,75 @@ class SchoolContactController extends Controller
             $response->setContent(json_encode(array(
                 'state' => 1,
                 'description' => $schoolContactTranslate->getDescription(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+    public function tooglePublicationContactAction($contact_id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$contactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
+        
+        $contact = $contactRepository->find($contact_id);
+		
+        $response = new Response();
+		
+		if ($contact) {
+			if($contact->getPublished() == true){
+				$contact->setPublished(false) ;
+			}else{
+				$contact->setPublished(true) ;
+			}
+            
+			$em->persist($contact);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'published' => $contact->getPublished(),
+            )));
+		}else{
+            $response->setContent(json_encode(array(
+                'state' => 0,
+            )));
+		}
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	/*
+	 * School contact delete
+	 */
+    public function deleteContactAction($id, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$contactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
+		$contactTranslateRepository = $em->getRepository('COMSchoolBundle:SchoolContactTranslate');
+        
+        $schoolContact = $contactRepository->find($id);
+
+        $response = new Response();
+
+		if ($schoolContact) {
+			$contactTranslates = $contactTranslateRepository->findBy(array(
+                'schoolContact' => $schoolContact,
+            ));
+			foreach($contactTranslates as $contactTranslate){
+				$em->remove($contactTranslate);
+			}
+			$em->remove($schoolContact);
+            $em->flush();
+
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'id' => $id,
             )));
 		}else{
             $response->setContent(json_encode(array(

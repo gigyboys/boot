@@ -75,6 +75,13 @@ class SchoolContact
      * @ORM\Column(name="showmap", type="boolean")
      */
     private $showmap;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
 
 
     /**
@@ -269,5 +276,30 @@ class SchoolContact
     public function getShowmap()
     {
         return $this->showmap;
+    }
+
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return SchoolContact
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

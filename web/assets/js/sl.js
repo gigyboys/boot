@@ -282,26 +282,50 @@ $(function() {
 	}	
     initTabsl();
 	
-	function initialize(lat, lng, label, bloc) {
+	
+	function showMapContact(coords, bloc) {
+		var centerLat = 0;
+		var centerLng = 0;
+		var zoom = 13;
+		var coordsLength = coords.length;
+		
+		if(coordsLength > 1){
+			zoom = 6;
+		}
+		
+		for(var i = 0; i < coordsLength; i++ ){
+			var coord = coords[i];
+			centerLat += coord.latitude / coordsLength;
+			centerLng += coord.longitude / coordsLength;
+		}
+		
 		var mapOptions = {
-			zoom: 15,
-			center: new google.maps.LatLng(lat,lng),
+			zoom: zoom,
+			center: new google.maps.LatLng(centerLat,centerLng),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		var map = new google.maps.Map(document.getElementById(bloc), mapOptions);
 		
-		var myLatLng = new google.maps.LatLng(lat,lng);
-		var marker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			title: label
-		});
+		var markers = [];
+		for(var i = 0; i < coordsLength; i++ ){
+			var coord = coords[i];
+			var myLatLng = new google.maps.LatLng(coord.latitude,coord.longitude);
+			markers[i] = new google.maps.Marker({
+				position: myLatLng,
+				title: coord.label
+			});
+			markers[i].setMap(map);
+		}
 	}
 	
 	$('.btn_show_map').live('click', function() {
-		var latitude = $(this).attr("data-latitude");
-		var longitude = $(this).attr("data-longitude");
-		var label = $(this).attr("data-label");
+		$this = $(this);
+		var coords = [];
+		coords.push({
+			latitude : $this.attr("data-latitude"),
+			longitude : $this.attr("data-longitude"),
+			label : $this.attr("data-label")
+		});
 		
 		var content = "";
 		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
@@ -309,9 +333,40 @@ $(function() {
 			content += '</div>';
 		content += '</div>';
 		
-		popup(content, 600, true);
-		initialize(latitude, longitude, label, "map_contact")
+		popup(content, 650, true);
+		showMapContact(coords, "map_contact");
 		
 	});
+	
+	//show all contact with coord gps on map
+	$('body').on('click','#btn_show_map_contacts',function(event){
+		var target = $(this).data("target");
+		
+		var content = "<div style='text-align:center;padding:10px; color:#fff'>Chargement ...</div>";
+		popup(content, 650, true);
+		
+		$.ajax({
+			type: 'POST',
+			url: target,
+			dataType : 'json',
+			success: function(data){
+				if(data.state){
+					var content = "";
+					content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
+						content += '<div id="map_contact" style="height:360px">';
+						content += '</div>';
+					content += '</div>';
+					$(".popup").html(content);
+					showMapContact(data.coords, "map_contact");
+					centerBloc($('.popup_content'), $('.popup'));
+				}else{
+					
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+			}
+		});
+		
+    });
 	
 });

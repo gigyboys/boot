@@ -293,10 +293,24 @@ class SchoolController extends Controller
 		
 		$schoolContacts = $schoolContactRepository->findBy(array(
 			'school' => $school,
+			'published' => true,
 		));
 		
+		$coords = array();
+		foreach($schoolContacts as $schoolContact){
+			if(trim($schoolContact->getLatitude()) != "" && trim($schoolContact->getLongitude()) != ""){
+				array_push($coords, array(
+					"id" 			=> $schoolContact->getId(),
+					"latitude"		=> $schoolContact->getLatitude(),
+					"longitude"		=> $schoolContact->getLongitude(),
+					"label"		=> $schoolContact->getAddress(),
+				));
+			}
+		}
+		
 		$fields = $fieldRepository->findBy(array(
-			'school' => $school
+			'school' => $school,
+			'published' => true,
 		));
 		foreach($fields as $field){
 			$schoolService->hydrateFieldLang($field, $locale);
@@ -317,6 +331,7 @@ class SchoolController extends Controller
 			'evaluations' 		=> $evaluations,
 			'myEvaluation' 		=> $myEvaluation,
 			'schoolContacts'	=> $schoolContacts,
+			'coords'			=> $coords,
 			'locale' 			=> $locale,
 			'fields' 			=> $fields,
 			'entityView' 		=> 'school',
@@ -456,6 +471,61 @@ class SchoolController extends Controller
             )));
 		}
         $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+	
+	/*
+	*return map coordonnees
+	*/
+    public function getMapCoordonneesAction($slug, Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+		$schoolContactRepository = $em->getRepository('COMSchoolBundle:SchoolContact');
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		
+		
+		$shortLocale = $request->getLocale();
+		$locale = $localeRepository->findOneBy(array(
+			'locale' => $shortLocale,
+		));
+		
+		$school = $schoolRepository->findOneBy(array(
+			'slug' => $slug,
+		));
+		$schoolService = $this->container->get('com_school.school_service');
+		
+		
+		$schoolContacts = $schoolContactRepository->findBy(array(
+			'school' => $school,
+			'published' => true,
+		));
+		
+		
+		$platformService = $this->container->get('com_platform.platform_service');
+		$response = new Response();
+		
+		$coords = array();
+		foreach($schoolContacts as $schoolContact){
+			if(trim($schoolContact->getLatitude()) != "" && trim($schoolContact->getLongitude()) != ""){
+				$label = $schoolContact->getSchool()->getName()." - ".$schoolContact->getAddress();
+				array_push($coords, array(
+					"id" 			=> $schoolContact->getId(),
+					"latitude"		=> $schoolContact->getLatitude(),
+					"longitude"		=> $schoolContact->getLongitude(),
+					"label"			=> $label,
+				));
+			}
+		}
+
+		$response->setContent(json_encode(array(
+			'state' => 1,
+			'schoolId' => $school->getId(),
+			'coords' => $coords,
+		)));
+
+		
+		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
 }

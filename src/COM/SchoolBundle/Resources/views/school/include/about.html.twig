@@ -33,10 +33,10 @@
 				{# fields #}
 				{% if fields %}
 					{% for field in fields %}
-						<div>
+						<div style="font-weight:bold">
 							{{ field.defaultName }}
 						</div>
-						<div style="display:none">
+						<div style="display:block">
 							{{ field.description | raw }}
 						</div>
 					{% endfor %}

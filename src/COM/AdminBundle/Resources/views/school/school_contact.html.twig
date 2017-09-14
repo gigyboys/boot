@@ -71,40 +71,55 @@
 	</div>
 	
 	<div style="background:#ddd; padding: 5px; margin:5px; border:1px solid #bbb">
-		Contact list | <span><a href="{{ path('com_admin_school_contact_add', {'school_id': school.id}) }}">New contact</a></td></span>
+		<span><img src="{{ asset('assets/image/list_icon.png') }}" style="width:12px; height:auto" /> {{ "Contact list" | trans }}</span> 
+		 | 
+		 <span><a href="{{ path('com_admin_school_contact_add', {'school_id': school.id}) }}"><img src="{{ asset('assets/image/add_icon.png') }}" style="width:12px; height:auto" /> {{ "New contact" | trans }}</a></td></span>
 	</div>
 	
 	<div class="a_datatable">
 		<div class="a_datatable_head">
 			<div class="a_datatable_head_left">
-				left
+				<span style="display:inline-block; margin-top:5px; margin-left:6px"> Search : <input type="text" class="default_input a_list_search_input" data-target-id="list_contacts"/></span>
 			</div>
 			<div class="a_datatable_head_right">
-				right
+				{#right#}
 			</div>
 		</div>
 		
-		
 		<div class="a_datatable_body">
-			<table class="a_table">
+			<table class="a_table" id="list_contacts">
 				<tr class="a_table_head">
 					<th class="a_table_cell_id" style="width: 50px; text-align:center">id</th>
 					<th class="taleft">Address</th>
+					<th class="taleft">Published</th>
 					<th class="a_table_cell_action">action</th>
 				</tr>
 				{% for contact in contacts %}
-					<tr class="a_table_line field_item" id="field_{{ contact.id }}">
+					<tr class="a_table_line field_item" id="contact_{{ contact.id }}" data-text="{{ contact.address }}" style="display:table-row; position:relative:z-index:0">
 						<td class="a_table_cell_id" style="width: 50px; text-align:center">
 							<div>{{ contact.id }}</div>
 						</td>
 						<td><a href="{{ path('com_admin_school_contact_edit', {'contact_id': contact.id}) }}">{{ contact.address }}</a></td>
+						<td>
+							<span class="toggle_publishState_contact" data-target="{{ path('com_admin_school_field_contact_publication', {'contact_id': contact.id}) }}">
+								{% if contact.published %}
+									<span class="greenstate" style="display:none"><span class="greenpastille"></span></span>
+									<span class="redstate"><span class="redpastille"></span></span>
+								{% else %}
+									<span class="greenstate"><span class="greenpastille"></span></span>
+									<span class="redstate" style="display:none"><span class="redpastille"></span></span>
+								{% endif %}
+							</span>
+						</td>
 						<td class="a_table_cell_action">
-							<span class="dd" style="display:inline-block;">
+							<span class="dd" style="display:inline-block;position:relative">
 								<span href="#" class="dd_src" style="cursor:pointer">
 									action
 								</span>
-								<div class="dd_target" style="text-align: left; margin-top: 4px; position: absolute; display: none; background: #eee; padding: 4px; border: 1px solid #aaa; border-radius: 4px;">
-									actions
+								<div class="dd_target" style="z-index:1;text-align: left; margin-top: 0px; position: absolute; display: none; background: #eee; padding: 0px; border: 1px solid #aaa; border-radius: 4px;">
+									<div style="padding: 4px;">
+										<span class="delete_school_contact" data-id="{{ contact.id }}" data-target="{{ path('com_admin_school_contact_delete', {'id': contact.id}) }}" data-defaultname="{{ contact.address }}" style="cursor:pointer; white-space: nowrap;"><img src="{{ asset('assets/image/delete_icon.png') }}" style="width:12px; height:auto" />  Supprimer</span>
+									</div>
 								</div>
 							</span> 
 						</td>
@@ -115,7 +130,7 @@
 		
 		<div class="a_datatable_foot">
 			<div class="a_datatable_foot_left">
-				left
+				<span style="display:inline-block; margin-top:6px; margin-left:6px" class="result_state">{{ contacts | length }} resultat(s)</span>
 			</div>
 			<div class="a_datatable_foot_right">
 				<span>right</span> 

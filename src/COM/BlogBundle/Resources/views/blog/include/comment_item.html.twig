@@ -8,7 +8,7 @@
 				{% set path='default/images/user/avatar/'~avatar %}
 			{% endif %}
 			
-			<img style="width: 60px; height: 60px" src="{{ path | imagine_filter('60x60') }}" alt="{{ comment.user.username }}" />
+			<img style="width: 60px; height: 60px; border-radius: 50%" src="{{ path | imagine_filter('60x60') }}" alt="{{ comment.user.username }}" />
 		</div>
 		<div style="margin-left:70px">
 			<div>
