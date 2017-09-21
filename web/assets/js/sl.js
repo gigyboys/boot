@@ -314,32 +314,13 @@ $(function() {
 				position: myLatLng,
 				title: coord.label
 			});
+			//markers[i].setIcon(coord.icon);
 			markers[i].setMap(map);
 		}
 	}
 	
-	$('.btn_show_map').live('click', function() {
-		$this = $(this);
-		var coords = [];
-		coords.push({
-			latitude : $this.attr("data-latitude"),
-			longitude : $this.attr("data-longitude"),
-			label : $this.attr("data-label")
-		});
-		
-		var content = "";
-		content += '<div style="padding:10px; width:auto; background:#fff; border-radius:3px">';
-			content += '<div id="map_contact" style="height:360px">';
-			content += '</div>';
-		content += '</div>';
-		
-		popup(content, 650, true);
-		showMapContact(coords, "map_contact");
-		
-	});
-	
-	//show all contact with coord gps on map
-	$('body').on('click','#btn_show_map_contacts',function(event){
+	//show contact with coord gps on map
+	$('body').on('click','#btn_show_map_contacts, .btn_show_map',function(event){
 		var target = $(this).data("target");
 		
 		var content = "<div style='text-align:center;padding:10px; color:#fff'>Chargement ...</div>";

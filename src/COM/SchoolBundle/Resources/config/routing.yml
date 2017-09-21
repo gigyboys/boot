@@ -12,6 +12,9 @@ com_school_add_evaluation:
 com_school_get_map_coordonnees:
     path:     /{slug}/get-map-coordonnees
     defaults: { _controller: COMSchoolBundle:School:getMapCoordonnees }
+com_school_get_map_coordonnees_contact:
+    path:     /{slug}/get-map-coordonnees-contact/{contact_id}
+    defaults: { _controller: COMSchoolBundle:School:getMapCoordonneesContact }
 com_school_toggle_subscription:
     path:     /school/{school_id}/toggle-subscription
     defaults: { _controller: COMSchoolBundle:School:toogleSubscription }

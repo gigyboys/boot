@@ -835,4 +835,229 @@ class SchoolController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+
+	public function modifyLogoPopupAction($school_id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $logoRepository = $em->getRepository('COMSchoolBundle:Logo');
+		
+		$school = $schoolRepository->find($school_id);
+		$logos = $logoRepository->findBy(array(
+			'school' => $school
+		));
+		$currentLogo = $logoRepository->findOneBy(array(
+			'school' => $school,
+			'currentLogo' => true,
+		));
+		
+        $response = new Response();
+
+		$content = $this->renderView('COMAdminBundle:school:modify_logo_popup.html.twig', array(
+			'school' => $school,
+			'logos' => $logos,
+			'currentLogo' => $currentLogo,
+		));
+			
+		$response->setContent(json_encode(array(
+			'state' => 1,
+			'content' => $content,
+		)));
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function selectLogoAction($school_id, $logo_id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $logoRepository = $em->getRepository('COMSchoolBundle:Logo');
+		
+		$school = $schoolRepository->find($school_id);
+		
+		$response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($school){
+			if($logo_id == 0){
+				$logos = $logoRepository->findBy(array(
+					'school' => $school
+				));
+
+				foreach ($logos as $logo) {
+					$logo->setCurrentLogo(false);
+					$em->persist($logo);
+				}
+				$em->flush();
+				
+				$defaultLogoPath = 'default/images/school/logo/default.jpeg';
+				
+				$logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+				  'logoPath' => $defaultLogoPath
+				));
+				
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'logo116x116' => $logo116x116,
+				)));
+			}else{
+				$logo = $logoRepository->find($logo_id);
+				
+				if($logo && $school->getId() == $logo->getSchool()->getId()){
+					$logos = $logoRepository->findBy(array(
+						'school' => $school
+					));
+					
+					foreach ($logos as $logoTmp) {
+						$logoTmp->setCurrentLogo(false);
+						$em->persist($logoTmp);
+					}
+					
+					$logo->setCurrentLogo(true);
+					
+					$em->persist($logo);
+					$em->flush();
+					
+					$logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+					  'logoPath' => $logo->getWebPath()
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'logo116x116' => $logo116x116,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function deleteLogoAction($school_id, $logo_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $logoRepository = $em->getRepository('COMSchoolBundle:Logo');
+		
+		$school = $schoolRepository->find($school_id);
+		
+		$logo = $logoRepository->find($logo_id);
+		
+        $response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($school && $logo){
+			if($school->getId() == $logo->getSchool()->getId()){
+				$logoId = $logo->getId();
+				$em->remove($logo);
+				$em->flush();
+				
+				$currentLogo = $logoRepository->findOneBy(array(
+					'school' => $school,
+					'currentLogo' => true,
+				));
+				
+				if($currentLogo){
+				
+					$logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+					  'logoPath' => $currentLogo->getWebPath()
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'logoId' => $logoId,
+						'logo116x116' => $logo116x116,
+						'isCurrentLogo' => false,
+					)));
+				}else{
+					$defaultLogoPath = 'default/images/school/logo/default.jpeg';
+					
+					$logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+					  'logoPath' => $defaultLogoPath
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'logoId' => $logoId,
+						'logo116x116' => $logo116x116,
+						'isCurrentLogo' => true,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function modifyLogoAction($school_id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $logoRepository = $em->getRepository('COMSchoolBundle:Logo');
+		
+		$school = $schoolRepository->find($school_id);
+        
+        $logo = new Logo();
+        
+        $formLogo = $this->get('form.factory')->create(new LogoType, $logo);
+        $formLogo->handleRequest($this->getRequest());
+		
+		$response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+        if ($school && $formLogo->isValid()) {
+            $logos = $logoRepository->findBy(array(
+				'school' => $school
+			));
+            
+            foreach ($logos as $currentLogo) {
+                $currentLogo->setCurrentLogo(false);
+            }
+			
+            $logo->setCurrentLogo(true);
+			
+            $logo->setSchool($school);
+			
+            $em->persist($logo);
+            $em->flush();
+			
+            $logo116x116 = $this->renderView('COMAdminBundle:school:include/logo116x116.html.twig', array(
+			  'logoPath' => $logo->getWebPath()
+			));
+			
+            $logoItemContent = $this->renderView('COMAdminBundle:school:include/logo_item.html.twig', array(
+			  'school' => $school,
+			  'logo' => $logo,
+			  'classActive' => 'active'
+			));
+			
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'logo116x116'	 	=> $logo116x116,
+                'logoItemContent' => $logoItemContent,
+            )));
+        }
+
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
+    }
+	
 }

@@ -12,6 +12,18 @@ com_admin_school_add:
 com_admin_school_edit:
     path:     /school/edit-school/{id}
     defaults: { _controller: COMAdminBundle:School:editSchool }
+com_admin_school_modify_logo_popup:
+    path:     /school/modify-logo-popup/{school_id}
+    defaults: { _controller: COMAdminBundle:School:modifyLogoPopup }
+com_admin_school_select_logo:
+    path:     /school/select-logo/{school_id}/{logo_id}
+    defaults: { _controller: COMAdminBundle:School:selectLogo }
+com_admin_school_delete_logo:
+    path:     /user/delete-logo/{school_id}/{logo_id}
+    defaults: { _controller: COMAdminBundle:School:deleteLogo }
+com_admin_school_modify_logo:
+    path:     /user/modify-logo/{school_id}
+    defaults: { _controller: COMAdminBundle:School:modifyLogo }
 com_admin_school_change_logo:
     path:     /school/change-logo/{school_id}
     defaults: { _controller: COMAdminBundle:School:changeLogo }

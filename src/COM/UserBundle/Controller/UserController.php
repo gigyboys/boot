@@ -584,7 +584,6 @@ class UserController extends Controller
             $avatar->setCurrentAvatar(true);
 			
             $avatar->setUser($user);
-            $avatar->setCurrentAvatar(true);
 			
             $em->persist($avatar);
             $em->flush();

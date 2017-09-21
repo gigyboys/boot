@@ -42,7 +42,7 @@
 	</div>
 	
 	<div style="">
-		<div style="float:left; height: 122px;margin:5px">
+		<div id="change_logo" data-target="{{ path('com_admin_school_modify_logo_popup', {'school_id': school.id})}}" style="float:left; height: 122px;margin:5px;cursor:pointer">
 			{# twig extension #}
 			{% set logo=schoolLogo(school) %}
 			{% if logo != "default.jpeg" %}
@@ -51,7 +51,7 @@
 				{% set pathtologo='default/images/school/logo/'~logo %}
 			{% endif %}
 			
-			<label for="logofile">
+			<label for="logofile2">
 				<img id="school_logo" style="width: 116px; height: 116px" src="{{ pathtologo | imagine_filter('116x116') }}" alt="img sl" />
 			</label>
 			<input style="display:none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_change_logo', {'school_id': school.id}) }}" /> 
@@ -60,7 +60,7 @@
 		
 			<div style="border:1px solid transparent; margin:5px; border-radius:4px">
 				<div style="border-bottom:1px solid #ccc;padding:5px">
-					<label for="coverfile">
+					<label for="coverfile2">
 						<span style="cursor:pointer">Change cover ...</span>
 					</label>
 					<input style="display:none" id="coverfile" name="file" class="ajax_school_cover" type="file" accept="image/*" data-target="{{ path('com_admin_school_add_cover', {'school_id': school.id}) }}" /> 

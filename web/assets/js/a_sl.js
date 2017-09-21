@@ -2,40 +2,6 @@
 $(function() {
 	var timeOutIdQuery = 0; 
     /*
-    *upload logo for school
-    */
-    $('#logofile').on('change', function(){
-		/*console.log("change avatar");*/
-        var $this = $(this);
-        var file = $this[0].files[0];
-        var target = $this.data('target');
-        var data = new FormData();
-		console.log(target);
-        data.append('file', file);
-		//console.log(data);
-		
-        $.ajax({
-            type: 'POST',
-            url: target,
-            data: data,
-            contentType: false,
-            processData: false,
-            dataType : 'json',
-            success: function(data){
-				if(data.state == 1){
-					$("#school_logo").attr("src", data.logo116x116);
-				}else{
-					alert("Une erreur est survenue. Veuillez selectionner un fichier image valide de taille inférieure à 2Mo")
-				}
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-				console.log(jqXHR.status);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-        });
-    });
-    /*
     *upload cover for school
     */
     $('#coverfile').on('change', function(){
@@ -872,6 +838,166 @@ $(function() {
 					alert("une erreur est survenue");
 				}
 				destroySpinner();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				destroySpinner();
+			}
+        });
+    });
+	
+    /*
+    *upload logo for school
+    */
+    $('#logofile').on('change', function(){
+		/*console.log("change avatar");*/
+        var $this = $(this);
+        var file = $this[0].files[0];
+        var target = $this.data('target');
+        var data = new FormData();
+		console.log(target);
+        data.append('file', file);
+		//console.log(data);
+		
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+            success: function(data){
+				if(data.state == 1){
+					$("#school_logo").attr("src", data.logo116x116);
+				}else{
+					alert("Une erreur est survenue. Veuillez selectionner un fichier image valide de taille inférieure à 2Mo")
+				}
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+        });
+    });
+	
+	//change school logo
+	$('body').on('click','#change_logo',function(event){
+		var target = $(this).data("target");
+		
+		var content = "<div style='text-align:center;padding:10px; color:#fff'>Chargement ...</div>";
+		popup(content, 560, true);
+		$.ajax({
+			type: 'POST',
+			url: target,
+			dataType : 'json',
+			success: function(data){
+				if(data.state){
+					content = data.content;
+					$(".popup").html(content);
+					centerBloc($('.popup_content'), $('.popup'));
+				}else{
+					
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+			}
+		});
+		
+    });
+	
+    /*
+    *select school logo
+    */
+    $('body').on('click','.logo_popup',function(event){
+        var $this = $(this);
+        var target = $this.data('target');
+		
+		createSpinner();
+        $.ajax({
+            type: 'POST',
+            url: target,
+            dataType : 'json',
+            success: function(data){
+				$(".logo_item").removeClass("active");
+				$this.closest(".logo_item").addClass("active");
+				$("#school_logo").attr("src", data.logo116x116);
+				destroySpinner();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.status);
+				console.log(textStatus);
+				console.log(errorThrown);
+				destroySpinner();
+			}
+        });
+    });
+	
+	//delete school logo
+	$('body').on('click','.delete_logo',function(event){
+		var $this = $(this)
+		var target = $this.data("target");
+		createSpinner();
+		$.ajax({
+			type: 'POST',
+			url: target,
+			dataType : 'json',
+			success: function(data){
+				if(data.state){
+					$this.closest(".logo_item").remove();
+					if(data.isCurrentLogo){
+						$("#default_logo").addClass("active");
+						$("#school_logo").attr("src", data.logo116x116);
+						
+						$("#logos_wrapper").animate({ scrollTop: 0}, 500);
+					}
+					destroySpinner();
+				}else{
+					alert("Une erreur est survenue");
+					destroySpinner();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				destroySpinner();
+			}
+		});
+		
+    });
+	
+    /*
+    *upload logo for school
+    */
+	$('body').on('change','#logofile',function(event){
+        var $this = $(this);
+        var file = $this[0].files[0];
+        var target = $this.data('target');
+        var data = new FormData();
+		console.log(target);
+        data.append('file', file);
+		
+		createSpinner();
+        $.ajax({
+            type: 'POST',
+            url: target,
+            data: data,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+            success: function(data){
+				if(data.state){
+					$(".logo_item").removeClass("active");
+					$("#logos_wrapper").append(data.logoItemContent);
+					
+					$("#school_logo").attr("src", data.logo116x116);
+					
+					destroySpinner();
+					$("#logos_wrapper").animate({ scrollTop: $('#logos_wrapper').prop("scrollHeight")}, 500);
+				}else{
+					destroySpinner();
+					alert("Une erreur est survenue");
+				}
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);
