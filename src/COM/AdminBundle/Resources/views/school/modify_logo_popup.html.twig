@@ -16,7 +16,7 @@
 			{% endif %}
 			<div id="logos_wrapper"><!--
 				--><div class="logo_item {{ classDefault }}" id="default_logo">
-						<img class="logo_popup default" data-target="{{ path('com_admin_school_select_logo', {'school_id': school.id, 'logo_id': 0}) }}" src="{{ 'default/images/school/logo/default.jpeg' | imagine_filter('116x116') }}" alt="" />
+						<img class="logo_popup default" data-type="logo" data-target="{{ path('com_admin_school_select_logo', {'school_id': school.id, 'logo_id': 0}) }}" src="{{ 'default/images/school/logo/default.jpeg' | imagine_filter('116x116') }}" alt="" />
 					</div><!--
 				{% for logo in logos %}
 					{% set classActive = '' %}
@@ -30,7 +30,7 @@
 	</div>
 	<div style="border-top:1px solid #ddd;padding:10px; text-align:center">
 		<label for="logofile" style="cursor:pointer">télécharger une image ...</label>
-		<input style="display: none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_modify_logo', {'school_id': school.id}) }}" />
+		<input style="display: none" data-type="logo" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_modify_logo', {'school_id': school.id}) }}" />
 	</div>
 	<div style="border-top:1px solid #ddd;padding:10px; text-align:center">
 		<img src="{{ asset('assets/image/info_icon.png') }}" style="width:20px; height:20px; display: inline-block; vertical-align: middle" alt="i" /> Cliquer sur l'image ou télécharger un nouveau pour changer le logo.

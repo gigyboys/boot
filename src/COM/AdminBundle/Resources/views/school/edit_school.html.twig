@@ -51,17 +51,14 @@
 				{% set pathtologo='default/images/school/logo/'~logo %}
 			{% endif %}
 			
-			<label for="logofile2">
-				<img id="school_logo" style="width: 116px; height: 116px" src="{{ pathtologo | imagine_filter('116x116') }}" alt="img sl" />
-			</label>
-			<input style="display:none" id="logofile" name="file" class="ajax_school_logo" type="file" accept="image/*" data-target="{{ path('com_admin_school_change_logo', {'school_id': school.id}) }}" /> 
+			<img id="school_logo" style="width: 116px; height: 116px" src="{{ pathtologo | imagine_filter('116x116') }}" alt="img sl" />
 		</div>
 		<div style="margin-left: 136px;">
 		
 			<div style="border:1px solid transparent; margin:5px; border-radius:4px">
 				<div style="border-bottom:1px solid #ccc;padding:5px">
 					<label for="coverfile2">
-						<span style="cursor:pointer">Change cover ...</span>
+						<span id="change_cover" data-target="{{ path('com_admin_school_modify_cover_popup', {'school_id': school.id})}}" style="cursor:pointer">Change cover ...</span>
 					</label>
 					<input style="display:none" id="coverfile" name="file" class="ajax_school_cover" type="file" accept="image/*" data-target="{{ path('com_admin_school_add_cover', {'school_id': school.id}) }}" /> 
 				</div>
@@ -74,7 +71,7 @@
 						{% else %}
 							{% set pathtocover='default/images/school/cover/'~cover %}
 						{% endif %}
-						<img src="{{ pathtocover | imagine_filter('300x100') }}" style="display:block;width:300px;height:100px" />
+						<img  id="school_cover" src="{{ pathtocover | imagine_filter('300x100') }}" style="display:block;width:300px;height:100px" />
 					</div>
 				</div>
 			</div>

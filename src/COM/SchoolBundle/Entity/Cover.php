@@ -169,9 +169,11 @@ class Cover
      */
     public function preUpload()
     {
-        if (null !== $this->file) {
-            // faites ce que vous voulez pour générer un nom unique
-            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+		if (null !== $this->file) {
+            // generation nom unique
+			$t=time();
+			
+            $this->path = substr(sha1(uniqid(mt_rand(), true)), 0, 15).'_'.$this->school->getId().'_'.$t.'.'.$this->file->guessExtension();
             $this->originalname = $this->file->getClientOriginalName();
             $this->name = $this->file->getClientOriginalName();
         }
@@ -224,10 +226,46 @@ class Cover
      * @ORM\PostRemove()
      */
     public function removeUpload()
-    {
-        if ($file = $this->getAbsolutePath()) {
+    {		
+		//Suppression du fichier principal
+		$file = $this->getAbsolutePath();
+        if (file_exists($file)) {
             unlink($file);
         }
+		
+		//Suppression des fichiers dans le dossier créé par le bundle liip . see app/config/liip.yml
+		$dossiers = array(
+			"20x20", 
+			"22x22", 
+			"32x32", 
+			"36x36", 
+			"40x40", 
+			"50x50", 
+			"60x60", 
+			"80x80", 
+			"100x100", 
+			"116x116", 
+			"140x140", 
+			"160x160", 
+			"170x170", 
+			"187x123", 
+			"218x140", 
+			"228x152", 
+			"248x165", 
+			"258x172", 
+			"263x175", 
+			"300x100", 
+			"765x510", 
+			"960x240", 
+			"960x300", 
+			"1200x300" 
+		);
+		foreach ($dossiers as $dossier) {
+			$file = __DIR__.'/../../../../web/media/'.$dossier.'/'.$this->getUploadDir().'/'.$this->path;
+			if (file_exists($file)) {
+				unlink($file);
+			}
+		}
     }
 
     /**

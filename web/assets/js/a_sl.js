@@ -883,8 +883,8 @@ $(function() {
         });
     });
 	
-	//change school logo
-	$('body').on('click','#change_logo',function(event){
+	//change school logo, cover
+	$('body').on('click','#change_logo, #change_cover',function(event){
 		var target = $(this).data("target");
 		
 		var content = "<div style='text-align:center;padding:10px; color:#fff'>Chargement ...</div>";
@@ -909,11 +909,12 @@ $(function() {
     });
 	
     /*
-    *select school logo
+    *select school logo, cover
     */
-    $('body').on('click','.logo_popup',function(event){
+    $('body').on('click','.logo_popup, .cover_popup',function(event){
         var $this = $(this);
         var target = $this.data('target');
+        var type = $this.data('type');
 		
 		createSpinner();
         $.ajax({
@@ -921,9 +922,15 @@ $(function() {
             url: target,
             dataType : 'json',
             success: function(data){
-				$(".logo_item").removeClass("active");
-				$this.closest(".logo_item").addClass("active");
-				$("#school_logo").attr("src", data.logo116x116);
+				if(type == "logo"){
+					$(".logo_item").removeClass("active");
+					$this.closest(".logo_item").addClass("active");
+					$("#school_logo").attr("src", data.logo116x116);
+				}else if(type == "cover"){
+					$(".cover_item").removeClass("active");
+					$this.closest(".cover_item").addClass("active");
+					$("#school_cover").attr("src", data.cover300x100);
+				}
 				destroySpinner();
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -935,10 +942,12 @@ $(function() {
         });
     });
 	
-	//delete school logo
-	$('body').on('click','.delete_logo',function(event){
+	//delete school logo, cover
+	$('body').on('click','.delete_logo, .delete_cover',function(event){
 		var $this = $(this)
 		var target = $this.data("target");
+		var type = $this.data("type");
+		
 		createSpinner();
 		$.ajax({
 			type: 'POST',
@@ -946,12 +955,22 @@ $(function() {
 			dataType : 'json',
 			success: function(data){
 				if(data.state){
-					$this.closest(".logo_item").remove();
-					if(data.isCurrentLogo){
-						$("#default_logo").addClass("active");
-						$("#school_logo").attr("src", data.logo116x116);
-						
-						$("#logos_wrapper").animate({ scrollTop: 0}, 500);
+					if(type == "logo"){
+						$this.closest(".logo_item").remove();
+						if(data.isCurrentLogo){
+							$("#default_logo").addClass("active");
+							$("#school_logo").attr("src", data.logo116x116);
+							
+							$("#logos_wrapper").animate({ scrollTop: 0}, 500);
+						}
+					}else if(type == "cover"){
+						$this.closest(".cover_item").remove();
+						if(data.isCurrent){
+							$("#default_cover").addClass("active");
+							$("#school_cover").attr("src", data.cover300x100);
+							
+							$("#covers_wrapper").animate({ scrollTop: 0}, 500);
+						}
 					}
 					destroySpinner();
 				}else{
@@ -967,14 +986,15 @@ $(function() {
     });
 	
     /*
-    *upload logo for school
+    *upload logo, cover for school
     */
-	$('body').on('change','#logofile',function(event){
+	$('body').on('change','#logofile, #coverfile',function(event){
         var $this = $(this);
         var file = $this[0].files[0];
         var target = $this.data('target');
+        var type = $this.data('type');
         var data = new FormData();
-		console.log(target);
+		
         data.append('file', file);
 		
 		createSpinner();
@@ -987,17 +1007,21 @@ $(function() {
             dataType : 'json',
             success: function(data){
 				if(data.state){
-					$(".logo_item").removeClass("active");
-					$("#logos_wrapper").append(data.logoItemContent);
-					
-					$("#school_logo").attr("src", data.logo116x116);
-					
-					destroySpinner();
-					$("#logos_wrapper").animate({ scrollTop: $('#logos_wrapper').prop("scrollHeight")}, 500);
+					if(type == "logo"){
+						$(".logo_item").removeClass("active");
+						$("#logos_wrapper").append(data.logoItemContent);
+						$("#school_logo").attr("src", data.logo116x116);
+						$("#logos_wrapper").animate({ scrollTop: $('#logos_wrapper').prop("scrollHeight")}, 500);
+					}else if(type == "cover"){
+						$(".cover_item").removeClass("active");
+						$("#covers_wrapper").append(data.coverItemContent);
+						$("#school_cover").attr("src", data.cover300x100);
+						$("#covers_wrapper").animate({ scrollTop: $('#covers_wrapper').prop("scrollHeight")}, 500);
+					}
 				}else{
-					destroySpinner();
 					alert("Une erreur est survenue");
 				}
+				destroySpinner();
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR.status);

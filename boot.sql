@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 31 Août 2017 à 23:05
+-- Généré le :  Jeu 21 Septembre 2017 à 09:55
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -323,7 +323,8 @@ INSERT INTO `bg_category_post` (`id`, `post_id`, `category_id`) VALUES
 (56, 45, 2),
 (57, 40, 6),
 (58, 46, 5),
-(59, 47, 6);
+(59, 47, 6),
+(60, 48, 1);
 
 -- --------------------------------------------------------
 
@@ -442,7 +443,7 @@ INSERT INTO `bg_post` (`id`, `user_id`, `default_title`, `slug`, `date`, `view_n
 (5, 1, 'pt', 'pt', '2017-03-06 10:00:25', 0, 1, 1, 1, 0),
 (6, 1, 'Recevez nos actualités', 'category-2', '2017-03-07 12:44:56', 0, 1, 1, 1, 0),
 (7, 1, 'dfgdfg', 'dfgdfg', '2017-03-13 13:39:32', 0, 1, 1, 1, 0),
-(8, 1, 'Integer congue placerat quam vitae mollis', 'integer-congue-placerat-quam-vitae-mollis', '2017-03-13 13:40:58', 0, 1, 0, 1, 0),
+(8, 1, 'Integer congue placerat quam vitae mollis', 'integer-congue-placerat-quam-vitae-mollis', '2017-03-13 13:40:58', 0, 1, 1, 1, 0),
 (9, 1, 'infrastructure universelle', 'infrastructure-universelle', '2017-03-14 10:27:00', 0, 1, 1, 1, 0),
 (10, 1, 'conférence config', 'conference-config', '2017-03-14 13:48:19', 0, 1, 1, 1, 0),
 (11, 1, 'porte ouverte', 'porte-ouverte', '2017-03-15 12:59:02', 0, 1, 1, 1, 0),
@@ -481,7 +482,8 @@ INSERT INTO `bg_post` (`id`, `user_id`, `default_title`, `slug`, `date`, `view_n
 (44, 1, 'lacinia felis nisi, ut varius ipsum l', 'lacinia-felis-nisi-ut-varius-ipsum-l', '2017-08-11 15:29:08', 0, 1, 1, 1, 0),
 (45, 1, 'rsus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi.', 'rsus-leo-tempus-eu-curabitur-laoreet-varius-malesuada-nullam-lacinia-felis-nisi', '2017-08-11 16:51:10', 0, 1, 1, 1, 0),
 (46, 1, 'alesuada. Nullam lacinia fel', 'alesuada-nullam-lacinia-fel', '2017-08-14 10:56:02', 0, 1, 1, 0, 0),
-(47, 1, 'ulna strick', 'ulna-strick', '2017-08-21 17:08:39', 0, 1, 1, 1, 1);
+(47, 1, 'ulna strick', 'ulna-strick', '2017-08-21 17:08:39', 0, 1, 1, 1, 1),
+(48, 1, 'cinia felis nisi, ut varius i', 'cinia-felis-nisi-ut-varius-i', '2017-09-15 15:11:52', 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -874,7 +876,13 @@ INSERT INTO `bg_post_translate` (`id`, `post_id`, `locale_id`, `title`, `descrip
 (279, 47, 3, 'mg ulna strick', 'mg. Description .ulna strick', 'mg. Content .ulna strick'),
 (280, 47, 4, 'it ulna strick', 'it. Description .ulna strick', 'it. Content .ulna strick'),
 (281, 47, 5, 'es ulna strick', 'es. Description .ulna strick', 'es. Content .ulna strick'),
-(282, 47, 6, 'de ulna strick', 'de. Description .ulna strick', 'de. Content .ulna strick');
+(282, 47, 6, 'de ulna strick', 'de. Description .ulna strick', 'de. Content .ulna strick'),
+(283, 48, 1, 'fr cinia felis nisi, ut varius i', 'fr. Description .cinia felis nisi, ut varius i', 'fr. Content .cinia felis nisi, ut varius i'),
+(284, 48, 2, 'en cinia felis nisi, ut varius i', 'en. Description .cinia felis nisi, ut varius i', 'en. Content .cinia felis nisi, ut varius i'),
+(285, 48, 3, 'mg cinia felis nisi, ut varius i', 'mg. Description .cinia felis nisi, ut varius i', 'mg. Content .cinia felis nisi, ut varius i'),
+(286, 48, 4, 'it cinia felis nisi, ut varius i', 'it. Description .cinia felis nisi, ut varius i', 'it. Content .cinia felis nisi, ut varius i'),
+(287, 48, 5, 'es cinia felis nisi, ut varius i', 'es. Description .cinia felis nisi, ut varius i', 'es. Content .cinia felis nisi, ut varius i'),
+(288, 48, 6, 'de cinia felis nisi, ut varius i', 'de. Description .cinia felis nisi, ut varius i', 'de. Content .cinia felis nisi, ut varius i');
 
 -- --------------------------------------------------------
 
@@ -945,7 +953,8 @@ INSERT INTO `fm_message` (`id`, `message`, `subject_id`, `user_id`, `date`) VALU
 (55, 'dfgdfg', 9, 2, '2017-05-29 14:27:45'),
 (56, 'sdfsdf', 23, 2, '2017-06-09 10:18:23'),
 (57, 'http://localhost/boot/web/app_dev.php/en/forum/subject/pellentesque-justo-aenean-dignissim-mollis-tellus-non-aliquam', 24, 1, '2017-07-04 22:42:04'),
-(58, 'dfgdfg fgdfg', 14, 1, '2017-08-09 23:55:53');
+(58, 'dfgdfg fgdfg', 14, 1, '2017-08-09 23:55:53'),
+(59, 'ndit sollicitudin. Etiam vel congue mi, non fermentum libero. Donec volutpat lobortis nisl non cursus. Suspendisse nec pharetra ex. Pellentesque et urna aliquet, sagittis justo ut, pellentesque justo.\nAenean dignissim mollis tellus non aliquam. Donec nec orci in tortor elementum congue in ut odio. Ut laoreet malesuada quam nec elementum. Vivamus congue magna erat, vel sodales nulla tincidunt n', 9, 1, '2017-09-08 09:42:10');
 
 -- --------------------------------------------------------
 
@@ -1269,7 +1278,8 @@ INSERT INTO `pm_comment` (`id`, `post_id`, `message`, `user_id`, `date`, `advert
 (135, 34, 'Vous devez payer le carburant des enseignants, car votre établissement est éloigné », argue le directeur par intérim de l’ESPA. Il s’est fait huer par les étudiants. Les représentants du ministère ont rejeté la responsabilité sur l’ESPA. Pour éviter les débordements, le vice-président de l’université, Roger Randrianja, et le président de l’Association des étudiants ont convenu de repousser la clôture de l’inscription pour l’ESPA et de se réunir, dès l’arrivée du directeur de l’établissement. Ce dernier est actuellement en mission.', 1, '2017-07-24 15:48:53', NULL),
 (136, NULL, 'Tandis que s''engager dans des études de comptabilité l''est beaucoup moins. La faute à l''image que l''on a des comptables et aux idées reçues qui traînent à leur sujet. A balayer de toute urgence.', 1, '2017-07-28 16:01:37', 1),
 (137, 35, 'dfs sdf s', 28, '2017-08-03 19:47:57', NULL),
-(138, 35, 'sdfsdfsdf\ndsfsd', 29, '2017-08-03 19:56:11', NULL);
+(138, 35, 'sdfsdfsdf\ndsfsd', 29, '2017-08-03 19:56:11', NULL),
+(139, 35, 'fd fsdf sdfsdfs', 1, '2017-09-08 09:36:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -1421,7 +1431,8 @@ INSERT INTO `pm_newsletter_mail` (`id`, `email`, `date`, `is_active`) VALUES
 (38, 'test6@oio.com', '2017-07-26 09:44:56', 0),
 (39, 'user1@oio.com', '2017-07-27 11:13:22', 0),
 (40, 'aa@aa.aa', '2017-08-03 19:47:07', 0),
-(41, 'bb@bb.bb', '2017-08-03 19:55:47', 0);
+(41, 'bb@bb.bb', '2017-08-03 19:55:47', 0),
+(42, 'userf@oio.com', '2017-08-31 23:17:46', 0);
 
 -- --------------------------------------------------------
 
@@ -1722,7 +1733,7 @@ INSERT INTO `sl_category_school` (`id`, `school_id`, `category_id`, `current`) V
 (148, 44, 19, 0),
 (149, 45, 12, 0),
 (150, 46, 11, 0),
-(151, 36, 21, 0),
+(151, 36, 21, 1),
 (153, 4, 26, 0),
 (154, 21, 27, 0),
 (155, 37, 27, 0),
@@ -2381,54 +2392,19 @@ CREATE TABLE `sl_cover` (
 --
 
 INSERT INTO `sl_cover` (`id`, `school_id`, `name`, `path`, `originalname`, `current`) VALUES
-(14, 9, 'Sans titre.png', '1d967e13f4e8cf80b6c8b6d99c5da72280c8dd31.png', 'Sans titre.png', 0),
-(15, 9, 'ordreFO.PNG', '5ff6386cc3fab439ef8c3c44f1cccd538fc1e2ee.png', 'ordreFO.PNG', 0),
-(16, 9, '001.jpg', '355246bec883d848d6a6c011ce99c449ca2eaf36.jpeg', '001.jpg', 0),
-(17, 9, 'ordreFO.PNG', 'c697cb4e83552b707d8c0b08604fb5551da94b59.png', 'ordreFO.PNG', 0),
-(18, 9, 'cat-vasque.PNG', '14ed3072d4babe9ba635588316c7a04a24263f2a.png', 'cat-vasque.PNG', 0),
-(19, 9, 'ordreFO.PNG', 'a79a5f806f581e83af24effb49b66c4f8f11b074.png', 'ordreFO.PNG', 0),
-(20, 9, 'land1.jpg', 'f96deecf40cf181a3cfb29d5b4f3e450b377211c.jpeg', 'land1.jpg', 0),
-(21, 9, 'land2.jpg', '081a9b6df02f85ed2c37b01c0918637732d2abc1.jpeg', 'land2.jpg', 0),
-(22, 4, 'land1.jpg', '7cb4ce2d91054d0beca860bb28134c681e3681f1.jpeg', 'land1.jpg', 0),
-(23, 1, 'land3.jpg', 'c8f6618841f9f49a60ccb298da591b19a8be5768.jpeg', 'land3.jpg', 0),
-(24, 1, 'land3.jpg', 'c92ae378d365b280c0806908f9a145f873b6982f.jpeg', 'land3.jpg', 0),
-(25, 2, 'land4.jpg', 'a76038effd721c54af330c34162a4742d353d1a3.jpeg', 'land4.jpg', 0),
-(26, 2, 'land5.jpg', '6a536adb50d2457bd4ab011f31334a0a28736285.jpeg', 'land5.jpg', 1),
-(27, 1, 'land6.jpg', '5bdbc45dc4f681e4c4ca24a41a7f7a862cca9890.jpeg', 'land6.jpg', 0),
-(28, 5, 'land7.jpg', '675d65ebd333a85ed4882814daf46de20c2362cb.jpeg', 'land7.jpg', 1),
 (29, 6, 'land8.jpg', '7098a17002e9e792db269b5d2097301865633f07.jpeg', 'land8.jpg', 1),
 (30, 7, 'land9.jpg', '85c43d595ffed35309547601d5c31e0717976d25.jpeg', 'land9.jpg', 1),
 (31, 8, 'land91.jpg', '307fecd483dba70da05d870056e9c0a4610baca8.jpeg', 'land91.jpg', 1),
-(32, 3, 'land92.JPG', '207dbb9f84a524b7d7d370ab5f7bb21538229f88.jpeg', 'land92.JPG', 0),
-(33, 9, 'land93.jpg', 'fe2c6a5d48cba41d1e1565e59afa135df1040ca6.jpeg', 'land93.jpg', 0),
 (34, 10, 'land2.jpg', 'f54ad7ceb24f8d9b27b7d63e0235e9da6b206920.jpeg', 'land2.jpg', 1),
 (35, 12, 'land94.jpg', '06c9af48ba031de901a99c12ac43219707bb96d0.jpeg', 'land94.jpg', 0),
 (36, 12, 'land94.jpg', '0f003998402f26850a50e9f8cefb9fa3e09d16fb.jpeg', 'land94.jpg', 1),
 (37, 14, 'land95.jpg', '401a4d5d26cfe1956d604b8638330dbb865092e6.jpeg', 'land95.jpg', 1),
 (38, 16, 'land96.jpg', '6935d68961981f91d51055436498cb97d0316739.jpeg', 'land96.jpg', 1),
-(39, 17, 'land97.JPG', 'decbe42577ebc522f48308ff646c1edd8a0fce8f.jpeg', 'land97.JPG', 0),
-(40, 13, 'land3.jpg', '9d1b149715e2fb6be1625e81b18d1d1999d42d4f.jpeg', 'land3.jpg', 0),
-(41, 13, 'land4.jpg', '8ebb3d2fde364cd4d0c264d68f89bf2eb0ca1545.jpeg', 'land4.jpg', 1),
-(42, 1, 'graduate-150374_640.png', '7722443591abdc18a687a6dee10556c9e270cc30.png', 'graduate-150374_640.png', 0),
-(43, 1, 'land6.jpg', '1b89fe9eae7ffdaa91416a7556be485958d3e527.jpeg', 'land6.jpg', 0),
-(44, 3, 'graduate-150374_640.png', 'f6cbb3da9fae826cd27ddb76b01f62ada1216aa5.png', 'graduate-150374_640.png', 0),
-(45, 3, 'land92.JPG', '636a26d79e5c54debf48ad6cad68b6318394e98e.jpeg', 'land92.JPG', 0),
-(46, 3, 'graduate-150374_640.png', 'da40b10600d3483d30f550e4117ad647163b9476.png', 'graduate-150374_640.png', 0),
-(47, 3, 'land92.JPG', '7270003cff213b740b67326ebd62c1c40ae6c45b.jpeg', 'land92.JPG', 0),
-(48, 3, 'land95.jpg', '55b6f51a4ac7baff93d1f1a5dc7afbff084205cf.jpeg', 'land95.jpg', 0),
-(49, 3, 'land92.JPG', 'a73059ce25943df7faaa5f93c20414801269fa73.jpeg', 'land92.JPG', 0),
-(50, 3, 'graduate-150374_640.png', 'bba595fdf1748f0364e380ee7f30cf5c4f72d95e.png', 'graduate-150374_640.png', 0),
-(51, 3, 'land92.JPG', 'a489ecc8c5e367c9437427fbe852aebb45b8977f.jpeg', 'land92.JPG', 0),
-(52, 1, 'land3.jpg', '70b01d2b91b05ff5dc7dae5644dd41fc6d502763.jpeg', 'land3.jpg', 0),
-(53, 1, 'land96.jpg', '8fbb090b22cde6eccec8bec556b0bf6e34c10514.jpeg', 'land96.jpg', 0),
-(54, 1, 'land92.JPG', '122e0a58c1e5115643274d114e8fe71444ac6a93.jpeg', 'land92.JPG', 0),
-(55, 1, 'land6.jpg', 'f0dc202b255252e77503de7067bf8e32e867bf1d.jpeg', 'land6.jpg', 0),
 (56, 28, 'land98.JPG', 'b501475a4d29af34365894e962bdeaaafb397573.jpeg', 'land98.JPG', 1),
 (57, 24, 'land99.jpg', '850de97d9cefc988a36c3143648babc92413ee7a.jpeg', 'land99.jpg', 1),
 (58, 9, 'landcntemad.jpg', '6e192ece3cbf2a2dfe8d10ea243765d6d62a2fd8.jpeg', 'landcntemad.jpg', 1),
 (59, 21, 'landesm.jpg', '1f5b7dded3635199b2212e103379991e8adfb8cd.jpeg', 'landesm.jpg', 1),
 (60, 29, 'landispm.JPG', '91a76204595439e46b035123213fe78aeb248d3d.jpeg', 'landispm.JPG', 1),
-(61, 4, 'landespa.JPG', '2802c3bc16977cb469eae5dfad4faf01ead8c5d4.jpeg', 'landespa.JPG', 0),
 (62, 4, 'landespa2.JPG', '83f67d175405f51344ad1e010492f7362844197a.jpeg', 'landespa2.JPG', 1),
 (63, 39, 'land96.jpg', '25c66798ed16c20902ccc057c21491525df5c8fc.jpeg', 'land96.jpg', 1),
 (64, 31, 'vatel.jpg', 'ec334b5f015c877aca605fce2e6c87e1e0d5c71e.jpeg', 'vatel.jpg', 1),
@@ -2441,7 +2417,6 @@ INSERT INTO `sl_cover` (`id`, `school_id`, `name`, `path`, `originalname`, `curr
 (71, 46, 'ssss.jpg', 'faade4b461b64eb19fe352a9d73df9342aec261c.jpeg', 'ssss.jpg', 1),
 (72, 17, 'inspnmad-TSIDIDY-2-9.jpg', '7f11c6bbe305431f8238da0aac2bdaf75874b476.jpeg', 'inspnmad-TSIDIDY-2-9.jpg', 1),
 (73, 30, 'barley-2117454_1920.jpg', '4aea0914d3967c3fcca4317a4d2b334219a3ae7d.jpeg', 'barley-2117454_1920.jpg', 1),
-(74, 1, 'trano.jpg', 'c85405244f4036972fd2f0049f349549b98efcb4.jpeg', 'trano.jpg', 0),
 (75, 3, 'asjam.png', '4f1a282e218f43185cfed94ea03c42618ded818b.png', 'asjam.png', 1),
 (76, 106, 'fianara.jpg', 'ee39887a5b908d1f8cffdf5e9f63cafd13fa9a20.jpeg', 'fianara.jpg', 1),
 (77, 99, 'vert.jpg', '9ad9cba097d63089bd1f8b1e1e8f76cfe82be458.jpeg', 'vert.jpg', 1),
@@ -2468,15 +2443,14 @@ INSERT INTO `sl_cover` (`id`, `school_id`, `name`, `path`, `originalname`, `curr
 (98, 79, 'product.png', 'b1499940cacb3577f368ca87466a61c9832ae2dc.png', 'product.png', 1),
 (99, 136, 'product2.png', '356063d351c3898e5bb34a099e41cdae1c35b72b.png', 'product2.png', 1),
 (100, 160, 'product3.png', '0f8d25bced9a0ddf08874a6817a08c5c6a2a284d.png', 'product3.png', 1),
-(101, 1, 'beuti.jpg', '20ed6744fefdf2143cc48061d836d2932d730830.jpeg', 'beuti.jpg', 0),
 (102, 126, 'beuti2.jpg', '75880c6d792174be4bf74da3d98d63eaebf6aecc.jpeg', 'beuti2.jpg', 1),
-(103, 1, 'beuti.jpg', 'b249a7b22108d19538b8e2d87e5aef152dac93f3.jpeg', 'beuti.jpg', 0),
-(104, 1, 'beuti.jpg', '54d42434b2065ade55d55834c33ca65da57a85db.jpeg', 'beuti.jpg', 0),
-(105, 1, '4115.jpg', 'c2065d2bf0791e60bf196636c95e15075c8f7133.jpeg', '4115.jpg', 1),
 (106, 195, 'beuti.jpg', 'ccae08ffaf7c1d2302b7a5fafafc9f60c91fee5d.jpeg', 'beuti.jpg', 1),
 (107, 23, 'iscamland.jpg', 'a5a5748595718082b8731a47d5b4558e9f02b22a.jpeg', 'iscamland.jpg', 0),
 (108, 23, 'iscamland1.jpg', '39c3cab6fff449557ac9a315c3ed941ba9a18d06.jpeg', 'iscamland1.jpg', 1),
-(109, 211, 'leaves-green-nature-free-background.jpg', '784af944429b51142f33073c84613c0d07b48788.jpeg', 'leaves-green-nature-free-background.jpg', 1);
+(109, 211, 'leaves-green-nature-free-background.jpg', '784af944429b51142f33073c84613c0d07b48788.jpeg', 'leaves-green-nature-free-background.jpg', 1),
+(110, 175, 'ists-land.jpg', 'e406b4a5fc55e2b6e9d3a6aa7b6841b5e6464fc6.jpeg', 'ists-land.jpg', 1),
+(116, 1, '41152.jpg', 'cd440a7d426a3ef7d7a1da3a6346ee2aef36cae1.jpeg', '41152.jpg', 1),
+(117, 13, 'fianara.jpg', '123cfc2a42caf22_13_1505980280.jpeg', 'fianara.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -2519,11 +2493,11 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (6, 'production-et-sante-animale-psa', 3, 'Production et Santé Animale (PSA)', 1),
 (7, 'mauris-facilisis-lacus', 8, 'Mauris facilisis lacus', 0),
 (11, 'llam-odio-nisl-accumsan', 8, 'llam odio nisl, accumsan', 0),
-(12, 'theologie', 6, 'Théologie', 0),
-(13, 'droit', 6, 'Droit', 0),
+(12, 'theologie', 6, 'Théologie', 1),
+(13, 'droit', 6, 'Droit', 1),
 (14, 'batiment-et-travaux-publiques-btp', 4, 'Batiment et Travaux Publiques (BTP)', 0),
 (15, 'nam-ultrices-nibh-sapien-vel-cursus-leo-tempus-eu', 11, 'Nam ultrices nibh sapien, vel cursus leo tempus eu', 0),
-(16, 'informatique-et-telecommunications', 29, 'Informatique et Télécommunications', 0),
+(16, 'informatique-et-telecommunications', 29, 'Informatique et Télécommunications', 1),
 (17, 'curabitur-laoreet-varius-malesuada', 1, 'Curabitur laoreet varius malesuada', 1),
 (22, 'gestion', 22, 'Gestion', 0),
 (24, 'sit-amet-ultricies-co', 1, 'sit amet ultricies co', 0),
@@ -2571,12 +2545,12 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (67, 'infirmier-generaliste', 119, 'Infirmier généraliste', 0),
 (68, 'sage-femme', 119, 'Sage - femme', 0),
 (69, 't-echnologie-medicale', 119, 'T echnologie médicale', 0),
-(70, 'genie-civil-et-architecture', 29, 'Génie civil et Architecture', 0),
-(71, 'genie-industriel', 29, 'Génie industriel', 0),
-(72, 'biotechnologies', 29, 'Biotechnologies', 0),
-(73, 'techniques-des-affaires-et-administration-et-techniques-juridiques', 29, 'Techniques des Affaires et Administration et Techniques   juridiques', 0),
-(74, 'techniques-du-tourisme-et-de-l-rsquo-environnement', 29, 'Techniques du Tourisme et de l’Environnement', 0),
-(75, 'bio-informatique-et-biotechnologie', 29, 'Bio Informatique et Biotechnologie', 0),
+(70, 'genie-civil-et-architecture', 29, 'Génie civil et Architecture', 1),
+(71, 'genie-industriel', 29, 'Génie industriel', 1),
+(72, 'biotechnologies', 29, 'Biotechnologies', 1),
+(73, 'techniques-des-affaires-et-administration-et-techniques-juridiques', 29, 'Techniques des Affaires et Administration et Techniques   juridiques', 1),
+(74, 'techniques-du-tourisme-et-de-l-rsquo-environnement', 29, 'Techniques du Tourisme et de l’Environnement', 1),
+(75, 'bio-informatique-et-biotechnologie', 29, 'Bio Informatique et Biotechnologie', 1),
 (76, 'gestion-budgetaire-et-controle-de-gestion-budgetaire', 171, 'Gestion budgétaire et Contrôle de gestion budgétaire', 0),
 (77, 'conception-budgetaire-et-controle-de-gestion', 171, 'Conception budgétaire et Contrôle de gestion', 0),
 (78, 'droit', 172, 'Droit', 0),
@@ -2620,9 +2594,9 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (116, 'agronomie', 173, 'Agronomie', 0),
 (117, 'tourisme-durable', 173, 'Tourisme durable', 0),
 (118, 'gestion', 173, 'Gestion', 0),
-(120, 'etudes-musicales', 183, 'Etudes Musicales', 0),
-(121, 'danse', 183, 'Danse', 0),
-(122, 'theatre', 183, 'Théatre', 0),
+(120, 'etudes-musicales', 183, 'Etudes Musicales', 1),
+(121, 'danse', 183, 'Danse', 1),
+(122, 'theatre', 183, 'Théatre', 1),
 (123, 'telecommunication-informatique-et-electronique', 95, 'Télécommunication   informatique et Electronique', 0),
 (124, 'batiment-travaux-publics-et-amenagement-du-territoire', 95, 'Bâtiment Travaux Publics et aménagement du territoire', 0),
 (125, 'management-et-sciences-economiques', 95, 'Management et Sciences économiques', 0),
@@ -2688,14 +2662,14 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (185, 'droit', 210, 'Droit', 0),
 (186, 'infirmier-generaliste', 136, 'Infirmier généraliste', 0),
 (187, 'sage-femme', 136, 'Sage-femme', 0),
-(188, 'economie', 6, 'Economie', 0),
-(189, 'sciences-sociales-appliquees-au-developpement', 6, 'Sciences sociales appliquées au développement', 0),
-(190, 'gestion', 6, 'Gestion', 0),
-(191, 'psychologie', 6, 'Psychologie', 0),
-(192, 'philosophie', 6, 'philosophie', 0),
-(193, 'economie-management-developpement', 6, 'Economie Management Développement', 0),
-(194, 'sociologie-population-developpement', 6, 'Sociologie Population Développement', 0),
-(195, 'sciences-juridiques-et-politiques', 6, 'Sciences Juridiques et Politiques', 0),
+(188, 'economie', 6, 'Economie', 1),
+(189, 'sciences-sociales-appliquees-au-developpement', 6, 'Sciences sociales appliquées au développement', 1),
+(190, 'gestion', 6, 'Gestion', 1),
+(191, 'psychologie', 6, 'Psychologie', 1),
+(192, 'philosophie', 6, 'philosophie', 1),
+(193, 'economie-management-developpement', 6, 'Economie Management Développement', 1),
+(194, 'sociologie-population-developpement', 6, 'Sociologie Population Développement', 1),
+(195, 'sciences-juridiques-et-politiques', 6, 'Sciences Juridiques et Politiques', 1),
 (196, 'gestion', 33, 'Gestion', 0),
 (197, 'genie-civil', 33, 'Génie Civil', 0),
 (198, 'infirmier', 33, 'Infirmier', 0),
@@ -2710,7 +2684,20 @@ INSERT INTO `sl_field` (`id`, `slug`, `school_id`, `default_name`, `published`) 
 (207, 'direction-de-projet-et-creation-d-emplois', 211, 'Direction de projet et création d’emplois', 0),
 (208, 'expert-comptable-et-financier', 211, 'Expert comptable et financier', 0),
 (209, 'institutions-bancaires-et-financieres', 211, 'Institutions bancaires et financières', 0),
-(210, 'direction-de-marches-d-entreprise-a-l-international-ou-au-niveau-national', 211, 'Direction de marchés d’entreprise à l’international ou au niveau national', 0);
+(210, 'direction-de-marches-d-entreprise-a-l-international-ou-au-niveau-national', 211, 'Direction de marchés d’entreprise à l’international ou au niveau national', 0),
+(214, 'ertertert', 175, 'ertertert', 0),
+(215, 'fsdfsdf', 175, 'fsdfsdf', 0),
+(216, 'retertert', 175, 'retertert', 0),
+(217, 'ertertert', 175, 'ertertert', 0),
+(218, 'sdfsdfsdf', 175, 'sdfsdfsdf', 0),
+(219, 'ertertert', 175, 'ertertert', 0),
+(227, 'et-ultricies-consequat-eleif', 46, 'et ultricies consequat, eleif', 1),
+(229, 'pellentesque-ex-magna', 46, 'Pellentesque ex magna', 1),
+(230, 'sdfsd-sdfs-fsdf-sdfd', 46, 'sdfsd sdfs fsdf sdfd', 0),
+(231, 'sage-femme', 17, 'Sage-femme', 1),
+(232, 'infirmier', 17, 'Infirmier', 1),
+(233, 'euismod-sit-amet-ultricies-con', 2, 'euismod sit amet ultricies con', 0),
+(234, 'electronique-et-telecommunication', 36, 'Electronique et télécommunication', 1);
 
 -- --------------------------------------------------------
 
@@ -3374,20 +3361,20 @@ INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `loca
 (707, 'Gestion', 'it. Description .Gestion', 118, 4),
 (708, 'Gestion', 'es. Description .Gestion', 118, 5),
 (709, 'Gestion', 'de. Description .Gestion', 118, 6),
-(716, 'Etudes Musicales', 'fr. Description .Etudes Musicales', 120, 1),
-(717, 'Etudes Musicales', 'en. Description .Etudes Musicales', 120, 2),
+(716, 'Etudes Musicales', '', 120, 1),
+(717, 'Etudes Musicales', '', 120, 2),
 (718, 'Etudes Musicales', 'mg. Description .Etudes Musicales', 120, 3),
 (719, 'Etudes Musicales', 'it. Description .Etudes Musicales', 120, 4),
 (720, 'Etudes Musicales', 'es. Description .Etudes Musicales', 120, 5),
 (721, 'Etudes Musicales', 'de. Description .Etudes Musicales', 120, 6),
-(722, 'Danse', 'fr. Description .Danse', 121, 1),
-(723, 'Danse', 'en. Description .Danse', 121, 2),
+(722, 'Danse', '', 121, 1),
+(723, 'Danse', '', 121, 2),
 (724, 'Danse', 'mg. Description .Danse', 121, 3),
 (725, 'Danse', 'it. Description .Danse', 121, 4),
 (726, 'Danse', 'es. Description .Danse', 121, 5),
 (727, 'Danse', 'de. Description .Danse', 121, 6),
-(728, 'Théatre', 'fr. Description .Théatre', 122, 1),
-(729, 'Théatre', 'en. Description .Théatre', 122, 2),
+(728, 'Théatre', '', 122, 1),
+(729, 'Théatre', '', 122, 2),
 (730, 'Théatre', 'mg. Description .Théatre', 122, 3),
 (731, 'Théatre', 'it. Description .Théatre', 122, 4),
 (732, 'Théatre', 'es. Description .Théatre', 122, 5),
@@ -3782,19 +3769,19 @@ INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `loca
 (1121, 'Sage-femme', 'it. Description .Sage-femme', 187, 4),
 (1122, 'Sage-femme', 'es. Description .Sage-femme', 187, 5),
 (1123, 'Sage-femme', 'de. Description .Sage-femme', 187, 6),
-(1124, 'Théologie', 'fr. Description .Théologie', 188, 1),
+(1124, 'Théologie', '<p>Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum.</p>', 188, 1),
 (1125, 'Théologie', 'en. Description .Théologie', 188, 2),
 (1126, 'Théologie', 'mg. Description .Théologie', 188, 3),
 (1127, 'Théologie', 'it. Description .Théologie', 188, 4),
 (1128, 'Théologie', 'es. Description .Théologie', 188, 5),
 (1129, 'Théologie', 'de. Description .Théologie', 188, 6),
-(1130, 'Sciences sociales appliquées au développement', 'fr. Description .Sciences sociales appliquées au développement', 189, 1),
+(1130, 'Sciences sociales appliquées au développement', '<p>Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum.</p>', 189, 1),
 (1131, 'Sciences sociales appliquées au développement', 'en. Description .Sciences sociales appliquées au développement', 189, 2),
 (1132, 'Sciences sociales appliquées au développement', 'mg. Description .Sciences sociales appliquées au développement', 189, 3),
 (1133, 'Sciences sociales appliquées au développement', 'it. Description .Sciences sociales appliquées au développement', 189, 4),
 (1134, 'Sciences sociales appliquées au développement', 'es. Description .Sciences sociales appliquées au développement', 189, 5),
 (1135, 'Sciences sociales appliquées au développement', 'de. Description .Sciences sociales appliquées au développement', 189, 6),
-(1136, 'Gestion', 'fr. Description .Gestion', 190, 1),
+(1136, 'Gestion', '<p>Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum.</p>', 190, 1),
 (1137, 'Gestion', 'en. Description .Gestion', 190, 2),
 (1138, 'Gestion', 'mg. Description .Gestion', 190, 3),
 (1139, 'Gestion', 'it. Description .Gestion', 190, 4),
@@ -3890,13 +3877,13 @@ INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `loca
 (1229, 'Gestion', 'it. Description .Gestion', 205, 4),
 (1230, 'Gestion', 'es. Description .Gestion', 205, 5),
 (1231, 'Gestion', 'de. Description .Gestion', 205, 6),
-(1232, 'nouvelles technologies de la communication et de l’information (NTIC)', 'fr. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 1),
+(1232, 'nouvelles technologies de la communication et de l’information (NTIC)', 'fr. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 1);
+INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `locale_id`) VALUES
 (1233, 'nouvelles technologies de la communication et de l’information (NTIC)', 'en. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 2),
 (1234, 'nouvelles technologies de la communication et de l’information (NTIC)', 'mg. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 3),
 (1235, 'nouvelles technologies de la communication et de l’information (NTIC)', 'it. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 4),
 (1236, 'nouvelles technologies de la communication et de l’information (NTIC)', 'es. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 5),
-(1237, 'nouvelles technologies de la communication et de l’information (NTIC)', 'de. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 6);
-INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `locale_id`) VALUES
+(1237, 'nouvelles technologies de la communication et de l’information (NTIC)', 'de. Description .nouvelles technologies de la communication et de l’information (NTIC)', 206, 6),
 (1238, 'Direction de projet et création d’emplois', 'fr. Description .Direction de projet et création d’emplois', 207, 1),
 (1239, 'Direction de projet et création d’emplois', 'en. Description .Direction de projet et création d’emplois', 207, 2),
 (1240, 'Direction de projet et création d’emplois', 'mg. Description .Direction de projet et création d’emplois', 207, 3),
@@ -3920,7 +3907,85 @@ INSERT INTO `sl_field_translate` (`id`, `name`, `description`, `field_id`, `loca
 (1258, 'Direction de marchés d’entreprise à l’international ou au niveau national', 'mg. Description .Direction de marchés d’entreprise à l’international ou au niveau national', 210, 3),
 (1259, 'Direction de marchés d’entreprise à l’international ou au niveau national', 'it. Description .Direction de marchés d’entreprise à l’international ou au niveau national', 210, 4),
 (1260, 'Direction de marchés d’entreprise à l’international ou au niveau national', 'es. Description .Direction de marchés d’entreprise à l’international ou au niveau national', 210, 5),
-(1261, 'Direction de marchés d’entreprise à l’international ou au niveau national', 'de. Description .Direction de marchés d’entreprise à l’international ou au niveau national', 210, 6);
+(1261, 'Direction de marchés d’entreprise à l’international ou au niveau national', 'de. Description .Direction de marchés d’entreprise à l’international ou au niveau national', 210, 6),
+(1280, 'ertertert', 'fr. Description .ertertert', 214, 1),
+(1281, 'ertertert', 'en. Description .ertertert', 214, 2),
+(1282, 'ertertert', 'mg. Description .ertertert', 214, 3),
+(1283, 'ertertert', 'it. Description .ertertert', 214, 4),
+(1284, 'ertertert', 'es. Description .ertertert', 214, 5),
+(1285, 'ertertert', 'de. Description .ertertert', 214, 6),
+(1286, 'fsdfsdf', 'fr. Description .fsdfsdf', 215, 1),
+(1287, 'fsdfsdf', 'en. Description .fsdfsdf', 215, 2),
+(1288, 'fsdfsdf', 'mg. Description .fsdfsdf', 215, 3),
+(1289, 'fsdfsdf', 'it. Description .fsdfsdf', 215, 4),
+(1290, 'fsdfsdf', 'es. Description .fsdfsdf', 215, 5),
+(1291, 'fsdfsdf', 'de. Description .fsdfsdf', 215, 6),
+(1292, 'retertert', 'fr. Description .retertert', 216, 1),
+(1293, 'retertert', 'en. Description .retertert', 216, 2),
+(1294, 'retertert', 'mg. Description .retertert', 216, 3),
+(1295, 'retertert', 'it. Description .retertert', 216, 4),
+(1296, 'retertert', 'es. Description .retertert', 216, 5),
+(1297, 'retertert', 'de. Description .retertert', 216, 6),
+(1298, 'ertertert', 'fr. Description .ertertert', 217, 1),
+(1299, 'ertertert', 'en. Description .ertertert', 217, 2),
+(1300, 'ertertert', 'mg. Description .ertertert', 217, 3),
+(1301, 'ertertert', 'it. Description .ertertert', 217, 4),
+(1302, 'ertertert', 'es. Description .ertertert', 217, 5),
+(1303, 'ertertert', 'de. Description .ertertert', 217, 6),
+(1304, 'sdfsdfsdf', 'fr. Description .sdfsdfsdf', 218, 1),
+(1305, 'sdfsdfsdf', 'en. Description .sdfsdfsdf', 218, 2),
+(1306, 'sdfsdfsdf', 'mg. Description .sdfsdfsdf', 218, 3),
+(1307, 'sdfsdfsdf', 'it. Description .sdfsdfsdf', 218, 4),
+(1308, 'sdfsdfsdf', 'es. Description .sdfsdfsdf', 218, 5),
+(1309, 'sdfsdfsdf', 'de. Description .sdfsdfsdf', 218, 6),
+(1310, 'ertertert', 'fr. Description .ertertert', 219, 1),
+(1311, 'ertertert', 'en. Description .ertertert', 219, 2),
+(1312, 'ertertert', 'mg. Description .ertertert', 219, 3),
+(1313, 'ertertert', 'it. Description .ertertert', 219, 4),
+(1314, 'ertertert', 'es. Description .ertertert', 219, 5),
+(1315, 'ertertert', 'de. Description .ertertert', 219, 6),
+(1358, 'et ultricies consequat, eleif', '<div style="text-align: justify;">Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum.</div>', 227, 1),
+(1359, 'et ultricies consequat, eleif', '<div style="text-align: justify;">Sed non erat in neque mollis ultricies. Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus. Nullam odio nisl, accumsan tristique elit sit amet, finibus rhoncus ipsum. Nunc ultricies ac arcu vitae elementum.</div>', 227, 2),
+(1360, 'et ultricies consequat, eleif', 'mg. Description .et ultricies consequat, eleif', 227, 3),
+(1361, 'et ultricies consequat, eleif', 'it. Description .et ultricies consequat, eleif', 227, 4),
+(1362, 'et ultricies consequat, eleif', 'es. Description .et ultricies consequat, eleif', 227, 5),
+(1363, 'et ultricies consequat, eleif', 'de. Description .et ultricies consequat, eleif', 227, 6),
+(1370, 'Pellentesque ex magna', '', 229, 1),
+(1371, 'Pellentesque ex magna', '', 229, 2),
+(1372, 'Pellentesque ex magna', '', 229, 3),
+(1373, 'Pellentesque ex magna', '', 229, 4),
+(1374, 'Pellentesque ex magna', '', 229, 5),
+(1375, 'Pellentesque ex magna', '', 229, 6),
+(1376, 'sdfsd sdfs fsdf sdfd', '', 230, 1),
+(1377, 'sdfsd sdfs fsdf sdfd', '', 230, 2),
+(1378, 'sdfsd sdfs fsdf sdfd', '', 230, 3),
+(1379, 'sdfsd sdfs fsdf sdfd', '', 230, 4),
+(1380, 'sdfsd sdfs fsdf sdfd', '', 230, 5),
+(1381, 'sdfsd sdfs fsdf sdfd', '', 230, 6),
+(1382, 'Sage-femme', '<div>Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus.</div>\n<div>Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus.</div>', 231, 1),
+(1383, 'Sage-femme', '', 231, 2),
+(1384, 'Sage-femme', '', 231, 3),
+(1385, 'Sage-femme', '', 231, 4),
+(1386, 'Sage-femme', '', 231, 5),
+(1387, 'Sage-femme', '', 231, 6),
+(1388, 'Infirmier', '<div>Nam ultrices nibh sapien, vel cursus leo tempus eu. Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus non. Pellentesque ex magna, euismod sit amet ultricies consequat, eleifend eu purus.</div>', 232, 1),
+(1389, 'Infirmier', '', 232, 2),
+(1390, 'Infirmier', '', 232, 3),
+(1391, 'Infirmier', '', 232, 4),
+(1392, 'Infirmier', '', 232, 5),
+(1393, 'Infirmier', '', 232, 6),
+(1394, 'euismod sit amet ultricies con', '', 233, 1),
+(1395, 'euismod sit amet ultricies con', '', 233, 2),
+(1396, 'euismod sit amet ultricies con', '', 233, 3),
+(1397, 'euismod sit amet ultricies con', '', 233, 4),
+(1398, 'euismod sit amet ultricies con', '', 233, 5),
+(1399, 'euismod sit amet ultricies con', '', 233, 6),
+(1400, 'Electronique et télécommunication', '', 234, 1),
+(1401, 'Electronique et télécommunication', '', 234, 2),
+(1402, 'Electronique et télécommunication', '', 234, 3),
+(1403, 'Electronique et télécommunication', '', 234, 4),
+(1404, 'Electronique et télécommunication', '', 234, 5),
+(1405, 'Electronique et télécommunication', '', 234, 6);
 
 -- --------------------------------------------------------
 
@@ -3942,27 +4007,7 @@ CREATE TABLE `sl_logo` (
 --
 
 INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `current_logo`) VALUES
-(1, 1, 'cpi.jpg', '8f99bc1ca7ce09a2eac48c42c26f3aaf2dd550af.jpeg', 'cpi.jpg', 0),
-(2, 3, 'ac.jpg', '0093de9797335d13f2f537d038ef6c78c9e27f94.jpeg', 'ac.jpg', 0),
-(3, 4, 'aeon.jpg', 'e74aa108ca1f1649d23065434dc7adf05dc4b7b0.jpeg', 'aeon.jpg', 0),
-(4, 2, 'adiva.jpg', '43b871cfc5a93eaac5d1a56a97d0da3e3324abe6.jpeg', 'adiva.jpg', 0),
-(5, 3, 'dangel.jpg', 'faf468ac39f70833d3a37dfc9938aa7883465d06.jpeg', 'dangel.jpg', 0),
-(6, 4, 'espa.png', 'cf552c4a3d94a4b40fe45413004f979a4100b9b4.png', 'espa.png', 0),
-(7, 1, 'ispm-logo.png', '2a356c87e7e4f41f39e937db76338c8afa8c11de.png', 'ispm-logo.png', 0),
-(8, 2, 'logo_univ_antananarivo_mg.gif', 'c3b0cd69711b9db9588ccb502772c4c1eab0aab1.gif', 'logo_univ_antananarivo_mg.gif', 0),
-(9, 5, 'kahena.jpg', '601aa92382cebadb24bcd836ef80b2f99065c321.jpeg', 'kahena.jpg', 0),
-(10, 1, 'austin.jpg', '06cf4febad4287959a7ff06e5811e7494317514e.jpeg', 'austin.jpg', 0),
-(11, 1, 'lamborghini.jpg', '8e1d875dde4e0e772de4e5013b80d3dfaed8ea8e.jpeg', 'lamborghini.jpg', 0),
-(12, 6, 'dkw-auto-union.jpg', '9318da304629a41a84dbd7aaf9ed1b32990f0d40.jpeg', 'dkw-auto-union.jpg', 0),
-(13, 6, 'logo-ucm.jpg', '935f658a557100f08592e10fef894061d0d0c1f9.jpeg', 'logo-ucm.jpg', 0),
-(14, 3, 'royal-enfield.jpg', 'fb8d20430f09b4af35884034476dc9cc211def8f.jpeg', 'royal-enfield.jpg', 0),
-(15, 3, 'pgo.jpg', '96d247fc390036c9decca94ce37632d0e5f1b16a.jpeg', 'pgo.jpg', 0),
-(16, 2, 'logo_univ.jpg', '68df8f12fc61931f1385869cf47e8996cad4961d.jpeg', 'logo_univ.jpg', 0),
-(17, 4, 'logo-poly.jpg', '1040576480c28e6010bbd7c6b2dcd2d547b1f466.jpeg', 'logo-poly.jpg', 0),
-(18, 3, 'pgo.jpg', '772d23df34c9f37ed92cfe31a39cff91c0acfe70.jpeg', 'pgo.jpg', 0),
-(19, 1, 'lam.jpg', '04ad6795fb334dac6d762fe82b6e8a3bcbc59bd5.jpeg', 'lam.jpg', 0),
-(20, 6, 'ucm2.jpg', '4cb70b55dc0be94efd692b390c32a4cc0d9fd67e.jpeg', 'ucm2.jpg', 1),
-(21, 7, 'ESCAME.jpg', '185f2ab650151736444e7f551ce4863a51a1fb5d.jpeg', 'ESCAME.jpg', 0),
+(13, 6, 'logo-ucm.jpg', '935f658a557100f08592e10fef894061d0d0c1f9.jpeg', 'logo-ucm.jpg', 1),
 (22, 8, 'gsilogo.jpg', '4182fbffdb7fb86646bccf24967b0464d833cb88.jpeg', 'gsilogo.jpg', 1),
 (23, 3, 'asjalogo.jpg', 'fe52aba671166ffe7e4a4447d56913a54b1545dc.jpeg', 'asjalogo.jpg', 1),
 (24, 4, 'logopoly2.jpg', '0367ec484508fd138a9ff042f8c5b145644647d4.jpeg', 'logopoly2.jpg', 1),
@@ -3970,16 +4015,6 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (26, 2, 'ist.jpg', 'd57b82a25450aebe40733a203bb8b5e8c1f07748.jpeg', 'ist.jpg', 1),
 (27, 1, 'inscaelogo.jpg', '86d3bcc307457219b48d179809e1d9bd7a072372.jpeg', 'inscaelogo.jpg', 0),
 (28, 5, 'eni.jpg', '8bd30cc8baa84f9b0eeb700e8bf3b450bd20f6ad.jpeg', 'eni.jpg', 1),
-(29, 1, 'inscae.png', '519565aeeda6eb045cf98593e8bcaa65b1cde750.png', 'inscae.png', 0),
-(30, 1, 'inscaelogo.jpg', '6a1876cf467f0d60acb897466b8e604d5801e9e7.jpeg', 'inscaelogo.jpg', 0),
-(31, 9, 'benelli.jpg', '47e9ee52f7f6bf58c6a8c42db9c3a5dc4c2e3cde.jpeg', 'benelli.jpg', 0),
-(32, 9, 'peugeot.jpg', '116eb252ce4a156db343d32c477e07346c100b6d.jpeg', 'peugeot.jpg', 0),
-(33, 9, 'aeon.jpg', 'd73e1b65cf10ca60363db99b1c65d77a93e97ef9.jpeg', 'aeon.jpg', 0),
-(34, 9, 'land3.jpg', 'e70c4364d62dc8b9c40691d42fbf257eaa356567.jpeg', 'land3.jpg', 0),
-(35, 9, 'peugeot.jpg', '009463cb9c6977a786938e55ec5de369ff524283.jpeg', 'peugeot.jpg', 0),
-(36, 9, 'graduate-150374_640.png', '4f6455c9d11da0f4c2535c2d446454905210dfaf.png', 'graduate-150374_640.png', 0),
-(37, 10, 'land9.jpg', '11aba6719e4f6616927c33b44d423670ad3f52b7.jpeg', 'land9.jpg', 0),
-(38, 11, 'lancia.jpg', 'a6303d0ffd609a53e524e208b44a47e2218a6456.jpeg', 'lancia.jpg', 0),
 (39, 17, 'inspnmad.png', '18ef052aac457cf9df320813cba35475170c1262.png', 'inspnmad.png', 1),
 (40, 24, 'land98.JPG', 'ebd29966ed2dc5d3cfadcbd810daae3f9001a7fc.jpeg', 'land98.JPG', 0),
 (41, 9, 'CNTEMAD.jpg', '4ef1b48469b4a19e4b9d63718622f4787357f0f3.jpeg', 'CNTEMAD.jpg', 1),
@@ -3996,7 +4031,7 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (52, 27, 'IEP-madagascar-logo.jpg', '4d849d3707fbad3074e8d86bf01f71bb8bda585f.jpeg', 'IEP-madagascar-logo.jpg', 1),
 (53, 28, 'logo-inth.jpg', '42b142fe3ab3096bf7ac220762ae9eaf23be9f1d.jpeg', 'logo-inth.jpg', 1),
 (54, 29, 'ispmlogo.jpg', 'd33f4b63521dab491c9345ff51c9216ad1888697.jpeg', 'ispmlogo.jpg', 1),
-(55, 13, 'enslogo.jpg', 'c6fcd0e6b0b51e2996eaa1177f57f47ff5c6b090.jpeg', 'enslogo.jpg', 1),
+(55, 13, 'enslogo.jpg', 'c6fcd0e6b0b51e2996eaa1177f57f47ff5c6b090.jpeg', 'enslogo.jpg', 0),
 (56, 15, 'medecine.png', '2a9e98d61cc82d15a26ca0de3ebbd805dba457d7.png', 'medecine.png', 1),
 (57, 14, 'sciences.png', '77bab17ae48308add86dddb684b6d5fe08c2b4b8.png', 'sciences.png', 1),
 (58, 12, 'lettres.jpg', 'af85178d1c3091315068d4f2848c39904c113984.jpeg', 'lettres.jpg', 1),
@@ -4009,8 +4044,7 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (65, 36, 'EUROI.jpg', '16cebc8a6baa98063d704ca0b51c651808ec9fff.jpeg', 'EUROI.jpg', 1),
 (66, 37, 'EMEDIA.jpg', 'dcb6f3942476e59a15b4212d1003bbfe515dd8c5.jpeg', 'EMEDIA.jpg', 1),
 (67, 10, 'logo_univ.jpg', 'e762844414d63c7ba37de1cf81d66135d54ef95d.jpeg', 'logo_univ.jpg', 1),
-(68, 11, 'logo_essa.png', '493646fcd241f652ee8441c2f6dfa8350271a5cd.png', 'logo_essa.png', 0),
-(69, 11, 'essalogo.jpg', 'ba97558792ae9bd2e3c72dfd30989cce13a51b21.jpeg', 'essalogo.jpg', 1),
+(69, 11, 'essalogo.jpg', 'ba97558792ae9bd2e3c72dfd30989cce13a51b21.jpeg', 'essalogo.jpg', 0),
 (70, 38, 'ifproglogo.jpg', '0421a15a548b2db40ca32cd4074096a284361b67.jpeg', 'ifproglogo.jpg', 1),
 (71, 40, 'itulogo.jpg', '1d011e5bbd021cbbf12cca4ef2d2e2abe5305788.jpeg', 'itulogo.jpg', 1),
 (72, 39, 'issmilogo.jpg', 'b356ed009e2a294fb8447a453eec256ecb453c6a.jpeg', 'issmilogo.jpg', 1),
@@ -4024,7 +4058,7 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (80, 48, 'ISSEG.jpg', 'fb29373e238f593fae1517cce2bc95c1d2a04a9d.jpeg', 'ISSEG.jpg', 1),
 (81, 49, 'INFOTOUR.jpg', 'e6b66d8dd39f11532fd9717752cf68e170813d71.jpeg', 'INFOTOUR.jpg', 1),
 (82, 50, 'ISPPM.jpg', 'e02668b4df8975f4f2c6de6bb0421f0dca57de55.jpeg', 'ISPPM.jpg', 1),
-(83, 88, '1511.jpg', 'f3471cc65156e860e33cf8ad7f20093cfa853574.jpeg', '1511.jpg', 1),
+(83, 88, '1511.jpg', 'f3471cc65156e860e33cf8ad7f20093cfa853574.jpeg', '1511.jpg', 0),
 (84, 65, 'eli.png', 'ee65d78fc4de02fad4c49f1637e6fffd9d960712.png', 'eli.png', 1),
 (85, 87, 'ESTIIM.jpg', 'ade1671ee306e2dbd382fd4d0423df99f0bea8cb.jpeg', 'ESTIIM.jpg', 1),
 (86, 166, 'ISM ADVANCEA.jpg', 'e329a8a0233a35cbcda8d26453dc29bcd2f2a5f2.jpeg', 'ISM ADVANCEA.jpg', 0),
@@ -4039,13 +4073,13 @@ INSERT INTO `sl_logo` (`id`, `school_id`, `name`, `path`, `originalname`, `curre
 (95, 85, 'EST.jpg', '4cc0e7d8a9098aa6c9f22f7df1d3a846b7f3dc71.jpeg', 'EST.jpg', 1),
 (96, 172, 'ISSUP.jpg', '3342f01799247ae01e7f2c5ebf3f2924bd992a40.jpeg', 'ISSUP.jpg', 1),
 (97, 195, 'icon_info.png', 'aba4b1f3990f23edcd318401b88559575578c7c4.png', 'icon_info.png', 1),
-(98, 1, '1111.jpg', '988bbabd0899a2df36439bac468ba82ec3dad129.jpeg', '1111.jpg', 0),
-(99, 1, '132136-ORSMPG-603.jpg', 'e41a2ed91d4cf4b47662004cce1f9fd09ed76ccf.jpeg', '132136-ORSMPG-603.jpg', 0),
 (100, 22, 'ESSCA.png', '7925dc8552d32c20857835f0c9cf0a645d26d068.png', 'ESSCA.png', 1),
 (101, 196, 'ipac.jpg', '42e1b79e7e85f8095cae01655f6325a6b55ab6c7.jpeg', 'ipac.jpg', 1),
 (102, 202, 'uim.png', '12ccd82ac789ec45036621842a9f215c7579679c.png', 'uim.png', 1),
-(103, 1, 'inscaelogo.jpg', '9a8b5a83a9ea17fe808e3b399b75e2da46325681.jpeg', 'inscaelogo.jpg', 1),
-(104, 211, 'isnalogo.jpg', 'e3000434fc8c36474833047a0ee802b9fcaa6a69.jpeg', 'isnalogo.jpg', 1);
+(104, 211, 'isnalogo.jpg', 'e3000434fc8c36474833047a0ee802b9fcaa6a69.jpeg', 'isnalogo.jpg', 1),
+(105, 175, 'ists-logo.jpg', '333bfde70bb497e79e6b1e2682af14beae563546.jpeg', 'ists-logo.jpg', 1),
+(117, 17, '41152.jpg', '3cdfa702e08710a08a35871b314a41095594ea38.jpeg', '41152.jpg', 0),
+(121, 13, '1111.jpg', 'e415c5c80b273fb_13_1505980214.jpeg', '1111.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -4074,7 +4108,7 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (6, 'Université Catholique de Madagascar', 'UCM', 'ucm', 1),
 (7, 'Ecole Supérieure en Comptabilité d''Administration et de Management d''Entreprise', 'ESCAME', 'escame', 1),
 (8, 'GSI Université', 'GSI', 'gsi-universite', 1),
-(9, 'Centre National du Télé-Enseignement de Madagascar', 'CNTEMAD', 'centre-national-du-tele-enseignement-de-madagascar', 1),
+(9, 'Centre National du Télé-Enseignement de Madagascar', 'CNTEMAD', 'cntemad', 1),
 (10, 'Faculté de Droit, d’Economie, de Gestion et de Sociologie', 'DEGS', 'degs', 1),
 (11, 'Ecole Supérieure des Sciences Agronomiques', 'ESSA', 'ecole-superieure-des-sciences-agronomiques', 1),
 (12, 'Faculté des Lettres et Sciences Humaines', 'FLSH', 'faculte-des-lettres-et-sciences-humaines', 1),
@@ -4225,7 +4259,7 @@ INSERT INTO `sl_school` (`id`, `name`, `short_name`, `slug`, `published`) VALUES
 (158, 'Institut Supérieur de Géologie de l''Ingénieur et de l’Environnement de Madagascar', 'ISGIEM', 'institut-superieur-de-geologie-de-l-ingenieur-et-de-l-environnement-de-madagascar', 1),
 (159, 'Institut Supérieur d''Enseignement Technologique et des Sciences', 'ISETS', 'institut-superieur-d-enseignement-technologique-et-des-sciences', 1),
 (160, 'Institut Supérieur de Formation Aéronautique Aérovision', 'ISFAA', 'institut-superieur-de-formation-aeronautique-aerovision', 1),
-(161, 'Institut Supérieur d''aElectronique et de Système Informatique', 'IS-IESI', 'institut-superieur-pour-l-entrepreneuriat-le-commerce-et-le-management-2', 1),
+(161, 'Institut Supérieur d''Electronique et de Système Informatique', 'IS-IESI', 'institut-superieur-d-electronique-et-de-systeme-informatique', 1),
 (162, 'Institut Supérieur d''Informatique et de Management d''Entreprise', 'ISIME', 'institut-superieur-d-informatique-et-de-management-d-entreprise', 1),
 (163, 'Institut Supérieur en Informatique', 'IS INFO', 'institut-superieur-en-informatique', 1),
 (164, 'Institut Supérieur d''Infirmiers et des Sages - femmes d''Antsiranana', 'ISISFA', 'institut-superieur-d-infirmiers-et-des-sages-femmes-d-antsiranana', 1),
@@ -4351,96 +4385,104 @@ CREATE TABLE `sl_school_contact` (
   `longitude` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `latitude` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `showmap` tinyint(1) NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `published` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `sl_school_contact`
 --
 
-INSERT INTO `sl_school_contact` (`id`, `school_id`, `Address`, `phone`, `website`, `longitude`, `latitude`, `showmap`, `email`) VALUES
-(1, 3, 'Université ASJA  (Campus situé à Tombontsoa, à 7km au nord d’Antsirabe sur la RN7)  BP 287 – 00110 Antsirabe – Madagascar', '0 20 44 483 19 / 0 20 44 483 20', 'www.univ-asja.net', '47.070097', '-19.814170', 1, 'asja@moov.mg'),
-(3, 13, 'sapien, vel cursus le', '+33 121 45 78', 'www.sitekui.com', '45', '-21.32', 1, ''),
-(4, 29, 'Antsobolo, Antananarivo, Madagascar', '033 12 171 60 / 034 17 583 69 / 020 26 384 08', 'www.ispm-edu.com', '47.566992', '-18.916444', 1, 'ispm@ispm.edu.com'),
-(5, 1, 'Maison des produits 67 Ha BP 946 101 Tananarive Madagascar', '020 22 660 65 / 020 22 660 66', 'www.inscae.mg', '47.506482', '-18.904479', 1, 'inscae@mail.mail'),
-(6, 1, 'Nunc ultricies ac arcu vitae elementum', '+261 05 21 541 21', 'www.inscae.mg', '36', '12', 1, ''),
-(7, 4, 'Lorem ipsum dolor et sit amet consectus', '+261 33 985 65', 'www.espa.com', '56', '89', 1, 'espaofficial@espa.com'),
-(8, 17, 'Manakambahiny – lot : VO 9C Bis Antananarivo 101', '034 21 527 01 / 033 14 296 23', 'www.inspnmad.mg', '47.536256', '-18.931563', 1, 'presidenceinspnmad@yahoo.fr'),
-(9, 3, 'ique elit sit amet, finibus rhoncus ipsum. Nunc ultricie', '45 45 454545 4545', 'sfs.sdfsd.sdf', '', '', 1, 'sdfsdfs@dfsd.df'),
-(10, 99, 'IFAS Lot II N69 A Analamahitsy', '034 39 415 28', '', '', '', 1, 'ifas@yahoo.fr'),
-(11, 87, 'ESTIIM’, Immeuble CENAM 67 Ha Sud, Antananarivo 101', '020 22 294 53 / 020 24 331 19 / 034 20 065 65', 'www.estiim.net', '', '', 1, 'estiim@yahoo.fr'),
-(12, 67, 'Lot FA IV 12 A Village Malaho – 102 Antananarivo Atsimondrano', '', '', '', '', 1, 'ecole-lumiere@orange.fr'),
-(13, 25, 'Lot 28 Soamiampita Itaosy', '033 73 734 77 - 034 07 734 77', 'espm@gmail.com', '', '', 1, ''),
-(14, 168, 'Infocentre de la Salle - Frères des Ecoles Chrétiennes Soavimbahoaka BP 583', '020 22 408 18', '', '', '', 1, 'princyother@yahoo.fr'),
-(15, 169, 'Institut Supérieur des Sciences Paramédicales de Madagascar', '033 02 707 81 / 034 29 014 17', '', '', '', 1, 'isspmtoa@yahoo.fr'),
-(16, 170, 'lot 0512 - F - 142 Tsarasaotra – 110 Antsirabe', '032 85 681 28', '', '', '', 1, 'isssd@rosketmail.com'),
-(17, 47, 'Andrefan''Ambohijanahary', '034 13 844 62', '', '', '', 1, ''),
-(18, 119, 'Lot 116 Pile 519 Marovato Abattoir Mahajanga 401', '032 80 783 51', '', '', '', 1, 'bellah.suzia@gmail.com'),
-(19, 171, 'Lot IVN 54 BTX 67H N/O (Ankasina) Antananarivo', '020 22 319 24 / 033 37 009 01 / 034 07 009 01', '', '', '', 1, 'rabrhylan@yahoo.fr ; isssg.emir@haoo.fr'),
-(20, 172, 'Lot IVD 23 Ter Behoririka – 101 Antananarivo', '032 45 464 75 / 033 09 463 87 / 032 02 254 48', '', '', '', 1, 'contact@issup.net'),
-(21, 173, 'Institut Supérieur de Technologie Touristique, Agricole et Minière', '033 25 908 54', '', '', '', 1, 'manjary_frederic@yahoo.fr'),
-(22, 174, 'mbokala Manakara', '', '', '', '', 1, ''),
-(23, 4, 'B.P 1500 - 101 Antananarivo', '020 22 689 15 / 020 22  630 30', '', '47.423948', '-18.970312', 1, 'espa.tana@gmail.com'),
-(24, 127, 'Lot IVS 30 Antanimena Antananarivo', '033 41 317 59 / 032 02 504 89 / 034 29 373 32', '', '', '', 1, 'imtmada@gmail.com'),
-(25, 175, 'Lot IAV 309 B Mandrimena Iavoloha BP 9103 Andoharanofotsy – 102 Antananarivo', '020 22 460 34', '', '', '', 1, 'stsmad@moov.mg; istsmadagascar@moov.mg'),
-(26, 69, 'BP 3832 Antananarivo', '032 11 102 54', '', '', '', 1, 'esbtpbevalala@gmail.com'),
-(27, 31, 'Lot VB 22 C bis Ambatoroka', '034 20 821 48', '', '47.545448', '-18.922224', 1, 'ramakavelogenevieve@gmail.com'),
-(28, 108, 'Villa Fiaka Ambalatany – 407 Antsohihy', '032 40 496 62 / 032 67 692 67', '', '', '', 1, ''),
-(29, 176, 'Lot I BG 12 Isoraka – Antananarivo', '033 12 662 45', '', '', '', 1, 'kenovaralainirina@yahoo.fr'),
-(30, 177, 'Lot VF 30 Mahamasina Nord Antananarivo Siège : Immeuble CNAPS 67 Ha', '020 24 610 88 / 032 70 601 84', '', '', '', 1, 'iuptananarive@gmail.com'),
-(31, 178, 'Nosy Be Hell Ville', '032 59 229 72 / 032 04 450 27', '', '', '', 1, 'resinosykomba@yahoo.fr'),
-(32, 179, 'Lot II V 65 Ampandrana Bel Air - Immeuble O PEN 2è étage', '033 11 157 00', '', '', '', 1, 'loloaparany@yahoo.fr'),
-(33, 180, 'Lot 0307/0120 Ambonifahidrano près des Cités des Profs 301', '034 04 216 11', '', '', '', 1, 'razafye@yahoo.fr'),
-(34, 181, 'Ambatomaro', '020 26 414 14', '', '', '', 1, 'administration@lgs.mg ; navalona@lgs.mg'),
-(35, 182, '200FI Ambohitravao Talatamaty', '034 70 529 04', '', '', '', 1, 'mibc.madagascar@gmail.com'),
-(36, 19, 'Lot SIBE 5 Bis Soarano, Rue Andrianampoinimerina', '020 22 651 72 / 020 22 652 18', '', '', '', 1, 'iftmadagascar@moov.mg'),
-(37, 146, '364/G Moramanga Ambony', '', '', '', '', 1, ''),
-(38, 183, 'Lot 1402 67ha Nord Ouest', '033 15 812 45', '', '', '', 1, ''),
-(39, 95, 'Lot II I 160 Alarobia Amboniloha', '020 26 393 17 / 033 14 181 05 / 034 63 332 52', '', '', '', 1, 'hecmma@blueline@.mg ; hecmma@yahoo.fr'),
-(40, 54, 'BP 5057, Ambohimanga Rova', '033 11 336 61', '', '', '', 1, 'atlasuniversityrmc@gmail.com'),
-(41, 184, 'Ampamantanana Antananarivo', '', '', '', '', 1, '034 69 229 20'),
-(42, 185, '190, route circulaire Ankorahotra Antananarivo', '', '', '', '', 1, ''),
-(43, 186, 'Près Lot II A 104 Nanisana Iadiambola', '033 14 604 56 / 034 01 340 96', '', '', '', 1, 'mtcpedagogie@gmail.com'),
-(44, 187, 'Lot D 3, Mahitsy – Antananarivo 105', '', '', '', '', 1, ''),
-(45, 188, 'Place Rabetafika, Ambatonakanga', '034 14 201 53 / 034 02 035 82', '', '', '', 1, 'raveloson.tsiry@yahoo.fr'),
-(46, 189, 'Lot 18 A 17 Ankeniheny Ambositra', '034 79 185 36', '', '', '', 1, ''),
-(47, 190, 'Lot 041/02 Akany Sambatra Atsimomparihy Ambohidratrimo', '034 66 252 26 / 033 76 052 25', '', '', '', 1, ''),
-(48, 191, 'Tsaramasoandro Ambanidia - BP 6091 Antananarivo', '020 22 214 07 / 033 19 081 49', '', '', '', 1, 'f.manalina@gmail.com'),
-(49, 192, 'Ivory Avaratra BP 1061 Fianarantsoa', '75 906 34 / 032 40 984 77 / 032 40 527 46 / 032 40 527 98', '', '', '', 1, 'drlotera@yahoo.fr'),
-(50, 193, 'Saint - Michel Amparibe', '', '', '', '', 1, ''),
-(51, 194, 'BP 304 – 110 Antsirabe', '44 483 76 / 034 05 035 56', '', '', '', 1, 'sefam@moov.mg'),
-(52, 195, '67 ha Antananarivo', '', '', '', '', 1, ''),
-(53, 7, 'Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus nonNullam lacinia felis nisi, ut varius ipsum luctus non', '', '', '', '', 1, ''),
-(54, 197, 'Lot 17J 40 rue Vacoas, Ivory Antsirabe 110', '44 498 06 / 44 960 60 / 032 02 051 61', '', '', '', 1, 'tech - info@moov.mg'),
-(55, 198, 'Lot II S 81 A D Anjanahary', '033 11 540 02', '', '', '', 1, 'topinfoprw@yahoo.fr'),
-(56, 199, 'Villa Anjarasoa Ambatomaro', '032 47 852 51 / 033 40 688 19', '', '', '', 1, 'tsi.mada@hotmail.fr'),
-(57, 200, 'Rue Rabezavana', '034 37 097 97', '', '', '', 1, 'nicolerahantarisoa@gmail.com'),
-(58, 201, 'RN 7 PK 135 Ankofafabe, Vohitsoa Sambaina Gare BP 325 Antsirabe 110', '44 931 07', '', '', '', 1, 'uaz@moov.mg'),
-(59, 202, 'Lot IVM 103 YC TER Antetezanafovoany', '033 71 701 31 / 034 37 761 21', '', '47.522512', '-18.891953', 1, 'uimadagascar@gmail.com'),
-(60, 203, 'Lot IVB 93 Andravoahangy', '033 14 759 80', '', '', '', 1, 'uniinfo@gmail.com'),
-(61, 204, 'Lot FKR III 049 Fiakaana Ambohitrimanjaka', '032 74 650 38', '', '', '', 1, 'rinatia_stellina@yahoo.fr'),
-(62, 205, 'Lot 8 Soamiampita Itaosy – 102  Antananarivo', '033 14 617 91', '', '', '', 1, 'rakotoheryaina@yahoo.fr'),
-(63, 206, 'Lot A 25 Imanga Sabotsy Namehana – 103 Avaradrano', '033 11 694 51 / 034 11 694 51', '', '', '', 1, 'hpi.masca@gmail.com'),
-(64, 207, 'Immeuble CNAPS 67 HA – Antananarivo', '032 78 665 91 / 034 66 602 52', '', '', '', 1, 'masivelo@freenet.mg'),
-(65, 209, 'Lot 6 AB 34 Anjanankazo Tsiroanomandidy 119', '033 14 798 47 / 034 14 425 36', '', '', '', 1, 'upmf@gmail.com'),
-(66, 210, 'lot IAV 304 Bis Mandrimena Iavoloha - Antananarivo', '020 22 572 60 / 034 04 302 32', '', '', '', 1, 'r.andrianala@yahoo.fr'),
-(67, 136, 'Mangarivotra Ambatondrazaka', '033 63 905 90 / 034 20 444 27 / 033 17 411 85', '', '48.424077', '-17.825284', 1, 'inspalm@yahoo.fr'),
-(68, 202, 'lorem ipsum dolor et sit amet', '', '', '48.484863', '-19.544692', 1, ''),
-(69, 202, 'Pellentesque ex magna, euismod', '', '', '46.705078', '-18.986731', 1, ''),
-(70, 17, 'Ambaranjana Antananarivo', '034 21 527 01 / 033 14 296 23', 'www.inspnmad.mg', '47.538619', '-18.913514', 1, 'presidenceinspnmad@yahoo.fr'),
-(71, 17, 'Lot 0514 L 46 Tomboarivo Antsirabe', '033 05 950 76 / 032 04 898 75 / 033 09 689 26', 'www.inspnmad.mg', '47.033689', '-19.871476', 1, 'inspnmaddbira@yahoo.com'),
-(72, 17, 'Lot 3604/k3/078 Ambalakisoa, près Sofia Antsororokavo – Fianarantsoa', '034 08 737 67 / 033 13 883 19', 'www.inspnmad.mg', '47.086317', '-21.455682', 1, 'inspnmad@gmail.com'),
-(73, 17, 'Lot 0101 DG/0030B, en face Hôtel 5/5 Ampasika', '034 21 527 01', 'www.inspnmad.mg', '46.321827', '-15.712197', 1, 'presidenceinspnmad@yahoo.fr'),
-(74, 17, 'Lot 138 , parcelles 12/ 1 4 Tanamakoa - Toamasina', '032 04 031 47 / 033 41 122 92 / 53 981 19', '', '49.406445', '-18.143223', 1, 'inspnmadatsinanana@yahoo.fr'),
-(75, 17, 'Cité Communale n°56 Antaninarenina', '032 07 513 93 / 033 06 738 45', '', '43.670036', '-23.354688', 1, 'tsalingalinga@hotmail.fr'),
-(76, 2, 'RN2 - Ampasampito 101 Antananarivo MADAGASCAR', '020 22 414 23', 'www.ist-tana.mg', '47.545796', '-18.895605', 1, 'isttdg@ist-tana.mg'),
-(77, 5, 'Lorem ipsum', '', '', '47.091766', '-21.455365', 1, ''),
-(78, 6, 'Route d''Ambohipo - Ambatoroka BP 6059 101 Antananarivo', '020  22 340 09 / 020 22 340 07', 'www.ucm.mg', '47.540803', '-18.922079', 1, 'ucm@blueline.mg'),
-(79, 36, 'Lot II B 41 A Amboditsiry près Usine JB', '020 22 215 33 / 033 40 371 37 / 034 03 579 11', 'www.euroi.mg', '47.542487', '-18.893623', 1, 'euroi@moov.mg'),
-(80, 22, 'Antanimena BP 7541 - Antananarivo', '020 22 232 70 / 032 44 941 72', 'www.essca.mg', '47.522794', '-18.896897', 1, 'frere_georges@yahoo.fr'),
-(81, 33, 'Lot IVC 1 Ambatomitsangana', '032 40 736 51 / 020 24 582 03', '', '47.528948', '-18.901817', 1, ''),
-(82, 23, 'Lot IVN 68 A Ankaditapaka Ankadifotsy - BP 8224', '020 22 224 88 / 020 22 228 88 / 020 22 794 94', 'www.iscam.mg', '47.524938', '-18.898287', 1, 'romaine.r@iscam.mg'),
-(83, 211, 'ISNA  Andoharanofotsy Mandrimena (derrière Makiplast) 102 Antananarivo', '', '', '', '', 1, '');
+INSERT INTO `sl_school_contact` (`id`, `school_id`, `Address`, `phone`, `website`, `longitude`, `latitude`, `showmap`, `email`, `published`) VALUES
+(1, 3, 'Université ASJA Tombontsoa BP 287 – 00110 Antsirabe – Madagascar', '0 20 44 483 19 / 0 20 44 483 20', 'www.univ-asja.net', '47.070097', '-19.814170', 1, 'asja@moov.mg', 1),
+(3, 13, 'sapien, vel cursus le', '+33 121 45 78', 'www.sitekui.com', '45', '-21.32', 1, '', 0),
+(4, 29, 'Antsobolo, Antananarivo, Madagascar', '033 12 171 60 / 034 17 583 69 / 020 26 384 08', 'www.ispm-edu.com', '47.566992', '-18.916444', 1, 'ispm@ispm.edu.com', 1),
+(5, 1, 'Maison des produits 67 Ha BP 946 101 Tananarive Madagascar', '020 22 660 65 / 020 22 660 66', 'www.inscae.mg', '47.506482', '-18.904479', 1, 'inscae@mail.mail', 1),
+(8, 17, 'Manakambahiny – lot : VO 9C Bis Antananarivo 101', '034 21 527 01 / 033 14 296 23', 'www.inspnmad.mg', '47.536256', '-18.931563', 1, 'presidenceinspnmad@yahoo.fr', 1),
+(9, 3, 'ique elit sit amet, finibus rhoncus ipsum. Nunc ultricie', '45 45 454545 4545', 'sfs.sdfsd.sdf', '', '', 1, 'sdfsdfs@dfsd.df', 0),
+(10, 99, 'IFAS Lot II N69 A Analamahitsy', '034 39 415 28', '', '', '', 1, 'ifas@yahoo.fr', 0),
+(11, 87, 'ESTIIM’, Immeuble CENAM 67 Ha Sud, Antananarivo 101', '020 22 294 53 / 020 24 331 19 / 034 20 065 65', 'www.estiim.net', '', '', 1, 'estiim@yahoo.fr', 0),
+(12, 67, 'Lot FA IV 12 A Village Malaho – 102 Antananarivo Atsimondrano', '', '', '', '', 1, 'ecole-lumiere@orange.fr', 0),
+(13, 25, 'Lot 28 Soamiampita Itaosy', '033 73 734 77 - 034 07 734 77', 'espm@gmail.com', '', '', 1, '', 0),
+(14, 168, 'Infocentre de la Salle - Frères des Ecoles Chrétiennes Soavimbahoaka BP 583', '020 22 408 18', '', '', '', 1, 'princyother@yahoo.fr', 0),
+(15, 169, 'Institut Supérieur des Sciences Paramédicales de Madagascar', '033 02 707 81 / 034 29 014 17', '', '', '', 1, 'isspmtoa@yahoo.fr', 0),
+(16, 170, 'lot 0512 - F - 142 Tsarasaotra – 110 Antsirabe', '032 85 681 28', '', '', '', 1, 'isssd@rosketmail.com', 0),
+(17, 47, 'Andrefan''Ambohijanahary', '034 13 844 62', '', '', '', 1, '', 0),
+(18, 119, 'Lot 116 Pile 519 Marovato Abattoir Mahajanga 401', '032 80 783 51', '', '', '', 1, 'bellah.suzia@gmail.com', 0),
+(19, 171, 'Lot IVN 54 BTX 67H N/O (Ankasina) Antananarivo', '020 22 319 24 / 033 37 009 01 / 034 07 009 01', '', '', '', 1, 'rabrhylan@yahoo.fr ; isssg.emir@haoo.fr', 0),
+(20, 172, 'Lot IVD 23 Ter Behoririka – 101 Antananarivo', '032 45 464 75 / 033 09 463 87 / 032 02 254 48', '', '', '', 1, 'contact@issup.net', 0),
+(21, 173, 'Institut Supérieur de Technologie Touristique, Agricole et Minière', '033 25 908 54', '', '', '', 1, 'manjary_frederic@yahoo.fr', 0),
+(22, 174, 'mbokala Manakara', '', '', '', '', 1, '', 0),
+(23, 4, 'B.P 1500 - 101 Antananarivo', '020 22 689 15 / 020 22  630 30', '', '47.423948', '-18.970312', 1, 'espa.tana@gmail.com', 1),
+(24, 127, 'Lot IVS 30 Antanimena Antananarivo', '033 41 317 59 / 032 02 504 89 / 034 29 373 32', '', '', '', 1, 'imtmada@gmail.com', 0),
+(25, 175, 'Lot IAV 309 B Mandrimena Iavoloha BP 9103 Andoharanofotsy – 102 Antananarivo', '020 22 460 34', '', '', '', 1, 'stsmad@moov.mg; istsmadagascar@moov.mg', 1),
+(26, 69, 'BP 3832 Antananarivo', '032 11 102 54', '', '', '', 1, 'esbtpbevalala@gmail.com', 0),
+(27, 31, 'Lot VB 22 C bis Ambatoroka', '034 20 821 48', '', '47.545448', '-18.922224', 1, 'ramakavelogenevieve@gmail.com', 1),
+(28, 108, 'Villa Fiaka Ambalatany – 407 Antsohihy', '032 40 496 62 / 032 67 692 67', '', '', '', 1, '', 0),
+(29, 176, 'Lot I BG 12 Isoraka – Antananarivo', '033 12 662 45', '', '', '', 1, 'kenovaralainirina@yahoo.fr', 0),
+(30, 177, 'Lot VF 30 Mahamasina Nord Antananarivo Siège : Immeuble CNAPS 67 Ha', '020 24 610 88 / 032 70 601 84', '', '', '', 1, 'iuptananarive@gmail.com', 0),
+(31, 178, 'Nosy Be Hell Ville', '032 59 229 72 / 032 04 450 27', '', '', '', 1, 'resinosykomba@yahoo.fr', 0),
+(32, 179, 'Lot II V 65 Ampandrana Bel Air - Immeuble O PEN 2è étage', '033 11 157 00', '', '', '', 1, 'loloaparany@yahoo.fr', 0),
+(33, 180, 'Lot 0307/0120 Ambonifahidrano près des Cités des Profs 301', '034 04 216 11', '', '', '', 1, 'razafye@yahoo.fr', 0),
+(34, 181, 'Ambatomaro', '020 26 414 14', '', '', '', 1, 'administration@lgs.mg ; navalona@lgs.mg', 0),
+(35, 182, '200FI Ambohitravao Talatamaty', '034 70 529 04', '', '', '', 1, 'mibc.madagascar@gmail.com', 0),
+(36, 19, 'Lot SIBE 5 Bis Soarano, Rue Andrianampoinimerina', '020 22 651 72 / 020 22 652 18', 'iftmadagascar.centerblog.net', '47.522570', '-18.903899', 1, 'iftmadagascar@moov.mg', 1),
+(37, 146, '364/G Moramanga Ambony', '', '', '', '', 1, '', 0),
+(38, 183, 'Lot 1402 67ha Nord Ouest', '033 15 812 45', '', '', '', 1, '', 1),
+(39, 95, 'Lot II I 160 Alarobia Amboniloha', '020 26 393 17 / 033 14 181 05 / 034 63 332 52', '', '', '', 1, 'hecmma@blueline@.mg ; hecmma@yahoo.fr', 0),
+(40, 54, 'BP 5057, Ambohimanga Rova', '033 11 336 61', '', '', '', 1, 'atlasuniversityrmc@gmail.com', 0),
+(41, 184, 'Ampamantanana Antananarivo', '', '', '', '', 1, '034 69 229 20', 0),
+(42, 185, '190, route circulaire Ankorahotra Antananarivo', '', '', '', '', 1, '', 0),
+(43, 186, 'Près Lot II A 104 Nanisana Iadiambola', '033 14 604 56 / 034 01 340 96', '', '', '', 1, 'mtcpedagogie@gmail.com', 0),
+(44, 187, 'Lot D 3, Mahitsy – Antananarivo 105', '', '', '', '', 1, '', 0),
+(45, 188, 'Place Rabetafika, Ambatonakanga', '034 14 201 53 / 034 02 035 82', '', '', '', 1, 'raveloson.tsiry@yahoo.fr', 0),
+(46, 189, 'Lot 18 A 17 Ankeniheny Ambositra', '034 79 185 36', '', '', '', 1, '', 0),
+(47, 190, 'Lot 041/02 Akany Sambatra Atsimomparihy Ambohidratrimo', '034 66 252 26 / 033 76 052 25', '', '', '', 1, '', 0),
+(48, 191, 'Tsaramasoandro Ambanidia - BP 6091 Antananarivo', '020 22 214 07 / 033 19 081 49', '', '', '', 1, 'f.manalina@gmail.com', 0),
+(49, 192, 'Ivory Avaratra BP 1061 Fianarantsoa', '75 906 34 / 032 40 984 77 / 032 40 527 46 / 032 40 527 98', '', '', '', 1, 'drlotera@yahoo.fr', 0),
+(50, 193, 'Saint - Michel Amparibe', '', '', '', '', 1, '', 0),
+(51, 194, 'BP 304 – 110 Antsirabe', '44 483 76 / 034 05 035 56', '', '', '', 1, 'sefam@moov.mg', 0),
+(52, 195, '67 ha Antananarivo', '', '', '', '', 1, '', 0),
+(53, 7, 'Curabitur laoreet varius malesuada. Nullam lacinia felis nisi, ut varius ipsum luctus nonNullam lacinia felis nisi, ut varius ipsum luctus non', '', '', '', '', 1, '', 0),
+(54, 197, 'Lot 17J 40 rue Vacoas, Ivory Antsirabe 110', '44 498 06 / 44 960 60 / 032 02 051 61', '', '', '', 1, 'tech - info@moov.mg', 0),
+(55, 198, 'Lot II S 81 A D Anjanahary', '033 11 540 02', '', '', '', 1, 'topinfoprw@yahoo.fr', 0),
+(56, 199, 'Villa Anjarasoa Ambatomaro', '032 47 852 51 / 033 40 688 19', '', '', '', 1, 'tsi.mada@hotmail.fr', 0),
+(57, 200, 'Rue Rabezavana', '034 37 097 97', '', '', '', 1, 'nicolerahantarisoa@gmail.com', 0),
+(58, 201, 'RN 7 PK 135 Ankofafabe, Vohitsoa Sambaina Gare BP 325 Antsirabe 110', '44 931 07', '', '', '', 1, 'uaz@moov.mg', 0),
+(59, 202, 'Lot IVM 103 YC TER Antetezanafovoany', '033 71 701 31 / 034 37 761 21', '', '47.522512', '-18.891953', 1, 'uimadagascar@gmail.com', 0),
+(60, 203, 'Lot IVB 93 Andravoahangy', '033 14 759 80', '', '', '', 1, 'uniinfo@gmail.com', 0),
+(61, 204, 'Lot FKR III 049 Fiakaana Ambohitrimanjaka', '032 74 650 38', '', '', '', 1, 'rinatia_stellina@yahoo.fr', 0),
+(62, 205, 'Lot 8 Soamiampita Itaosy – 102  Antananarivo', '033 14 617 91', '', '', '', 1, 'rakotoheryaina@yahoo.fr', 0),
+(63, 206, 'Lot A 25 Imanga Sabotsy Namehana – 103 Avaradrano', '033 11 694 51 / 034 11 694 51', '', '', '', 1, 'hpi.masca@gmail.com', 0),
+(64, 207, 'Immeuble CNAPS 67 HA – Antananarivo', '032 78 665 91 / 034 66 602 52', '', '', '', 1, 'masivelo@freenet.mg', 0),
+(65, 209, 'Lot 6 AB 34 Anjanankazo Tsiroanomandidy 119', '033 14 798 47 / 034 14 425 36', '', '', '', 1, 'upmf@gmail.com', 0),
+(66, 210, 'lot IAV 304 Bis Mandrimena Iavoloha - Antananarivo', '020 22 572 60 / 034 04 302 32', '', '', '', 1, 'r.andrianala@yahoo.fr', 0),
+(67, 136, 'Mangarivotra Ambatondrazaka', '033 63 905 90 / 034 20 444 27 / 033 17 411 85', '', '48.424077', '-17.825284', 1, 'inspalm@yahoo.fr', 0),
+(68, 202, 'lorem ipsum dolor et sit amet', '', '', '48.484863', '-19.544692', 1, '', 0),
+(69, 202, 'Pellentesque ex magna, euismod', '', '', '46.705078', '-18.986731', 1, '', 0),
+(70, 17, 'Ambaranjana Antananarivo', '034 21 527 01 / 033 14 296 23', 'www.inspnmad.mg', '47.538619', '-18.913514', 1, 'presidenceinspnmad@yahoo.fr', 1),
+(71, 17, 'Lot 0514 L 46 Tomboarivo Antsirabe', '033 05 950 76 / 032 04 898 75 / 033 09 689 26', 'www.inspnmad.mg', '47.033689', '-19.871476', 1, 'inspnmaddbira@yahoo.com', 1),
+(72, 17, 'Lot 3604/k3/078 Ambalakisoa, près Sofia Antsororokavo – Fianarantsoa', '034 08 737 67 / 033 13 883 19', 'www.inspnmad.mg', '47.086317', '-21.455682', 1, 'inspnmad@gmail.com', 1),
+(73, 17, 'Lot 0101 DG/0030B, en face Hôtel 5/5 Ampasika', '034 21 527 01', 'www.inspnmad.mg', '46.321827', '-15.712197', 1, 'presidenceinspnmad@yahoo.fr', 1),
+(74, 17, 'Lot 138 , parcelles 12/ 1 4 Tanamakoa - Toamasina', '032 04 031 47 / 033 41 122 92 / 53 981 19', '', '49.406445', '-18.143223', 1, 'inspnmadatsinanana@yahoo.fr', 1),
+(75, 17, 'Cité Communale n°56 Antaninarenina', '032 07 513 93 / 033 06 738 45', '', '43.670036', '-23.354688', 1, 'tsalingalinga@hotmail.fr', 1),
+(76, 2, 'RN2 - Ampasampito 101 Antananarivo MADAGASCAR', '020 22 414 23', 'www.ist-tana.mg', '47.545796', '-18.895605', 1, 'isttdg@ist-tana.mg', 1),
+(77, 5, 'Lorem ipsum', '', '', '47.091766', '-21.455365', 1, '', 0),
+(78, 6, 'Route d''Ambohipo - Ambatoroka BP 6059 101 Antananarivo', '020  22 340 09 / 020 22 340 07', 'www.ucm.mg', '47.540803', '-18.922079', 1, 'ucm@blueline.mg', 1),
+(79, 36, 'Lot II B 41 A Amboditsiry près Usine JB', '020 22 215 33 / 033 40 371 37 / 034 03 579 11', 'www.euroi.mg', '47.542487', '-18.893623', 1, 'euroi@moov.mg', 1),
+(80, 22, 'Antanimena BP 7541 - Antananarivo', '020 22 232 70 / 032 44 941 72', 'www.essca.mg', '47.522794', '-18.896897', 1, 'frere_georges@yahoo.fr', 1),
+(81, 33, 'Lot IVC 1 Ambatomitsangana', '032 40 736 51 / 020 24 582 03', '', '47.528948', '-18.901817', 1, '', 0),
+(82, 23, 'Lot IVN 68 A Ankaditapaka Ankadifotsy - BP 8224', '020 22 224 88 / 020 22 228 88 / 020 22 794 94', 'www.iscam.mg', '47.524938', '-18.898287', 1, 'romaine.r@iscam.mg', 1),
+(83, 211, 'ISNA  Andoharanofotsy Mandrimena (derrière Makiplast) 102 Antananarivo', '', '', '', '', 1, '', 1),
+(84, 46, '1e" elit sit amet, finib', '', '', '47.550148', '-18.893223', 1, '', 1),
+(85, 46, '2e elit sit amet, finib', '', '', '47.558613', '-18.891802', 1, '', 1),
+(86, 46, '3e elit sit amet, finib', '', '', '', '-18.4562', 1, '', 1),
+(87, 46, 'am ultrices nibh sapien, vel cursus', '', '', '', '', 1, '', 0),
+(91, 45, 'Curabitur laoreet varius malesuada', '', '', '', '', 1, '', 0),
+(93, 45, 'vel cursus leo tempus eu', '', '', '', '', 1, '', 1),
+(94, 45, 'Curabitur laoreet varius malesuada', '', '', '', '', 1, '', 1),
+(96, 9, 'CNTEMAD Ankadifotsy Lot IVC 6 B.P. 78 101 Antananarivo Madagascar', '020 22 600 57', 'www.cntemad.mg', '47.524771', '-18.899072', 1, '', 1),
+(97, 18, 'Université Privé Aceem Manakambahiny', '020 22 295 34', 'universiteaceem.com', '47.535765', '-18.932961', 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -4557,7 +4599,19 @@ INSERT INTO `sl_school_of_the_day` (`id`, `school_id`, `date`, `current`, `day`)
 (62, 41, '2017-08-24 17:24:40', 1, '2017-08-24'),
 (63, 132, '2017-08-28 11:38:12', 1, '2017-08-28'),
 (64, 144, '2017-08-29 10:32:32', 1, '2017-08-29'),
-(65, 66, '2017-08-31 12:51:23', 1, '2017-08-31');
+(65, 66, '2017-08-31 12:51:23', 1, '2017-08-31'),
+(66, 51, '2017-09-01 10:29:12', 1, '2017-09-01'),
+(67, 94, '2017-09-02 10:21:00', 1, '2017-09-02'),
+(68, 182, '2017-09-04 07:44:32', 1, '2017-09-04'),
+(69, 76, '2017-09-05 09:58:53', 1, '2017-09-05'),
+(70, 86, '2017-09-06 09:51:00', 1, '2017-09-06'),
+(71, 135, '2017-09-08 09:31:34', 1, '2017-09-08'),
+(72, 132, '2017-09-13 17:29:51', 1, '2017-09-13'),
+(73, 189, '2017-09-14 09:59:39', 1, '2017-09-14'),
+(74, 25, '2017-09-15 13:13:08', 1, '2017-09-15'),
+(75, 183, '2017-09-18 11:01:03', 1, '2017-09-18'),
+(76, 78, '2017-09-20 09:23:51', 1, '2017-09-20'),
+(77, 210, '2017-09-21 08:13:45', 1, '2017-09-21');
 
 -- --------------------------------------------------------
 
@@ -5641,15 +5695,16 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (1037, 174, 4, 'Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'it. Short description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'it. Description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany'),
 (1038, 174, 5, 'Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'es. Short description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'es. Description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany'),
 (1039, 174, 6, 'Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'de. Short description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany', 'de. Description .Institut Supérieur de Technologie Régionale de Vatovavy Fitovinany'),
-(1040, 175, 1, 'Institut Supérieur de Travail Social', 'fr. Short description .Institut Supérieur de Travail Social', 'fr. Description .Institut Supérieur de Travail Social'),
-(1041, 175, 2, 'Institut Supérieur de Travail Social', 'en. Short description .Institut Supérieur de Travail Social', 'en. Description .Institut Supérieur de Travail Social'),
-(1042, 175, 3, 'Institut Supérieur de Travail Social', 'mg. Short description .Institut Supérieur de Travail Social', 'mg. Description .Institut Supérieur de Travail Social'),
-(1043, 175, 4, 'Institut Supérieur de Travail Social', 'it. Short description .Institut Supérieur de Travail Social', 'it. Description .Institut Supérieur de Travail Social'),
-(1044, 175, 5, 'Institut Supérieur de Travail Social', 'es. Short description .Institut Supérieur de Travail Social', 'es. Description .Institut Supérieur de Travail Social'),
-(1045, 175, 6, 'Institut Supérieur de Travail Social', 'de. Short description .Institut Supérieur de Travail Social', 'de. Description .Institut Supérieur de Travail Social'),
+(1040, 175, 1, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
+(1041, 175, 2, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
+(1042, 175, 3, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
+(1043, 175, 4, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
+(1044, 175, 5, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
+(1045, 175, 6, 'Institut Supérieur de Travail Social', 'L’Ecole de Service Social est la première Ecole de Travail Social à Madagascar. Elle a été fondée en 1960 par la Congrégation « Filles du Cœur de Marie » sous l’égide des trois missionnaires française dont Sœur Hila DE REU, Sœur France Cheviotte et Sœur Adeline PIRONT. En effet, une fois insérées dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l’Etat, les trois sœurs prennent connaissance de l’état des lieux en matières sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l’année 1959, deux perspectives sociales prennent forme :  Commencer modestement à mettre en place une école pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.', '<p style="text-align: justify;">L&rsquo;Ecole de Service Social est la premi&egrave;re Ecole de Travail Social &agrave; Madagascar. Elle a &eacute;t&eacute; fond&eacute;e en 1960 par la Congr&eacute;gation &laquo; Filles du C&oelig;ur de Marie &raquo; sous l&rsquo;&eacute;gide des trois missionnaires fran&ccedil;aise dont S&oelig;ur Hila DE REU, S&oelig;ur France Cheviotte et S&oelig;ur Adeline PIRONT. En effet, une fois ins&eacute;r&eacute;es dans leurs mission et en contact avec les autres professionnels du milieu social et les fonctionnaires de l&rsquo;Etat, les trois s&oelig;urs prennent connaissance de l&rsquo;&eacute;tat des lieux en mati&egrave;res sociale, identifier les besoins des gens dans les quartiers difficiles de Tananarive. A la fin de l&rsquo;ann&eacute;e 1959, deux perspectives sociales prennent forme : Commencer modestement &agrave; mettre en place une &eacute;cole pour former des travailleuses sociales, Installer des petits centres du genre foyers sociaux.<br />L&rsquo;id&eacute;e de cr&eacute;er cette &eacute;cole devenait plus parlante apr&egrave;s leurs interventions aux victimes de l''inondation de 1959 qui a fait appel &agrave; la n&eacute;cessit&eacute; des travailleurs sociaux. Voici quelques dates qui ont marqu&eacute; l&rsquo;histoire de l&rsquo;Institut.</p>\n<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur de Travail Social sise &agrave; Andoharanofotsy forme des professionnels en Travail Social. Plus de 55 ans d&rsquo;exp&eacute;rience dans le domaine, il a pour devise &laquo; Construire le social de demain &raquo;. Dans cette optique, il travaille avec des enseignants aguerris dans le Travail social. L&rsquo;ISTS est un institut d&rsquo;enseignement sup&eacute;rieur priv&eacute; confessionnel affili&eacute; &agrave; l&rsquo;Universit&eacute; Catholique de Madagascar (U.C.M). La formation dispens&eacute;e est sanctionn&eacute;e par un dipl&ocirc;me professionnel en travail social suivant la sp&eacute;cialit&eacute; choisie. Les travailleurs sociaux issus de l&rsquo;ISTS sont directement op&eacute;rationnels.</p>'),
 (1046, 176, 1, 'Institut Universitaire de Madagascar', 'fr. Short description .Institut Universitaire de Madagascar', 'fr. Description .Institut Universitaire de Madagascar'),
 (1047, 176, 2, 'Institut Universitaire de Madagascar', 'en. Short description .Institut Universitaire de Madagascar', 'en. Description .Institut Universitaire de Madagascar'),
-(1048, 176, 3, 'Institut Universitaire de Madagascar', 'mg. Short description .Institut Universitaire de Madagascar', 'mg. Description .Institut Universitaire de Madagascar'),
+(1048, 176, 3, 'Institut Universitaire de Madagascar', 'mg. Short description .Institut Universitaire de Madagascar', 'mg. Description .Institut Universitaire de Madagascar');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
 (1049, 176, 4, 'Institut Universitaire de Madagascar', 'it. Short description .Institut Universitaire de Madagascar', 'it. Description .Institut Universitaire de Madagascar'),
 (1050, 176, 5, 'Institut Universitaire de Madagascar', 'es. Short description .Institut Universitaire de Madagascar', 'es. Description .Institut Universitaire de Madagascar'),
 (1051, 176, 6, 'Institut Universitaire de Madagascar', 'de. Short description .Institut Universitaire de Madagascar', 'de. Description .Institut Universitaire de Madagascar'),
@@ -5693,8 +5748,7 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (1089, 183, 2, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>'),
 (1090, 183, 3, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>'),
 (1091, 183, 4, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>'),
-(1092, 183, 5, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>');
-INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
+(1092, 183, 5, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>'),
 (1093, 183, 6, 'Ecole de Guitare de Madagascar', 'Premier « Conservatoire et de Faculté de Musique de Madagascar, L’EGM, est un établissement d’enseignement musical privé d’envergure nationale. Ouvert en 2005, elle forme depuis des étudiants venus des quatre coins du pays à travers ses 3 départements : MUSIQUE, DANSE et THEATRE.', '<p>Premier &laquo; Conservatoire et de Facult&eacute; de Musique de Madagascar, L&rsquo;EGM, est un &eacute;tablissement d&rsquo;enseignement musical priv&eacute; d&rsquo;envergure nationale. Ouvert en 2005, elle forme depuis des &eacute;tudiants venus des quatre coins du pays &agrave; travers ses 3 d&eacute;partements : MUSIQUE, DANSE et THEATRE.<br /><br />L&rsquo;EGM propose 3 formations bien distinctes:</p>\n<ul>\n<li>la formation acad&eacute;mique/pr&eacute;paratoire (du niveau d&eacute;butant &agrave; niveau Cycle3)</li>\n<li>la formation professionnelle (DEM)</li>\n<li>la formation sup&eacute;rieure/universitaire (DTS-Bac+2, Licence-Bac+3 en cours)</li>\n</ul>\n<p>L&rsquo;ann&eacute;e acad&eacute;mique d&eacute;bute en octobre et se termine en juillet. L&rsquo;EGM offre aussi bien des cours de vacances pour tout &acirc;ge tout niveau que des stages de perfectionnement.<br /><br />&laquo; La vie sans musique serait une erreur &raquo; F. Nietzsche</p>'),
 (1094, 184, 1, 'ecole superieur de formation paramedicale et biblique', 'fr. Short description .ecole superieur de formation paramedicale et biblique', 'fr. Description .ecole superieur de formation paramedicale et biblique'),
 (1095, 184, 2, 'ecole superieur de formation paramedicale et biblique', 'en. Short description .ecole superieur de formation paramedicale et biblique', 'en. Description .ecole superieur de formation paramedicale et biblique'),
@@ -5858,7 +5912,8 @@ INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `shor
 (1253, 210, 4, 'University of Technology and Business', 'it. Short description .University of Technology and Business', 'it. Description .University of Technology and Business'),
 (1254, 210, 5, 'University of Technology and Business', 'es. Short description .University of Technology and Business', 'es. Description .University of Technology and Business'),
 (1255, 210, 6, 'University of Technology and Business', 'de. Short description .University of Technology and Business', 'de. Description .University of Technology and Business'),
-(1256, 211, 1, 'Institut Supérieur Numérique d’Antananarivo', 'L’Institut Supérieur Numérique d’Antananarivo (ISNA) est une université en ligne, créée en octobre 2015. Elle dispense des cours en gestion d’entreprise. Proposant un enseignement en ligne, les cours sont accessibles en téléchargement partout et en toute période.', '<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) suit le syst&egrave;me LMD et dispose de 5 programmes dans la gestion d&rsquo;entreprise :</p>\n<ul style="text-align: justify;">\n<li>nouvelles technologies de la communication et de l&rsquo;information (NTIC)</li>\n<li>direction de projet et cr&eacute;ation d&rsquo;emplois</li>\n<li>expert comptable et financier</li>\n<li>institutions bancaires et financi&egrave;res</li>\n<li>direction de march&eacute;s d&rsquo;entreprise &agrave; l&rsquo;international ou au niveau national</li>\n</ul>\n<p style="text-align: justify;"><strong>Outils technologiques</strong><br /><br />Des bureaux repr&eacute;sentant l&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) ont &eacute;t&eacute; cr&eacute;&eacute;s dans tout Madagascar. Cela permet aux futurs &eacute;tudiants de s&rsquo;inscrire aux formations en ligne. Dans ce but, l&rsquo;Institut s&rsquo;est dot&eacute; de moyens informatiques et technologiques, facilitant l&rsquo;acc&egrave;s &agrave; la connaissance et le partage :</p>\n<ul style="text-align: justify;">\n<li style="text-align: justify;">Plateforme de formation : site internet et application mobile</li>\n<li style="text-align: justify;">Biblioth&egrave;que num&eacute;rique : plus de 2 000 titres disponibles</li>\n<li style="text-align: justify;">Int&eacute;gration : formation en informatique pour les nouveaux &eacute;tudiants</li>\n</ul>\n<p style="text-align: justify;">L&rsquo;ann&eacute;e universitaire compte <strong>8 mois</strong> dans ce cas. Elle est organis&eacute;e par des enseignants dipl&ocirc;m&eacute;s en Doctorat, MBA, Master 2, ou encore ing&eacute;nieurs, en provenance des autres universit&eacute;s se trouvant &agrave; l&rsquo;&eacute;tranger. Les &eacute;tudiants pourront aussi b&eacute;n&eacute;ficier des cours donn&eacute;s par les cadres d&rsquo;entreprises, les consultants et les chercheurs locaux et de l&rsquo;ext&eacute;rieur.</p>\n<p style="text-align: justify;"><strong>Objectifs de l&rsquo;ISNA</strong><br /><br />Par l&rsquo;enseignement en ligne, nouvelle forme de t&eacute;l&eacute;-enseignement (dont l&rsquo;ancienne, dirions-nous, est repr&eacute;sent&eacute;e par le CNTEMAD), l&rsquo;Institut a plusieurs objectifs en vue : gain de temps, s&eacute;curit&eacute; des &eacute;tudiants,&nbsp; libre &eacute;change entre l&rsquo;&eacute;tudiant, l&rsquo;enseignant et les professionnels<br /><br />Tous les efforts de l&rsquo;ISNA visent &agrave; faciliter l&rsquo;int&eacute;gration des &eacute;tudiants dans les entreprises. Au sein de l&rsquo;Institut, les &eacute;tudiants sont libres dans leur fa&ccedil;on d&rsquo;&eacute;tudier. Une grande flexibilit&eacute; leur est donn&eacute;e, ainsi que la possibilit&eacute; de communiquer &agrave; tout moment avec les enseignants.</p>'),
+(1256, 211, 1, 'Institut Supérieur Numérique d’Antananarivo', 'L’Institut Supérieur Numérique d’Antananarivo (ISNA) est une université en ligne, créée en octobre 2015. Elle dispense des cours en gestion d’entreprise. Proposant un enseignement en ligne, les cours sont accessibles en téléchargement partout et en toute période.', '<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) suit le syst&egrave;me LMD et dispose de 5 programmes dans la gestion d&rsquo;entreprise :</p>\n<ul style="text-align: justify;">\n<li>nouvelles technologies de la communication et de l&rsquo;information (NTIC)</li>\n<li>direction de projet et cr&eacute;ation d&rsquo;emplois</li>\n<li>expert comptable et financier</li>\n<li>institutions bancaires et financi&egrave;res</li>\n<li>direction de march&eacute;s d&rsquo;entreprise &agrave; l&rsquo;international ou au niveau national</li>\n</ul>\n<p style="text-align: justify;"><strong>Outils technologiques</strong><br /><br />Des bureaux repr&eacute;sentant l&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) ont &eacute;t&eacute; cr&eacute;&eacute;s dans tout Madagascar. Cela permet aux futurs &eacute;tudiants de s&rsquo;inscrire aux formations en ligne. Dans ce but, l&rsquo;Institut s&rsquo;est dot&eacute; de moyens informatiques et technologiques, facilitant l&rsquo;acc&egrave;s &agrave; la connaissance et le partage :</p>\n<ul style="text-align: justify;">\n<li style="text-align: justify;">Plateforme de formation : site internet et application mobile</li>\n<li style="text-align: justify;">Biblioth&egrave;que num&eacute;rique : plus de 2 000 titres disponibles</li>\n<li style="text-align: justify;">Int&eacute;gration : formation en informatique pour les nouveaux &eacute;tudiants</li>\n</ul>\n<p style="text-align: justify;">L&rsquo;ann&eacute;e universitaire compte <strong>8 mois</strong> dans ce cas. Elle est organis&eacute;e par des enseignants dipl&ocirc;m&eacute;s en Doctorat, MBA, Master 2, ou encore ing&eacute;nieurs, en provenance des autres universit&eacute;s se trouvant &agrave; l&rsquo;&eacute;tranger. Les &eacute;tudiants pourront aussi b&eacute;n&eacute;ficier des cours donn&eacute;s par les cadres d&rsquo;entreprises, les consultants et les chercheurs locaux et de l&rsquo;ext&eacute;rieur.</p>\n<p style="text-align: justify;"><strong>Objectifs de l&rsquo;ISNA</strong><br /><br />Par l&rsquo;enseignement en ligne, nouvelle forme de t&eacute;l&eacute;-enseignement (dont l&rsquo;ancienne, dirions-nous, est repr&eacute;sent&eacute;e par le CNTEMAD), l&rsquo;Institut a plusieurs objectifs en vue : gain de temps, s&eacute;curit&eacute; des &eacute;tudiants,&nbsp; libre &eacute;change entre l&rsquo;&eacute;tudiant, l&rsquo;enseignant et les professionnels<br /><br />Tous les efforts de l&rsquo;ISNA visent &agrave; faciliter l&rsquo;int&eacute;gration des &eacute;tudiants dans les entreprises. Au sein de l&rsquo;Institut, les &eacute;tudiants sont libres dans leur fa&ccedil;on d&rsquo;&eacute;tudier. Une grande flexibilit&eacute; leur est donn&eacute;e, ainsi que la possibilit&eacute; de communiquer &agrave; tout moment avec les enseignants.</p>');
+INSERT INTO `sl_school_translate` (`id`, `school_id`, `locale_id`, `name`, `short_description`, `description`) VALUES
 (1257, 211, 2, 'Institut Supérieur Numérique d’Antananarivo', 'L’Institut Supérieur Numérique d’Antananarivo (ISNA) est une université en ligne, créée en octobre 2015. Elle dispense des cours en gestion d’entreprise. Proposant un enseignement en ligne, les cours sont accessibles en téléchargement partout et en toute période.', '<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) suit le syst&egrave;me LMD et dispose de 5 programmes dans la gestion d&rsquo;entreprise :</p>\n<ul style="text-align: justify;">\n<li>nouvelles technologies de la communication et de l&rsquo;information (NTIC)</li>\n<li>direction de projet et cr&eacute;ation d&rsquo;emplois</li>\n<li>expert comptable et financier</li>\n<li>institutions bancaires et financi&egrave;res</li>\n<li>direction de march&eacute;s d&rsquo;entreprise &agrave; l&rsquo;international ou au niveau national</li>\n</ul>\n<p style="text-align: justify;"><strong>Outils technologiques</strong><br /><br />Des bureaux repr&eacute;sentant l&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) ont &eacute;t&eacute; cr&eacute;&eacute;s dans tout Madagascar. Cela permet aux futurs &eacute;tudiants de s&rsquo;inscrire aux formations en ligne. Dans ce but, l&rsquo;Institut s&rsquo;est dot&eacute; de moyens informatiques et technologiques, facilitant l&rsquo;acc&egrave;s &agrave; la connaissance et le partage :</p>\n<ul style="text-align: justify;">\n<li style="text-align: justify;">Plateforme de formation : site internet et application mobile</li>\n<li style="text-align: justify;">Biblioth&egrave;que num&eacute;rique : plus de 2 000 titres disponibles</li>\n<li style="text-align: justify;">Int&eacute;gration : formation en informatique pour les nouveaux &eacute;tudiants</li>\n</ul>\n<p style="text-align: justify;">L&rsquo;ann&eacute;e universitaire compte <strong>8 mois</strong> dans ce cas. Elle est organis&eacute;e par des enseignants dipl&ocirc;m&eacute;s en Doctorat, MBA, Master 2, ou encore ing&eacute;nieurs, en provenance des autres universit&eacute;s se trouvant &agrave; l&rsquo;&eacute;tranger. Les &eacute;tudiants pourront aussi b&eacute;n&eacute;ficier des cours donn&eacute;s par les cadres d&rsquo;entreprises, les consultants et les chercheurs locaux et de l&rsquo;ext&eacute;rieur.</p>\n<p style="text-align: justify;"><strong>Objectifs de l&rsquo;ISNA</strong><br /><br />Par l&rsquo;enseignement en ligne, nouvelle forme de t&eacute;l&eacute;-enseignement (dont l&rsquo;ancienne, dirions-nous, est repr&eacute;sent&eacute;e par le CNTEMAD), l&rsquo;Institut a plusieurs objectifs en vue : gain de temps, s&eacute;curit&eacute; des &eacute;tudiants,&nbsp; libre &eacute;change entre l&rsquo;&eacute;tudiant, l&rsquo;enseignant et les professionnels<br /><br />Tous les efforts de l&rsquo;ISNA visent &agrave; faciliter l&rsquo;int&eacute;gration des &eacute;tudiants dans les entreprises. Au sein de l&rsquo;Institut, les &eacute;tudiants sont libres dans leur fa&ccedil;on d&rsquo;&eacute;tudier. Une grande flexibilit&eacute; leur est donn&eacute;e, ainsi que la possibilit&eacute; de communiquer &agrave; tout moment avec les enseignants.</p>'),
 (1258, 211, 3, 'Institut Supérieur Numérique d’Antananarivo', 'L’Institut Supérieur Numérique d’Antananarivo (ISNA) est une université en ligne, créée en octobre 2015. Elle dispense des cours en gestion d’entreprise. Proposant un enseignement en ligne, les cours sont accessibles en téléchargement partout et en toute période.', '<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) suit le syst&egrave;me LMD et dispose de 5 programmes dans la gestion d&rsquo;entreprise :</p>\n<ul style="text-align: justify;">\n<li>nouvelles technologies de la communication et de l&rsquo;information (NTIC)</li>\n<li>direction de projet et cr&eacute;ation d&rsquo;emplois</li>\n<li>expert comptable et financier</li>\n<li>institutions bancaires et financi&egrave;res</li>\n<li>direction de march&eacute;s d&rsquo;entreprise &agrave; l&rsquo;international ou au niveau national</li>\n</ul>\n<p style="text-align: justify;"><strong>Outils technologiques</strong><br /><br />Des bureaux repr&eacute;sentant l&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) ont &eacute;t&eacute; cr&eacute;&eacute;s dans tout Madagascar. Cela permet aux futurs &eacute;tudiants de s&rsquo;inscrire aux formations en ligne. Dans ce but, l&rsquo;Institut s&rsquo;est dot&eacute; de moyens informatiques et technologiques, facilitant l&rsquo;acc&egrave;s &agrave; la connaissance et le partage :</p>\n<ul style="text-align: justify;">\n<li style="text-align: justify;">Plateforme de formation : site internet et application mobile</li>\n<li style="text-align: justify;">Biblioth&egrave;que num&eacute;rique : plus de 2 000 titres disponibles</li>\n<li style="text-align: justify;">Int&eacute;gration : formation en informatique pour les nouveaux &eacute;tudiants</li>\n</ul>\n<p style="text-align: justify;">L&rsquo;ann&eacute;e universitaire compte <strong>8 mois</strong> dans ce cas. Elle est organis&eacute;e par des enseignants dipl&ocirc;m&eacute;s en Doctorat, MBA, Master 2, ou encore ing&eacute;nieurs, en provenance des autres universit&eacute;s se trouvant &agrave; l&rsquo;&eacute;tranger. Les &eacute;tudiants pourront aussi b&eacute;n&eacute;ficier des cours donn&eacute;s par les cadres d&rsquo;entreprises, les consultants et les chercheurs locaux et de l&rsquo;ext&eacute;rieur.</p>\n<p style="text-align: justify;"><strong>Objectifs de l&rsquo;ISNA</strong><br /><br />Par l&rsquo;enseignement en ligne, nouvelle forme de t&eacute;l&eacute;-enseignement (dont l&rsquo;ancienne, dirions-nous, est repr&eacute;sent&eacute;e par le CNTEMAD), l&rsquo;Institut a plusieurs objectifs en vue : gain de temps, s&eacute;curit&eacute; des &eacute;tudiants,&nbsp; libre &eacute;change entre l&rsquo;&eacute;tudiant, l&rsquo;enseignant et les professionnels<br /><br />Tous les efforts de l&rsquo;ISNA visent &agrave; faciliter l&rsquo;int&eacute;gration des &eacute;tudiants dans les entreprises. Au sein de l&rsquo;Institut, les &eacute;tudiants sont libres dans leur fa&ccedil;on d&rsquo;&eacute;tudier. Une grande flexibilit&eacute; leur est donn&eacute;e, ainsi que la possibilit&eacute; de communiquer &agrave; tout moment avec les enseignants.</p>'),
 (1259, 211, 4, 'Institut Supérieur Numérique d’Antananarivo', 'L’Institut Supérieur Numérique d’Antananarivo (ISNA) est une université en ligne, créée en octobre 2015. Elle dispense des cours en gestion d’entreprise. Proposant un enseignement en ligne, les cours sont accessibles en téléchargement partout et en toute période.', '<p style="text-align: justify;">L&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) suit le syst&egrave;me LMD et dispose de 5 programmes dans la gestion d&rsquo;entreprise :</p>\n<ul style="text-align: justify;">\n<li>nouvelles technologies de la communication et de l&rsquo;information (NTIC)</li>\n<li>direction de projet et cr&eacute;ation d&rsquo;emplois</li>\n<li>expert comptable et financier</li>\n<li>institutions bancaires et financi&egrave;res</li>\n<li>direction de march&eacute;s d&rsquo;entreprise &agrave; l&rsquo;international ou au niveau national</li>\n</ul>\n<p style="text-align: justify;"><strong>Outils technologiques</strong><br /><br />Des bureaux repr&eacute;sentant l&rsquo;Institut Sup&eacute;rieur Num&eacute;rique d&rsquo;Antananarivo (ISNA) ont &eacute;t&eacute; cr&eacute;&eacute;s dans tout Madagascar. Cela permet aux futurs &eacute;tudiants de s&rsquo;inscrire aux formations en ligne. Dans ce but, l&rsquo;Institut s&rsquo;est dot&eacute; de moyens informatiques et technologiques, facilitant l&rsquo;acc&egrave;s &agrave; la connaissance et le partage :</p>\n<ul style="text-align: justify;">\n<li style="text-align: justify;">Plateforme de formation : site internet et application mobile</li>\n<li style="text-align: justify;">Biblioth&egrave;que num&eacute;rique : plus de 2 000 titres disponibles</li>\n<li style="text-align: justify;">Int&eacute;gration : formation en informatique pour les nouveaux &eacute;tudiants</li>\n</ul>\n<p style="text-align: justify;">L&rsquo;ann&eacute;e universitaire compte <strong>8 mois</strong> dans ce cas. Elle est organis&eacute;e par des enseignants dipl&ocirc;m&eacute;s en Doctorat, MBA, Master 2, ou encore ing&eacute;nieurs, en provenance des autres universit&eacute;s se trouvant &agrave; l&rsquo;&eacute;tranger. Les &eacute;tudiants pourront aussi b&eacute;n&eacute;ficier des cours donn&eacute;s par les cadres d&rsquo;entreprises, les consultants et les chercheurs locaux et de l&rsquo;ext&eacute;rieur.</p>\n<p style="text-align: justify;"><strong>Objectifs de l&rsquo;ISNA</strong><br /><br />Par l&rsquo;enseignement en ligne, nouvelle forme de t&eacute;l&eacute;-enseignement (dont l&rsquo;ancienne, dirions-nous, est repr&eacute;sent&eacute;e par le CNTEMAD), l&rsquo;Institut a plusieurs objectifs en vue : gain de temps, s&eacute;curit&eacute; des &eacute;tudiants,&nbsp; libre &eacute;change entre l&rsquo;&eacute;tudiant, l&rsquo;enseignant et les professionnels<br /><br />Tous les efforts de l&rsquo;ISNA visent &agrave; faciliter l&rsquo;int&eacute;gration des &eacute;tudiants dans les entreprises. Au sein de l&rsquo;Institut, les &eacute;tudiants sont libres dans leur fa&ccedil;on d&rsquo;&eacute;tudier. Une grande flexibilit&eacute; leur est donn&eacute;e, ainsi que la possibilit&eacute; de communiquer &agrave; tout moment avec les enseignants.</p>'),
@@ -5909,7 +5964,6 @@ INSERT INTO `sl_type_school` (`id`, `school_id`, `type_id`) VALUES
 (12, 5, 1),
 (14, 7, 2),
 (15, 8, 2),
-(16, 9, 1),
 (17, 10, 1),
 (18, 11, 1),
 (19, 12, 1),
@@ -6099,7 +6153,6 @@ INSERT INTO `sl_type_school` (`id`, `school_id`, `type_id`) VALUES
 (269, 134, 2),
 (271, 150, 2),
 (272, 154, 2),
-(273, 161, 2),
 (274, 164, 2),
 (275, 165, 2),
 (276, 120, 2),
@@ -6111,7 +6164,9 @@ INSERT INTO `sl_type_school` (`id`, `school_id`, `type_id`) VALUES
 (283, 117, 2),
 (284, 6, 2),
 (285, 23, 2),
-(286, 211, 2);
+(286, 211, 2),
+(287, 9, 1),
+(288, 161, 2);
 
 -- --------------------------------------------------------
 
@@ -6127,6 +6182,14 @@ CREATE TABLE `ur_avatar` (
   `originalname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `current_avatar` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `ur_avatar`
+--
+
+INSERT INTO `ur_avatar` (`id`, `user_id`, `name`, `path`, `originalname`, `current_avatar`) VALUES
+(87, 31, 'iscamland1.jpg', '6592e921e3580e512c2c4e59e60be534789e80b3.jpeg', 'iscamland1.jpg', 0),
+(142, 1, 'reinedesneignes.jpg', '32223cbb7c0e2d1_1_1504285938.jpeg', 'reinedesneignes.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -6155,7 +6218,7 @@ CREATE TABLE `ur_user` (
 --
 
 INSERT INTO `ur_user` (`id`, `locale_id`, `username`, `email`, `password`, `salt`, `roles`, `location`, `name`, `biography`, `sex`, `token`, `date`) VALUES
-(1, 1, 'ilitate-ispa', 'user1@oio.com', 'Rm5EXn+/rs1DcjgIZk5AFf5+Lzpv//JwBjmn9rFjEqBnGQQEt/gL2KZnpD2dUX+ku1VVAlThH/DqKjdZeE823w==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Fianarantsoa', 'ilitate ipsa parum caven', 'Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius.', 1, 'b7ILgAuPQ2cRFOkYWMOKog8he6h9aFHtqLmPKMKjjwPxSl3zD6o0j8kX8hP0NSmf', '2016-12-02 07:27:13'),
+(1, 1, 'frank-anthony', 'user1@oio.com', 'Rm5EXn+/rs1DcjgIZk5AFf5+Lzpv//JwBjmn9rFjEqBnGQQEt/gL2KZnpD2dUX+ku1VVAlThH/DqKjdZeE823w==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Fianarantsoa', 'Frank Anthony', 'Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi.', 1, 'b7ILgAuPQ2cRFOkYWMOKog8he6h9aFHtqLmPKMKjjwPxSl3zD6o0j8kX8hP0NSmf', '2016-12-02 07:27:13'),
 (2, 2, 'user2', 'user2.fortunat@boot.com', 'LcI4TKVPhbdheLgGK7jygbUhMZcHpg1cRZSazjEq1CogQlx/E+iBwqNwBNLWCqV0CDeSJ3OW2uvXF+zAPaPPqw==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'location', 'scelerisque quis eget felis', 'An API endpoint "defines the address or connection point to a Web service. It is typically represented by a simple HTTP URL string". So basically, the endpoint URL is the URL of the web service that are you attempting to interact with.', 1, NULL, '2016-12-02 07:27:13'),
 (3, 1, 'user3', 'user3@boot.comk', 'wPscR9RyDzUt/1RawB/8cOdGt7CmIABQBSGcZG+et3V7jMXlywRMtMqBQ0djPX3FvcsZ+YTzgL8JXi5lGknWWA==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Paris, France', 'Phasellus finibus volutpat', 'J''ai un fichier css qui ne fonctionne qu''à moitier. ... Float, fonctionne parfaitement mais font-style-type pas. .... d''aide concernant le code par MP ni par mail, le forum est là pour çaJ''ai un fichier css qui ne fonctionne qu''à moitier. ... Float, fonctionne parfaitement mais font-style-type pas. .... d''aide concernant le code par MP ni par mail, le forum est là pour ça', 1, NULL, '2016-12-02 07:27:13'),
 (4, 1, 'user4', 'user4@boot.com', 'kHi9aNEtzraNe6IGuqFMdJQ9TSU8TR3BKrbJs+ZVNfbAdOgxdSjmyHrB1YrD9ZxKa3wApwEySN8lAqRZvWiSNQ==', '10e5f90d7339069fc348e82591d36cbd', 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 'Ambatondrazaka', 'Jean Ranaivoarisoa', 'Vestibulum vitae accumsan turpis, ut sollicitudin ex. Cras bibendum bibendum pharetra. Vestibulum sed venenatis justo, sit amet feugiat lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed in iaculis leo. Integer vel diam iaculis, tincidunt nibh vitae, maximus nulla. Suspendisse at tincidunt elit. Maecenas mattis neque vehicula justo ornare dictum a vel risus.', 1, 'SI8yLnkGbUicYeCPtQnMwHaMsg638wKiUWdJBt66zBuBEhYYb0Ep2I7EwTtTvviS', '2016-12-02 07:27:13'),
@@ -6184,7 +6247,8 @@ INSERT INTO `ur_user` (`id`, `locale_id`, `username`, `email`, `password`, `salt
 (27, 1, 'test6-oio-com', 'test6@oio.com', 'ziT8IAGciLpOJxXfPcH9xS52RSHc0Ii1dvVOXIf6bDvLU0xiWZlJs73dn46m6N8Spymz1rbZzFTlUTZIgF94zA==', '68cbc7078937da739b9a63bf72eec1b2', 'a:0:{}', NULL, 'test6@oio.com', NULL, 2, NULL, '2016-12-02 07:27:13'),
 (28, 2, 'fsdf-sdf-s', 'aa@aa.aa', 'VKQocCrDF0S5U0fkD1gCHEIem96glkYdgDulubkA4gcPJkTYmIuQANyujDdYuyoUnVqDVqiIPpUzBLDoN2bQBg==', 'd0d3077668ce0be25456c291b1ce7aec', 'a:0:{}', NULL, 'fsdf sdf s', NULL, 0, NULL, '2016-12-02 07:27:13'),
 (29, 1, 'bbbb-bbbb', 'bb@bb.bb', 'Q6D4k8LFwYdCR1YPuZeiJHBAbRKCz8tdOH6yGjlZovRYEHpG/orE301rSdh0M8crMV2hr4de+M+OcYi7PsSLjw==', '7f832230ce74c09514068742de29f2cc', 'a:0:{}', 'Antananarivo, Madagascar', 'bbbb bbbb', NULL, 0, NULL, '2016-12-02 07:27:13'),
-(30, 1, 'randrianarisoa', 'user1@oio2.com', 'AhxRFW94YQflOgVY674+Qwm2K47N9XfAkXC4c/zVtGV2tLu+revtmf/SpZuZH5K0K1m9QOhqt06MsEQD7/KF2A==', 'ae26da92ef53c7d460f111b0a12211c2', 'a:0:{}', NULL, 'randrianarisoa', NULL, 0, NULL, '2017-08-07 11:31:18');
+(30, 1, 'randrianarisoa', 'user1@oio2.com', 'AhxRFW94YQflOgVY674+Qwm2K47N9XfAkXC4c/zVtGV2tLu+revtmf/SpZuZH5K0K1m9QOhqt06MsEQD7/KF2A==', 'ae26da92ef53c7d460f111b0a12211c2', 'a:0:{}', NULL, 'randrianarisoa', NULL, 0, NULL, '2017-08-07 11:31:18'),
+(31, 1, 'finaritra-andry-nantenaina', 'userf@oio.com', 'oduLz4rNDls8lt4iJyPr6bfhrSNC4Q/VrjfSbswFL9iX2DMmVgDKdIvpgXBrDN3YhY6QayFWZs/YcKliWLCe1w==', '71e7922f307c46133914ddd46713e46f', 'a:0:{}', 'Fianarantsoa, Madagasikara', 'Finaritra Andry Nantenaina', 'Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter intromissi', 0, NULL, '2017-08-31 23:17:45');
 
 --
 -- Index pour les tables exportées
@@ -6600,7 +6664,7 @@ ALTER TABLE `bg_category`
 -- AUTO_INCREMENT pour la table `bg_category_post`
 --
 ALTER TABLE `bg_category_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT pour la table `bg_category_translate`
 --
@@ -6610,7 +6674,7 @@ ALTER TABLE `bg_category_translate`
 -- AUTO_INCREMENT pour la table `bg_post`
 --
 ALTER TABLE `bg_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT pour la table `bg_post_illustration`
 --
@@ -6620,7 +6684,7 @@ ALTER TABLE `bg_post_illustration`
 -- AUTO_INCREMENT pour la table `bg_post_translate`
 --
 ALTER TABLE `bg_post_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
 --
 -- AUTO_INCREMENT pour la table `et_event`
 --
@@ -6630,7 +6694,7 @@ ALTER TABLE `et_event`
 -- AUTO_INCREMENT pour la table `fm_message`
 --
 ALTER TABLE `fm_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT pour la table `fm_subject`
 --
@@ -6660,7 +6724,7 @@ ALTER TABLE `pm_advert_school`
 -- AUTO_INCREMENT pour la table `pm_comment`
 --
 ALTER TABLE `pm_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 --
 -- AUTO_INCREMENT pour la table `pm_contact`
 --
@@ -6685,7 +6749,7 @@ ALTER TABLE `pm_newsletter`
 -- AUTO_INCREMENT pour la table `pm_newsletter_mail`
 --
 ALTER TABLE `pm_newsletter_mail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT pour la table `pm_parameter`
 --
@@ -6700,7 +6764,7 @@ ALTER TABLE `pm_post_school`
 -- AUTO_INCREMENT pour la table `pm_view`
 --
 ALTER TABLE `pm_view`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1058;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1255;
 --
 -- AUTO_INCREMENT pour la table `sl_category`
 --
@@ -6720,27 +6784,27 @@ ALTER TABLE `sl_category_translate`
 -- AUTO_INCREMENT pour la table `sl_cover`
 --
 ALTER TABLE `sl_cover`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 --
 -- AUTO_INCREMENT pour la table `sl_evaluation`
 --
 ALTER TABLE `sl_evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `sl_field`
 --
 ALTER TABLE `sl_field`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 --
 -- AUTO_INCREMENT pour la table `sl_field_translate`
 --
 ALTER TABLE `sl_field_translate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1406;
 --
 -- AUTO_INCREMENT pour la table `sl_logo`
 --
 ALTER TABLE `sl_logo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 --
 -- AUTO_INCREMENT pour la table `sl_school`
 --
@@ -6755,7 +6819,7 @@ ALTER TABLE `sl_school_admin`
 -- AUTO_INCREMENT pour la table `sl_school_contact`
 --
 ALTER TABLE `sl_school_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 --
 -- AUTO_INCREMENT pour la table `sl_school_contact_translate`
 --
@@ -6765,7 +6829,7 @@ ALTER TABLE `sl_school_contact_translate`
 -- AUTO_INCREMENT pour la table `sl_school_of_the_day`
 --
 ALTER TABLE `sl_school_of_the_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT pour la table `sl_school_subscription`
 --
@@ -6785,17 +6849,17 @@ ALTER TABLE `sl_type`
 -- AUTO_INCREMENT pour la table `sl_type_school`
 --
 ALTER TABLE `sl_type_school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
 --
 -- AUTO_INCREMENT pour la table `ur_avatar`
 --
 ALTER TABLE `ur_avatar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 --
 -- AUTO_INCREMENT pour la table `ur_user`
 --
 ALTER TABLE `ur_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- Contraintes pour les tables exportées
 --

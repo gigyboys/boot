@@ -169,9 +169,11 @@ class Logo
      */
     public function preUpload()
     {
-        if (null !== $this->file) {
-            // faites ce que vous voulez pour générer un nom unique
-            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+		if (null !== $this->file) {
+            // generation nom unique
+			$t=time();
+			
+            $this->path = substr(sha1(uniqid(mt_rand(), true)), 0, 15).'_'.$this->school->getId().'_'.$t.'.'.$this->file->guessExtension();
             $this->originalname = $this->file->getClientOriginalName();
             $this->name = $this->file->getClientOriginalName();
         }

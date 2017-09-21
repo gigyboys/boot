@@ -170,7 +170,7 @@ class Avatar
     public function preUpload()
     {
         if (null !== $this->file) {
-            // faites ce que vous voulez pour générer un nom unique
+            // generation nom unique
 			$t=time();
 			
             $this->path = substr(sha1(uniqid(mt_rand(), true)), 0, 15).'_'.$this->user->getId().'_'.$t.'.'.$this->file->guessExtension();

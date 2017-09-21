@@ -1059,5 +1059,254 @@ class SchoolController extends Controller
 		
 		return $response;
     }
+
+	public function modifyCoverPopupAction($school_id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $coverRepository = $em->getRepository('COMSchoolBundle:Cover');
+		
+		$school = $schoolRepository->find($school_id);
+		$covers = $coverRepository->findBy(array(
+			'school' => $school
+		));
+		$current = $coverRepository->findOneBy(array(
+			'school' => $school,
+			'current' => true,
+		));
+		
+        $response = new Response();
+
+		$content = $this->renderView('COMAdminBundle:school:modify_cover_popup.html.twig', array(
+			'school' => $school,
+			'covers' => $covers,
+			'current' => $current,
+		));
+			
+		$response->setContent(json_encode(array(
+			'state' => 1,
+			'content' => $content,
+		)));
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function selectCoverAction($school_id, $cover_id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $coverRepository = $em->getRepository('COMSchoolBundle:Cover');
+		
+		$school = $schoolRepository->find($school_id);
+		
+		$response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($school){
+			if($cover_id == 0){
+				$covers = $coverRepository->findBy(array(
+					'school' => $school
+				));
+
+				foreach ($covers as $cover) {
+					$cover->setCurrent(false);
+					$em->persist($cover);
+				}
+				$em->flush();
+				
+				$defaultCoverPath = 'default/images/school/cover/default.jpeg';
+				
+				$cover116x116 = $this->renderView('COMAdminBundle:school:include/cover116x116.html.twig', array(
+				  'coverPath' => $defaultCoverPath
+				));
+				
+				$cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+				  'coverPath' => $defaultCoverPath
+				));
+				
+				$response->setContent(json_encode(array(
+					'state' => 1,
+					'cover116x116' => $cover116x116,
+					'cover300x100' => $cover300x100,
+				)));
+			}else{
+				$cover = $coverRepository->find($cover_id);
+				
+				if($cover && $school->getId() == $cover->getSchool()->getId()){
+					$covers = $coverRepository->findBy(array(
+						'school' => $school
+					));
+					
+					foreach ($covers as $coverTmp) {
+						$coverTmp->setCurrent(false);
+						$em->persist($coverTmp);
+					}
+					
+					$cover->setCurrent(true);
+					
+					$em->persist($cover);
+					$em->flush();
+					
+					$cover116x116 = $this->renderView('COMAdminBundle:school:include/cover116x116.html.twig', array(
+					  'coverPath' => $cover->getWebPath()
+					));
+					
+					$cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+					  'coverPath' => $cover->getWebPath()
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'cover116x116' => $cover116x116,
+						'cover300x100' => $cover300x100,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function deleteCoverAction($school_id, $cover_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $coverRepository = $em->getRepository('COMSchoolBundle:Cover');
+		
+		$school = $schoolRepository->find($school_id);
+		
+		$cover = $coverRepository->find($cover_id);
+		
+        $response = new Response();
+		
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+		if($school && $cover){
+			if($school->getId() == $cover->getSchool()->getId()){
+				$coverId = $cover->getId();
+				$em->remove($cover);
+				$em->flush();
+				
+				$current = $coverRepository->findOneBy(array(
+					'school' => $school,
+					'current' => true,
+				));
+				
+				if($current){
+				
+					$cover116x116 = $this->renderView('COMAdminBundle:school:include/cover116x116.html.twig', array(
+					  'coverPath' => $current->getWebPath()
+					));
+				
+					$cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+					  'coverPath' => $current->getWebPath()
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'coverId' => $coverId,
+						'cover116x116' => $cover116x116,
+						'cover300x100' => $cover300x100,
+						'isCurrent' => false,
+					)));
+				}else{
+					$defaultCoverPath = 'default/images/school/cover/default.jpeg';
+					
+					$cover116x116 = $this->renderView('COMAdminBundle:school:include/cover116x116.html.twig', array(
+					  'coverPath' => $defaultCoverPath
+					));
+					
+					$cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+					  'coverPath' => $defaultCoverPath
+					));
+					
+					$response->setContent(json_encode(array(
+						'state' => 1,
+						'coverId' => $coverId,
+						'cover116x116' => $cover116x116,
+						'cover300x100' => $cover300x100,
+						'isCurrent' => true,
+					)));
+				}
+			}
+		}
+		
+        $response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+
+	public function modifyCoverAction($school_id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+		$localeRepository = $em->getRepository('COMPlatformBundle:Locale');
+		$schoolRepository = $em->getRepository('COMSchoolBundle:School');
+        $coverRepository = $em->getRepository('COMSchoolBundle:Cover');
+		
+		$school = $schoolRepository->find($school_id);
+        
+        $cover = new Cover();
+        
+        $formCover = $this->get('form.factory')->create(new CoverType, $cover);
+        $formCover->handleRequest($this->getRequest());
+		
+		$response = new Response();
+		$response->setContent(json_encode(array(
+			'state' => 0,
+		)));
+		
+        if ($school && $formCover->isValid()) {
+            $covers = $coverRepository->findBy(array(
+				'school' => $school
+			));
+            
+            foreach ($covers as $currentCover) {
+                $currentCover->setCurrent(false);
+            }
+			
+            $cover->setCurrent(true);
+			
+            $cover->setSchool($school);
+			
+            $em->persist($cover);
+            $em->flush();
+			
+            $cover116x116 = $this->renderView('COMAdminBundle:school:include/cover116x116.html.twig', array(
+			  'coverPath' => $cover->getWebPath()
+			));
+			
+            $cover300x100 = $this->renderView('COMAdminBundle:school:include/cover300x100.html.twig', array(
+			  'coverPath' => $cover->getWebPath()
+			));
+			
+            $coverItemContent = $this->renderView('COMAdminBundle:school:include/cover_item.html.twig', array(
+			  'school' => $school,
+			  'cover' => $cover,
+			  'classActive' => 'active'
+			));
+			
+            $response->setContent(json_encode(array(
+                'state' => 1,
+                'cover116x116'	 	=> $cover116x116,
+                'cover300x100'	 	=> $cover300x100,
+                'coverItemContent' => $coverItemContent,
+            )));
+        }
+
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
+    }
 	
 }

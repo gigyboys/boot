@@ -33,6 +33,18 @@ com_admin_school_toogle_publication:
 com_admin_school_add_cover:
     path:     /school/add-cover/{school_id}
     defaults: { _controller: COMAdminBundle:School:addCover }
+com_admin_school_modify_cover_popup:
+    path:     /school/modify-cover-popup/{school_id}
+    defaults: { _controller: COMAdminBundle:School:modifyCoverPopup }
+com_admin_school_select_cover:
+    path:     /school/select-cover/{school_id}/{cover_id}
+    defaults: { _controller: COMAdminBundle:School:selectCover }
+com_admin_school_delete_cover:
+    path:     /user/delete-cover/{school_id}/{cover_id}
+    defaults: { _controller: COMAdminBundle:School:deleteCover }
+com_admin_school_modify_cover:
+    path:     /user/modify-cover/{school_id}
+    defaults: { _controller: COMAdminBundle:School:modifyCover }
 com_admin_school_edit_common:
     path:     /school/edit-common/{id}
     defaults: { _controller: COMAdminBundle:School:editSchoolCommon }
